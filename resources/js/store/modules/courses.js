@@ -23,8 +23,7 @@ const actions = {
         commit('setLoading', true);
         const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/${slug}`);
                 commit('setLoading', false);
-                console.log(response.data);
-        commit('setCourse', response.data[0]);
+        commit('setCourse', response.data);
     },
 
 };

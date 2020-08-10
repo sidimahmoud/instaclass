@@ -42091,21 +42091,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container mt-5" }, [
-    _c(
-      "div",
-      { staticClass: "row text-center" },
-      _vm._l(_vm.allCourses, function(course) {
-        return _c(
-          "div",
-          { key: course.id, staticClass: "col-lg-3 col-md-4 col-sm-12 mb-4" },
-          [_c("course", { attrs: { course: course } })],
-          1
-        )
-      }),
-      0
-    )
-  ])
+  return _c(
+    "div",
+    { staticClass: "container pt-5 border-top border-primary" },
+    [
+      _c(
+        "div",
+        { staticClass: "row text-center" },
+        _vm._l(_vm.allCourses, function(course) {
+          return _c(
+            "div",
+            { key: course.id, staticClass: "col-lg-3 col-md-4 col-sm-12 mb-4" },
+            [_c("course", { attrs: { course: course } })],
+            1
+          )
+        }),
+        0
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -60918,10 +60922,9 @@ var actions = {
             case 4:
               response = _context2.sent;
               commit('setLoading', false);
-              console.log(response.data);
-              commit('setCourse', response.data[0]);
+              commit('setCourse', response.data);
 
-            case 8:
+            case 7:
             case "end":
               return _context2.stop();
           }
