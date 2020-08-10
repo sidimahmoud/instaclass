@@ -23,6 +23,7 @@ class CoursesTableSeeder extends Seeder
             'slug' => "full-stack-laravel-vue",
             'sub_category_id' => '1',
             'status' => '1',
+            'type' => '1',
             'price' => '0.00',
             'created_at' => Carbon::now(),
         ]);
