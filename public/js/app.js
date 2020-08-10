@@ -2116,25 +2116,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "About"
 });
@@ -2499,8 +2480,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Review */ "./resources/js/components/courses/Review.vue");
-//
-//
 //
 //
 //
@@ -40869,49 +40848,6 @@ var staticRenderFns = [
                 ])
               ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-12 mb-3" }, [
-            _c("div", { staticClass: "card shadow-sm " }, [
-              _c("div", { staticClass: "row  " }, [
-                _c(
-                  "div",
-                  { staticClass: "col-sm-12 d-flex align-self-center" },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "card-body font-weight-bolder text-center"
-                      },
-                      [
-                        _c("h5", { staticClass: "card-title about-headings" }, [
-                          _vm._v("Download")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                                    our app in the App store, available on Google play\n                                "
-                          )
-                        ])
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-12 text-center" }, [
-                  _c("div", [
-                    _c("img", {
-                      staticClass: "my-2",
-                      attrs: {
-                        src: __webpack_require__(/*! ../assets/images/about/play.png */ "./resources/js/assets/images/about/play.png"),
-                        height: "50px",
-                        alt: "Suresh Dasari Card"
-                      }
-                    })
-                  ])
-                ])
-              ])
-            ])
           ])
         ])
       ])
@@ -41559,9 +41495,9 @@ var render = function() {
                       _vm._v(" "),
                       _vm._m(1),
                       _vm._v(
-                        "\n                            (" +
+                        "\n                        (" +
                           _vm._s(_vm.course.ratings.length) +
-                          " rating)\n                            "
+                          " rating)\n                        "
                       ),
                       _c("div", { staticClass: "mt-4" }, [
                         _c("img", {
@@ -41573,11 +41509,11 @@ var render = function() {
                         _vm._v(" "),
                         _c("span", { staticClass: "font-weight-bolder" }, [
                           _vm._v(
-                            "\n                            " +
+                            "\n                        " +
                               _vm._s(_vm.course.user.first_name) +
                               " " +
                               _vm._s(_vm.course.user.last_name) +
-                              "\n                            "
+                              "\n                        "
                           )
                         ])
                       ])
@@ -41609,9 +41545,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", [
                         _vm._v(
-                          "\n                                    " +
+                          "\n                                " +
                             _vm._s(_vm.course.description) +
-                            "\n                                "
+                            "\n                            "
                         )
                       ]),
                       _vm._v(" "),
@@ -41631,7 +41567,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("span", [
                           _vm._v(
-                            "\n                                 4.7\n                        "
+                            "\n                             4.7\n                    "
                           ),
                           _c("i", { staticClass: "fa fa-star text-warning" }),
                           _vm._v(" "),
@@ -41643,9 +41579,9 @@ var render = function() {
                           _vm._v(" "),
                           _c("i", { staticClass: "fa fa-star text-warning" }),
                           _vm._v(
-                            "\n                        (" +
+                            "\n                    (" +
                               _vm._s(_vm.course.ratings.length) +
-                              " Rating)\n                        "
+                              " Rating)\n                    "
                           )
                         ])
                       ]),
@@ -41661,7 +41597,7 @@ var render = function() {
                     { staticClass: "tab-pane fade show", attrs: { id: "FAQ" } },
                     [
                       _vm._v(
-                        "\n                                FAQ\n                            "
+                        "\n                            FAQ\n                        "
                       )
                     ]
                   ),
@@ -41738,14 +41674,6 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "a",
-                      { staticClass: "btn btn-danger", attrs: { href: "#" } },
-                      [_vm._v("Add to card")]
-                    ),
-                    _vm._v(" "),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c(
-                      "a",
                       {
                         staticClass: "btn btn-primary my-3",
                         attrs: { href: "#" }
@@ -41780,7 +41708,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "badge badge-warning text-white" }, [
       _c("i", { staticClass: "fa fa-star text-white mr-2" }),
-      _vm._v("\n                            4.7\n                        ")
+      _vm._v("\n                        4.7\n                    ")
     ])
   },
   function() {
@@ -41914,7 +41842,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "graph-rating" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-2" }, [
-            _vm._v("\n                                                    5 "),
+            _vm._v("\n                                                5 "),
             _c("i", { staticClass: "fa fa-star text-primary" })
           ]),
           _vm._v(" "),
@@ -41934,14 +41862,14 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "col-2" }, [
             _vm._v(
-              "\n                                                    50%\n                                                "
+              "\n                                                50%\n                                            "
             )
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-2" }, [
-            _vm._v("\n                                                    4 "),
+            _vm._v("\n                                                4 "),
             _c("i", { staticClass: "fa fa-star text-primary" })
           ]),
           _vm._v(" "),
@@ -41961,14 +41889,14 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "col-2" }, [
             _vm._v(
-              "\n                                                    30%\n                                                "
+              "\n                                                30%\n                                            "
             )
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-2" }, [
-            _vm._v("\n                                                    3 "),
+            _vm._v("\n                                                3 "),
             _c("i", { staticClass: "fa fa-star text-primary" })
           ]),
           _vm._v(" "),
@@ -41988,14 +41916,14 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "col-2" }, [
             _vm._v(
-              "\n                                                    12%\n                                                "
+              "\n                                                12%\n                                            "
             )
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-2" }, [
-            _vm._v("\n                                                    2 "),
+            _vm._v("\n                                                2 "),
             _c("i", { staticClass: "fa fa-star text-primary" })
           ]),
           _vm._v(" "),
@@ -42015,14 +41943,14 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "col-2" }, [
             _vm._v(
-              "\n                                                    08%\n                                                "
+              "\n                                                08%\n                                            "
             )
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-2" }, [
-            _vm._v("\n                                                    1 "),
+            _vm._v("\n                                                1 "),
             _c("i", { staticClass: "fa fa-star text-primary" })
           ]),
           _vm._v(" "),
@@ -42042,7 +41970,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "col-2" }, [
             _vm._v(
-              "\n                                                    0%\n                                                "
+              "\n                                                0%\n                                            "
             )
           ])
         ])
@@ -42098,11 +42026,11 @@ var render = function() {
       _c(
         "div",
         { staticClass: "row text-center" },
-        _vm._l(_vm.allCourses, function(course) {
+        _vm._l(_vm.allCourses, function(c) {
           return _c(
             "div",
-            { key: course.id, staticClass: "col-lg-3 col-md-4 col-sm-12 mb-4" },
-            [_c("course", { attrs: { course: course } })],
+            { key: c.id, staticClass: "col-lg-3 col-md-4 col-sm-12 mb-4" },
+            [_c("course", { attrs: { course: c } })],
             1
           )
         }),
@@ -59418,17 +59346,6 @@ module.exports = "/images/a02.png?fcd89c65cf9732d0dba135919ae550cd";
 
 /***/ }),
 
-/***/ "./resources/js/assets/images/about/play.png":
-/*!***************************************************!*\
-  !*** ./resources/js/assets/images/about/play.png ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/play.png?0374b8bf63b2e4d259b2af662d897fbc";
-
-/***/ }),
-
 /***/ "./resources/js/assets/images/details/02.png":
 /*!***************************************************!*\
   !*** ./resources/js/assets/images/details/02.png ***!
@@ -60869,7 +60786,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var state = {
   courses: [],
-  course: [],
+  course: '',
   loading: false
 };
 var getters = {
@@ -60921,8 +60838,8 @@ var actions = {
 
             case 4:
               response = _context2.sent;
+              commit('setCourse', response.data[0]);
               commit('setLoading', false);
-              commit('setCourse', response.data);
 
             case 7:
             case "end":

@@ -84,12 +84,12 @@
                                 </div>
                             </div>
 
-<!--                            FAQ-->
+                            <!--FAQ-->
                             <div class="tab-pane fade show" id="FAQ">
                                 FAQ
                             </div>
 
-<!--                            Reviews-->
+                            <!--Reviews-->
                             <div class="tab-pane fade show" id="Reviews">
 
                                 <h5 class="my-4 font-weight-bolder">Ratings and Reviews</h5>
@@ -201,8 +201,6 @@
                             <div class="card-body text-center">
                                 <h3 class="card-title font-weight-bolder text-danger">{{(course.status==2)?'$'+course.price:"Free Course"}}</h3>
                                 <p class="card-text">23 hours left at this price!</p>
-                                <a href="#" class="btn btn-danger">Add to card</a>
-                                <br>
                                 <a href="#" class="btn btn-primary my-3">Buy now</a>
                             </div>
                         </div>
@@ -232,10 +230,8 @@
             findCourse() {
                 this.$store.dispatch('getCourse', this.$route.params.slug)
             },
-
         },
         computed: mapGetters(["course", "loading", 'isLoggedIn']),
-
         created() {
             this.findCourse();
         }

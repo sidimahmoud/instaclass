@@ -188,26 +188,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 mb-3">
-                    <div class="card shadow-sm ">
-                        <div class="row  ">
-                            <div class="col-sm-12 d-flex align-self-center">
-                                <div class="card-body font-weight-bolder text-center">
-                                    <h5 class="card-title about-headings">Download</h5>
-                                    <p class="card-text">
-                                        our app in the App store, available on Google play
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 text-center">
-                                <div>
-                                    <img src="../assets/images/about/play.png" class="my-2" height="50px"
-                                         alt="Suresh Dasari Card">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
