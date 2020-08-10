@@ -60889,7 +60889,7 @@ var actions = {
             case 0:
               commit = _ref.commit;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/courses/');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/courses');
 
             case 3:
               response = _context.sent;
