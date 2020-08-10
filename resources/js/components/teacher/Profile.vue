@@ -97,7 +97,7 @@
             let token = localStorage.getItem('token') || '';
             if (token) {
                 axios.defaults.headers.common['Authorization'] = 'Bearer '+token;
-                axios.get('http://instantclass.ca/api/user').then(res=>this.user = res.data)
+                axios.get('https://instantclass.herokuapp.com/api/user').then(res=>this.user = res.data)
                 .catch(err =>console.log(err))
             }
         }

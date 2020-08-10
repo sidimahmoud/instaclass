@@ -3080,7 +3080,7 @@ __webpack_require__.r(__webpack_exports__);
 
     if (token) {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://instantclass.ca/api/user').then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('https://instantclass.herokuapp.com/api/user').then(function (res) {
         return _this.user = res.data;
       })["catch"](function (err) {
         return console.log(err);
