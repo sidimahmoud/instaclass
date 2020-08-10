@@ -22,9 +22,8 @@ const actions = {
     async getCourse({commit}, slug) {
         commit('setLoading', true);
         const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/${slug}`);
-        setTimeout(() => {
                 commit('setLoading', false);
-            }, 100);
+                console.log(response.data);
         commit('setCourse', response.data[0]);
     },
 

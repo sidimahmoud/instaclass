@@ -60917,12 +60917,11 @@ var actions = {
 
             case 4:
               response = _context2.sent;
-              setTimeout(function () {
-                commit('setLoading', false);
-              }, 100);
+              commit('setLoading', false);
+              console.log(response.data);
               commit('setCourse', response.data[0]);
 
-            case 7:
+            case 8:
             case "end":
               return _context2.stop();
           }
