@@ -36,6 +36,7 @@ class CoursesTableSeeder extends Seeder
             'slug' => "build-wpa-with-vue",
             'sub_category_id' => '1',
             'status' => '2',
+            'type' => '1',
             'price' => '10.99',
             'created_at' => Carbon::now(),
         ]);
