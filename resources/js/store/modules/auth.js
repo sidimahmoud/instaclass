@@ -18,7 +18,7 @@ const actions = {
     async login({commit}, user) {
         return new Promise((resolve, reject) => {
             commit('auth_request');
-            axios({url: 'http://instantclass.ca/api/login', data: user, method: 'POST'})
+            axios({url: 'https://instantclass.herokuapp.com/api/login', data: user, method: 'POST'})
                 .then(resp => {
                     console.log(resp);
                     const token = resp.data.token;
@@ -41,7 +41,7 @@ const actions = {
     async register({commit}, user) {
         return new Promise((resolve, reject) => {
             commit('auth_request');
-            axios({url: 'http://127.0.0.1:8000/account/register/', data: user, method: 'POST'})
+            axios({url: 'https://instantclass.herokuapp.com/api/register/', data: user, method: 'POST'})
                 .then(resp => {
                     const token = resp.data.token;
                     const user = resp.data.user.id;

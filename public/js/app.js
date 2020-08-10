@@ -60726,7 +60726,7 @@ var actions = {
               return _context.abrupt("return", new Promise(function (resolve, reject) {
                 commit('auth_request');
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  url: 'http://instantclass.ca/api/login',
+                  url: 'https://instantclass.herokuapp.com/api/login',
                   data: user,
                   method: 'POST'
                 }).then(function (resp) {
@@ -60765,7 +60765,7 @@ var actions = {
               return _context2.abrupt("return", new Promise(function (resolve, reject) {
                 commit('auth_request');
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  url: 'http://127.0.0.1:8000/account/register/',
+                  url: 'https://instantclass.herokuapp.com/api/register/',
                   data: user,
                   method: 'POST'
                 }).then(function (resp) {
@@ -60889,7 +60889,7 @@ var actions = {
             case 0:
               commit = _ref.commit;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://instantclass.ca/api/courses/');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/courses/');
 
             case 3:
               response = _context.sent;
@@ -60913,7 +60913,7 @@ var actions = {
               commit = _ref2.commit;
               commit('setLoading', true);
               _context2.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("http://instantclass.ca/api/courses/".concat(slug));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/".concat(slug));
 
             case 4:
               response = _context2.sent;
