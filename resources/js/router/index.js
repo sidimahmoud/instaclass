@@ -8,6 +8,7 @@ import Register from "../components/auth/Register";
 import Home from "../components/HomeCompnent";
 import About from "../components/About";
 import Details from "../components/courses/CourseDetails";
+import Courses from "../components/courses/Courses";
 
 import TeacherProfile from "../components/teacher/Profile";
 import StudentProfile from "../components/student/Profile";
@@ -27,6 +28,14 @@ const routes = [
         path: '/about',
         name: 'About',
         component: About,
+        meta: {
+            requiresAuth: false,
+        }
+    },
+    {
+        path: '/courses',
+        name: 'Courses',
+        component: Courses,
         meta: {
             requiresAuth: false,
         }
@@ -89,7 +98,7 @@ router.beforeEach((to, from, next) => {
             next();
             return
         }
-        next({ name: 'Login'})
+        next({name: 'Login'})
     } else if (to.matched.some(record => record.meta.requiresVisitore)) {
         if (!store.getters.isLoggedIn) {
             next();

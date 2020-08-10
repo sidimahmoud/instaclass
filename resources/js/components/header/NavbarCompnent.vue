@@ -19,17 +19,12 @@
                             About
                         </router-link>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item ">
 
-                        <router-link to="#" tag="a" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <router-link to="/courses" tag="a" class="nav-link ">
                             All courses
                         </router-link>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Category 1</a>
-                            <a class="dropdown-item" href="#">Category 2</a>
-                            <a class="dropdown-item" href="#">Category 3</a>
-                        </div>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="#">Contact</a>

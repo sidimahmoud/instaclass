@@ -13,6 +13,7 @@ Vue.component('appfooter', require('./components/FooterComponent.vue').default);
 Vue.component('Home', require('./components/HomeCompnent.vue').default);
 Vue.component('About', require('./components/About.vue').default);
 
+Vue.component('courses', require('./components/courses/Courses').default);
 Vue.component('course', require('./components/courses/CourseComponent').default);
 Vue.component('CourseDetail', require('./components/courses/CourseDetails').default);
 Vue.component('Review', require('./components/courses/Review').default);
