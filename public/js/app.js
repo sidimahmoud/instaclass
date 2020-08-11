@@ -61064,7 +61064,7 @@ var actions = {
 
             case 6:
               response = _context.sent;
-              commit('setProfile', response.data);
+              commit('setProfile', response.data[0]);
 
             case 8:
             case "end":

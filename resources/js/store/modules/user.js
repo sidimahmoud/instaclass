@@ -16,9 +16,8 @@ const actions = {
         let token = localStorage.getItem('token') || '';
         if (token) {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-
             const response = await axios.get('https://instantclass.herokuapp.com/api/user');
-            commit('setProfile', response.data);
+            commit('setProfile', response.data[0]);
         }
 
     },
