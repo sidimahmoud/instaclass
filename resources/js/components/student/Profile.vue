@@ -73,8 +73,8 @@
                     <div class="card bg-primary">
                         <div class="card-body text-center text-white">
                             <img src="../../assets/images/details/02.png" alt="">
-                            <h3 class="card-title font-weight-bolder">user.first_name user.last_name</h3>
-                            <p class="card-text">user.headline</p>
+                            <h3 class="card-title font-weight-bolder">{{userProfile.first_name}} {{userProfile.last_name}}</h3>
+                            <p class="card-text">{{userProfile.headline}}</p>
                             <a href="#" class="btn btn-danger">Edit Profile</a>
                         </div>
                     </div>

@@ -42502,7 +42502,34 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col-md-1" }),
         _vm._v(" "),
-        _vm._m(5)
+        _c("div", { staticClass: "col-md-4 text-center " }, [
+          _c("div", { staticClass: "card bg-primary" }, [
+            _c("div", { staticClass: "card-body text-center text-white" }, [
+              _c("img", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/details/02.png */ "./resources/js/assets/images/details/02.png"),
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("h3", { staticClass: "card-title font-weight-bolder" }, [
+                _vm._v(
+                  _vm._s(_vm.userProfile.first_name) +
+                    " " +
+                    _vm._s(_vm.userProfile.last_name)
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v(_vm._s(_vm.userProfile.headline))
+              ]),
+              _vm._v(" "),
+              _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+                _vm._v("Edit Profile")
+              ])
+            ])
+          ])
+        ])
       ])
     ])
   ])
@@ -42594,33 +42621,6 @@ var staticRenderFns = [
         },
         [_vm._v("My courses")]
       )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4 text-center " }, [
-      _c("div", { staticClass: "card bg-primary" }, [
-        _c("div", { staticClass: "card-body text-center text-white" }, [
-          _c("img", {
-            attrs: {
-              src: __webpack_require__(/*! ../../assets/images/details/02.png */ "./resources/js/assets/images/details/02.png"),
-              alt: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("h3", { staticClass: "card-title font-weight-bolder" }, [
-            _vm._v("user.first_name user.last_name")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "card-text" }, [_vm._v("user.headline")]),
-          _vm._v(" "),
-          _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
-            _vm._v("Edit Profile")
-          ])
-        ])
-      ])
     ])
   }
 ]
