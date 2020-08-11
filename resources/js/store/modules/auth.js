@@ -21,7 +21,7 @@ const actions = {
             axios({url: 'https://instantclass.herokuapp.com/api/login', data: user, method: 'POST'})
                 .then(resp => {
                     const token = resp.data.token;
-                    const type = resp.data.type;
+                    const type = resp.data.type.name;
                     console.log(token);
                     console.log(type);
                     const user = {'u': resp.data.user.id, 't': "hello"};

@@ -2750,6 +2750,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2758,7 +2763,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     Course: _CourseComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(["fetchCourses"])),
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(["allCourses"]),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(["allCourses", "loading"]),
   created: function created() {
     this.fetchCourses();
   }
@@ -42054,23 +42059,40 @@ var render = function() {
     "div",
     { staticClass: "container pt-5 border-top border-primary" },
     [
-      _c(
-        "div",
-        { staticClass: "row text-center" },
-        _vm._l(_vm.allCourses, function(c) {
-          return _c(
+      _vm.loading
+        ? _c("div", { staticClass: "text-center text-primary" }, [_vm._m(0)])
+        : _vm._e(),
+      _vm._v(" "),
+      !_vm.loading
+        ? _c(
             "div",
-            { key: c.id, staticClass: "col-lg-3 col-md-4 col-sm-12 mb-4" },
-            [_c("course", { attrs: { course: c } })],
-            1
+            { staticClass: "row text-center" },
+            _vm._l(_vm.allCourses, function(c) {
+              return _c(
+                "div",
+                { key: c.id, staticClass: "col-lg-3 col-md-4 col-sm-12 mb-4" },
+                [_c("course", { attrs: { course: c } })],
+                1
+              )
+            }),
+            0
           )
-        }),
-        0
-      )
+        : _vm._e()
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border", attrs: { role: "status" } },
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -60781,11 +60803,13 @@ var actions = {
                   data: user,
                   method: 'POST'
                 }).then(function (resp) {
-                  console.log(resp);
                   var token = resp.data.token;
+                  var type = resp.data.type.name;
+                  console.log(token);
+                  console.log(type);
                   var user = {
                     'u': resp.data.user.id,
-                    't': resp.data.type
+                    't': "hello"
                   };
                   localStorage.setItem('token', token);
                   localStorage.setItem('user', JSON.stringify(user));
@@ -60826,7 +60850,7 @@ var actions = {
                   var token = resp.data.token;
                   var user = {
                     'u': resp.data.user.id,
-                    't': resp.data.type
+                    't': type
                   };
                   localStorage.setItem('token', token);
                   localStorage.setItem('user', JSON.stringify(user));
@@ -60945,14 +60969,16 @@ var actions = {
           switch (_context.prev = _context.next) {
             case 0:
               commit = _ref.commit;
-              _context.next = 3;
+              commit('setLoading', true);
+              _context.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/courses');
 
-            case 3:
+            case 4:
               response = _context.sent;
               commit('setCourses', response.data);
+              commit('setLoading', false);
 
-            case 5:
+            case 7:
             case "end":
               return _context.stop();
           }
