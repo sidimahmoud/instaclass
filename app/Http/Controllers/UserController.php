@@ -39,7 +39,7 @@ class UserController extends Controller
         }
         $token = $user->createToken('my-app-token')->plainTextToken;
 
-        $role = $user->roles();
+        $role = $user->roles;
 //        $role = Role::where('id', $role_id)->get();
         $response = [
             'user' => $user,
