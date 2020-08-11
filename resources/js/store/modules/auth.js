@@ -43,8 +43,8 @@ const actions = {
             axios({url: 'https://instantclass.herokuapp.com/api/register/', data: user, method: 'POST'})
                 .then(resp => {
                     const token = resp.data.token;
-                    const type = resp.data.user.roles.name;
-                    console.log(type)
+                    let type = resp.data.user.roles[0].name;
+                    console.log(type);
                     const user = {'u': resp.data.user.id, 't': type};
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
