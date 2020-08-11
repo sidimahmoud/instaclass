@@ -33,20 +33,18 @@ class UserController extends Controller
                 'message' => 'incorrect password.'
             ], 401);
         }
-        foreach ($user->tokens as $token) {
-            $token->delete();
 
-        }
         if (empty($user->email_verified_at)) {
             return response(["response" => "email unverified"], 403);
         }
         $token = $user->createToken('my-app-token')->plainTextToken;
-        $role_id = DB::table('role_user')->where('user_id', $user->id)->first();
-        $role = Role::where('id', $role_id)->get();
+
+        $role = $user->roles();
+//        $role = Role::where('id', $role_id)->get();
         $response = [
             'user' => $user,
-            'token' => $token,
             'type' => $role,
+            'token' => $token,
         ];
 
         return response($response, 201);

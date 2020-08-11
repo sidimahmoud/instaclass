@@ -1,6 +1,11 @@
 <template>
     <div class="container pt-5 border-top border-primary">
-        <div class="row text-center">
+        <div class="text-center text-primary" v-if="loading">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="row text-center"  v-if="!loading">
             <div class="col-lg-3 col-md-4 col-sm-12 mb-4" v-for="c in allCourses" :key="c.id">
                 <course :course="c"/>
             </div>
@@ -20,7 +25,7 @@
         methods: {
             ...mapActions(["fetchCourses"])
         },
-        computed: mapGetters(["allCourses"]),
+        computed: mapGetters(["allCourses", "loading"]),
         created() {
             this.fetchCourses();
         }
