@@ -7,10 +7,10 @@
                         <img src="../../assets/images/details/02.png" alt="">
                     </div>
                     <div class="text-center">
-                        <h4>{{user.first_name}} {{user.last_name}}</h4>
+                        <h4>{{userProfile.first_name}} {{userProfile.last_name}}</h4>
                     </div>
                     <div class="text-center">
-                        <p>{{user.headline}}</p>
+                        <p>{{userProfile.headline}}</p>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                         <div class="tab-pane fade show active" id="about">
                             <h3 class="font-weight-bolder">About Me</h3>
                             <p>
-                                {{user.about}}
+                                {{userProfile.about}}
                             </p>
 
                         </div>
@@ -52,7 +52,7 @@
                         <!-- courses-->
                         <div class="tab-pane fade show" id="courses">
                             <ul class="list-unstyled">
-                                <li class="media mt-4" v-for="course in courses" :key="course.id">
+                                <li class="media mt-4" v-for="course in userCourses" :key="course.id">
                                     <img class="mr-3" :src="course.image" width="40px" alt="Generic placeholder image">
                                     <div class="media-body">
                                         <h5 class="mt-0 mb-1">{{course.name}}</h5>
@@ -81,8 +81,8 @@
                     <div class="card bg-primary">
                         <div class="card-body text-center text-white">
                             <img src="../../assets/images/details/02.png" alt="">
-                            <h3 class="card-title font-weight-bolder">{{user.first_name}} {{user.last_name}}</h3>
-                            <p class="card-text">{{user.headline}}</p>
+                            <h3 class="card-title font-weight-bolder">{{userProfile.first_name}} {{userProfile.last_name}}</h3>
+                            <p class="card-text">{{userProfile.headline}}</p>
                             <a href="#" class="btn btn-danger">Edit Profile</a>
                         </div>
                     </div>
@@ -94,25 +94,16 @@
 </template>
 
 <script>
-    import axios from "axios";
-
+    import {mapGetters, mapActions} from 'vuex'
     export default {
         name: "TeacherProfile",
-        data() {
-            return {
-                user: '',
-                courses: [],
-            }
+        methods:{
+            ...mapActions(["fetchProfile", "fetchUserCourses"]),
         },
+        computed: mapGetters(["userProfile", "userCourses"]),
         created() {
-            let token = localStorage.getItem('token') || '';
-            if (token) {
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get('https://instantclass.herokuapp.com/api/user').then(res => this.user = res.data);
-                axios.get(`https://instantclass.herokuapp.com/api/${this.user.id}/courses`).then(res => this.courses = res.data)
-
-                    .catch(err => console.log(err))
-            }
+            this.fetchProfile();
+            this.fetchUserCourses();
         }
     }
 

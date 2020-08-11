@@ -2980,8 +2980,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -3080,28 +3085,11 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TeacherProfile",
-  data: function data() {
-    return {
-      user: '',
-      courses: []
-    };
-  },
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchProfile", "fetchUserCourses"])),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["userProfile", "userCourses"]),
   created: function created() {
-    var _this = this;
-
-    var token = localStorage.getItem('token') || '';
-
-    if (token) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('https://instantclass.herokuapp.com/api/user').then(function (res) {
-        return _this.user = res.data;
-      });
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/".concat(this.user.id, "/courses")).then(function (res) {
-        return _this.courses = res.data;
-      })["catch"](function (err) {
-        return console.log(err);
-      });
-    }
+    this.fetchProfile();
+    this.fetchUserCourses();
   }
 });
 
@@ -42575,13 +42563,15 @@ var render = function() {
           _c("div", { staticClass: "text-center" }, [
             _c("h4", [
               _vm._v(
-                _vm._s(_vm.user.first_name) + " " + _vm._s(_vm.user.last_name)
+                _vm._s(_vm.userProfile.first_name) +
+                  " " +
+                  _vm._s(_vm.userProfile.last_name)
               )
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "text-center" }, [
-            _c("p", [_vm._v(_vm._s(_vm.user.headline))])
+            _c("p", [_vm._v(_vm._s(_vm.userProfile.headline))])
           ])
         ])
       ]),
@@ -42611,7 +42601,7 @@ var render = function() {
                 _c("p", [
                   _vm._v(
                     "\n                            " +
-                      _vm._s(_vm.user.about) +
+                      _vm._s(_vm.userProfile.about) +
                       "\n                        "
                   )
                 ])
@@ -42625,7 +42615,7 @@ var render = function() {
                 _c(
                   "ul",
                   { staticClass: "list-unstyled" },
-                  _vm._l(_vm.courses, function(course) {
+                  _vm._l(_vm.userCourses, function(course) {
                     return _c(
                       "li",
                       { key: course.id, staticClass: "media mt-4" },
@@ -42683,12 +42673,14 @@ var render = function() {
               _vm._v(" "),
               _c("h3", { staticClass: "card-title font-weight-bolder" }, [
                 _vm._v(
-                  _vm._s(_vm.user.first_name) + " " + _vm._s(_vm.user.last_name)
+                  _vm._s(_vm.userProfile.first_name) +
+                    " " +
+                    _vm._s(_vm.userProfile.last_name)
                 )
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "card-text" }, [
-                _vm._v(_vm._s(_vm.user.headline))
+                _vm._v(_vm._s(_vm.userProfile.headline))
               ]),
               _vm._v(" "),
               _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
@@ -60637,6 +60629,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth.js");
 /* harmony import */ var _modules_courses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/courses */ "./resources/js/store/modules/courses.js");
+/* harmony import */ var _modules_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/user */ "./resources/js/store/modules/user.js");
+
 
 
 
@@ -60648,7 +60642,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
   actions: {},
   modules: {
     auth: _modules_auth__WEBPACK_IMPORTED_MODULE_2__["default"],
-    courses: _modules_courses__WEBPACK_IMPORTED_MODULE_3__["default"]
+    courses: _modules_courses__WEBPACK_IMPORTED_MODULE_3__["default"],
+    user: _modules_user__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
 }));
 
@@ -60920,6 +60915,113 @@ var mutations = {
   },
   setLoading: function setLoading(state, val) {
     return state.loading = val;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/user.js":
+/*!********************************************!*\
+  !*** ./resources/js/store/modules/user.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var state = {
+  profile: '',
+  courses: ''
+};
+var getters = {
+  userProfile: function userProfile(state) {
+    return state.profile;
+  },
+  userCourses: function userCourses(state) {
+    return state.courses;
+  }
+};
+var actions = {
+  fetchProfile: function fetchProfile(_ref) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var commit, token, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref.commit;
+              token = localStorage.getItem('token') || '';
+
+              if (!token) {
+                _context.next = 8;
+                break;
+              }
+
+              axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+              _context.next = 6;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/user');
+
+            case 6:
+              response = _context.sent;
+              commit('setProfile', response.data);
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  },
+  fetchUserCourses: function fetchUserCourses(_ref2, id) {
+    var _this = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              commit = _ref2.commit;
+              _context2.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/".concat(_this.user.id, "/courses"));
+
+            case 3:
+              response = _context2.sent;
+              commit('setCourses', response.data);
+
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }))();
+  }
+};
+var mutations = {
+  setProfile: function setProfile(state, profile) {
+    return state.profile = profile;
+  },
+  setCourses: function setCourses(state, courses) {
+    return state.courses = courses;
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
