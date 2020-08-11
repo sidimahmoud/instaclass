@@ -21,7 +21,7 @@ const actions = {
             axios({url: 'https://instantclass.herokuapp.com/api/login', data: user, method: 'POST'})
                 .then(resp => {
                     const token = resp.data.token;
-                    const user = {'u': resp.data.user.id, 't': resp.data.roles.name};
+                    const user = {'u': resp.data.user.id, 't': resp.data.user.roles.name};
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
 
@@ -43,7 +43,7 @@ const actions = {
             axios({url: 'https://instantclass.herokuapp.com/api/register/', data: user, method: 'POST'})
                 .then(resp => {
                     const token = resp.data.token;
-                    const user = {'u': resp.data.user.id, 't': resp.data.roles.name};
+                    const user = {'u': resp.data.user.id, 't': resp.data.user.roles.name};
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
                     axios.defaults.headers.common['Authorization'] = token;
