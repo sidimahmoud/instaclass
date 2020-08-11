@@ -2985,7 +2985,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "StudentProfile",
@@ -42493,15 +42492,6 @@ var render = function() {
                       "li",
                       { key: e.id, staticClass: "media card p-2 mt-4" },
                       [
-                        _c("img", {
-                          staticClass: "mr-3",
-                          attrs: {
-                            src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '...'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                            width: "40px",
-                            alt: "Generic placeholder image"
-                          }
-                        }),
-                        _vm._v(" "),
                         _c("div", { staticClass: "media-body" }, [
                           _c("h5", { staticClass: "mt-0 mb-1" }, [
                             _vm._v(_vm._s(e.course_id))
@@ -60804,12 +60794,11 @@ var actions = {
                   method: 'POST'
                 }).then(function (resp) {
                   var token = resp.data.token;
-                  var type = resp.data.type.name;
-                  console.log(token);
+                  var type = resp.data.type[0].name;
                   console.log(type);
                   var user = {
                     'u': resp.data.user.id,
-                    't': "hello"
+                    't': resp.data.user.roles[0].name
                   };
                   localStorage.setItem('token', token);
                   localStorage.setItem('user', JSON.stringify(user));

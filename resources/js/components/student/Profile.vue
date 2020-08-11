@@ -52,7 +52,6 @@
                         <div class="tab-pane fade show" id="courses">
                             <ul class="list-unstyled">
                                 <li class="media card p-2 mt-4" v-for="e in userEnrollments" :key="e.id">
-                                    <img class="mr-3" src="..." width="40px" alt="Generic placeholder image">
                                     <div class="media-body">
                                         <h5 class="mt-0 mb-1">{{e.course_id}}</h5>
                                         {{e.created_at}}
