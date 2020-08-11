@@ -7,6 +7,7 @@ const state = {
 };
 const getters = {
     userProfile: (state) => state.profile,
+    userCourses: (state) => state.courses,
     userEnrollments: (state) => state.enrollments,
 };
 

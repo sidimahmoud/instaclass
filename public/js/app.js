@@ -61045,6 +61045,9 @@ var getters = {
   userProfile: function userProfile(state) {
     return state.profile;
   },
+  userCourses: function userCourses(state) {
+    return state.courses;
+  },
   userEnrollments: function userEnrollments(state) {
     return state.enrollments;
   }
