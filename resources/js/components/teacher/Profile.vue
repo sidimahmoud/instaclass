@@ -51,13 +51,23 @@
 
                         <!-- courses-->
                         <div class="tab-pane fade show" id="courses">
-                            <div v-for="course in courses" :key="course.id">{{course.name}}</div>
+                            <ul class="list-unstyled">
+                                <li class="media mt-4" v-for="course in courses" :key="course.id">
+                                    <img class="mr-3" :src="course.image" alt="Generic placeholder image">
+                                    <div class="media-body">
+                                        <h5 class="mt-0 mb-1">{{course.name}}</h5>
+                                        {{course.short_description}}
+                                    </div>
+                                </li>
+
+                            </ul>
+
                         </div>
 
                         <!--                            Reviews-->
                         <div class="tab-pane fade show" id="Reviews">
 
-                           Reviews
+                            Reviews
 
                         </div>
                     </div>
@@ -97,11 +107,11 @@
         created() {
             let token = localStorage.getItem('token') || '';
             if (token) {
-                axios.defaults.headers.common['Authorization'] = 'Bearer '+token;
-                axios.get('https://instantclass.herokuapp.com/api/user').then(res=>this.user = res.data);
-                axios.get(`https://instantclass.herokuapp.com/api/${this.user.id}/courses`).then(res=>this.courses = res.data)
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                axios.get('https://instantclass.herokuapp.com/api/user').then(res => this.user = res.data);
+                axios.get(`https://instantclass.herokuapp.com/api/${this.user.id}/courses`).then(res => this.courses = res.data)
 
-                .catch(err =>console.log(err))
+                    .catch(err => console.log(err))
             }
         }
     }

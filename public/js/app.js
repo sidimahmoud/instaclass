@@ -3067,6 +3067,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TeacherProfile",
@@ -42611,12 +42621,39 @@ var render = function() {
             _c(
               "div",
               { staticClass: "tab-pane fade show", attrs: { id: "courses" } },
-              _vm._l(_vm.courses, function(course) {
-                return _c("div", { key: course.id }, [
-                  _vm._v(_vm._s(course.name))
-                ])
-              }),
-              0
+              [
+                _c(
+                  "ul",
+                  { staticClass: "list-unstyled" },
+                  _vm._l(_vm.courses, function(course) {
+                    return _c(
+                      "li",
+                      { key: course.id, staticClass: "media mt-4" },
+                      [
+                        _c("img", {
+                          staticClass: "mr-3",
+                          attrs: {
+                            src: course.image,
+                            alt: "Generic placeholder image"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "media-body" }, [
+                          _c("h5", { staticClass: "mt-0 mb-1" }, [
+                            _vm._v(_vm._s(course.name))
+                          ]),
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(course.short_description) +
+                              "\n                                "
+                          )
+                        ])
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ]
             ),
             _vm._v(" "),
             _c(
@@ -42624,7 +42661,7 @@ var render = function() {
               { staticClass: "tab-pane fade show", attrs: { id: "Reviews" } },
               [
                 _vm._v(
-                  "\n\n                       Reviews\n\n                    "
+                  "\n\n                        Reviews\n\n                    "
                 )
               ]
             )
