@@ -82,7 +82,8 @@ class UserController extends Controller
      */
     public function show(Request $request)
     {
-        $user = $request->user();
+        $id = $request->user()->id;
+        $user = User::find($id)->with('roles');
         return response()->json($user);
     }
 }

@@ -3107,9 +3107,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TeacherProfile",
@@ -42412,7 +42409,11 @@ var render = function() {
             },
             [
               _c("span", { staticClass: "btn btn-danger" }, [
-                _vm._v(_vm._s(_vm.userEnrollments.length) + " ")
+                _vm._v(
+                  _vm._s(
+                    _vm.userEnrollments.length > 0 ? _vm.userEnrollments : "0"
+                  ) + " "
+                )
               ]),
               _vm._v(" "),
               _c("br"),
@@ -42666,13 +42667,44 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _c(
+        "div",
+        {
+          staticClass:
+            "d-flex align-items-center justify-content-center text-white"
+        },
+        [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "p-4 border border-white text-center",
+              staticStyle: { height: "100px", width: "150px" }
+            },
+            [
+              _c("span", { staticClass: "btn btn-danger" }, [
+                _vm._v(
+                  _vm._s(
+                    _vm.userCourses.length > 0 ? _vm.userCourses.length : "0"
+                  ) + " "
+                )
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" Courses\n            ")
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(2)
+        ]
+      )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-7 bg-white shadow" }, [
-          _vm._m(2),
+          _vm._m(3),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
@@ -42710,15 +42742,6 @@ var render = function() {
                       "li",
                       { key: course.id, staticClass: "media card p-2 mt-4" },
                       [
-                        _c("img", {
-                          staticClass: "mr-3",
-                          attrs: {
-                            src: course.image,
-                            width: "40px",
-                            alt: "Generic placeholder image"
-                          }
-                        }),
-                        _vm._v(" "),
                         _c("div", { staticClass: "media-body" }, [
                           _c("h5", { staticClass: "mt-0 mb-1" }, [
                             _vm._v(_vm._s(course.name))
@@ -42801,65 +42824,32 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass:
-          "d-flex align-items-center justify-content-center text-white"
+        staticClass: "p-4 border border-white text-center",
+        staticStyle: { height: "100px", width: "200px" }
       },
       [
-        _c(
-          "div",
-          {
-            staticClass: "p-4 border border-white text-center",
-            staticStyle: { height: "100px", width: "200px" }
-          },
-          [
-            _c("span", { staticClass: "btn btn-danger" }, [_vm._v("612K ")]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" Enroll Students\n            ")
-          ]
-        ),
+        _c("span", { staticClass: "btn btn-danger" }, [_vm._v("612K ")]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "p-4 border border-white text-center",
-            staticStyle: { height: "100px", width: "150px" }
-          },
-          [
-            _c("span", { staticClass: "btn btn-danger" }, [_vm._v("08 ")]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" Courses\n            ")
-          ]
-        ),
+        _c("br"),
+        _vm._v(" Enroll Students\n            ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "p-4 border border-white text-center",
+        staticStyle: { height: "100px", width: "200px" }
+      },
+      [
+        _c("span", { staticClass: "btn btn-danger" }, [_vm._v("102 ")]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "p-4 border border-white text-center",
-            staticStyle: { height: "100px", width: "150px" }
-          },
-          [
-            _c("span", { staticClass: "btn btn-danger" }, [_vm._v("44K")]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" Subscriptions\n            ")
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "p-4 border border-white text-center",
-            staticStyle: { height: "100px", width: "200px" }
-          },
-          [
-            _c("span", { staticClass: "btn btn-danger" }, [_vm._v("102 ")]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" Reviews\n            ")
-          ]
-        )
+        _c("br"),
+        _vm._v(" Reviews\n            ")
       ]
     )
   },

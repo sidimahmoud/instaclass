@@ -19,11 +19,9 @@
                     <span class="btn btn-danger">612K </span> <br> Enroll Students
                 </div>
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">
-                    <span class="btn btn-danger">08 </span> <br> Courses
+                    <span class="btn btn-danger">{{userCourses.length>0?userCourses.length:"0"}} </span> <br> Courses
                 </div>
-                <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">
-                    <span class="btn btn-danger">44K</span> <br> Subscriptions
-                </div>
+
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
                     <span class="btn btn-danger">102 </span> <br> Reviews
                 </div>
@@ -53,7 +51,6 @@
                         <div class="tab-pane fade show" id="courses">
                             <ul class="list-unstyled">
                                 <li class="media card p-2 mt-4" v-for="course in userCourses" :key="course.id">
-                                    <img class="mr-3" :src="course.image" width="40px" alt="Generic placeholder image">
                                     <div class="media-body">
                                         <h5 class="mt-0 mb-1">{{course.name}}</h5>
                                         {{course.short_description}}

@@ -16,7 +16,7 @@
             </div>
             <div class="d-flex align-items-center justify-content-center text-white" >
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
-                    <span class="btn btn-danger">{{userEnrollments.length}} </span> <br> Purchased
+                    <span class="btn btn-danger">{{userEnrollments.length>0? userEnrollments : "0"}} </span> <br> Purchased
                 </div>
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">
                     <span class="btn btn-danger">03 </span> <br> Certifications
