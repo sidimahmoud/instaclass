@@ -3,10 +3,11 @@ import axios from 'axios'
 const state = {
     profile: '',
     courses: '',
+    enrollments: '',
 };
 const getters = {
     userProfile: (state) => state.profile,
-    userCourses: (state) => state.courses,
+    userEnrollments: (state) => state.enrollments,
 };
 
 const actions = {
@@ -24,10 +25,15 @@ const actions = {
         const response = await axios.get(`https://instantclass.herokuapp.com/api/${id}/courses`);
         commit('setCourses', response.data);
     },
+
+    async fetchUserEnrollments({commit}, id) {
+        const response = await axios.get(`https://instantclass.herokuapp.com/api/${id}/enrollments`);
+        commit('setEnrollments', response.data);
+    },
 };
 const mutations = {
     setProfile: (state, profile) => (state.profile = profile),
-    setCourses: (state, courses) => (state.courses = courses),
+    setEnrollments: (state, payload) => (state.enrollments = payload),
 };
 export default {
     state,

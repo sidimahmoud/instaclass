@@ -52,7 +52,7 @@
                         <!-- courses-->
                         <div class="tab-pane fade show" id="courses">
                             <ul class="list-unstyled">
-                                <li class="media mt-4" v-for="course in userCourses" :key="course.id">
+                                <li class="media card p-2 mt-4" v-for="course in userCourses" :key="course.id">
                                     <img class="mr-3" :src="course.image" width="40px" alt="Generic placeholder image">
                                     <div class="media-body">
                                         <h5 class="mt-0 mb-1">{{course.name}}</h5>

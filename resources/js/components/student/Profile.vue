@@ -7,16 +7,16 @@
                         <img src="../../assets/images/details/02.png" alt="">
                     </div>
                     <div class="text-center">
-                        <h4>Stephane Smith</h4>
+                        <h4>{{userProfile.first_name}} {{userProfile.last_name}}</h4>
                     </div>
                     <div class="text-center">
-                        <p>Graphic Designer</p>
+                        <p>{{userProfile.headline}}</p>
                     </div>
                 </div>
             </div>
             <div class="d-flex align-items-center justify-content-center text-white" >
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
-                    <span class="btn btn-danger">03 </span> <br> Purchased
+                    <span class="btn btn-danger">{{userEnrollments.length}} </span> <br> Purchased
                 </div>
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">
                     <span class="btn btn-danger">03 </span> <br> Certifications
@@ -43,14 +43,23 @@
                         <div class="tab-pane fade show active" id="about">
                             <h3 class="font-weight-bolder">About Me</h3>
                             <p>
-                                user.about
+                                {{userEnrollments.about}}
                             </p>
 
                         </div>
 
-                        <!-- courses-->
+                        <!-- Enrollments-->
                         <div class="tab-pane fade show" id="courses">
-                            Courses
+                            <ul class="list-unstyled">
+                                <li class="media card p-2 mt-4" v-for="e in userEnrollments" :key="e.id">
+                                    <img class="mr-3" src="..." width="40px" alt="Generic placeholder image">
+                                    <div class="media-body">
+                                        <h5 class="mt-0 mb-1">{{e.course_id}}</h5>
+                                        {{e.created_at}}
+                                    </div>
+                                </li>
+
+                            </ul>
                         </div>
 
                     </div>
@@ -77,8 +86,21 @@
 </template>
 
 <script>
+    import {mapActions, mapGetters} from "vuex";
+
     export default {
-        name: "StudentProfile"
+        name: "StudentProfile",
+        methods: {
+            ...mapActions(["fetchProfile"]),
+            fetchUserPur() {
+                this.$store.dispatch('fetchUserEnrollments', this.userProfile.id)
+            },
+        },
+        computed: mapGetters(["userProfile", "userEnrollments"]),
+        created() {
+            this.fetchProfile();
+            this.fetchUserPur();
+        }
     }
 </script>
 

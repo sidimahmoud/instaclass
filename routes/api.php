@@ -10,6 +10,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('payments', 'Admin\PayementController@store');
     Route::resource('/enrollments', 'EnrollmentController');
     Route::get('/{user}/courses', 'Teacher\CoursesController@teacherCourses')->middleware('can:teacher-or-admin');
+    Route::get('/{user}/enrollments', 'EnrollmentController@userEnrollments');
 });
 
 
