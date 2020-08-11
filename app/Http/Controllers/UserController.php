@@ -41,7 +41,7 @@ class UserController extends Controller
             return response(["response" => "email unverified"], 403);
         }
         $token = $user->createToken('my-app-token')->plainTextToken;
-        $role_id = DB::table('role_user')->where('user_id', $user->id)->first()->get();
+        $role_id = DB::table('role_user')->where('user_id', $user->id)->first();
         $role = Role::where('id', $role_id)->values('name');
         $response = [
             'user' => $user,
