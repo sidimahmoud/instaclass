@@ -53,7 +53,7 @@
                         <div class="tab-pane fade show" id="courses">
                             <ul class="list-unstyled">
                                 <li class="media mt-4" v-for="course in courses" :key="course.id">
-                                    <img class="mr-3" :src="course.image" alt="Generic placeholder image">
+                                    <img class="mr-3" :src="course.image" width="40px" alt="Generic placeholder image">
                                     <div class="media-body">
                                         <h5 class="mt-0 mb-1">{{course.name}}</h5>
                                         {{course.short_description}}

@@ -42634,6 +42634,7 @@ var render = function() {
                           staticClass: "mr-3",
                           attrs: {
                             src: course.image,
+                            width: "40px",
                             alt: "Generic placeholder image"
                           }
                         }),
