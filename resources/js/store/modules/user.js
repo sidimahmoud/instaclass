@@ -21,7 +21,7 @@ const actions = {
 
     },
     async fetchUserCourses({commit}, id) {
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/${this.user.id}/courses`);
+        const response = await axios.get(`https://instantclass.herokuapp.com/api/${id}/courses`);
         commit('setCourses', response.data);
     },
 };

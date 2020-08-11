@@ -3082,10 +3082,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TeacherProfile",
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchProfile", "fetchUserCourses"])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchProfile"])), {}, {
+    fetchUserCourses: function fetchUserCourses() {
+      this.$store.dispatch('fetchUserCourses', this.userProfile.id);
+    }
+  }),
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["userProfile", "userCourses"]),
   created: function created() {
     this.fetchProfile();
@@ -42674,7 +42679,7 @@ var render = function() {
               _c("h3", { staticClass: "card-title font-weight-bolder" }, [
                 _vm._v(
                   _vm._s(_vm.userProfile.first_name) +
-                    " " +
+                    "\n                            " +
                     _vm._s(_vm.userProfile.last_name)
                 )
               ]),
@@ -60991,8 +60996,6 @@ var actions = {
     }))();
   },
   fetchUserCourses: function fetchUserCourses(_ref2, id) {
-    var _this = this;
-
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
@@ -61001,7 +61004,7 @@ var actions = {
             case 0:
               commit = _ref2.commit;
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/".concat(_this.user.id, "/courses"));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/".concat(id, "/courses"));
 
             case 3:
               response = _context2.sent;

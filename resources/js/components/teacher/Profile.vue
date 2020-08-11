@@ -81,7 +81,8 @@
                     <div class="card bg-primary">
                         <div class="card-body text-center text-white">
                             <img src="../../assets/images/details/02.png" alt="">
-                            <h3 class="card-title font-weight-bolder">{{userProfile.first_name}} {{userProfile.last_name}}</h3>
+                            <h3 class="card-title font-weight-bolder">{{userProfile.first_name}}
+                                {{userProfile.last_name}}</h3>
                             <p class="card-text">{{userProfile.headline}}</p>
                             <a href="#" class="btn btn-danger">Edit Profile</a>
                         </div>
@@ -95,10 +96,14 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
+
     export default {
         name: "TeacherProfile",
-        methods:{
-            ...mapActions(["fetchProfile", "fetchUserCourses"]),
+        methods: {
+            ...mapActions(["fetchProfile"]),
+            fetchUserCourses() {
+                this.$store.dispatch('fetchUserCourses', this.userProfile.id)
+            },
         },
         computed: mapGetters(["userProfile", "userCourses"]),
         created() {
