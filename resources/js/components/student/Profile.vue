@@ -33,28 +33,28 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-7 bg-white">
+                <div class="col-md-7 bg-white shadow">
                     <nav class="nav nav-pills nav-fill mt-3">
-                        <a class="nav-item nav-link bg-danger text-white" href="#">About</a>
-                        <a class="nav-item nav-link" href="#">Purchased</a>
-                        <a class="nav-item nav-link" href="#">Discussions</a>
-                        <a class="nav-item nav-link" href="#">My Reviews</a>
+                        <a class="nav-item nav-link active" href="#about" data-toggle="tab">About</a>
+                        <a class="nav-item nav-link" href="#courses" data-toggle="tab">My courses</a>
                     </nav>
                     <hr>
-                    <h3 class="font-weight-bolder">About me</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt ipsa, iusto molestiae nam
-                        natus quasi! Aliquam aspernatur autem culpa debitis ducimus et rem sunt temporibus. Ipsa magni
-                        reiciendis temporibus vel! <br>
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis
-                        unde omnis iste natus.
-                        <br>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, amet eos fugiat impedit iste nam
-                        natus nostrum, odio quaerat repellat sunt, vero vitae voluptates! Aliquid debitis molestiae
-                        pariatur recusandae veritatis!
-                    </p>
+                    <div class="tab-content my-5">
+                        <div class="tab-pane fade show active" id="about">
+                            <h3 class="font-weight-bolder">About Me</h3>
+                            <p>
+                                user.about
+                            </p>
+
+                        </div>
+
+                        <!-- courses-->
+                        <div class="tab-pane fade show" id="courses">
+                            Courses
+                        </div>
+
+                    </div>
+
 
                 </div>
                 <div class="col-md-1">
@@ -64,8 +64,8 @@
                     <div class="card bg-primary">
                         <div class="card-body text-center text-white">
                             <img src="../../assets/images/details/02.png" alt="">
-                            <h3 class="card-title font-weight-bolder">Stephane Smith</h3>
-                            <p class="card-text">Graphic Designer</p>
+                            <h3 class="card-title font-weight-bolder">user.first_name user.last_name</h3>
+                            <p class="card-text">user.headline</p>
                             <a href="#" class="btn btn-danger">Edit Profile</a>
                         </div>
                     </div>

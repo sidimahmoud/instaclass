@@ -3,7 +3,8 @@ import axios from 'axios'
 const state = {
     courses: [],
     course: '',
-    loading: false
+    loading: false,
+
 };
 const getters = {
     allCourses: (state) => state.courses,

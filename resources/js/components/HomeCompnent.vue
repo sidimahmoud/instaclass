@@ -40,11 +40,11 @@
                 <div class="col-md-4 col-sm-12 p-2">
                     <div class="card">
                         <div class="text-center">
-                            <i class="fa fa-code card-img-top text-primary fa-4x"></i>
+                            <i class="fa fa-code card-img-top text-danger fa-2x mt-1"></i>
                         </div>
                         <div class="card-body">
 
-                            <h5 class="card-title text-center font-weight-bold text-primary">
+                            <h5 class="card-title text-center font-weight-bold text-danger">
                                 <a href="#"> WEB DEVELOPMENT </a>
                             </h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -56,13 +56,14 @@
                 <div class="col-md-4 col-sm-12 p-2">
                     <div class="card">
                         <div class="text-center">
-                            <i class="fa fa-database card-img-top text-primary fa-4x"></i>
+                            <i class="fa fa-database card-img-top text-danger fa-2x mt-1"></i>
                         </div>
                         <div class="card-body">
 
-                            <h5 class="card-title text-center font-weight-bold text-primary">
+                            <h5 class="card-title text-center font-weight-bold ">
                                 <a href="#"> DATA SCIENCE </a>
-                            </h5>                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            </h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
                         </div>
                     </div>
@@ -71,13 +72,14 @@
                 <div class="col-md-4 col-sm-12 p-2">
                     <div class="card">
                         <div class="text-center">
-                            <i class="fa fa-cloud card-img-top text-primary fa-4x"></i>
+                            <i class="fa fa-cloud card-img-top text-danger fa-2x mt-1"></i>
                         </div>
                         <div class="card-body">
 
-                            <h5 class="card-title text-center font-weight-bold text-primary">
+                            <h5 class="card-title text-center font-weight-bold text-danger">
                                 <a href="#"> CLOUD COMPUTING </a>
-                            </h5>                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            </h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
                         </div>
                     </div>
@@ -91,12 +93,13 @@
             <!--                </div>-->
 
 
-    </div>
+        </div>
     </div>
 </template>
 <script>
     import Course from "./courses/CourseComponent";
     import {mapGetters, mapActions} from "vuex";
+
     export default {
         name: 'Home',
         components: {

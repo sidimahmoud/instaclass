@@ -51,7 +51,7 @@
 
                         <!-- courses-->
                         <div class="tab-pane fade show" id="courses">
-                            Courses
+                            <div v-for="course in courses" :key="course.id">{{course.name}}</div>
                         </div>
 
                         <!--                            Reviews-->
@@ -90,14 +90,17 @@
         name: "TeacherProfile",
         data() {
             return {
-                user: ''
+                user: '',
+                courses: [],
             }
         },
         created() {
             let token = localStorage.getItem('token') || '';
             if (token) {
                 axios.defaults.headers.common['Authorization'] = 'Bearer '+token;
-                axios.get('https://instantclass.herokuapp.com/api/user').then(res=>this.user = res.data)
+                axios.get('https://instantclass.herokuapp.com/api/user').then(res=>this.user = res.data);
+                axios.get(`https://instantclass.herokuapp.com/api/${this.user.id}/courses`).then(res=>this.courses = res.data)
+
                 .catch(err =>console.log(err))
             }
         }
