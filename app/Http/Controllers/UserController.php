@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -28,7 +30,7 @@ class UserController extends Controller
         }
         if ($user && !Hash::check($request->password, $user->password)) {
             return response([
-                'message' => 'incorrect passwerd.'
+                'message' => 'incorrect password.'
             ], 401);
         }
         foreach ($user->tokens as $token) {
@@ -36,12 +38,15 @@ class UserController extends Controller
 
         }
         if (empty($user->email_verified_at)) {
-            return response(["response"=>"email unverified"], 403);
+            return response(["response" => "email unverified"], 403);
         }
         $token = $user->createToken('my-app-token')->plainTextToken;
+        $role_id = DB::table('role_user')->where('user_id', $user->id)->first()->get();
+        $role = Role::where('id', $role_id)->values('name');
         $response = [
             'user' => $user,
-            'token' => $token
+            'token' => $token,
+            'type' => $role,
         ];
 
         return response($response, 201);
@@ -83,7 +88,7 @@ class UserController extends Controller
     public function show(Request $request)
     {
         $id = $request->user()->id;
-        $user = User::with('roles')->where('id', $id)->get();
+        $user = User::with('enrollments')->where('id', $id)->get();
         return response()->json($user);
     }
 }
