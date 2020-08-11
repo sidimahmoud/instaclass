@@ -34,6 +34,7 @@ const actions = {
 };
 const mutations = {
     setProfile: (state, profile) => (state.profile = profile),
+    setCourses: (state, payload) => (state.courses = payload),
     setEnrollments: (state, payload) => (state.enrollments = payload),
 };
 export default {

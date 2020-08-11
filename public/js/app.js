@@ -61135,6 +61135,9 @@ var mutations = {
   setProfile: function setProfile(state, profile) {
     return state.profile = profile;
   },
+  setCourses: function setCourses(state, payload) {
+    return state.courses = payload;
+  },
   setEnrollments: function setEnrollments(state, payload) {
     return state.enrollments = payload;
   }
