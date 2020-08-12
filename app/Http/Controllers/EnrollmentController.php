@@ -24,8 +24,7 @@ class EnrollmentController extends Controller
      */
     public function userEnrollments(Request $request)
     {
-        dd(82565);
-        $enrollments = Enrollment::with('course')->where('user_id', $request->user()->id);
+        $enrollments = Enrollment::with('course')->where('user_id', $request->user()->id)->get();
         return response()->json($enrollments);
     }
     /**
