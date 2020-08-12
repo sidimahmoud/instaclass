@@ -42883,7 +42883,9 @@ var render = function() {
               _c("span", { staticClass: "btn btn-danger" }, [
                 _vm._v(
                   _vm._s(
-                    _vm.userEnrollments.length > 0 ? _vm.userEnrollments : "0"
+                    _vm.userEnrollments.length > 0
+                      ? _vm.userEnrollments.length
+                      : "0"
                   ) + " "
                 )
               ]),
@@ -42924,7 +42926,7 @@ var render = function() {
                 _c("p", [
                   _vm._v(
                     "\n                            " +
-                      _vm._s(_vm.userEnrollments.about) +
+                      _vm._s(_vm.userProfile.about) +
                       "\n                        "
                   )
                 ])

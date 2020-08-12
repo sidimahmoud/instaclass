@@ -16,7 +16,7 @@
             </div>
             <div class="d-flex align-items-center justify-content-center text-white">
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
-                    <span class="btn btn-danger">{{userEnrollments.length>0? userEnrollments : "0"}} </span> <br>
+                    <span class="btn btn-danger">{{userEnrollments.length>0? userEnrollments.length : "0"}} </span> <br>
                     Purchased
                 </div>
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">
@@ -44,7 +44,7 @@
                         <div class="tab-pane fade show active" id="about">
                             <h3 class="font-weight-bolder">About Me</h3>
                             <p>
-                                {{userEnrollments.about}}
+                                {{userProfile.about}}
                             </p>
 
                         </div>
