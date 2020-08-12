@@ -7,6 +7,7 @@ import Register from "../components/auth/Register";
 
 import Home from "../components/HomeCompnent";
 import About from "../components/About";
+import Countact from "../components/ContactCompo";
 import Details from "../components/courses/CourseDetails";
 import Courses from "../components/courses/Courses";
 
@@ -28,6 +29,14 @@ const routes = [
         path: '/about',
         name: 'About',
         component: About,
+        meta: {
+            requiresAuth: false,
+        }
+    },
+    {
+        path: '/contact',
+        name: 'Contact',
+        component: Countact,
         meta: {
             requiresAuth: false,
         }
@@ -89,6 +98,7 @@ const routes = [
             requiresVisitore: true,
         }
     },
+
 
 ];
 

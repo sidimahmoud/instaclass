@@ -10,28 +10,48 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <router-link to="/" tag="a" class="nav-link">
+                        <router-link :to="{ name: 'Home'}" tag="a" class="nav-link">
                             Home
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/about" tag="a" class="nav-link">
+                        <router-link :to="{ name: 'About'}" tag="a" class="nav-link">
                             About
                         </router-link>
                     </li>
                     <li class="nav-item ">
 
-                        <router-link to="/courses" tag="a" class="nav-link ">
+                        <router-link :to="{ name: 'Courses'}" tag="a" class="nav-link ">
                             All courses
                         </router-link>
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#">Contact</a>
+                        <router-link :to="{ name: 'Contact'}" tag="a" class="nav-link">
+                            Contact
+                        </router-link>
                     </li>
-                    <li class="nav-item ">
-                        <router-link to="/teacher/profile" tag="a" class="nav-link bg-danger text-white rounded">
+                    <li class="nav-item" v-if="isLoggedIn">
+                        <router-link :to="{name: 'TeacherProfile'}" tag="a"
+                                     class="nav-link bg-danger text-white rounded">
                             Account
+                        </router-link>
+                    </li>
+                    <li class="nav-item" v-if="isLoggedIn">
+                        <a class="nav-link" >
+                            <span @click="logout">
+                                Logout
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item" v-if="!isLoggedIn">
+                        <router-link :to="{ name: 'Login'}" tag="a" class="nav-link ">
+                            Login
+                        </router-link>
+                    </li>
+                    <li class="nav-item" v-if="!isLoggedIn">
+                        <router-link :to="{ name: 'Register'}" tag="a" class="nav-link ">
+                            Register
                         </router-link>
                     </li>
                     <li class="nav-item dropdown border border-primary ml-2 rounded">
@@ -54,10 +74,19 @@
 </template>
 <script>
     import {mapGetters} from 'vuex'
-export default {
-    name: 'AppNav',
-    computed: mapGetters(["isLoggedIn", "loggedInUser"])
-}
+
+    export default {
+        name: 'AppNav',
+        computed: mapGetters(["isLoggedIn"]),
+        methods: {
+            logout() {
+                this.$store.dispatch('logout')
+                    .then(() => {
+                        this.$router.push('/')
+                    })
+            }
+        }
+    }
 </script>
 
 <style scoped>

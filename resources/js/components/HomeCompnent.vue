@@ -36,61 +36,29 @@
 
 
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-12 p-2">
+            <div class="text-center text-primary" v-if="loadingCategories">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <div class="row" v-if="!loadingCategories">
+                <div class="col-md-4 col-sm-12 p-2" v-for="categ in allCategories" :key="categ.id">
                     <div class="card">
                         <div class="text-center">
                             <i class="fa fa-code card-img-top text-danger fa-2x mt-1"></i>
                         </div>
                         <div class="card-body">
-
                             <h5 class="card-title text-center font-weight-bold text-danger">
-                                <a href="#"> WEB DEVELOPMENT </a>
+                                <a href="#"> {{categ.name}} </a>
                             </h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <p class="card-text">{{categ.description}}</p>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-md-4 col-sm-12 p-2">
-                    <div class="card">
-                        <div class="text-center">
-                            <i class="fa fa-database card-img-top text-danger fa-2x mt-1"></i>
-                        </div>
-                        <div class="card-body">
 
-                            <h5 class="card-title text-center font-weight-bold ">
-                                <a href="#"> DATA SCIENCE </a>
-                            </h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-4 col-sm-12 p-2">
-                    <div class="card">
-                        <div class="text-center">
-                            <i class="fa fa-cloud card-img-top text-danger fa-2x mt-1"></i>
-                        </div>
-                        <div class="card-body">
-
-                            <h5 class="card-title text-center font-weight-bold text-danger">
-                                <a href="#"> CLOUD COMPUTING </a>
-                            </h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
-
-                </div>
             </div>
 
-            <!--            <div class="row text-center">-->
-            <!--                <div class="col-lg-3 col-md-4 col-sm-12 mb-4" v-for="course in allCourses" :key="course.id">-->
-            <!--                    <course :course="course"/>-->
-            <!--                </div>-->
 
 
         </div>
@@ -106,11 +74,11 @@
             Course
         },
         methods: {
-            ...mapActions(["fetchCourses"])
+            ...mapActions(["fetchCategories"])
         },
-        computed: mapGetters(["allCourses"]),
+        computed: mapGetters(["allCategories", "loadingCategories"]),
         created() {
-            this.fetchCourses();
+            this.fetchCategories();
         }
     }
 </script>
