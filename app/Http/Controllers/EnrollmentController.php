@@ -24,7 +24,7 @@ class EnrollmentController extends Controller
      */
     public function userEnrollments( $id)
     {
-        $enrollments = Enrollment::where('user_id', $id);
+        $enrollments = Enrollment::with('course')->where('user_id', $id);
         return response()->json($enrollments);
     }
     /**
@@ -34,7 +34,7 @@ class EnrollmentController extends Controller
      */
     public function courseEnrollments($id)
     {
-        $enrollments = Enrollment::with('course')->where('course_id',$id);
+        $enrollments = Enrollment::where('course_id',$id);
         return response()->json($enrollments);
     }
 
