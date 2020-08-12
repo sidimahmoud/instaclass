@@ -8,7 +8,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('users', 'Admin\UsersController')->middleware('can:only-admin');
     Route::resource('payments', 'Admin\PayementController')->middleware('can:only-admin');
     Route::post('payments', 'Admin\PayementController@store');
-    Route::get('/{id}/enrollments', 'EnrollmentController@userEnrollments');
+    Route::get('/user/enrollments', 'EnrollmentController@userEnrollments');
     Route::resource('/enrollments', 'EnrollmentController');
     Route::get('/{user}/courses', 'Teacher\CoursesController@teacherCourses')->middleware('can:teacher-or-admin');
 });
