@@ -52,7 +52,7 @@
                         <!-- Enrollments-->
                         <div class="tab-pane fade show" id="courses">
                             <ul class="list-unstyled">
-                                <li class="media p-2 mt-4">
+                                <li class="media p-2 mt-4" v-if="userEnrollments.length==0">
                                     <div class="media-body">
                                         <h5 class="mt-0 mb-1">No courses</h5>
                                         <p class="text-center">
@@ -63,8 +63,10 @@
                                 </li>
                                 <li class="media card p-2 mt-4" v-for="e in userEnrollments" :key="e.id">
                                     <div class="media-body">
-                                        <h5 class="mt-0 mb-1">{{e.course_id}}</h5>
-                                        {{e.created_at}}
+                                        <router-link :to="{name: 'Player', params: { slug: e.course.slug} }">
+                                            <h5 class="mt-0 mb-1">{{e.course.name}}</h5>
+                                        </router-link>
+                                        {{e.created_at.slice(0,10)}}
                                     </div>
                                 </li>
 

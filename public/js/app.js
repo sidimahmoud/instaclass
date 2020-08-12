@@ -3133,6 +3133,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "StudentProfile",
@@ -42941,23 +42943,43 @@ var render = function() {
                   "ul",
                   { staticClass: "list-unstyled" },
                   [
-                    _vm._m(5),
+                    _vm.userEnrollments.length == 0
+                      ? _c("li", { staticClass: "media p-2 mt-4" }, [_vm._m(5)])
+                      : _vm._e(),
                     _vm._v(" "),
                     _vm._l(_vm.userEnrollments, function(e) {
                       return _c(
                         "li",
                         { key: e.id, staticClass: "media card p-2 mt-4" },
                         [
-                          _c("div", { staticClass: "media-body" }, [
-                            _c("h5", { staticClass: "mt-0 mb-1" }, [
-                              _vm._v(_vm._s(e.course_id))
-                            ]),
-                            _vm._v(
-                              "\n                                    " +
-                                _vm._s(e.created_at) +
-                                "\n                                "
-                            )
-                          ])
+                          _c(
+                            "div",
+                            { staticClass: "media-body" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  attrs: {
+                                    to: {
+                                      name: "Player",
+                                      params: { slug: e.course.slug }
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("h5", { staticClass: "mt-0 mb-1" }, [
+                                    _vm._v(_vm._s(e.course.name))
+                                  ])
+                                ]
+                              ),
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(e.created_at.slice(0, 10)) +
+                                  "\n                                "
+                              )
+                            ],
+                            1
+                          )
                         ]
                       )
                     })
@@ -43096,17 +43118,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "media p-2 mt-4" }, [
-      _c("div", { staticClass: "media-body" }, [
-        _c("h5", { staticClass: "mt-0 mb-1" }, [_vm._v("No courses")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "text-center" }, [
-          _vm._v("\n                                        visit "),
-          _c("a", { attrs: { href: "/courses" } }, [
-            _vm._v(" courses\n                                    ")
-          ]),
-          _vm._v(" to get started\n                                    ")
-        ])
+    return _c("div", { staticClass: "media-body" }, [
+      _c("h5", { staticClass: "mt-0 mb-1" }, [_vm._v("No courses")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "text-center" }, [
+        _vm._v("\n                                        visit "),
+        _c("a", { attrs: { href: "/courses" } }, [
+          _vm._v(" courses\n                                    ")
+        ]),
+        _vm._v(" to get started\n                                    ")
       ])
     ])
   }
