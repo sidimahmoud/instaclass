@@ -1,6 +1,6 @@
 <template>
     <!-- Footer -->
-    <footer class="page-footer font-small">
+    <footer class="page-footer font-small pt-3">
 
         <!-- Footer Links -->
         <div class="container text-center text-md-left mt-5">
