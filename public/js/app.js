@@ -61884,20 +61884,28 @@ var actions = {
   },
   fetchUserEnrollments: function fetchUserEnrollments(_ref3, id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-      var commit, response;
+      var commit, token, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
               commit = _ref3.commit;
-              _context3.next = 3;
+              token = localStorage.getItem('token') || '';
+
+              if (!token) {
+                _context3.next = 8;
+                break;
+              }
+
+              axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+              _context3.next = 6;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/".concat(id, "/enrollments"));
 
-            case 3:
+            case 6:
               response = _context3.sent;
               commit('setEnrollments', response.data);
 
-            case 5:
+            case 8:
             case "end":
               return _context3.stop();
           }

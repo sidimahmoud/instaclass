@@ -27,8 +27,12 @@ const actions = {
     },
 
     async fetchUserEnrollments({commit}, id) {
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/${id}/enrollments`);
-        commit('setEnrollments', response.data);
+        let token = localStorage.getItem('token') || '';
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+            const response = await axios.get(`https://instantclass.herokuapp.com/api/${id}/enrollments`);
+            commit('setEnrollments', response.data);
+        }
     },
 };
 const mutations = {
