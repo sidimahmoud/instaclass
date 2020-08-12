@@ -41814,7 +41814,7 @@ var render = function() {
                                 [_vm._v("All Ratings and Reviews")]
                               ),
                               _vm._v(" "),
-                              _vm._l(_vm.course.ratings, function(rating) {
+                              _vm._l(_vm.course.ratings[0], function(rating) {
                                 return _c("review", {
                                   key: rating.id,
                                   attrs: { rating: rating }
@@ -42208,7 +42208,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid" }, [
+  return _c("div", { staticClass: "container-fluid mt-4" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-9 col-sm-12" }, [
         _vm._m(0),

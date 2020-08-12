@@ -181,7 +181,7 @@
 
                                     </div>
                                     <h5 class="my-4 font-weight-bolder">All Ratings and Reviews</h5>
-                                    <review v-for="rating in course.ratings":key="rating.id" :rating="rating"/>
+                                    <review v-for="rating in course.ratings[0]" :key="rating.id" :rating="rating"/>
                                 </div>
                                 <div v-else class="text-center">
                                     <h3>There is no ratings yet</h3>
