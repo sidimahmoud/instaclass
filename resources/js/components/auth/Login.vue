@@ -17,7 +17,7 @@
                                 <input type="password" class="form-control" id="exampleInputPassword1"
                                        placeholder="Password" v-model="password">
                             </div>
-                            <div class="text-center text-primary" v-if="!authStatus==='loading'">
+                            <div class="text-center text-primary" v-if="authLoading">
                                 <div class="spinner-border" role="status">
                                     <span class="sr-only">Loading...</span>
                                 </div>
@@ -54,7 +54,7 @@
                     .catch(err => console.log(err))
             }
         },
-        computed: mapGetters(["authStatus"])
+        computed: mapGetters(["authLoading"])
     }
 </script>
 

@@ -2428,7 +2428,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["authStatus"])
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["authLoading"])
 });
 
 /***/ }),
@@ -41388,7 +41388,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                !_vm.authStatus === "loading"
+                _vm.authLoading
                   ? _c("div", { staticClass: "text-center text-primary" }, [
                       _vm._m(0)
                     ])
@@ -60881,7 +60881,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var state = {
-  status: '',
+  status: false,
   token: localStorage.getItem('token') || null,
   user: JSON.parse(localStorage.getItem('user')) || null
 };
@@ -60892,7 +60892,7 @@ var getters = {
   loggedInUser: function loggedInUser(state) {
     return state.user;
   },
-  authStatus: function authStatus(state) {
+  authLoading: function authLoading(state) {
     return state.status;
   }
 };
@@ -61008,15 +61008,15 @@ var actions = {
 };
 var mutations = {
   auth_request: function auth_request(state) {
-    state.status = 'loading';
+    state.status = true;
   },
   auth_success: function auth_success(state, token, user) {
-    state.status = 'success';
+    state.status = false;
     state.token = token;
     state.user = user;
   },
   auth_error: function auth_error(state) {
-    state.status = 'error';
+    state.status = false;
   },
   logout: function logout(state) {
     state.status = '';

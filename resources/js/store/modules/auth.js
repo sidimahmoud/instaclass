@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const state = {
-    status: '',
+    status: false,
     token: localStorage.getItem('token') || null,
     user: JSON.parse(localStorage.getItem('user')) || null,
 
@@ -11,7 +11,7 @@ const state = {
 const getters = {
     isLoggedIn: state => state.token,
     loggedInUser: state => state.user,
-    authStatus: state => state.status,
+    authLoading: state => state.status,
 };
 
 const actions = {
@@ -74,15 +74,15 @@ const actions = {
 
 const mutations = {
     auth_request(state) {
-        state.status = 'loading'
+        state.status = true
     },
     auth_success(state, token, user) {
-        state.status = 'success';
+        state.status = false;
         state.token = token;
         state.user = user
     },
     auth_error(state) {
-        state.status = 'error'
+        state.status = false
     },
     logout(state) {
         state.status = '';
