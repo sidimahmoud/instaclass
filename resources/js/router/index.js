@@ -10,7 +10,7 @@ import About from "../components/About";
 import Countact from "../components/ContactCompo";
 import Details from "../components/courses/CourseDetails";
 import Courses from "../components/courses/Courses";
-
+import CoursePlayer from "../components/courses/CoursePlayer";
 import TeacherProfile from "../components/teacher/Profile";
 import StudentProfile from "../components/student/Profile";
 
@@ -57,6 +57,14 @@ const routes = [
             requiresAuth: false,
         }
     },
+    {
+        path: '/player/:slug',
+        name: 'Player',
+        component: CoursePlayer,
+        meta: {
+            requiresAuth: true,
+        }
+    },
 
     {
         path: '/teacher/profile',
@@ -65,8 +73,8 @@ const routes = [
         beforeEnter: (to, from, next) => {
             let user = JSON.parse(localStorage.getItem('user')) || null;
             if (user.t === 'teacher') next();
-            else if (user.t === 'student') next({ name: 'StudentProfile' });
-            else next({ name: 'Home' });
+            else if (user.t === 'student') next({name: 'StudentProfile'});
+            else next({name: 'Home'});
         },
         meta: {
             requiresAuth: true,
