@@ -26,11 +26,11 @@ const actions = {
         commit('setCourses', response.data);
     },
 
-    async fetchUserEnrollments({commit}, id) {
+    async fetchUserEnrollments({commit}) {
         let token = localStorage.getItem('token') || '';
         if (token) {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-            const response = await axios.get(`https://instantclass.herokuapp.com/api/${id}/enrollments`);
+            const response = await axios.get(`https://instantclass.herokuapp.com/api/user/enrollments`);
             commit('setEnrollments', response.data);
         }
     },

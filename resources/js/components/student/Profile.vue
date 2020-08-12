@@ -101,15 +101,13 @@
     export default {
         name: "StudentProfile",
         methods: {
-            ...mapActions(["fetchProfile"]),
-            fetchUserPur() {
-                this.$store.dispatch('fetchUserEnrollments', this.userProfile.id)
-            },
+            ...mapActions(["fetchProfile", "fetchUserEnrollments"]),
+
         },
         computed: mapGetters(["userProfile", "userEnrollments"]),
         created() {
             this.fetchProfile();
-            this.fetchUserPur();
+            this.fetchUserEnrollments();
         }
     }
 </script>

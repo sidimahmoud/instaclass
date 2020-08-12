@@ -3136,15 +3136,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "StudentProfile",
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchProfile"])), {}, {
-    fetchUserPur: function fetchUserPur() {
-      this.$store.dispatch('fetchUserEnrollments', this.userProfile.id);
-    }
-  }),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchProfile", "fetchUserEnrollments"])),
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["userProfile", "userEnrollments"]),
   created: function created() {
     this.fetchProfile();
-    this.fetchUserPur();
+    this.fetchUserEnrollments();
   }
 });
 
@@ -61882,7 +61878,7 @@ var actions = {
       }, _callee2);
     }))();
   },
-  fetchUserEnrollments: function fetchUserEnrollments(_ref3, id) {
+  fetchUserEnrollments: function fetchUserEnrollments(_ref3) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
       var commit, token, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
@@ -61899,7 +61895,7 @@ var actions = {
 
               axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
               _context3.next = 6;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/".concat(id, "/enrollments"));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/user/enrollments");
 
             case 6:
               response = _context3.sent;
