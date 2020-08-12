@@ -14,9 +14,10 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex align-items-center justify-content-center text-white" >
+            <div class="d-flex align-items-center justify-content-center text-white">
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
-                    <span class="btn btn-danger">{{userEnrollments.length>0? userEnrollments : "0"}} </span> <br> Purchased
+                    <span class="btn btn-danger">{{userEnrollments.length>0? userEnrollments : "0"}} </span> <br>
+                    Purchased
                 </div>
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">
                     <span class="btn btn-danger">03 </span> <br> Certifications
@@ -51,6 +52,15 @@
                         <!-- Enrollments-->
                         <div class="tab-pane fade show" id="courses">
                             <ul class="list-unstyled">
+                                <li class="media p-2 mt-4">
+                                    <div class="media-body">
+                                        <h5 class="mt-0 mb-1">No courses</h5>
+                                        <p class="text-center">
+                                            visit <a href="/courses"> courses
+                                        </a> to get started
+                                        </p>
+                                    </div>
+                                </li>
                                 <li class="media card p-2 mt-4" v-for="e in userEnrollments" :key="e.id">
                                     <div class="media-body">
                                         <h5 class="mt-0 mb-1">{{e.course_id}}</h5>
@@ -72,7 +82,8 @@
                     <div class="card bg-primary">
                         <div class="card-body text-center text-white">
                             <img src="../../assets/images/details/02.png" alt="">
-                            <h3 class="card-title font-weight-bolder">{{userProfile.first_name}} {{userProfile.last_name}}</h3>
+                            <h3 class="card-title font-weight-bolder">{{userProfile.first_name}}
+                                {{userProfile.last_name}}</h3>
                             <p class="card-text">{{userProfile.headline}}</p>
                             <a href="#" class="btn btn-danger">Edit Profile</a>
                         </div>

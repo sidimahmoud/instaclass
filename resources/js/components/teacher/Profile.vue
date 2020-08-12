@@ -50,10 +50,20 @@
                         <!-- courses-->
                         <div class="tab-pane fade show" id="courses">
                             <ul class="list-unstyled">
-                                <li class="media card p-2 mt-4" v-for="course in userCourses" :key="course.id">
+                                <li class="media shadow-sm border rounded p-2 mt-4" v-for="course in userCourses" :key="course.id">
                                     <div class="media-body">
-                                        <h5 class="mt-0 mb-1">{{course.name}}</h5>
+                                        <router-link :to="{ name: 'Detail', params: { slug: course.slug}}" >
+                                            <h5 class="mt-0 mb-1 text-danger font-weight-bolder">{{course.name}}</h5>
+                                        </router-link>
                                         {{course.short_description}}
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-primary btn-sm disabled">
+                                                Enrollments <span class="badge badge-light">4</span>
+                                            </button>
+                                            <button type="button" class="btn btn-primary btn-sm disabled ml-5">
+                                                All views <span class="badge badge-light">410</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </li>
 

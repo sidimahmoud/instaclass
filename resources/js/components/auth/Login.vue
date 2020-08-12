@@ -17,7 +17,12 @@
                                 <input type="password" class="form-control" id="exampleInputPassword1"
                                        placeholder="Password" v-model="password">
                             </div>
-                            <div class="text-center">
+                            <div class="text-center text-primary" v-if="!authStatus==='loading'">
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="text-center" v-else>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
@@ -29,7 +34,10 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
+
     export default {
+
         name: "Login",
         data() {
             return {
@@ -37,14 +45,16 @@
                 password: ''
             }
         },
-        methods:{
-            login () {
+        methods: {
+            login() {
                 let email = this.email;
                 let password = this.password;
-                this.$store.dispatch('login', {email , password})
+                this.$store.dispatch('login', {email, password})
                     .then(() => this.$router.push('/'))
                     .catch(err => console.log(err))
-            }        }
+            }
+        },
+        computed: mapGetters(["authStatus"])
     }
 </script>
 

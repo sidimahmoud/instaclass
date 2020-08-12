@@ -3,7 +3,7 @@ import axios from 'axios'
 const state = {
     status: '',
     token: localStorage.getItem('token') || null,
-    user: JSON.parse(localStorage.getItem('user')) || null
+    user: JSON.parse(localStorage.getItem('user')) || null,
 
 };
 

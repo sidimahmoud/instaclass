@@ -2367,6 +2367,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -2397,6 +2398,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
   data: function data() {
@@ -2420,7 +2427,8 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(err);
       });
     }
-  }
+  },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["authStatus"])
 });
 
 /***/ }),
@@ -2985,6 +2993,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "StudentProfile",
@@ -3018,6 +3037,16 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41359,7 +41388,20 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(0)
+                !_vm.authStatus === "loading"
+                  ? _c("div", { staticClass: "text-center text-primary" }, [
+                      _vm._m(0)
+                    ])
+                  : _c("div", { staticClass: "text-center" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "submit" }
+                        },
+                        [_vm._v("Submit")]
+                      )
+                    ])
               ]
             )
           ])
@@ -41373,13 +41415,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Submit")]
-      )
-    ])
+    return _c(
+      "div",
+      { staticClass: "spinner-border", attrs: { role: "status" } },
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+    )
   }
 ]
 render._withStripped = true
@@ -42438,7 +42478,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("br"),
-              _vm._v(" Purchased\n            ")
+              _vm._v("\n                Purchased\n            ")
             ]
           ),
           _vm._v(" "),
@@ -42487,25 +42527,29 @@ var render = function() {
                 _c(
                   "ul",
                   { staticClass: "list-unstyled" },
-                  _vm._l(_vm.userEnrollments, function(e) {
-                    return _c(
-                      "li",
-                      { key: e.id, staticClass: "media card p-2 mt-4" },
-                      [
-                        _c("div", { staticClass: "media-body" }, [
-                          _c("h5", { staticClass: "mt-0 mb-1" }, [
-                            _vm._v(_vm._s(e.course_id))
-                          ]),
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(e.created_at) +
-                              "\n                                "
-                          )
-                        ])
-                      ]
-                    )
-                  }),
-                  0
+                  [
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _vm._l(_vm.userEnrollments, function(e) {
+                      return _c(
+                        "li",
+                        { key: e.id, staticClass: "media card p-2 mt-4" },
+                        [
+                          _c("div", { staticClass: "media-body" }, [
+                            _c("h5", { staticClass: "mt-0 mb-1" }, [
+                              _vm._v(_vm._s(e.course_id))
+                            ]),
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(e.created_at) +
+                                "\n                                "
+                            )
+                          ])
+                        ]
+                      )
+                    })
+                  ],
+                  2
                 )
               ]
             )
@@ -42527,7 +42571,7 @@ var render = function() {
               _c("h3", { staticClass: "card-title font-weight-bolder" }, [
                 _vm._v(
                   _vm._s(_vm.userProfile.first_name) +
-                    " " +
+                    "\n                            " +
                     _vm._s(_vm.userProfile.last_name)
                 )
               ]),
@@ -42633,6 +42677,24 @@ var staticRenderFns = [
         },
         [_vm._v("My courses")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "media p-2 mt-4" }, [
+      _c("div", { staticClass: "media-body" }, [
+        _c("h5", { staticClass: "mt-0 mb-1" }, [_vm._v("No courses")]),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-center" }, [
+          _vm._v("\n                                        visit "),
+          _c("a", { attrs: { href: "/courses" } }, [
+            _vm._v(" courses\n                                    ")
+          ]),
+          _vm._v(" to get started\n                                    ")
+        ])
+      ])
     ])
   }
 ]
@@ -42752,18 +42814,45 @@ var render = function() {
                   _vm._l(_vm.userCourses, function(course) {
                     return _c(
                       "li",
-                      { key: course.id, staticClass: "media card p-2 mt-4" },
+                      {
+                        key: course.id,
+                        staticClass: "media shadow-sm border rounded p-2 mt-4"
+                      },
                       [
-                        _c("div", { staticClass: "media-body" }, [
-                          _c("h5", { staticClass: "mt-0 mb-1" }, [
-                            _vm._v(_vm._s(course.name))
-                          ]),
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(course.short_description) +
-                              "\n                                "
-                          )
-                        ])
+                        _c(
+                          "div",
+                          { staticClass: "media-body" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: {
+                                  to: {
+                                    name: "Detail",
+                                    params: { slug: course.slug }
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "h5",
+                                  {
+                                    staticClass:
+                                      "mt-0 mb-1 text-danger font-weight-bolder"
+                                  },
+                                  [_vm._v(_vm._s(course.name))]
+                                )
+                              ]
+                            ),
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(course.short_description) +
+                                "\n                                    "
+                            ),
+                            _vm._m(4, true)
+                          ],
+                          1
+                        )
                       ]
                     )
                   }),
@@ -42895,6 +42984,36 @@ var staticRenderFns = [
           attrs: { href: "#Reviews", "data-toggle": "tab" }
         },
         [_vm._v("Reviews")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary btn-sm disabled",
+          attrs: { type: "button" }
+        },
+        [
+          _vm._v("\n                                            Enrollments "),
+          _c("span", { staticClass: "badge badge-light" }, [_vm._v("4")])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary btn-sm disabled ml-5",
+          attrs: { type: "button" }
+        },
+        [
+          _vm._v("\n                                            All views "),
+          _c("span", { staticClass: "badge badge-light" }, [_vm._v("410")])
+        ]
       )
     ])
   }
