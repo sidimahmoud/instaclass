@@ -7,10 +7,11 @@
         </a>
         <div class="media-body">
             <div class="reviews-members-header">
-                                    <span class="star-rating float-right">
-                                          <i class="fa fa-star text-warning" v-for="star in rating.rate"></i>
-                                    </span>
-                <h6 class="mb-1"><a class="text-black" href="#">{{rating.user.first_name}} {{rating.user.last_name}}</a></h6>
+                <span class="star-rating float-right">
+                      <i class="fa fa-star text-warning" v-for="star in rating.rate"></i>
+                </span>
+                <h6 class="mb-1"><a class="text-black" href="#">{{rating.user.first_name}} {{rating.user.last_name}}</a>
+                </h6>
                 <p class="text-gray">{{rating.created_at.slice(0, 10)}}</p>
             </div>
             <div class="reviews-members-body">
@@ -30,23 +31,6 @@
 </script>
 
 <style scoped>
-
-
-    .total-like-user-main a {
-        display: inline-block;
-        margin: 0 -17px 0 0;
-    }
-
-    .total-like {
-        border: 1px solid;
-        border-radius: 50px;
-        display: inline-block;
-        font-weight: 500;
-        height: 34px;
-        line-height: 33px;
-        padding: 0 13px;
-        vertical-align: top;
-    }
 
 
     .rounded-pill {

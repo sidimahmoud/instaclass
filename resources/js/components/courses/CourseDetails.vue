@@ -7,8 +7,8 @@
         </div>
         <div v-if="!loading">
             <div class="jumbotron">
-                    <div class="container d-flex align-items-center">
-                <div class="row justify-content-around align-items-center">
+                <div class="container d-flex align-items-center">
+                    <div class="row justify-content-around align-items-center">
                         <div class="col-md-6 col-sm-12  justify-content-center align-items-center text-white">
                             <img :src="course.image" alt="" class="img-fluid" max-width="500px">
                         </div>
@@ -181,8 +181,34 @@
 
                                     </div>
                                     <h5 class="my-4 font-weight-bolder">All Ratings and Reviews</h5>
-                                    <review v-for="rating in course.ratings[0]" :key="rating.id" :rating="rating"/>
+                                    <!--<review v-for="rating in course.ratings" :key="rating.id" :rating="rating"/>-->
+
+                                    <div class="media mt-3 shadow-sm" v-for="rating in course.ratings" :key="rating.id">
+                                        <a href="#">
+                                            <img alt="Generic placeholder image"
+                                                 src="http://bootdey.com/img/Content/avatar/avatar1.png"
+                                                 class="mr-3 rounded-pill" height="50px">
+                                        </a>
+                                        <div class="media-body">
+                                            <div class="reviews-members-header">
+                                                <span class="star-rating float-right">
+                                                      <i class="fa fa-star text-warning" v-for="star in rating.rate"></i>
+                                                </span>
+                                                <h6 class="mb-1"><a class="text-black" href="#">{{rating.user.first_name}}
+                                                    {{rating.user.last_name}}</a>
+                                                </h6>
+                                                <p class="text-gray">{{rating.created_at.slice(0, 10)}}</p>
+                                            </div>
+                                            <div class="reviews-members-body">
+                                                <p>{{rating.review}}
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
+
+
                                 <div v-else class="text-center">
                                     <h3>There is no ratings yet</h3>
                                 </div>
@@ -199,7 +225,8 @@
                         <div class="card bg-white">
                             <img class="card-img-top" :src="course.image" alt="Card image cap">
                             <div class="card-body text-center">
-                                <h3 class="card-title font-weight-bolder text-danger">{{(course.status==2)?'$'+course.price:"Free Course"}}</h3>
+                                <h3 class="card-title font-weight-bolder text-danger">
+                                    {{(course.status==2)?'$'+course.price:"Free Course"}}</h3>
                                 <p class="card-text">23 hours left at this price!</p>
                                 <a href="#" class="btn btn-primary my-3">Buy now</a>
                             </div>
@@ -223,9 +250,10 @@
 
     import {mapGetters} from "vuex";
     import Review from "./Review";
+
     export default {
         name: 'Detail',
-        components:{Review},
+        components: {Review},
         methods: {
             findCourse() {
                 this.$store.dispatch('getCourse', this.$route.params.slug)
@@ -244,5 +272,9 @@
     .jumbotron {
         background-image: url('../../assets/images/details/bg.png');
         border-radius: 0;
+    }
+
+    .rounded-pill {
+        border-radius: 50rem !important;
     }
 </style>

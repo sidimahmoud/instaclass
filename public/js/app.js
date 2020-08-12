@@ -2698,6 +2698,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2888,6 +2915,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -7805,7 +7833,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.jumbotron[data-v-f1c1fb96] {\n    background-image: url(" + escape(__webpack_require__(/*! ../../assets/images/details/bg.png */ "./resources/js/assets/images/details/bg.png")) + ");\n    border-radius: 0;\n}\n", ""]);
+exports.push([module.i, "\n.jumbotron[data-v-f1c1fb96] {\n    background-image: url(" + escape(__webpack_require__(/*! ../../assets/images/details/bg.png */ "./resources/js/assets/images/details/bg.png")) + ");\n    border-radius: 0;\n}\n.rounded-pill[data-v-f1c1fb96] {\n    border-radius: 50rem !important;\n}\n", ""]);
 
 // exports
 
@@ -7824,7 +7852,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.total-like-user-main a[data-v-3338c13a] {\n    display: inline-block;\n    margin: 0 -17px 0 0;\n}\n.total-like[data-v-3338c13a] {\n    border: 1px solid;\n    border-radius: 50px;\n    display: inline-block;\n    font-weight: 500;\n    height: 34px;\n    line-height: 33px;\n    padding: 0 13px;\n    vertical-align: top;\n}\n.rounded-pill[data-v-3338c13a] {\n    border-radius: 50rem !important;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.rounded-pill[data-v-3338c13a] {\n    border-radius: 50rem !important;\n}\n\n\n", ""]);
 
 // exports
 
@@ -41814,11 +41842,88 @@ var render = function() {
                                 [_vm._v("All Ratings and Reviews")]
                               ),
                               _vm._v(" "),
-                              _vm._l(_vm.course.ratings[0], function(rating) {
-                                return _c("review", {
-                                  key: rating.id,
-                                  attrs: { rating: rating }
-                                })
+                              _vm._l(_vm.course.ratings, function(rating) {
+                                return _c(
+                                  "div",
+                                  {
+                                    key: rating.id,
+                                    staticClass: "media mt-3 shadow-sm"
+                                  },
+                                  [
+                                    _vm._m(6, true),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "media-body" }, [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "reviews-members-header"
+                                        },
+                                        [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticClass:
+                                                "star-rating float-right"
+                                            },
+                                            _vm._l(rating.rate, function(star) {
+                                              return _c("i", {
+                                                staticClass:
+                                                  "fa fa-star text-warning"
+                                              })
+                                            }),
+                                            0
+                                          ),
+                                          _vm._v(" "),
+                                          _c("h6", { staticClass: "mb-1" }, [
+                                            _c(
+                                              "a",
+                                              {
+                                                staticClass: "text-black",
+                                                attrs: { href: "#" }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    rating.user.first_name
+                                                  ) +
+                                                    "\n                                                " +
+                                                    _vm._s(
+                                                      rating.user.last_name
+                                                    )
+                                                )
+                                              ]
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "p",
+                                            { staticClass: "text-gray" },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  rating.created_at.slice(0, 10)
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "reviews-members-body" },
+                                        [
+                                          _c("p", [
+                                            _vm._v(
+                                              _vm._s(rating.review) +
+                                                "\n                                            "
+                                            )
+                                          ])
+                                        ]
+                                      )
+                                    ])
+                                  ]
+                                )
                               })
                             ],
                             2
@@ -41848,11 +41953,12 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          _vm._s(
-                            _vm.course.status == 2
-                              ? "$" + _vm.course.price
-                              : "Free Course"
-                          )
+                          "\n                                " +
+                            _vm._s(
+                              _vm.course.status == 2
+                                ? "$" + _vm.course.price
+                                : "Free Course"
+                            )
                         )
                       ]
                     ),
@@ -41874,7 +41980,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(6)
+            _vm._m(7)
           ])
         ])
       : _vm._e()
@@ -42164,6 +42270,21 @@ var staticRenderFns = [
           ])
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("img", {
+        staticClass: "mr-3 rounded-pill",
+        attrs: {
+          alt: "Generic placeholder image",
+          src: "http://bootdey.com/img/Content/avatar/avatar1.png",
+          height: "50px"
+        }
+      })
     ])
   },
   function() {
