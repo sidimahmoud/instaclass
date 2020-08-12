@@ -22,9 +22,9 @@ class EnrollmentController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function userEnrollments(Request $request)
+    public function userEnrollments( $id)
     {
-        $enrollments = Enrollment::with('course')->where('user_id', $request->user()->id)->get();
+        $enrollments = Enrollment::with('course')->where('user_id', $id)->get();
         return response()->json($enrollments);
     }
     /**
