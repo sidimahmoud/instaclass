@@ -25,7 +25,7 @@ class CourseController extends Controller
 
     public function show($slug)
     {
-        $course = Course::with('ratings','enrollments', 'user')
+        $course = Course::with('ratings.user','enrollments', 'user')
             ->where('slug',$slug)
             ->get();
         return response()->json($course );
