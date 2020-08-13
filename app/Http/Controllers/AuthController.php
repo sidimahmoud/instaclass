@@ -80,7 +80,7 @@ class AuthController extends Controller
      */
     public function redirectToProvider($provider)
     {
-        $url= Socialite::driver($provider)->stateless()->redirect()->getTargetUrl();
+        $url = Socialite::driver($provider)->stateless()->redirect()->getTargetUrl();
         return response()->json(['url' => $url]);
     }
 
@@ -92,7 +92,7 @@ class AuthController extends Controller
         $provider_user = Socialite::driver($provider)->stateless()->user();
         $user = null;
 
-// dd($provider_user);
+        dd($provider_user);
 
 // If no provider user, fail
         if (!$provider_user->token) {
@@ -119,7 +119,7 @@ class AuthController extends Controller
         }
 
         $token = $user->createToken('login token')->accessToken;
-        return response()->json(['user' => $user, 'token'=>$token], 200);
+        return response()->json(['user' => $user, 'token' => $token], 200);
     }
 
     /**
