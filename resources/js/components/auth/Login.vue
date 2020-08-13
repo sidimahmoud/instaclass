@@ -28,12 +28,14 @@
                         </div>
                         <h2>Or</h2>
                         <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
-                            <a href="https://instantclass.herokuapp.com/api/authorize/github">
+                            <a href="https://instantclass.herokuapp.com/api/authorize/google" class="text-white">
                                 <i class="fa fa-google mr-2"></i> Sign in with Google
                             </a>
                         </button>
-                        <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit">
-                            <i class="fa fa-facebook-f mr-2"></i> Sign in with Facebook
+                        <button class="btn btn-lg btn-github btn-dark btn-block text-uppercase" type="submit">
+                            <a href="https://instantclass.herokuapp.com/api/authorize/github" class="text-white">
+                                <i class="fa fa-github text-white mr-2" ></i> Sign in with Github
+                            </a>
                         </button>
                     </form>
                     <div class="text-center">Don't have an account?
@@ -157,8 +159,7 @@
         background-color: #ea4335
     }
 
-    .btn-facebook {
+    .btn-github {
         color: white;
-        background-color: #3b5998
     }
 </style>
