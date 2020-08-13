@@ -62059,7 +62059,7 @@ var routes = [{
     requiresVisitore: true
   }
 }, {
-  path: '/auth/github/callback',
+  path: 'authorize/github/callback',
   name: 'Github',
   component: _components_auth_LoginGuithub__WEBPACK_IMPORTED_MODULE_4__["default"],
   meta: {

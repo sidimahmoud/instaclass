@@ -99,7 +99,7 @@ const routes = [
         }
     },
     {
-        path: '/auth/github/callback',
+        path: 'authorize/github/callback',
         name: 'Github',
         component: LoginGuithub,
         meta: {
