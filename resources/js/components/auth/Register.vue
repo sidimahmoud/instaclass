@@ -42,8 +42,9 @@
                             </div>
                             <h2>Or</h2>
                             <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
-                                <i class="fa fa-google mr-2"></i> Sign up with Google
-                            </button>
+                                <a href="https://instantclass.herokuapp.com/api/authorize/github">
+                                    <i class="fa fa-google mr-2"></i> Sign up with Google
+                                </a>                            </button>
                             <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit">
                                 <i class="fa fa-facebook-f mr-2"></i> Sign up with Facebook
                             </button>

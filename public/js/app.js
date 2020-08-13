@@ -2390,6 +2390,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
@@ -2429,6 +2431,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -41751,8 +41754,18 @@ var staticRenderFns = [
         attrs: { type: "submit" }
       },
       [
-        _c("i", { staticClass: "fa fa-google mr-2" }),
-        _vm._v(" Sign in with Google\n                    ")
+        _c(
+          "a",
+          {
+            attrs: {
+              href: "https://instantclass.herokuapp.com/api/authorize/github"
+            }
+          },
+          [
+            _c("i", { staticClass: "fa fa-google mr-2" }),
+            _vm._v(" Sign in with Google\n                        ")
+          ]
+        )
       ]
     )
   },
@@ -41924,8 +41937,18 @@ var staticRenderFns = [
           attrs: { type: "submit" }
         },
         [
-          _c("i", { staticClass: "fa fa-google mr-2" }),
-          _vm._v(" Sign up with Google\n                        ")
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://instantclass.herokuapp.com/api/authorize/github"
+              }
+            },
+            [
+              _c("i", { staticClass: "fa fa-google mr-2" }),
+              _vm._v(" Sign up with Google\n                            ")
+            ]
+          )
         ]
       ),
       _vm._v(" "),
