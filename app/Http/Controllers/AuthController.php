@@ -2,20 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Role;
-use http\Env\Response;
-use Illuminate\Http\Request;
 use App\User;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 
-class UserController extends Controller
+class AuthController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     */
     function login(Request $request)
     {
         $this->validate($request, [
@@ -78,15 +71,24 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Redirect the user to the GitHub authentication page.
      *
-     * @param int $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function show(Request $request)
+    public function redirectToProvider($provider)
     {
-        $id = $request->user()->id;
-        $user = User::with('enrollments')->where('id', $id)->get();
-        return response()->json($user);
+        return Socialite::driver($provider)->stateless()->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback($provider)
+    {
+        $user = Socialite::driver($provider)->stateless()->user();
+        dd($user);
+
     }
 }

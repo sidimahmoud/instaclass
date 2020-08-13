@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user', 'UserController@show');
+    Route::get('/user', 'UsersController@show');
     Route::resource('users', 'Admin\UsersController')->middleware('can:only-admin');
     Route::resource('payments', 'Admin\PayementController')->middleware('can:only-admin');
     Route::post('payments', 'Admin\PayementController@store');
@@ -14,11 +14,15 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 
-Route::post('login', 'UserController@login');
-Route::post('register', 'UserController@register');
+Route::post('login', 'AuthController@login');
+Route::post('register', 'AuthController@register');
 Route::resource('/categories', 'CategoryController');
 Route::resource('/comments', 'CommentController');
 Route::get('/courses', 'CourseController@index');
 Route::get('/courses/{id}', 'CourseController@show');
 Route::resource('/ratings', 'RatingController');
 Route::resource('/sub-categories', 'SubCategoryController');
+
+
+Route::get('authorize/{provider}', 'AuthController@redirectToProvider');
+Route::get('authorize/{provider}/callback', 'AuthController@handleProviderCallback');

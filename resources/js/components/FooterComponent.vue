@@ -1,6 +1,6 @@
 <template>
     <!-- Footer -->
-    <footer class="page-footer font-small pt-3">
+    <footer class="page-footer font-small">
 
         <!-- Footer Links -->
         <div class="container text-center text-md-left mt-5">
@@ -12,7 +12,7 @@
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto my-auto mb-4">
 
                     <!-- Content -->
-                    <h6 class="text-uppercase font-weight-bold text-white">INSTANTCLASS</h6>
+                    <h6 class="text-uppercase font-weight-bold text-white mt-3">INSTANTCLASS</h6>
 
                 </div>
                 <!-- Grid column -->

@@ -46,18 +46,20 @@ class UsersController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $id = $request->user()->id;
+        $user = User::with('enrollments')->where('id', $id)->get();
+        return response()->json($user);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(User $user)
     {

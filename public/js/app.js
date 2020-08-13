@@ -41283,7 +41283,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "page-footer font-small pt-3" }, [
+    return _c("footer", { staticClass: "page-footer font-small" }, [
       _c("div", { staticClass: "container text-center text-md-left mt-5" }, [
         _c("div", { staticClass: "row mt-3" }, [
           _c(
@@ -41292,7 +41292,9 @@ var staticRenderFns = [
             [
               _c(
                 "h6",
-                { staticClass: "text-uppercase font-weight-bold text-white" },
+                {
+                  staticClass: "text-uppercase font-weight-bold text-white mt-3"
+                },
                 [_vm._v("INSTANTCLASS")]
               )
             ]
