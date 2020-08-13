@@ -30,7 +30,6 @@
                         <a href="#" class="text-uppercase">our courses</a>
                     </p>
 
-
                 </div>
                 <!-- Grid column -->
 
@@ -57,34 +56,25 @@
 
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-3 col-xl-3 align-content-center mt-5 text-white mx-auto mb-md-0">
-
-
                     <div>Share</div>
-                    <div>InstantClass On Social Media</div>
+                    <div>Instantclass On Social Media</div>
                     <div class="mt-2">
                         <i class="fa fa-facebook  mr-3"></i>
                         <i class="fa fa-twitter  mr-3"></i>
                         <i class="fa fa-linkedin  mr-3"></i>
                         <i class="fa fa-instagram  mr-3"></i>
                     </div>
-
-
-
-
-
                 </div>
                 <!-- Grid column -->
-
             </div>
             <!-- Grid row -->
-
         </div>
         <!-- Footer Links -->
         <hr>
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3 text-capitalize text-white">
             © 2020 Copyright:
-            <a href="https://instantclass.ca/"> instantclass.ca</a>
+            <a href="https://instantclass.ca/">instantclass.ca</a>
         </div>
         <!-- Copyright -->
 
