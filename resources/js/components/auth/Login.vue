@@ -146,10 +146,7 @@
         text-decoration: none;
     }
 
-    .signup-form form a {
-        color: #5cb85c;
-        text-decoration: none;
-    }
+
 
     .signup-form form a:hover {
         text-decoration: underline;
