@@ -71,4 +71,8 @@ class User extends Authenticatable
     {
         return $this->roles()->where('name', 'teacher')->first();
     }
+    public function socialAccounts()
+    {
+        return $this->hasMany('App\SocialAccount');
+    }
 }
