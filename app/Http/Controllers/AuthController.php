@@ -93,7 +93,8 @@ class AuthController extends Controller
         $user = null;
 
 //        dd($provider_user);
-
+        $fname = explode(" ", $provider_user->name);
+        dd($fname);
 // If no provider user, fail
         if (!$provider_user->token) {
             return response()->json('Authentication from ' . $provider . ' failed.', 422);
