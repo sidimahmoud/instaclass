@@ -62262,7 +62262,7 @@ var actions = {
               return _context3.abrupt("return", new Promise(function (resolve, reject) {
                 commit('auth_request');
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/authorize/github/callback', {
-                  params: payload.code
+                  params: payload
                 }).then(function (resp) {
                   resolve(resp);
                 })["catch"](function (err) {

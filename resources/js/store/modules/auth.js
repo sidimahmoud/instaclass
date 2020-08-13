@@ -57,7 +57,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             commit('auth_request');
             axios.get('https://instantclass.herokuapp.com/api/authorize/github/callback', {
-                params:payload.code
+                params:payload
             })
                 .then(resp => {
                     resolve(resp)
