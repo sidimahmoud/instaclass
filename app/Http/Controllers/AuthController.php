@@ -145,13 +145,13 @@ class AuthController extends Controller
      */
     private function createUser($provider_user)
     {
-        $user = User::create([
-            'first_name' => $provider_user->name,
-            'email' => $provider_user->email,
-            'image' => $provider_user->avatar,
-            'password' => Hash::make(Str::random(12)),
-            'email_verified_at' => now(),
-        ]);
+        $user = new User();
+        $user->first_name = $provider_user->name;
+        $user->email = $provider_user->email;
+        $user->image = $provider_user->avatar;
+        $user->password = Hash::make(Str::random(12));
+        $user->email_verified_at = now();
+        $user->save();
         $studentR = Role::where('name', 'student')->first();
         $user->roles()->attach($studentR);
 
