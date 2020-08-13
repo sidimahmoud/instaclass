@@ -66,7 +66,17 @@
                 this.$store.dispatch('login', {email, password})
                     .then(() => this.$router.push('/'))
                     .catch(err => console.log(err))
-            }
+            },
+            loginGithub() {
+                this.$store.dispatch('loginGithub')
+                    .then((res) => {
+                        console.log(res);
+                        if (res.data.url){
+                            window.location.href = res.data.url
+                        }
+                    })
+                    .catch(err => console.log(err))
+            },
         },
         computed: mapGetters(["authLoading"])
     }

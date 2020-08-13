@@ -39,6 +39,22 @@ const actions = {
                 })
         })
     },
+
+    async loginGithub({commit}) {
+        return new Promise((resolve, reject) => {
+            commit('auth_request');
+            axios.get('https://instantclass.herokuapp.com/api/authorize/github')
+                .then(resp => {
+                    resolve(resp)
+                })
+                .catch(err => {
+                    commit('auth_error');
+                    reject(err)
+                })
+        })
+    },
+
+
     async register({commit}, user) {
         return new Promise((resolve, reject) => {
             commit('auth_request');

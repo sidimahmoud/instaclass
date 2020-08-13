@@ -73,11 +73,12 @@ class AuthController extends Controller
     /**
      * Redirect the user to the GitHub authentication page.
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     public function redirectToProvider($provider)
     {
-        return Socialite::driver($provider)->stateless()->redirect();
+        $url= Socialite::driver($provider)->stateless()->redirect()->getTargetUrl();
+        return response()->json(['url' => $url]);
     }
 
     public function handleProviderCallback($provider)
