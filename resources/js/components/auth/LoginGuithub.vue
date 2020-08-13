@@ -4,8 +4,25 @@
 
 <script>
     export default {
-        name: "LoginGuithub"
+        name: "LoginGuithub",
+        methods:{
+            loginGithub() {
+                this.$store.dispatch('loginGithubCallback', {code: this.$route.query.code})
+                    .then((res) => {
+                        console.log(res);
+                        if (res.data.url){
+                            console.log(res.data.url)
+                            // window.location.href = res.data.url
+                        }
+                    })
+                    .catch(err => console.log(err))
+            },
+        },
+        created() {
+            this.loginGithub()
+        }
     }
+
 </script>
 
 <style scoped>

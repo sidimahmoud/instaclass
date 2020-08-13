@@ -2448,7 +2448,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "LoginGuithub"
+  name: "LoginGuithub",
+  methods: {
+    loginGithub: function loginGithub() {
+      this.$store.dispatch('loginGithubCallback', {
+        code: this.$route.query.code
+      }).then(function (res) {
+        console.log(res);
+
+        if (res.data.url) {
+          console.log(res.data.url); // window.location.href = res.data.url
+        }
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  },
+  created: function created() {
+    this.loginGithub();
+  }
 });
 
 /***/ }),
@@ -62236,7 +62254,7 @@ var actions = {
       }, _callee2);
     }))();
   },
-  register: function register(_ref3, user) {
+  loginGithubCallback: function loginGithubCallback(_ref3, payload) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
       var commit;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
@@ -62245,6 +62263,34 @@ var actions = {
             case 0:
               commit = _ref3.commit;
               return _context3.abrupt("return", new Promise(function (resolve, reject) {
+                commit('auth_request');
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/authorize/github/callback', {
+                  params: payload
+                }).then(function (resp) {
+                  resolve(resp);
+                })["catch"](function (err) {
+                  commit('auth_error');
+                  reject(err);
+                });
+              }));
+
+            case 2:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }))();
+  },
+  register: function register(_ref4, user) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      var commit;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              commit = _ref4.commit;
+              return _context4.abrupt("return", new Promise(function (resolve, reject) {
                 commit('auth_request');
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   url: 'https://instantclass.herokuapp.com/api/register/',
@@ -62271,21 +62317,21 @@ var actions = {
 
             case 2:
             case "end":
-              return _context3.stop();
+              return _context4.stop();
           }
         }
-      }, _callee3);
+      }, _callee4);
     }))();
   },
-  logout: function logout(_ref4) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+  logout: function logout(_ref5) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
       var commit;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
         while (1) {
-          switch (_context4.prev = _context4.next) {
+          switch (_context5.prev = _context5.next) {
             case 0:
-              commit = _ref4.commit;
-              return _context4.abrupt("return", new Promise(function (resolve, reject) {
+              commit = _ref5.commit;
+              return _context5.abrupt("return", new Promise(function (resolve, reject) {
                 commit('logout');
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
@@ -62295,10 +62341,10 @@ var actions = {
 
             case 2:
             case "end":
-              return _context4.stop();
+              return _context5.stop();
           }
         }
-      }, _callee4);
+      }, _callee5);
     }))();
   }
 };

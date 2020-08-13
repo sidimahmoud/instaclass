@@ -53,6 +53,21 @@ const actions = {
                 })
         })
     },
+    async loginGithubCallback({commit}, payload) {
+        return new Promise((resolve, reject) => {
+            commit('auth_request');
+            axios.get('https://instantclass.herokuapp.com/api/authorize/github/callback', {
+                params:payload
+            })
+                .then(resp => {
+                    resolve(resp)
+                })
+                .catch(err => {
+                    commit('auth_error');
+                    reject(err)
+                })
+        })
+    },
 
 
     async register({commit}, user) {
