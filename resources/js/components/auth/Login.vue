@@ -32,10 +32,8 @@
                                 <i class="fa fa-google mr-2"></i> Sign in with Google
                             </a>
                         </button>
-                        <button class="btn btn-lg btn-github btn-dark btn-block text-uppercase" type="submit">
-                            <a href="https://instantclass.herokuapp.com/api/authorize/github" class="text-white">
+                        <button class="btn btn-lg btn-github btn-dark btn-block text-uppercase" @click="loginGithub" >
                                 <i class="fa fa-github text-white mr-2" ></i> Sign in with Github
-                            </a>
                         </button>
                     </form>
                     <div class="text-center">Don't have an account?

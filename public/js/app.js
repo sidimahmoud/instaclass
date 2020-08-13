@@ -2392,8 +2392,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
@@ -41728,7 +41726,18 @@ var render = function() {
               _vm._v(" "),
               _vm._m(1),
               _vm._v(" "),
-              _vm._m(2)
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "btn btn-lg btn-github btn-dark btn-block text-uppercase",
+                  on: { click: _vm.loginGithub }
+                },
+                [
+                  _c("i", { staticClass: "fa fa-github text-white mr-2" }),
+                  _vm._v(" Sign in with Github\n                    ")
+                ]
+              )
             ]
           ),
           _vm._v(" "),
@@ -41781,33 +41790,6 @@ var staticRenderFns = [
           [
             _c("i", { staticClass: "fa fa-google mr-2" }),
             _vm._v(" Sign in with Google\n                        ")
-          ]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-lg btn-github btn-dark btn-block text-uppercase",
-        attrs: { type: "submit" }
-      },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "text-white",
-            attrs: {
-              href: "https://instantclass.herokuapp.com/api/authorize/github"
-            }
-          },
-          [
-            _c("i", { staticClass: "fa fa-github text-white mr-2" }),
-            _vm._v(" Sign in with Github\n                        ")
           ]
         )
       ]
