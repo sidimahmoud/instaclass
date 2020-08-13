@@ -92,7 +92,7 @@ class AuthController extends Controller
         $provider_user = Socialite::driver($provider)->stateless()->user();
         $user = null;
 
-        dd($provider_user);
+//        dd($provider_user);
 
 // If no provider user, fail
         if (!$provider_user->token) {
@@ -148,6 +148,7 @@ class AuthController extends Controller
         $user = User::create([
             'first_name' => $provider_user->name,
             'email' => $provider_user->email,
+            'image' => $provider_user->avatar,
             'password' => Hash::make(Str::random(12)),
             'email_verified_at' => now(),
         ]);
