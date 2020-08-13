@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -148,6 +149,9 @@ class AuthController extends Controller
             'password' => Hash::make(Str::random(12)),
             'email_verified_at' => now(),
         ]);
+        $studentR = Role::where('name', 'student')->first();
+        $user->roles()->attach($studentR);
+
 
         return $user;
     }

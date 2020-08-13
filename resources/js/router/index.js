@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import store from '../store'
 
 import Login from "../components/auth/Login";
+import LoginGuithub from "../components/auth/LoginGuithub";
 import Register from "../components/auth/Register";
 
 import Home from "../components/HomeCompnent";
@@ -92,6 +93,15 @@ const routes = [
         path: '/auth/login',
         name: 'Login',
         component: Login,
+        meta: {
+            requiresAuth: false,
+            requiresVisitore: true,
+        }
+    },
+    {
+        path: '/auth/github/callback',
+        name: 'Github',
+        component: LoginGuithub,
         meta: {
             requiresAuth: false,
             requiresVisitore: true,
