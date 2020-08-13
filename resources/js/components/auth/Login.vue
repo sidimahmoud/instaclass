@@ -71,7 +71,7 @@
                     .then((res) => {
                         console.log(res);
                         if (res.data.url){
-                            console.log(res.data.url)
+                            console.log(res.data.url);
                             window.location.href = res.data.url
                         }
                     })

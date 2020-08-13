@@ -2456,10 +2456,6 @@ __webpack_require__.r(__webpack_exports__);
         code: this.$route.query.code
       }).then(function (res) {
         console.log(res);
-
-        if (res.data.url) {
-          console.log(res.data.url);
-        }
       })["catch"](function (err) {
         return console.log(err);
       });
