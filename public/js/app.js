@@ -2422,7 +2422,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(res);
 
         if (res.data.url) {
-          window.location.href = res.data.url;
+          console.log(res.data.url); // window.location.href = res.data.url
         }
       })["catch"](function (err) {
         return console.log(err);
