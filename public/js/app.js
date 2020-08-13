@@ -2392,6 +2392,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
@@ -7888,7 +7889,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#bodyRegister[data-v-4221c3ad] {\n}\n.signup-form[data-v-4221c3ad] {\n    margin: 0 auto;\n    padding: 30px 0;\n}\n.signup-form h2[data-v-4221c3ad] {\n    color: #636363;\n    margin: 0 0 15px;\n    position: relative;\n    text-align: center;\n}\n.signup-form h2[data-v-4221c3ad]:before, .signup-form h2[data-v-4221c3ad]:after {\n    content: \"\";\n    height: 2px;\n    width: 30%;\n    background: #d4d4d4;\n    position: absolute;\n    top: 50%;\n    z-index: 2;\n}\n.signup-form h2[data-v-4221c3ad]:before {\n    left: 0;\n}\n.signup-form h2[data-v-4221c3ad]:after {\n    right: 0;\n}\n.signup-form .hint-text[data-v-4221c3ad] {\n    color: #999;\n    margin-bottom: 30px;\n    text-align: center;\n}\n.signup-form form[data-v-4221c3ad] {\n    color: #999;\n    border-radius: 3px;\n    margin-bottom: 15px;\n    background: #ffffff;\n    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);\n    padding: 30px;\n}\n.signup-form .form-group[data-v-4221c3ad] {\n    margin-bottom: 20px;\n}\n.signup-form input[type=\"checkbox\"][data-v-4221c3ad] {\n    margin-top: 3px;\n}\n.signup-form .btn[data-v-4221c3ad] {\n    font-size: 16px;\n    font-weight: bold;\n    min-width: 140px;\n    outline: none !important;\n}\n.signup-form .row div[data-v-4221c3ad]:first-child {\n    padding-right: 10px;\n}\n.signup-form .row div[data-v-4221c3ad]:last-child {\n    padding-left: 10px;\n}\n.signup-form a[data-v-4221c3ad]:hover {\n    text-decoration: none;\n}\n.signup-form form a[data-v-4221c3ad]:hover {\n    text-decoration: underline;\n}\n.btn-google[data-v-4221c3ad] {\n    color: white;\n    background-color: #ea4335\n}\n.btn-github[data-v-4221c3ad] {\n    color: white;\n}\n", ""]);
+exports.push([module.i, "\n#bodyRegister[data-v-4221c3ad] {\n}\n.signup-form[data-v-4221c3ad] {\n    margin: 0 auto;\n    padding: 30px 0;\n}\n.signup-form h2[data-v-4221c3ad] {\n    color: #636363;\n    margin: 0 0 15px;\n    position: relative;\n    text-align: center;\n}\n.signup-form h2[data-v-4221c3ad]:before, .signup-form h2[data-v-4221c3ad]:after {\n    content: \"\";\n    height: 2px;\n    width: 30%;\n    background: #d4d4d4;\n    position: absolute;\n    top: 50%;\n    z-index: 2;\n}\n.signup-form h2[data-v-4221c3ad]:before {\n    left: 0;\n}\n.signup-form h2[data-v-4221c3ad]:after {\n    right: 0;\n}\n.signup-form .hint-text[data-v-4221c3ad] {\n    color: #999;\n    margin-bottom: 30px;\n    text-align: center;\n}\n.signup-form[data-v-4221c3ad]  {\n    color: #999;\n    border-radius: 3px;\n    margin-bottom: 15px;\n    background: #ffffff;\n    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);\n    padding: 30px;\n}\n.signup-form .form-group[data-v-4221c3ad] {\n    margin-bottom: 20px;\n}\n.signup-form input[type=\"checkbox\"][data-v-4221c3ad] {\n    margin-top: 3px;\n}\n.signup-form .btn[data-v-4221c3ad] {\n    font-size: 16px;\n    font-weight: bold;\n    min-width: 140px;\n    outline: none !important;\n}\n.signup-form .row div[data-v-4221c3ad]:first-child {\n    padding-right: 10px;\n}\n.signup-form .row div[data-v-4221c3ad]:last-child {\n    padding-left: 10px;\n}\n.signup-form a[data-v-4221c3ad]:hover {\n    text-decoration: none;\n}\n.signup-form form a[data-v-4221c3ad]:hover {\n    text-decoration: underline;\n}\n.btn-google[data-v-4221c3ad] {\n    color: white;\n    background-color: #ea4335\n}\n.btn-github[data-v-4221c3ad] {\n    color: white;\n}\n", ""]);
 
 // exports
 
@@ -41624,7 +41625,7 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-sm-9 col-md-7 col-lg-5 mx-auto" }, [
-        _c("div", { staticClass: "signup-form" }, [
+        _c("div", { staticClass: "signup-form bg-white" }, [
           _c(
             "form",
             {
@@ -41720,24 +41721,24 @@ var render = function() {
                       : _vm._e()
                   ]
                 )
-              ]),
-              _vm._v(" "),
-              _c("h2", [_vm._v("Or")]),
-              _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "btn btn-lg btn-github btn-dark btn-block text-uppercase",
-                  on: { click: _vm.loginGithub }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-github text-white mr-2" }),
-                  _vm._v(" Sign in with Github\n                    ")
-                ]
-              )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("h2", [_vm._v("Or")]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "btn btn-lg btn-github btn-dark btn-block text-uppercase",
+              on: { click: _vm.loginGithub }
+            },
+            [
+              _c("i", { staticClass: "fa fa-github text-white mr-2" }),
+              _vm._v(" Sign in with Github\n                    ")
             ]
           ),
           _vm._v(" "),
@@ -41774,10 +41775,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "button",
-      {
-        staticClass: "btn btn-lg btn-google btn-block text-uppercase",
-        attrs: { type: "submit" }
-      },
+      { staticClass: "btn btn-lg btn-google btn-block text-uppercase" },
       [
         _c(
           "a",

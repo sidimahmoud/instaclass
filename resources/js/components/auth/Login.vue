@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                <div class="signup-form">
+                <div class="signup-form bg-white">
                     <form method="post" @submit.prevent="login">
                         <h2>Sign in</h2>
                         <p class="hint-text">Sign in to get started with Instantclass.</p>
@@ -26,8 +26,9 @@
                                 </div>
                             </button>
                         </div>
+                    </form>
                         <h2>Or</h2>
-                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
+                        <button class="btn btn-lg btn-google btn-block text-uppercase">
                             <a href="https://instantclass.herokuapp.com/api/authorize/google" class="text-white">
                                 <i class="fa fa-google mr-2"></i> Sign in with Google
                             </a>
@@ -35,7 +36,7 @@
                         <button class="btn btn-lg btn-github btn-dark btn-block text-uppercase" @click="loginGithub" >
                                 <i class="fa fa-github text-white mr-2" ></i> Sign in with Github
                         </button>
-                    </form>
+
                     <div class="text-center">Don't have an account?
                         <router-link :to="{name: 'Register'}">Sign up</router-link>
                     </div>
@@ -120,7 +121,7 @@
         text-align: center;
     }
 
-    .signup-form form {
+    .signup-form  {
         color: #999;
         border-radius: 3px;
         margin-bottom: 15px;
