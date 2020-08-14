@@ -129,12 +129,11 @@ class AuthController extends Controller
      */
     private function createSocialAccount($provider, $provider_user, User $user)
     {
-        $social_account = SocialAccount::create([
-            'provider' => $provider,
-            'provider_user_id' => $provider_user->id,
-            'user_id' => $user->id,
-        ]);
-
+        $social_account = new SocialAccount();
+        $social_account->provider = $provider;
+        $social_account->provider_user_id = $provider_user->id;
+        $social_account->user_id = $user->id;
+        $social_account->save();
         return $social_account;
     }
 
