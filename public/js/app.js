@@ -2452,10 +2452,14 @@ __webpack_require__.r(__webpack_exports__);
   name: "LoginGuithub",
   methods: {
     loginGithub: function loginGithub() {
+      var _this = this;
+
       this.$store.dispatch('loginGithubCallback', {
         code: this.$route.query.code
       }).then(function (res) {
         console.log(res);
+
+        _this.$route.push('/');
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -62198,15 +62202,13 @@ var actions = {
                   method: 'POST'
                 }).then(function (resp) {
                   var token = resp.data.token;
-                  var type = resp.data.type[0].name;
-                  console.log(type);
                   var user = {
                     'u': resp.data.user.id,
                     't': resp.data.user.roles[0].name
                   };
                   localStorage.setItem('token', token);
                   localStorage.setItem('user', JSON.stringify(user));
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = token;
+                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                   commit('auth_success', token, user);
                   resolve(resp);
                 })["catch"](function (err) {
@@ -62262,6 +62264,15 @@ var actions = {
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/authorize/github/callback', {
                   params: payload
                 }).then(function (resp) {
+                  var token = resp.data.token;
+                  var user = {
+                    'u': resp.data.user.id,
+                    't': "student"
+                  }; //resp.data.user.roles[0].name
+
+                  localStorage.setItem('token', token);
+                  localStorage.setItem('user', JSON.stringify(user));
+                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                   resolve(resp);
                 })["catch"](function (err) {
                   commit('auth_error');

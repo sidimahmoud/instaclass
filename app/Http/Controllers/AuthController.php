@@ -118,7 +118,7 @@ class AuthController extends Controller
             $user = User::findOrfail($social_account->user->id);
         }
 
-        $token = $user->createToken('login token')->accessToken;
+        $token = $user->createToken('login token')->plainTextToken;
         return response()->json(['user' => $user, 'token' => $token], 200);
     }
 

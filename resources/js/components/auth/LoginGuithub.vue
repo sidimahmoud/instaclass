@@ -10,6 +10,7 @@
                 this.$store.dispatch('loginGithubCallback', {code: this.$route.query.code})
                     .then((res) => {
                         console.log(res);
+                        this.$route.push('/')
                     })
                     .catch(err => console.log(err))
             },

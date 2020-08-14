@@ -21,13 +21,11 @@ const actions = {
             axios({url: 'https://instantclass.herokuapp.com/api/login', data: user, method: 'POST'})
                 .then(resp => {
                     const token = resp.data.token;
-                    const type = resp.data.type[0].name;
-                    console.log(type);
                     const user = {'u': resp.data.user.id, 't': resp.data.user.roles[0].name};
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
 
-                    axios.defaults.headers.common['Authorization'] = token;
+                    axios.defaults.headers.common['Authorization'] = 'Bearer '+ token;
                     commit('auth_success', token, user);
                     resolve(resp)
                 })
@@ -58,6 +56,12 @@ const actions = {
                 params:payload
             })
                 .then(resp => {
+                    const token = resp.data.token;
+                    const user = {'u': resp.data.user.id, 't': "student"}; //resp.data.user.roles[0].name
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('user', JSON.stringify(user));
+
+                    axios.defaults.headers.common['Authorization'] = 'Bearer '+ token;
                     resolve(resp)
                 })
                 .catch(err => {
