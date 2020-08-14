@@ -2459,7 +2459,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         console.log(res);
 
-        _this.$route.push('/');
+        _this.$router.push('/');
       })["catch"](function (err) {
         return console.log(err);
       });
