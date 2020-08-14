@@ -62234,7 +62234,6 @@ var actions = {
             case 0:
               commit = _ref2.commit;
               return _context2.abrupt("return", new Promise(function (resolve, reject) {
-                commit('auth_request');
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/authorize/github').then(function (resp) {
                   resolve(resp);
                 })["catch"](function (err) {
@@ -62260,7 +62259,6 @@ var actions = {
             case 0:
               commit = _ref3.commit;
               return _context3.abrupt("return", new Promise(function (resolve, reject) {
-                commit('auth_request');
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/authorize/github/callback', {
                   params: payload
                 }).then(function (resp) {
