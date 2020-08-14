@@ -93,9 +93,8 @@ class AuthController extends Controller
         $user = null;
 
 //        dd($provider_user);
-        $fname = explode(" ", $provider_user->name);
-        dd($fname);
-// If no provider user, fail
+
+        // If no provider user, fail
         if (!$provider_user->token) {
             return response()->json('Authentication from ' . $provider . ' failed.', 422);
         }
@@ -147,7 +146,11 @@ class AuthController extends Controller
     private function createUser($provider_user)
     {
         $user = new User();
-        $user->first_name = $provider_user->name;
+        $name = explode(" ", $provider_user->name);
+        $fname = $name[0];
+        $lname = $name[1];
+        $user->first_name = $fname;
+        $user->last_name = $lname;
         $user->email = $provider_user->email;
         $user->image = $provider_user->avatar;
         $user->password = Hash::make(Str::random(12));
@@ -155,7 +158,6 @@ class AuthController extends Controller
         $user->save();
         $studentR = Role::where('name', 'student')->first();
         $user->roles()->attach($studentR);
-
 
         return $user;
     }
