@@ -152,6 +152,8 @@ class AuthController extends Controller
         $user->first_name = $fname;
         $user->last_name = $lname;
         $user->email = $provider_user->email;
+        $user->headline = "my headline";
+        $user->about = "about me";
         $user->image = $provider_user->avatar;
         $user->password = Hash::make(Str::random(12));
         $user->email_verified_at = now();
