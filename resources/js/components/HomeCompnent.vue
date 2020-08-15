@@ -41,16 +41,15 @@
                     <span class="sr-only">Loading...</span>
                 </div>
             </div>
-            <div class="row" v-if="!loadingCategories">
-                <div class="col-md-4 col-sm-12 p-2" v-for="categ in allCategories" :key="categ.id">
-                    <div class="card">
-                        <div class="text-center">
-                            <i class="fa fa-code card-img-top text-danger fa-2x mt-1"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center font-weight-bold text-danger">
-                                <a href="#"> {{categ.name}} </a>
-                            </h5>
+            <div class="row justify-content-center align-items-center" v-if="!loadingCategories">
+                <div class="col-md-3 col-sm-12 p-2 text-center" v-for="categ in allCategories" :key="categ.id">
+                    <div class="card" >
+                        <a href="#">
+                            <img class="card-img-top" :src="'https://instantclass.herokuapp.com/uploads/categories/'+categ.image" alt="Card image cap">
+
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title  font-weight-bolder">{{categ.name}}</h5>
                             <p class="card-text">{{categ.description}}</p>
                         </div>
                     </div>
@@ -58,7 +57,6 @@
                 </div>
 
             </div>
-
 
 
         </div>

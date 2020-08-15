@@ -13,8 +13,8 @@
                             <h5 class="card-title text-left">{{course.name}}</h5>
                         </router-link>
                     </div>
-                    <div class="col-md-2 col-sm-12 justify-content-center align-items-center "> <b>Duration:</b> 3H</div>
-                    <div class="col-md-2 col-sm-12 justify-content-center align-items-center "><b>Language:</b> Fr</div>
+                    <div class="col-md-2 col-sm-12 justify-content-center align-items-center "> <b>Duration:</b>{{course.duration}}</div>
+                    <div class="col-md-2 col-sm-12 justify-content-center align-items-center "><b>Language:</b> {{course.language}}</div>
                     <div class="col-md-2 col-sm-12 justify-content-center align-items-center "><b>Sessions:</b> 3</div>
                     <div class="col-md-2 col-sm-12 justify-content-center align-items-center "><b>Type:</b> {{course.status==1?"Public":"Private"}}</div>
                 </div>

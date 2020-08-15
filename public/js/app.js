@@ -2317,8 +2317,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8161,7 +8159,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* card margin*/\n.card[data-v-0104f9b6]:not(:first-child) {\n    margin-left: 15px !important;\n}\n\n/* latest courses border bottom*/\n.latest_courses_border[data-v-0104f9b6] {\n    border-bottom: 5px solid red;\n    max-width: 6%;\n    min-height: 6%;\n    max-height: 6%;\n    min-width: 8%;\n    display: block;\n}\n.jumbotron[data-v-0104f9b6] {\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/images/home/bg.png */ "./resources/js/assets/images/home/bg.png")) + ");\n    border-radius: 0;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* card margin*/\n.card[data-v-0104f9b6]:not(:first-child) {\n    margin-left: 15px !important;\n}\n\n/* latest courses border bottom*/\n.latest_courses_border[data-v-0104f9b6] {\n    border-bottom: 5px solid red;\n    max-width: 6%;\n    min-height: 6%;\n    max-height: 6%;\n    min-width: 8%;\n    display: block;\n}\n.jumbotron[data-v-0104f9b6] {\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/images/home/bg.png */ "./resources/js/assets/images/home/bg.png")) + ");\n    border-radius: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -41754,27 +41752,33 @@ var render = function() {
       !_vm.loadingCategories
         ? _c(
             "div",
-            { staticClass: "row" },
+            { staticClass: "row justify-content-center align-items-center" },
             _vm._l(_vm.allCategories, function(categ) {
               return _c(
                 "div",
-                { key: categ.id, staticClass: "col-md-4 col-sm-12 p-2" },
+                {
+                  key: categ.id,
+                  staticClass: "col-md-3 col-sm-12 p-2 text-center"
+                },
                 [
                   _c("div", { staticClass: "card" }, [
-                    _vm._m(3, true),
+                    _c("a", { attrs: { href: "#" } }, [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: {
+                          src:
+                            "https://instantclass.herokuapp.com/uploads/categories/" +
+                            categ.image,
+                          alt: "Card image cap"
+                        }
+                      })
+                    ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "card-body text-center" }, [
                       _c(
                         "h5",
-                        {
-                          staticClass:
-                            "card-title text-center font-weight-bold text-danger"
-                        },
-                        [
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v(" " + _vm._s(categ.name) + " ")
-                          ])
-                        ]
+                        { staticClass: "card-title  font-weight-bolder" },
+                        [_vm._v(_vm._s(categ.name))]
                       ),
                       _vm._v(" "),
                       _c("p", { staticClass: "card-text" }, [
@@ -41882,14 +41886,6 @@ var staticRenderFns = [
       { staticClass: "spinner-border", attrs: { role: "status" } },
       [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c("i", { staticClass: "fa fa-code card-img-top text-danger fa-2x mt-1" })
-    ])
   }
 ]
 render._withStripped = true
@@ -42669,11 +42665,31 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "col-md-2 col-sm-12 justify-content-center align-items-center "
+                },
+                [
+                  _c("b", [_vm._v("Duration:")]),
+                  _vm._v(_vm._s(_vm.course.duration))
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "col-md-2 col-sm-12 justify-content-center align-items-center "
+                },
+                [
+                  _c("b", [_vm._v("Language:")]),
+                  _vm._v(" " + _vm._s(_vm.course.language))
+                ]
+              ),
+              _vm._v(" "),
               _vm._m(0),
-              _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _vm._m(2),
               _vm._v(" "),
               _c(
                 "div",
@@ -42717,7 +42733,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(3)
+            _vm._m(1)
           ]
         )
       ]
@@ -42725,32 +42741,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "col-md-2 col-sm-12 justify-content-center align-items-center "
-      },
-      [_c("b", [_vm._v("Duration:")]), _vm._v(" 3H")]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "col-md-2 col-sm-12 justify-content-center align-items-center "
-      },
-      [_c("b", [_vm._v("Language:")]), _vm._v(" Fr")]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
