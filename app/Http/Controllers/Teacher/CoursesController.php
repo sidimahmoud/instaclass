@@ -43,11 +43,11 @@ class CoursesController extends Controller
             return response()->json(["response" => 'unauthorized']);
         }
         $course = new Course();
-        $course->user_id =1 ;// $request->user()->id;
+        $course->user_id = $request->user()->id;
         $course->name = $request['name'];
         $course->description = $request['description'];
         $course->short_description = $request['short_description'];
-        $course->sub_category_id = $request['sub_category_id'];
+        $course->category_id = $request['sub_category_id'];
         $course->image = $request['image'];
         $course->status = $request['status'];
         $course->price = $request['price'];
