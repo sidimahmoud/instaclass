@@ -52,7 +52,7 @@ const actions = {
     },
     async loginGithubCallback({commit}, payload) {
         return new Promise((resolve, reject) => {
-            axios.get('https://instantclass.herokuapp.com/api/authorize/github/callback', {
+            axios.get('https://instantclass.herokuapp.com/api/authorize/facebook/callback', {
                 params:payload
             })
                 .then(resp => {

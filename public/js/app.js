@@ -63142,7 +63142,7 @@ var actions = {
             case 0:
               commit = _ref3.commit;
               return _context3.abrupt("return", new Promise(function (resolve, reject) {
-                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/authorize/github/callback', {
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/authorize/facebook/callback', {
                   params: payload
                 }).then(function (resp) {
                   var token = resp.data.token;
