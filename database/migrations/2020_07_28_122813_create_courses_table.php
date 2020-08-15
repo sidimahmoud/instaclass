@@ -21,7 +21,9 @@ class CreateCoursesTable extends Migration
             $table->string('description');
             $table->string('image');
             $table->string('slug')->unique();
-            $table->integer('sub_category_id');
+            $table->integer('category_id');
+            $table->integer('language');
+            $table->integer('duration');
             $table->string('status');
             $table->integer('type');
             $table->float('price')->nullable();

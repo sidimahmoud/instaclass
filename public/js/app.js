@@ -2458,6 +2458,7 @@ __webpack_require__.r(__webpack_exports__);
         code: this.$route.query.code
       }).then(function (res) {
         console.log(res);
+        location.reload();
 
         _this.$router.push('/');
       })["catch"](function (err) {
@@ -2562,6 +2563,43 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3002,8 +3040,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3071,20 +3107,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -42070,40 +42092,162 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "card shadow-sm", staticStyle: { width: "16rem" } },
-    [
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: { name: "Detail", params: { slug: _vm.course.slug } },
-            tag: "a"
-          }
-        },
-        [
-          _c("img", {
-            staticClass: "card-img-top",
-            attrs: { src: _vm.course.image, alt: "Card image cap" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h5", { staticClass: "card-title text-center" }, [
-              _vm._v(_vm._s(_vm.course.name))
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass:
+          "row mb-2 shadow-sm px-0 py-2 bg-white justify-content-around align-items-center text-center"
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "col-md-3  align-items-center" },
+          [
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: { name: "Detail", params: { slug: _vm.course.slug } },
+                  tag: "a"
+                }
+              },
+              [
+                _c("img", {
+                  staticClass: "w-50 rounded-circle",
+                  attrs: { src: _vm.course.image, alt: "Card image cap" }
+                }),
+                _vm._v(" "),
+                _c("p", [_vm._v("Nom Teacher")])
+              ]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-md-9 justify-content-center align-items-center" },
+          [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "col-md-4 col-sm-12 justify-content-center align-items-center"
+                },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      attrs: {
+                        to: {
+                          name: "Detail",
+                          params: { slug: _vm.course.slug }
+                        },
+                        tag: "a"
+                      }
+                    },
+                    [
+                      _c("h5", { staticClass: "card-title text-center" }, [
+                        _vm._v(_vm._s(_vm.course.name))
+                      ])
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "col-md-2 col-sm-12 justify-content-center align-items-center "
+                },
+                [
+                  _c("b", [_vm._v("Type:")]),
+                  _vm._v(
+                    " " + _vm._s(_vm.course.status == 1 ? "Public" : "Private")
+                  )
+                ]
+              )
             ]),
             _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v(_vm._s(_vm.course.short_description))
+            _c("div", { staticClass: "row text-left" }, [
+              _c("div", { staticClass: "col-8" }, [
+                _c("b", [_vm._v("Description")]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(_vm.course.short_description) +
+                    "\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-4 text-right" }, [
+                _c("b", [
+                  _vm._v(
+                    _vm._s(
+                      _vm.course.price == 0 ? "Free" : "$" + _vm.course.price
+                    )
+                  )
+                ])
+              ])
             ])
-          ])
-        ]
-      )
-    ],
-    1
-  )
+          ]
+        )
+      ]
+    )
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "col-md-2 col-sm-12 justify-content-center align-items-center "
+      },
+      [_c("b", [_vm._v("Duration:")]), _vm._v(" 3H")]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "col-md-2 col-sm-12 justify-content-center align-items-center "
+      },
+      [_c("b", [_vm._v("Language:")]), _vm._v(" Fr")]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "col-md-2 col-sm-12 justify-content-center align-items-center "
+      },
+      [_c("b", [_vm._v("Sessions:")]), _vm._v(" 3")]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -43030,16 +43174,10 @@ var render = function() {
       !_vm.loading
         ? _c(
             "div",
-            { staticClass: "row text-center" },
             _vm._l(_vm.allCourses, function(c) {
-              return _c(
-                "div",
-                { key: c.id, staticClass: "col-lg-3 col-md-4 col-sm-12 mb-4" },
-                [_c("course", { attrs: { course: c } })],
-                1
-              )
+              return _c("course", { key: c.id, attrs: { course: c } })
             }),
-            0
+            1
           )
         : _vm._e()
     ]
@@ -43255,84 +43393,25 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _vm.isLoggedIn
-                ? _c(
-                    "li",
-                    { staticClass: "nav-item" },
+              _c(
+                "li",
+                { staticClass: "nav-item" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link bg-danger text-white rounded",
+                      attrs: { to: { name: "TeacherProfile" }, tag: "a" }
+                    },
                     [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "nav-link bg-danger text-white rounded",
-                          attrs: { to: { name: "TeacherProfile" }, tag: "a" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Account\n                    "
-                          )
-                        ]
+                      _vm._v(
+                        "\n                        Account\n                    "
                       )
-                    ],
-                    1
+                    ]
                   )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.isLoggedIn
-                ? _c("li", { staticClass: "nav-item" }, [
-                    _c("a", { staticClass: "nav-link" }, [
-                      _c("span", { on: { click: _vm.logout } }, [
-                        _vm._v(
-                          "\n                            Logout\n                        "
-                        )
-                      ])
-                    ])
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              !_vm.isLoggedIn
-                ? _c(
-                    "li",
-                    { staticClass: "nav-item" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "nav-link ",
-                          attrs: { to: { name: "Login" }, tag: "a" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Login\n                    "
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              !_vm.isLoggedIn
-                ? _c(
-                    "li",
-                    { staticClass: "nav-item" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass:
-                            "nav-link bg-secondary text-white rounded",
-                          attrs: { to: { name: "Register" }, tag: "a" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Register\n                    "
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e(),
+                ],
+                1
+              ),
               _vm._v(" "),
               _vm._m(1)
             ])

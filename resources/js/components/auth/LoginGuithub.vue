@@ -10,7 +10,8 @@
                 this.$store.dispatch('loginGithubCallback', {code: this.$route.query.code})
                     .then((res) => {
                         console.log(res);
-                        this.$router.push('/')
+                        location.reload();
+                        this.$router.push('/');
                     })
                     .catch(err => console.log(err))
             },
