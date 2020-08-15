@@ -32,9 +32,7 @@
                     </div>
                         <h2>Or</h2>
                         <button class="btn btn-lg btn-google btn-block text-uppercase">
-                            <a href="https://instantclass.herokuapp.com/api/authorize/google" class="text-white">
                                 <i class="fa fa-google mr-2"></i> Continue with Google
-                            </a>
                         </button>
                         <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGithub" >
                                 <i class="fa fa-facebook-f text-white mr-2" ></i> Continue with Facebook

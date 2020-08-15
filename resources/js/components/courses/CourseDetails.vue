@@ -19,7 +19,7 @@
                             <br>
                             <span class="badge badge-warning text-white">
                             <i class="fa fa-star text-white mr-2"></i>
-                            4.7
+                            5.0
                         </span>
                             ({{course.ratings.length }} rating)
                             <div class="mt-4">
@@ -239,7 +239,11 @@
                     <div class="col-12">
                         <h1>Ready to get started</h1>
                         <div>
-                            <button class="btn btn-danger">View all courses</button>
+                            <button class="btn btn-danger">
+                                <router-link to="/courses">
+                                    View all courses
+                                </router-link>
+                            </button>
                         </div>
                     </div>
                 </div>

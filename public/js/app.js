@@ -2392,8 +2392,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
@@ -2701,118 +2699,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Checkout"
 });
@@ -2828,6 +2714,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -2894,6 +2783,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Review */ "./resources/js/components/courses/Review.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -42146,19 +42039,8 @@ var staticRenderFns = [
       "button",
       { staticClass: "btn btn-lg btn-google btn-block text-uppercase" },
       [
-        _c(
-          "a",
-          {
-            staticClass: "text-white",
-            attrs: {
-              href: "https://instantclass.herokuapp.com/api/authorize/google"
-            }
-          },
-          [
-            _c("i", { staticClass: "fa fa-google mr-2" }),
-            _vm._v(" Continue with Google\n                        ")
-          ]
-        )
+        _c("i", { staticClass: "fa fa-google mr-2" }),
+        _vm._v(" Continue with Google\n                    ")
       ]
     )
   }
@@ -42444,45 +42326,6 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-md-8 mb-4 " }, [
           _c("div", { staticClass: "card" }, [
             _c("form", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-md-6 mb-2" }, [
-                  _c("div", { staticClass: "md-form " }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "firstName" }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "firstName" } }, [
-                      _vm._v("First name")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6 mb-2" }, [
-                  _c("div", { staticClass: "md-form input-group " }, [
-                    _c("div", { staticClass: "input-group-prepend" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "input-group-text",
-                          attrs: { id: "basic-addon1" }
-                        },
-                        [_c("i", { staticClass: "fa fa-phone " })]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control ",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Telephone",
-                        "aria-describedby": "basic-addon1"
-                      }
-                    })
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
               _c("div", { staticClass: "my-3" }, [
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-lg-3 col-md-6" }, [
@@ -42499,23 +42342,15 @@ var staticRenderFns = [
                         attrs: { id: "method", required: "" }
                       },
                       [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Choose...")
-                        ]),
+                        _c("option", [_vm._v("Credit card")]),
                         _vm._v(" "),
-                        _c("option", [_vm._v("Espace")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("Transfert")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("PayPal")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("Credit card")])
+                        _c("option", [_vm._v("PayPal")])
                       ]
                     ),
                     _vm._v(" "),
                     _c("div", { staticClass: "invalid-feedback" }, [
                       _vm._v(
-                        "\n                                        Please select a valid payment method.\n                                    "
+                        "\n                                    Please select a valid payment method.\n                                "
                       )
                     ])
                   ])
@@ -42541,7 +42376,7 @@ var staticRenderFns = [
                         _vm._v(" "),
                         _c("div", { staticClass: "invalid-feedback" }, [
                           _vm._v(
-                            "\n                                                Name on card is required\n                                            "
+                            "\n                                            Name on card is required\n                                        "
                           )
                         ])
                       ]),
@@ -42563,7 +42398,7 @@ var staticRenderFns = [
                         _vm._v(" "),
                         _c("div", { staticClass: "invalid-feedback" }, [
                           _vm._v(
-                            "\n                                                Credit card number is required\n                                            "
+                            "\n                                            Credit card number is required\n                                        "
                           )
                         ])
                       ]),
@@ -42585,7 +42420,7 @@ var staticRenderFns = [
                         _vm._v(" "),
                         _c("div", { staticClass: "invalid-feedback" }, [
                           _vm._v(
-                            "\n                                                Expiration date required\n                                            "
+                            "\n                                            Expiration date required\n                                        "
                           )
                         ])
                       ])
@@ -42609,7 +42444,7 @@ var staticRenderFns = [
                         _vm._v(" "),
                         _c("div", { staticClass: "invalid-feedback" }, [
                           _vm._v(
-                            "\n                                                Security code required\n                                            "
+                            "\n                                            Security code required\n                                        "
                           )
                         ])
                       ])
@@ -42634,146 +42469,13 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "Save this information\n                                            for next\n                                            time"
+                              "Save this information\n                                        for next\n                                        time"
                             )
                           ]
                         )
                       ]
                     )
                   ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "mb-3" }, [
-                _c("div", { staticClass: "custom-control custom-checkbox" }, [
-                  _c("input", {
-                    staticClass: "custom-control-input",
-                    attrs: { type: "checkbox", id: "shipping" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "custom-control-label font-weight-bold",
-                      attrs: { for: "shipping" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                                    Livraison\n                                "
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "border rounded p-2" }, [
-                  _c("div", { staticClass: "row " }, [
-                    _c("div", { staticClass: "col-lg-4 col-md-12" }, [
-                      _c("label", { attrs: { for: "wilaya" } }, [
-                        _vm._v("Wilaya")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "custom-select d-block w-100",
-                          attrs: { id: "wilaya", required: "" }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Choose...")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("Nouakchott")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("Nouadhibou")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("Brakna")])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "invalid-feedback" }, [
-                        _vm._v(
-                          "\n                                            Please select a valid country.\n                                        "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-lg-4 col-md-6" }, [
-                      _c("label", { attrs: { for: "state" } }, [
-                        _vm._v("Moughataa")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "custom-select d-block w-100",
-                          attrs: { id: "state", required: "" }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Choose...")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("TVZ")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("Ksar")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("Teyarett")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("Arafat")])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "invalid-feedback" }, [
-                        _vm._v(
-                          "\n                                            Please provide a valid state.\n                                        "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-lg-4 col-md-6" }, [
-                      _c("div", { staticClass: "md-form mb-5" }, [
-                        _c("input", {
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "address",
-                            placeholder: "1234 Main St"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("label", { attrs: { for: "address" } }, [
-                          _vm._v("Cartier")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "custom-control custom-checkbox text-right"
-                    },
-                    [
-                      _c("input", {
-                        staticClass: "custom-control-input",
-                        attrs: { type: "checkbox", id: "save-adress" }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          staticClass: "custom-control-label",
-                          attrs: { for: "save-adress" }
-                        },
-                        [
-                          _vm._v(
-                            "Save this information for\n                                        next time"
-                          )
-                        ]
-                      )
-                    ]
-                  )
                 ])
               ]),
               _vm._v(" "),
@@ -42797,7 +42499,9 @@ var staticRenderFns = [
                 "d-flex justify-content-between align-items-center mb-3"
             },
             [
-              _c("span", { staticClass: "text-muted" }, [_vm._v("Your cart")]),
+              _c("span", { staticClass: "text-muted" }, [
+                _vm._v("Course Details")
+              ]),
               _vm._v(" "),
               _c("span", { staticClass: "badge badge-secondary badge-pill" }, [
                 _vm._v("\n                        1 ")
@@ -42818,42 +42522,13 @@ var staticRenderFns = [
                     _vm._v("1 "),
                     _c("span", { staticClass: "font-weight-bold" }, [
                       _vm._v(
-                        "\n                                    elem.element.nom\n                                "
+                        "\n                                    Build WPA with vue.js\n                                "
                       )
                     ])
                   ])
                 ]),
                 _vm._v(" "),
-                _c("span", { staticClass: "text-muted" }, [_vm._v("PRIX MRU")])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "list-group-item d-flex justify-content-between" },
-              [
-                _c("span", [_vm._v("Livraison")]),
-                _vm._v(" "),
-                _c("strong", [_vm._v("100 MRU")])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              {
-                staticClass:
-                  "list-group-item d-flex justify-content-between bg-light"
-              },
-              [
-                _c("div", { staticClass: "text-success" }, [
-                  _c("h6", { staticClass: "my-0" }, [_vm._v("Promo code")]),
-                  _vm._v(" "),
-                  _c("small", [_vm._v("JSCOV19")])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-success" }, [
-                  _vm._v("-250 MRU")
-                ])
+                _c("span", { staticClass: "text-muted" }, [_vm._v("$10.99")])
               ]
             ),
             _vm._v(" "),
@@ -42864,36 +42539,11 @@ var staticRenderFns = [
                   "list-group-item d-flex justify-content-between font-weight-bold"
               },
               [
-                _c("span", [_vm._v("Total (MRU)")]),
+                _c("span", [_vm._v("Total (USD)")]),
                 _vm._v(" "),
-                _c("strong", [_vm._v("1200")])
+                _c("strong", [_vm._v("10.99")])
               ]
             )
-          ]),
-          _vm._v(" "),
-          _c("form", { staticClass: "card p-2" }, [
-            _c("div", { staticClass: "input-group" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  placeholder: "Promo code",
-                  "aria-label": "Recipient's username",
-                  "aria-describedby": "basic-addon2"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group-append" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary btn-md waves-effect m-0",
-                    attrs: { type: "button" }
-                  },
-                  [_vm._v("Redeem")]
-                )
-              ])
-            ])
           ])
         ])
       ])
@@ -42943,11 +42593,9 @@ var render = function() {
               },
               [
                 _c("img", {
-                  staticClass: "w-50 rounded-circle",
+                  staticClass: "w-100 rounded-circle",
                   attrs: { src: _vm.course.image, alt: "Card image cap" }
-                }),
-                _vm._v(" "),
-                _c("p", [_vm._v("Nom Teacher")])
+                })
               ]
             )
           ],
@@ -42958,12 +42606,12 @@ var render = function() {
           "div",
           { staticClass: "col-md-9 justify-content-center align-items-center" },
           [
-            _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "row text-left" }, [
               _c(
                 "div",
                 {
                   staticClass:
-                    "col-md-4 col-sm-12 justify-content-center align-items-center"
+                    "col-md-4 col-sm-12 justify-content-center align-items-center "
                 },
                 [
                   _c(
@@ -42978,7 +42626,7 @@ var render = function() {
                       }
                     },
                     [
-                      _c("h5", { staticClass: "card-title text-center" }, [
+                      _c("h5", { staticClass: "card-title text-left" }, [
                         _vm._v(_vm._s(_vm.course.name))
                       ])
                     ]
@@ -43014,13 +42662,17 @@ var render = function() {
                 _vm._v(" "),
                 _c("br"),
                 _vm._v(
-                  "\n                        " +
+                  "\n                    " +
                     _vm._s(_vm.course.short_description) +
-                    "\n                    "
+                    "\n                "
                 )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-4 text-right" }, [
+                _c("b", [_vm._v("Price")]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
                 _c("b", [
                   _vm._v(
                     _vm._s(
@@ -43029,7 +42681,9 @@ var render = function() {
                   )
                 ])
               ])
-            ])
+            ]),
+            _vm._v(" "),
+            _vm._m(3)
           ]
         )
       ]
@@ -43075,6 +42729,22 @@ var staticRenderFns = [
       },
       [_c("b", [_vm._v("Sessions:")]), _vm._v(" 3")]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row text-left mt-2" }, [
+      _c("div", { staticClass: "col-4" }, [_c("b", [_vm._v("Availability")])]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-4" }, [
+        _vm._v("\n                    17/09: 05pm - 8pm ET\n                ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-4" }, [
+        _vm._v("\n                    10/10: 11am - 12pm ET\n                ")
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -43424,7 +43094,30 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(7)
+            _c(
+              "div",
+              { staticClass: "row mt-5 p-5 bg-primary text-center text-white" },
+              [
+                _c("div", { staticClass: "col-12" }, [
+                  _c("h1", [_vm._v("Ready to get started")]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "button",
+                      { staticClass: "btn btn-danger" },
+                      [
+                        _c("router-link", { attrs: { to: "/courses" } }, [
+                          _vm._v(
+                            "\n                                View all courses\n                            "
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ]
+            )
           ])
         ])
       : _vm._e()
@@ -43447,7 +43140,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "badge badge-warning text-white" }, [
       _c("i", { staticClass: "fa fa-star text-white mr-2" }),
-      _vm._v("\n                        4.7\n                    ")
+      _vm._v("\n                        5.0\n                    ")
     ])
   },
   function() {
@@ -43730,26 +43423,6 @@ var staticRenderFns = [
         }
       })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "row mt-5 p-5 bg-primary text-center text-white" },
-      [
-        _c("div", { staticClass: "col-12" }, [
-          _c("h1", [_vm._v("Ready to get started")]),
-          _vm._v(" "),
-          _c("div", [
-            _c("button", { staticClass: "btn btn-danger" }, [
-              _vm._v("View all courses")
-            ])
-          ])
-        ])
-      ]
-    )
   }
 ]
 render._withStripped = true
