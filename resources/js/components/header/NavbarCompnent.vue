@@ -32,6 +32,11 @@
                         </router-link>
                     </li>
                     <li class="nav-item" >
+                        <router-link :to="{name: 'Demande'}" tag="a"
+                                     class="nav-link">
+                            Demande de cours
+                        </router-link>
+                    </li>                    <li class="nav-item" >
                         <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                      class="nav-link bg-danger text-white rounded">
                             Account

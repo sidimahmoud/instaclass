@@ -40,21 +40,19 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">Register Now</button>
                             </div>
+                            <div class="text-center">Already have an account?
+                                <router-link :to="{name: 'Login'}">Sign in</router-link>
+                            </div>
                             <h2>Or</h2>
                             <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
                                 <a href="https://instantclass.herokuapp.com/api/authorize/google" class="text-white">
-                                    <i class="fa fa-google mr-2"></i> Sign up with Google
+                                    <i class="fa fa-google mr-2"></i> Continue with Google
                                 </a>
                             </button>
-                            <button class="btn btn-lg btn-github btn-dark btn-block text-uppercase" type="submit">
-                                <a href="https://instantclass.herokuapp.com/api/authorize/github" class="text-white">
-                                    <i class="fa fa-github text-white mr-2" ></i> Sign up with Github
-                                </a>
+                            <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGithub">
+                                <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
                             </button>
                         </form>
-                        <div class="text-center">Already have an account?
-                            <router-link :to="{name: 'Login'}">Sign in</router-link>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -70,7 +68,7 @@
     }
 </script>
 
-<style scoped >
+<style scoped>
     #bodyRegister {
     }
 
@@ -158,6 +156,6 @@
 
     .btn-github {
         color: white;
-
+        background: #4267B2;
     }
 </style>

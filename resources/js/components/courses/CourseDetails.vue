@@ -228,7 +228,9 @@
                                 <h3 class="card-title font-weight-bolder text-danger">
                                     {{(course.status==2)?'$'+course.price:"Free Course"}}</h3>
                                 <p class="card-text">23 hours left at this price!</p>
-                                <a href="#" class="btn btn-primary my-3">Buy now</a>
+                                <router-link to="/checkout" tag="a" class="btn btn-primary my-3">
+                                    Buy now
+                                </router-link>
                             </div>
                         </div>
                     </div>

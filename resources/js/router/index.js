@@ -9,9 +9,13 @@ import Register from "../components/auth/Register";
 import Home from "../components/HomeCompnent";
 import About from "../components/About";
 import Countact from "../components/ContactCompo";
+import Checkout from "../components/checkout/Checkout";
+
 import Details from "../components/courses/CourseDetails";
 import Courses from "../components/courses/Courses";
 import CoursePlayer from "../components/courses/CoursePlayer";
+import Demande from "../components/courses/Demande";
+
 import TeacherProfile from "../components/teacher/Profile";
 import StudentProfile from "../components/student/Profile";
 
@@ -59,9 +63,25 @@ const routes = [
         }
     },
     {
+        path: '/course/demande',
+        name: 'Demande',
+        component: Demande,
+        meta: {
+            requiresAuth: false,
+        }
+    },
+    {
         path: '/player/:slug',
         name: 'Player',
         component: CoursePlayer,
+        meta: {
+            requiresAuth: true,
+        }
+    },
+    {
+        path: '/checkout',
+        name: 'Checkout',
+        component: Checkout,
         meta: {
             requiresAuth: true,
         }
