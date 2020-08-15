@@ -1,5 +1,5 @@
 <template>
-    <h1>Logging with github, please wait!</h1>
+    <h1>Logging in , please wait!</h1>
 </template>
 
 <script>
@@ -15,9 +15,19 @@
                     })
                     .catch(err => console.log(err))
             },
+            loginGoogle() {
+                this.$store.dispatch('loginGoogleCallback', {code: this.$route.query.code})
+                    .then((res) => {
+                        console.log(res);
+                        location.reload();
+                        this.$router.push('/');
+                    })
+                    .catch(err => console.log(err))
+            },
         },
         created() {
-            this.loginGithub()
+            // this.loginGithub()
+            this.loginGoogle()
         }
     }
 

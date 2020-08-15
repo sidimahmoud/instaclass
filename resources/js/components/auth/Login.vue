@@ -30,15 +30,16 @@
                     <div class="text-center">Don't have an account?
                         <router-link :to="{name: 'Register'}">Sign up</router-link>
                     </div>
-                        <h2>Or</h2>
-                        <button class="btn btn-lg btn-google btn-block text-uppercase">
-                                <i class="fa fa-google mr-2"></i> Continue with Google
-                        </button>
-                        <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGithub" >
-                                <i class="fa fa-facebook-f text-white mr-2" ></i> Continue with Facebook
-                        </button>
+                    <h2>Or</h2>
+                    <button class="btn btn-lg btn-google btn-block text-uppercase">
 
-
+                        <a href="https://instantclass.herokuapp.com/api/authorize/google" @click="loginGoogle">
+                            <i class="fa fa-google mr-2"></i> Continue with Google
+                        </a>
+                    </button>
+                    <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGithub">
+                        <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
+                    </button>
                 </div>
             </div>
         </div>
@@ -51,13 +52,16 @@
     export default {
 
         name: "Login",
+
         data() {
             return {
                 email: '',
                 password: ''
+
             }
         },
         methods: {
+
             login() {
                 let email = this.email;
                 let password = this.password;
@@ -69,7 +73,18 @@
                 this.$store.dispatch('loginGithub')
                     .then((res) => {
                         console.log(res);
-                        if (res.data.url){
+                        if (res.data.url) {
+                            console.log(res.data.url);
+                            window.location.href = res.data.url
+                        }
+                    })
+                    .catch(err => console.log(err))
+            },
+            loginGoogle() {
+                this.$store.dispatch('loginGoogle')
+                    .then((res) => {
+                        console.log(res);
+                        if (res.data.url) {
                             console.log(res.data.url);
                             window.location.href = res.data.url
                         }
@@ -121,7 +136,7 @@
         text-align: center;
     }
 
-    .signup-form  {
+    .signup-form {
         color: #999;
         border-radius: 3px;
         margin-bottom: 15px;
@@ -158,7 +173,6 @@
     }
 
 
-
     .signup-form form a:hover {
         text-decoration: underline;
     }
@@ -171,5 +185,11 @@
     .btn-github {
         color: white;
         background: #4267B2;
+    }
+    .btn-github a{
+        color: white;
+    }
+    .btn-google a{
+        color: white;
     }
 </style>

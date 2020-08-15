@@ -2392,6 +2392,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
@@ -2418,6 +2419,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     loginGithub: function loginGithub() {
       this.$store.dispatch('loginGithub').then(function (res) {
+        console.log(res);
+
+        if (res.data.url) {
+          console.log(res.data.url);
+          window.location.href = res.data.url;
+        }
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    loginGoogle: function loginGoogle() {
+      this.$store.dispatch('loginGoogle').then(function (res) {
         console.log(res);
 
         if (res.data.url) {
@@ -2463,10 +2476,25 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         return console.log(err);
       });
+    },
+    loginGoogle: function loginGoogle() {
+      var _this2 = this;
+
+      this.$store.dispatch('loginGoogleCallback', {
+        code: this.$route.query.code
+      }).then(function (res) {
+        console.log(res);
+        location.reload();
+
+        _this2.$router.push('/');
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     }
   },
   created: function created() {
-    this.loginGithub();
+    // this.loginGithub()
+    this.loginGoogle();
   }
 });
 
@@ -8152,7 +8180,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#bodyRegister[data-v-4221c3ad] {\n}\n.signup-form[data-v-4221c3ad] {\n    margin: 0 auto;\n    padding: 30px 0;\n}\n.signup-form h2[data-v-4221c3ad] {\n    color: #636363;\n    margin: 0 0 15px;\n    position: relative;\n    text-align: center;\n}\n.signup-form h2[data-v-4221c3ad]:before, .signup-form h2[data-v-4221c3ad]:after {\n    content: \"\";\n    height: 2px;\n    width: 30%;\n    background: #d4d4d4;\n    position: absolute;\n    top: 50%;\n    z-index: 2;\n}\n.signup-form h2[data-v-4221c3ad]:before {\n    left: 0;\n}\n.signup-form h2[data-v-4221c3ad]:after {\n    right: 0;\n}\n.signup-form .hint-text[data-v-4221c3ad] {\n    color: #999;\n    margin-bottom: 30px;\n    text-align: center;\n}\n.signup-form[data-v-4221c3ad]  {\n    color: #999;\n    border-radius: 3px;\n    margin-bottom: 15px;\n    background: #ffffff;\n    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);\n    padding: 30px;\n}\n.signup-form .form-group[data-v-4221c3ad] {\n    margin-bottom: 20px;\n}\n.signup-form input[type=\"checkbox\"][data-v-4221c3ad] {\n    margin-top: 3px;\n}\n.signup-form .btn[data-v-4221c3ad] {\n    font-size: 16px;\n    font-weight: bold;\n    min-width: 140px;\n    outline: none !important;\n}\n.signup-form .row div[data-v-4221c3ad]:first-child {\n    padding-right: 10px;\n}\n.signup-form .row div[data-v-4221c3ad]:last-child {\n    padding-left: 10px;\n}\n.signup-form a[data-v-4221c3ad]:hover {\n    text-decoration: none;\n}\n.signup-form form a[data-v-4221c3ad]:hover {\n    text-decoration: underline;\n}\n.btn-google[data-v-4221c3ad] {\n    color: white;\n    background-color: #ea4335\n}\n.btn-github[data-v-4221c3ad] {\n    color: white;\n    background: #4267B2;\n}\n", ""]);
+exports.push([module.i, "\n#bodyRegister[data-v-4221c3ad] {\n}\n.signup-form[data-v-4221c3ad] {\n    margin: 0 auto;\n    padding: 30px 0;\n}\n.signup-form h2[data-v-4221c3ad] {\n    color: #636363;\n    margin: 0 0 15px;\n    position: relative;\n    text-align: center;\n}\n.signup-form h2[data-v-4221c3ad]:before, .signup-form h2[data-v-4221c3ad]:after {\n    content: \"\";\n    height: 2px;\n    width: 30%;\n    background: #d4d4d4;\n    position: absolute;\n    top: 50%;\n    z-index: 2;\n}\n.signup-form h2[data-v-4221c3ad]:before {\n    left: 0;\n}\n.signup-form h2[data-v-4221c3ad]:after {\n    right: 0;\n}\n.signup-form .hint-text[data-v-4221c3ad] {\n    color: #999;\n    margin-bottom: 30px;\n    text-align: center;\n}\n.signup-form[data-v-4221c3ad] {\n    color: #999;\n    border-radius: 3px;\n    margin-bottom: 15px;\n    background: #ffffff;\n    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);\n    padding: 30px;\n}\n.signup-form .form-group[data-v-4221c3ad] {\n    margin-bottom: 20px;\n}\n.signup-form input[type=\"checkbox\"][data-v-4221c3ad] {\n    margin-top: 3px;\n}\n.signup-form .btn[data-v-4221c3ad] {\n    font-size: 16px;\n    font-weight: bold;\n    min-width: 140px;\n    outline: none !important;\n}\n.signup-form .row div[data-v-4221c3ad]:first-child {\n    padding-right: 10px;\n}\n.signup-form .row div[data-v-4221c3ad]:last-child {\n    padding-left: 10px;\n}\n.signup-form a[data-v-4221c3ad]:hover {\n    text-decoration: none;\n}\n.signup-form form a[data-v-4221c3ad]:hover {\n    text-decoration: underline;\n}\n.btn-google[data-v-4221c3ad] {\n    color: white;\n    background-color: #ea4335\n}\n.btn-github[data-v-4221c3ad] {\n    color: white;\n    background: #4267B2;\n}\n.btn-github a[data-v-4221c3ad]{\n    color: white;\n}\n.btn-google a[data-v-4221c3ad]{\n    color: white;\n}\n", ""]);
 
 // exports
 
@@ -42002,7 +42030,26 @@ var render = function() {
           _vm._v(" "),
           _c("h2", [_vm._v("Or")]),
           _vm._v(" "),
-          _vm._m(1),
+          _c(
+            "button",
+            { staticClass: "btn btn-lg btn-google btn-block text-uppercase" },
+            [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href:
+                      "https://instantclass.herokuapp.com/api/authorize/google"
+                  },
+                  on: { click: _vm.loginGoogle }
+                },
+                [
+                  _c("i", { staticClass: "fa fa-google mr-2" }),
+                  _vm._v(" Continue with Google\n                    ")
+                ]
+              )
+            ]
+          ),
           _vm._v(" "),
           _c(
             "button",
@@ -42012,7 +42059,7 @@ var render = function() {
             },
             [
               _c("i", { staticClass: "fa fa-facebook-f text-white mr-2" }),
-              _vm._v(" Continue with Facebook\n                    ")
+              _vm._v(" Continue with Facebook\n                ")
             ]
           )
         ])
@@ -42029,19 +42076,6 @@ var staticRenderFns = [
       "div",
       { staticClass: "spinner-border", attrs: { role: "status" } },
       [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "btn btn-lg btn-google btn-block text-uppercase" },
-      [
-        _c("i", { staticClass: "fa fa-google mr-2" }),
-        _vm._v(" Continue with Google\n                    ")
-      ]
     )
   }
 ]
@@ -42066,7 +42100,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Logging with github, please wait!")])
+  return _c("h1", [_vm._v("Logging in , please wait!")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -63135,7 +63169,7 @@ var actions = {
       }, _callee3);
     }))();
   },
-  register: function register(_ref4, user) {
+  loginGoogle: function loginGoogle(_ref4) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
       var commit;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
@@ -63144,6 +63178,67 @@ var actions = {
             case 0:
               commit = _ref4.commit;
               return _context4.abrupt("return", new Promise(function (resolve, reject) {
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/authorize/google').then(function (resp) {
+                  resolve(resp);
+                })["catch"](function (err) {
+                  commit('auth_error');
+                  reject(err);
+                });
+              }));
+
+            case 2:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }))();
+  },
+  loginGoogleCallback: function loginGoogleCallback(_ref5, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+      var commit;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              commit = _ref5.commit;
+              return _context5.abrupt("return", new Promise(function (resolve, reject) {
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/authorize/google/callback', {
+                  params: payload
+                }).then(function (resp) {
+                  var token = resp.data.token;
+                  var user = {
+                    'u': resp.data.user.id,
+                    't': "student"
+                  }; //resp.data.user.roles[0].name
+
+                  localStorage.setItem('token', token);
+                  localStorage.setItem('user', JSON.stringify(user));
+                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                  resolve(resp);
+                })["catch"](function (err) {
+                  commit('auth_error');
+                  reject(err);
+                });
+              }));
+
+            case 2:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }))();
+  },
+  register: function register(_ref6, user) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+      var commit;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              commit = _ref6.commit;
+              return _context6.abrupt("return", new Promise(function (resolve, reject) {
                 commit('auth_request');
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   url: 'https://instantclass.herokuapp.com/api/register/',
@@ -63170,21 +63265,21 @@ var actions = {
 
             case 2:
             case "end":
-              return _context4.stop();
+              return _context6.stop();
           }
         }
-      }, _callee4);
+      }, _callee6);
     }))();
   },
-  logout: function logout(_ref5) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+  logout: function logout(_ref7) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
       var commit;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
         while (1) {
-          switch (_context5.prev = _context5.next) {
+          switch (_context7.prev = _context7.next) {
             case 0:
-              commit = _ref5.commit;
-              return _context5.abrupt("return", new Promise(function (resolve, reject) {
+              commit = _ref7.commit;
+              return _context7.abrupt("return", new Promise(function (resolve, reject) {
                 commit('logout');
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
@@ -63194,10 +63289,10 @@ var actions = {
 
             case 2:
             case "end":
-              return _context5.stop();
+              return _context7.stop();
           }
         }
-      }, _callee5);
+      }, _callee7);
     }))();
   }
 };

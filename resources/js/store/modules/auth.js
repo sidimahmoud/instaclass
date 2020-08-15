@@ -71,6 +71,39 @@ const actions = {
         })
     },
 
+    async loginGoogle({commit}) {
+        return new Promise((resolve, reject) => {
+            axios.get('https://instantclass.herokuapp.com/api/authorize/google')
+                .then(resp => {
+                    resolve(resp)
+                })
+                .catch(err => {
+                    commit('auth_error');
+                    reject(err)
+                })
+        })
+    },
+    async loginGoogleCallback({commit}, payload) {
+        return new Promise((resolve, reject) => {
+            axios.get('https://instantclass.herokuapp.com/api/authorize/google/callback', {
+                params:payload
+            })
+                .then(resp => {
+                    const token = resp.data.token;
+                    const user = {'u': resp.data.user.id, 't': "student"}; //resp.data.user.roles[0].name
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('user', JSON.stringify(user));
+
+                    axios.defaults.headers.common['Authorization'] = 'Bearer '+ token;
+                    resolve(resp)
+                })
+                .catch(err => {
+                    commit('auth_error');
+                    reject(err)
+                })
+        })
+    },
+
 
     async register({commit}, user) {
         return new Promise((resolve, reject) => {
