@@ -41,6 +41,13 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request['name'];
         $category->description = $request['description'];
+        if ($request->hasFile('image')) {
+            $file = $request['image'];
+            $extension = $file->getClientOriginalExtension();
+            $file_name = time() . "." . $extension;
+            $file->move('uploads/categories/', $file_name);
+            $category->image = $file_name;
+        }
         $category->save();
 
         if ($category)
@@ -97,7 +104,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->delete();
-        return response()->json(["response"=>"category deleted"]);
+        return response()->json(["response" => "category deleted"]);
 
     }
 }
