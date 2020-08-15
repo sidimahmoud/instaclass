@@ -32,16 +32,16 @@ return [
     'github' => [
         'client_id' => env('GITHUB_CLIENT_ID'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
-        'redirect' => 'https://instantclass.herokuapp.com/api/authorize/github',
+        'redirect' => 'https://instantclass.herokuapp.com/authorize/github/callback',
     ],
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => 'https://instantclass.herokuapp.com/api/authorize/google',
+        'redirect' => 'https://instantclass.herokuapp.com/authorize/github/callback',
     ],
     'facebook' => [
         'client_id' => env('FACEBOOK_APP_ID'),
         'client_secret' => env('FACEBOOK_APP_SECRET'),
-        'redirect' => 'https://instantclass.herokuapp.com/api/authorize/facebook',
+        'redirect' => 'https://instantclass.herokuapp.com/authorize/github/callback',
     ],
 ];
