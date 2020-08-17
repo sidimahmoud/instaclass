@@ -2236,6 +2236,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /***/ }),
 
@@ -8192,7 +8193,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*  footer link */\nfooter a[data-v-abfbddf2]{\n    color: #FFFEFE !important;\n}\n.page-footer[data-v-abfbddf2]{\n    background-color:#0e0938 !important;\n}\nhr[data-v-abfbddf2]{\n    background:#e2e2e2;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*  footer link */\nfooter a[data-v-abfbddf2]{\n    color: #FFFEFE !important;\n}\n.page-footer[data-v-abfbddf2]{\n    background-color:#0e0938 !important;\n}\nhr[data-v-abfbddf2]{\n    background:#e2e2e2;\n}\n", ""]);
 
 // exports
 
@@ -41663,7 +41664,15 @@ var staticRenderFns = [
                         "navbar-brand text-primary font-weight-bolder",
                       attrs: { href: "/" }
                     },
-                    [_vm._v("\nJS                        ")]
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: __webpack_require__(/*! ../assets/logo.png */ "./resources/js/assets/logo.png"),
+                          alt: "",
+                          width: "80px"
+                        }
+                      })
+                    ]
                   )
                 ]
               )
@@ -41772,7 +41781,7 @@ var staticRenderFns = [
             "footer-copyright text-center py-3 text-capitalize text-white"
         },
         [
-          _vm._v("\n            © 2020 Copyright:\n            "),
+          _vm._v("\n        © 2020 Copyright:\n        "),
           _c("a", { attrs: { href: "https://instantclass.ca/" } }, [
             _vm._v("instantclass.ca")
           ])
