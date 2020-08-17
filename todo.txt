@@ -9,8 +9,6 @@ Tableau administrateur:
  - suprimer/blocker utilisateur/teacher
  - voir les payments --  passer les payments hebdomadaire des teachers. (visa mastercard ...)
 
-  (voir photo sur skype) --- payment iteract ----email
-
  - CRUD messages contact us
  - CRUD les demandes de cours
  - CRUD les categories, cours, utilisater, professeur.

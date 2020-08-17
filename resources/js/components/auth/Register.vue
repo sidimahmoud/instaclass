@@ -70,8 +70,6 @@
 </script>
 
 <style scoped>
-    #bodyRegister {
-    }
 
     .signup-form {
         margin: 0 auto;
