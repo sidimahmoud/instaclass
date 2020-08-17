@@ -41830,12 +41830,7 @@ var render = function() {
                     _c("a", { attrs: { href: "#" } }, [
                       _c("img", {
                         staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://instantclass.herokuapp.com/uploads/categories/" +
-                            categ.image,
-                          alt: "Card image cap"
-                        }
+                        attrs: { src: categ.image, alt: "Card image cap" }
                       })
                     ]),
                     _vm._v(" "),

@@ -49,7 +49,7 @@
                     <div class="card">
                         <a href="#">
                             <img class="card-img-top"
-                                 :src="'https://instantclass.herokuapp.com/uploads/categories/'+categ.image"
+                                 :src="categ.image"
                                  alt="Card image cap">
 
                         </a>
