@@ -3,9 +3,10 @@
         <div class="jumbotron">
             <div class="container  align-items-center">
                 <div class="row justify-content-around align-items-center">
-                    <div class="col-md-6 col-sm-12 text-center text-md-left justify-content-center align-items-center text-white">
+                    <div
+                        class="col-md-6 col-sm-12 text-center text-md-left justify-content-center align-items-center text-white">
                         <h1 class="display-3">The perfect Platform</h1>
-                        <h4 class="h3 ">For Online  <span class="text-danger">Courses</span></h4>
+                        <h4 class="h3 ">For Online <span class="text-danger">Courses</span></h4>
                         <div class="mt-4">
                             <button class="btn btn-danger text-capitalize text-white">Get Started</button>
                             <button class="btn btn-outline-danger ml-4">
@@ -24,12 +25,16 @@
                 </div>
             </div>
         </div>
-
+        <div class=" text-right">
+            <a href="#"> <i class="fa fa-facebook mx-3 fa-2x"></i> </a>
+            <a href="#"> <i class="fa fa-twitter mx-3 fa-2x"></i> </a>
+            <a href="#"> <i class="fa fa-linkedin mx-3 fa-2x"></i> </a>
+            <a href="#"> <i class="fa fa-instagram mx-3 fa-2x"></i> </a>
+            <a href="#"> <i class="fa fa-snapchat mx-3 fa-2x"></i> </a>
+        </div>
         <div class="container d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
             <h3 class="text-primary">All categories </h3>
-            <span class="latest_courses_border">
-
-    </span>
+            <span class="latest_courses_border"> </span>
         </div>
 
 
@@ -41,9 +46,11 @@
             </div>
             <div class="row justify-content-center align-items-center" v-if="!loadingCategories">
                 <div class="col-md-3 col-sm-12 p-2 text-center" v-for="categ in allCategories" :key="categ.id">
-                    <div class="card" >
+                    <div class="card">
                         <a href="#">
-                            <img class="card-img-top" :src="'https://instantclass.herokuapp.com/uploads/categories/'+categ.image" alt="Card image cap">
+                            <img class="card-img-top"
+                                 :src="'https://instantclass.herokuapp.com/uploads/categories/'+categ.image"
+                                 alt="Card image cap">
 
                         </a>
                         <div class="card-body text-center">

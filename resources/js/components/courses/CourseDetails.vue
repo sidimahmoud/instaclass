@@ -7,13 +7,12 @@
         </div>
         <div v-if="!loading">
             <div class="jumbotron">
-                <div class="container d-flex align-items-center">
+                <div class="container ">
                     <div class="row justify-content-around align-items-center">
-                        <div class="col-md-6 col-sm-12  justify-content-center align-items-center text-white">
-                            <img :src="course.image" alt="" class="img-fluid" max-width="500px">
+                        <div class="col-md-6 col-sm-12  text-white">
+                            <img :src="course.image" alt="" class="img-fluid" width="400px">
                         </div>
-
-                        <div class="col-md-6 col-sm-12 text-center text-md-left p-2 text-white">
+                        <div class="col-md-6 col-sm-12  p-2 text-white text-center text-md-left">
                             <h2>{{course.name}}</h2>
                             <p>{{course.short_description}}</p>
                             <br>
@@ -192,7 +191,8 @@
                                         <div class="media-body">
                                             <div class="reviews-members-header">
                                                 <span class="star-rating float-right">
-                                                      <i class="fa fa-star text-warning" v-for="star in rating.rate"></i>
+                                                      <i class="fa fa-star text-warning"
+                                                         v-for="star in rating.rate"></i>
                                                 </span>
                                                 <h6 class="mb-1"><a class="text-black" href="#">{{rating.user.first_name}}
                                                     {{rating.user.last_name}}</a>
@@ -218,11 +218,11 @@
 
 
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-1 ">
 
                     </div>
-                    <div class="col-md-4 text-center">
-                        <div class="card bg-white">
+                    <div class="col-md-4 text-center ">
+                        <div class="card bg-white mt-2">
                             <img class="card-img-top" :src="course.image" alt="Card image cap">
                             <div class="card-body text-center">
                                 <h3 class="card-title font-weight-bolder text-danger">
@@ -240,7 +240,7 @@
                         <h1>Ready to get started</h1>
                         <div>
                             <button class="btn btn-danger">
-                                <router-link to="/courses">
+                                <router-link :to="{name: 'Courses'}" tag="a" class="text-white">
                                     View all courses
                                 </router-link>
                             </button>

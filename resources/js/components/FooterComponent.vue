@@ -14,8 +14,7 @@
                     <!-- Content -->
                     <h6 class="text-uppercase font-weight-bold text-white mt-3">
                         <a class="navbar-brand text-primary font-weight-bolder" href="/">
-                            <img src="../assets/logo.png" alt="" width="80px">
-                        </a>
+JS                        </a>
                     </h6>
 
                 </div>

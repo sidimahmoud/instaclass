@@ -2236,7 +2236,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /***/ }),
 
@@ -2257,6 +2256,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8186,7 +8192,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*  footer link */\nfooter a[data-v-abfbddf2]{\n    color: #FFFEFE !important;\n}\n.page-footer[data-v-abfbddf2]{\n    background-color:#0e0938 !important;\n}\nhr[data-v-abfbddf2]{\n    background:#e2e2e2;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*  footer link */\nfooter a[data-v-abfbddf2]{\n    color: #FFFEFE !important;\n}\n.page-footer[data-v-abfbddf2]{\n    background-color:#0e0938 !important;\n}\nhr[data-v-abfbddf2]{\n    background:#e2e2e2;\n}\n", ""]);
 
 // exports
 
@@ -8206,7 +8212,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* card margin*/\n.card[data-v-0104f9b6]:not(:first-child) {\n    margin-left: 15px !important;\n}\n\n/* latest courses border bottom*/\n.latest_courses_border[data-v-0104f9b6] {\n    border-bottom: 5px solid red;\n    max-width: 6%;\n    min-height: 6%;\n    max-height: 6%;\n    min-width: 8%;\n    display: block;\n}\n.jumbotron[data-v-0104f9b6] {\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/images/home/bg.png */ "./resources/js/assets/images/home/bg.png")) + ");\n    border-radius: 0;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* card margin*/\n.card[data-v-0104f9b6]:not(:first-child) {\n    margin-left: 15px !important;\n}\n\n/* latest courses border bottom*/\n.latest_courses_border[data-v-0104f9b6] {\n    border-bottom: 5px solid red;\n    max-width: 6%;\n    min-height: 6%;\n    max-height: 6%;\n    min-width: 8%;\n    display: block;\n}\n.jumbotron[data-v-0104f9b6] {\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/images/home/bg.png */ "./resources/js/assets/images/home/bg.png")) + ");\n    border-radius: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -41657,15 +41663,7 @@ var staticRenderFns = [
                         "navbar-brand text-primary font-weight-bolder",
                       attrs: { href: "/" }
                     },
-                    [
-                      _c("img", {
-                        attrs: {
-                          src: __webpack_require__(/*! ../assets/logo.png */ "./resources/js/assets/logo.png"),
-                          alt: "",
-                          width: "80px"
-                        }
-                      })
-                    ]
+                    [_vm._v("\nJS                        ")]
                   )
                 ]
               )
@@ -41774,7 +41772,7 @@ var staticRenderFns = [
             "footer-copyright text-center py-3 text-capitalize text-white"
         },
         [
-          _vm._v("\n        © 2020 Copyright:\n        "),
+          _vm._v("\n            © 2020 Copyright:\n            "),
           _c("a", { attrs: { href: "https://instantclass.ca/" } }, [
             _vm._v("instantclass.ca")
           ])
@@ -41809,9 +41807,11 @@ var render = function() {
     _vm._v(" "),
     _vm._m(1),
     _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _vm.loadingCategories
-        ? _c("div", { staticClass: "text-center text-primary" }, [_vm._m(2)])
+        ? _c("div", { staticClass: "text-center text-primary" }, [_vm._m(3)])
         : _vm._e(),
       _vm._v(" "),
       !_vm.loadingCategories
@@ -41883,7 +41883,7 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("h4", { staticClass: "h3 " }, [
-                  _vm._v("For Online  "),
+                  _vm._v("For Online "),
                   _c("span", { staticClass: "text-danger" }, [
                     _vm._v("Courses")
                   ])
@@ -41920,6 +41920,32 @@ var staticRenderFns = [
             ])
           ]
         )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: " text-right" }, [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fa fa-facebook mx-3 fa-2x" })
+      ]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fa fa-twitter mx-3 fa-2x" })
+      ]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fa fa-linkedin mx-3 fa-2x" })
+      ]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fa fa-instagram mx-3 fa-2x" })
+      ]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fa fa-snapchat mx-3 fa-2x" })
       ])
     ])
   },
@@ -42828,36 +42854,25 @@ var render = function() {
     !_vm.loading
       ? _c("div", [
           _c("div", { staticClass: "jumbotron" }, [
-            _c("div", { staticClass: "container d-flex align-items-center" }, [
+            _c("div", { staticClass: "container " }, [
               _c(
                 "div",
                 {
                   staticClass: "row justify-content-around align-items-center"
                 },
                 [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "col-md-6 col-sm-12  justify-content-center align-items-center text-white"
-                    },
-                    [
-                      _c("img", {
-                        staticClass: "img-fluid",
-                        attrs: {
-                          src: _vm.course.image,
-                          alt: "",
-                          "max-width": "500px"
-                        }
-                      })
-                    ]
-                  ),
+                  _c("div", { staticClass: "col-md-6 col-sm-12  text-white" }, [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      attrs: { src: _vm.course.image, alt: "", width: "400px" }
+                    })
+                  ]),
                   _vm._v(" "),
                   _c(
                     "div",
                     {
                       staticClass:
-                        "col-md-6 col-sm-12 text-center text-md-left p-2 text-white"
+                        "col-md-6 col-sm-12  p-2 text-white text-center text-md-left"
                     },
                     [
                       _c("h2", [_vm._v(_vm._s(_vm.course.name))]),
@@ -43092,10 +43107,10 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-1" }),
+              _c("div", { staticClass: "col-md-1 " }),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-4 text-center" }, [
-                _c("div", { staticClass: "card bg-white" }, [
+              _c("div", { staticClass: "col-md-4 text-center " }, [
+                _c("div", { staticClass: "card bg-white mt-2" }, [
                   _c("img", {
                     staticClass: "card-img-top",
                     attrs: { src: _vm.course.image, alt: "Card image cap" }
@@ -43158,11 +43173,18 @@ var render = function() {
                       "button",
                       { staticClass: "btn btn-danger" },
                       [
-                        _c("router-link", { attrs: { to: "/courses" } }, [
-                          _vm._v(
-                            "\n                                View all courses\n                            "
-                          )
-                        ])
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "text-white",
+                            attrs: { to: { name: "Courses" }, tag: "a" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                View all courses\n                            "
+                            )
+                          ]
+                        )
                       ],
                       1
                     )
