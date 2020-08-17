@@ -12,7 +12,11 @@
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto my-auto mb-4">
 
                     <!-- Content -->
-                    <h6 class="text-uppercase font-weight-bold text-white mt-3">INSTANTCLASS</h6>
+                    <h6 class="text-uppercase font-weight-bold text-white mt-3">
+                        <a class="navbar-brand text-primary font-weight-bolder" href="/">
+                            <img src="../assets/logo.png" alt="" width="80px">
+                        </a>
+                    </h6>
 
                 </div>
                 <!-- Grid column -->

@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                    <div class="signup-form">
+                    <div class="signup-form bg-white">
                         <form method="post">
                             <h2>Register</h2>
                             <p class="hint-text">Create your account. It's free and only takes a minute.</p>
@@ -40,19 +40,20 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">Register Now</button>
                             </div>
-                            <div class="text-center">Already have an account?
-                                <router-link :to="{name: 'Login'}">Sign in</router-link>
-                            </div>
-                            <h2>Or</h2>
-                            <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
-                                <a href="https://instantclass.herokuapp.com/api/authorize/google" class="text-white">
-                                    <i class="fa fa-google mr-2"></i> Continue with Google
-                                </a>
-                            </button>
-                            <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGithub">
-                                <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
-                            </button>
+
                         </form>
+                        <div class="text-center">Already have an account?
+                            <router-link :to="{name: 'Login'}">Sign in</router-link>
+                        </div>
+                        <h2>Or</h2>
+                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
+                            <a href="https://instantclass.herokuapp.com/api/authorize/google" class="text-white">
+                                <i class="fa fa-google mr-2"></i> Continue with Google
+                            </a>
+                        </button>
+                        <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGithub">
+                            <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
+                        </button>
                     </div>
                 </div>
             </div>

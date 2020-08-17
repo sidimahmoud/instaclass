@@ -16,9 +16,11 @@ import Courses from "../components/courses/Courses";
 import CoursePlayer from "../components/courses/CoursePlayer";
 import Demande from "../components/courses/Demande";
 
+import Become from "../components/teacher/Become";
 import TeacherProfile from "../components/teacher/Profile";
 import StudentProfile from "../components/student/Profile";
 
+import Homefr from "../components/fr/Homefr";
 Vue.use(VueRouter);
 
 const routes = [
@@ -102,6 +104,14 @@ const routes = [
         }
     },
     {
+        path: '/teacher/register',
+        name: 'Become',
+        component: Become,
+        meta: {
+            requiresAuth: false,
+        }
+    },
+    {
         path: '/student/profile',
         name: 'StudentProfile',
         component: StudentProfile,
@@ -109,6 +119,7 @@ const routes = [
             requiresAuth: true,
         }
     },
+
     {
         path: '/auth/login',
         name: 'Login',
@@ -137,7 +148,15 @@ const routes = [
         }
     },
 
-
+    // fr routes
+    {
+        path: '/fr',
+        name: 'HomeFr',
+        component: Homefr,
+        meta: {
+            requiresAuth: false,
+        }
+    },
 ];
 
 const router = new VueRouter({

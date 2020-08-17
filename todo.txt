@@ -1,0 +1,17 @@
+Modification instantclass:
+
+
+
+
+
+Tableau administrateur:
+ - suivre tous les cours en tant qu'admin
+ - suprimer/blocker utilisateur/teacher
+ - voir les payments --  passer les payments hebdomadaire des teachers. (visa mastercard ...)
+
+  (voir photo sur skype) --- payment iteract ----email
+
+ - CRUD messages contact us
+ - CRUD les demandes de cours
+ - CRUD les categories, cours, utilisater, professeur.
+ - system notification nouveau cours creer / couriel.

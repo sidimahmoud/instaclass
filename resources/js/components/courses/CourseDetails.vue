@@ -229,7 +229,7 @@
                                     {{(course.status==2)?'$'+course.price:"Free Course"}}</h3>
                                 <p class="card-text">23 hours left at this price!</p>
                                 <router-link to="/checkout" tag="a" class="btn btn-primary my-3">
-                                    Buy now
+                                    S'inscrire à ce cours
                                 </router-link>
                             </div>
                         </div>

@@ -3,11 +3,9 @@
         <div class="jumbotron">
             <div class="container  align-items-center">
                 <div class="row justify-content-around align-items-center">
-                    <div
-                        class="col-md-6 col-sm-12 text-center text-md-left justify-content-center align-items-center text-white">
-                        <h1 class="display-4">The Plateform</h1>
-                        <h4 class="h3">Of Learning and Sharing</h4>
-                        <h4 class="h3">Of knowledge on <span class="text-danger">Live</span></h4>
+                    <div class="col-md-6 col-sm-12 text-center text-md-left justify-content-center align-items-center text-white">
+                        <h1 class="display-3">The perfect Platform</h1>
+                        <h4 class="h3 ">For Online  <span class="text-danger">Courses</span></h4>
                         <div class="mt-4">
                             <button class="btn btn-danger text-capitalize text-white">Get Started</button>
                             <button class="btn btn-outline-danger ml-4">
