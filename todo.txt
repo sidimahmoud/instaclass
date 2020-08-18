@@ -1,9 +1,6 @@
 Modification instantclass:
 
 
-
-
-
 Tableau administrateur:
  - suivre tous les cours en tant qu'admin
  - suprimer/blocker utilisateur/teacher

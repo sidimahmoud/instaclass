@@ -49,21 +49,16 @@
                     <div class="card">
                         <a href="#">
                             <img class="card-img-top"
-                                 :src="categ.image"
+                                 :src="'https://instantclass.herokuapp.com/uploads/categories/'+categ.image"
                                  alt="Card image cap">
-
                         </a>
                         <div class="card-body text-center">
                             <h5 class="card-title  font-weight-bolder">{{categ.name}}</h5>
                             <p class="card-text">{{categ.description}}</p>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
-
         </div>
     </div>
 </template>

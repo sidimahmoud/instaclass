@@ -20,7 +20,12 @@ import Become from "../components/teacher/Become";
 import TeacherProfile from "../components/teacher/Profile";
 import StudentProfile from "../components/student/Profile";
 
+import Dashboard from "../components/admin/Dashboard";
+import AdminCourses from "../components/admin/Courses";
+import Users from "../components/admin/Users";
+
 import Homefr from "../components/fr/Homefr";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -156,6 +161,25 @@ const routes = [
         meta: {
             requiresAuth: false,
         }
+    },
+
+    // Admin routes
+    {
+        path: '/admin',
+        name: 'Admin',
+        component: Dashboard,
+        children: [
+            {
+                path: 'users',
+                name: 'AdminUsers',
+                component: Users,
+            },
+            {
+                path: 'courses',
+                name: 'AdminCourses',
+                component: AdminCourses,
+            },
+        ]
     },
 ];
 
