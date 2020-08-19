@@ -5,33 +5,30 @@
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">First name</th>
-                <th scope="col">Last name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Active</th>
-                <th scope="col">Bio</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Block</th>
+                <th scope="col">Teacher ID</th>
+                <th scope="col">Teacher name</th>
+                <th scope="col">Teacher email</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Method</th>
+                <th scope="col">Course ID</th>
+                <th scope="col">Course name</th>
+                <th scope="col">Date</th>
+
             </tr>
             </thead>
             <tbody>
-            <tr v-for="t in allSent">
+            <tr v-for="t in allReceived">
                 <th scope="row">{{t.id}}</th>
-                <td>{{t.first_name}}</td>
-                <td>{{t.last_name}}</td>
-                <td>{{t.email.toLocaleLowerCase()}}</td>
-                <td><input type="checkbox" name="" id="" checked disabled></td>
-                <td>{{t.headline}}</td>
-                <td>
-                    <button class="btn btn-warning">
-                        <i class="fa fa-edit"></i>
-                    </button>
-                </td>
-                <td>
-                    <button class="btn btn-danger">
-                        &times
-                    </button>
-                </td>
+                <td>{{user_id}}</td>
+                <td>Course name</td>
+                <td>Teacher email</td>
+                <td>{{t.amount}}</td>
+                <td>method</td>
+                <td>{{t.course_id}}</td>
+                <td>Course name</td>
+                <td>{{t.created_at}}</td>
+
+
 
             </tr>
             </tbody>

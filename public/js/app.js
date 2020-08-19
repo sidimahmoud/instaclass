@@ -2935,14 +2935,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Received",
@@ -2971,9 +2963,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
 //
 //
 //
@@ -44379,19 +44368,17 @@ var render = function() {
           return _c("tr", [
             _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(t.id))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.first_name))]),
+            _c("td", [_vm._v(_vm._s(t.user_id))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.last_name))]),
+            _c("td", [_vm._v(_vm._s(t.amount))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.email.toLocaleLowerCase()))]),
+            _c("td", [_vm._v(_vm._s(t.method))]),
             _vm._v(" "),
-            _vm._m(1, true),
+            _c("td", [_vm._v(_vm._s(t.course_id))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.headline))]),
+            _c("td", [_vm._v("Course name")]),
             _vm._v(" "),
-            _vm._m(2, true),
-            _vm._v(" "),
-            _vm._m(3, true)
+            _c("td", [_vm._v(_vm._s(t.created_at))])
           ])
         }),
         0
@@ -44408,49 +44395,17 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("First name")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("User ID")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Last name")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Amount")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Method")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Active")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Course ID")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Bio")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Course name")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Block")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", {
-        attrs: { type: "checkbox", name: "", id: "", checked: "", disabled: "" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-warning" }, [
-        _c("i", { staticClass: "fa fa-edit" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-danger" }, [
-        _vm._v("\n                    ×\n                ")
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date")])
       ])
     ])
   }
@@ -44484,23 +44439,25 @@ var render = function() {
       _vm._v(" "),
       _c(
         "tbody",
-        _vm._l(_vm.allSent, function(t) {
+        _vm._l(_vm.allReceived, function(t) {
           return _c("tr", [
             _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(t.id))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.first_name))]),
+            _c("td", [_vm._v(_vm._s(_vm.user_id))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.last_name))]),
+            _c("td", [_vm._v("Course name")]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.email.toLocaleLowerCase()))]),
+            _c("td", [_vm._v("Teacher email")]),
             _vm._v(" "),
-            _vm._m(1, true),
+            _c("td", [_vm._v(_vm._s(t.amount))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.headline))]),
+            _c("td", [_vm._v("method")]),
             _vm._v(" "),
-            _vm._m(2, true),
+            _c("td", [_vm._v(_vm._s(t.course_id))]),
             _vm._v(" "),
-            _vm._m(3, true)
+            _c("td", [_vm._v("Course name")]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(t.created_at))])
           ])
         }),
         0
@@ -44517,49 +44474,21 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("First name")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Teacher ID")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Last name")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Teacher name")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Teacher email")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Active")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Amount")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Bio")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Method")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Course ID")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Block")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", {
-        attrs: { type: "checkbox", name: "", id: "", checked: "", disabled: "" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-warning" }, [
-        _c("i", { staticClass: "fa fa-edit" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-danger" }, [
-        _vm._v("\n                    ×\n                ")
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Course name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date")])
       ])
     ])
   }
