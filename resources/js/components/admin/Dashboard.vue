@@ -61,7 +61,7 @@
                         <h6 class="collapse-header">Choisir:</h6>
                         <a class="collapse-item" href="#teachers" @click="component='Users'">Techers</a>
                         <a class="collapse-item" href="#students" @click="component='Users'">Students</a>
-                        <a class="collapse-item"href="#admins" @click="component='Users'">Admins</a>
+                        <a class="collapse-item" href="#admins" @click="component='Users'">Admins</a>
 
                     </div>
                 </div>
@@ -148,10 +148,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <component v-bind:is="component">
-
-                    </component>
-
+                    <component v-bind:is="component"/>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -165,18 +162,19 @@
 </template>
 
 <script>
-    import Users from "./Users";
+    import Users from "./Teachers";
     import Received from "./Received";
     import Home from "./Home";
+
     export default {
         name: "Dashboard",
-        components:{
+        components: {
             Users,
             Home,
             Received
         },
-        data(){
-            return{
+        data() {
+            return {
                 component: "Home"
             }
         }
@@ -185,250 +183,6 @@
 
 <style scoped>
 
-
-    @-webkit-keyframes fadeIn {
-        0% {
-            opacity: 0
-        }
-        100% {
-            opacity: 1
-        }
-    }
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0
-        }
-        100% {
-            opacity: 1
-        }
-    }
-
-    .animated--fade-in {
-        -webkit-animation-name: fadeIn;
-        animation-name: fadeIn;
-        -webkit-animation-duration: .2s;
-        animation-duration: .2s;
-        -webkit-animation-timing-function: opacity cubic-bezier(0, 1, .4, 1);
-        animation-timing-function: opacity cubic-bezier(0, 1, .4, 1)
-    }
-
-    .bg-gradient-primary {
-        background-color: #4e73df;
-        background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
-        background-size: cover
-    }
-
-    .bg-gradient-secondary {
-        background-color: #858796;
-        background-image: linear-gradient(180deg, #858796 10%, #60616f 100%);
-        background-size: cover
-    }
-
-    .bg-gradient-success {
-        background-color: #1cc88a;
-        background-image: linear-gradient(180deg, #1cc88a 10%, #13855c 100%);
-        background-size: cover
-    }
-
-    .bg-gradient-info {
-        background-color: #36b9cc;
-        background-image: linear-gradient(180deg, #36b9cc 10%, #258391 100%);
-        background-size: cover
-    }
-
-    .bg-gradient-warning {
-        background-color: #f6c23e;
-        background-image: linear-gradient(180deg, #f6c23e 10%, #dda20a 100%);
-        background-size: cover
-    }
-
-    .bg-gradient-danger {
-        background-color: #e74a3b;
-        background-image: linear-gradient(180deg, #e74a3b 10%, #be2617 100%);
-        background-size: cover
-    }
-
-    .bg-gradient-light {
-        background-color: #f8f9fc;
-        background-image: linear-gradient(180deg, #f8f9fc 10%, #c2cbe5 100%);
-        background-size: cover
-    }
-
-    .bg-gradient-dark {
-        background-color: #5a5c69;
-        background-image: linear-gradient(180deg, #5a5c69 10%, #373840 100%);
-        background-size: cover
-    }
-
-    .bg-gray-100 {
-        background-color: #f8f9fc !important
-    }
-
-    .bg-gray-200 {
-        background-color: #eaecf4 !important
-    }
-
-    .bg-gray-300 {
-        background-color: #dddfeb !important
-    }
-
-    .bg-gray-400 {
-        background-color: #d1d3e2 !important
-    }
-
-    .bg-gray-500 {
-        background-color: #b7b9cc !important
-    }
-
-    .bg-gray-600 {
-        background-color: #858796 !important
-    }
-
-    .bg-gray-700 {
-        background-color: #6e707e !important
-    }
-
-    .bg-gray-800 {
-        background-color: #5a5c69 !important
-    }
-
-    .bg-gray-900 {
-        background-color: #3a3b45 !important
-    }
-
-    .o-hidden {
-        overflow: hidden !important
-    }
-
-    .text-xs {
-        font-size: .7rem
-    }
-
-    .text-lg {
-        font-size: 1.2rem
-    }
-
-    .text-gray-100 {
-        color: #f8f9fc !important
-    }
-
-    .text-gray-200 {
-        color: #eaecf4 !important
-    }
-
-    .text-gray-300 {
-        color: #dddfeb !important
-    }
-
-    .text-gray-400 {
-        color: #d1d3e2 !important
-    }
-
-    .text-gray-500 {
-        color: #b7b9cc !important
-    }
-
-    .text-gray-600 {
-        color: #858796 !important
-    }
-
-    .text-gray-700 {
-        color: #6e707e !important
-    }
-
-    .text-gray-800 {
-        color: #5a5c69 !important
-    }
-
-    .text-gray-900 {
-        color: #3a3b45 !important
-    }
-
-    .icon-circle {
-        height: 2.5rem;
-        width: 2.5rem;
-        border-radius: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center
-    }
-
-    .border-left-primary {
-        border-left: .25rem solid #4e73df !important
-    }
-
-    .border-bottom-primary {
-        border-bottom: .25rem solid #4e73df !important
-    }
-
-    .border-left-secondary {
-        border-left: .25rem solid #858796 !important
-    }
-
-    .border-bottom-secondary {
-        border-bottom: .25rem solid #858796 !important
-    }
-
-    .border-left-success {
-        border-left: .25rem solid #1cc88a !important
-    }
-
-    .border-bottom-success {
-        border-bottom: .25rem solid #1cc88a !important
-    }
-
-    .border-left-info {
-        border-left: .25rem solid #36b9cc !important
-    }
-
-    .border-bottom-info {
-        border-bottom: .25rem solid #36b9cc !important
-    }
-
-    .border-left-warning {
-        border-left: .25rem solid #f6c23e !important
-    }
-
-    .border-bottom-warning {
-        border-bottom: .25rem solid #f6c23e !important
-    }
-
-    .border-left-danger {
-        border-left: .25rem solid #e74a3b !important
-    }
-
-    .border-bottom-danger {
-        border-bottom: .25rem solid #e74a3b !important
-    }
-
-    .border-left-light {
-        border-left: .25rem solid #f8f9fc !important
-    }
-
-    .border-bottom-light {
-        border-bottom: .25rem solid #f8f9fc !important
-    }
-
-    .border-left-dark {
-        border-left: .25rem solid #5a5c69 !important
-    }
-
-    .border-bottom-dark {
-        border-bottom: .25rem solid #5a5c69 !important
-    }
-
-    .progress-sm {
-        height: .5rem
-    }
-
-    .rotate-15 {
-        transform: rotate(15deg)
-    }
-
-    .rotate-n-15 {
-        transform: rotate(-15deg)
-    }
 
     .dropdown .dropdown-menu {
         font-size: .85rem

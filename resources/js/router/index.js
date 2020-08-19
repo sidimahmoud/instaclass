@@ -24,7 +24,7 @@ import StudentProfile from "../components/student/Profile";
 
 import Dashboard from "../components/admin/Dashboard";
 import AdminCourses from "../components/admin/Courses";
-import Users from "../components/admin/Users";
+import Users from "../components/admin/Teachers";
 
 import Homefr from "../components/fr/Homefr";
 
@@ -186,18 +186,18 @@ const routes = [
         path: '/admin',
         name: 'Admin',
         component: Dashboard,
-        children: [
-            {
-                path: 'users',
-                name: 'AdminUsers',
-                component: Users,
-            },
-            {
-                path: 'courses',
-                name: 'AdminCourses',
-                component: AdminCourses,
-            },
-        ]
+        // children: [
+        //     {
+        //         path: 'teachers',
+        //         name: 'AdminUsers',
+        //         component: Users,
+        //     },
+        //     {
+        //         path: 'courses',
+        //         name: 'AdminCourses',
+        //         component: AdminCourses,
+        //     },
+        // ]
     },
 ];
 

@@ -21,6 +21,34 @@ class UsersController extends Controller
         return response()->json($users);
     }
 
+    public function teachers()
+    {
+        $teachers = User::whereHas(
+            'roles', function($q){
+            $q->where('name', 'teacher');
+        }
+        )->get();
+        return response()->json($teachers);
+    }
+    public function students()
+    {
+        $students = User::whereHas(
+            'roles', function($q){
+            $q->where('name', 'student');
+        }
+        )->get();
+        return response()->json($students);
+    }
+    public function admins()
+    {
+        $admins = User::whereHas(
+            'roles', function($q){
+            $q->where('name', 'admin');
+        }
+        )->get();
+        return response()->json($admins);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

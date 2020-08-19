@@ -11,7 +11,7 @@
     import {mapGetters, mapActions} from 'vuex'
 
     export default {
-        name: "Users",
+        name: "Teachers",
         methods: {
             ...mapActions(["fetchTeachers"])
         },
