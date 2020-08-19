@@ -67584,6 +67584,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/user */ "./resources/js/store/modules/user.js");
 /* harmony import */ var _modules_categories__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/categories */ "./resources/js/store/modules/categories.js");
 /* harmony import */ var _modules_admin_users__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/admin/users */ "./resources/js/store/modules/admin/users.js");
+/* harmony import */ var _modules_admin_payments__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/admin/payments */ "./resources/js/store/modules/admin/payments.js");
+
 
 
 
@@ -67601,9 +67603,118 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
     courses: _modules_courses__WEBPACK_IMPORTED_MODULE_3__["default"],
     user: _modules_user__WEBPACK_IMPORTED_MODULE_4__["default"],
     categories: _modules_categories__WEBPACK_IMPORTED_MODULE_5__["default"],
-    users: _modules_admin_users__WEBPACK_IMPORTED_MODULE_6__["default"]
+    users: _modules_admin_users__WEBPACK_IMPORTED_MODULE_6__["default"],
+    payments: _modules_admin_payments__WEBPACK_IMPORTED_MODULE_7__["default"]
   }
 }));
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/admin/payments.js":
+/*!******************************************************!*\
+  !*** ./resources/js/store/modules/admin/payments.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var state = {
+  received: [],
+  sent: []
+};
+var getters = {
+  allReceived: function allReceived(state) {
+    return state.received;
+  },
+  allSent: function allSent(state) {
+    return state.sent;
+  }
+};
+var actions = {
+  fetchReceived: function fetchReceived(_ref) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref.commit;
+              headers();
+              _context.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/payments/received');
+
+            case 4:
+              response = _context.sent;
+              commit('setReceived', response.data);
+
+            case 6:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  },
+  fetchSent: function fetchSent(_ref2) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              commit = _ref2.commit;
+              headers();
+              _context2.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/payments/sent');
+
+            case 4:
+              response = _context2.sent;
+              commit('setSent', response.data);
+
+            case 6:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }))();
+  }
+};
+var mutations = {
+  setReceived: function setReceived(state, payload) {
+    return state.received = payload;
+  },
+  setSent: function setSent(state, payload) {
+    return state.sent = payload;
+  }
+};
+
+function headers() {
+  var token = localStorage.getItem('token') || '';
+
+  if (token) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
 
 /***/ }),
 

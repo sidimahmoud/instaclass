@@ -5,6 +5,7 @@ import courses from './modules/courses';
 import user from "./modules/user";
 import categories from "./modules/categories";
 import users from "./modules/admin/users";
+import payments from "./modules/admin/payments";
 
 Vue.use(Vuex);
 
@@ -20,7 +21,8 @@ export default new Vuex.Store({
         courses,
         user,
         categories,
-        users
+        users,
+        payments
     }
 })
 
