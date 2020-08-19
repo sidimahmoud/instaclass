@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', 'Admin\UsersController@show');
-    Route::get('/teachers', 'Admin\UsersController@show');
+    Route::get('/teachers', 'Admin\UsersController@teachers');
+    Route::get('/students', 'Admin\UsersController@students');
+    Route::get('/admins', 'Admin\UsersController@admins');
     Route::resource('users', 'Admin\UsersController')->middleware('can:only-admin');
     Route::resource('payments', 'Admin\PayementController')->middleware('can:only-admin');
     Route::post('payments', 'Admin\PayementController@store');
