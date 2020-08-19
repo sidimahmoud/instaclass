@@ -70,8 +70,52 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
+
     export default {
-        name: "Become"
+
+        name: "Become",
+
+        data() {
+            return {
+                email: '',
+                password: ''
+
+            }
+        },
+        methods: {
+
+            login() {
+                let email = this.email;
+                let password = this.password;
+                this.$store.dispatch('login', {email, password})
+                    .then(() => this.$router.push('/'))
+                    .catch(err => console.log(err))
+            },
+            loginGithub() {
+                this.$store.dispatch('loginGithub')
+                    .then((res) => {
+                        console.log(res);
+                        if (res.data.url) {
+                            console.log(res.data.url);
+                            window.location.href = res.data.url
+                        }
+                    })
+                    .catch(err => console.log(err))
+            },
+            loginGoogle() {
+                this.$store.dispatch('loginGoogle')
+                    .then((res) => {
+                        console.log(res);
+                        if (res.data.url) {
+                            console.log(res.data.url);
+                            window.location.href = res.data.url
+                        }
+                    })
+                    .catch(err => console.log(err))
+            },
+        },
+        computed: mapGetters(["authLoading"])
     }
 </script>
 
