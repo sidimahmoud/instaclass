@@ -66199,6 +66199,9 @@ var getters = {
   },
   allStudents: function allStudents(state) {
     return state.students;
+  },
+  allAdmins: function allAdmins(state) {
+    return state.admins;
   }
 };
 var actions = {
@@ -66210,14 +66213,15 @@ var actions = {
           switch (_context.prev = _context.next) {
             case 0:
               commit = _ref.commit;
-              _context.next = 3;
+              headers();
+              _context.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/teachers');
 
-            case 3:
+            case 4:
               response = _context.sent;
               commit('setTeachers', response.data);
 
-            case 5:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -66233,19 +66237,44 @@ var actions = {
           switch (_context2.prev = _context2.next) {
             case 0:
               commit = _ref2.commit;
-              _context2.next = 3;
+              headers();
+              _context2.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/students');
 
-            case 3:
+            case 4:
               response = _context2.sent;
               commit('setStudents', response.data);
 
-            case 5:
+            case 6:
             case "end":
               return _context2.stop();
           }
         }
       }, _callee2);
+    }))();
+  },
+  fetchAdmins: function fetchAdmins(_ref3) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              commit = _ref3.commit;
+              headers();
+              _context3.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/students');
+
+            case 4:
+              response = _context3.sent;
+              commit('setAdmins', response.data);
+
+            case 6:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
     }))();
   }
 };
@@ -66255,8 +66284,20 @@ var mutations = {
   },
   setStudents: function setStudents(state, payload) {
     return state.students = payload;
+  },
+  setAdmins: function setAdmins(state, payload) {
+    return state.admins = payload;
   }
 };
+
+function headers() {
+  var token = localStorage.getItem('token') || '';
+
+  if (token) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+  }
+}
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: state,
   getters: getters,
