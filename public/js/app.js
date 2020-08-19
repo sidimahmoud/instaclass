@@ -2592,6 +2592,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2618,6 +2620,15 @@ __webpack_require__.r(__webpack_exports__);
     return {
       component: "Home"
     };
+  },
+  methods: {
+    logout: function logout() {
+      var _this = this;
+
+      this.$store.dispatch('logout').then(function () {
+        _this.$router.push('/');
+      });
+    }
   }
 });
 
@@ -43523,6 +43534,7 @@ var render = function() {
               "a",
               {
                 staticClass: "nav-link",
+                attrs: { href: "#" },
                 on: {
                   click: function($event) {
                     _vm.component = "Home"
@@ -43807,7 +43819,35 @@ var render = function() {
         { staticClass: "d-flex flex-column", attrs: { id: "content-wrapper" } },
         [
           _c("div", { attrs: { id: "content" } }, [
-            _vm._m(5),
+            _c(
+              "nav",
+              {
+                staticClass:
+                  "navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+              },
+              [
+                _vm._m(5),
+                _vm._v(" "),
+                _c("ul", { staticClass: "navbar-nav ml-auto" }, [
+                  _c("div", {
+                    staticClass: "topbar-divider d-none d-sm-block"
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      on: { click: _vm.logout }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Logout\n                    "
+                      )
+                    ]
+                  )
+                ])
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -43940,29 +43980,16 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "nav",
+      "div",
       {
         staticClass:
-          "navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+          "d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
       },
       [
-        _c(
-          "div",
-          {
-            staticClass:
-              "d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
-          },
-          [
-            _c("h2", [
-              _vm._v(
-                "\n                        Instantclass Administration\n                    "
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("ul", { staticClass: "navbar-nav ml-auto" }, [
-          _c("div", { staticClass: "topbar-divider d-none d-sm-block" })
+        _c("h2", [
+          _vm._v(
+            "\n                        Instantclass Administration\n                    "
+          )
         ])
       ]
     )

@@ -16,9 +16,10 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" @click="component='Home'">
+                <a href="#" class="nav-link" @click="component='Home'">
                     <i class="fa fa-tachometer" aria-hidden="true"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard</span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -121,7 +122,6 @@
 
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     <!-- Topbar Search -->
@@ -139,7 +139,9 @@
                         <div class="topbar-divider d-none d-sm-block">
 
                         </div>
-
+                        <button class="btn btn-danger" @click="logout">
+                            Logout
+                        </button>
                     </ul>
 
                 </nav>
@@ -190,6 +192,14 @@
         data() {
             return {
                 component: "Home"
+            }
+        },
+        methods: {
+            logout() {
+                this.$store.dispatch('logout')
+                    .then(() => {
+                        this.$router.push('/')
+                    })
             }
         }
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Payement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PayementController extends Controller
 {
@@ -20,11 +21,19 @@ class PayementController extends Controller
      */
     public function index()
     {
-        if (Gate::denies('only-admin')) {
-            return response()->json(["response" => "unauthorized"], 403);
-        }
+
         $payements = Payement::all();
         return response()->json($payements);
+    }
+    public function received()
+    {
+        $received = Payement::all();
+        return response()->json($received);
+    }
+    public function sent()
+    {
+        $sent = Payement::all();
+        return response()->json($sent);
     }
 
     /**
