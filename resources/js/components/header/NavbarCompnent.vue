@@ -35,7 +35,7 @@
                         </router-link>
                     </li>
                     <li class="nav-item" >
-                        <router-link :to="{name: 'Become'}" tag="a"
+                        <router-link :to="{name: 'Signin'}" tag="a"
                                      class="nav-link">
                             Become Instructor
                         </router-link>

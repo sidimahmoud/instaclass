@@ -55,6 +55,9 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">Register Now</button>
                             </div>
+                            <div class="text-center">Already have an account?
+                                <router-link :to="{name: 'Signin'}">Sign in</router-link>
+                            </div>
 
                         </form>
                     </div>

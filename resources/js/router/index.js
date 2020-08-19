@@ -17,6 +17,7 @@ import CoursePlayer from "../components/courses/CoursePlayer";
 import Demande from "../components/courses/Demande";
 
 import Become from "../components/teacher/Become";
+import Signin from "../components/teacher/Signin";
 import TeacherProfile from "../components/teacher/Profile";
 import StudentProfile from "../components/student/Profile";
 
@@ -106,6 +107,14 @@ const routes = [
         },
         meta: {
             requiresAuth: true,
+        }
+    },
+    {
+        path: '/teacher/login',
+        name: 'Signin',
+        component: Signin,
+        meta: {
+            requiresAuth: false,
         }
     },
     {
