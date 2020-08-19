@@ -14,7 +14,7 @@
 
                 <ul class="navbar-nav ">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search fo courses" aria-label="Search">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search for courses" aria-label="Search">
                         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                     </form>
 

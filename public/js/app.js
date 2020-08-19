@@ -4017,7 +4017,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -4089,56 +4088,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Become",
-  data: function data() {
-    return {
-      email: '',
-      password: ''
-    };
-  },
-  methods: {
-    login: function login() {
-      var _this = this;
-
-      var email = this.email;
-      var password = this.password;
-      this.$store.dispatch('login', {
-        email: email,
-        password: password
-      }).then(function () {
-        return _this.$router.push('/');
-      })["catch"](function (err) {
-        return console.log(err);
-      });
-    },
-    loginGithub: function loginGithub() {
-      this.$store.dispatch('loginGithub').then(function (res) {
-        console.log(res);
-
-        if (res.data.url) {
-          console.log(res.data.url);
-          window.location.href = res.data.url;
-        }
-      })["catch"](function (err) {
-        return console.log(err);
-      });
-    },
-    loginGoogle: function loginGoogle() {
-      this.$store.dispatch('loginGoogle').then(function (res) {
-        console.log(res);
-
-        if (res.data.url) {
-          console.log(res.data.url);
-          window.location.href = res.data.url;
-        }
-      })["catch"](function (err) {
-        return console.log(err);
-      });
-    }
-  },
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["authLoading"])
+  name: "Become"
 });
 
 /***/ }),
@@ -4288,6 +4239,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -4335,8 +4287,56 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Signup"
+  name: "Signin",
+  data: function data() {
+    return {
+      email: '',
+      password: ''
+    };
+  },
+  methods: {
+    login: function login() {
+      var _this = this;
+
+      var email = this.email;
+      var password = this.password;
+      this.$store.dispatch('login', {
+        email: email,
+        password: password
+      }).then(function () {
+        return _this.$router.push('/');
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    loginGithub: function loginGithub() {
+      this.$store.dispatch('loginGithub').then(function (res) {
+        console.log(res);
+
+        if (res.data.url) {
+          console.log(res.data.url);
+          window.location.href = res.data.url;
+        }
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    loginGoogle: function loginGoogle() {
+      this.$store.dispatch('loginGoogle').then(function (res) {
+        console.log(res);
+
+        if (res.data.url) {
+          console.log(res.data.url);
+          window.location.href = res.data.url;
+        }
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["authLoading"])
 });
 
 /***/ }),
@@ -45921,7 +45921,7 @@ var staticRenderFns = [
           staticClass: "form-control mr-sm-2",
           attrs: {
             type: "search",
-            placeholder: "Search fo courses",
+            placeholder: "Search for courses",
             "aria-label": "Search"
           }
         }),
