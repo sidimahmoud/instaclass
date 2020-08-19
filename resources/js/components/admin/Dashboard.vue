@@ -38,7 +38,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Choisir:</h6>
-                        <a class="collapse-item" href="#">Received</a>
+                        <a class="collapse-item" href="#received" @click="component='Received'">Received</a>
                         <a class="collapse-item" href="#">Sent</a>
                         <a class="collapse-item" href="#">New</a>
                     </div>
@@ -83,8 +83,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Choisir:</h6>
 
-                        <a class="collapse-item" href="chambres/chambres.html">All categories</a>
-                        <a class="collapse-item" href="addCh.html">New category</a>
+                        <a class="collapse-item" href="#">All categories</a>
+                        <a class="collapse-item" href="#">New category</a>
                     </div>
                 </div>
             </li>
@@ -106,8 +106,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Choisir:</h6>
 
-                        <a class="collapse-item" href="chambres/chambres.html">List</a>
-                        <a class="collapse-item" href="addCh.html">Statistics</a>
+                        <a class="collapse-item" href="#">List</a>
+                        <a class="collapse-item" href="#">Statistics</a>
                     </div>
                 </div>
             </li>
@@ -166,12 +166,14 @@
 
 <script>
     import Users from "./Users";
+    import Received from "./Received";
     import Home from "./Home";
     export default {
         name: "Dashboard",
         components:{
             Users,
-            Home
+            Home,
+            Received
         },
         data(){
             return{
