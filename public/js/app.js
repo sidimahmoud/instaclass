@@ -3225,8 +3225,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Course",
   props: ["course"]
@@ -3947,6 +3945,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
 //
 //
 //
@@ -44399,32 +44400,21 @@ var render = function() {
           "div",
           { staticClass: "col-md-3  align-items-center" },
           [
-            _vm.course.type == 1
-              ? _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      to: { name: "Detail", params: { slug: _vm.course.slug } },
-                      tag: "a"
-                    }
-                  },
-                  [
-                    _c("img", {
-                      staticClass: "w-100 rounded-circle",
-                      attrs: { src: _vm.course.image, alt: "Card image cap" }
-                    })
-                  ]
-                )
-              : _c(
-                  "router-link",
-                  { attrs: { to: { name: "Live" }, tag: "a" } },
-                  [
-                    _c("img", {
-                      staticClass: "w-100 rounded-circle",
-                      attrs: { src: _vm.course.image, alt: "Card image cap" }
-                    })
-                  ]
-                )
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: { name: "Detail", params: { slug: _vm.course.slug } },
+                  tag: "a"
+                }
+              },
+              [
+                _c("img", {
+                  staticClass: "w-100 rounded-circle",
+                  attrs: { src: _vm.course.image, alt: "Card image cap" }
+                })
+              ]
+            )
           ],
           1
         ),
@@ -46169,22 +46159,34 @@ var render = function() {
                             "div",
                             { staticClass: "media-body" },
                             [
-                              _c(
-                                "router-link",
-                                {
-                                  attrs: {
-                                    to: {
-                                      name: "Player",
-                                      params: { slug: e.course.slug }
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("h5", { staticClass: "mt-0 mb-1" }, [
-                                    _vm._v(_vm._s(e.course.name))
-                                  ])
-                                ]
-                              ),
+                              e.course.type == 1
+                                ? _c(
+                                    "router-link",
+                                    {
+                                      attrs: {
+                                        to: {
+                                          name: "Player",
+                                          params: { slug: e.course.slug }
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("h5", { staticClass: "mt-0 mb-1" }, [
+                                        _vm._v(_vm._s(e.course.name))
+                                      ])
+                                    ]
+                                  )
+                                : _c(
+                                    "router-link",
+                                    {
+                                      attrs: { to: { name: "Live" }, tag: "a" }
+                                    },
+                                    [
+                                      _c("h5", { staticClass: "mt-0 mb-1" }, [
+                                        _vm._v(_vm._s(e.course.name))
+                                      ])
+                                    ]
+                                  ),
                               _vm._v(
                                 "\n                                    " +
                                   _vm._s(e.created_at.slice(0, 10)) +

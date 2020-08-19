@@ -63,7 +63,10 @@
                                 </li>
                                 <li class="media card p-2 mt-4" v-for="e in userEnrollments" :key="e.id">
                                     <div class="media-body">
-                                        <router-link :to="{name: 'Player', params: { slug: e.course.slug} }">
+                                        <router-link :to="{name: 'Player', params: { slug: e.course.slug} }" v-if="e.course.type==1">
+                                            <h5 class="mt-0 mb-1">{{e.course.name}}</h5>
+                                        </router-link>
+                                        <router-link :to="{ name: 'Live'}" tag="a" v-else>
                                             <h5 class="mt-0 mb-1">{{e.course.name}}</h5>
                                         </router-link>
                                         {{e.created_at.slice(0,10)}}

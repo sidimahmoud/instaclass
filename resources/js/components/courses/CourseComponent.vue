@@ -2,12 +2,10 @@
     <div>
         <div class="row mb-2 shadow-sm px-0 py-2 bg-white justify-content-around align-items-center text-center" >
             <div class="col-md-3  align-items-center">
-                <router-link :to="{ name: 'Detail', params: { slug: course.slug}}" tag="a" v-if="course.type==1">
+                <router-link :to="{ name: 'Detail', params: { slug: course.slug}}" tag="a">
                     <img class="w-100 rounded-circle" :src="course.image" alt="Card image cap">
                 </router-link>
-                <router-link :to="{ name: 'Live'}" tag="a" v-else>
-                    <img class="w-100 rounded-circle" :src="course.image" alt="Card image cap">
-                </router-link>
+
             </div>
             <div class="col-md-9 justify-content-center align-items-center">
                 <div class="row text-left">
