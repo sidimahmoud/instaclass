@@ -23,8 +23,8 @@ import TeacherProfile from "../components/teacher/Profile";
 import StudentProfile from "../components/student/Profile";
 
 import Dashboard from "../components/admin/Dashboard";
-import AdminCourses from "../components/admin/Courses";
-import Users from "../components/admin/Teachers";
+import AdminCourses from "../components/admin/courses/Courses";
+import Users from "../components/admin/users/Teachers";
 
 import Homefr from "../components/fr/Homefr";
 

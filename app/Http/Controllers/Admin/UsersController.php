@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
+use App\Course;
 use App\Http\Controllers\Controller;
 use App\Role;
 use App\User;
@@ -47,6 +49,24 @@ class UsersController extends Controller
         }
         )->get();
         return response()->json($admins);
+    }
+
+    public function counts()
+    {
+        $categories = Category::count();
+        $courses = Course::count();
+        $teachers = User::whereHas(
+            'roles', function($q){
+            $q->where('name', 'teacher');
+        }
+        )->get()->count();
+        $students = User::whereHas(
+            'roles', function($q){
+            $q->where('name', 'student');
+        }
+        )->get()->count();
+
+        return response()->json(['$categories'=>$categories,'$courses'=>$courses,'$teachers'=>$teachers,'students'=>$students,]);
     }
 
     /**

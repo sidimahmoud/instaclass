@@ -26,7 +26,7 @@ const actions = {
     },
     async fetchAdmins({commit}) {
         headers();
-        const response = await axios.get('https://instantclass.herokuapp.com/api/students');
+        const response = await axios.get('https://instantclass.herokuapp.com/api/admins');
         commit('setAdmins', response.data);
     },
 };

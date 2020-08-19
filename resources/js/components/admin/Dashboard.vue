@@ -16,7 +16,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" @click="component='Home'">
                     <i class="fa fa-tachometer" aria-hidden="true"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -39,7 +39,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Choisir:</h6>
                         <a class="collapse-item" href="#received" @click="component='Received'">Received</a>
-                        <a class="collapse-item" href="#">Sent</a>
+                        <a class="collapse-item" href="#sent" @click="component='Sent'">Sent</a>
                         <a class="collapse-item" href="#">New</a>
                     </div>
                 </div>
@@ -59,9 +59,9 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Choisir:</h6>
-                        <a class="collapse-item" href="#teachers" @click="component='Users'">Techers</a>
-                        <a class="collapse-item" href="#students" @click="component='Users'">Students</a>
-                        <a class="collapse-item" href="#admins" @click="component='Users'">Admins</a>
+                        <a class="collapse-item" href="#teachers" @click="component='Teachers'">Techers</a>
+                        <a class="collapse-item" href="#students" @click="component='Students'">Students</a>
+                        <a class="collapse-item" href="#admins" @click="component='Admins'">Admins</a>
 
                     </div>
                 </div>
@@ -71,7 +71,6 @@
             <div class="sidebar-heading">
                 Categories
             </div>
-            <!-- Nav Item - Abris -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
                    aria-expanded="true" aria-controls="collapseOne">
@@ -83,7 +82,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Choisir:</h6>
 
-                        <a class="collapse-item" href="#">All categories</a>
+                        <a class="collapse-item" href="#categories" @click="component='Categories'">All categories</a>
                         <a class="collapse-item" href="#">New category</a>
                     </div>
                 </div>
@@ -106,8 +105,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Choisir:</h6>
 
-                        <a class="collapse-item" href="#">List</a>
-                        <a class="collapse-item" href="#">Statistics</a>
+                        <a class="collapse-item" href="#courses" @click="component='Courses'">List</a>
+                        <a class="collapse-item" href="#statistics" @click="component='Statistics'">Statistics</a>
                     </div>
                 </div>
             </li>
@@ -162,16 +161,31 @@
 </template>
 
 <script>
-    import Users from "./Teachers";
-    import Received from "./Received";
+    import Teachers from "./users/Teachers";
+    import Students from "./users/Students";
+    import Admins from "./users/Admins";
+
+    import Received from "./payments/Received";
+    import Sent from "./payments/Sent";
+
+    import Courses from "./courses/Courses";
+    import Statistics from "./courses/Statistics";
+
+    import Categories from "./categories/Categories";
     import Home from "./Home";
 
     export default {
         name: "Dashboard",
         components: {
-            Users,
+            Teachers,
+            Students,
+            Admins,
+            Received,
+            Sent,
+            Courses,
+            Statistics,
+            Categories,
             Home,
-            Received
         },
         data() {
             return {
