@@ -8,5 +8,4 @@ Tableau administrateur:
 
  - CRUD messages contact us
  - CRUD les demandes de cours
- - CRUD les categories, cours, utilisater, professeur.
  - system notification nouveau cours creer / couriel.

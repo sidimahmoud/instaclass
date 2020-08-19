@@ -11,7 +11,16 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav">
+
+                <ul class="navbar-nav ">
+                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search fo courses" aria-label="Search">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+
+
+                </ul>
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item ">
 
                         <router-link :to="{ name: 'Courses'}" tag="a" class="nav-link ">
@@ -32,22 +41,15 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
-                    <router-link :to="{ name: 'About'}" tag="a" class="nav-link">
-                        About
-                    </router-link>
-                </li>
+                        <router-link :to="{ name: 'About'}" tag="a" class="nav-link">
+                            About
+                        </router-link>
+                    </li>
                     <li class="nav-item">
                         <router-link :to="{ name: 'Contact'}" tag="a" class="nav-link">
                             Contact
                         </router-link>
                     </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search fo courses" aria-label="Search">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-
                     <li class="nav-item" >
                         <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                      class="nav-link bg-danger text-white rounded">
