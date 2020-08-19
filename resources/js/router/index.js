@@ -15,6 +15,7 @@ import Details from "../components/courses/CourseDetails";
 import Courses from "../components/courses/Courses";
 import CoursePlayer from "../components/courses/CoursePlayer";
 import Demande from "../components/courses/Demande";
+import Live from "../components/courses/Live";
 
 import Become from "../components/teacher/Become";
 import Signin from "../components/teacher/Signin";
@@ -82,6 +83,14 @@ const routes = [
         path: '/player/:slug',
         name: 'Player',
         component: CoursePlayer,
+        meta: {
+            requiresAuth: true,
+        }
+    },
+    {
+        path: '/player/live',
+        name: 'Live',
+        component: Live,
         meta: {
             requiresAuth: true,
         }

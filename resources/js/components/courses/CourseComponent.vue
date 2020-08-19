@@ -2,21 +2,22 @@
     <div>
         <div class="row mb-2 shadow-sm px-0 py-2 bg-white justify-content-around align-items-center text-center" >
             <div class="col-md-3  align-items-center">
-                <router-link :to="{ name: 'Detail', params: { slug: course.slug}}" tag="a">
+                <router-link :to="{ name: 'Detail', params: { slug: course.slug}}" tag="a" v-if="course.type==1">
+                    <img class="w-100 rounded-circle" :src="course.image" alt="Card image cap">
+                </router-link>
+                <router-link :to="{ name: 'Live'}" tag="a" v-else>
                     <img class="w-100 rounded-circle" :src="course.image" alt="Card image cap">
                 </router-link>
             </div>
             <div class="col-md-9 justify-content-center align-items-center">
                 <div class="row text-left">
                     <div class="col-md-4 col-sm-12 justify-content-center align-items-center ">
-                        <router-link :to="{ name: 'Detail', params: { slug: course.slug}}" tag="a">
                             <h5 class="card-title text-left">{{course.name}}</h5>
-                        </router-link>
                     </div>
                     <div class="col-md-2 col-sm-12 justify-content-center align-items-center "> <b>Duration:</b>{{course.duration}}</div>
                     <div class="col-md-2 col-sm-12 justify-content-center align-items-center "><b>Language:</b> {{course.language}}</div>
                     <div class="col-md-2 col-sm-12 justify-content-center align-items-center "><b>Sessions:</b> 3</div>
-                    <div class="col-md-2 col-sm-12 justify-content-center align-items-center "><b>Type:</b> {{course.status==1?"Public":"Private"}}</div>
+                    <div class="col-md-2 col-sm-12 justify-content-center align-items-center "><b>Type:</b> {{course.type==1?"Recorded":"Live"}}</div>
                 </div>
                 <div class="row text-left">
                     <div class="col-8">

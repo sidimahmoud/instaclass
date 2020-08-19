@@ -17,5 +17,9 @@ class EnrollmentsSeeder extends Seeder
             'user_id' => '3',
             'course_id' => '2',
         ]);
+        Enrollment::create([
+            'user_id' => '3',
+            'course_id' => '3',
+        ]);
     }
 }
