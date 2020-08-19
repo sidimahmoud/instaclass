@@ -66,7 +66,7 @@ class UsersController extends Controller
         }
         )->get()->count();
 
-        return response()->json(['$categories'=>$categories,'$courses'=>$courses,'$teachers'=>$teachers,'students'=>$students,]);
+        return response()->json(['categories'=>$categories,'courses'=>$courses,'teachers'=>$teachers,'students'=>$students,]);
     }
 
     /**

@@ -14,7 +14,7 @@
                                     Categories
                                 </div>
                                 <div class="h5 mb-0 font-weight-bold ">
-                                    19
+                                    {{counts.categories}}
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -33,7 +33,8 @@
                                     Courses
                                 </div>
                                 <div class="h5 mb-0 font-weight-bold ">
-                                    4213
+                                    {{counts.courses}}
+
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -52,7 +53,8 @@
                                     Teachers
                                 </div>
                                 <div class="h5 mb-0 font-weight-bold ">
-                                    217
+                                    {{counts.teachers}}
+
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -71,7 +73,8 @@
                                     Students
                                 </div>
                                 <div class="h5 mb-0 font-weight-bold ">
-                                    18496
+                                    {{counts.students}}
+
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -89,10 +92,25 @@
 </template>
 
 <script>
+    import axios from "axios";
+
     export default {
-        name: "Home"
+        name: "Home",
+        data(){
+            return {
+                counts: '',
+            }
+        },
+        created() {
+            let token = localStorage.getItem('token') || '';
+            if (token) {
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+            }
+            axios.get('https://instantclass.herokuapp.com/api/counts').then(res => this.counts = res.data).catch(err => console.log(err))
+        }
     }
 </script>
+
 
 <style scoped>
 

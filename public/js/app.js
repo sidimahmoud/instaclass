@@ -2632,6 +2632,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2722,8 +2724,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Home"
+  name: "Home",
+  data: function data() {
+    return {
+      counts: ''
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    var token = localStorage.getItem('token') || '';
+
+    if (token) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+    }
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('https://instantclass.herokuapp.com/api/counts').then(function (res) {
+      return _this.counts = res.data;
+    })["catch"](function (err) {
+      return console.log(err);
+    });
+  }
 });
 
 /***/ }),
@@ -43963,183 +43989,189 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "dashbordItems" } }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 mb-4" }, [
+        _c(
+          "div",
+          { staticClass: "card border-left-danger shadow h-100 py-2" },
+          [
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "row no-gutters align-items-center" }, [
+                _c("div", { staticClass: "col mr-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "text-xs font-weight-bold text-primary text-uppercase mb-1"
+                    },
+                    [
+                      _vm._v(
+                        "\n                                Categories\n                            "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "h5 mb-0 font-weight-bold " }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(_vm.counts.categories) +
+                        "\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 mb-4" }, [
+        _c(
+          "div",
+          { staticClass: "card border-left-danger shadow h-100 py-2" },
+          [
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "row no-gutters align-items-center" }, [
+                _c("div", { staticClass: "col mr-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "text-xs font-weight-bold text-primary text-uppercase mb-1"
+                    },
+                    [
+                      _vm._v(
+                        "\n                                Courses\n                            "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "h5 mb-0 font-weight-bold " }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(_vm.counts.courses) +
+                        "\n\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 mb-4" }, [
+        _c(
+          "div",
+          { staticClass: "card border-left-danger shadow h-100 py-2" },
+          [
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "row no-gutters align-items-center" }, [
+                _c("div", { staticClass: "col mr-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "text-xs font-weight-bold text-primary text-uppercase mb-1"
+                    },
+                    [
+                      _vm._v(
+                        "\n                                Teachers\n                            "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "h5 mb-0 font-weight-bold " }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(_vm.counts.teachers) +
+                        "\n\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 mb-4" }, [
+        _c(
+          "div",
+          { staticClass: "card border-left-danger shadow h-100 py-2" },
+          [
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "row no-gutters align-items-center" }, [
+                _c("div", { staticClass: "col mr-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "text-xs font-weight-bold text-primary text-uppercase mb-1"
+                    },
+                    [
+                      _vm._v(
+                        "\n                                Students\n                            "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "h5 mb-0 font-weight-bold " }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(_vm.counts.students) +
+                        "\n\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(3)
+              ])
+            ])
+          ]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "dashbordItems" } }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 mb-4" }, [
-          _c(
-            "div",
-            { staticClass: "card border-left-danger shadow h-100 py-2" },
-            [
-              _c("div", { staticClass: "card-body" }, [
-                _c(
-                  "div",
-                  { staticClass: "row no-gutters align-items-center" },
-                  [
-                    _c("div", { staticClass: "col mr-2" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "text-xs font-weight-bold text-primary text-uppercase mb-1"
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Categories\n                            "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "h5 mb-0 font-weight-bold " }, [
-                        _vm._v(
-                          "\n                                19\n                            "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-auto" }, [
-                      _c("i", {
-                        staticClass: "fa fa-archive fa-2x text-danger"
-                      })
-                    ])
-                  ]
-                )
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 mb-4" }, [
-          _c(
-            "div",
-            { staticClass: "card border-left-danger shadow h-100 py-2" },
-            [
-              _c("div", { staticClass: "card-body" }, [
-                _c(
-                  "div",
-                  { staticClass: "row no-gutters align-items-center" },
-                  [
-                    _c("div", { staticClass: "col mr-2" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "text-xs font-weight-bold text-primary text-uppercase mb-1"
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Courses\n                            "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "h5 mb-0 font-weight-bold " }, [
-                        _vm._v(
-                          "\n                                4213\n                            "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-auto" }, [
-                      _c("i", { staticClass: "fa fa-book fa-2x text-danger" })
-                    ])
-                  ]
-                )
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 mb-4" }, [
-          _c(
-            "div",
-            { staticClass: "card border-left-danger shadow h-100 py-2" },
-            [
-              _c("div", { staticClass: "card-body" }, [
-                _c(
-                  "div",
-                  { staticClass: "row no-gutters align-items-center" },
-                  [
-                    _c("div", { staticClass: "col mr-2" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "text-xs font-weight-bold text-primary text-uppercase mb-1"
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Teachers\n                            "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "h5 mb-0 font-weight-bold " }, [
-                        _vm._v(
-                          "\n                                217\n                            "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-auto" }, [
-                      _c("i", {
-                        staticClass: "fa fa-user-plus fa-2x text-danger"
-                      })
-                    ])
-                  ]
-                )
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-12 mb-4" }, [
-          _c(
-            "div",
-            { staticClass: "card border-left-danger shadow h-100 py-2" },
-            [
-              _c("div", { staticClass: "card-body" }, [
-                _c(
-                  "div",
-                  { staticClass: "row no-gutters align-items-center" },
-                  [
-                    _c("div", { staticClass: "col mr-2" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "text-xs font-weight-bold text-primary text-uppercase mb-1"
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Students\n                            "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "h5 mb-0 font-weight-bold " }, [
-                        _vm._v(
-                          "\n                                18496\n                            "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-auto" }, [
-                      _c("i", { staticClass: "fa fa-user fa-2x text-danger" })
-                    ])
-                  ]
-                )
-              ])
-            ]
-          )
-        ])
-      ])
+    return _c("div", { staticClass: "col-auto" }, [
+      _c("i", { staticClass: "fa fa-archive fa-2x text-danger" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-auto" }, [
+      _c("i", { staticClass: "fa fa-book fa-2x text-danger" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-auto" }, [
+      _c("i", { staticClass: "fa fa-user-plus fa-2x text-danger" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-auto" }, [
+      _c("i", { staticClass: "fa fa-user fa-2x text-danger" })
     ])
   }
 ]
