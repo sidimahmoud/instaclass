@@ -24,9 +24,11 @@ class CreateCoursesTable extends Migration
             $table->integer('category_id');
             $table->string('language');
             $table->string('duration');
-            $table->string('status');
-            $table->integer('type');
+            $table->string('status'); // free 1 or paid 2
+            $table->integer('type');  // recorded 1 or live 2
             $table->float('price')->nullable();
+            $table->boolean('published')->default(1);
+            $table->boolean('paid')->default(0);
             $table->timestamps();
         });
     }

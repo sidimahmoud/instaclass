@@ -1,6 +1,9 @@
 <template>
     <div>
         <div class="jumbotron">
+            <button class="btn btn-danger float-right" @click="logout">
+                Logout
+            </button>
             <div class="justify-content-around align-items-center">
                 <div class=" align-items-center text-white">
                     <div class="mt-4 text-center">
@@ -19,17 +22,13 @@
                     <span class="btn btn-danger">{{userEnrollments.length>0? userEnrollments.length : "0"}} </span> <br>
                     Purchased
                 </div>
-                <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">
-                    <span class="btn btn-danger">03 </span> <br> Certifications
-                </div>
-                <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">
-                    <span class="btn btn-danger">4K</span> <br> Subscriptions
-                </div>
+
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
                     <span class="btn btn-danger">12 </span> <br> My Reviews
                 </div>
 
             </div>
+
         </div>
 
         <div class="container">
@@ -63,7 +62,8 @@
                                 </li>
                                 <li class="media card p-2 mt-4" v-for="e in userEnrollments" :key="e.id">
                                     <div class="media-body">
-                                        <router-link :to="{name: 'Player', params: { slug: e.course.slug} }" v-if="e.course.type==1">
+                                        <router-link :to="{name: 'Player', params: { slug: e.course.slug} }"
+                                                     v-if="e.course.type==1">
                                             <h5 class="mt-0 mb-1">{{e.course.name}}</h5>
                                         </router-link>
                                         <router-link :to="{ name: 'Live'}" tag="a" v-else>
@@ -107,6 +107,13 @@
         name: "StudentProfile",
         methods: {
             ...mapActions(["fetchProfile", "fetchUserEnrollments"]),
+            logout() {
+                this.$store.dispatch('logout')
+                    .then(() => {
+                        this.$router.push('/')
+                    })
+            }
+
 
         },
         computed: mapGetters(["userProfile", "userEnrollments"]),

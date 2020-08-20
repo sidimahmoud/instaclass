@@ -1,6 +1,9 @@
 <template>
     <div>
         <div class="jumbotron">
+            <button class="btn btn-danger float-right" @click="logout">
+                Logout
+            </button>
             <div class="justify-content-around align-items-center">
                 <div class=" align-items-center text-white">
                     <div class="mt-4 text-center">
@@ -28,7 +31,7 @@
 
             </div>
         </div>
-
+        <new-course/>
         <div class="container">
             <div class="row">
                 <div class="col-md-7 bg-white shadow">
@@ -50,9 +53,10 @@
                         <!-- courses-->
                         <div class="tab-pane fade show" id="courses">
                             <ul class="list-unstyled">
-                                <li class="media shadow-sm border rounded p-2 mt-4" v-for="course in userCourses" :key="course.id">
+                                <li class="media shadow-sm border rounded p-2 mt-4" v-for="course in userCourses"
+                                    :key="course.id">
                                     <div class="media-body">
-                                        <router-link :to="{ name: 'Detail', params: { slug: course.slug}}" >
+                                        <router-link :to="{ name: 'Detail', params: { slug: course.slug}}">
                                             <h5 class="mt-0 mb-1 text-danger font-weight-bolder">{{course.name}}</h5>
                                         </router-link>
                                         {{course.short_description}}
@@ -103,13 +107,22 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
-
+    import NewCourse from "./NewCourse";
     export default {
         name: "TeacherProfile",
+        components:{
+            NewCourse
+        },
         methods: {
             ...mapActions(["fetchProfile"]),
             fetchUserCourses() {
                 this.$store.dispatch('fetchUserCourses', this.userProfile.id)
+            },
+            logout() {
+                this.$store.dispatch('logout')
+                    .then(() => {
+                        this.$router.push('/')
+                    })
             },
         },
         computed: mapGetters(["userProfile", "userCourses"]),
