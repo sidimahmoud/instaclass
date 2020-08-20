@@ -48,7 +48,7 @@
                         <h6 class="collapse-header">Choisir:</h6>
                         <a class="collapse-item" href="#received" @click="component='Received'">Received</a>
                         <a class="collapse-item" href="#sent" @click="component='Sent'">Sent</a>
-                        <a class="collapse-item" href="#">New</a>
+                        <a class="collapse-item" href="#Pay" @click="component='NewPayment'">New</a>
                     </div>
                 </div>
             </li>
@@ -176,6 +176,7 @@
 
     import Received from "./payments/Received";
     import Sent from "./payments/Sent";
+    import NewPayment from "./payments/NewPayment";
 
     import Courses from "./courses/Courses";
     import Statistics from "./courses/Statistics";
@@ -191,6 +192,7 @@
             Admins,
             Received,
             Sent,
+            NewPayment,
             Courses,
             Statistics,
             Categories,

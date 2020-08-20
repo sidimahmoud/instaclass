@@ -17,7 +17,7 @@ class CreatePayementsTable extends Migration
             $table->id();
             $table->integer('enrollment_id');
             $table->integer('user_id');
-            $table->string('type')->default('received');
+            $table->integer('type')->default(1); //1 for receive 2 for sent payments
             $table->float('amount');
             $table->string('method');
             $table->timestamps();

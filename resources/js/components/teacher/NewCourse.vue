@@ -147,7 +147,7 @@
                 description: '',
                 image: '',
                 slug: '',
-                category_id: 4,
+                category_id: 1,
                 language: '',
                 duration: '',
                 status: '1',

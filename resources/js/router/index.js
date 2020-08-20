@@ -221,7 +221,7 @@ const routes = [
         meta: {
             requiresAuth: true,
             title:'Admin',
-            noNavigation: true
+            admin: true
         }
         // children: [
         //     {

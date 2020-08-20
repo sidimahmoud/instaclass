@@ -27,14 +27,15 @@ class PayementController extends Controller
     }
     public function received()
     {
-        $received = Payement::all();
+        $received = Payement::where('type', 1)->get;
         return response()->json($received);
     }
     public function sent()
     {
-        $sent = Payement::all();
+        $sent = Payement::where('type', 2)->get;
         return response()->json($sent);
     }
+
 
     /**
      * Show the form for creating a new resource.
