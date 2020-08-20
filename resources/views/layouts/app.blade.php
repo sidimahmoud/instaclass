@@ -18,12 +18,12 @@
 </head>
 <body class="bg-light">
 <div id="app">
-    <appnav></appnav>
+    <appnav v-if="!$route.meta.noNavigation"></appnav>
 
     <main>
         @yield('content')
     </main>
-    <appfooter></appfooter>
+    <appfooter v-if="!$route.meta.noNavigation"></appfooter>
 </div>
 </body>
 </html>

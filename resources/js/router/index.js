@@ -37,6 +37,8 @@ const routes = [
         component: Home,
         meta: {
             requiresAuth: false,
+            title: 'Home'
+
         }
     },
     {
@@ -45,6 +47,8 @@ const routes = [
         component: About,
         meta: {
             requiresAuth: false,
+            title: 'About'
+
         }
     },
     {
@@ -53,6 +57,8 @@ const routes = [
         component: Countact,
         meta: {
             requiresAuth: false,
+            title: 'Contact'
+
         }
     },
     {
@@ -61,6 +67,8 @@ const routes = [
         component: Courses,
         meta: {
             requiresAuth: false,
+            title: 'Course'
+
         }
     },
     {
@@ -69,6 +77,8 @@ const routes = [
         component: Details,
         meta: {
             requiresAuth: false,
+            title: 'Course details'
+
         }
     },
     {
@@ -77,6 +87,8 @@ const routes = [
         component: Demande,
         meta: {
             requiresAuth: false,
+            title: 'Demande'
+
         }
     },
     {
@@ -85,6 +97,8 @@ const routes = [
         component: CoursePlayer,
         meta: {
             requiresAuth: true,
+            title: 'Course player'
+
         }
     },
     {
@@ -93,6 +107,8 @@ const routes = [
         component: Live,
         meta: {
             requiresAuth: true,
+            title: 'Live course'
+
         }
     },
     {
@@ -101,6 +117,8 @@ const routes = [
         component: Checkout,
         meta: {
             requiresAuth: true,
+            title: 'Checkout'
+
         }
     },
 
@@ -116,6 +134,8 @@ const routes = [
         },
         meta: {
             requiresAuth: true,
+            title: 'Profile'
+
         }
     },
     {
@@ -124,6 +144,8 @@ const routes = [
         component: Signin,
         meta: {
             requiresAuth: false,
+            title: 'Login'
+
         }
     },
     {
@@ -132,6 +154,8 @@ const routes = [
         component: Become,
         meta: {
             requiresAuth: false,
+            title: 'Become instructor'
+
         }
     },
     {
@@ -140,6 +164,8 @@ const routes = [
         component: StudentProfile,
         meta: {
             requiresAuth: true,
+            title: 'Profile'
+
         }
     },
 
@@ -150,6 +176,8 @@ const routes = [
         meta: {
             requiresAuth: false,
             requiresVisitore: true,
+            title: 'Login'
+
         }
     },
     {
@@ -159,6 +187,8 @@ const routes = [
         meta: {
             requiresAuth: false,
             requiresVisitore: true,
+            title: 'Authorizing'
+
         }
     },
     {
@@ -168,6 +198,8 @@ const routes = [
         meta: {
             requiresAuth: false,
             requiresVisitore: true,
+            title: 'Register'
+
         }
     },
 
@@ -186,6 +218,11 @@ const routes = [
         path: '/admin',
         name: 'Admin',
         component: Dashboard,
+        meta: {
+            requiresAuth: true,
+            title:'Admin',
+            noNavigation: true
+        }
         // children: [
         //     {
         //         path: 'teachers',

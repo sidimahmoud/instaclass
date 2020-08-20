@@ -8,7 +8,14 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon rotate-n-15">
                 </div>
-                <div class="sidebar-brand-text mx-3">Instantclass <sup>1.0</sup></div>
+                <div class="sidebar-brand-text mx-3">
+                    <router-link :to="{name: 'Home'}" tag="li">
+                        Instantclass <sup>1.0 </sup>
+
+                    </router-link>
+
+
+                </div>
             </a>
 
             <!-- Divider -->
