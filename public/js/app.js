@@ -4963,6 +4963,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewCourse",
@@ -48796,42 +48828,84 @@ var render = function() {
               ]),
               _vm._v(" "),
               _vm.status == 2
+                ? _c("div", { staticClass: "col-md-4" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "price" } }, [
+                        _vm._v("Price")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.price,
+                            expression: "price"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "price",
+                          placeholder: "Price"
+                        },
+                        domProps: { value: _vm.price },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.price = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.type == 2
+                ? _c("div", { staticClass: "col-md-4" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "duration" } }, [
+                        _vm._v("Estimated duration")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.duration,
+                            expression: "duration"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "duration",
+                          placeholder: "Duration"
+                        },
+                        domProps: { value: _vm.duration },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.duration = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.type == 2
                 ? _c("div", { staticClass: "col-md-4" }, [_vm._m(2)])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-4" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "duration" } }, [
-                    _vm._v("Duration")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.duration,
-                        expression: "duration"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "duration",
-                      placeholder: "Duration"
-                    },
-                    domProps: { value: _vm.duration },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.duration = $event.target.value
-                      }
-                    }
-                  })
-                ])
-              ]),
+              _vm.type == 2
+                ? _c("div", { staticClass: "col-md-4" }, [_vm._m(3)])
+                : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-4" }, [
                 _c("div", { staticClass: "form-group" }, [
@@ -48861,7 +48935,11 @@ var render = function() {
                     }
                   })
                 ])
-              ])
+              ]),
+              _vm._v(" "),
+              _vm.type == 2
+                ? _c("div", { staticClass: "col-md-4" }, [_vm._m(4)])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
@@ -48960,9 +49038,9 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(3),
+              _vm._m(5),
               _vm._v(" "),
-              _vm._m(4)
+              _vm._m(6)
             ]),
             _vm._v(" "),
             _c("button", { staticClass: "btn btn-primary btn-block" }, [
@@ -48972,11 +49050,11 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _vm._m(5),
+      _vm._m(7),
       _vm._v(" "),
-      _vm._m(6),
+      _vm._m(8),
       _vm._v(" "),
-      _vm._m(7)
+      _vm._m(9)
     ])
   ])
 }
@@ -49077,12 +49155,67 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "price" } }, [_vm._v("Price")]),
+      _c("label", { attrs: { for: "persons" } }, [
+        _vm._v("Number of authorized students")
+      ]),
       _vm._v(" "),
       _c("input", {
         staticClass: "form-control",
-        attrs: { type: "text", id: "price", placeholder: "Price" }
+        attrs: {
+          type: "number",
+          min: "1",
+          id: "persons",
+          placeholder: "authorized students"
+        }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "joinAfter" } }, [
+        _vm._v("Students can join after")
+      ]),
+      _vm._v(" "),
+      _c(
+        "select",
+        { staticClass: "form-control", attrs: { id: "joinAfter" } },
+        [
+          _c("option", { attrs: { value: "0" } }, [_vm._v("unauthorized")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "5" } }, [_vm._v("5 min")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "10" } }, [_vm._v("10 min")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "15" } }, [_vm._v("15 min")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "20" } }, [_vm._v("20 min")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "1" } }, [_vm._v("Anytime ")])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "partage" } }, [
+        _vm._v("Autorisez vous le partage de votre annonce?")
+      ]),
+      _vm._v(" "),
+      _c("select", { staticClass: "form-control", attrs: { id: "partage" } }, [
+        _c("option", { attrs: { value: "2" } }, [
+          _vm._v("Instantavite peut le partager")
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "1" } }, [_vm._v("Tout le monde")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "0" } }, [_vm._v("Je n'autorise pas")])
+      ])
     ])
   },
   function() {

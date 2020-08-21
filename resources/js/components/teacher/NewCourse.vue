@@ -63,21 +63,53 @@
                             <div class="form-group">
                                 <label for="price">Price</label>
                                 <input type="text" class="form-control" id="price"
-                                       placeholder="Price">
+                                       placeholder="Price" v-model="price">
                             </div>
                         </div>
-                        <div class="col-md-4" >
+                        <div class="col-md-4" v-if="type==2">
                             <div class="form-group">
-                                <label for="duration">Duration</label>
+                                <label for="duration" >Estimated duration</label>
                                 <input type="text" class="form-control" id="duration"
                                        placeholder="Duration" v-model="duration">
                             </div>
                         </div>
+                        <div class="col-md-4" v-if="type==2">
+                            <div class="form-group">
+                                <label for="persons" >Number of authorized students</label>
+                                <input type="number" min="1" class="form-control" id="persons"
+                                       placeholder="authorized students">
+                            </div>
+                        </div>
+                        <div class="col-md-4" v-if="type==2">
+                            <div class="form-group">
+                                <label for="joinAfter" >Students can join after</label>
+                                <select class="form-control" id="joinAfter" >
+                                    <option value="0">unauthorized</option>
+                                    <option value="5">5 min</option>
+                                    <option value="10">10 min</option>
+                                    <option value="15">15 min</option>
+                                    <option value="20">20 min</option>
+                                    <option value="1">Anytime </option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="name">Course name</label>
                                 <input type="text" class="form-control" id="name"
                                        placeholder="Name" v-model="name">
+                            </div>
+                        </div>
+                        <div class="col-md-4" v-if="type==2">
+                            <div class="form-group">
+                                <label for="partage" >Autorisez vous le partage de votre annonce?</label>
+                                <select class="form-control" id="partage" >
+                                    <option value="2">Instantavite peut le partager</option>
+                                    <option value="1">Tout le monde</option>
+                                    <option value="0">Je n'autorise pas</option>
+
+                                </select>
                             </div>
                         </div>
                     </div>
