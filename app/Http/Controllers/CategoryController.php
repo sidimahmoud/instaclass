@@ -97,7 +97,7 @@ class CategoryController extends Controller
             $extension = $file->getClientOriginalExtension();
             $file_name = $request['name'] . "-" . time() . "." . $extension;
             $file->move('uploads/categories/', $file_name);
-            $category->image = 'uploads/categories/' . $file_name;
+            $category->image =  $file_name;
         } else
             $category->image = $request['image'];
         $category->save();
