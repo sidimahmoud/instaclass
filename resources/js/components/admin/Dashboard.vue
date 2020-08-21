@@ -114,6 +114,7 @@
                         <h6 class="collapse-header">Choisir:</h6>
 
                         <a class="collapse-item" href="#courses" @click="component='Courses'">List</a>
+                        <a class="collapse-item" href="#demandes" @click="component='CourseDemands'">Demands</a>
                         <a class="collapse-item" href="#statistics" @click="component='Statistics'">Statistics</a>
                     </div>
                 </div>
@@ -179,6 +180,7 @@
     import NewPayment from "./payments/NewPayment";
 
     import Courses from "./courses/Courses";
+    import CourseDemands from "./courses/CourseDemands";
     import Statistics from "./courses/Statistics";
 
     import Categories from "./categories/Categories";
@@ -194,6 +196,7 @@
             Sent,
             NewPayment,
             Courses,
+            CourseDemands,
             Statistics,
             Categories,
             Home,
