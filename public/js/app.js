@@ -48686,7 +48686,7 @@ var render = function() {
             _vm._v("Submit new course")
           ]),
           _vm._v(" "),
-          _c("form", { staticClass: "my-3" }, [
+          _c("form", { staticClass: "my-3", attrs: { method: "post" } }, [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-4" }, [
                 _c("div", { staticClass: "form-group" }, [
@@ -48706,7 +48706,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { id: "selectLang" },
+                      attrs: { id: "selectLang", required: "" },
                       on: {
                         change: function($event) {
                           var $$selectedVal = Array.prototype.filter
@@ -48753,7 +48753,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { id: "type" },
+                      attrs: { id: "type", required: "" },
                       on: {
                         change: function($event) {
                           var $$selectedVal = Array.prototype.filter
@@ -48797,7 +48797,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { id: "status" },
+                      attrs: { id: "status", required: "" },
                       on: {
                         change: function($event) {
                           var $$selectedVal = Array.prototype.filter
@@ -48847,7 +48847,8 @@ var render = function() {
                         attrs: {
                           type: "text",
                           id: "price",
-                          placeholder: "Price"
+                          placeholder: "Price",
+                          required: ""
                         },
                         domProps: { value: _vm.price },
                         on: {
@@ -48883,7 +48884,8 @@ var render = function() {
                         attrs: {
                           type: "text",
                           id: "duration",
-                          placeholder: "Duration"
+                          placeholder: "Duration",
+                          required: ""
                         },
                         domProps: { value: _vm.duration },
                         on: {
@@ -48923,7 +48925,12 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { type: "text", id: "name", placeholder: "Name" },
+                    attrs: {
+                      type: "text",
+                      id: "name",
+                      placeholder: "Name",
+                      required: ""
+                    },
                     domProps: { value: _vm.name },
                     on: {
                       input: function($event) {
@@ -49139,7 +49146,7 @@ var staticRenderFns = [
           "select",
           {
             staticClass: "form-control",
-            attrs: { id: "exampleFormControlSelect1" }
+            attrs: { id: "exampleFormControlSelect1", required: "" }
           },
           [
             _c("option", [_vm._v("EN")]),
@@ -49165,7 +49172,8 @@ var staticRenderFns = [
           type: "number",
           min: "1",
           id: "persons",
-          placeholder: "authorized students"
+          placeholder: "authorized students",
+          required: ""
         }
       })
     ])
@@ -49181,7 +49189,10 @@ var staticRenderFns = [
       _vm._v(" "),
       _c(
         "select",
-        { staticClass: "form-control", attrs: { id: "joinAfter" } },
+        {
+          staticClass: "form-control",
+          attrs: { id: "joinAfter", required: "" }
+        },
         [
           _c("option", { attrs: { value: "0" } }, [_vm._v("unauthorized")]),
           _vm._v(" "),
@@ -49207,15 +49218,19 @@ var staticRenderFns = [
         _vm._v("Autorisez vous le partage de votre annonce?")
       ]),
       _vm._v(" "),
-      _c("select", { staticClass: "form-control", attrs: { id: "partage" } }, [
-        _c("option", { attrs: { value: "2" } }, [
-          _vm._v("Instantavite peut le partager")
-        ]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "1" } }, [_vm._v("Tout le monde")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "0" } }, [_vm._v("Je n'autorise pas")])
-      ])
+      _c(
+        "select",
+        { staticClass: "form-control", attrs: { id: "partage", required: "" } },
+        [
+          _c("option", { attrs: { value: "2" } }, [
+            _vm._v("Instantavite peut le partager")
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "1" } }, [_vm._v("Tout le monde")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "0" } }, [_vm._v("Je n'autorise pas")])
+        ]
+      )
     ])
   },
   function() {

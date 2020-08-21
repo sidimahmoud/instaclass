@@ -21,12 +21,12 @@
         <div class="bg-white">
             <div class="collapse p-2" id="collapseRecorded">
                 <h3 class="text-center">Submit new course</h3>
-                <form class="my-3">
+                <form class="my-3" method="post">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="selectLang">Select category</label>
-                                <select class="form-control" id="selectLang" v-model="category_id">
+                                <select class="form-control" id="selectLang" v-model="category_id" required>
                                     <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name}}</option>
                                 </select>
                             </div>
@@ -34,7 +34,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">course language</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control" id="exampleFormControlSelect1" required>
                                     <option>EN</option>
                                     <option>FR</option>
                                 </select>
@@ -43,7 +43,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="type">Type</label>
-                                <select class="form-control" id="type" v-model="type">
+                                <select class="form-control" id="type" v-model="type" required>
                                     <option value="1">Recorded</option>
                                     <option value="2">Live</option>
                                 </select>
@@ -53,7 +53,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="status">Status</label>
-                                <select class="form-control" id="status" v-model="status">
+                                <select class="form-control" id="status" v-model="status" required>
                                     <option value="1">PUBLIC</option>
                                     <option value="2">PRIVATE</option>
                                 </select>
@@ -63,27 +63,27 @@
                             <div class="form-group">
                                 <label for="price">Price</label>
                                 <input type="text" class="form-control" id="price"
-                                       placeholder="Price" v-model="price">
+                                       placeholder="Price" v-model="price" required>
                             </div>
                         </div>
                         <div class="col-md-4" v-if="type==2">
                             <div class="form-group">
                                 <label for="duration" >Estimated duration</label>
                                 <input type="text" class="form-control" id="duration"
-                                       placeholder="Duration" v-model="duration">
+                                       placeholder="Duration" v-model="duration" required>
                             </div>
                         </div>
                         <div class="col-md-4" v-if="type==2">
                             <div class="form-group">
                                 <label for="persons" >Number of authorized students</label>
                                 <input type="number" min="1" class="form-control" id="persons"
-                                       placeholder="authorized students">
+                                       placeholder="authorized students" required>
                             </div>
                         </div>
                         <div class="col-md-4" v-if="type==2">
                             <div class="form-group">
                                 <label for="joinAfter" >Students can join after</label>
-                                <select class="form-control" id="joinAfter" >
+                                <select class="form-control" id="joinAfter"  required>
                                     <option value="0">unauthorized</option>
                                     <option value="5">5 min</option>
                                     <option value="10">10 min</option>
@@ -98,13 +98,13 @@
                             <div class="form-group">
                                 <label for="name">Course name</label>
                                 <input type="text" class="form-control" id="name"
-                                       placeholder="Name" v-model="name">
+                                       placeholder="Name" v-model="name"required>
                             </div>
                         </div>
                         <div class="col-md-4" v-if="type==2">
                             <div class="form-group">
                                 <label for="partage" >Autorisez vous le partage de votre annonce?</label>
-                                <select class="form-control" id="partage" >
+                                <select class="form-control" id="partage" required>
                                     <option value="2">Instantavite peut le partager</option>
                                     <option value="1">Tout le monde</option>
                                     <option value="0">Je n'autorise pas</option>
