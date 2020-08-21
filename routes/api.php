@@ -9,7 +9,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/teachers', 'Admin\UsersController@teachers')->middleware('can:only-admin');
     Route::get('/students', 'Admin\UsersController@students')->middleware('can:only-admin');
     Route::get('/admins', 'Admin\UsersController@admins')->middleware('can:only-admin');
-    Route::get('/teacher/{id]/courses', 'Admin\UsersController@teacherCourses')->middleware('can:only-admin');
+    Route::get('/teacher/{id}/courses', 'Admin\UsersController@teacherCourses')->middleware('can:only-admin');
     Route::resource('users', 'Admin\UsersController')->middleware('can:only-admin');
     Route::get('/payments/received', 'Admin\PayementController@received')->middleware('can:only-admin');
     Route::get('/payments/sent', 'Admin\PayementController@sent')->middleware('can:only-admin');
