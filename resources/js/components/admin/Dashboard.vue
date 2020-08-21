@@ -112,10 +112,31 @@
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Choisir:</h6>
-
                         <a class="collapse-item" href="#courses" @click="component='Courses'">List</a>
                         <a class="collapse-item" href="#demandes" @click="component='CourseDemands'">Demands</a>
                         <a class="collapse-item" href="#statistics" @click="component='Statistics'">Statistics</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Contact
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMessages"
+                   aria-expanded="true" aria-controls="collapseMessages">
+                    <i class="fa fa-envelope"></i>
+                    <span>Contacts</span>
+                </a>
+                <div id="collapseMessages" class="collapse" aria-labelledby="headingOne" aria-controls="collapseOne"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Choisir:</h6>
+                        <a class="collapse-item" href="#messages" @click="component='Courses'">Messages</a>
+
                     </div>
                 </div>
             </li>

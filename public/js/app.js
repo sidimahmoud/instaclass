@@ -2604,6 +2604,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -44234,6 +44255,54 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
+          _c("hr", { staticClass: "sidebar-divider" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "sidebar-heading" }, [
+            _vm._v("\n            Contact\n        ")
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "nav-item" }, [
+            _vm._m(4),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse",
+                attrs: {
+                  id: "collapseMessages",
+                  "aria-labelledby": "headingOne",
+                  "aria-controls": "collapseOne",
+                  "data-parent": "#accordionSidebar"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "bg-white py-2 collapse-inner rounded" },
+                  [
+                    _c("h6", { staticClass: "collapse-header" }, [
+                      _vm._v("Choisir:")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "collapse-item",
+                        attrs: { href: "#messages" },
+                        on: {
+                          click: function($event) {
+                            _vm.component = "Courses"
+                          }
+                        }
+                      },
+                      [_vm._v("Messages")]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
           _c("hr", { staticClass: "sidebar-divider" })
         ]
       ),
@@ -44250,7 +44319,7 @@ var render = function() {
                   "navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
               },
               [
-                _vm._m(4),
+                _vm._m(5),
                 _vm._v(" "),
                 _c("ul", { staticClass: "navbar-nav ml-auto" }, [
                   _c("div", {
@@ -44375,6 +44444,29 @@ var staticRenderFns = [
         _c("i", { staticClass: "fa fa-book" }),
         _vm._v(" "),
         _c("span", [_vm._v("Courses")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "nav-link collapsed",
+        attrs: {
+          href: "#",
+          "data-toggle": "collapse",
+          "data-target": "#collapseMessages",
+          "aria-expanded": "true",
+          "aria-controls": "collapseMessages"
+        }
+      },
+      [
+        _c("i", { staticClass: "fa fa-envelope" }),
+        _vm._v(" "),
+        _c("span", [_vm._v("Contacts")])
       ]
     )
   },
