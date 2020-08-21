@@ -16,12 +16,12 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->integer('category_id');
             $table->string('name');
             $table->string('short_description');
             $table->string('description');
             $table->string('image')->default('https://instantclass.herokuapp.com/uploads/logo.png');
             $table->string('slug')->unique();
-            $table->integer('category_id');
             $table->string('language');
             $table->string('duration');
             $table->string('status'); // free 1 or paid 2

@@ -15,18 +15,19 @@ class CoursesTableSeeder extends Seeder
     {
         Course::truncate();
         Course::create([
-            'name' => 'Full Stack Laravel Vue',
             'user_id' => '2',
+            'category_id' => '1',
+            'name' => 'Full Stack Laravel Vue',
             'short_description' => 'Learn how to build web apps with Larvel and Vue',
             'description' => '  laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inr',
             'image' => 'https://instantclass.herokuapp.com/uploads/logo.png',
             'slug' => "full-stack-laravel-vue",
-            'category_id' => '1',
             'language' => 'EN',
             'duration' => '2H',
-            'type' => '1',
             'status' => '1',
+            'type' => '1',
             'price' => '0.00',
+            'paid' => '1',
             'created_at' => Carbon::now(),
         ]);
 
@@ -43,6 +44,7 @@ class CoursesTableSeeder extends Seeder
             'type' => '1',
             'status' => '2',
             'price' => '19.99',
+            'paid' => '1',
             'created_at' => Carbon::now(),
         ]);
 
@@ -58,7 +60,7 @@ class CoursesTableSeeder extends Seeder
             'duration' => '1H',
             'type' => '2',
             'status' => '2',
-            'price' => '19.99',
+            'price' => '10.00',
             'created_at' => Carbon::now(),
         ]);
 

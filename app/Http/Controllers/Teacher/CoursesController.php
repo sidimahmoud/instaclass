@@ -44,12 +44,16 @@ class CoursesController extends Controller
         }
         $course = new Course();
         $course->user_id = $request->user()->id;
-        $course->name = $request['name'];
-        $course->description = $request['description'];
-        $course->short_description = $request['short_description'];
         $course->category_id = $request['sub_category_id'];
+        $course->name = $request['name'];
+        $course->short_description = $request['short_description'];
+        $course->description = $request['description'];
         $course->image = $request['image'];
+        $course->slug = $request['slug'];
+        $course->language = $request['language'];
+        $course->duration = $request['duration'];
         $course->status = $request['status'];
+        $course->type = $request['type'];
         $course->price = $request['price'];
 
         $course->save();

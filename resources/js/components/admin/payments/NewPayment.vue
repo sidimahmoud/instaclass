@@ -21,8 +21,8 @@
             <div class="form-group">
                 <label for="exampleFormControlSelect2">Object of payment</label>
                 <select multiple class="form-control" id="exampleFormControlSelect2">
-                    <option>17- Build PWAs with Vuejs</option>
-                    <option>28- Full Stack Laravel Vuejs</option>
+                    <option v-for="c in TeacherCourses" :value="c.id">{{c.name}}</option>
+
                 </select>
             </div>
             <div class="form-group">

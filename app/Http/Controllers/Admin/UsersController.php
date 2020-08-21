@@ -71,7 +71,7 @@ class UsersController extends Controller
 
     public function teacherCourses($id)
     {
-        $courses = Course::where('user_id', $id)->get();
+        $courses = Course::where('user_id', $id)->where('paid',0)->get();
         return response()->json($courses);
     }
 
