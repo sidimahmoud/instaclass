@@ -20,7 +20,7 @@
         </div>
         <div class="bg-white">
             <div class="collapse p-2" id="collapseRecorded">
-                <h3 class="text-center">Submit recorded course</h3>
+                <h3 class="text-center">Submit new course</h3>
                 <form class="my-3">
                     <div class="row">
                         <div class="col-md-4">

@@ -48683,7 +48683,7 @@ var render = function() {
         { staticClass: "collapse p-2", attrs: { id: "collapseRecorded" } },
         [
           _c("h3", { staticClass: "text-center" }, [
-            _vm._v("Submit recorded course")
+            _vm._v("Submit new course")
           ]),
           _vm._v(" "),
           _c("form", { staticClass: "my-3" }, [
