@@ -44,14 +44,16 @@
                     <span class="sr-only">Loading...</span>
                 </div>
             </div>
+
             <div class="row justify-content-center align-items-center" v-if="!loadingCategories">
                 <div class="col-md-3 col-sm-12 p-2 text-center" v-for="categ in allCategories" :key="categ.id">
                     <div class="card">
-                        <a href="#">
+                        <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="a">
                             <img class="card-img-top"
-                                 :src="'https://instantclass.herokuapp.com/uploads/categories/'+categ.image"
+                                 :src="'https://instantclass.herokuapp.com/'+categ.image"
                                  alt="Card image cap">
-                        </a>
+                        </router-link>
+
                         <div class="card-body text-center">
                             <h5 class="card-title  font-weight-bolder">{{categ.name}}</h5>
                             <p class="card-text">{{categ.description}}</p>

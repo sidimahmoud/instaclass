@@ -15,11 +15,13 @@ class CreatePayementsTable extends Migration
     {
         Schema::create('payements', function (Blueprint $table) {
             $table->id();
-            $table->integer('enrollment_id');
+            $table->integer('enrollment_id')->nullable();
             $table->integer('user_id');
-            $table->integer('type')->default(1); //1 for receive 2 for sent payments
+            $table->string('type')->default('received'); // received or sent
             $table->float('amount');
             $table->string('method');
+            $table->string('object')->default("course price");
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

@@ -26,6 +26,7 @@ Route::resource('/categories', 'CategoryController');
 Route::resource('/comments', 'CommentController');
 Route::get('/courses', 'CourseController@index');
 Route::get('/courses/{id}', 'CourseController@show');
+Route::get('/class/{id}', 'CourseController@categoryCourses');
 Route::resource('/ratings', 'RatingController');
 
 

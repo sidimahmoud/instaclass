@@ -2396,6 +2396,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3072,26 +3074,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewPayment",
   data: function data() {
     return {
-      teacher: 0
+      payment: {
+        user_id: 0,
+        type: 'sent',
+        amount: '',
+        method: 'card',
+        object: [],
+        note: ''
+      }
     };
   },
   methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchTeachers"])), {}, {
     loadCourses: function loadCourses(id) {
-      if (this.teacher === 0) {
+      if (this.payment.user_id === 0) {
         alert("Select teacher first");
-      } else this.$store.dispatch('fetchTeacherCourses', this.teacher);
+      } else this.$store.dispatch('fetchTeacherCourses', this.payment.user_id);
+    },
+    savePayment: function savePayment() {
+      console.log(this.payment);
     }
   }),
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["allTeachers", "TeacherCourses"])),
@@ -3856,6 +3861,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Checkout"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/courses/CategoryCourses.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/courses/CategoryCourses.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _CourseComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CourseComponent */ "./resources/js/components/courses/CourseComponent.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'CategoryCourses',
+  components: {
+    course: _CourseComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  methods: {
+    fetchCourses: function fetchCourses() {
+      this.$store.dispatch('getCategoryCourses', this.$route.params.id);
+    }
+  },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["allcategCourses", "loading"]),
+  created: function created() {
+    this.fetchCourses();
+  }
 });
 
 /***/ }),
@@ -9824,7 +9872,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* card margin*/\n.card[data-v-0104f9b6]:not(:first-child) {\n    margin-left: 15px !important;\n}\n\n/* latest courses border bottom*/\n.latest_courses_border[data-v-0104f9b6] {\n    border-bottom: 5px solid red;\n    max-width: 6%;\n    min-height: 6%;\n    max-height: 6%;\n    min-width: 8%;\n    display: block;\n}\n.jumbotron[data-v-0104f9b6] {\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/images/home/bg.png */ "./resources/js/assets/images/home/bg.png")) + ");\n    border-radius: 0;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* card margin*/\n.card[data-v-0104f9b6]:not(:first-child) {\n    margin-left: 15px !important;\n}\n\n/* latest courses border bottom*/\n.latest_courses_border[data-v-0104f9b6] {\n    border-bottom: 5px solid red;\n    max-width: 6%;\n    min-height: 6%;\n    max-height: 6%;\n    min-width: 8%;\n    display: block;\n}\n.jumbotron[data-v-0104f9b6] {\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/images/home/bg.png */ "./resources/js/assets/images/home/bg.png")) + ");\n    border-radius: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -43807,31 +43855,48 @@ var render = function() {
                   staticClass: "col-md-3 col-sm-12 p-2 text-center"
                 },
                 [
-                  _c("div", { staticClass: "card" }, [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://instantclass.herokuapp.com/uploads/categories/" +
-                            categ.image,
-                          alt: "Card image cap"
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-body text-center" }, [
+                  _c(
+                    "div",
+                    { staticClass: "card" },
+                    [
                       _c(
-                        "h5",
-                        { staticClass: "card-title  font-weight-bolder" },
-                        [_vm._v(_vm._s(categ.name))]
+                        "router-link",
+                        {
+                          attrs: {
+                            to: {
+                              name: "CategCourses",
+                              params: { id: categ.id }
+                            },
+                            tag: "a"
+                          }
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "card-img-top",
+                            attrs: {
+                              src:
+                                "https://instantclass.herokuapp.com/" +
+                                categ.image,
+                              alt: "Card image cap"
+                            }
+                          })
+                        ]
                       ),
                       _vm._v(" "),
-                      _c("p", { staticClass: "card-text" }, [
-                        _vm._v(_vm._s(categ.description))
+                      _c("div", { staticClass: "card-body text-center" }, [
+                        _c(
+                          "h5",
+                          { staticClass: "card-title  font-weight-bolder" },
+                          [_vm._v(_vm._s(categ.name))]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "card-text" }, [
+                          _vm._v(_vm._s(categ.description))
+                        ])
                       ])
-                    ])
-                  ])
+                    ],
+                    1
+                  )
                 ]
               )
             }),
@@ -45035,105 +45100,196 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-            _vm._v("Select teacher")
-          ]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.teacher,
-                  expression: "teacher"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { id: "exampleFormControlSelect1" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.teacher = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                }
-              }
-            },
-            [
-              _c("option", { attrs: { value: "0" } }, [
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.savePayment($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "row " }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
                 _vm._v("Select teacher")
               ]),
               _vm._v(" "),
-              _vm._l(_vm.allTeachers, function(t) {
-                return _c("option", { domProps: { value: t.id } }, [
-                  _vm._v(
-                    _vm._s(t.id) +
-                      "-" +
-                      _vm._s(t.first_name) +
-                      " / " +
-                      _vm._s(t.email)
-                  )
-                ])
-              })
-            ],
-            2
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("p", [
-          _vm._v("\n                Load teacher courses\n            ")
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-block",
-            on: { click: _vm.loadCourses }
-          },
-          [_vm._v("Fetch courses")]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("form", [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "exampleFormControlSelect2" } }, [
-          _vm._v("Object of payment")
-        ]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { multiple: "", id: "exampleFormControlSelect2" }
-          },
-          _vm._l(_vm.TeacherCourses, function(c) {
-            return _c("option", { domProps: { value: c.id } }, [
-              _vm._v(_vm._s(c.name))
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.payment.user_id,
+                      expression: "payment.user_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "exampleFormControlSelect1" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.payment,
+                        "user_id",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "0" } }, [
+                    _vm._v("Select teacher")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.allTeachers, function(t) {
+                    return _c("option", { domProps: { value: t.id } }, [
+                      _vm._v(
+                        _vm._s(t.id) +
+                          "-" +
+                          _vm._s(t.first_name) +
+                          " / " +
+                          _vm._s(t.email) +
+                          "\n                            "
+                      )
+                    ])
+                  })
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "p",
+              {
+                staticClass: "btn btn-primary btn-block",
+                on: { click: _vm.loadCourses }
+              },
+              [_vm._v("Load courses")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "exampleFormControlSelect2" } }, [
+                _vm._v("Object of payment")
+              ]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.payment.object,
+                      expression: "payment.object"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { multiple: "", id: "exampleFormControlSelect2" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.payment,
+                        "object",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.TeacherCourses, function(c) {
+                  return _c("option", { domProps: { value: c.id } }, [
+                    _vm._v(_vm._s(c.name))
+                  ])
+                }),
+                0
+              )
             ])
-          }),
-          0
-        )
-      ]),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._m(1)
-    ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "amount" } }, [_vm._v("Amount")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.payment.amount,
+                expression: "payment.amount"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", id: "amount" },
+            domProps: { value: _vm.payment.amount },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.payment, "amount", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
+            _vm._v("Note (optional) ")
+          ]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.payment.note,
+                expression: "payment.note"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { id: "exampleFormControlTextarea1", rows: "3" },
+            domProps: { value: _vm.payment.note },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.payment, "note", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -45141,54 +45297,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
-        _vm._v("Note (optional) ")
-      ]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: { id: "exampleFormControlTextarea1", rows: "3" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", [
-      _c("h2", { staticClass: " h2 text-center" }, [_vm._v("Checkout form")]),
-      _vm._v(" "),
       _c("div", { staticClass: "my-3" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("label", { attrs: { for: "method" } }, [
-              _vm._v("Payement method")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
-            _c(
-              "select",
-              {
-                staticClass: "custom-select d-block w-50 mb-2",
-                attrs: { id: "method", required: "" }
-              },
-              [
-                _c("option", [_vm._v("Credit card")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("PayPal")])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "invalid-feedback" }, [
-              _vm._v(
-                "\n                            Please select a valid payment method.\n                        "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
         _c("div", { staticClass: " border rounded" }, [
           _c("div", { staticClass: "p-2" }, [
             _c("div", { staticClass: "row" }, [
@@ -46587,6 +46697,55 @@ var staticRenderFns = [
         ])
       ])
     ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/courses/CategoryCourses.vue?vue&type=template&id=64724a68&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/courses/CategoryCourses.vue?vue&type=template&id=64724a68&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "border-top border-primary pt-5" }, [
+    _vm.loading
+      ? _c("div", { staticClass: "text-center text-primary" }, [_vm._m(0)])
+      : _vm._e(),
+    _vm._v(" "),
+    !_vm.loading
+      ? _c(
+          "div",
+          _vm._l(_vm.allcategCourses, function(c) {
+            return _c("course", { key: c.id, attrs: { course: c } })
+          }),
+          1
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border", attrs: { role: "status" } },
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+    )
   }
 ]
 render._withStripped = true
@@ -68116,6 +68275,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/courses/CategoryCourses.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/courses/CategoryCourses.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CategoryCourses_vue_vue_type_template_id_64724a68_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CategoryCourses.vue?vue&type=template&id=64724a68&scoped=true& */ "./resources/js/components/courses/CategoryCourses.vue?vue&type=template&id=64724a68&scoped=true&");
+/* harmony import */ var _CategoryCourses_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CategoryCourses.vue?vue&type=script&lang=js& */ "./resources/js/components/courses/CategoryCourses.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CategoryCourses_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CategoryCourses_vue_vue_type_template_id_64724a68_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CategoryCourses_vue_vue_type_template_id_64724a68_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "64724a68",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/courses/CategoryCourses.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/courses/CategoryCourses.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/courses/CategoryCourses.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CategoryCourses_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CategoryCourses.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/courses/CategoryCourses.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CategoryCourses_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/courses/CategoryCourses.vue?vue&type=template&id=64724a68&scoped=true&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/courses/CategoryCourses.vue?vue&type=template&id=64724a68&scoped=true& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CategoryCourses_vue_vue_type_template_id_64724a68_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CategoryCourses.vue?vue&type=template&id=64724a68&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/courses/CategoryCourses.vue?vue&type=template&id=64724a68&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CategoryCourses_vue_vue_type_template_id_64724a68_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CategoryCourses_vue_vue_type_template_id_64724a68_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/courses/CourseComponent.vue":
 /*!*************************************************************!*\
   !*** ./resources/js/components/courses/CourseComponent.vue ***!
@@ -69256,10 +69484,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_teacher_Profile__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/teacher/Profile */ "./resources/js/components/teacher/Profile.vue");
 /* harmony import */ var _components_student_Profile__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../components/student/Profile */ "./resources/js/components/student/Profile.vue");
 /* harmony import */ var _components_admin_Dashboard__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../components/admin/Dashboard */ "./resources/js/components/admin/Dashboard.vue");
-/* harmony import */ var _components_admin_courses_Courses__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../components/admin/courses/Courses */ "./resources/js/components/admin/courses/Courses.vue");
-/* harmony import */ var _components_admin_users_Teachers__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../components/admin/users/Teachers */ "./resources/js/components/admin/users/Teachers.vue");
-/* harmony import */ var _components_fr_Homefr__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../components/fr/Homefr */ "./resources/js/components/fr/Homefr.vue");
-
+/* harmony import */ var _components_fr_Homefr__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../components/fr/Homefr */ "./resources/js/components/fr/Homefr.vue");
+/* harmony import */ var _components_courses_CategoryCourses__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../components/courses/CategoryCourses */ "./resources/js/components/courses/CategoryCourses.vue");
 
 
 
@@ -69314,6 +69540,14 @@ var routes = [{
   meta: {
     requiresAuth: false,
     title: 'Course'
+  }
+}, {
+  path: '/category/:id/courses',
+  name: 'CategCourses',
+  component: _components_courses_CategoryCourses__WEBPACK_IMPORTED_MODULE_21__["default"],
+  meta: {
+    requiresAuth: false,
+    title: 'Courses'
   }
 }, {
   path: '/courses/:slug',
@@ -69428,7 +69662,7 @@ var routes = [{
 {
   path: '/fr',
   name: 'HomeFr',
-  component: _components_fr_Homefr__WEBPACK_IMPORTED_MODULE_22__["default"],
+  component: _components_fr_Homefr__WEBPACK_IMPORTED_MODULE_20__["default"],
   meta: {
     requiresAuth: false
   }
@@ -70174,11 +70408,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var state = {
   courses: [],
   course: '',
+  categCourses: [],
   loading: false
 };
 var getters = {
   allCourses: function allCourses(state) {
     return state.courses;
+  },
+  allcategCourses: function allcategCourses(state) {
+    return state.categCourses;
   },
   course: function course(state) {
     return state.course;
@@ -70237,6 +70475,31 @@ var actions = {
         }
       }, _callee2);
     }))();
+  },
+  getCategoryCourses: function getCategoryCourses(_ref3, id) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              commit = _ref3.commit;
+              commit('setLoading', true);
+              _context3.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/class/".concat(id));
+
+            case 4:
+              response = _context3.sent;
+              commit('setCategoryCourses', response.data);
+              commit('setLoading', false);
+
+            case 7:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }))();
   }
 };
 var mutations = {
@@ -70245,6 +70508,9 @@ var mutations = {
   },
   setCourse: function setCourse(state, course) {
     return state.course = course;
+  },
+  setCategoryCourses: function setCategoryCourses(state, payload) {
+    return state.categCourses = payload;
   },
   setLoading: function setLoading(state, val) {
     return state.loading = val;

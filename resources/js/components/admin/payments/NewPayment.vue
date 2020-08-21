@@ -1,53 +1,46 @@
 <template>
     <div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Select teacher</label>
-                    <select class="form-control" id="exampleFormControlSelect1" v-model="teacher">
-                        <option value="0">Select teacher</option>
-                        <option v-for="t in allTeachers" :value="t.id">{{t.id}}-{{t.first_name}} / {{t.email}}</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <p>
-                    Load teacher courses
-                </p>
-                <button class="btn btn-primary btn-block" @click="loadCourses">Fetch courses</button>
-            </div>
-        </div>
-        <form>
-            <div class="form-group">
-                <label for="exampleFormControlSelect2">Object of payment</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                    <option v-for="c in TeacherCourses" :value="c.id">{{c.name}}</option>
 
-                </select>
+        <form @submit.prevent="savePayment">
+            <div class="row ">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Select teacher</label>
+                            <select class="form-control" id="exampleFormControlSelect1" v-model="payment.user_id">
+                                <option value="0">Select teacher</option>
+                                <option v-for="t in allTeachers" :value="t.id">{{t.id}}-{{t.first_name}} / {{t.email}}
+                                </option>
+                            </select>
+                        </div>
+                        <p class="btn btn-primary btn-block" @click="loadCourses">Load courses</p>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect2">Object of payment</label>
+                            <select multiple class="form-control" id="exampleFormControlSelect2" v-model="payment.object">
+                                <option v-for="c in TeacherCourses" :value="c.id">{{c.name}}</option>
+                            </select>
+                        </div>
+                    </div>
             </div>
+
+
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="text" class="form-control" id="amount" v-model="payment.amount">
+            </div>
+
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Note (optional) </label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                          v-model="payment.note"></textarea>
             </div>
             <div>
                 <!-- Heading -->
-                <h2 class=" h2 text-center">Checkout form</h2>
                 <!-- payement info-->
                 <div class="my-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="method">Payement method</label>
-                        </div>
-                        <div class="col-md-6">
-                            <select class="custom-select d-block w-50 mb-2" id="method" required>
-                                <option>Credit card</option>
-                                <option>PayPal</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid payment method.
-                            </div>
-                        </div>
-                    </div>
+
                     <div class=" border rounded">
                         <div class="p-2">
                             <div class="row">
@@ -111,20 +104,29 @@
 
     export default {
         name: "NewPayment",
-        data(){
-            return{
-                teacher: 0
+        data() {
+            return {
+                payment: {
+                    user_id: 0,
+                    type: 'sent',
+                    amount: '',
+                    method: 'card',
+                    object: [],
+                    note: '',
+                }
             }
         },
         methods: {
             ...mapActions(["fetchTeachers"]),
             loadCourses(id) {
-                if (this.teacher===0){
+                if (this.payment.user_id === 0) {
                     alert("Select teacher first");
-                }
-                else
-                    this.$store.dispatch('fetchTeacherCourses', this.teacher)
+                } else
+                    this.$store.dispatch('fetchTeacherCourses', this.payment.user_id)
             },
+            savePayment() {
+                console.log(this.payment)
+            }
         },
         computed: {
             ...mapGetters(["allTeachers", "TeacherCourses"]),
