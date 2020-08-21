@@ -50,7 +50,7 @@
                     <div class="card">
                         <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="a">
                             <img class="card-img-top"
-                                 :src="'https://instantclass.herokuapp.com/'+categ.image"
+                                 :src="'https://instantclass.herokuapp.com/uploads/categories/'+categ.image"
                                  alt="Card image cap">
                         </router-link>
 

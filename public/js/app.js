@@ -3893,7 +3893,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CategoryCourses',
   components: {
-    course: _CourseComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Course: _CourseComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
     fetchCourses: function fetchCourses() {
@@ -43875,7 +43875,7 @@ var render = function() {
                             staticClass: "card-img-top",
                             attrs: {
                               src:
-                                "https://instantclass.herokuapp.com/" +
+                                "https://instantclass.herokuapp.com/uploads/categories/" +
                                 categ.image,
                               alt: "Card image cap"
                             }
@@ -46720,21 +46720,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "border-top border-primary pt-5" }, [
-    _vm.loading
-      ? _c("div", { staticClass: "text-center text-primary" }, [_vm._m(0)])
-      : _vm._e(),
-    _vm._v(" "),
-    !_vm.loading
-      ? _c(
-          "div",
-          _vm._l(_vm.allcategCourses, function(c) {
-            return _c("course", { key: c.id, attrs: { course: c } })
-          }),
-          1
-        )
-      : _vm._e()
-  ])
+  return _c(
+    "div",
+    { staticClass: "container pt-5 border-top border-primary" },
+    [
+      _vm.loading
+        ? _c("div", { staticClass: "text-center text-primary" }, [_vm._m(0)])
+        : _vm._e(),
+      _vm._v(" "),
+      !_vm.loading
+        ? _c(
+            "div",
+            _vm._l(_vm.allcategCourses, function(c) {
+              return _c("course", { key: c.id, attrs: { course: c } })
+            }),
+            1
+          )
+        : _vm._e()
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
