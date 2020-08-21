@@ -69,6 +69,16 @@ class UsersController extends Controller
         return response()->json(['categories'=>$categories,'courses'=>$courses,'teachers'=>$teachers,'students'=>$students,]);
     }
 
+    public function teacherCourses($id)
+    {
+        $courses = Course::where('user_id', $id)->get();
+        return response()->json($courses);
+    }
+
+
+
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -143,6 +153,6 @@ class UsersController extends Controller
     {
         $user->roles()->detach();
         $user->delete();
-        return redirect()->route('users.index');
+        return response()->json("deleted");
     }
 }

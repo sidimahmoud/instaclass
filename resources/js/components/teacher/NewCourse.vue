@@ -1,8 +1,8 @@
 <template>
     <div class="container rounded mb-4">
         <div class="text-center mb-4">
-            <a class="btn btn-primary" data-toggle="collapse" href="#collapseRecorded" role="button"
-               aria-expanded="false" aria-controls="collapseRecorded">
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseCourse" role="button"
+               aria-expanded="false" aria-controls="collapseCourse">
                 New Course
             </a>
             <a class="btn btn-primary" data-toggle="collapse" href="#collapsePayments" role="button"
@@ -19,7 +19,7 @@
             </a>
         </div>
         <div class="bg-white">
-            <div class="collapse p-2" id="collapseRecorded">
+            <div class="collapse p-2" id="collapseCourse">
                 <h3 class="text-center">Submit new course</h3>
                 <form class="my-3" method="post">
                     <div class="row">
@@ -68,28 +68,28 @@
                         </div>
                         <div class="col-md-4" v-if="type==2">
                             <div class="form-group">
-                                <label for="duration" >Estimated duration</label>
+                                <label for="duration">Estimated duration</label>
                                 <input type="text" class="form-control" id="duration"
                                        placeholder="Duration" v-model="duration" required>
                             </div>
                         </div>
                         <div class="col-md-4" v-if="type==2">
                             <div class="form-group">
-                                <label for="persons" >Number of authorized students</label>
+                                <label for="persons">Number of authorized students</label>
                                 <input type="number" min="1" class="form-control" id="persons"
                                        placeholder="authorized students" required>
                             </div>
                         </div>
                         <div class="col-md-4" v-if="type==2">
                             <div class="form-group">
-                                <label for="joinAfter" >Students can join after</label>
-                                <select class="form-control" id="joinAfter"  required>
+                                <label for="joinAfter">Students can join after</label>
+                                <select class="form-control" id="joinAfter" required>
                                     <option value="0">unauthorized</option>
                                     <option value="5">5 min</option>
                                     <option value="10">10 min</option>
                                     <option value="15">15 min</option>
                                     <option value="20">20 min</option>
-                                    <option value="1">Anytime </option>
+                                    <option value="1">Anytime</option>
                                 </select>
                             </div>
                         </div>
@@ -98,12 +98,12 @@
                             <div class="form-group">
                                 <label for="name">Course name</label>
                                 <input type="text" class="form-control" id="name"
-                                       placeholder="Name" v-model="name"required>
+                                       placeholder="Name" v-model="name" required>
                             </div>
                         </div>
                         <div class="col-md-4" v-if="type==2">
                             <div class="form-group">
-                                <label for="partage" >Autorisez vous le partage de votre annonce?</label>
+                                <label for="partage">Autorisez vous le partage de votre annonce?</label>
                                 <select class="form-control" id="partage" required>
                                     <option value="2">Instantavite peut le partager</option>
                                     <option value="1">Tout le monde</option>
@@ -126,19 +126,20 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="seances">Nombre de séance</label>
-                                <input type="number" min="1" value="1" class="form-control" id="seances" v-model="sections">
+                                <input type="number" min="1" value="1" class="form-control" id="seances"
+                                       v-model="sections">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="Thumbnail">Thumbnail</label>
-                                <input type="file" class="form-control-file" id="Thumbnail" >
+                                <input type="file" class="form-control-file" id="Thumbnail">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="section1">Section 1</label>
-                                <input type="file" class="form-control-file" id="section1" >
+                                <input type="file" class="form-control-file" id="section1">
                             </div>
                         </div>
                     </div>
@@ -161,7 +162,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 

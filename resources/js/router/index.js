@@ -128,14 +128,14 @@ const routes = [
         component: TeacherProfile,
         beforeEnter: (to, from, next) => {
             let user = JSON.parse(localStorage.getItem('user')) || null;
-            if (user.t === 'teacher') next();
-            else if (user.t === 'student') next({name: 'StudentProfile'});
+            if (user.t === "teacher") next();
+            else if (user.t === "admin") next({name: 'Admin'});
+            else if (user.t === "student") next({name: 'StudentProfile'});
             else next({name: 'Home'});
         },
         meta: {
             requiresAuth: true,
             title: 'Profile'
-
         }
     },
     {
@@ -155,7 +155,6 @@ const routes = [
         meta: {
             requiresAuth: false,
             title: 'Become instructor'
-
         }
     },
     {
@@ -165,7 +164,6 @@ const routes = [
         meta: {
             requiresAuth: true,
             title: 'Profile'
-
         }
     },
 
@@ -177,7 +175,6 @@ const routes = [
             requiresAuth: false,
             requiresVisitore: true,
             title: 'Login'
-
         }
     },
     {
@@ -188,7 +185,6 @@ const routes = [
             requiresAuth: false,
             requiresVisitore: true,
             title: 'Authorizing'
-
         }
     },
     {
@@ -199,7 +195,6 @@ const routes = [
             requiresAuth: false,
             requiresVisitore: true,
             title: 'Register'
-
         }
     },
 

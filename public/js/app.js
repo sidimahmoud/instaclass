@@ -2964,6 +2964,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -3060,8 +3067,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "NewPayment"
+  name: "NewPayment",
+  data: function data() {
+    return {
+      teacher: 0
+    };
+  },
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchTeachers"])), {}, {
+    loadCourses: function loadCourses(id) {
+      if (this.teacher === 0) {
+        alert("Select teacher first");
+      } else this.$store.dispatch('fetchTeacherCourses', this.teacher);
+    }
+  }),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["allTeachers", "TeacherCourses"])),
+  created: function created() {
+    this.fetchTeachers();
+  }
 });
 
 /***/ }),
@@ -44998,7 +45034,83 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+            _vm._v("Select teacher")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.teacher,
+                  expression: "teacher"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "exampleFormControlSelect1" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.teacher = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "0" } }, [
+                _vm._v("Select teacher")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.allTeachers, function(t) {
+                return _c("option", { domProps: { value: t.id } }, [
+                  _vm._v(
+                    _vm._s(t.id) +
+                      "-" +
+                      _vm._s(t.first_name) +
+                      " / " +
+                      _vm._s(t.email)
+                  )
+                ])
+              })
+            ],
+            2
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("p", [
+          _vm._v("\n                Load teacher courses\n            ")
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary btn-block",
+            on: { click: _vm.loadCourses }
+          },
+          [_vm._v("Fetch courses")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -45006,25 +45118,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("form", [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-          _vm._v("Select teacher")
-        ]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { id: "exampleFormControlSelect1" }
-          },
-          [
-            _c("option", [_vm._v("1- Teacher Instant")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("2- Another teacher")])
-          ]
-        )
-      ]),
-      _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("label", { attrs: { for: "exampleFormControlSelect2" } }, [
           _vm._v("Object of payment")
@@ -45082,7 +45175,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("div", { staticClass: "invalid-feedback" }, [
                 _vm._v(
-                  "\n                        Please select a valid payment method.\n                    "
+                  "\n                            Please select a valid payment method.\n                        "
                 )
               ])
             ])
@@ -45108,7 +45201,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("div", { staticClass: "invalid-feedback" }, [
                     _vm._v(
-                      "\n                                Name on card is required\n                            "
+                      "\n                                    Name on card is required\n                                "
                     )
                   ])
                 ]),
@@ -45130,7 +45223,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("div", { staticClass: "invalid-feedback" }, [
                     _vm._v(
-                      "\n                                Expiration date required\n                            "
+                      "\n                                    Expiration date required\n                                "
                     )
                   ])
                 ]),
@@ -45152,7 +45245,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("div", { staticClass: "invalid-feedback" }, [
                     _vm._v(
-                      "\n                                Security code required\n                            "
+                      "\n                                    Security code required\n                                "
                     )
                   ])
                 ]),
@@ -45174,7 +45267,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("div", { staticClass: "invalid-feedback" }, [
                     _vm._v(
-                      "\n                                Credit card number is required\n                            "
+                      "\n                                    Credit card number is required\n                                "
                     )
                   ])
                 ])
@@ -45197,7 +45290,7 @@ var staticRenderFns = [
                     },
                     [
                       _vm._v(
-                        "\n                            Save this information for next time\n                        "
+                        "\n                                Save this information for next time\n                            "
                       )
                     ]
                   )
@@ -45213,7 +45306,7 @@ var staticRenderFns = [
             staticClass: "btn btn-primary btn-lg btn-block mb-3",
             attrs: { type: "submit" }
           },
-          [_vm._v("\n            Send Payment\n        ")]
+          [_vm._v("\n                Send Payment\n            ")]
         )
       ])
     ])
@@ -48680,7 +48773,7 @@ var render = function() {
     _c("div", { staticClass: "bg-white" }, [
       _c(
         "div",
-        { staticClass: "collapse p-2", attrs: { id: "collapseRecorded" } },
+        { staticClass: "collapse p-2", attrs: { id: "collapseCourse" } },
         [
           _c("h3", { staticClass: "text-center" }, [
             _vm._v("Submit new course")
@@ -49077,10 +49170,10 @@ var staticRenderFns = [
           staticClass: "btn btn-primary",
           attrs: {
             "data-toggle": "collapse",
-            href: "#collapseRecorded",
+            href: "#collapseCourse",
             role: "button",
             "aria-expanded": "false",
-            "aria-controls": "collapseRecorded"
+            "aria-controls": "collapseCourse"
           }
         },
         [_vm._v("\n            New Course\n        ")]
@@ -49204,7 +49297,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("option", { attrs: { value: "20" } }, [_vm._v("20 min")]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("Anytime ")])
+          _c("option", { attrs: { value: "1" } }, [_vm._v("Anytime")])
         ]
       )
     ])
@@ -69261,7 +69354,9 @@ var routes = [{
   component: _components_teacher_Profile__WEBPACK_IMPORTED_MODULE_17__["default"],
   beforeEnter: function beforeEnter(to, from, next) {
     var user = JSON.parse(localStorage.getItem('user')) || null;
-    if (user.t === 'teacher') next();else if (user.t === 'student') next({
+    if (user.t === "teacher") next();else if (user.t === "admin") next({
+      name: 'Admin'
+    });else if (user.t === "student") next({
       name: 'StudentProfile'
     });else next({
       name: 'Home'
@@ -70180,6 +70275,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var state = {
   profile: '',
   courses: '',
+  TeacherCourses: '',
   enrollments: ''
 };
 var getters = {
@@ -70188,6 +70284,9 @@ var getters = {
   },
   userCourses: function userCourses(state) {
     return state.courses;
+  },
+  TeacherCourses: function TeacherCourses(state) {
+    return state.TeacherCourses;
   },
   userEnrollments: function userEnrollments(state) {
     return state.enrollments;
@@ -70225,7 +70324,7 @@ var actions = {
       }, _callee);
     }))();
   },
-  fetchUserCourses: function fetchUserCourses(_ref2, id) {
+  fetchUserCourses: function fetchUserCourses(_ref2) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
@@ -70234,7 +70333,7 @@ var actions = {
             case 0:
               commit = _ref2.commit;
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/".concat(id, "/courses"));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/user/courses");
 
             case 3:
               response = _context2.sent;
@@ -70248,35 +70347,58 @@ var actions = {
       }, _callee2);
     }))();
   },
-  fetchUserEnrollments: function fetchUserEnrollments(_ref3) {
+  fetchTeacherCourses: function fetchTeacherCourses(_ref3, id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-      var commit, token, response;
+      var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
               commit = _ref3.commit;
-              token = localStorage.getItem('token') || '';
+              _context3.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/teacher/".concat(id, "/courses"));
 
-              if (!token) {
-                _context3.next = 8;
-                break;
-              }
-
-              axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-              _context3.next = 6;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/user/enrollments");
-
-            case 6:
+            case 3:
               response = _context3.sent;
-              commit('setEnrollments', response.data);
+              commit('setTeacherCourses', response.data);
 
-            case 8:
+            case 5:
             case "end":
               return _context3.stop();
           }
         }
       }, _callee3);
+    }))();
+  },
+  fetchUserEnrollments: function fetchUserEnrollments(_ref4) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      var commit, token, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              commit = _ref4.commit;
+              token = localStorage.getItem('token') || '';
+
+              if (!token) {
+                _context4.next = 8;
+                break;
+              }
+
+              axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+              _context4.next = 6;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/user/enrollments");
+
+            case 6:
+              response = _context4.sent;
+              commit('setEnrollments', response.data);
+
+            case 8:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
     }))();
   }
 };
@@ -70286,6 +70408,9 @@ var mutations = {
   },
   setCourses: function setCourses(state, payload) {
     return state.courses = payload;
+  },
+  setTeacherCourses: function setTeacherCourses(state, payload) {
+    return state.TeacherCourses = payload;
   },
   setEnrollments: function setEnrollments(state, payload) {
     return state.enrollments = payload;
