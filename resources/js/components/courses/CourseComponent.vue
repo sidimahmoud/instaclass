@@ -47,14 +47,17 @@
                         </div>
                     </div>
                     <div class="row  mt-2">
-                        <div class="col-4">
-                            <b>Partager sur Facebook</b>
+                        <div class="col-md-4">
+                            <b>Partager sur </b>
+
+                            <i class="fa fa-facebook  mr-3"></i>
+                            <i class="fa fa-twitter  mr-3"></i>
+                            <i class="fa fa-linkedin  mr-3"></i>
+                            <i class="fa fa-instagram  mr-3"></i>
+
                         </div>
-                        <div class="col-4">
-                            <b>Partager sur Facebook</b>
-                        </div>
-                        <div class="col-4 tewt-right">
-                            <router-link to="/checkout" tag="a" class="btn btn-primary my-3">
+                        <div class="col-md-6 text-right">
+                            <router-link to="/checkout" tag="a" class="btn btn-primary btn-sm float-right">
                                 S'inscrire à ce cours
                             </router-link>
                         </div>
