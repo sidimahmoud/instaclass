@@ -21,15 +21,18 @@
                             {{course.type==1?"Recorded":"Live"}}
                         </div>
                     </div>
-                    <div class="row text-left">
-                        <div class="col-8">
+                    <div class="row text-left ">
+                        <div class="col-6 ">
+                            Category :{{course.category.name}}
+                        </div>
+                        <div class="col-6 text-right">
+                            Price: <b>{{course.price==0?"Free":"$"+course.price}}</b>
+                        </div>
+                        <div class="col-12">
                             <b>Description</b> <br>
                             {{course.short_description}}
                         </div>
-                        <div class="col-4 text-right">
-                            <b>Price</b> <br>
-                            <b>{{course.price==0?"Free":"$"+course.price}}</b>
-                        </div>
+
 
                     </div>
                     <div class="row text-left mt-2">
@@ -42,8 +45,21 @@
                         <div class="col-4">
                             10/10: 11am - 12pm ET
                         </div>
-
                     </div>
+                    <div class="row  mt-2">
+                        <div class="col-4">
+                            <b>Partager sur Facebook</b>
+                        </div>
+                        <div class="col-4">
+                            <b>Partager sur Facebook</b>
+                        </div>
+                        <div class="col-4 tewt-right">
+                            <router-link to="/checkout" tag="a" class="btn btn-primary my-3">
+                                S'inscrire à ce cours
+                            </router-link>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </router-link>
@@ -61,9 +77,10 @@
 
 </script>
 <style>
-    a{
+    a {
         color: rgba(0, 0, 0, 0.7);
     }
+
     a:hover {
         text-decoration: none;
         color: #000000;

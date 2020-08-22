@@ -3936,6 +3936,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Course",
   props: ["course"]
@@ -9925,7 +9941,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\na{\n    color: rgba(0, 0, 0, 0.7);\n}\na:hover {\n    text-decoration: none;\n    color: #000000;\n}\n", ""]);
+exports.push([module.i, "\na {\n    color: rgba(0, 0, 0, 0.7);\n}\na:hover {\n    text-decoration: none;\n    color: #000000;\n}\n", ""]);
 
 // exports
 
@@ -46829,23 +46845,17 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "row text-left" }, [
-                    _c("div", { staticClass: "col-8" }, [
-                      _c("b", [_vm._v("Description")]),
-                      _vm._v(" "),
-                      _c("br"),
+                  _c("div", { staticClass: "row text-left " }, [
+                    _c("div", { staticClass: "col-6 " }, [
                       _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.course.short_description) +
+                        "\n                        Category :" +
+                          _vm._s(_vm.course.category.name) +
                           "\n                    "
                       )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-4 text-right" }, [
-                      _c("b", [_vm._v("Price")]),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
+                    _c("div", { staticClass: "col-6 text-right" }, [
+                      _vm._v("\n                        Price: "),
                       _c("b", [
                         _vm._v(
                           _vm._s(
@@ -46855,6 +46865,17 @@ var render = function() {
                           )
                         )
                       ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-12" }, [
+                      _c("b", [_vm._v("Description")]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.course.short_description) +
+                          "\n                    "
+                      )
                     ])
                   ]),
                   _vm._v(" "),
@@ -46874,6 +46895,36 @@ var render = function() {
                         "\n                        10/10: 11am - 12pm ET\n                    "
                       )
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row  mt-2" }, [
+                    _c("div", { staticClass: "col-4" }, [
+                      _c("b", [_vm._v("Partager sur Facebook")])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-4" }, [
+                      _c("b", [_vm._v("Partager sur Facebook")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-4 tewt-right" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-primary my-3",
+                            attrs: { to: "/checkout", tag: "a" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            S'inscrire à ce cours\n                        "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
                   ])
                 ]
               )
