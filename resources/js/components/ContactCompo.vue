@@ -4,56 +4,27 @@
         <div class="container mt-4">
             <div class="section-title text-center">
                 <h2>Contact</h2>
-                <p>N'hésitez pas à nous contacter en cas de quoi</p>
+                <p>Contactez nous pour toutes questions ou commentaires</p>
             </div>
 
             <div class="row">
-                <div class="col-lg-5 d-flex align-items-stretch">
-                    <div class="info">
-                        <div class="address">
-                            <i class="icofont-google-map"></i>
-                            <h4>Location:</h4>
-                            <p>Immeuble Instantclass, N°80, Cité NASR, Ksar</p>
-                        </div>
-
-                        <div class="email">
-                            <i class="icofont-envelope"></i>
-                            <h4>Email:</h4>
-                            <p>info@instantclass.ca</p>
-                        </div>
-
-                        <div class="phone">
-                            <i class="icofont-phone"></i>
-                            <h4>Call:</h4>
-                            <p>+222 45 24 36 29</p>
-                        </div>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2988853.7590843295!2d-109.79811447563104!3d42.98243384900618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x875ee23448e12e69%3A0x26b02279d27d382f!2sWyoming%2C%20USA!5e0!3m2!1sen!2s!4v1597695358591!5m2!1sen!2s" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+                <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
                     <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-12">
                                 <label for="name">Votre nom</label>
                                 <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4"
                                        data-msg="Please enter at least 4 chars"/>
                                 <div class="validate"></div>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-12">
                                 <label for="name">Votre Email</label>
                                 <input type="email" class="form-control" name="email" id="email" data-rule="email"
                                        data-msg="Please enter a valid email"/>
                                 <div class="validate"></div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="name">Objet</label>
-                            <input type="text" class="form-control" name="subject" id="subject" data-rule="minlen:4"
-                                   data-msg="Please enter at least 8 chars of subject"/>
-                            <div class="validate"></div>
-                        </div>
+
                         <div class="form-group">
                             <label for="name">Message</label>
                             <textarea class="form-control" name="message" rows="10" data-rule="required"

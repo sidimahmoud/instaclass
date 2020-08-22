@@ -19,20 +19,23 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return response()->json(Course::all());
+        $courses = Course::with('category')->get();
+        return response()->json($courses);
     }
 
 
     public function show($slug)
     {
-        $course = Course::with('ratings.user','enrollments', 'user')
-            ->where('slug',$slug)
+        $course = Course::with('ratings.user', 'enrollments', 'user')
+            ->where('slug', $slug)
             ->get();
-        return response()->json($course );
+        return response()->json($course);
     }
+
+
     public function categoryCourses($id)
     {
-        $course = Course::where('category_id',$id)->get();
-        return response()->json($course );
+        $course = Course::where('category_id', $id)->get();
+        return response()->json($course);
     }
 }

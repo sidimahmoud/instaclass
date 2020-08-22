@@ -31,7 +31,9 @@
                         <a href="#" class="text-uppercase">about</a>
                     </p>
                     <p>
-                        <a href="#" class="text-uppercase">our courses</a>
+                        <router-link :to="{ name: 'Courses'}" tag="a" class="nav-link text-uppercase">
+                            our courses
+                        </router-link>
                     </p>
 
                 </div>
@@ -52,7 +54,9 @@
                         <a href="#" class="text-uppercase"> Terms & conditions</a>
                     </p>
                     <p>
-                        <a href="#" class="text-uppercase">contact us</a>
+                        <router-link :to="{ name: 'Contact'}" tag="a" class="nav-link text-uppercase">
+                            Contact us
+                        </router-link>
                     </p>
 
                 </div>

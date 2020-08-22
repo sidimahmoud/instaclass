@@ -5,19 +5,22 @@
                 <form class="mt-4">
                     <h2 class="text-center">Demande de cours</h2>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1"
-                               placeholder="name@example.com">
+                        <label for="exampleFormControlTextarea1"> Dites nous le cours que vous aimeriez suivre en direct sur la plateforme</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
+
+                        </textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Language du cours</label>
                         <input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="English">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Detail du cours</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Dites nous le cours que vous aimeriez suivre en direct sur la plateforme
-                        </textarea>
+                        <label for="exampleFormControlInput1">Email address (optionnel)</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                               placeholder="name@example.com">
                     </div>
+
+
                     Vous serez averti quand le cours sera disponible
                     <button class="btn btn-primary btn-block my-3">Envoyer</button>
                 </form>

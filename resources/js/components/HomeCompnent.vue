@@ -7,15 +7,6 @@
                         class="col-md-6 col-sm-12 text-center text-md-left justify-content-center align-items-center text-white">
                         <h1 class="display-3">The perfect Platform</h1>
                         <h4 class="h3 ">For Online <span class="text-danger">Courses</span></h4>
-                        <div class="mt-4">
-                            <button class="btn btn-danger text-capitalize text-white">Get Started</button>
-                            <button class="btn btn-outline-danger ml-4">
-                                <span class="text-capitalize text-white">
-                                    watch <i class="fa fa-play-circle ml-3"></i>
-                                </span>
-                            </button>
-                        </div>
-
                     </div>
 
                     <div class="col-md-6 d-none d-md-block">
@@ -33,7 +24,7 @@
             <a href="#"> <i class="fa fa-snapchat mx-3 fa-2x"></i> </a>
         </div>
         <div class="container d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
-            <h3 class="text-primary">All categories </h3>
+            <h3 class="text-primary">Courses by category </h3>
             <span class="latest_courses_border"> </span>
         </div>
 
@@ -50,7 +41,7 @@
                     <div class="card">
                         <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="a">
                             <img class="card-img-top"
-                                 :src="'https://instantclass.herokuapp.com/uploads/categories/'+categ.image"
+                                 :src="'https://instantclass.herokuapp.com/'+categ.image"
                                  alt="Card image cap">
                         </router-link>
 
@@ -103,6 +94,7 @@
     .jumbotron {
         background-image: url('../assets/images/home/bg.png');
         border-radius: 0;
+        padding: 15px;
     }
 
 </style>

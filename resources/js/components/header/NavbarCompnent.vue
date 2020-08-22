@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand text-primary font-weight-bolder" href="/">
-                <img src="../../assets/logo.png" alt="" width="40px">
+                <img src="../../assets/logo.png" alt="" width="60px">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -17,10 +17,13 @@
                         <input class="form-control mr-sm-2" type="search" placeholder="Search for courses" aria-label="Search">
                         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                     </form>
-
-
                 </ul>
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item " v-if="!$route.matched.some(({ name }) => name === 'Home')">
+                        <router-link :to="{ name: 'Home'}" tag="a" class="nav-link ">
+                            Home
+                        </router-link>
+                    </li>
                     <li class="nav-item ">
 
                         <router-link :to="{ name: 'Courses'}" tag="a" class="nav-link ">
@@ -36,7 +39,7 @@
                     </li>
                     <li class="nav-item" >
                         <router-link :to="{name: 'Signin'}" tag="a"
-                                     class="nav-link">
+                                     class="nav-link bg-danger text-white rounded">
                             Become Instructor
                         </router-link>
                     </li>
@@ -45,14 +48,10 @@
                             About
                         </router-link>
                     </li>
-                    <li class="nav-item">
-                        <router-link :to="{ name: 'Contact'}" tag="a" class="nav-link">
-                            Contact
-                        </router-link>
-                    </li>
+
                     <li class="nav-item" >
                         <router-link :to="{name: 'TeacherProfile'}" tag="a"
-                                     class="nav-link bg-danger text-white rounded">
+                                     class="nav-link ">
                             Account
                         </router-link>
                     </li>

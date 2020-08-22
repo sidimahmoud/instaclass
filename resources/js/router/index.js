@@ -77,7 +77,6 @@ const routes = [
         meta: {
             requiresAuth: false,
             title: 'Courses'
-
         }
     },
     {
