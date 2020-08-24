@@ -1,22 +1,15 @@
 <template>
-    <div class="container">
+    <div class="container border-top">
         <!-- Heading -->
         <h2 class=" h2 text-center">Checkout form</h2>
         <!--Grid row-->
         <div class="row">
-
             <!--Grid column-->
             <div class="col-md-8 mb-4 ">
-
                 <!--Card-->
                 <div class="card">
-
                     <!--Card content-->
-                    <form class="card-body">
-
-
-
-
+                    <form class="card-body" @click.prevent="checkout">
                         <!--Grid row-->
                         <!-- payement info-->
                         <div class="my-3">
@@ -25,17 +18,16 @@
                                     <label for="method">Payement method</label>
                                 </div>
                                 <div class="col-lg-6">
-                                    <select class="custom-select d-block w-50 mb-2" id="method" required>
-                                        <option>Credit card</option>
-                                        <option>PayPal</option>
+                                    <select class="custom-select d-block w-50 mb-2" id="method" required
+                                            v-model="payment.method">
+                                        <option value="card">Credit card</option>
+                                        <option value="paypal">PayPal</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select a valid payment method.
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="row border rounded">
                                 <div class="p-2">
                                     <div class="row">
@@ -88,7 +80,6 @@
                         </div>
 
 
-
                         <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
 
                     </form>
@@ -113,17 +104,17 @@
                 <ul class="list-group mb-3 z-depth-1">
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
-                            <h6 class="my-0">1 <span class="font-weight-bold">
-                                        Build WPA with vue.js
-                                    </span></h6>
+                            <h6 class="my-0">
+                                <span class="font-weight-bold">
+                                        {{course.name}}
+                                    </span>
+                            </h6>
                         </div>
-                        <span class="text-muted">$10.99</span>
+                        <span class="text-muted">${{course.price}}</span>
                     </li>
-
-
                     <li class="list-group-item d-flex justify-content-between font-weight-bold">
                         <span>Total (USD)</span>
-                        <strong>10.99</strong>
+                        <strong>${{course.price}}</strong>
                     </li>
                 </ul>
                 <!-- Cart -->
@@ -138,8 +129,34 @@
 </template>
 
 <script>
+    import {mapGetters} from "vuex";
+
     export default {
-        name: "Checkout"
+        name: "Checkout",
+
+        methods: {
+            findCourse() {
+                this.$store.dispatch('getCourse', this.$route.params.slug)
+            },
+            checkout() {
+                let payload={
+                    slug: this.$route.params.slug,
+                    paymentMethod: this.paymentMethod
+                };
+                this.$store.dispatch('enroll', payload);
+                alert("Enrolled successfully")
+            }
+        },
+        computed: mapGetters(["course", "loading"]),
+        data() {
+            return {
+                paymentMethod: 'card',
+                }
+
+        },
+        created() {
+            this.findCourse();
+        },
     }
 </script>
 

@@ -3761,6 +3761,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -3891,17 +3892,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Checkout"
+  name: "Checkout",
+  methods: {
+    findCourse: function findCourse() {
+      this.$store.dispatch('getCourse', this.$route.params.slug);
+    },
+    checkout: function checkout() {
+      var payload = {
+        slug: this.$route.params.slug,
+        paymentMethod: this.paymentMethod
+      };
+      this.$store.dispatch('enroll', payload);
+      alert("Enrolled successfully");
+    }
+  },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["course", "loading"]),
+  data: function data() {
+    return {
+      paymentMethod: 'card'
+    };
+  },
+  created: function created() {
+    this.findCourse();
+  }
 });
 
 /***/ }),
@@ -4048,7 +4063,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Review */ "./resources/js/components/courses/Review.vue");
-//
 //
 //
 //
@@ -46722,39 +46736,70 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("h2", { staticClass: " h2 text-center" }, [_vm._v("Checkout form")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 mb-4 " }, [
-          _c("div", { staticClass: "card" }, [
-            _c("form", { staticClass: "card-body" }, [
+  return _c("div", { staticClass: "container border-top" }, [
+    _c("h2", { staticClass: " h2 text-center" }, [_vm._v("Checkout form")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-8 mb-4 " }, [
+        _c("div", { staticClass: "card" }, [
+          _c(
+            "form",
+            {
+              staticClass: "card-body",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.checkout($event)
+                }
+              }
+            },
+            [
               _c("div", { staticClass: "my-3" }, [
                 _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-lg-3 col-md-6" }, [
-                    _c("label", { attrs: { for: "method" } }, [
-                      _vm._v("Payement method")
-                    ])
-                  ]),
+                  _vm._m(0),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-lg-6" }, [
                     _c(
                       "select",
                       {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.payment.method,
+                            expression: "payment.method"
+                          }
+                        ],
                         staticClass: "custom-select d-block w-50 mb-2",
-                        attrs: { id: "method", required: "" }
+                        attrs: { id: "method", required: "" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.payment,
+                              "method",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
                       },
                       [
-                        _c("option", [_vm._v("Credit card")]),
+                        _c("option", { attrs: { value: "card" } }, [
+                          _vm._v("Credit card")
+                        ]),
                         _vm._v(" "),
-                        _c("option", [_vm._v("PayPal")])
+                        _c("option", { attrs: { value: "paypal" } }, [
+                          _vm._v("PayPal")
+                        ])
                       ]
                     ),
                     _vm._v(" "),
@@ -46766,127 +46811,7 @@ var staticRenderFns = [
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "row border rounded" }, [
-                  _c("div", { staticClass: "p-2" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-md-4 mb-3" }, [
-                        _c("label", { attrs: { for: "cc-name" } }, [
-                          _vm._v("Name on card")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "cc-name",
-                            placeholder: "",
-                            required: ""
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "invalid-feedback" }, [
-                          _vm._v(
-                            "\n                                            Name on card is required\n                                        "
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4 mb-3" }, [
-                        _c("label", { attrs: { for: "cc-number" } }, [
-                          _vm._v("Credit card number")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "cc-number",
-                            placeholder: "",
-                            required: ""
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "invalid-feedback" }, [
-                          _vm._v(
-                            "\n                                            Credit card number is required\n                                        "
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4 mb-3" }, [
-                        _c("label", { attrs: { for: "cc-expiration" } }, [
-                          _vm._v("Expiration")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "cc-expiration",
-                            placeholder: "",
-                            required: ""
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "invalid-feedback" }, [
-                          _vm._v(
-                            "\n                                            Expiration date required\n                                        "
-                          )
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-md-12 mb-3" }, [
-                        _c("label", { attrs: { for: "cc-expiration" } }, [
-                          _vm._v("CVV")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "cc-cvv",
-                            placeholder: "",
-                            required: ""
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "invalid-feedback" }, [
-                          _vm._v(
-                            "\n                                            Security code required\n                                        "
-                          )
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "custom-control custom-checkbox text-right"
-                      },
-                      [
-                        _c("input", {
-                          staticClass: "custom-control-input",
-                          attrs: { type: "checkbox", id: "save-info" }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "custom-control-label",
-                            attrs: { for: "save-info" }
-                          },
-                          [
-                            _vm._v(
-                              "Save this information\n                                        for next\n                                        time"
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ])
-                ])
+                _vm._m(1)
               ]),
               _vm._v(" "),
               _c(
@@ -46897,67 +46822,203 @@ var staticRenderFns = [
                 },
                 [_vm._v("Continue to checkout")]
               )
-            ])
-          ])
-        ]),
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-4 mb-4 " }, [
+        _vm._m(2),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-4 mb-4 " }, [
+        _c("ul", { staticClass: "list-group mb-3 z-depth-1" }, [
           _c(
-            "h4",
+            "li",
             {
               staticClass:
-                "d-flex justify-content-between align-items-center mb-3"
+                "list-group-item d-flex justify-content-between lh-condensed"
             },
             [
-              _c("span", { staticClass: "text-muted" }, [
-                _vm._v("Course Details")
+              _c("div", [
+                _c("h6", { staticClass: "my-0" }, [
+                  _c("span", { staticClass: "font-weight-bold" }, [
+                    _vm._v(
+                      "\n                                    " +
+                        _vm._s(_vm.course.name) +
+                        "\n                                "
+                    )
+                  ])
+                ])
               ]),
               _vm._v(" "),
-              _c("span", { staticClass: "badge badge-secondary badge-pill" }, [
-                _vm._v("\n                        1 ")
+              _c("span", { staticClass: "text-muted" }, [
+                _vm._v("$" + _vm._s(_vm.course.price))
               ])
             ]
           ),
           _vm._v(" "),
-          _c("ul", { staticClass: "list-group mb-3 z-depth-1" }, [
-            _c(
-              "li",
-              {
-                staticClass:
-                  "list-group-item d-flex justify-content-between lh-condensed"
-              },
-              [
-                _c("div", [
-                  _c("h6", { staticClass: "my-0" }, [
-                    _vm._v("1 "),
-                    _c("span", { staticClass: "font-weight-bold" }, [
-                      _vm._v(
-                        "\n                                    Build WPA with vue.js\n                                "
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-muted" }, [_vm._v("$10.99")])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              {
-                staticClass:
-                  "list-group-item d-flex justify-content-between font-weight-bold"
-              },
-              [
-                _c("span", [_vm._v("Total (USD)")]),
-                _vm._v(" "),
-                _c("strong", [_vm._v("10.99")])
-              ]
-            )
-          ])
+          _c(
+            "li",
+            {
+              staticClass:
+                "list-group-item d-flex justify-content-between font-weight-bold"
+            },
+            [
+              _c("span", [_vm._v("Total (USD)")]),
+              _vm._v(" "),
+              _c("strong", [_vm._v("$" + _vm._s(_vm.course.price))])
+            ]
+          )
         ])
       ])
     ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-3 col-md-6" }, [
+      _c("label", { attrs: { for: "method" } }, [_vm._v("Payement method")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row border rounded" }, [
+      _c("div", { staticClass: "p-2" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-4 mb-3" }, [
+            _c("label", { attrs: { for: "cc-name" } }, [
+              _vm._v("Name on card")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "cc-name",
+                placeholder: "",
+                required: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _vm._v(
+                "\n                                            Name on card is required\n                                        "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4 mb-3" }, [
+            _c("label", { attrs: { for: "cc-number" } }, [
+              _vm._v("Credit card number")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "cc-number",
+                placeholder: "",
+                required: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _vm._v(
+                "\n                                            Credit card number is required\n                                        "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4 mb-3" }, [
+            _c("label", { attrs: { for: "cc-expiration" } }, [
+              _vm._v("Expiration")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "cc-expiration",
+                placeholder: "",
+                required: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _vm._v(
+                "\n                                            Expiration date required\n                                        "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-12 mb-3" }, [
+            _c("label", { attrs: { for: "cc-expiration" } }, [_vm._v("CVV")]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "cc-cvv",
+                placeholder: "",
+                required: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _vm._v(
+                "\n                                            Security code required\n                                        "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "custom-control custom-checkbox text-right" },
+          [
+            _c("input", {
+              staticClass: "custom-control-input",
+              attrs: { type: "checkbox", id: "save-info" }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "custom-control-label",
+                attrs: { for: "save-info" }
+              },
+              [
+                _vm._v(
+                  "Save this information\n                                        for next\n                                        time"
+                )
+              ]
+            )
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "h4",
+      { staticClass: "d-flex justify-content-between align-items-center mb-3" },
+      [
+        _c("span", { staticClass: "text-muted" }, [_vm._v("Course Details")]),
+        _vm._v(" "),
+        _c("span", { staticClass: "badge badge-secondary badge-pill" }, [
+          _vm._v("\n                        1 ")
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -47557,7 +47618,13 @@ var render = function() {
                         "router-link",
                         {
                           staticClass: "btn btn-primary my-3",
-                          attrs: { to: "/checkout", tag: "a" }
+                          attrs: {
+                            to: {
+                              name: "Checkout",
+                              params: { slug: _vm.course.slug }
+                            },
+                            tag: "a"
+                          }
                         },
                         [
                           _vm._v(
@@ -70139,7 +70206,7 @@ var routes = [{
     title: 'Live course'
   }
 }, {
-  path: '/checkout',
+  path: '/checkout/:slug',
   name: 'Checkout',
   component: _components_checkout_Checkout__WEBPACK_IMPORTED_MODULE_9__["default"],
   meta: {

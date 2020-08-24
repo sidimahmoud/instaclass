@@ -121,13 +121,12 @@ const routes = [
         }
     },
     {
-        path: '/checkout',
+        path: '/checkout/:slug',
         name: 'Checkout',
         component: Checkout,
         meta: {
             requiresAuth: true,
             title: 'Checkout'
-
         }
     },
 

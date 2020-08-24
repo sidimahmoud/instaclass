@@ -5,7 +5,6 @@ const state = {
     course: '',
     categCourses: [],
     loading: false,
-
 };
 const getters = {
     allCourses: (state) => state.courses,

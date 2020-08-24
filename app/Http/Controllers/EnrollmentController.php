@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\Enrollment;
+use App\Payement;
 use Illuminate\Http\Request;
 
 class EnrollmentController extends Controller
@@ -56,12 +58,21 @@ class EnrollmentController extends Controller
      */
     public function store(Request $request)
     {
+        $course = Course::where('slug', $request["slug"])->get();
         $enrollment = new Enrollment();
         $enrollment->user_id = $request->user()->id;
-        $enrollment->course_id = $request['course_id'];
-
+        $enrollment->course_id = $course->id;
         $enrollment->save();
-        return response()->json($enrollment);
+        if ($enrollment){
+            $payment = new Payement();
+            $payment->enrollment_id = $enrollment->id;
+            $payment->user_id = $request->user()->id;
+            $payment->amount = $course->price;
+            $payment->method = $request["paymentMethod"];
+            $payment->object = $course->name;
+            $payment->save();
+        }
+        return response()->json("Enrolled successfully");
 
     }
 
