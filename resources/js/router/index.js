@@ -23,6 +23,7 @@ import TeacherProfile from "../components/teacher/Profile";
 import StudentProfile from "../components/student/Profile";
 
 import Dashboard from "../components/admin/Dashboard";
+import LoginAdmin from "../components/admin/auth/Login";
 
 import Homefr from "../components/fr/Homefr";
 import CategoryCourses from "../components/courses/CategoryCourses";
@@ -216,32 +217,36 @@ const routes = [
         }
     },
 
+
     // Admin routes
+    {
+        path: '/admin/login',
+        name: 'LoginAdmin',
+        component: LoginAdmin,
+        meta: {
+            requiresAuth: false,
+        }
+    },
     {
         path: '/admin',
         name: 'Admin',
         component: Dashboard,
         meta: {
-            requiresAuth: true,
-            title:'Admin',
+            requiresAuth: false,
+            title: 'Admin',
             admin: true
         },
-        // children: [
-        //     {
-        //         path: 'teachers',
-        //         name: 'AdminUsers',
-        //         component: Users,
-        //     },
-        //     {
-        //         path: 'courses',
-        //         name: 'AdminCourses',
-        //         component: AdminCourses,
-        //     },
-        // ]
         beforeEnter: (to, from, next) => {
-            let user = JSON.parse(localStorage.getItem('user')) || null;
-            if (user.t === "admin") next();
-            else next({name: 'Home'});
+            if (!store.getters.isLoggedIn) {
+                next({name: 'LoginAdmin'});
+            } else {
+                let user = JSON.parse(localStorage.getItem('user')) || null;
+                if (user.t === "admin") next();
+                else if (user.t === "teacher") next({name: 'TeacherProfile'});
+                else if (user.t === "student") next({name: 'StudentProfile'});
+                else next({name: 'Home'});
+            }
+
         },
     },
 ];

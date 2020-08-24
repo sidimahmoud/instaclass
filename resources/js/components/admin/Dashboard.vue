@@ -1,5 +1,5 @@
 <template>
-    <div id="wrapper" class="border-top border-primary">
+    <div id="wrapper" >
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion" id="accordionSidebar">
