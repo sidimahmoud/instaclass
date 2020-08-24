@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <select class="custom-select d-block w-50 mb-2" id="method" required
-                                            v-model="payment.method">
+                                            v-model="paymentMethod">
                                         <option value="card">Credit card</option>
                                         <option value="paypal">PayPal</option>
                                     </select>

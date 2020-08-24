@@ -46766,8 +46766,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.payment.method,
-                            expression: "payment.method"
+                            value: _vm.paymentMethod,
+                            expression: "paymentMethod"
                           }
                         ],
                         staticClass: "custom-select d-block w-50 mb-2",
@@ -46782,13 +46782,9 @@ var render = function() {
                                 var val = "_value" in o ? o._value : o.value
                                 return val
                               })
-                            _vm.$set(
-                              _vm.payment,
-                              "method",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
+                            _vm.paymentMethod = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
                           }
                         }
                       },
