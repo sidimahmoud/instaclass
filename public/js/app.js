@@ -69884,7 +69884,8 @@ var routes = [{
     requiresAuth: true,
     title: 'Admin',
     admin: true
-  } // children: [
+  },
+  // children: [
   //     {
   //         path: 'teachers',
   //         name: 'AdminUsers',
@@ -69896,7 +69897,12 @@ var routes = [{
   //         component: AdminCourses,
   //     },
   // ]
-
+  beforeEnter: function beforeEnter(to, from, next) {
+    var user = JSON.parse(localStorage.getItem('user')) || null;
+    if (user.t === "admin") next();else next({
+      name: 'Home'
+    });
+  }
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',

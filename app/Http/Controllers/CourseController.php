@@ -35,7 +35,7 @@ class CourseController extends Controller
 
     public function categoryCourses($id)
     {
-        $course = Course::where('category_id', $id)->get();
+        $course = Course::with('category')->where('category_id', $id)->get();
         return response()->json($course);
     }
 }

@@ -225,7 +225,7 @@ const routes = [
             requiresAuth: true,
             title:'Admin',
             admin: true
-        }
+        },
         // children: [
         //     {
         //         path: 'teachers',
@@ -238,6 +238,11 @@ const routes = [
         //         component: AdminCourses,
         //     },
         // ]
+        beforeEnter: (to, from, next) => {
+            let user = JSON.parse(localStorage.getItem('user')) || null;
+            if (user.t === "admin") next();
+            else next({name: 'Home'});
+        },
     },
 ];
 
