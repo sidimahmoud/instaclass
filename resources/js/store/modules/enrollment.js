@@ -11,7 +11,7 @@ const getters = {
 const actions = {
     async enroll({commit}, payload) {
         return new Promise((resolve, reject) => {
-            axios({url: 'https://instantclass.herokuapp.com/api/login', data: payload, method: 'POST'})
+            axios({url: 'https://instantclass.herokuapp.com/api/enroll', data: payload, method: 'POST'})
                 .then(resp => {
                     resolve(resp)
                 })
