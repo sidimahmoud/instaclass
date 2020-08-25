@@ -90,7 +90,9 @@
                             <h3 class="card-title font-weight-bolder">{{userProfile.first_name}}
                                 {{userProfile.last_name}}</h3>
                             <p class="card-text">{{userProfile.headline}}</p>
-                            <a href="#" class="btn btn-danger">Edit Profile</a>
+                            <router-link :to="{name: 'EditProfile'}" tag="a" class="btn btn-danger">
+                                Edit Profile
+                            </router-link>
                         </div>
                     </div>
                 </div>

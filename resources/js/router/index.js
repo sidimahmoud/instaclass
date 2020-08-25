@@ -21,6 +21,7 @@ import Become from "../components/teacher/Become";
 import Signin from "../components/teacher/Signin";
 import TeacherProfile from "../components/teacher/Profile";
 import StudentProfile from "../components/student/Profile";
+import EditProfile from "../components/student/EditProfile";
 
 import Dashboard from "../components/admin/Dashboard";
 import LoginAdmin from "../components/admin/auth/Login";
@@ -172,6 +173,15 @@ const routes = [
         meta: {
             requiresAuth: true,
             title: 'Profile'
+        }
+    },
+    {
+        path: '/profile/edit',
+        name: 'EditProfile',
+        component: EditProfile,
+        meta: {
+            requiresAuth: true,
+            title: 'Edit Profile'
         }
     },
 
