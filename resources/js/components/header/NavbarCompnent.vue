@@ -14,8 +14,12 @@
 
                 <ul class="navbar-nav ">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search for courses" aria-label="Search">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search for courses"
+                               v-model="search" aria-label="Search">
+                        <router-link :to="{name: 'Search', params:{q:search}}"
+                                     class="btn btn-outline-primary my-2 my-sm-0" type="submit">
+                            Search
+                        </router-link>
                     </form>
                 </ul>
                 <ul class="navbar-nav ml-auto">
@@ -31,13 +35,13 @@
                         </router-link>
 
                     </li>
-                    <li class="nav-item" >
+                    <li class="nav-item">
                         <router-link :to="{name: 'Demande'}" tag="a"
                                      class="nav-link">
                             Demande de cours
                         </router-link>
                     </li>
-                    <li class="nav-item" >
+                    <li class="nav-item">
                         <router-link :to="{name: 'Signin'}" tag="a"
                                      class="nav-link bg-danger text-white rounded">
                             Become Instructor
@@ -49,7 +53,7 @@
                         </router-link>
                     </li>
 
-                    <li class="nav-item" >
+                    <li class="nav-item">
                         <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                      class="nav-link ">
                             Account
@@ -61,7 +65,8 @@
                         </router-link>
                     </li>
                     <li class="nav-item " v-else>
-                        <router-link :to="{ name: 'HomeFr'}" tag="a" class="nav-link border border-primary ml-2 rounded">
+                        <router-link :to="{ name: 'HomeFr'}" tag="a"
+                                     class="nav-link border border-primary ml-2 rounded">
                             FR
                         </router-link>
                     </li>
@@ -76,6 +81,11 @@
     export default {
         name: 'AppNav',
         computed: mapGetters(["isLoggedIn"]),
+        data() {
+            return {
+                search: '',
+            }
+        },
         methods: {
             logout() {
                 this.$store.dispatch('logout')

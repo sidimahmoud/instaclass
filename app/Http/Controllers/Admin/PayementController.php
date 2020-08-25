@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Payement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Stripe\Stripe;
 
 class PayementController extends Controller
 {
@@ -34,6 +35,18 @@ class PayementController extends Controller
     {
         $sent = Payement::where('type', 'sent')->get();
         return response()->json($sent);
+    }
+
+    public function paymentProcess(Request $request)
+    {
+        Stripe::setApiKey("sk_test_51HK26oKzha99bEEwidCkOypQiusOz5G7GlCkDPgKxSToGBkTPuPombk4fN8VYD4oi9KwUifCZmvK21yPnfNs2HYn00xVaLs59p");
+        $token = $request['stripeToken'];
+        $stripe = new Stripe();
+        $stripe->amount = $request['amount'];
+        $stripe->currency = "usd";
+        $stripe->description = $request['object'];
+        $stripe->source = $token;
+        $stripe->save();
     }
 
 

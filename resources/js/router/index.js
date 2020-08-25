@@ -16,6 +16,7 @@ import Courses from "../components/courses/Courses";
 import CoursePlayer from "../components/courses/CoursePlayer";
 import Demande from "../components/courses/Demande";
 import Live from "../components/courses/Live";
+import SearchCourses from "../components/courses/SearchCourses";
 
 import Become from "../components/teacher/Become";
 import Signin from "../components/teacher/Signin";
@@ -92,6 +93,16 @@ const routes = [
         }
     },
     {
+        path: '/courses/search/q=:q',
+        name: 'Search',
+        component: SearchCourses,
+        meta: {
+            requiresAuth: false,
+            title: 'Search'
+
+        }
+    },
+    {
         path: '/course/demande',
         name: 'Demande',
         component: Demande,
@@ -112,7 +123,7 @@ const routes = [
         }
     },
     {
-        path: '/player/live',
+        path: '/player/live/:slug',
         name: 'Live',
         component: Live,
         meta: {

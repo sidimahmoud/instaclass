@@ -29,7 +29,7 @@
                 <td>Course name</td>
                 <td>Teacher email</td>
                 <td>{{t.amount}}</td>
-                <td>method</td>
+                <td>{{t.method}}</td>
                 <td>{{t.course_id}}</td>
                 <td>{{t.object}}</td>
                 <td>{{t.created_at}}</td>

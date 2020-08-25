@@ -26,6 +26,13 @@ const actions = {
         commit('setCourse', response.data[0]);
         commit('setLoading', false);
     },
+    async search({commit}, q) {
+        commit('setLoading', true);
+        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/search/${q}`);
+        console.log(response.data);
+        commit('setCourses', response.data[0]);
+        commit('setLoading', false);
+    },
     async getCategoryCourses({commit}, id) {
         commit('setLoading', true);
         const response = await axios.get(`https://instantclass.herokuapp.com/api/class/${id}`);

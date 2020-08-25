@@ -1,5 +1,5 @@
 <template>
-    <div class="container border-top">
+    <div class="container border-top border-primary pt-5">
         <!-- Heading -->
         <h2 class=" h2 text-center">Checkout form</h2>
         <!--Grid row-->
@@ -9,78 +9,62 @@
                 <!--Card-->
                 <div class="card">
                     <!--Card content-->
-                    <form class="card-body" @click.prevent="checkout">
+                    <form class="card-body" @submit.prevent="checkout">
                         <!--Grid row-->
                         <!-- payement info-->
                         <div class="my-3">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-6">
-                                    <label for="method">Payement method</label>
-                                </div>
-                                <div class="col-lg-6">
-                                    <select class="custom-select d-block w-50 mb-2" id="method" required
-                                            v-model="paymentMethod">
-                                        <option value="card">Credit card</option>
-                                        <option value="paypal">PayPal</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please select a valid payment method.
-                                    </div>
-                                </div>
+                            <div class="text-center" v-if="course_price==0">
+                                <h3>This course is free</h3>
+                                <h5>No payment required</h5>
                             </div>
-                            <div class="row border rounded">
-                                <div class="p-2">
-                                    <div class="row">
-                                        <div class="col-md-4 mb-3">
-                                            <label for="cc-name">Name on card</label>
-                                            <input type="text" class="form-control" id="cc-name" placeholder=""
-                                                   required>
-                                            <div class="invalid-feedback">
-                                                Name on card is required
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                            <label for="cc-number">Credit card number</label>
-                                            <input type="text" class="form-control" id="cc-number" placeholder=""
-                                                   required>
-                                            <div class="invalid-feedback">
-                                                Credit card number is required
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                            <label for="cc-expiration">Expiration</label>
-                                            <input type="text" class="form-control" id="cc-expiration"
-                                                   placeholder=""
-                                                   required>
-                                            <div class="invalid-feedback">
-                                                Expiration date required
-                                            </div>
-                                        </div>
+                            <div v-else>
+                                <div class="row" >
+                                    <div class="col-md-6">
+                                        <label for="method">Payement method</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12 mb-3">
-                                            <label for="cc-expiration">CVV</label>
-                                            <input type="text" class="form-control" id="cc-cvv" placeholder=""
-                                                   required>
-                                            <div class="invalid-feedback">
-                                                Security code required
-                                            </div>
+                                    <div class="col-lg-6">
+                                        <select class="custom-select d-block w-50 mb-2" id="method" required
+                                                v-model="paymentMethod">
+                                            <option value="card">Credit card</option>
+                                            <option value="paypal">PayPal</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a valid payment method.
                                         </div>
-                                    </div>
-                                    <div class="custom-control custom-checkbox text-right">
-                                        <input type="checkbox" class="custom-control-input" id="save-info">
-                                        <label class="custom-control-label" for="save-info">Save this information
-                                            for next
-                                            time</label>
                                     </div>
 
                                 </div>
+                                <div class="row border rounded" v-if="paymentMethod==='card'">
+                                    <div class="col-12">
+                                        <div class="p-2">
+                                            <stripe hidePostalCode={true} :price="course_price" />
 
+                                            <div class="custom-control custom-checkbox text-right">
+                                                <input type="checkbox" class="custom-control-input" id="save-info">
+                                                <label class="custom-control-label" for="save-info">Save this information
+                                                    for next
+                                                    time</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="row " v-if="paymentMethod==='paypal'">
+                                    <div class="col-12 text-center">
+                                        <button class="btn btn-primary">
+                                            <i class="fa fa-paypal"></i>
+                                            Checkout with PayPal</button>
+                                    </div>
+
+
+                                </div>
                             </div>
+
                         </div>
 
-
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit" >Valider</button>
 
                     </form>
 
@@ -129,15 +113,14 @@
 </template>
 
 <script>
-    import {mapGetters} from "vuex";
-
+    import Stripe from "../checkout/CardElement";
     export default {
         name: "Checkout",
-
+        components:{
+            Stripe
+        },
         methods: {
-            // findCourse() {
-            //     this.$store.dispatch('getCourse', this.$route.params.slug)
-            // },
+
             checkout() {
                 let payload = {
                     paymentMethod: this.paymentMethod,
@@ -150,7 +133,6 @@
                     .catch(err => console.log(err))
             }
         },
-        // computed: mapGetters(["course", "loading"]),
         data() {
             return {
                 course_id: this.$route.params.id,
@@ -161,9 +143,7 @@
             }
 
         },
-        // created() {
-        //     this.findCourse();
-        // },
+
     }
 </script>
 

@@ -37,4 +37,12 @@ class CourseController extends Controller
         $course = Course::with('category')->where('category_id', $id)->get();
         return response()->json($course);
     }
+    public function search($search)
+    {
+
+        $courses = Course::with('category')->where('name', 'like', "$search%")
+            ->get();
+        return response()->json($courses);
+
+    }
 }

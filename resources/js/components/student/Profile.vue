@@ -66,7 +66,7 @@
                                                      v-if="e.course.type==1">
                                             <h5 class="mt-0 mb-1">{{e.course.name}}</h5>
                                         </router-link>
-                                        <router-link :to="{ name: 'Live'}" tag="a" v-else>
+                                        <router-link :to="{name: 'Live', params: { slug: e.course.slug}}" tag="a" v-else>
                                             <h5 class="mt-0 mb-1">{{e.course.name}}</h5>
                                         </router-link>
                                         {{e.created_at.slice(0,10)}}
