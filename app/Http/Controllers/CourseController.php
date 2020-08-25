@@ -19,7 +19,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::with('category')->get()->paginate(2);
+        $courses = Course::with('category')->paginate(2)->get();
         return response()->json($courses);
     }
 
