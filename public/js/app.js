@@ -72221,10 +72221,11 @@ var actions = {
 
             case 4:
               response = _context3.sent;
-              commit('setCourses', response.data[0]);
+              console.log(response.data[0]);
+              commit('setCourses', response.data);
               commit('setLoading', false);
 
-            case 7:
+            case 8:
             case "end":
               return _context3.stop();
           }
