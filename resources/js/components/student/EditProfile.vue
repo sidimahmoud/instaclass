@@ -1,10 +1,8 @@
 <template>
-    <div class="container bootstrap snippet">
+    <div class="container bootstrap snippet border-top border-primary pt-5">
         <div class="text-center"><h1>{{userProfile.first_name}} {{userProfile.last_name}}</h1></div>
         <div class="row">
             <div class="col-sm-3"><!--left col-->
-
-
                 <div class="text-center">
                     <img :src="userProfile.image" class="avatar img-circle img-thumbnail"
                          alt="avatar">

@@ -27,12 +27,12 @@ class PayementController extends Controller
     }
     public function received()
     {
-        $received = Payement::where('type', 1)->get;
+        $received = Payement::where('type', 'received')->get();
         return response()->json($received);
     }
     public function sent()
     {
-        $sent = Payement::where('type', 2)->get;
+        $sent = Payement::where('type', 'sent')->get();
         return response()->json($sent);
     }
 

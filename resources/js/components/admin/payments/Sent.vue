@@ -31,7 +31,7 @@
                 <td>{{t.amount}}</td>
                 <td>method</td>
                 <td>{{t.course_id}}</td>
-                <td>Course name</td>
+                <td>{{t.object}}</td>
                 <td>{{t.created_at}}</td>
 
 

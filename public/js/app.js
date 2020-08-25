@@ -4866,8 +4866,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EditProfile",
@@ -45888,7 +45886,7 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(t.course_id))]),
             _vm._v(" "),
-            _c("td", [_vm._v("Course name")]),
+            _c("td", [_vm._v(_vm._s(t.object))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(t.created_at))])
           ])
@@ -45999,7 +45997,7 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(t.course_id))]),
             _vm._v(" "),
-            _c("td", [_vm._v("Course name")]),
+            _c("td", [_vm._v(_vm._s(t.object))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(t.created_at))])
           ])
@@ -47410,8 +47408,18 @@ var render = function() {
                         _c(
                           "router-link",
                           {
-                            staticClass: "btn btn-primary btn-sm float-right",
-                            attrs: { to: "/checkout", tag: "a" }
+                            staticClass: "btn btn-primary my-3",
+                            attrs: {
+                              to: {
+                                name: "Checkout",
+                                params: {
+                                  id: _vm.course.id,
+                                  name: _vm.course.name,
+                                  price: _vm.course.price
+                                }
+                              },
+                              tag: "a"
+                            }
                           },
                           [
                             _vm._v(
@@ -48950,150 +48958,170 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container bootstrap snippet" }, [
-    _c("div", { staticClass: "text-center" }, [
-      _c("h1", [
-        _vm._v(
-          _vm._s(_vm.userProfile.first_name) +
-            " " +
-            _vm._s(_vm.userProfile.last_name)
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("div", { staticClass: "text-center" }, [
-          _c("img", {
-            staticClass: "avatar img-circle img-thumbnail",
-            attrs: { src: _vm.userProfile.image, alt: "avatar" }
-          }),
-          _vm._v(" "),
-          _c("h6", [_vm._v("Choisir une photo")]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "text-center center-block file-upload",
-            attrs: { type: "file" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("br")
+  return _c(
+    "div",
+    {
+      staticClass: "container bootstrap snippet border-top border-primary pt-5"
+    },
+    [
+      _c("div", { staticClass: "text-center" }, [
+        _c("h1", [
+          _vm._v(
+            _vm._s(_vm.userProfile.first_name) +
+              " " +
+              _vm._s(_vm.userProfile.last_name)
+          )
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm-9" }, [
-        _c("div", { staticClass: "tab-content" }, [
-          _c("div", { staticClass: "tab-pane active", attrs: { id: "home" } }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "text-center" }, [
+            _c("img", {
+              staticClass: "avatar img-circle img-thumbnail",
+              attrs: { src: _vm.userProfile.image, alt: "avatar" }
+            }),
+            _vm._v(" "),
+            _c("h6", [_vm._v("Choisir une photo")]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "text-center center-block file-upload",
+              attrs: { type: "file" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("br")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-9" }, [
+          _c("div", { staticClass: "tab-content" }, [
             _c(
-              "form",
-              {
-                staticClass: "form",
-                attrs: { action: "#", method: "post", id: "registrationForm" }
-              },
+              "div",
+              { staticClass: "tab-pane active", attrs: { id: "home" } },
               [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("div", { staticClass: "col-xs-6" }, [
-                    _c("label", { attrs: { for: "first_name" } }, [
-                      _vm._v("First name")
+                _c(
+                  "form",
+                  {
+                    staticClass: "form",
+                    attrs: {
+                      action: "#",
+                      method: "post",
+                      id: "registrationForm"
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("div", { staticClass: "col-xs-6" }, [
+                        _c("label", { attrs: { for: "first_name" } }, [
+                          _vm._v("First name")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            name: "first_name",
+                            id: "first_name",
+                            placeholder: "first name",
+                            title: "enter your first name if any."
+                          },
+                          domProps: { value: _vm.userProfile.first_name }
+                        })
+                      ])
                     ]),
                     _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "first_name",
-                        id: "first_name",
-                        placeholder: "first name",
-                        title: "enter your first name if any."
-                      },
-                      domProps: { value: _vm.userProfile.first_name }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("div", { staticClass: "col-xs-6" }, [
-                    _c("label", { attrs: { for: "last_name" } }, [
-                      _vm._v("Last name")
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("div", { staticClass: "col-xs-6" }, [
+                        _c("label", { attrs: { for: "last_name" } }, [
+                          _vm._v("Last name")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            name: "last_name",
+                            id: "last_name",
+                            placeholder: "last name",
+                            title: "enter your last name if any."
+                          },
+                          domProps: { value: _vm.userProfile.last_name }
+                        })
+                      ])
                     ]),
                     _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "last_name",
-                        id: "last_name",
-                        placeholder: "last name",
-                        title: "enter your last name if any."
-                      },
-                      domProps: { value: _vm.userProfile.last_name }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("div", { staticClass: "col-xs-6" }, [
-                    _c("label", { attrs: { for: "phone" } }, [_vm._v("Title")]),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("div", { staticClass: "col-xs-6" }, [
+                        _c("label", { attrs: { for: "phone" } }, [
+                          _vm._v("Title")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            name: "phone",
+                            id: "phone",
+                            placeholder: "Example : Web developer",
+                            title: "enter your phone number if any."
+                          },
+                          domProps: { value: _vm.userProfile.headline }
+                        })
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "phone",
-                        id: "phone",
-                        placeholder: "Example : Web developer",
-                        title: "enter your phone number if any."
-                      },
-                      domProps: { value: _vm.userProfile.headline }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("div", { staticClass: "col-xs-6" }, [
-                    _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("div", { staticClass: "col-xs-6" }, [
+                        _c("label", { attrs: { for: "email" } }, [
+                          _vm._v("Email")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "email",
+                            name: "email",
+                            id: "email",
+                            placeholder: "you@email.com",
+                            title: "enter your email."
+                          },
+                          domProps: { value: _vm.userProfile.email }
+                        })
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "email",
-                        name: "email",
-                        id: "email",
-                        placeholder: "you@email.com",
-                        title: "enter your email."
-                      },
-                      domProps: { value: _vm.userProfile.email }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("div", { staticClass: "col-xs-6" }, [
-                    _c("label", { attrs: { for: "about" } }, [_vm._v("About")]),
-                    _vm._v(" "),
-                    _c(
-                      "textarea",
-                      {
-                        staticClass: "form-control",
-                        attrs: { name: "", id: "about" }
-                      },
-                      [
-                        _vm._v(
-                          _vm._s(_vm.userProfile.about) +
-                            "\n                                "
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("div", { staticClass: "col-xs-6" }, [
+                        _c("label", { attrs: { for: "about" } }, [
+                          _vm._v("About")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "textarea",
+                          {
+                            staticClass: "form-control",
+                            attrs: { name: "", id: "about" }
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(_vm.userProfile.about) +
+                                "\n                                "
+                            )
+                          ]
                         )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(0)
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0)
+                  ]
+                )
               ]
             )
           ])
         ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {

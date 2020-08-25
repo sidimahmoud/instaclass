@@ -57,7 +57,7 @@
 
                         </div>
                         <div class="col-md-6 text-right">
-                            <router-link to="/checkout" tag="a" class="btn btn-primary btn-sm float-right">
+                            <router-link :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}" tag="a" class="btn btn-primary my-3">
                                 S'inscrire à ce cours
                             </router-link>
                         </div>
