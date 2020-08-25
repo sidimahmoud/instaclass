@@ -110,11 +110,11 @@
                                     </span>
                             </h6>
                         </div>
-                        <span class="text-muted">${{course.price}}</span>
+                        <span class="text-muted">${{course_price}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between font-weight-bold">
                         <span>Total (USD)</span>
-                        <strong>${{course_priceprice}}</strong>
+                        <strong>${{course_price}}</strong>
                     </li>
                 </ul>
                 <!-- Cart -->

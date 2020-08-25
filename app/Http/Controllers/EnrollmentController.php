@@ -58,6 +58,7 @@ class EnrollmentController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $enrollment = new Enrollment();
         $enrollment->user_id = $request->user()->id;
         $enrollment->course_id = $request["course_id"];

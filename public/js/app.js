@@ -46855,7 +46855,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "text-muted" }, [
-                _vm._v("$" + _vm._s(_vm.course.price))
+                _vm._v("$" + _vm._s(_vm.course_price))
               ])
             ]
           ),
@@ -46869,7 +46869,7 @@ var render = function() {
             [
               _c("span", [_vm._v("Total (USD)")]),
               _vm._v(" "),
-              _c("strong", [_vm._v("$" + _vm._s(_vm.course_priceprice))])
+              _c("strong", [_vm._v("$" + _vm._s(_vm.course_price))])
             ]
           )
         ])
@@ -71202,6 +71202,7 @@ var actions = {
           switch (_context.prev = _context.next) {
             case 0:
               commit = _ref.commit;
+              headers();
               return _context.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   url: 'https://instantclass.herokuapp.com/api/enroll',
@@ -71215,7 +71216,7 @@ var actions = {
                 });
               }));
 
-            case 2:
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -71225,6 +71226,15 @@ var actions = {
   }
 };
 var mutations = {};
+
+function headers() {
+  var token = localStorage.getItem('token') || '';
+
+  if (token) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+  }
+}
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: state,
   getters: getters,
