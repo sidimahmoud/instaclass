@@ -72222,7 +72222,7 @@ var actions = {
             case 4:
               response = _context3.sent;
               console.log(response.data);
-              commit('setCourses', response.data[0]);
+              commit('setCourses', response.data);
               commit('setLoading', false);
 
             case 8:
