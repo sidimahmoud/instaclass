@@ -228,7 +228,7 @@
                                 <h3 class="card-title font-weight-bolder text-danger">
                                     {{(course.status==2)?'$'+course.price:"Free Course"}}</h3>
                                 <p class="card-text">23 hours left at this price!</p>
-                                <router-link :to="{ name: 'Checkout', params: { slug: course.slug}}" tag="a" class="btn btn-primary my-3">
+                                <router-link :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}" tag="a" class="btn btn-primary my-3">
                                     S'inscrire à ce cours
                                 </router-link>
                             </div>

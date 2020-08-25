@@ -106,7 +106,7 @@
                         <div>
                             <h6 class="my-0">
                                 <span class="font-weight-bold">
-                                        {{course.name}}
+                                        {{course_name}}
                                     </span>
                             </h6>
                         </div>
@@ -114,7 +114,7 @@
                     </li>
                     <li class="list-group-item d-flex justify-content-between font-weight-bold">
                         <span>Total (USD)</span>
-                        <strong>${{course.price}}</strong>
+                        <strong>${{course_priceprice}}</strong>
                     </li>
                 </ul>
                 <!-- Cart -->
@@ -135,28 +135,35 @@
         name: "Checkout",
 
         methods: {
-            findCourse() {
-                this.$store.dispatch('getCourse', this.$route.params.slug)
-            },
+            // findCourse() {
+            //     this.$store.dispatch('getCourse', this.$route.params.slug)
+            // },
             checkout() {
-                let payload={
-                    slug: this.$route.params.slug,
-                    paymentMethod: this.paymentMethod
+                let payload = {
+                    paymentMethod: this.paymentMethod,
+                    course_id: this.course_id,
+                    course_name: this.course_name,
+                    course_price: this.course_price
                 };
-                this.$store.dispatch('enroll', payload);
-                alert("Enrolled successfully")
+                this.$store.dispatch('enroll', payload)
+                    .then(() => alert("Enrolled successfully"))
+                    .catch(err => console.log(err))
             }
         },
-        computed: mapGetters(["course", "loading"]),
+        // computed: mapGetters(["course", "loading"]),
         data() {
             return {
+                course_id: this.$route.params.id,
+                course_name: this.$route.params.name,
+                course_price: this.$route.params.price,
                 paymentMethod: 'card',
-                }
+
+            }
 
         },
-        created() {
-            this.findCourse();
-        },
+        // created() {
+        //     this.findCourse();
+        // },
     }
 </script>
 

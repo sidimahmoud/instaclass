@@ -3896,27 +3896,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Checkout",
   methods: {
-    findCourse: function findCourse() {
-      this.$store.dispatch('getCourse', this.$route.params.slug);
-    },
+    // findCourse() {
+    //     this.$store.dispatch('getCourse', this.$route.params.slug)
+    // },
     checkout: function checkout() {
       var payload = {
-        slug: this.$route.params.slug,
-        paymentMethod: this.paymentMethod
+        paymentMethod: this.paymentMethod,
+        course_id: this.course_id,
+        course_name: this.course_name,
+        course_price: this.course_price
       };
-      this.$store.dispatch('enroll', payload);
-      alert("Enrolled successfully");
+      this.$store.dispatch('enroll', payload).then(function () {
+        return alert("Enrolled successfully");
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     }
   },
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["course", "loading"]),
+  // computed: mapGetters(["course", "loading"]),
   data: function data() {
     return {
+      course_id: this.$route.params.id,
+      course_name: this.$route.params.name,
+      course_price: this.$route.params.price,
       paymentMethod: 'card'
     };
-  },
-  created: function created() {
-    this.findCourse();
-  }
+  } // created() {
+  //     this.findCourse();
+  // },
+
 });
 
 /***/ }),
@@ -46839,7 +46847,7 @@ var render = function() {
                   _c("span", { staticClass: "font-weight-bold" }, [
                     _vm._v(
                       "\n                                    " +
-                        _vm._s(_vm.course.name) +
+                        _vm._s(_vm.course_name) +
                         "\n                                "
                     )
                   ])
@@ -46861,7 +46869,7 @@ var render = function() {
             [
               _c("span", [_vm._v("Total (USD)")]),
               _vm._v(" "),
-              _c("strong", [_vm._v("$" + _vm._s(_vm.course.price))])
+              _c("strong", [_vm._v("$" + _vm._s(_vm.course_priceprice))])
             ]
           )
         ])
@@ -47617,7 +47625,11 @@ var render = function() {
                           attrs: {
                             to: {
                               name: "Checkout",
-                              params: { slug: _vm.course.slug }
+                              params: {
+                                id: _vm.course.id,
+                                name: _vm.course.name,
+                                price: _vm.course.price
+                              }
                             },
                             tag: "a"
                           }

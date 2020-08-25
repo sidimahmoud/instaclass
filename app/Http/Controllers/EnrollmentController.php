@@ -58,22 +58,20 @@ class EnrollmentController extends Controller
      */
     public function store(Request $request)
     {
-        $course = Course::where('slug', $request["slug"])->get();
         $enrollment = new Enrollment();
         $enrollment->user_id = $request->user()->id;
-        $enrollment->course_id = $course->id;
+        $enrollment->course_id = $request["course_id"];
         $enrollment->save();
         if ($enrollment){
             $payment = new Payement();
             $payment->enrollment_id = $enrollment->id;
             $payment->user_id = $request->user()->id;
-            $payment->amount = $course->price;
+            $payment->amount = $request["course_price"];
             $payment->method = $request["paymentMethod"];
-            $payment->object = $course->name;
+            $payment->object = $request["course_name"];
             $payment->save();
         }
         return response()->json("Enrolled successfully");
-
     }
 
     /**

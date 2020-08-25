@@ -32,7 +32,6 @@ class CourseController extends Controller
         return response()->json($course);
     }
 
-
     public function categoryCourses($id)
     {
         $course = Course::with('category')->where('category_id', $id)->get();
