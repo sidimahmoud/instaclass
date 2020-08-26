@@ -39,7 +39,7 @@ class DemandsController extends Controller
         $demand->details = $request["details"];
         $demand->lang = $request["lang"];
         $demand->email = $request["email"];
-        $demand->status = $request["status"];
+        $demand->status = 1;
 
         $demand->save();
         return response()->json("Merci, votre message de cours a été envoyé.");
