@@ -13,7 +13,7 @@ class CreateDemandsTable extends Migration
      */
     public function up()
     {
-        Schema::table('demands', function (Blueprint $table) {
+        Schema::create('demands', function (Blueprint $table) {
             $table->id();
             $table->string('details');
             $table->string('lang');
