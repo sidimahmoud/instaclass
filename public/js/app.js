@@ -2920,12 +2920,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "CourseDemands"
+  name: "CourseDemands",
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchDemands"])),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["allDemands"]),
+  created: function created() {
+    this.fetchDemands();
+  }
 });
 
 /***/ }),
@@ -4671,6 +4684,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Demande",
   data: function data() {
@@ -4692,6 +4707,9 @@ __webpack_require__.r(__webpack_exports__);
       };
       this.$store.dispatch('demander', payload).then(function (res) {
         _this.msg = res.data;
+        _this.details = '';
+        _this.lang = 'fr';
+        _this.email = '';
       });
     }
   }
@@ -45746,7 +45764,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "tbody",
-        _vm._l(_vm.allCourses, function(t) {
+        _vm._l(_vm.allCourses.data, function(t) {
           return _c("tr", [
             _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(t.id))]),
             _vm._v(" "),
@@ -48913,7 +48931,7 @@ var render = function() {
                     },
                     [
                       _c("i", { staticClass: "fa fa-check" }),
-                      _vm._v("  " + _vm._s(_vm.msg) + "\n                    "),
+                      _vm._v(" " + _vm._s(_vm.msg) + "\n                    "),
                       _vm._m(0)
                     ]
                   )
@@ -48926,7 +48944,7 @@ var render = function() {
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
                   _vm._v(
-                    " Dites nous le cours que vous aimeriez suivre en direct sur la plateforme"
+                    " Dites nous le cours que vous aimeriez suivre en direct\n                        sur la plateforme"
                   )
                 ]),
                 _vm._v(" "),
@@ -72563,6 +72581,7 @@ var state = {
   courses: [],
   course: '',
   categCourses: [],
+  demands: [],
   loading: false
 };
 var getters = {
@@ -72571,6 +72590,9 @@ var getters = {
   },
   allcategCourses: function allcategCourses(state) {
     return state.categCourses;
+  },
+  allDemands: function allDemands(state) {
+    return state.demands;
   },
   course: function course(state) {
     return state.course;
@@ -72687,7 +72709,7 @@ var actions = {
       }, _callee4);
     }))();
   },
-  getCategoryCourses: function getCategoryCourses(_ref5, id) {
+  fetchDemands: function fetchDemands(_ref5) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
@@ -72697,11 +72719,11 @@ var actions = {
               commit = _ref5.commit;
               commit('setLoading', true);
               _context5.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/class/".concat(id));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/demands");
 
             case 4:
               response = _context5.sent;
-              commit('setCategoryCourses', response.data);
+              commit('setDemands', response.data);
               commit('setLoading', false);
 
             case 7:
@@ -72711,6 +72733,31 @@ var actions = {
         }
       }, _callee5);
     }))();
+  },
+  getCategoryCourses: function getCategoryCourses(_ref6, id) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              commit = _ref6.commit;
+              commit('setLoading', true);
+              _context6.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/class/".concat(id));
+
+            case 4:
+              response = _context6.sent;
+              commit('setCategoryCourses', response.data);
+              commit('setLoading', false);
+
+            case 7:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6);
+    }))();
   }
 };
 var mutations = {
@@ -72719,6 +72766,9 @@ var mutations = {
   },
   setCourse: function setCourse(state, course) {
     return state.course = course;
+  },
+  setDemands: function setDemands(state, payload) {
+    return state.demands = payload;
   },
   setCategoryCourses: function setCategoryCourses(state, payload) {
     return state.categCourses = payload;

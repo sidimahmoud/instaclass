@@ -4,11 +4,13 @@ const state = {
     courses: [],
     course: '',
     categCourses: [],
+    demands: [],
     loading: false,
 };
 const getters = {
     allCourses: (state) => state.courses,
     allcategCourses: (state) => state.categCourses,
+    allDemands: (state) => state.demands,
     course: (state) => state.course,
     loading: (state) => state.loading,
 };
@@ -47,6 +49,12 @@ const actions = {
                 })
         })
     },
+    async fetchDemands({commit}) {
+        commit('setLoading', true);
+        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/demands`);
+        commit('setDemands', response.data);
+        commit('setLoading', false);
+    },
     async getCategoryCourses({commit}, id) {
         commit('setLoading', true);
         const response = await axios.get(`https://instantclass.herokuapp.com/api/class/${id}`);
@@ -57,6 +65,7 @@ const actions = {
 const mutations = {
     setCourses: (state, courses) => (state.courses = courses),
     setCourse: (state, course) => (state.course = course),
+    setDemands: (state, payload) => (state.demands = payload),
     setCategoryCourses: (state, payload) => (state.categCourses = payload),
     setLoading: (state, val) => (state.loading = val),
 };

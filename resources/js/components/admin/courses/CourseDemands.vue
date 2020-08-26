@@ -3,8 +3,17 @@
 </template>
 
 <script>
+    import {mapActions, mapGetters} from "vuex";
+
     export default {
-        name: "CourseDemands"
+        name: "CourseDemands",
+        methods: {
+            ...mapActions(["fetchDemands"])
+        },
+        computed: mapGetters(["allDemands"]),
+        created() {
+            this.fetchDemands();
+        }
     }
 </script>
 

@@ -14,7 +14,7 @@ class DemandsController extends Controller
      */
     public function index()
     {
-        //
+        $demands = Demands::orderBy('created_at', 'desc');
     }
 
     /**

@@ -17,7 +17,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="t in allCourses">
+            <tr v-for="t in allCourses.data">
                 <th scope="row">{{t.id}}</th>
                 <td>{{t.name}}</td>
                 <td>{{t.language}}</td>
