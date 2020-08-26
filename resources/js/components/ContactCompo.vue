@@ -3,24 +3,34 @@
     <section id="contact" class="contact border-top border-primary">
         <div class="container mt-4">
             <div class="section-title text-center">
+                <div class="alert alert-success alert-dismissible fade show" role="alert" >
+                    <span class="btn btn-light rounded-circle">
+                         <i class="fa fa-check text-success fa-2x"></i>
+                    </span>
+
+                    {{alert}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <h2>Contact</h2>
                 <p>Contactez nous pour toutes questions ou commentaires</p>
             </div>
 
             <div class="row">
                 <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                    <form  class="php-email-form" @submit.prevent="send">
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="name">Votre nom</label>
                                 <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4"
-                                       data-msg="Please enter at least 4 chars"/>
+                                       data-msg="Please enter at least 4 chars" required v-model="name" />
                                 <div class="validate"></div>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="name">Votre Email</label>
                                 <input type="email" class="form-control" name="email" id="email" data-rule="email"
-                                       data-msg="Please enter a valid email"/>
+                                       data-msg="Please enter a valid email" required v-model="email" />
                                 <div class="validate"></div>
                             </div>
                         </div>
@@ -28,14 +38,11 @@
                         <div class="form-group">
                             <label for="name">Message</label>
                             <textarea class="form-control" name="message" rows="10" data-rule="required"
-                                      data-msg="Please write something for us"></textarea>
+                                      data-msg="Please write something for us"
+                            required v-model="msg"></textarea>
                             <div class="validate"></div>
                         </div>
-                        <div class="mb-3">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Votre message a étè transmis avec succée!</div>
-                        </div>
+
                         <div class="text-center">
                             <button type="submit">Envoyer</button>
                         </div>
@@ -50,7 +57,31 @@
 
 <script>
     export default {
-        name: "ContactCompo"
+        name: "ContactCompo",
+        data() {
+            return {
+                name: '',
+                email: '',
+                msg: '',
+                alert: ''
+            }
+        },
+        methods: {
+            send() {
+                let payload = {
+                    name: this.name,
+                    email: this.email,
+                    message: this.msg,
+                };
+                this.$store.dispatch('contacter', payload)
+                    .then(res => {
+                        this.alert = res.data;
+                        this.name = '';
+                        this.email = '';
+                        this.msg = '';
+                    })
+            }
+        }
     }
 </script>
 

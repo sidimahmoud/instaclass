@@ -135,7 +135,7 @@
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Choisir:</h6>
-                        <a class="collapse-item" href="#messages" @click="component='Courses'">Messages</a>
+                        <a class="collapse-item" href="#messages" @click="component='Messages'">Messages</a>
 
                     </div>
                 </div>
@@ -203,7 +203,7 @@
     import Courses from "./courses/Courses";
     import CourseDemands from "./courses/CourseDemands";
     import Statistics from "./courses/Statistics";
-
+    import Messages from "./contacts/Messages";
     import Categories from "./categories/Categories";
     import Home from "./Home";
 
@@ -220,6 +220,7 @@
             CourseDemands,
             Statistics,
             Categories,
+            Messages,
             Home,
         },
         data() {

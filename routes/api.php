@@ -16,6 +16,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/payments/sent', 'Admin\PayementController@sent')->middleware('can:only-admin');
     Route::resource('payments', 'Admin\PayementController')->middleware('can:only-admin');
     Route::get('/courses/demands', 'DemandsController@index')->middleware('can:only-admin');
+    Route::get('/contacts', 'ContactsController@index')->middleware('can:only-admin');
     Route::get('/user/enrollments', 'EnrollmentController@userEnrollments');
     Route::resource('/enrollments', 'EnrollmentController');
     Route::get('/user/courses', 'Teacher\CoursesController@teacherCourses')->middleware('can:teacher-or-admin');
@@ -30,6 +31,7 @@ Route::get('/courses', 'CourseController@index');
 Route::get('/courses/{id}', 'CourseController@show');
 Route::get('/courses/search/{q}', 'CourseController@search');
 Route::post('/courses/demander', 'DemandsController@store');
+Route::post('/contacter', 'ContactsController@store');
 Route::get('/class/{id}', 'CourseController@categoryCourses');
 Route::resource('/ratings', 'RatingController');
 

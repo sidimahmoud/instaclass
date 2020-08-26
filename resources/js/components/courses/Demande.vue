@@ -5,7 +5,11 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto bg-white shadow-sm">
                 <form class="mt-4" @submit.prevent="demander">
                     <div class="alert alert-success alert-dismissible fade show" role="alert" v-if="msg">
-                        <i class="fa fa-check"></i> {{msg}}
+                        <span class="btn btn-light rounded-circle">
+                             <i class="fa fa-check text-success fa-2x"></i>
+                        </span>
+
+                        {{msg}}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
