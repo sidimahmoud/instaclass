@@ -62,6 +62,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Role');
     }
+    public function demands()
+    {
+        return $this->hasMany('App\Demands');
+    }
 
     public function isAdmin()
     {

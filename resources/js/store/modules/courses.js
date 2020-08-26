@@ -14,9 +14,10 @@ const getters = {
 };
 
 const actions = {
-    async fetchCourses({commit}) {
+    async fetchCourses({commit}, page) {
         commit('setLoading', true);
-        const response = await axios.get('https://instantclass.herokuapp.com/api/courses');
+        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses?page=${page}`);
+        console.log(response.data);
         commit('setCourses', response.data);
         commit('setLoading', false);
     },
@@ -29,9 +30,22 @@ const actions = {
     async search({commit}, q) {
         commit('setLoading', true);
         const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/search/${q}`);
-        console.log(response.data[0])
         commit('setCourses', response.data);
         commit('setLoading', false);
+    },
+    async demander({commit}, payload) {
+        return new Promise((resolve, reject) => {
+            commit('setLoading', true);
+            axios({url: 'https://instantclass.herokuapp.com/api/courses/demander', data: payload, method: 'POST'})
+                .then(resp => {
+                    console.log(resp);
+                    commit('setLoading', false);
+                    resolve(resp)
+                })
+                .catch(err => {
+                    reject(err)
+                })
+        })
     },
     async getCategoryCourses({commit}, id) {
         commit('setLoading', true);

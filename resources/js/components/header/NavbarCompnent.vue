@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand text-primary font-weight-bolder" href="/">
-                <img src="../../assets/logo.png" alt="" width="60px">
+                <img src="../../assets/logo.png" alt="" width="80px">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -22,12 +22,18 @@
                         </router-link>
                     </form>
                 </ul>
+
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item " v-if="!$route.matched.some(({ name }) => name === 'Home')">
                         <router-link :to="{ name: 'Home'}" tag="a" class="nav-link ">
                             Home
                         </router-link>
                     </li>
+                    <li class="nav-item">
+                    <router-link :to="{ name: 'About'}" tag="a" class="nav-link">
+                        About
+                    </router-link>
+                </li>
                     <li class="nav-item ">
 
                         <router-link :to="{ name: 'Courses'}" tag="a" class="nav-link ">
@@ -36,22 +42,18 @@
 
                     </li>
                     <li class="nav-item">
-                        <router-link :to="{name: 'Demande'}" tag="a"
-                                     class="nav-link">
-                            Demande de cours
-                        </router-link>
-                    </li>
-                    <li class="nav-item">
                         <router-link :to="{name: 'Signin'}" tag="a"
                                      class="nav-link bg-danger text-white rounded">
                             Become Instructor
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link :to="{ name: 'About'}" tag="a" class="nav-link">
-                            About
+                        <router-link :to="{name: 'Demande'}" tag="a"
+                                     class="nav-link">
+                            Demande de cours
                         </router-link>
                     </li>
+
 
                     <li class="nav-item">
                         <router-link :to="{name: 'TeacherProfile'}" tag="a"

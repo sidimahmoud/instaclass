@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Demands;
 use Illuminate\Http\Request;
 
-class \DemandsController extends Controller
+class DemandsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,11 +31,18 @@ class \DemandsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        //
+        $demand = new Demands();
+        $demand->details = $request["details"];
+        $demand->lang = $request["lang"];
+        $demand->email = $request["email"];
+        $demand->status = $request["status"];
+
+        $demand->save();
+        return response()->json("Merci, votre message de cours a été envoyé.");
     }
 
     /**

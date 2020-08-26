@@ -6,11 +6,10 @@
         <div class="container text-center text-md-left mt-5">
 
             <!-- Grid row -->
-            <div class="row mt-3">
+            <div class="row pt-5 text-center">
 
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto my-auto mb-4">
-
+                <div class="col-md-3">
                     <!-- Content -->
                     <h6 class="text-uppercase font-weight-bold text-white mt-3">
                         <a class="navbar-brand text-primary font-weight-bolder" href="/">
@@ -22,17 +21,26 @@
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto my-auto mb-4">
+                <div class="col-md-3">
 
                     <p>
-                        <a href="#!" class="text-uppercase">home</a>
+                        <router-link :to="{ name: 'Home'}" tag="a" class="text-uppercase">
+                            Home
+                        </router-link>
                     </p>
                     <p>
-                        <a href="#" class="text-uppercase">about</a>
+                        <router-link :to="{ name: 'About'}" tag="a" class="text-uppercase">
+                            About us
+                        </router-link>
                     </p>
                     <p>
-                        <router-link :to="{ name: 'Courses'}" tag="a" class="nav-link text-uppercase">
+                        <router-link :to="{ name: 'Courses'}" tag="a" class="text-uppercase">
                             our courses
+                        </router-link>
+                    </p>
+                    <p>
+                        <router-link :to="{ name: 'Become'}" tag="a" class="text-uppercase">
+                            Become Instructor
                         </router-link>
                     </p>
 
@@ -40,7 +48,7 @@
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mt-4 mx-auto mb-4">
+                <div class="col-md-3">
 
                     <!-- Links -->
                     <p>
@@ -54,7 +62,7 @@
                         <a href="#" class="text-uppercase"> Terms & conditions</a>
                     </p>
                     <p>
-                        <router-link :to="{ name: 'Contact'}" tag="a" class="nav-link text-uppercase">
+                        <router-link :to="{ name: 'Contact'}" tag="a" class=" text-uppercase">
                             Contact us
                         </router-link>
                     </p>
@@ -63,15 +71,15 @@
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 align-content-center mt-5 text-white mx-auto mb-md-0">
-                    <div>Share</div>
-                    <div>Instantclass On Social Media</div>
-                    <div class="mt-2">
+                <div class="col-md-3 align-content-center text-white mx-auto mb-md-0">
+                    <p>Share</p>
+                    <p>Instantclass On Social Media</p>
+                    <p class="mt-2">
                         <i class="fa fa-facebook  mr-3"></i>
                         <i class="fa fa-twitter  mr-3"></i>
                         <i class="fa fa-linkedin  mr-3"></i>
                         <i class="fa fa-instagram  mr-3"></i>
-                    </div>
+                    </p>
                 </div>
                 <!-- Grid column -->
             </div>
@@ -97,13 +105,15 @@
 
 <style scoped>
     /*  footer link */
-    footer a{
+    footer a {
         color: #FFFEFE !important;
     }
-    .page-footer{
-        background-color:#0e0938 !important;
+
+    .page-footer {
+        background-color: #0e0938 !important;
     }
-    hr{
-        background:#e2e2e2;
+
+    hr {
+        background: #e2e2e2;
     }
 </style>

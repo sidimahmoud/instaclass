@@ -4,9 +4,9 @@
             <div class="container  align-items-center">
                 <div class="row justify-content-around align-items-center">
                     <div
-                        class="col-md-6 col-sm-12 text-center text-md-left justify-content-center align-items-center text-white">
-                        <h1 class="display-3">The perfect Platform</h1>
-                        <h4 class="h3 ">For Online <span class="text-danger">Courses</span></h4>
+                        class="col-md-6 col-sm-12 text-center text-md-left px-md-5 justify-content-center align-items-center text-white">
+                        <h1 class="display-4">The perfect Platform For Online <span class="text-danger">Courses</span></h1>
+
                     </div>
 
                     <div class="col-md-6 d-none d-md-block">
@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center align-items-center" v-if="!loadingCategories">
+            <div class="row  align-items-center" v-if="!loadingCategories">
                 <div class="col-md-3 col-sm-12 p-2 text-center" v-for="categ in allCategories" :key="categ.id">
                     <div class="card">
                         <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="a">

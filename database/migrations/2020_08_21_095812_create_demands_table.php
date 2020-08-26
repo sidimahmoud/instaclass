@@ -15,6 +15,10 @@ class CreateDemandsTable extends Migration
     {
         Schema::create('demands', function (Blueprint $table) {
             $table->id();
+            $table->string('details');
+            $table->string('lang');
+            $table->string('email');
+            $table->string('status');
             $table->timestamps();
         });
     }
