@@ -2931,6 +2931,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CourseDemands",
@@ -45730,7 +45732,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Demands")])
+  return _c(
+    "div",
+    { staticClass: "text-center" },
+    _vm._l(_vm.allDemands, function(d) {
+      return _c("h3", [_vm._v(" " + _vm._s(_vm.v.details))])
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

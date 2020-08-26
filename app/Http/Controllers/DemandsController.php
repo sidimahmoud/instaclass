@@ -42,7 +42,9 @@ class DemandsController extends Controller
         $demand->status = 1;
 
         $demand->save();
+        if ($demand)
         return response()->json("Merci, votre message de demande de cours a été envoyé.");
+        return response()->json("Erreur, Ressayer.");
     }
 
     /**

@@ -1,5 +1,7 @@
 <template>
-    <h1>Demands</h1>
+    <div class="text-center">
+        <h3 v-for="d in allDemands"> {{v.details}}</h3>
+    </div>
 </template>
 
 <script>
