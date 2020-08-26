@@ -3,7 +3,7 @@
         <div class="row mt-5">
 
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto bg-white shadow-sm">
-                <form class="mt-4">
+                <form class="mt-4" @submit.prevent="demander">
                     <div class="alert alert-success alert-dismissible fade show" role="alert" v-if="msg">
                        <i class="fa fa-check"></i>  {{msg}}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">

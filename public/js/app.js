@@ -48891,66 +48891,128 @@ var render = function() {
           staticClass: "col-sm-9 col-md-7 col-lg-5 mx-auto bg-white shadow-sm"
         },
         [
-          _c("form", { staticClass: "mt-4" }, [
-            _vm.msg
-              ? _c(
-                  "div",
-                  {
-                    staticClass:
-                      "alert alert-success alert-dismissible fade show",
-                    attrs: { role: "alert" }
-                  },
-                  [
-                    _c("i", { staticClass: "fa fa-check" }),
-                    _vm._v("  " + _vm._s(_vm.msg) + "\n                    "),
-                    _vm._m(0)
-                  ]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _c("h2", { staticClass: "text-center" }, [
-              _vm._v("Demande de cours")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
-                _vm._v(
-                  " Dites nous le cours que vous aimeriez suivre en direct sur la plateforme"
-                )
+          _c(
+            "form",
+            {
+              staticClass: "mt-4",
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.demander($event)
+                }
+              }
+            },
+            [
+              _vm.msg
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "alert alert-success alert-dismissible fade show",
+                      attrs: { role: "alert" }
+                    },
+                    [
+                      _c("i", { staticClass: "fa fa-check" }),
+                      _vm._v("  " + _vm._s(_vm.msg) + "\n                    "),
+                      _vm._m(0)
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c("h2", { staticClass: "text-center" }, [
+                _vm._v("Demande de cours")
               ]),
               _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.details,
-                    expression: "details"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { id: "exampleFormControlTextarea1", required: "" },
-                domProps: { value: _vm.details },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.details = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _vm.lang === "fr" || _vm.lang === "en" || _vm.lang === "es"
-              ? _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "lang" } }, [
-                    _vm._v("Langue du cours")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
+                  _vm._v(
+                    " Dites nous le cours que vous aimeriez suivre en direct sur la plateforme"
+                  )
+                ]),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
                     {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.details,
+                      expression: "details"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "exampleFormControlTextarea1", required: "" },
+                  domProps: { value: _vm.details },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.details = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm.lang === "fr" || _vm.lang === "en" || _vm.lang === "es"
+                ? _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "lang" } }, [
+                      _vm._v("Langue du cours")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.lang,
+                            expression: "lang"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "lang" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.lang = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "fr" } }, [
+                          _vm._v("Français")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "en" } }, [
+                          _vm._v("Anglais")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "es" } }, [
+                          _vm._v("Espagnol")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Langue" } }, [
+                          _vm._v("Autre (Précisez)")
+                        ])
+                      ]
+                    )
+                  ])
+                : _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "lang1" } }, [
+                      _vm._v("Langue du cours")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
                       directives: [
                         {
                           name: "model",
@@ -48960,120 +49022,70 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { id: "lang" },
+                      attrs: { type: "text", id: "lang1" },
+                      domProps: { value: _vm.lang },
                       on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.lang = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.lang = $event.target.value
                         }
                       }
-                    },
-                    [
-                      _c("option", { attrs: { value: "fr" } }, [
-                        _vm._v("Français")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "en" } }, [
-                        _vm._v("Anglais")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "es" } }, [
-                        _vm._v("Espagnol")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Langue" } }, [
-                        _vm._v("Autre (Précisez)")
-                      ])
-                    ]
-                  )
-                ])
-              : _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "lang1" } }, [
-                    _vm._v("Langue du cours")
+                    })
                   ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.lang,
-                        expression: "lang"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "lang1" },
-                    domProps: { value: _vm.lang },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.lang = $event.target.value
-                      }
-                    }
-                  })
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "email" } }, [
+                  _vm._v("Email address (optionnel)")
                 ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "email" } }, [
-                _vm._v("Email address (optionnel)")
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    id: "email",
+                    "aria-describedby": "emailHelp",
+                    placeholder: "Enter email"
+                  },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    staticClass: "form-text text-muted",
+                    attrs: { id: "emailHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Vous serez averti quand le cours sera disponible.\n                    "
+                    )
+                  ]
+                )
               ]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.email,
-                    expression: "email"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "email",
-                  id: "email",
-                  "aria-describedby": "emailHelp",
-                  placeholder: "Enter email"
-                },
-                domProps: { value: _vm.email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.email = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "small",
-                {
-                  staticClass: "form-text text-muted",
-                  attrs: { id: "emailHelp" }
-                },
-                [
-                  _vm._v(
-                    "\n                        Vous serez averti quand le cours sera disponible.\n                    "
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("button", { staticClass: "btn btn-primary btn-block my-3" }, [
-              _vm._v("Envoyer")
-            ])
-          ])
+              _c("button", { staticClass: "btn btn-primary btn-block my-3" }, [
+                _vm._v("Envoyer")
+              ])
+            ]
+          )
         ]
       )
     ])

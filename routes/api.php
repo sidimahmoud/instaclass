@@ -28,7 +28,7 @@ Route::resource('/comments', 'CommentController');
 Route::get('/courses', 'CourseController@index');
 Route::get('/courses/{id}', 'CourseController@show');
 Route::get('/courses/search/{q}', 'CourseController@search');
-Route::post('/courses/demander', 'CourseController@search');
+Route::post('/courses/demander', 'DemandsController@store');
 Route::get('/class/{id}', 'CourseController@categoryCourses');
 Route::resource('/ratings', 'RatingController');
 
