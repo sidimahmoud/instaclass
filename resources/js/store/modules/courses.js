@@ -1,10 +1,12 @@
 import axios from 'axios'
+
 const state = {
     courses: [],
     course: '',
     categCourses: [],
     demands: [],
     loading: false,
+    enrolled: false,
 };
 const getters = {
     allCourses: (state) => state.courses,
@@ -12,20 +14,29 @@ const getters = {
     allDemands: (state) => state.demands,
     course: (state) => state.course,
     loading: (state) => state.loading,
+    enrolled: (state) => state.enrolled,
 };
 
 const actions = {
     async fetchCourses({commit}, page) {
         commit('setLoading', true);
         const response = await axios.get(`https://instantclass.herokuapp.com/api/courses?page=${page}`);
-        console.log(response.data);
         commit('setCourses', response.data);
         commit('setLoading', false);
     },
     async getCourse({commit}, slug) {
         commit('setLoading', true);
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/${slug}`, );
+        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/${slug}`,);
         commit('setCourse', response.data[0]);
+        const me = JSON.parse(localStorage.getItem('user')) || null;
+        commit('setEnrolled', false);
+        if (me){
+            response.data[0].enrollments.forEach(function (item, index) {
+                if (item.user_id === me.u)
+                    commit('setEnrolled', true);
+            });
+        }
+
         commit('setLoading', false);
     },
     async search({commit}, q) {
@@ -67,6 +78,7 @@ const mutations = {
     setDemands: (state, payload) => (state.demands = payload),
     setCategoryCourses: (state, payload) => (state.categCourses = payload),
     setLoading: (state, val) => (state.loading = val),
+    setEnrolled: (state, val) => (state.enrolled = val),
 };
 
 function headers() {

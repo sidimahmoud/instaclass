@@ -4219,12 +4219,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Review */ "./resources/js/components/courses/Review.vue");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -4487,11 +4481,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Detail',
-  data: function data() {
-    return {
-      enrolled: false
-    };
-  },
   components: {
     Review: _Review__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
@@ -4500,7 +4489,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$store.dispatch('getCourse', this.$route.params.slug);
     }
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["course", "loading", 'isLoggedIn'])),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["course", "loading", "enrolled", 'isLoggedIn']),
   created: function created() {
     this.findCourse();
   }
@@ -73295,7 +73284,8 @@ var state = {
   course: '',
   categCourses: [],
   demands: [],
-  loading: false
+  loading: false,
+  enrolled: false
 };
 var getters = {
   allCourses: function allCourses(state) {
@@ -73312,6 +73302,9 @@ var getters = {
   },
   loading: function loading(state) {
     return state.loading;
+  },
+  enrolled: function enrolled(state) {
+    return state.enrolled;
   }
 };
 var actions = {
@@ -73329,11 +73322,10 @@ var actions = {
 
             case 4:
               response = _context.sent;
-              console.log(response.data);
               commit('setCourses', response.data);
               commit('setLoading', false);
 
-            case 8:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -73343,7 +73335,7 @@ var actions = {
   },
   getCourse: function getCourse(_ref2, slug) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-      var commit, response;
+      var commit, response, me;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -73356,9 +73348,18 @@ var actions = {
             case 4:
               response = _context2.sent;
               commit('setCourse', response.data[0]);
+              me = JSON.parse(localStorage.getItem('user')) || null;
+              commit('setEnrolled', false);
+
+              if (me) {
+                response.data[0].enrollments.forEach(function (item, index) {
+                  if (item.user_id === me.u) commit('setEnrolled', true);
+                });
+              }
+
               commit('setLoading', false);
 
-            case 7:
+            case 10:
             case "end":
               return _context2.stop();
           }
@@ -73488,6 +73489,9 @@ var mutations = {
   },
   setLoading: function setLoading(state, val) {
     return state.loading = val;
+  },
+  setEnrolled: function setEnrolled(state, val) {
+    return state.enrolled = val;
   }
 };
 

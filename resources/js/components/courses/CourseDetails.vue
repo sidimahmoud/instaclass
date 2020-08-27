@@ -263,20 +263,13 @@
 
     export default {
         name: 'Detail',
-        data(){
-          return{
-              enrolled: false,
-          }
-        },
         components: {Review},
         methods: {
             findCourse() {
                 this.$store.dispatch('getCourse', this.$route.params.slug)
             },
         },
-        computed:{
-            ...mapGetters(["course", "loading", 'isLoggedIn']),
-        } ,
+        computed: mapGetters(["course", "loading","enrolled", 'isLoggedIn']),
         created() {
             this.findCourse();
         },
