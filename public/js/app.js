@@ -49843,7 +49843,7 @@ var render = function() {
                         _c(
                           "router-link",
                           {
-                            staticClass: "font-weight-bold",
+                            staticClass: "font-weight-bold text-primary",
                             attrs: { to: { name: "Demande" } }
                           },
                           [_vm._v("ici")]

@@ -10,7 +10,7 @@
                 <h3>
 
                     Vous ne trouvez pas <strong> {{this.$route.params.q}}</strong>? Parlez-nous de ce cours
-                    <router-link class="font-weight-bold" :to="{name: 'Demande'}">ici</router-link>
+                    <router-link class="font-weight-bold text-primary" :to="{name: 'Demande'}">ici</router-link>
                 </h3>
             </div>
             <course :course="c" v-for="c in allCourses" :key="c.id"/>
