@@ -73715,7 +73715,7 @@ var actions = {
               commit = _ref4.commit;
               header();
               _context4.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/tacher/payments');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/teacher/payments');
 
             case 4:
               response = _context4.sent;

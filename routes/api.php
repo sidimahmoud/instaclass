@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::middleware('can:teacher-or-admin')->group(function () {
         Route::get('/user/courses', 'Teacher\CoursesController@teacherCourses');
         Route::get('/teacher/details', 'Admin\UsersController@teacherDetails');
-        Route::get('/teacher/payments', 'Admin\UsersController@teacherReceipts');
+        Route::get('/teacher/payments', 'Admin\UsersController@teacherPayments');
 
     });
     Route::get('/user', 'Admin\UsersController@show');
