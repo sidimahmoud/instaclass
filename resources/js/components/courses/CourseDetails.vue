@@ -266,7 +266,6 @@
         data(){
           return{
               enrolled: false,
-              cr: '',
           }
         },
         components: {Review},
@@ -275,11 +274,11 @@
                 this.$store.dispatch('getCourse', this.$route.params.slug)
             },
         },
-        computed: mapGetters(["course", "loading", 'isLoggedIn']),
+        computed:{
+            ...mapGetters(["course", "loading", 'isLoggedIn']),
+        } ,
         created() {
             this.findCourse();
-            this.cr = this.$store.getters.course;
-            console.log(this.cr)
         },
 
     }

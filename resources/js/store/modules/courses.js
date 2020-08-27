@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 const state = {
     courses: [],
     course: '',
@@ -24,15 +23,8 @@ const actions = {
         commit('setLoading', false);
     },
     async getCourse({commit}, slug) {
-        let user = JSON.parse(localStorage.getItem('user')) || null;
-        let id = '';
-
-        if (user) {
-            id = user.id;
-
-        }
         commit('setLoading', true);
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/${slug}`, {id: id});
+        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/${slug}`, );
         commit('setCourse', response.data[0]);
         commit('setLoading', false);
     },

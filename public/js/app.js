@@ -4219,6 +4219,12 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Review */ "./resources/js/components/courses/Review.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -4483,8 +4489,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Detail',
   data: function data() {
     return {
-      enrolled: false,
-      cr: ''
+      enrolled: false
     };
   },
   components: {
@@ -4495,11 +4500,9 @@ __webpack_require__.r(__webpack_exports__);
       this.$store.dispatch('getCourse', this.$route.params.slug);
     }
   },
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["course", "loading", 'isLoggedIn']),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["course", "loading", 'isLoggedIn'])),
   created: function created() {
     this.findCourse();
-    this.cr = this.$store.getters.course;
-    console.log(this.cr);
   }
 });
 
@@ -73340,31 +73343,22 @@ var actions = {
   },
   getCourse: function getCourse(_ref2, slug) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-      var commit, user, id, response;
+      var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               commit = _ref2.commit;
-              user = JSON.parse(localStorage.getItem('user')) || null;
-              id = '';
-
-              if (user) {
-                id = user.id;
-              }
-
               commit('setLoading', true);
-              _context2.next = 7;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/".concat(slug), {
-                id: id
-              });
+              _context2.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/".concat(slug));
 
-            case 7:
+            case 4:
               response = _context2.sent;
               commit('setCourse', response.data[0]);
               commit('setLoading', false);
 
-            case 10:
+            case 7:
             case "end":
               return _context2.stop();
           }
