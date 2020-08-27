@@ -51609,7 +51609,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("br"),
-              _vm._v(" Enroll Students\n            ")
+              _vm._v(" Course Enrollments\n            ")
             ]
           ),
           _vm._v(" "),
@@ -73692,10 +73692,9 @@ var actions = {
 
             case 4:
               response = _context3.sent;
-              console.log(response.data);
               commit('setTeacherDetails', response.data);
 
-            case 7:
+            case 6:
             case "end":
               return _context3.stop();
           }
@@ -73718,7 +73717,7 @@ var actions = {
             case 4:
               response = _context4.sent;
               console.log(response.data);
-              commit('setTeacherPayments', response.data[0]);
+              commit('setTeacherPayments', response.data);
 
             case 7:
             case "end":

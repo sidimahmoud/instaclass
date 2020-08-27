@@ -17,7 +17,7 @@
             <div class="d-flex align-items-center justify-content-center text-white">
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
                     <span class="btn btn-danger">{{allTeacherDetails.students[0].count>0?allTeacherDetails.students[0].count:"0"}} </span>
-                    <br> Enroll Students
+                    <br> Course Enrollments
                 </div>
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">
                     <span class="btn btn-danger">{{userCourses.length>0?userCourses.length:"0"}} </span> <br> Courses
