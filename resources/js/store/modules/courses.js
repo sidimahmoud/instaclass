@@ -24,11 +24,15 @@ const actions = {
         commit('setLoading', false);
     },
     async getCourse({commit}, slug) {
-        headers();
-        let user =  JSON.parse(localStorage.getItem('user')) || null;
-            if(user) let id = user.id;
+        let user = JSON.parse(localStorage.getItem('user')) || null;
+        let id = '';
+
+        if (user) {
+            id = user.id;
+
+        }
         commit('setLoading', true);
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/${slug}`,{id:$id});
+        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/${slug}`, {id: id});
         commit('setCourse', response.data[0]);
         commit('setLoading', false);
     },
@@ -72,12 +76,14 @@ const mutations = {
     setCategoryCourses: (state, payload) => (state.categCourses = payload),
     setLoading: (state, val) => (state.loading = val),
 };
+
 function headers() {
     let token = localStorage.getItem('token') || '';
     if (token) {
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     }
 }
+
 export default {
     state,
     getters,

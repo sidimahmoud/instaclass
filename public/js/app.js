@@ -73272,9 +73272,245 @@ var mutations = {
   !*** ./resources/js/store/modules/courses.js ***!
   \***********************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\instantclass\\resources\\js\\store\\modules\\courses.js: Unexpected reserved word 'let' (29:21)\n\n\u001b[0m \u001b[90m 27 | \u001b[39m        headers()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 28 | \u001b[39m        let user \u001b[33m=\u001b[39m  \u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mparse(localStorage\u001b[33m.\u001b[39mgetItem(\u001b[32m'user'\u001b[39m)) \u001b[33m||\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 29 | \u001b[39m            \u001b[36mif\u001b[39m(user) let id \u001b[33m=\u001b[39m user\u001b[33m.\u001b[39mid\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 30 | \u001b[39m        commit(\u001b[32m'setLoading'\u001b[39m\u001b[33m,\u001b[39m \u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 31 | \u001b[39m        \u001b[36mconst\u001b[39m response \u001b[33m=\u001b[39m await axios\u001b[33m.\u001b[39mget(\u001b[32m`https://instantclass.herokuapp.com/api/courses/${slug}`\u001b[39m\u001b[33m,\u001b[39m{id\u001b[33m:\u001b[39m$id})\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 32 | \u001b[39m        commit(\u001b[32m'setCourse'\u001b[39m\u001b[33m,\u001b[39m response\u001b[33m.\u001b[39mdata[\u001b[35m0\u001b[39m])\u001b[33m;\u001b[39m\u001b[0m\n    at Parser._raise (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:757:17)\n    at Parser.raiseWithData (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:750:17)\n    at Parser.raise (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:744:17)\n    at Parser.checkReservedWord (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10923:14)\n    at Parser.parseIdentifierName (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10883:12)\n    at Parser.parseIdentifier (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10854:23)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9961:27)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9688:23)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9668:21)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9538:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9511:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9466:21)\n    at Parser.parseExpression (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9418:23)\n    at Parser.parseStatementContent (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11339:23)\n    at Parser.parseStatement (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11210:17)\n    at Parser.parseIfStatement (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11562:28)\n    at Parser.parseStatementContent (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11255:21)\n    at Parser.parseStatement (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11210:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11785:25)\n    at Parser.parseBlockBody (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11771:10)\n    at Parser.parseBlock (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11755:10)\n    at Parser.parseFunctionBody (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10758:24)\n    at Parser.parseFunctionBodyAndFinish (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10741:10)\n    at Parser.parseMethod (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10703:10)\n    at Parser.parseObjectMethod (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10619:19)\n    at Parser.parseObjPropValue (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10661:23)\n    at Parser.parseObjectMember (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10585:10)\n    at Parser.parseObj (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10494:25)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10090:28)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9688:23)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9668:21)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9538:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9511:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9466:21)\n    at Parser.parseVar (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11869:26)\n    at Parser.parseVarStatement (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11678:10)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var state = {
+  courses: [],
+  course: '',
+  categCourses: [],
+  demands: [],
+  loading: false
+};
+var getters = {
+  allCourses: function allCourses(state) {
+    return state.courses;
+  },
+  allcategCourses: function allcategCourses(state) {
+    return state.categCourses;
+  },
+  allDemands: function allDemands(state) {
+    return state.demands;
+  },
+  course: function course(state) {
+    return state.course;
+  },
+  loading: function loading(state) {
+    return state.loading;
+  }
+};
+var actions = {
+  fetchCourses: function fetchCourses(_ref, page) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref.commit;
+              commit('setLoading', true);
+              _context.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses?page=".concat(page));
+
+            case 4:
+              response = _context.sent;
+              console.log(response.data);
+              commit('setCourses', response.data);
+              commit('setLoading', false);
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  },
+  getCourse: function getCourse(_ref2, slug) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var commit, user, id, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              commit = _ref2.commit;
+              user = JSON.parse(localStorage.getItem('user')) || null;
+              id = '';
+
+              if (user) {
+                id = user.id;
+              }
+
+              commit('setLoading', true);
+              _context2.next = 7;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/".concat(slug), {
+                id: id
+              });
+
+            case 7:
+              response = _context2.sent;
+              commit('setCourse', response.data[0]);
+              commit('setLoading', false);
+
+            case 10:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }))();
+  },
+  search: function search(_ref3, q) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              commit = _ref3.commit;
+              commit('setLoading', true);
+              _context3.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/search/".concat(q));
+
+            case 4:
+              response = _context3.sent;
+              commit('setCourses', response.data);
+              commit('setLoading', false);
+
+            case 7:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }))();
+  },
+  demander: function demander(_ref4, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      var commit;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              commit = _ref4.commit;
+              return _context4.abrupt("return", new Promise(function (resolve, reject) {
+                commit('setLoading', true);
+                axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  url: 'https://instantclass.herokuapp.com/api/courses/demander',
+                  data: payload,
+                  method: 'POST'
+                }).then(function (resp) {
+                  console.log(resp);
+                  commit('setLoading', false);
+                  resolve(resp);
+                })["catch"](function (err) {
+                  reject(err);
+                });
+              }));
+
+            case 2:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }))();
+  },
+  fetchDemands: function fetchDemands(_ref5) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              commit = _ref5.commit;
+              commit('setLoading', true);
+              _context5.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/demands");
+
+            case 4:
+              response = _context5.sent;
+              commit('setDemands', response.data);
+              commit('setLoading', false);
+
+            case 7:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }))();
+  },
+  getCategoryCourses: function getCategoryCourses(_ref6, id) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              commit = _ref6.commit;
+              commit('setLoading', true);
+              _context6.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/class/".concat(id));
+
+            case 4:
+              response = _context6.sent;
+              commit('setCategoryCourses', response.data);
+              commit('setLoading', false);
+
+            case 7:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6);
+    }))();
+  }
+};
+var mutations = {
+  setCourses: function setCourses(state, courses) {
+    return state.courses = courses;
+  },
+  setCourse: function setCourse(state, course) {
+    return state.course = course;
+  },
+  setDemands: function setDemands(state, payload) {
+    return state.demands = payload;
+  },
+  setCategoryCourses: function setCategoryCourses(state, payload) {
+    return state.categCourses = payload;
+  },
+  setLoading: function setLoading(state, val) {
+    return state.loading = val;
+  }
+};
+
+function headers() {
+  var token = localStorage.getItem('token') || '';
+
+  if (token) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
 
 /***/ }),
 
