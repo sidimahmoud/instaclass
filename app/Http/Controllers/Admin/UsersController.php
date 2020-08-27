@@ -87,7 +87,6 @@ class UsersController extends Controller
     {
         $user = $request->user();
         $courses = Course::where('user_id', $user->id)->get(['id']);
-        dd($courses);
         $students = Enrollment::where('course_id', 'in', $courses)->get()->count();
         $ratings = Rating::where('teacher_id', $user->id)->get()->count();
         return response()->json(["students" => $students, "ratings" => $ratings]);

@@ -73719,9 +73719,10 @@ var actions = {
 
             case 4:
               response = _context4.sent;
+              console.log(response.data);
               commit('setTeacherPayments', response.data[0]);
 
-            case 6:
+            case 7:
             case "end":
               return _context4.stop();
           }

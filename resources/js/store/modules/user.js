@@ -35,6 +35,7 @@ const actions = {
     async fetchTeacherPayments({commit}) {
         header();
         const response = await axios.get('https://instantclass.herokuapp.com/api/tacher/payments');
+        console.log(response.data);
         commit('setTeacherPayments', response.data[0]);
     },
 
