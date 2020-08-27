@@ -89,8 +89,8 @@ class UsersController extends Controller
         $courses = Course::where('user_id', $user->id)->get(['id']);
       //  dd($courses);
       //  $students = Enrollment::where('course_id', 'in', $courses)->get()->count();
-        $students2 = Course::with(['enrollments', 'user'])->where('user_id',$user->id)->get();
-        dd($students2->count());
+        $students2 = DB::select("select * from enrollments e where e.course_id in(select * from courses where user_id=$user->id)") ;
+        dd(count($students2));
         $ratings = Rating::where('teacher_id', $user->id)->get()->count();
        // return response()->json(["students" => $students, "ratings" => $ratings]);
     }
