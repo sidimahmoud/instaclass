@@ -2,13 +2,12 @@
     <div class="container border-top border-primary">
         <div class="row mt-5">
 
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto bg-white shadow-sm">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto   form">
                 <form class="mt-4" @submit.prevent="demander">
                     <div class="alert alert-success alert-dismissible fade show" role="alert" v-if="msg">
                         <span class="btn btn-light rounded-circle">
                              <i class="fa fa-check text-success fa-2x"></i>
                         </span>
-
                         {{msg}}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -28,12 +27,12 @@
                             <option value="fr">Français</option>
                             <option value="en">Anglais</option>
                             <option value="es">Espagnol</option>
-                            <option value="Langue">Autre (Précisez)</option>
+                            <option value="">Autre (Précisez)</option>
                         </select>
                     </div>
                     <div class="form-group" v-else>
                         <label for="lang1">Langue du cours</label>
-                        <input type="text" class="form-control" id="lang1" v-model="lang">
+                        <input type="text" class="form-control" id="lang1" required v-model="lang">
                     </div>
                     <div class="form-group">
                         <label for="email">Email address (optionnel)</label>
@@ -81,5 +80,11 @@
 </script>
 
 <style scoped>
-
+    .form {
+        border-radius: 3px;
+        margin-bottom: 15px;
+        background: #ffffff;
+        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+        padding: 30px;
+    }
 </style>

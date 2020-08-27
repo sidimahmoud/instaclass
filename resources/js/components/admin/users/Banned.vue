@@ -6,7 +6,7 @@
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
-        <h1 class="text-center">List of teachers</h1>
+        <h1 class="text-center">Banned users</h1>
         <table class="table">
             <thead>
             <tr>
@@ -16,20 +16,21 @@
                 <th scope="col">Email</th>
                 <th scope="col">Active</th>
                 <th scope="col">Bio</th>
-                <th scope="col">Block</th>
+                <th scope="col">Unblock</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="t in allTeachers">
+            <tr v-for="t in allBanned">
                 <th scope="row">{{t.id}}</th>
                 <td>{{t.first_name}}</td>
                 <td>{{t.last_name}}</td>
                 <td>{{t.email.toLocaleLowerCase()}}</td>
-                <td><input type="checkbox" name="" id="" checked disabled></td>
+                <td><input type="checkbox" name="" id="" disabled></td>
                 <td>{{t.headline}}</td>
+
                 <td>
                     <button class="btn btn-danger">
-                        &times
+                        <i class="fa fa-check text-primary"></i>
                     </button>
                 </td>
 
@@ -40,16 +41,17 @@
 </template>
 
 <script>
-    import {mapGetters, mapActions} from 'vuex'
+    import {mapActions, mapGetters} from "vuex";
 
     export default {
-        name: "Teachers",
+        name: "Banned",
         methods: {
-            ...mapActions(["fetchTeachers"])
+            ...mapActions(["fetchBanned"])
         },
-        computed: mapGetters(["allTeachers"]),
+        computed: mapGetters(["allBanned"]),
+
         created() {
-            this.fetchTeachers();
+            this.fetchBanned();
         }
     }
 </script>

@@ -3,16 +3,18 @@
     <section id="contact" class="contact border-top border-primary">
         <div class="container mt-4">
             <div class="section-title text-center">
-                <div class="alert alert-success alert-dismissible fade show" role="alert" >
-                    <span class="btn btn-light rounded-circle">
-                         <i class="fa fa-check text-success fa-2x"></i>
-                    </span>
-
-                    {{alert}}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="row">
+                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" v-if="alert">
+                         <i class="fa fa-check text-success fa-2x mr-2"></i>
+                            {{alert}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
+
                 <h2>Contact</h2>
                 <p>Contactez nous pour toutes questions ou commentaires</p>
             </div>

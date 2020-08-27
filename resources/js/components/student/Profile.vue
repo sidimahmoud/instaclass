@@ -1,22 +1,21 @@
 <template>
     <div>
+        <span class="float-right font-weight-bold text-white mr-2">Bonjour {{userProfile.first_name}}</span>
         <div class="jumbotron">
-            <button class="btn btn-danger float-right" @click="logout">
-                Logout
-            </button>
-            <div class="justify-content-around align-items-center">
-                <div class=" align-items-center text-white">
-                    <div class="mt-4 text-center">
-                        <img src="../../assets/images/details/02.png" alt="">
-                    </div>
-                    <div class="text-center">
-                        <h4>{{userProfile.first_name}} {{userProfile.last_name}}</h4>
-                    </div>
-                    <div class="text-center">
-                        <p>{{userProfile.headline}}</p>
-                    </div>
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn btn-danger float-right" @click="logout">
+                        Logout
+                    </button>
                 </div>
             </div>
+            <div class="text-white text-center">
+                <img :src="userProfile.image" width="80px" alt="Avatar" >
+                <h4>{{userProfile.first_name}} {{userProfile.last_name}}</h4>
+                <p>{{userProfile.headline}}</p>
+            </div>
+
+
             <div class="d-flex align-items-center justify-content-center text-white">
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
                     <span class="btn btn-danger">{{userEnrollments.length>0? userEnrollments.length : "0"}} </span> <br>
@@ -66,7 +65,8 @@
                                                      v-if="e.course.type==1">
                                             <h5 class="mt-0 mb-1">{{e.course.name}}</h5>
                                         </router-link>
-                                        <router-link :to="{name: 'Live', params: { slug: e.course.slug}}" tag="a" v-else>
+                                        <router-link :to="{name: 'Live', params: { slug: e.course.slug}}" tag="a"
+                                                     v-else>
                                             <h5 class="mt-0 mb-1">{{e.course.name}}</h5>
                                         </router-link>
                                         {{e.created_at.slice(0,10)}}

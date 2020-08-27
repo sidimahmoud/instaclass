@@ -184,7 +184,14 @@ const routes = [
         meta: {
             requiresAuth: true,
             title: 'Profile'
-        }
+        },
+        beforeEnter: (to, from, next) => {
+            let user = JSON.parse(localStorage.getItem('user')) || null;
+            if (user.t === "student") next();
+            else if (user.t === "admin") next({name: 'Admin'});
+            else if (user.t === "teacher") next({name: 'TeacherProfile'});
+            else next({name: 'Home'});
+        },
     },
     {
         path: '/profile/edit',

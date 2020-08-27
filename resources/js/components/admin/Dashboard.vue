@@ -70,6 +70,7 @@
                         <a class="collapse-item" href="#teachers" @click="component='Teachers'">Techers</a>
                         <a class="collapse-item" href="#students" @click="component='Students'">Students</a>
                         <a class="collapse-item" href="#admins" @click="component='Admins'">Admins</a>
+                        <a class="collapse-item" href="#Banned" @click="component='Banned'">Banned</a>
 
                     </div>
                 </div>
@@ -206,7 +207,7 @@
     import Messages from "./contacts/Messages";
     import Categories from "./categories/Categories";
     import Home from "./Home";
-
+    import Banned from "./users/Banned";
     export default {
         name: "Dashboard",
         components: {
@@ -222,6 +223,7 @@
             Categories,
             Messages,
             Home,
+            Banned,
         },
         data() {
             return {

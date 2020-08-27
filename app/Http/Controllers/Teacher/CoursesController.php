@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Course;
+use App\Enrollment;
 use App\Http\Controllers\Controller;
+use App\Payement;
+use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,7 +16,6 @@ class CoursesController extends Controller
     {
         $this->middleware('auth:sanctum');
     }
-
 
 
     /**
@@ -30,6 +32,8 @@ class CoursesController extends Controller
         $courses = Course::where('user_id', $user->id)->get();
         return response()->json($courses);
     }
+
+
 
     /**
      * Store a newly created resource in storage.

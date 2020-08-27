@@ -21,11 +21,15 @@ const actions = {
             axios({url: 'https://instantclass.herokuapp.com/api/login', data: user, method: 'POST'})
                 .then(resp => {
                     const token = resp.data.token;
-                    const user = {'u': resp.data.user.id, 't': resp.data.user.roles[0].name};
+                    const user = {
+                        'u': resp.data.user.id,
+                        't': resp.data.user.roles[0].name,
+                        'first_name': resp.data.user.first_name
+                    };
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
 
-                    axios.defaults.headers.common['Authorization'] = 'Bearer '+ token;
+                    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                     commit('auth_success', token, user);
                     resolve(resp)
                 })
@@ -40,7 +44,7 @@ const actions = {
 
     async loginGithub({commit}) {
         return new Promise((resolve, reject) => {
-            axios.get('https://instantclass.herokuapp.com/api/authorize/github')
+            axios.get('https://instantclass.herokuapp.com/api/authorize/facebook')
                 .then(resp => {
                     resolve(resp)
                 })
@@ -53,15 +57,19 @@ const actions = {
     async loginGithubCallback({commit}, payload) {
         return new Promise((resolve, reject) => {
             axios.get('https://instantclass.herokuapp.com/api/authorize/facebook/callback', {
-                params:payload
+                params: payload
             })
                 .then(resp => {
                     const token = resp.data.token;
-                    const user = {'u': resp.data.user.id, 't': "student"}; //resp.data.user.roles[0].name
+                    const user = {
+                        'u': resp.data.user.id,
+                        't': resp.data.user.roles[0].name,
+                        'first_name': resp.data.user.first_name
+                    };
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
 
-                    axios.defaults.headers.common['Authorization'] = 'Bearer '+ token;
+                    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                     resolve(resp)
                 })
                 .catch(err => {
@@ -86,7 +94,7 @@ const actions = {
     async loginGoogleCallback({commit}, payload) {
         return new Promise((resolve, reject) => {
             axios.get('https://instantclass.herokuapp.com/api/authorize/google/callback', {
-                params:payload
+                params: payload
             })
                 .then(resp => {
                     const token = resp.data.token;
@@ -94,7 +102,7 @@ const actions = {
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
 
-                    axios.defaults.headers.common['Authorization'] = 'Bearer '+ token;
+                    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                     resolve(resp)
                 })
                 .catch(err => {
@@ -111,7 +119,11 @@ const actions = {
             axios({url: 'https://instantclass.herokuapp.com/api/register/', data: user, method: 'POST'})
                 .then(resp => {
                     const token = resp.data.token;
-                    const user = {'u': resp.data.user.id, 't': type};
+                    const user = {
+                        'u': resp.data.user.id,
+                        't': resp.data.user.roles[0].name,
+                        'first_name': resp.data.user.first_name
+                    };
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
                     axios.defaults.headers.common['Authorization'] = token;

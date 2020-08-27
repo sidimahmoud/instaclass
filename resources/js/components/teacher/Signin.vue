@@ -5,7 +5,7 @@
                 <div class="signup-form bg-white">
                     <form method="post" @submit.prevent="login">
                         <h2>Sign in</h2>
-                        <p class="hint-text">Sign in as a teacher.</p>
+                        <p class="hint-text">Login to access into your teacher space.</p>
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" placeholder="Email"
                                    required="required" v-model="email">
@@ -60,13 +60,14 @@
             }
         },
         methods: {
-
             login() {
                 let email = this.email;
                 let password = this.password;
                 this.$store.dispatch('login', {email, password})
-                    .then(() => this.$router.push('/'))
-                    .catch(err => console.log(err))
+                    .then(res=>{
+                        (res.data.user.roles[0].name==="teacher")?this.$router.push({name: 'TeacherProfile'}):this.$router.push({name: 'StudentProfile'});
+                    })
+                    .catch(err => this.errorMessage = err.response.data.message)
             },
             loginGithub() {
                 this.$store.dispatch('loginGithub')

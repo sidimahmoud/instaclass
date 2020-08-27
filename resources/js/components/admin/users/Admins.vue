@@ -11,7 +11,6 @@
                 <th scope="col">Email</th>
                 <th scope="col">Active</th>
                 <th scope="col">Bio</th>
-                <th scope="col">Edit</th>
                 <th scope="col">Block</th>
             </tr>
             </thead>
@@ -23,11 +22,7 @@
                 <td>{{t.email.toLocaleLowerCase()}}</td>
                 <td><input type="checkbox" name="" id="" checked disabled></td>
                 <td>{{t.headline}}</td>
-                <td>
-                    <button class="btn btn-warning">
-                        <i class="fa fa-edit"></i>
-                    </button>
-                </td>
+
                 <td>
                     <button class="btn btn-danger">
                         &times

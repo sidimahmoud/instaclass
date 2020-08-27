@@ -6,7 +6,7 @@
                     <div class="signup-form bg-white">
                         <form method="post">
                             <h2>Teacher registration</h2>
-                            <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+                            <p class="hint-text">Create your account. It takes only a few seconds.</p>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
@@ -32,18 +32,6 @@
                                     <input type="password" class="form-control"
                                            placeholder="Password again" required="required">
                                 </div>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Headline"
-                                       required="required">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" required="required">  About you </textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlFile1">Image for you</label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
                             </div>
 
                             <div class="form-group">

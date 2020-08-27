@@ -8,28 +8,29 @@
         <div v-if="!loading">
             <course :course="c" v-for="c in allCourses.data" :key="c.id"/>
             <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
+                <ul class="pagination justify-content-end">
 
-                    <li class="page-item " v-if="allCourses.prev_page_url">
-                        <a class="page-link " href="#" @click="curPage=1" tabindex="-1">
+                    <li :class="['page-item', {'disabled':!allCourses.prev_page_url}]">
+                        <a class="page-link " href="#" @click="first" >
                             First
                         </a>
                     </li>
-                    <li class="page-item " v-if="allCourses.prev_page_url">
-                        <a class="page-link " href="#" @click="previous" tabindex="-1">
+                    <li :class="['page-item', {'disabled':!allCourses.prev_page_url}]" >
+                        <a class="page-link " href="#" @click="previous" >
                             <<
                         </a>
                     </li>
 
-                    <li class="page-item"><a class="page-link" href="#">{{allCourses.current_page}} of {{allCourses.last_page}}</a></li>
+                    <li class="page-item"><a class="page-link" href="#">{{allCourses.current_page}} of
+                        {{allCourses.last_page}}</a></li>
 
-                    <li class="page-item" v-if="allCourses.next_page_url">
-                        <a class="page-link" href="#" @click="next" disabled="1">
+                    <li :class="['page-item', {'disabled':!allCourses.next_page_url}]">
+                        <a class="page-link" href="#" @click="next">
                             >>
                         </a>
                     </li>
-                    <li class="page-item" v-if="allCourses.next_page_url">
-                        <a class="page-link" href="#" @click="curPage=allCourses.from" disabled="1">
+                    <li :class="['page-item', {'disabled':!allCourses.next_page_url}]" >
+                        <a class="page-link" href="#" @click="last(allCourses.last_page)">
                             last
                         </a>
                     </li>
@@ -53,33 +54,31 @@
         data() {
             return {
                 curPage: 1,
-                pagination:{},
             }
 
         },
         methods: {
-            fetchCourses(){
-                let $this = this;
+            fetchCourses() {
                 this.$store.dispatch('fetchCourses', this.curPage)
             },
-            next(){
+            first() {
+                this.curPage = 1;
+                this.fetchCourses();
+            },
+            next() {
                 this.curPage++;
                 this.fetchCourses();
             },
-            previous(){
+            previous() {
                 this.curPage--;
                 this.fetchCourses();
+            },
+            last(n) {
+                console.log(n);
+                this.curPage = n;
+                this.fetchCourses();
             }
-            // makePagination(data){
-            //     this.pagination = {
-            //         current_page: data.current_page,
-            //         first_page_url: data.first_page_url,
-            //         from: data.from,
-            //         last_page_url: data.last_page_url,
-            //         next_page_url: data.next_page_url,
-            //         prev_page_url: data.prev_page_url,
-            //     }
-            // }
+
         },
         computed: mapGetters(["allCourses", "loading"]),
         created() {

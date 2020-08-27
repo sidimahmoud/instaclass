@@ -111,6 +111,7 @@
 
     .page-footer {
         background-color: #0e0938 !important;
+        margin-top: 25vh;
     }
 
     hr {

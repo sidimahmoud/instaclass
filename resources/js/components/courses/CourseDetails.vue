@@ -22,7 +22,7 @@
                         </span>
                             ({{course.ratings.length }} rating)
                             <div class="mt-4">
-                                <img src="../../assets/images/details/02.png" alt="">
+                                <img :src="course.user.image" width="80px" class="rounded-circle" alt="Avatar">
                                 <span class="font-weight-bolder">
                             {{course.user.first_name}} {{course.user.last_name}}
                             </span>
@@ -228,9 +228,14 @@
                                 <h3 class="card-title font-weight-bolder text-danger">
                                     {{(course.status==2)?'$'+course.price:"Free Course"}}</h3>
                                 <p class="card-text">23 hours left at this price!</p>
-                                <router-link :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}" tag="a" class="btn btn-primary my-3">
+                                <router-link
+                                    :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
+                                    tag="a" class="btn btn-primary my-3" v-if="!enrolled">
                                     S'inscrire à ce cours
                                 </router-link>
+                                <p class="btn btn-primary my-3" v-else>
+                                    Already enrolled
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -258,6 +263,12 @@
 
     export default {
         name: 'Detail',
+        data(){
+          return{
+              enrolled: false,
+              cr: '',
+          }
+        },
         components: {Review},
         methods: {
             findCourse() {
@@ -267,7 +278,10 @@
         computed: mapGetters(["course", "loading", 'isLoggedIn']),
         created() {
             this.findCourse();
-        }
+            this.cr = this.$store.getters.course;
+            console.log(this.cr)
+        },
+
     }
 
 </script>

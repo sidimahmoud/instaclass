@@ -7,7 +7,7 @@ import categories from "./modules/categories";
 import users from "./modules/admin/users";
 import payments from "./modules/admin/payments";
 import enrollment from "./modules/enrollment";
-
+import contacts from "./modules/contacts";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -24,7 +24,8 @@ export default new Vuex.Store({
         categories,
         users,
         payments,
-        enrollment
+        enrollment,
+        contacts
     }
 })
 

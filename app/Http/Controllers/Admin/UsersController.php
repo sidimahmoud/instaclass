@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Course;
+use App\Enrollment;
 use App\Http\Controllers\Controller;
+use App\Payement;
+use App\Rating;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
@@ -50,6 +53,11 @@ class UsersController extends Controller
         )->get();
         return response()->json($admins);
     }
+    public function banned()
+    {
+        $banned = User::where('active',0)->get();
+        return response()->json($banned);
+    }
 
     public function counts()
     {
@@ -68,11 +76,32 @@ class UsersController extends Controller
 
         return response()->json(['categories'=>$categories,'courses'=>$courses,'teachers'=>$teachers,'students'=>$students,]);
     }
-
+    //return a list of non paid teacher courses
     public function teacherCourses($id)
     {
         $courses = Course::where('user_id', $id)->where('paid',0)->get();
         return response()->json($courses);
+    }
+
+    public function teacherDetails(Request $request)
+    {
+        $user = $request->user();
+        $courses = Course::where('user_id', $user->id)->get(['id']);
+        $students = Enrollment::where('course_id', 'in', $courses)->get()->count();
+        $ratings = Rating::where('teacher_id', $user->id)->get()->count();
+        return response()->json(["students" => $students, "ratings" => $ratings]);
+    }
+
+    public function teacherPayments(Request $request)
+    {
+        $user = $request->user();
+        $courses = Course::where('user_id', $user->id)->get(['id']);
+        $enrollments = Enrollment::where('course_id', 'in', $courses)->get('id');
+        $payments = Payement::where([
+            ['enrollment_id', 'in', $enrollments],
+            ['type', 'received'],
+        ])->get();
+        return response()->json(["payments" => $payments]);
     }
 
 

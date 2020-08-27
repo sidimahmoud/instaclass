@@ -6,7 +6,12 @@
             </div>
         </div>
         <div  v-if="!loading">
-            <course :course="c" v-for="c in allcategCourses" :key="c.id"/>
+            <div class="text-center" v-if="allcategCourses.length==0">
+                <h3>
+                    There in no courses in this category yet.
+                </h3>
+            </div>
+            <course :course="c" v-for="c in allcategCourses" :key="c.id" v-else/>
         </div>
     </div>
 </template>
