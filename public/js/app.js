@@ -5699,6 +5699,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Payments",
@@ -5925,11 +5928,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -5948,12 +5946,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     }
   }),
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["userProfile", "userCourses", "allTeacherDetails", "allTeacherPayments"]),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["userProfile", "userCourses", "allTeacherDetails"]),
   created: function created() {
     this.fetchProfile();
     this.fetchUserCourses();
     this.fetchTeacherDetails();
-    this.fetchTeacherPayments();
   }
 });
 
@@ -51478,29 +51475,33 @@ var render = function() {
   return _c("div", [
     _c("h1", { staticClass: "text-center" }, [_vm._v("List of payments")]),
     _vm._v(" "),
-    _c("table", { staticClass: "table" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.allTeacherPayments, function(t) {
-          return _c("tr", [
-            _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(t.id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.enrollment_id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.user_id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.amount))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.method))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.object))])
-          ])
-        }),
-        0
-      )
-    ])
+    _vm.allTeacherPayments.length === 0
+      ? _c("div", { staticClass: "text-center mt-4" }, [
+          _vm._v("\n        No payments\n    ")
+        ])
+      : _c("table", { staticClass: "table" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.allTeacherPayments, function(t) {
+              return _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(t.id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(t.enrollment_id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(t.user_id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(t.amount))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(t.method))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(t.object))])
+              ])
+            }),
+            0
+          )
+        ])
   ])
 }
 var staticRenderFns = [
@@ -51643,8 +51644,8 @@ var render = function() {
               _c("span", { staticClass: "btn btn-danger" }, [
                 _vm._v(
                   _vm._s(
-                    _vm.allTeacherDetails.ratings > 0
-                      ? _vm.allTeacherDetails.ratings
+                    _vm.allTeacherDetails.ratings.length > 0
+                      ? _vm.allTeacherDetails.ratings.length
                       : "0"
                   ) + " "
                 )

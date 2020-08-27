@@ -2,7 +2,10 @@
     <div>
 
         <h1 class="text-center">List of payments</h1>
-        <table class="table">
+        <div class="text-center mt-4" v-if="allTeacherPayments.length===0">
+            No payments
+        </div>
+        <table class="table" v-else>
             <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -38,7 +41,6 @@
         },
         computed: mapGetters(["allTeacherPayments"]),
         created() {
-
             this.fetchTeacherPayments();
         }
     }

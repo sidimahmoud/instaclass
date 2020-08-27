@@ -92,7 +92,7 @@ class UsersController extends Controller
     {
         $user = $request->user();
         $students = DB::select("select distinct count(id) from enrollments e where e.course_id in(select id from courses where user_id=$user->id)");
-        $ratings = Rating::where('teacher_id', $user->id)->get()->count();
+        $ratings = Rating::where('teacher_id', $user->id)->get();
         return response()->json(["students" => $students, "ratings" => $ratings]);
     }
 

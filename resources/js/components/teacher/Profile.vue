@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
-                    <span class="btn btn-danger">{{allTeacherDetails.ratings>0?allTeacherDetails.ratings:"0"}} </span>
+                    <span class="btn btn-danger">{{allTeacherDetails.ratings.length>0?allTeacherDetails.ratings.length:"0"}} </span>
                     <br> Reviews
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     <div id="collapsePayment" class="collapse" aria-labelledby="payments"
                          data-parent="#accordionExample">
                         <div class="card-body">
-                            <payments />
+                            <payments/>
                         </div>
                     </div>
                 </div>
@@ -135,7 +135,6 @@
                                                 <p>
                                                     {{userProfile.about}}
                                                 </p>
-
                                             </div>
 
                                             <!-- courses-->
@@ -163,22 +162,19 @@
                                                             </div>
                                                         </div>
                                                     </li>
-
                                                 </ul>
-
                                             </div>
-
                                         </div>
-
-
                                     </div>
+
                                     <div class="col-md-1">
-
                                     </div>
+
                                     <div class="col-md-4 text-center ">
                                         <div class="card bg-primary">
                                             <div class="card-body text-center text-white">
-                                                <img :src="userProfile.image" alt="Avatar" width="60px" class="rounded-circle">
+                                                <img :src="userProfile.image" alt="Avatar" width="60px"
+                                                     class="rounded-circle">
                                                 <h3 class="card-title font-weight-bolder">{{userProfile.first_name}}
                                                     {{userProfile.last_name}}</h3>
                                                 <p class="card-text">{{userProfile.headline}}</p>
@@ -189,7 +185,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -203,6 +198,7 @@
     import {mapGetters, mapActions} from 'vuex'
     import NewCourse from "./NewCourse";
     import Payments from "./Payments";
+
     export default {
         name: "TeacherProfile",
         components: {
@@ -219,12 +215,11 @@
                     })
             },
         },
-        computed: mapGetters(["userProfile", "userCourses", "allTeacherDetails", "allTeacherPayments"]),
+        computed: mapGetters(["userProfile", "userCourses", "allTeacherDetails"]),
         created() {
             this.fetchProfile();
             this.fetchUserCourses();
             this.fetchTeacherDetails();
-            this.fetchTeacherPayments();
         }
     }
 
