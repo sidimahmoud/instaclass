@@ -51601,8 +51601,8 @@ var render = function() {
               _c("span", { staticClass: "btn btn-danger" }, [
                 _vm._v(
                   _vm._s(
-                    _vm.allTeacherDetails.students > 0
-                      ? _vm.allTeacherDetails.students
+                    _vm.allTeacherDetails.students[0].count > 0
+                      ? _vm.allTeacherDetails.students[0].count
                       : "0"
                   ) + " "
                 )
@@ -73692,9 +73692,10 @@ var actions = {
 
             case 4:
               response = _context3.sent;
-              commit('setTeacherDetails', response.data[0]);
+              console.log(response.data);
+              commit('setTeacherDetails', response.data);
 
-            case 6:
+            case 7:
             case "end":
               return _context3.stop();
           }
