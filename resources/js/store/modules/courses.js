@@ -25,8 +25,10 @@ const actions = {
     },
     async getCourse({commit}, slug) {
         headers();
+        let user =  JSON.parse(localStorage.getItem('user')) || null;
+            if(user) let id = user.id;
         commit('setLoading', true);
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/${slug}`);
+        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/${slug}`,{id:$id});
         commit('setCourse', response.data[0]);
         commit('setLoading', false);
     },
