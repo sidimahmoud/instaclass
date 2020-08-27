@@ -73318,7 +73318,7 @@ var actions = {
               commit = _ref.commit;
               commit('setLoading', true);
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses?page=".concat(page));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/courses?page=".concat(page));
 
             case 4:
               response = _context.sent;
@@ -73356,11 +73356,7 @@ var actions = {
                   if (item.user_id === me.u) {
                     commit('setEnrolled', true);
                     console.log("enrolled");
-                  } // });      response.data[0].enrollments.forEach(function (item, index) {
-                  //     if (item.user_id === me.u)
-                  //         commit('setEnrolled', true);
-                  // });
-
+                  }
                 });
               }
 

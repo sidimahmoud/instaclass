@@ -98,11 +98,8 @@ class UsersController extends Controller
 
     public function teacherPayments(Request $request)
     {
-        $user = $request->user();
-        $courses = Course::where('user_id', $user->id)->get(['id']);
-        $enrollments = Enrollment::where('course_id', 'in', $courses)->get('id');
         $payments = Payement::where([
-            ['enrollment_id', 'in', $enrollments],
+            ['enrollment_id', $request->user()->id],
             ['type', 'received'],
         ])->get();
         return response()->json(["payments" => $payments]);

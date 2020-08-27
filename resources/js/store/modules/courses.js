@@ -20,7 +20,7 @@ const getters = {
 const actions = {
     async fetchCourses({commit}, page) {
         commit('setLoading', true);
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses?page=${page}`);
+        const response = await axios.get(`/api/courses?page=${page}`);
         commit('setCourses', response.data);
         commit('setLoading', false);
     },
@@ -37,11 +37,6 @@ const actions = {
                     commit('setEnrolled', true);
                     console.log("enrolled")
                 }
-
-                // });      response.data[0].enrollments.forEach(function (item, index) {
-                //     if (item.user_id === me.u)
-                //         commit('setEnrolled', true);
-                // });
             })
         }
 
