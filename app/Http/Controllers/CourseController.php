@@ -29,7 +29,7 @@ class CourseController extends Controller
         $course = Course::with('ratings.user', 'enrollments', 'user')
             ->where('slug', $slug)
             ->get();
-        $user = $request->user->id;
+        $user = $request->user('api');
         dd($user);
         return response()->json($course);
     }

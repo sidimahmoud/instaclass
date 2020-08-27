@@ -73346,16 +73346,17 @@ var actions = {
           switch (_context2.prev = _context2.next) {
             case 0:
               commit = _ref2.commit;
+              headers();
               commit('setLoading', true);
-              _context2.next = 4;
+              _context2.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/".concat(slug));
 
-            case 4:
+            case 5:
               response = _context2.sent;
               commit('setCourse', response.data[0]);
               commit('setLoading', false);
 
-            case 7:
+            case 8:
             case "end":
               return _context2.stop();
           }
@@ -73487,6 +73488,15 @@ var mutations = {
     return state.loading = val;
   }
 };
+
+function headers() {
+  var token = localStorage.getItem('token') || '';
+
+  if (token) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+  }
+}
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: state,
   getters: getters,
