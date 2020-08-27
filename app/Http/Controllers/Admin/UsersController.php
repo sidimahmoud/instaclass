@@ -30,33 +30,36 @@ class UsersController extends Controller
     public function teachers()
     {
         $teachers = User::whereHas(
-            'roles', function($q){
+            'roles', function ($q) {
             $q->where('name', 'teacher');
         }
         )->get();
         return response()->json($teachers);
     }
+
     public function students()
     {
         $students = User::whereHas(
-            'roles', function($q){
+            'roles', function ($q) {
             $q->where('name', 'student');
         }
         )->get();
         return response()->json($students);
     }
+
     public function admins()
     {
         $admins = User::whereHas(
-            'roles', function($q){
+            'roles', function ($q) {
             $q->where('name', 'admin');
         }
         )->get();
         return response()->json($admins);
     }
+
     public function banned()
     {
-        $banned = User::where('active',0)->get();
+        $banned = User::where('active', 0)->get();
         return response()->json($banned);
     }
 
@@ -65,35 +68,32 @@ class UsersController extends Controller
         $categories = Category::count();
         $courses = Course::count();
         $teachers = User::whereHas(
-            'roles', function($q){
+            'roles', function ($q) {
             $q->where('name', 'teacher');
         }
         )->get()->count();
         $students = User::whereHas(
-            'roles', function($q){
+            'roles', function ($q) {
             $q->where('name', 'student');
         }
         )->get()->count();
 
-        return response()->json(['categories'=>$categories,'courses'=>$courses,'teachers'=>$teachers,'students'=>$students,]);
+        return response()->json(['categories' => $categories, 'courses' => $courses, 'teachers' => $teachers, 'students' => $students,]);
     }
+
     //return a list of non paid teacher courses
     public function teacherCourses($id)
     {
-        $courses = Course::where('user_id', $id)->where('paid',0)->get();
+        $courses = Course::where('user_id', $id)->where('paid', 0)->get();
         return response()->json($courses);
     }
 
     public function teacherDetails(Request $request)
     {
         $user = $request->user();
-        $courses = Course::where('user_id', $user->id)->get(['id']);
-      //  dd($courses);
-      //  $students = Enrollment::where('course_id', 'in', $courses)->get()->count();
-        $students2 = DB::select("select * from enrollments e where e.course_id in(select id from courses where user_id=$user->id)") ;
-        dd(count($students2));
+        $students = DB::select("select * from enrollments e where e.course_id in(select id from courses where user_id=$user->id)");
         $ratings = Rating::where('teacher_id', $user->id)->get()->count();
-       // return response()->json(["students" => $students, "ratings" => $ratings]);
+        return response()->json(["students" => $students, "ratings" => $ratings]);
     }
 
     public function teacherPayments(Request $request)
@@ -107,9 +107,6 @@ class UsersController extends Controller
         ])->get();
         return response()->json(["payments" => $payments]);
     }
-
-
-
 
 
     /**
