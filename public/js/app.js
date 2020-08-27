@@ -73352,8 +73352,15 @@ var actions = {
               commit('setEnrolled', false);
 
               if (me) {
-                response.data[0].enrollments.forEach(function (item, index) {
-                  if (item.user_id === me.u) commit('setEnrolled', true);
+                response.data[0].enrollments.map(function (item) {
+                  if (item.user_id === me.u) {
+                    commit('setEnrolled', true);
+                    console.log("enrolled");
+                  } // });      response.data[0].enrollments.forEach(function (item, index) {
+                  //     if (item.user_id === me.u)
+                  //         commit('setEnrolled', true);
+                  // });
+
                 });
               }
 

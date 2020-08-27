@@ -30,11 +30,19 @@ const actions = {
         commit('setCourse', response.data[0]);
         const me = JSON.parse(localStorage.getItem('user')) || null;
         commit('setEnrolled', false);
-        if (me){
-            response.data[0].enrollments.forEach(function (item, index) {
+        if (me) {
+            response.data[0].enrollments.map(item => {
                 if (item.user_id === me.u)
+                {
                     commit('setEnrolled', true);
-            });
+                    console.log("enrolled")
+                }
+
+                // });      response.data[0].enrollments.forEach(function (item, index) {
+                //     if (item.user_id === me.u)
+                //         commit('setEnrolled', true);
+                // });
+            })
         }
 
         commit('setLoading', false);
