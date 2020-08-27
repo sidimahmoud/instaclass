@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="text-white text-center">
-                <img :src="userProfile.image" width="80px" alt="Avatar">
+                <img :src="userProfile.image" width="80px" alt="Avatar" class="rounded-circle">
                 <h4>{{userProfile.first_name}} {{userProfile.last_name}}</h4>
                 <p>{{userProfile.headline}}</p>
             </div>
@@ -178,7 +178,7 @@
                                     <div class="col-md-4 text-center ">
                                         <div class="card bg-primary">
                                             <div class="card-body text-center text-white">
-                                                <img src="../../assets/images/details/02.png" alt="">
+                                                <img :src="userProfile.image" alt="Avatar" width="60px" class="rounded-circle">
                                                 <h3 class="card-title font-weight-bolder">{{userProfile.first_name}}
                                                     {{userProfile.last_name}}</h3>
                                                 <p class="card-text">{{userProfile.headline}}</p>

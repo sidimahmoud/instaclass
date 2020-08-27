@@ -50634,9 +50634,11 @@ var render = function() {
               { staticClass: "card-body text-center text-white" },
               [
                 _c("img", {
+                  staticClass: "rounded-circle",
                   attrs: {
-                    src: __webpack_require__(/*! ../../assets/images/details/02.png */ "./resources/js/assets/images/details/02.png"),
-                    alt: ""
+                    src: _vm.userProfile.image,
+                    alt: "Avatar",
+                    width: "60px"
                   }
                 }),
                 _vm._v(" "),
@@ -51567,6 +51569,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "text-white text-center" }, [
         _c("img", {
+          staticClass: "rounded-circle",
           attrs: { src: _vm.userProfile.image, width: "80px", alt: "Avatar" }
         }),
         _vm._v(" "),
@@ -51819,9 +51822,11 @@ var render = function() {
                             { staticClass: "card-body text-center text-white" },
                             [
                               _c("img", {
+                                staticClass: "rounded-circle",
                                 attrs: {
-                                  src: __webpack_require__(/*! ../../assets/images/details/02.png */ "./resources/js/assets/images/details/02.png"),
-                                  alt: ""
+                                  src: _vm.userProfile.image,
+                                  alt: "Avatar",
+                                  width: "60px"
                                 }
                               }),
                               _vm._v(" "),
@@ -68815,17 +68820,6 @@ var app = new Vue({
     }
   }
 });
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/details/02.png":
-/*!***************************************************!*\
-  !*** ./resources/js/assets/images/details/02.png ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/02.png?de470d1000e014c12be0cac31e861413";
 
 /***/ }),
 
