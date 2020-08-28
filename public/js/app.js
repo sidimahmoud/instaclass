@@ -4663,7 +4663,7 @@ __webpack_require__.r(__webpack_exports__);
         review: this.review,
         course_id: this.course_id
       }).then(function (res) {
-        res.data == "succes" ? alert("Succes") : alert("error");
+        res.data === "success" ? alert("Success") : alert("error");
         window.location.reload();
       })["catch"](function (err) {
         return console.log(err);

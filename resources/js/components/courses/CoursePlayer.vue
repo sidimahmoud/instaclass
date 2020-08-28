@@ -153,7 +153,7 @@
             rating() {
                 this.$store.dispatch('rateCourse',{rate: this.rate, review: this.review, course_id: this.course_id})
                 .then(res =>{
-                    res.data=="succes"?alert("Succes"):alert("error");
+                    res.data==="success"?alert("Success"):alert("error");
                     window.location.reload()
                 }).catch(err=>console.log(err))
             }

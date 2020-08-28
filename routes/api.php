@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user/enrollments', 'EnrollmentController@userEnrollments');
     Route::post('/enroll', 'EnrollmentController@store');
     Route::post('/pay', 'Admin\PayementController@paymentProcess');
+    Route::post('/courses/rate', 'RatingController@store');
 });
 
 
@@ -38,7 +39,6 @@ Route::get('/courses/search/{q}', 'CourseController@search');
 Route::post('/courses/demander', 'DemandsController@store');
 Route::post('/contacter', 'ContactsController@store');
 Route::get('/class/{id}', 'CourseController@categoryCourses');
-Route::post('/courses/rate', 'RatingController@store');
 
 
 Route::get('authorize/{provider}', 'AuthController@redirectToProvider');
