@@ -38,13 +38,14 @@ class RatingController extends Controller
     public function store(Request $request)
     {
         $rate = new Rating();
-        $course =Course::findOrFail($request["course_id"]);
-        $rate->course_id = $course->id;
+        $rate->course_id = $request["course_id"];
         $rate->rate = $request["rate"];
+        $rate->review = $request["review"];
         $rate->user_id = $request->user()->id;
         $rate->save();
-
-        return response()->json(["rating"=>$rate, "course"=>$course]);
+        if($rate)
+        return response()->json("success");
+        return response()->json("error", 500);
     }
 
     /**

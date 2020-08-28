@@ -11,6 +11,10 @@
                         <nav class="nav nav-pills nav-fill">
                             <a class="nav-item nav-link active" href="#overview" data-toggle="tab">Overview</a>
                             <a class="nav-item nav-link" href="#FAQ" data-toggle="tab">FAQ</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModalCenter">
+                                <span class="float-right font-weight-bold"><i class="fa fa-heart text-danger"></i> Rate this course</span>
+                            </button>
                         </nav>
                         <hr>
                         <div class="tab-content my-5">
@@ -81,6 +85,50 @@
                 </div>
             </div>
         </div>
+        <!-- Modal rating -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle"
+             aria-hidden="true" @click="course_id=course.id">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Rate course</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-3">
+                            Give it a star
+                            <i class="fa fa-star text-warning mx-4 rateStar" @click="rate=1"></i>
+                            <i class="fa fa-star text-warning mx-4 rateStar" @click="rate=2"></i>
+                            <i class="fa fa-star text-warning mx-4 rateStar" @click="rate=3"></i>
+                            <i class="fa fa-star text-warning mx-4 rateStar" @click="rate=4"></i>
+                            <i class="fa fa-star text-warning mx-4 rateStar" @click="rate=4"></i>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="desc">Write a review</label>
+                            <textarea class="form-control" id="desc" rows="3" required v-model="review"> </textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary " @click="rating" :disabled="sending">
+                            <span v-if="!sending">
+                                Save changes
+                            </span>
+                            <span v-if="sending">
+                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true">
+                                 </span>
+                                Loading...
+                            </span>
+
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </template>
@@ -90,15 +138,31 @@
 
     export default {
         name: "CoursePlayer",
+        data() {
+            return {
+                rate: 5,
+                review: "",
+                course_id: "",
+                sending: false
+            }
+        },
         methods: {
             findCourse() {
                 this.$store.dispatch('getCourse', this.$route.params.slug)
             },
+            rating() {
+                this.$store.dispatch('rateCourse',{rate: this.rate, review: this.review, course_id: this.course_id})
+                .then(res =>{
+                    res.data=="succes"?alert("Succes"):alert("error");
+                    window.location.reload()
+                }).catch(err=>console.log(err))
+            }
         },
         computed: mapGetters(["course"]),
         created() {
             this.findCourse();
         }
+
     }
 </script>
 

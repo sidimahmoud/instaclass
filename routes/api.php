@@ -32,14 +32,13 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::post('login', 'AuthController@login');
 Route::post('register', 'AuthController@register');
 Route::resource('/categories', 'CategoryController');
-Route::resource('/comments', 'CommentController');
 Route::get('/courses', 'CourseController@index');
 Route::get('/courses/{id}', 'CourseController@show');
 Route::get('/courses/search/{q}', 'CourseController@search');
 Route::post('/courses/demander', 'DemandsController@store');
 Route::post('/contacter', 'ContactsController@store');
 Route::get('/class/{id}', 'CourseController@categoryCourses');
-Route::resource('/ratings', 'RatingController');
+Route::post('/courses/rate', 'RatingController@store');
 
 
 Route::get('authorize/{provider}', 'AuthController@redirectToProvider');

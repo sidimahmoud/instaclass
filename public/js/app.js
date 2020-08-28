@@ -4594,12 +4594,80 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CoursePlayer",
+  data: function data() {
+    return {
+      rate: 5,
+      review: "",
+      course_id: "",
+      sending: false
+    };
+  },
   methods: {
     findCourse: function findCourse() {
       this.$store.dispatch('getCourse', this.$route.params.slug);
+    },
+    rating: function rating() {
+      this.$store.dispatch('rateCourse', {
+        rate: this.rate,
+        review: this.review,
+        course_id: this.course_id
+      }).then(function (res) {
+        res.data == "succes" ? alert("Succes") : alert("error");
+        window.location.reload();
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     }
   },
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["course"]),
@@ -5726,6 +5794,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _NewCourse__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewCourse */ "./resources/js/components/teacher/NewCourse.vue");
 /* harmony import */ var _Payments__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Payments */ "./resources/js/components/teacher/Payments.vue");
+/* harmony import */ var _courses_Review__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../courses/Review */ "./resources/js/components/courses/Review.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -5924,10 +5993,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
+
 
 
 
@@ -5935,7 +6001,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   name: "TeacherProfile",
   components: {
     NewCourse: _NewCourse__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Payments: _Payments__WEBPACK_IMPORTED_MODULE_2__["default"]
+    Payments: _Payments__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Review: _courses_Review__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchProfile", "fetchUserCourses", "fetchTeacherDetails", "fetchTeacherPayments"])), {}, {
     logout: function logout() {
@@ -48072,13 +48139,15 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "row text-left " }, [
-                    _c("div", { staticClass: "col-6 " }, [
-                      _vm._v(
-                        "\n                        Category :" +
-                          _vm._s(_vm.course.category.name) +
-                          "\n                    "
-                      )
-                    ]),
+                    _vm.course.category
+                      ? _c("div", { staticClass: "col-6 " }, [
+                          _vm._v(
+                            "\n                        Category :" +
+                              _vm._s(_vm.course.category.name) +
+                              "\n                    "
+                          )
+                        ])
+                      : _vm._e(),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-6 text-right" }, [
                       _vm._v("\n                        Price: "),
@@ -48979,7 +49048,161 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm._m(4)
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "exampleModalCenter",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalCenterTitle",
+          "aria-hidden": "true"
+        },
+        on: {
+          click: function($event) {
+            _vm.course_id = _vm.course.id
+          }
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(5),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "my-3" }, [
+                  _vm._v(
+                    "\n                        Give it a star\n                        "
+                  ),
+                  _c("i", {
+                    staticClass: "fa fa-star text-warning mx-4 rateStar",
+                    on: {
+                      click: function($event) {
+                        _vm.rate = 1
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass: "fa fa-star text-warning mx-4 rateStar",
+                    on: {
+                      click: function($event) {
+                        _vm.rate = 2
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass: "fa fa-star text-warning mx-4 rateStar",
+                    on: {
+                      click: function($event) {
+                        _vm.rate = 3
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass: "fa fa-star text-warning mx-4 rateStar",
+                    on: {
+                      click: function($event) {
+                        _vm.rate = 4
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass: "fa fa-star text-warning mx-4 rateStar",
+                    on: {
+                      click: function($event) {
+                        _vm.rate = 4
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "desc" } }, [
+                    _vm._v("Write a review")
+                  ]),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.review,
+                        expression: "review"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "desc", rows: "3", required: "" },
+                    domProps: { value: _vm.review },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.review = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary ",
+                    attrs: { type: "button", disabled: _vm.sending },
+                    on: { click: _vm.rating }
+                  },
+                  [
+                    !_vm.sending
+                      ? _c("span", [
+                          _vm._v(
+                            "\n                            Save changes\n                        "
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.sending
+                      ? _c("span", [
+                          _c("span", {
+                            staticClass: "spinner-border spinner-border-sm",
+                            attrs: { role: "status", "aria-hidden": "true" }
+                          }),
+                          _vm._v(
+                            "\n                            Loading...\n                        "
+                          )
+                        ])
+                      : _vm._e()
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -49022,6 +49245,24 @@ var staticRenderFns = [
           attrs: { href: "#FAQ", "data-toggle": "tab" }
         },
         [_vm._v("FAQ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: {
+            type: "button",
+            "data-toggle": "modal",
+            "data-target": "#exampleModalCenter"
+          }
+        },
+        [
+          _c("span", { staticClass: "float-right font-weight-bold" }, [
+            _c("i", { staticClass: "fa fa-heart text-danger" }),
+            _vm._v(" Rate this course")
+          ])
+        ]
       )
     ])
   },
@@ -49095,6 +49336,31 @@ var staticRenderFns = [
           _vm._v("Course content\n                ")
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
+        [_vm._v("Rate course")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
     ])
   }
 ]
@@ -51700,7 +51966,37 @@ var render = function() {
           _vm._v(" "),
           _vm._m(2),
           _vm._v(" "),
-          _vm._m(3),
+          _c("div", { staticClass: "card" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse",
+                attrs: {
+                  id: "collapseEval",
+                  "aria-labelledby": "evaluation",
+                  "data-parent": "#accordionExample"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "card-body" },
+                  [
+                    _vm.allTeacherDetails.ratings.length === 0
+                      ? _c("div", { staticClass: "text-center" }, [
+                          _c("h3", [_vm._v("No reviews")])
+                        ])
+                      : _vm._l(_vm.allTeacherDetails.ratings, function(r) {
+                          return _c("review", { attrs: { rating: r } })
+                        })
+                  ],
+                  2
+                )
+              ]
+            )
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "card" }, [
             _vm._m(4),
@@ -51995,8 +52291,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header", attrs: { id: "evaluation" } }, [
+    return _c(
+      "div",
+      { staticClass: "card-header", attrs: { id: "evaluation" } },
+      [
         _c("h2", { staticClass: "mb-0" }, [
           _c(
             "button",
@@ -52017,27 +52315,8 @@ var staticRenderFns = [
             ]
           )
         ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "collapse",
-          attrs: {
-            id: "collapseEval",
-            "aria-labelledby": "evaluation",
-            "data-parent": "#accordionExample"
-          }
-        },
-        [
-          _c("div", { staticClass: "card-body" }, [
-            _vm._v(
-              "\n                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad\n                        squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa\n                        nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid\n                        single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft\n                        beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice\n                        lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you\n                        probably haven't heard of them accusamus labore sustainable VHS.\n                    "
-            )
-          ])
-        ]
-      )
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -73313,7 +73592,7 @@ var actions = {
               commit = _ref.commit;
               commit('setLoading', true);
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/courses?page=".concat(page));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses?page=".concat(page));
 
             case 4:
               response = _context.sent;
@@ -73421,24 +73700,29 @@ var actions = {
       }, _callee4);
     }))();
   },
-  fetchDemands: function fetchDemands(_ref5) {
+  rateCourse: function rateCourse(_ref5, payload) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-      var commit, response;
+      var commit;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
               commit = _ref5.commit;
-              commit('setLoading', true);
-              _context5.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/demands");
+              headers();
+              return _context5.abrupt("return", new Promise(function (resolve, reject) {
+                axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  url: 'https://instantclass.herokuapp.com/api/courses/rate',
+                  data: payload,
+                  method: 'POST'
+                }).then(function (resp) {
+                  console.log(resp);
+                  resolve(resp);
+                })["catch"](function (err) {
+                  reject(err);
+                });
+              }));
 
-            case 4:
-              response = _context5.sent;
-              commit('setDemands', response.data);
-              commit('setLoading', false);
-
-            case 7:
+            case 3:
             case "end":
               return _context5.stop();
           }
@@ -73446,7 +73730,7 @@ var actions = {
       }, _callee5);
     }))();
   },
-  getCategoryCourses: function getCategoryCourses(_ref6, id) {
+  fetchDemands: function fetchDemands(_ref6) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
@@ -73456,11 +73740,11 @@ var actions = {
               commit = _ref6.commit;
               commit('setLoading', true);
               _context6.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/class/".concat(id));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/demands");
 
             case 4:
               response = _context6.sent;
-              commit('setCategoryCourses', response.data);
+              commit('setDemands', response.data);
               commit('setLoading', false);
 
             case 7:
@@ -73469,6 +73753,31 @@ var actions = {
           }
         }
       }, _callee6);
+    }))();
+  },
+  getCategoryCourses: function getCategoryCourses(_ref7, id) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              commit = _ref7.commit;
+              commit('setLoading', true);
+              _context7.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/class/".concat(id));
+
+            case 4:
+              response = _context7.sent;
+              commit('setCategoryCourses', response.data);
+              commit('setLoading', false);
+
+            case 7:
+            case "end":
+              return _context7.stop();
+          }
+        }
+      }, _callee7);
     }))();
   }
 };

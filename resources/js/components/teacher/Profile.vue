@@ -93,16 +93,12 @@
                             </button>
                         </h2>
                     </div>
-                    <div id="collapseEval" class="collapse" aria-labelledby="evaluation"
-                         data-parent="#accordionExample">
+                    <div id="collapseEval" class="collapse" aria-labelledby="evaluation" data-parent="#accordionExample">
                         <div class="card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                            squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                            nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                            single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                            beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-                            lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you
-                            probably haven't heard of them accusamus labore sustainable VHS.
+                            <div class="text-center" v-if="allTeacherDetails.ratings.length===0">
+                                <h3>No reviews</h3>
+                            </div>
+                           <review v-for="r in allTeacherDetails.ratings" :rating='r' v-else />
                         </div>
                     </div>
                 </div>
@@ -198,12 +194,13 @@
     import {mapGetters, mapActions} from 'vuex'
     import NewCourse from "./NewCourse";
     import Payments from "./Payments";
-
+    import Review from "../courses/Review";
     export default {
         name: "TeacherProfile",
         components: {
             NewCourse,
-            Payments
+            Payments,
+            Review
         },
         methods: {
             ...mapActions(["fetchProfile", "fetchUserCourses", "fetchTeacherDetails", "fetchTeacherPayments"]),

@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="row text-left ">
-                        <div class="col-6 ">
+                        <div class="col-6 " v-if="course.category">
                             Category :{{course.category.name}}
                         </div>
                         <div class="col-6 text-right">
