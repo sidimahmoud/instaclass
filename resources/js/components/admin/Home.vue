@@ -1,9 +1,7 @@
 <template>
     <div id="dashbordItems">
-
         <!-- Content Row -->
         <div class="row">
-
             <!-- All courses -->
             <div class="col-xl-6 col-lg-6 col-md-12 mb-4">
                 <div class="card border-left-danger shadow h-100 py-2">

@@ -18,10 +18,7 @@
         </div>
         <div class=" text-right">
             <a href="#"> <i class="fa fa-facebook mx-3 fa-2x"></i> </a>
-            <a href="#"> <i class="fa fa-twitter mx-3 fa-2x"></i> </a>
-            <a href="#"> <i class="fa fa-linkedin mx-3 fa-2x"></i> </a>
             <a href="#"> <i class="fa fa-instagram mx-3 fa-2x"></i> </a>
-            <a href="#"> <i class="fa fa-snapchat mx-3 fa-2x"></i> </a>
         </div>
         <div class="container d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
             <h3 class="text-primary">Courses by category </h3>

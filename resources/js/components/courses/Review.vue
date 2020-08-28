@@ -1,8 +1,8 @@
 <template>
     <div class="media mt-3 shadow-sm">
         <a href="#">
-            <img alt="Generic placeholder image"
-                 src="http://bootdey.com/img/Content/avatar/avatar1.png"
+            <img alt="Image"
+                 :src="rating.user.image"
                  class="mr-3 rounded-pill" height="50px">
         </a>
         <div class="media-body">

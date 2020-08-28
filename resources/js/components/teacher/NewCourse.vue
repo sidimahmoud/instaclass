@@ -2,7 +2,7 @@
     <div class="container rounded mb-4">
 
         <h3 class="text-center">Submit new course</h3>
-        <form class="my-3" method="post" @click.prevent="saveCourse">
+        <form class="my-3" method="post" @submit.prevent="saveCourse">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -102,25 +102,14 @@
                 <textarea class="form-control" id="desc" rows="3" v-model="course.description" required> </textarea>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="seances">Nombre de séance</label>
-                        <input type="number" min="1" value="1" class="form-control" id="seances"
-                               v-model="course.sections" required>
-                    </div>
-                </div>
+
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="Thumbnail">Thumbnail</label>
                         <input type="file" class="form-control-file" id="Thumbnail">
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="section1">Section 1</label>
-                        <input type="file" class="form-control-file" id="section1" required>
-                    </div>
-                </div>
+
             </div>
             <button class="btn btn-primary btn-block" type="submit">Submit</button>
         </form>

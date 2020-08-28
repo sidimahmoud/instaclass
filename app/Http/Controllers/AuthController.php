@@ -65,7 +65,6 @@ class AuthController extends Controller
         $user->image = $request['image'];
         $user->about = $request['about'];
         $user->save();
-
         if ($user) {
             $user->sendEmailVerificationNotification();
             return response()->json("success");

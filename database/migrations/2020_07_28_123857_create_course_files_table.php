@@ -17,6 +17,7 @@ class CreateCourseFilesTable extends Migration
             $table->id();
             $table->integer('course_id');
             $table->string('file');
+            $table->string('description');
             $table->timestamps();
         });
     }

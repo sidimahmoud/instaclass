@@ -6,35 +6,91 @@
             </div>
         </div>
         <div v-if="!loading">
-            <div class="jumbotron">
-                <div class="container ">
-                    <div class="row justify-content-around align-items-center">
-                        <div class="col-md-6 col-sm-12  text-white">
-                            <img :src="course.image" alt="" class="img-fluid" width="400px">
+            <!--            blue band-->
+            <div class="jumbotron"></div>
+            <!--/            blue band-->
+            <!--            Course header-->
+            <div class="container bg-white">
+                <div class="row justify-content-around align-items-center border-bottom border-primary">
+                    <div class="col-md-2 text-center">
+                        <img :src="course.user.image" width="80px" alt="Avatar">
+                        <br>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="font-weight-bolder">
+                            {{course.user.first_name}}
                         </div>
-                        <div class="col-md-6 col-sm-12  p-2 text-white text-center text-md-left">
-                            <h2>{{course.name}}</h2>
-                            <p>{{course.short_description}}</p>
-                            <br>
-                            <span class="badge badge-warning text-white">
-                            <i class="fa fa-star text-white mr-2"></i>
-                            5.0
-                        </span>
-                            ({{course.ratings.length }} rating)
-                            <div class="mt-4">
-                                <img :src="course.user.image" width="80px" class="rounded-circle" alt="Avatar">
-                                <span class="font-weight-bolder">
-                            {{course.user.first_name}} {{course.user.last_name}}
-                            </span>
-                            </div>
+                        <div>
+                            {{course.user.headline}}
                         </div>
+                    </div>
+                    <div class="col-md-3">
+                        <strong>{{course.name}}</strong>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://www.instantclass.herokuapp.com&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!"
+                           target="_blank"
+                           onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false">
+                            <button type="button"
+                                    class="btn btn-facebook "><i class="fa fa-facebook fa-2"></i>
+                                <i class="fa fa-share-alt"></i>
+                            </button>
+                        </a>
+                        <a href="#" target="_blank">
+                            <button type="button" class="btn btn-instagram ">
+                                <i class="fa fa-instagram"/>
+                                <i class="fa fa-share-alt"></i>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <router-link
+                            :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
+                            tag="a" class="btn btn-primary my-3" v-if="!enrolled">
+                            S'inscrire à tout les séances
+                        </router-link>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-md-3" v-if="course.category">
+                        <router-link :to="{ name: 'CategCourses', params: { id: course.category.id}}" tag="a">
+                            {{course.category.name}}
+                        </router-link>
+                        > Sub-categor
+                    </div>
+                    <div class="col-md-3">Number of Sessions: 2</div>
+                    <div class="col-md-3">Language : English</div>
+                    <div class="col-md-3">Price: $10/session</div>
+                </div>
+                <div class="row justify-content-around align-items-center shadow-sm">
+                    <div class="col-md-9">
+                        <h4>Section1.title</h4>
+                        <p>Section1.description</p>
+                        <p>
+                            Availabilities : session1.startDate - Duration: session1.duration
+                        </p>
+                    </div>
+                    <div class="col-md-1 d-none -d-md-flex"></div>
+                    <div class="col-md-2">
+                        <router-link
+                            :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
+                            tag="a" class="btn btn-primary my-3" v-if="!enrolled">
+                            Inscrire
+                        </router-link>
                     </div>
                 </div>
             </div>
+            <!--/            Course header-->
 
+            <!--            Course details-->
             <div class="container">
                 <div class="row">
-                    <div class="col-md-7 bg-white shadow">
+                    <div class="col-md-12 bg-white ">
                         <nav class="nav nav-pills nav-fill mt-3">
                             <a class="nav-item nav-link active" href="#overview" data-toggle="tab">Overview</a>
                             <a class="nav-item nav-link" href="#FAQ" data-toggle="tab">FAQ</a>
@@ -101,7 +157,7 @@
                                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
-                                                <b class="text-black ml-2">334</b>
+                                                <b class="text-black ml-2">{{course.ratings.length>0?course.ratings.length:"0"}}</b>
                                             </div>
                                             <p class="text-black mb-4 mt-2">Rated 3.5 out of 5</p>
                                         </div>
@@ -185,7 +241,7 @@
                                     <div class="media mt-3 shadow-sm" v-for="rating in course.ratings" :key="rating.id">
                                         <a href="#">
                                             <img alt="Generic placeholder image"
-                                                 src="http://bootdey.com/img/Content/avatar/avatar1.png"
+                                                 :src="rating.user.image"
                                                  class="mr-3 rounded-pill" height="50px">
                                         </a>
                                         <div class="media-body">
@@ -218,27 +274,6 @@
 
 
                     </div>
-                    <div class="col-md-1 ">
-
-                    </div>
-                    <div class="col-md-4 text-center ">
-                        <div class="card bg-white mt-2">
-                            <img class="card-img-top" :src="course.image" alt="Card image cap">
-                            <div class="card-body text-center">
-                                <h3 class="card-title font-weight-bolder text-danger">
-                                    {{(course.status==2)?'$'+course.price:"Free Course"}}</h3>
-                                <p class="card-text">23 hours left at this price!</p>
-                                <router-link
-                                    :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
-                                    tag="a" class="btn btn-primary my-3" v-if="!enrolled">
-                                    S'inscrire à ce cours
-                                </router-link>
-                                <p class="btn btn-primary my-3" v-else>
-                                    Already enrolled
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="row mt-5 p-5 bg-primary text-center text-white">
                     <div class="col-12">
@@ -269,7 +304,7 @@
                 this.$store.dispatch('getCourse', this.$route.params.slug)
             },
         },
-        computed: mapGetters(["course", "loading","enrolled", 'isLoggedIn']),
+        computed: mapGetters(["course", "loading", "enrolled", 'isLoggedIn']),
         created() {
             this.findCourse();
         },
@@ -278,14 +313,52 @@
 
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
     .jumbotron {
         background-image: url('../../assets/images/details/bg.png');
         border-radius: 0;
-    }
+        height: 50px;
+        padding: 0;
 
+    }
     .rounded-pill {
         border-radius: 50rem !important;
     }
+
+    .btn-facebook {
+        text-decoration: none;
+        color: #4C67A1;
+        transition: all .2s ease-in-out;
+
+
+        &:hover {
+            background: linear-gradient(to right, #4C67A1 0%, #0389a1 100%);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.10);
+
+
+            i {
+                color: #ffffff;
+            }
+        }
+
+
+    }
+
+    .btn-instagram {
+        text-decoration: none;
+        color: #C71E7E;
+        transition: all .2s ease-in-out;
+
+
+        &:hover {
+            background: linear-gradient(to right, #ff3019 0%, #c90477 100%);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.10);
+
+            i {
+                color: #ffffff;
+            }
+        }
+
+    }
+
 </style>

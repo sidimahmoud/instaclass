@@ -7,7 +7,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/students', 'Admin\UsersController@students');
         Route::get('/admins', 'Admin\UsersController@admins');
         Route::get('/teachers', 'Admin\UsersController@teachers');
-        Route::get('/teacher/{id}/courses', 'Admin\UsersController@teacherCourses');
         Route::get('/banned', 'Admin\UsersController@banned');
         Route::get('/counts', 'Admin\UsersController@counts');
         Route::get('/payments/received', 'Admin\PayementController@received');
@@ -17,6 +16,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/contacts', 'ContactsController@index');
     });
     Route::middleware('can:teacher-or-admin')->group(function () {
+        Route::get('/teacher/{id}/courses', 'Admin\UsersController@teacherCourses');
         Route::get('/user/courses', 'Teacher\CoursesController@teacherCourses');
         Route::get('/teacher/details', 'Admin\UsersController@teacherDetails');
         Route::get('/teacher/payments', 'Admin\UsersController@teacherPayments');

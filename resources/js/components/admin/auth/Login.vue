@@ -25,9 +25,8 @@
                             <button type="submit" class="btn btn-primary btn-lg btn-block">
                                 <span v-if="!authLoading">Sign in </span>
                                 <div class="text-center text-white" v-if="authLoading">
-                                    <div class="spinner-border" role="status">
-                                        <span class="sr-only">Loading...</span>
-                                    </div>
+                                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                    Wait...
                                 </div>
                             </button>
                         </div>

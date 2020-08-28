@@ -28,6 +28,4 @@ const app = new Vue({
             document.title = "Instantclass | " + to.meta.title
         }
     },
-
-
 });

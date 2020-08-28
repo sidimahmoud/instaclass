@@ -47,6 +47,21 @@
                     </div>
                 </div>
                 <div class="card">
+                    <div class="card-header" id="headingSection">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSection"
+                                    aria-expanded="true" aria-controls="collapseSection">
+                                New Course Section
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseSection" class="collapse" aria-labelledby="headingSection" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <new-section></new-section>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
                     <div class="card-header" id="payments">
                         <h2 class="mb-0">
                             <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
@@ -98,7 +113,10 @@
                             <div class="text-center" v-if="allTeacherDetails.ratings.length===0">
                                 <h3>No reviews</h3>
                             </div>
-                           <review v-for="r in allTeacherDetails.ratings" :rating='r' v-else />
+                            <div v-else>
+                                <review v-for="r in allTeacherDetails.ratings" :key="r.id" :rating='r'  />
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -195,12 +213,14 @@
     import NewCourse from "./NewCourse";
     import Payments from "./Payments";
     import Review from "../courses/Review";
+    import NewSection from "./NewSection";
     export default {
         name: "TeacherProfile",
         components: {
             NewCourse,
             Payments,
-            Review
+            Review,
+            NewSection
         },
         methods: {
             ...mapActions(["fetchProfile", "fetchUserCourses", "fetchTeacherDetails", "fetchTeacherPayments"]),
