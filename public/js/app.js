@@ -3723,7 +3723,6 @@ __webpack_require__.r(__webpack_exports__);
         code: this.$route.query.code
       }).then(function (res) {
         console.log(res);
-        location.reload();
 
         _this.$router.push('/');
       })["catch"](function (err) {

@@ -16,7 +16,6 @@
                 this.$store.dispatch('socialStudentAuthCallback', {code: this.$route.query.code})
                     .then((res) => {
                         console.log(res);
-                        location.reload();
                         this.$router.push('/');
                     })
                     .catch(err => console.log(err))
