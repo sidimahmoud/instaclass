@@ -3723,9 +3723,14 @@ __webpack_require__.r(__webpack_exports__);
         code: this.$route.query.code,
         provider: this.provider
       }).then(function (res) {
-        console.log(res);
+        location.reload(); // (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
 
-        _this.$router.push('/');
+        user = JSON.parse(localStorage.getItem('user')) || null;
+        if (user) user.t === "teacher" ? _this.$router.push({
+          name: 'TeacherProfile'
+        }) : _this.$router.push({
+          name: 'StudentProfile'
+        });
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -78548,7 +78553,6 @@ var actions = {
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/authorize/".concat(payload.provider, "/callback"), {
                   params: payload
                 }).then(function (resp) {
-                  console.log(resp);
                   var token = resp.data.token;
                   var user = {
                     'u': resp.data.user.id,

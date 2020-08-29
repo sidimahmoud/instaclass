@@ -60,7 +60,6 @@ const actions = {
                 params: payload
             })
                 .then(resp => {
-                        console.log(resp);
                     const token = resp.data.token;
                     const user = {
                         'u': resp.data.user.id,
@@ -69,7 +68,6 @@ const actions = {
                     };
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
-
                     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                     resolve(resp)
                 })

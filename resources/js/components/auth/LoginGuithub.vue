@@ -15,8 +15,12 @@
 
                 this.$store.dispatch('socialStudentAuthCallback', {code: this.$route.query.code, provider: this.provider})
                     .then((res) => {
-                        console.log(res);
-                        this.$router.push('/');
+                        location.reload();
+                        // (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
+
+                        user = JSON.parse(localStorage.getItem('user')) || null;
+                        if(user)
+                        (user.t === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
                     })
                     .catch(err => console.log(err))
             },
