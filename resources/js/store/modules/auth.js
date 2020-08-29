@@ -62,7 +62,6 @@ const actions = {
             })
                 .then(resp => {
                     console.log(resp);
-                    return;
                     const token = resp.data.token;
                     const user = {
                         'u': resp.data.user.id,

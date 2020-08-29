@@ -78552,7 +78552,6 @@ var actions = {
                   params: payload
                 }).then(function (resp) {
                   console.log(resp);
-                  return;
                   var token = resp.data.token;
                   var user = {
                     'u': resp.data.user.id,
