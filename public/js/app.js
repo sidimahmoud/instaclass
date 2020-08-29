@@ -3670,25 +3670,24 @@ __webpack_require__.r(__webpack_exports__);
         return _this.errorMessage = err.response.data.message;
       });
     },
-    loginGithub: function loginGithub() {
-      this.$store.dispatch('socialStudentAuth', "google").then(function (res) {
-        console.log(res);
+    // loginGithub() {
+    //     this.$store.dispatch('socialStudentAuth', "google")
+    //         .then((res) => {
+    //             console.log(res);
+    //             if (res.data.url) {
+    //                 console.log(res.data.url);
+    //                 window.location.href = res.data.url
+    //             }
+    //         })
+    //         .catch(err => console.log(err))
+    // },
+    loginGoogle: function loginGoogle(provider) {
+      this.$store.dispatch('socialStudentAuth', provider).then(function (res) {
+        console.log("hello");
 
         if (res.data.url) {
-          console.log(res.data.url);
-          window.location.href = res.data.url;
-        }
-      })["catch"](function (err) {
-        return console.log(err);
-      });
-    },
-    loginGoogle: function loginGoogle() {
-      this.$store.dispatch('socialStudentAuth', "google").then(function (res) {
-        console.log(res);
-
-        if (res.data.url) {
-          console.log(res.data.url);
-          window.location.href = res.data.url;
+          console.log("url");
+          console.log(res.data.url); // window.location.href = res.data.url
         }
       })["catch"](function (err) {
         return console.log(err);
@@ -47498,7 +47497,11 @@ var render = function() {
                     href:
                       "https://instantclass.herokuapp.com/api/authorize/google"
                   },
-                  on: { click: _vm.loginGoogle }
+                  on: {
+                    click: function($event) {
+                      return _vm.loginGoogle("google")
+                    }
+                  }
                 },
                 [
                   _c("i", { staticClass: "fa fa-google mr-2" }),
@@ -47512,7 +47515,11 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-lg btn-github  btn-block text-uppercase",
-              on: { click: _vm.loginGithub }
+              on: {
+                click: function($event) {
+                  return _vm.loginGoogle("facebook")
+                }
+              }
             },
             [
               _c("i", { staticClass: "fa fa-facebook-f text-white mr-2" }),

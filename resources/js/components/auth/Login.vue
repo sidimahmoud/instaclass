@@ -37,11 +37,11 @@
                     <h2>Or</h2>
                     <button class="btn btn-lg btn-google btn-block text-uppercase">
 
-                        <a href="https://instantclass.herokuapp.com/api/authorize/google" @click="loginGoogle">
+                        <a href="https://instantclass.herokuapp.com/api/authorize/google" @click="loginGoogle('google')">
                             <i class="fa fa-google mr-2"></i> Continue with Google
                         </a>
                     </button>
-                    <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGithub">
+                    <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGoogle('facebook')">
                         <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
                     </button>
                 </div>
@@ -61,7 +61,7 @@
             return {
                 email: '',
                 password: '',
-                errorMessage: ''
+                errorMessage: '',
             }
         },
         methods: {
@@ -75,24 +75,25 @@
                     })
                     .catch(err => this.errorMessage = err.response.data.message)
             },
-            loginGithub() {
-                this.$store.dispatch('socialStudentAuth', "google")
+            // loginGithub() {
+            //     this.$store.dispatch('socialStudentAuth', "google")
+            //         .then((res) => {
+            //             console.log(res);
+            //             if (res.data.url) {
+            //                 console.log(res.data.url);
+            //                 window.location.href = res.data.url
+            //             }
+            //         })
+            //         .catch(err => console.log(err))
+            // },
+            loginGoogle(provider) {
+                this.$store.dispatch('socialStudentAuth', provider)
                     .then((res) => {
-                        console.log(res);
+                        console.log("hello");
                         if (res.data.url) {
+                            console.log("url");
                             console.log(res.data.url);
-                            window.location.href = res.data.url
-                        }
-                    })
-                    .catch(err => console.log(err))
-            },
-            loginGoogle() {
-                this.$store.dispatch('socialStudentAuth', "google")
-                    .then((res) => {
-                        console.log(res);
-                        if (res.data.url) {
-                            console.log(res.data.url);
-                            window.location.href = res.data.url
+                            // window.location.href = res.data.url
                         }
                     })
                     .catch(err => console.log(err))
