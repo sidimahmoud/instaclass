@@ -1,4 +1,3 @@
-import router from '../router/index'
 import Vue from 'vue';
 import Vuex from 'vuex';
 import auth from './modules/auth';

@@ -12,10 +12,14 @@
         },
         methods: {
             login() {
-                this.$store.dispatch('socialStudentAuthCallback', {code: this.$route.query.code, provider: this.provider})
+                this.$store.dispatch('socialStudentAuthCallback', {
+                    code: this.$route.query.code,
+                    provider: this.provider
+                })
                     .then((res) => {
                         location.reload();
                         // (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
+                        this.$router.push({name: 'StudentProfile'})
                     })
                     .catch(err => console.log(err))
             },
