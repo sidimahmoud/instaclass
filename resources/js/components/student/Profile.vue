@@ -36,47 +36,54 @@
                         <a class="nav-item nav-link " href="#live" data-toggle="tab">Go live</a>
                     </nav>
                     <hr>
-                    <div class="tab-content my-5">
+                    <div class="tab-content my-1">
                         <!-- Enrollments-->
                         <div class="tab-pane fade show active" id="courses">
                             <ul class="list-unstyled">
-                                <li class="media p-2 mt-4" v-if="userEnrollments.length==0">
-                                    <div class="media-body">
+                                <li class=" mt-4" v-if="userEnrollments.length==0">
                                         <h5 class="mt-0 mb-1">No courses</h5>
                                         <p class="text-center">
                                             visit <a href="/courses"> courses
                                         </a> to get started
                                         </p>
-                                    </div>
                                 </li>
-                                <li class="media card p-2 mt-4" v-for="e in userEnrollments" :key="e.id">
-                                    <div class="media-body">
+                                <li class=" mt-4" v-for="e in userEnrollments" :key="e.id">
                                         <router-link :to="{name: 'Player', params: { slug: e.course.slug} }"
                                                      v-if="e.course.type==1">
-                                            <h5 class="mt-0 mb-1">{{e.course.name}}, {{e.course.created_at.slice(0,10)}}, </h5>
+                                            <h5 class="mt-0 mb-1">{{e.course.name}},
+                                                {{e.course.created_at.slice(0,10)}}, {{e.course.user.first_name}}
+                                                {{e.course.user.last_name}}</h5>
                                         </router-link>
-                                        <router-link :to="{name: 'Live', params: { slug: e.course.slug}}" tag="a"
-                                                     v-else>
-                                            <h5 class="mt-0 mb-1">{{e.course.name}}</h5>
-                                        </router-link>
-
-                                    </div>
                                 </li>
 
                             </ul>
                         </div>
 
                         <div class="tab-pane fade show " id="receipts">
-                            <p>
-                                My receipts
-                            </p>
-
+                            <h3 class="text-center">Your receipts will appear here. </h3>
                         </div>
                         <div class="tab-pane fade show " id="live">
-                            <p>
-                                Go live
-                            </p>
+                            <ul class="list-unstyled">
+                                <li class="mt-4" v-if="userEnrollments.length==0">
 
+                                        <h5 class="mt-0 mb-1">No courses</h5>
+                                        <p class="text-center">
+                                            visit <a href="/courses"> courses
+                                        </a> to get started
+                                        </p>
+
+                                </li>
+                                <li class="mt-4" v-for="e in userEnrollments" :key="e.id">
+                                    <div  v-if="e.course.type==2">
+                                        <router-link :to="{name: 'Live', params: { slug: e.course.slug} }">
+                                            <h5 class="mt-0 mb-1">{{e.course.name}},
+                                                {{e.course.created_at.slice(0,10)}}, {{e.course.user.first_name}}
+                                                {{e.course.user.last_name}}</h5>
+                                        </router-link>
+                                    </div>
+                                </li>
+
+                            </ul>
                         </div>
 
                     </div>

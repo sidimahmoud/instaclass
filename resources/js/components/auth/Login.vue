@@ -76,7 +76,7 @@
                     .catch(err => this.errorMessage = err.response.data.message)
             },
             loginGithub() {
-                this.$store.dispatch('loginGithub')
+                this.$store.dispatch('socialStudentAuth', "google")
                     .then((res) => {
                         console.log(res);
                         if (res.data.url) {
@@ -87,7 +87,7 @@
                     .catch(err => console.log(err))
             },
             loginGoogle() {
-                this.$store.dispatch('loginGoogle')
+                this.$store.dispatch('socialStudentAuth', "google")
                     .then((res) => {
                         console.log(res);
                         if (res.data.url) {

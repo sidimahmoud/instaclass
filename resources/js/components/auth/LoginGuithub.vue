@@ -5,18 +5,18 @@
 <script>
     export default {
         name: "LoginGuithub",
-        methods:{
-            loginGithub() {
-                this.$store.dispatch('loginGithubCallback', {code: this.$route.query.code})
-                    .then((res) => {
-                        console.log(res);
-                        location.reload();
-                        this.$router.push('/');
-                    })
-                    .catch(err => console.log(err))
-            },
-            loginGoogle() {
-                this.$store.dispatch('loginGoogleCallback', {code: this.$route.query.code})
+        data() {
+            return {
+                provider: "google"
+            }
+        },
+        methods: {
+            login() {
+                let data = {
+                    code: this.$route.query.code,
+                    provider: this.provider
+                };
+                this.$store.dispatch('socialStudentAuthCallback', data)
                     .then((res) => {
                         console.log(res);
                         location.reload();
@@ -27,7 +27,7 @@
         },
         created() {
             // this.loginGithub()
-            this.loginGoogle()
+            this.login()
         }
     }
 

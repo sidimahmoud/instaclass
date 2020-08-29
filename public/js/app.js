@@ -3671,7 +3671,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     loginGithub: function loginGithub() {
-      this.$store.dispatch('loginGithub').then(function (res) {
+      this.$store.dispatch('socialStudentAuth', "google").then(function (res) {
         console.log(res);
 
         if (res.data.url) {
@@ -3683,7 +3683,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     loginGoogle: function loginGoogle() {
-      this.$store.dispatch('loginGoogle').then(function (res) {
+      this.$store.dispatch('socialStudentAuth', "google").then(function (res) {
         console.log(res);
 
         if (res.data.url) {
@@ -3715,13 +3715,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "LoginGuithub",
+  data: function data() {
+    return {
+      provider: "google"
+    };
+  },
   methods: {
-    loginGithub: function loginGithub() {
+    login: function login() {
       var _this = this;
 
-      this.$store.dispatch('loginGithubCallback', {
-        code: this.$route.query.code
-      }).then(function (res) {
+      var data = {
+        code: this.$route.query.code,
+        provider: this.provider
+      };
+      this.$store.dispatch('socialStudentAuthCallback', data).then(function (res) {
         console.log(res);
         location.reload();
 
@@ -3729,25 +3736,11 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         return console.log(err);
       });
-    },
-    loginGoogle: function loginGoogle() {
-      var _this2 = this;
-
-      this.$store.dispatch('loginGoogleCallback', {
-        code: this.$route.query.code
-      }).then(function (res) {
-        console.log(res);
-        location.reload();
-
-        _this2.$router.push('/');
-      })["catch"](function (err) {
-        return console.log(err);
-      });
     }
   },
   created: function created() {
     // this.loginGithub()
-    this.loginGoogle();
+    this.login();
   }
 });
 
@@ -5407,6 +5400,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -51066,7 +51066,7 @@ var render = function() {
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
-          _c("div", { staticClass: "tab-content my-5" }, [
+          _c("div", { staticClass: "tab-content my-1" }, [
             _c(
               "div",
               {
@@ -51079,63 +51079,50 @@ var render = function() {
                   { staticClass: "list-unstyled" },
                   [
                     _vm.userEnrollments.length == 0
-                      ? _c("li", { staticClass: "media p-2 mt-4" }, [_vm._m(1)])
+                      ? _c("li", { staticClass: " mt-4" }, [
+                          _c("h5", { staticClass: "mt-0 mb-1" }, [
+                            _vm._v("No courses")
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(1)
+                        ])
                       : _vm._e(),
                     _vm._v(" "),
                     _vm._l(_vm.userEnrollments, function(e) {
                       return _c(
                         "li",
-                        { key: e.id, staticClass: "media card p-2 mt-4" },
+                        { key: e.id, staticClass: " mt-4" },
                         [
-                          _c(
-                            "div",
-                            { staticClass: "media-body" },
-                            [
-                              e.course.type == 1
-                                ? _c(
-                                    "router-link",
-                                    {
-                                      attrs: {
-                                        to: {
-                                          name: "Player",
-                                          params: { slug: e.course.slug }
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("h5", { staticClass: "mt-0 mb-1" }, [
-                                        _vm._v(
-                                          _vm._s(e.course.name) +
-                                            ", " +
-                                            _vm._s(
-                                              e.course.created_at.slice(0, 10)
-                                            ) +
-                                            ", "
-                                        )
-                                      ])
-                                    ]
-                                  )
-                                : _c(
-                                    "router-link",
-                                    {
-                                      attrs: {
-                                        to: {
-                                          name: "Live",
-                                          params: { slug: e.course.slug }
-                                        },
-                                        tag: "a"
-                                      }
-                                    },
-                                    [
-                                      _c("h5", { staticClass: "mt-0 mb-1" }, [
-                                        _vm._v(_vm._s(e.course.name))
-                                      ])
-                                    ]
-                                  )
-                            ],
-                            1
-                          )
-                        ]
+                          e.course.type == 1
+                            ? _c(
+                                "router-link",
+                                {
+                                  attrs: {
+                                    to: {
+                                      name: "Player",
+                                      params: { slug: e.course.slug }
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("h5", { staticClass: "mt-0 mb-1" }, [
+                                    _vm._v(
+                                      _vm._s(e.course.name) +
+                                        ",\n                                            " +
+                                        _vm._s(
+                                          e.course.created_at.slice(0, 10)
+                                        ) +
+                                        ", " +
+                                        _vm._s(e.course.user.first_name) +
+                                        "\n                                            " +
+                                        _vm._s(e.course.user.last_name)
+                                    )
+                                  ])
+                                ]
+                              )
+                            : _vm._e()
+                        ],
+                        1
                       )
                     })
                   ],
@@ -51146,7 +51133,67 @@ var render = function() {
             _vm._v(" "),
             _vm._m(2),
             _vm._v(" "),
-            _vm._m(3)
+            _c(
+              "div",
+              { staticClass: "tab-pane fade show ", attrs: { id: "live" } },
+              [
+                _c(
+                  "ul",
+                  { staticClass: "list-unstyled" },
+                  [
+                    _vm.userEnrollments.length == 0
+                      ? _c("li", { staticClass: "mt-4" }, [
+                          _c("h5", { staticClass: "mt-0 mb-1" }, [
+                            _vm._v("No courses")
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(3)
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm._l(_vm.userEnrollments, function(e) {
+                      return _c("li", { key: e.id, staticClass: "mt-4" }, [
+                        e.course.type == 2
+                          ? _c(
+                              "div",
+                              [
+                                _c(
+                                  "router-link",
+                                  {
+                                    attrs: {
+                                      to: {
+                                        name: "Live",
+                                        params: { slug: e.course.slug }
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("h5", { staticClass: "mt-0 mb-1" }, [
+                                      _vm._v(
+                                        _vm._s(e.course.name) +
+                                          ",\n                                            " +
+                                          _vm._s(
+                                            e.course.created_at.slice(0, 10)
+                                          ) +
+                                          ", " +
+                                          _vm._s(e.course.user.first_name) +
+                                          "\n                                            " +
+                                          _vm._s(e.course.user.last_name)
+                                      )
+                                    ])
+                                  ]
+                                )
+                              ],
+                              1
+                            )
+                          : _vm._e()
+                      ])
+                    })
+                  ],
+                  2
+                )
+              ]
+            )
           ])
         ])
       ])
@@ -51191,16 +51238,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "media-body" }, [
-      _c("h5", { staticClass: "mt-0 mb-1" }, [_vm._v("No courses")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "text-center" }, [
-        _vm._v("\n                                        visit "),
-        _c("a", { attrs: { href: "/courses" } }, [
-          _vm._v(" courses\n                                    ")
-        ]),
-        _vm._v(" to get started\n                                    ")
-      ])
+    return _c("p", { staticClass: "text-center" }, [
+      _vm._v("\n                                        visit "),
+      _c("a", { attrs: { href: "/courses" } }, [
+        _vm._v(" courses\n                                    ")
+      ]),
+      _vm._v(" to get started\n                                    ")
     ])
   },
   function() {
@@ -51211,10 +51254,8 @@ var staticRenderFns = [
       "div",
       { staticClass: "tab-pane fade show ", attrs: { id: "receipts" } },
       [
-        _c("p", [
-          _vm._v(
-            "\n                            My receipts\n                        "
-          )
+        _c("h3", { staticClass: "text-center" }, [
+          _vm._v("Your receipts will appear here. ")
         ])
       ]
     )
@@ -51223,17 +51264,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "tab-pane fade show ", attrs: { id: "live" } },
-      [
-        _c("p", [
-          _vm._v(
-            "\n                            Go live\n                        "
-          )
-        ])
-      ]
-    )
+    return _c("p", { staticClass: "text-center" }, [
+      _vm._v("\n                                        visit "),
+      _c("a", { attrs: { href: "/courses" } }, [
+        _vm._v(" courses\n                                    ")
+      ]),
+      _vm._v(" to get started\n                                    ")
+    ])
   }
 ]
 render._withStripped = true
@@ -78482,7 +78519,7 @@ var actions = {
       }, _callee);
     }))();
   },
-  loginGithub: function loginGithub(_ref2) {
+  socialStudentAuth: function socialStudentAuth(_ref2, provider) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
       var commit;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
@@ -78491,7 +78528,7 @@ var actions = {
             case 0:
               commit = _ref2.commit;
               return _context2.abrupt("return", new Promise(function (resolve, reject) {
-                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/authorize/facebook').then(function (resp) {
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/authorize/".concat(provider)).then(function (resp) {
                   resolve(resp);
                 })["catch"](function (err) {
                   commit('auth_error');
@@ -78507,7 +78544,7 @@ var actions = {
       }, _callee2);
     }))();
   },
-  loginGithubCallback: function loginGithubCallback(_ref3, payload) {
+  socialStudentAuthCallback: function socialStudentAuthCallback(_ref3, payload) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
       var commit;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
@@ -78516,8 +78553,8 @@ var actions = {
             case 0:
               commit = _ref3.commit;
               return _context3.abrupt("return", new Promise(function (resolve, reject) {
-                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/authorize/facebook/callback', {
-                  params: payload
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/authorize/".concat(payload.provider, "/callback"), {
+                  params: payload.code
                 }).then(function (resp) {
                   var token = resp.data.token;
                   var user = {
@@ -78543,7 +78580,39 @@ var actions = {
       }, _callee3);
     }))();
   },
-  loginGoogle: function loginGoogle(_ref4) {
+  // async loginGoogle({commit}) {
+  //     return new Promise((resolve, reject) => {
+  //         axios.get('https://instantclass.herokuapp.com/api/authorize/google')
+  //             .then(resp => {
+  //                 resolve(resp)
+  //             })
+  //             .catch(err => {
+  //                 commit('auth_error');
+  //                 reject(err)
+  //             })
+  //     })
+  // },
+  // async loginGoogleCallback({commit}, payload) {
+  //     return new Promise((resolve, reject) => {
+  //         axios.get('https://instantclass.herokuapp.com/api/authorize/google/callback', {
+  //             params: payload
+  //         })
+  //             .then(resp => {
+  //                 const token = resp.data.token;
+  //                 const user = {'u': resp.data.user.id, 't': "student"}; //resp.data.user.roles[0].name
+  //                 localStorage.setItem('token', token);
+  //                 localStorage.setItem('user', JSON.stringify(user));
+  //
+  //                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+  //                 resolve(resp)
+  //             })
+  //             .catch(err => {
+  //                 commit('auth_error');
+  //                 reject(err)
+  //             })
+  //     })
+  // },
+  register: function register(_ref4, user) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
       var commit;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
@@ -78552,67 +78621,6 @@ var actions = {
             case 0:
               commit = _ref4.commit;
               return _context4.abrupt("return", new Promise(function (resolve, reject) {
-                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/authorize/google').then(function (resp) {
-                  resolve(resp);
-                })["catch"](function (err) {
-                  commit('auth_error');
-                  reject(err);
-                });
-              }));
-
-            case 2:
-            case "end":
-              return _context4.stop();
-          }
-        }
-      }, _callee4);
-    }))();
-  },
-  loginGoogleCallback: function loginGoogleCallback(_ref5, payload) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-      var commit;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
-        while (1) {
-          switch (_context5.prev = _context5.next) {
-            case 0:
-              commit = _ref5.commit;
-              return _context5.abrupt("return", new Promise(function (resolve, reject) {
-                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/authorize/google/callback', {
-                  params: payload
-                }).then(function (resp) {
-                  var token = resp.data.token;
-                  var user = {
-                    'u': resp.data.user.id,
-                    't': "student"
-                  }; //resp.data.user.roles[0].name
-
-                  localStorage.setItem('token', token);
-                  localStorage.setItem('user', JSON.stringify(user));
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                  resolve(resp);
-                })["catch"](function (err) {
-                  commit('auth_error');
-                  reject(err);
-                });
-              }));
-
-            case 2:
-            case "end":
-              return _context5.stop();
-          }
-        }
-      }, _callee5);
-    }))();
-  },
-  register: function register(_ref6, user) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
-      var commit;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
-        while (1) {
-          switch (_context6.prev = _context6.next) {
-            case 0:
-              commit = _ref6.commit;
-              return _context6.abrupt("return", new Promise(function (resolve, reject) {
                 commit('auth_request');
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   url: 'https://instantclass.herokuapp.com/api/register/',
@@ -78640,21 +78648,21 @@ var actions = {
 
             case 2:
             case "end":
-              return _context6.stop();
+              return _context4.stop();
           }
         }
-      }, _callee6);
+      }, _callee4);
     }))();
   },
-  logout: function logout(_ref7) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+  logout: function logout(_ref5) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
       var commit;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
         while (1) {
-          switch (_context7.prev = _context7.next) {
+          switch (_context5.prev = _context5.next) {
             case 0:
-              commit = _ref7.commit;
-              return _context7.abrupt("return", new Promise(function (resolve, reject) {
+              commit = _ref5.commit;
+              return _context5.abrupt("return", new Promise(function (resolve, reject) {
                 commit('logout');
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
@@ -78664,10 +78672,10 @@ var actions = {
 
             case 2:
             case "end":
-              return _context7.stop();
+              return _context5.stop();
           }
         }
-      }, _callee7);
+      }, _callee5);
     }))();
   }
 };
