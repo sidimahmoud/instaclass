@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import store from '../store'
 
 import Login from "../components/auth/Login";
-import LoginGuithub from "../components/auth/LoginGuithub";
+import LoginGuithub from "../components/auth/GoogleCallback";
 import Register from "../components/auth/Register";
 
 import Home from "../components/HomeCompnent";
@@ -214,9 +214,19 @@ const routes = [
         }
     },
     {
-        path: '/authorize/callback',
-        name: 'Github',
-        component: LoginGuithub,
+        path: '/authorize/google/callback',
+        name: 'Google',
+        component: LoginGoogle,
+        meta: {
+            requiresAuth: false,
+            requiresVisitore: true,
+            title: 'Authorizing'
+        }
+    },
+    {
+        path: '/authorize/facebook/callback',
+        name: 'Facebook',
+        component: LoginGoogle,
         meta: {
             requiresAuth: false,
             requiresVisitore: true,

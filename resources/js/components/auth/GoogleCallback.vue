@@ -1,21 +1,14 @@
 <template>
-    <h1>Logging in , please wait!</h1>
+    <h1>Logging you in with google, please wait!</h1>
 </template>
 
 <script>
     export default {
-        name: "LoginGuithub",
-        data() {
-            return {
-                provider: ''
-            }
-        },
+        name: "GoogleCallback",
         methods: {
             login() {
-                this.$route.path.includes('google')?this.provider = "google": this.$route.path.includes('facebook')?this.provider = "facebook":this.provider = "google";
-                this.$store.dispatch('socialStudentAuthCallback', {
+                this.$store.dispatch('googleCallback', {
                     code: this.$route.query.code,
-                    provider: this.provider
                 })
                     .then((res) => {
                         location.reload();
