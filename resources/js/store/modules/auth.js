@@ -43,6 +43,7 @@ const actions = {
     },
 
     async socialStudentAuth({commit}, provider) {
+        commit('auth_request');
         return new Promise((resolve, reject) => {
             axios.get(`https://instantclass.herokuapp.com/api/authorize/${provider}`)
                 .then(resp => {
@@ -60,6 +61,8 @@ const actions = {
                 params: payload
             })
                 .then(resp => {
+                    console.log(resp);
+                    return;
                     const token = resp.data.token;
                     const user = {
                         'u': resp.data.user.id,
@@ -77,7 +80,6 @@ const actions = {
                 })
         })
     },
-
     // async loginGoogle({commit}) {
     //     return new Promise((resolve, reject) => {
     //         axios.get('https://instantclass.herokuapp.com/api/authorize/google')
@@ -110,7 +112,6 @@ const actions = {
     //             })
     //     })
     // },
-
 
     async register({commit}, user) {
         return new Promise((resolve, reject) => {

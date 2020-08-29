@@ -78521,6 +78521,7 @@ var actions = {
           switch (_context2.prev = _context2.next) {
             case 0:
               commit = _ref2.commit;
+              commit('auth_request');
               return _context2.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/authorize/".concat(provider)).then(function (resp) {
                   resolve(resp);
@@ -78530,7 +78531,7 @@ var actions = {
                 });
               }));
 
-            case 2:
+            case 3:
             case "end":
               return _context2.stop();
           }
@@ -78550,6 +78551,8 @@ var actions = {
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/authorize/".concat(payload.provider, "/callback"), {
                   params: payload
                 }).then(function (resp) {
+                  console.log(resp);
+                  return;
                   var token = resp.data.token;
                   var user = {
                     'u': resp.data.user.id,
