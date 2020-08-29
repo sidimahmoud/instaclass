@@ -13,7 +13,7 @@
         methods: {
             login() {
 
-                this.$store.dispatch('socialStudentAuthCallback', {code: this.$route.query.code})
+                this.$store.dispatch('socialStudentAuthCallback', {code: this.$route.query.code, provider: this.provider})
                     .then((res) => {
                         console.log(res);
                         this.$router.push('/');

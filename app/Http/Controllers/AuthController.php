@@ -109,7 +109,6 @@ class AuthController extends Controller
             if (!$user) {
                 $user = $this->createUser($provider_user);
             }
-
             // Add provider social account for user
             $this->createSocialAccount($provider, $provider_user, $user);
         } // If there is a social account get it's user
@@ -150,8 +149,8 @@ class AuthController extends Controller
         $user->first_name = $fname;
         $user->last_name = $lname;
         $user->email = $provider_user->email;
-        $user->headline = "my headline";
-        $user->about = "about me";
+        $user->headline = $provider_user->bio;
+        $user->about = $provider_user->about;
         $user->image = $provider_user->avatar;
         $user->password = Hash::make(Str::random(12));
         $user->email_verified_at = now();

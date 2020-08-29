@@ -3720,7 +3720,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$store.dispatch('socialStudentAuthCallback', {
-        code: this.$route.query.code
+        code: this.$route.query.code,
+        provider: this.provider
       }).then(function (res) {
         console.log(res);
 
@@ -78544,7 +78545,7 @@ var actions = {
             case 0:
               commit = _ref3.commit;
               return _context3.abrupt("return", new Promise(function (resolve, reject) {
-                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/authorize/google/callback", {
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/authorize/".concat(payload.provider, "/callback"), {
                   params: payload
                 }).then(function (resp) {
                   console.log(resp);
