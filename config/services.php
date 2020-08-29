@@ -37,11 +37,11 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => 'https://instantclass.herokuapp.com/authorize/callback',
+        'redirect' => 'https://instantclass.herokuapp.com/authorize/google/callback',
     ],
     'facebook' => [
         'client_id' => env('FACEBOOK_APP_ID'),
         'client_secret' => env('FACEBOOK_APP_SECRET'),
-        'redirect' => 'https://instantclass.herokuapp.com/authorize/callback',
+        'redirect' => 'https://instantclass.herokuapp.com/authorize/facebook/callback',
     ],
 ];
