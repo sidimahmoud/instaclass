@@ -66,7 +66,7 @@ class AuthController extends Controller
         $user->about = $request['about'];
         $user->save();
         if ($user) {
-            if ($request["type"]){
+            if ($request["type"]==="teacher"){
                 $role = Role::where('name', 'teacher')->first();
                 $user->roles()->attach($role);
             }
