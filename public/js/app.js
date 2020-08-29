@@ -78546,7 +78546,7 @@ var actions = {
               commit = _ref3.commit;
               return _context3.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/authorize/google/callback", {
-                  params: payload.code
+                  params: payload
                 }).then(function (resp) {
                   console.log(resp);
                   var token = resp.data.token;
