@@ -3712,13 +3712,14 @@ __webpack_require__.r(__webpack_exports__);
   name: "LoginGuithub",
   data: function data() {
     return {
-      provider: "google"
+      provider: ''
     };
   },
   methods: {
     login: function login() {
       var _this = this;
 
+      this.$route.path.includes('google') ? this.provider = "google" : this.$route.path.includes('facebook') ? this.provider = "facebook" : this.provider = "google";
       this.$store.dispatch('socialStudentAuthCallback', {
         code: this.$route.query.code,
         provider: this.provider

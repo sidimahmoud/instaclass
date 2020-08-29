@@ -7,11 +7,12 @@
         name: "LoginGuithub",
         data() {
             return {
-                provider: "google"
+                provider: ''
             }
         },
         methods: {
             login() {
+                this.$route.path.includes('google')?this.provider = "google": this.$route.path.includes('facebook')?this.provider = "facebook":this.provider = "google";
                 this.$store.dispatch('socialStudentAuthCallback', {
                     code: this.$route.query.code,
                     provider: this.provider
