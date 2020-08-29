@@ -25,7 +25,8 @@
                             <button type="submit" class="btn btn-primary btn-lg btn-block">
                                 <span v-if="!authLoading">Sign in </span>
                                 <div class="text-center text-white" v-if="authLoading">
-                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                          aria-hidden="true"></span>
                                     Loading...
                                 </div>
                             </button>
@@ -35,10 +36,8 @@
                         <router-link :to="{name: 'Register'}">Sign up</router-link>
                     </div>
                     <h2>Or</h2>
-                    <button class="btn btn-lg btn-google btn-block text-uppercase">
-                        <a @click="loginGoogle('google')">
-                            <i class="fa fa-google mr-2"></i> Continue with Google
-                        </a>
+                    <button class="btn btn-lg btn-google btn-block text-uppercase" @click="loginGoogle('google')">
+                        <i class="fa fa-google mr-2"></i> Continue with Google
                     </button>
                     <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGoogle('facebook')">
                         <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
@@ -69,8 +68,8 @@
                 let email = this.email;
                 let password = this.password;
                 this.$store.dispatch('login', {email, password})
-                    .then(res=>{
-                        (res.data.user.roles[0].name==="teacher")?this.$router.push({name: 'TeacherProfile'}):this.$router.push({name: 'StudentProfile'});
+                    .then(res => {
+                        (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
                     })
                     .catch(err => this.errorMessage = err.response.data.message)
             },
@@ -190,10 +189,12 @@
         color: white;
         background: #4267B2;
     }
-    .btn-github a{
+
+    .btn-github a {
         color: white;
     }
-    .btn-google a{
+
+    .btn-google a {
         color: white;
     }
 </style>

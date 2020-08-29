@@ -14,8 +14,7 @@
             login() {
 
                 this.$store.dispatch('socialStudentAuthCallback', {
-                    code: this.$route.query.code,
-                    provider: this.provider
+                    code: this.$route.query.code
                 })
                     .then((res) => {
                         console.log(res);
