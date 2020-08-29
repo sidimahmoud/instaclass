@@ -78110,17 +78110,18 @@ router.beforeEach(function (to, from, next) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth.js");
-/* harmony import */ var _modules_courses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/courses */ "./resources/js/store/modules/courses.js");
-/* harmony import */ var _modules_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/user */ "./resources/js/store/modules/user.js");
-/* harmony import */ var _modules_categories__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/categories */ "./resources/js/store/modules/categories.js");
-/* harmony import */ var _modules_admin_users__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/admin/users */ "./resources/js/store/modules/admin/users.js");
-/* harmony import */ var _modules_admin_payments__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/admin/payments */ "./resources/js/store/modules/admin/payments.js");
-/* harmony import */ var _modules_enrollment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/enrollment */ "./resources/js/store/modules/enrollment.js");
-/* harmony import */ var _modules_contacts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/contacts */ "./resources/js/store/modules/contacts.js");
+/* harmony import */ var _router_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../router/index */ "./resources/js/router/index.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth.js");
+/* harmony import */ var _modules_courses__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/courses */ "./resources/js/store/modules/courses.js");
+/* harmony import */ var _modules_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/user */ "./resources/js/store/modules/user.js");
+/* harmony import */ var _modules_categories__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/categories */ "./resources/js/store/modules/categories.js");
+/* harmony import */ var _modules_admin_users__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/admin/users */ "./resources/js/store/modules/admin/users.js");
+/* harmony import */ var _modules_admin_payments__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/admin/payments */ "./resources/js/store/modules/admin/payments.js");
+/* harmony import */ var _modules_enrollment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/enrollment */ "./resources/js/store/modules/enrollment.js");
+/* harmony import */ var _modules_contacts__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/contacts */ "./resources/js/store/modules/contacts.js");
 
 
 
@@ -78131,20 +78132,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
-/* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   state: {},
   mutations: {},
   actions: {},
   modules: {
-    auth: _modules_auth__WEBPACK_IMPORTED_MODULE_2__["default"],
-    courses: _modules_courses__WEBPACK_IMPORTED_MODULE_3__["default"],
-    user: _modules_user__WEBPACK_IMPORTED_MODULE_4__["default"],
-    categories: _modules_categories__WEBPACK_IMPORTED_MODULE_5__["default"],
-    users: _modules_admin_users__WEBPACK_IMPORTED_MODULE_6__["default"],
-    payments: _modules_admin_payments__WEBPACK_IMPORTED_MODULE_7__["default"],
-    enrollment: _modules_enrollment__WEBPACK_IMPORTED_MODULE_8__["default"],
-    contacts: _modules_contacts__WEBPACK_IMPORTED_MODULE_9__["default"]
+    auth: _modules_auth__WEBPACK_IMPORTED_MODULE_3__["default"],
+    courses: _modules_courses__WEBPACK_IMPORTED_MODULE_4__["default"],
+    user: _modules_user__WEBPACK_IMPORTED_MODULE_5__["default"],
+    categories: _modules_categories__WEBPACK_IMPORTED_MODULE_6__["default"],
+    users: _modules_admin_users__WEBPACK_IMPORTED_MODULE_7__["default"],
+    payments: _modules_admin_payments__WEBPACK_IMPORTED_MODULE_8__["default"],
+    enrollment: _modules_enrollment__WEBPACK_IMPORTED_MODULE_9__["default"],
+    contacts: _modules_contacts__WEBPACK_IMPORTED_MODULE_10__["default"]
   }
 }));
 
@@ -78533,8 +78535,6 @@ var actions = {
     }))();
   },
   socialStudentAuthCallback: function socialStudentAuthCallback(_ref3, payload) {
-    var _this = this;
-
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
       var commit;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
@@ -78555,9 +78555,9 @@ var actions = {
                   localStorage.setItem('token', token);
                   localStorage.setItem('user', JSON.stringify(user));
                   axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                  user.t === "teacher" ? _this.$router.push({
+                  user.t === "teacher" ? router.push({
                     name: 'TeacherProfile'
-                  }) : _this.$router.push({
+                  }) : router.push({
                     name: 'StudentProfile'
                   });
                   resolve(resp);

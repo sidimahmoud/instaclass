@@ -69,7 +69,7 @@ const actions = {
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
                     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                    (user.t === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
+                    (user.t === "teacher") ? router.push({name: 'TeacherProfile'}) : router.push({name: 'StudentProfile'});
 
                     resolve(resp)
                 })
