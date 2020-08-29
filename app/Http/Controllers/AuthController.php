@@ -66,6 +66,14 @@ class AuthController extends Controller
         $user->about = $request['about'];
         $user->save();
         if ($user) {
+            if ($request["type"]){
+                $role = Role::where('name', 'teacher')->first();
+                $user->roles()->attach($role);
+            }
+            else{
+                $role = Role::where('name', 'student')->first();
+                $user->roles()->attach($role);
+            }
             $user->sendEmailVerificationNotification();
             return response()->json("success");
         }

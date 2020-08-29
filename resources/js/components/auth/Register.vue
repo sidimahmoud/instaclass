@@ -4,32 +4,39 @@
             <div class="row">
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                     <div class="signup-form bg-white">
-                        <form method="post">
+                        <form @click.prevent="register">
                             <h2>Register</h2>
                             <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                                 v-if="errorMessage">
+                                <strong>Error!</strong> {{errorMessage}}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
                                         <input type="text" class="form-control" name="first_name"
-                                               placeholder="First Name" required="required">
+                                               placeholder="First Name" required="required" v-model="first_name">
                                     </div>
                                     <div class="col">
                                         <input type="text" class="form-control" name="last_name" placeholder="Last Name"
-                                               required="required">
+                                               required="required" v-model="last_name">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control" name="email" placeholder="Email"
-                                       required="required">
+                                       required="required" v-model="email">
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="Password"
-                                       required="required">
+                                       required="required" v-model="password1">
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" name="confirm_password"
-                                       placeholder="Confirm Password" required="required">
+                                       placeholder="Confirm Password" required="required" v-model="password2">
                             </div>
                             <div class="form-group">
                                 <label class="form-check-label">
@@ -38,7 +45,16 @@
                                 </label>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Register Now</button>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                    <span v-if="!authLoading">Sign up </span>
+                                    <div class="text-center text-white" v-if="authLoading">
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                          aria-hidden="true">
+
+                                    </span>
+                                        Loading...
+                                    </div>
+                                </button>
                             </div>
 
                         </form>
@@ -46,12 +62,10 @@
                             <router-link :to="{name: 'Login'}">Sign in</router-link>
                         </div>
                         <h2>Or</h2>
-                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
-                            <a href="https://instantclass.herokuapp.com/api/authorize/google" class="text-white">
-                                <i class="fa fa-google mr-2"></i> Continue with Google
-                            </a>
+                        <button class="btn btn-lg btn-google btn-block text-uppercase" @click="loginGoogle('google')">
+                            <i class="fa fa-google mr-2"></i> Continue with Google
                         </button>
-                        <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGithub">
+                        <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGoogle('facebook')">
                             <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
                         </button>
                     </div>
@@ -64,13 +78,68 @@
 </template>
 
 <script>
+    import {mapGetters} from "vuex";
+
     export default {
         name: "Register",
 
+        data() {
+            return {
+                first_name: '',
+                last_name: '',
+                email: '',
+                password1: '',
+                password2: '',
+                errorMessage: '',
+            }
+        },
+        methods: {
+
+            register() {
+                if (this.password1 === this.password2) {
+                    errorMessage = "Password confirmation doesn't match Password";
+                    return
+                }
+                this.$store.dispatch('register', {
+                    first_name: this.first_name,
+                    last_name: this.last_name,
+                    email: this.email,
+                    password: this.password1,
+                })
+                    .then(res => {
+                        (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
+                    })
+                    .catch(err => this.errorMessage = err.response.data.message)
+            },
+            // loginGithub() {
+            //     this.$store.dispatch('socialStudentAuth', "google")
+            //         .then((res) => {
+            //             console.log(res);
+            //             if (res.data.url) {
+            //                 console.log(res.data.url);
+            //                 window.location.href = res.data.url
+            //             }
+            //         })
+            //         .catch(err => console.log(err))
+            // },
+            loginGoogle(provider) {
+                this.$store.dispatch('socialStudentAuth', provider)
+                    .then((res) => {
+                        if (res.data.url) {
+                            console.log(res.data.url);
+                            window.location.href = res.data.url
+                        }
+                    })
+                    .catch(err => console.log(err))
+            },
+        },
+        computed: mapGetters(["authLoading"])
     }
 </script>
 
 <style scoped>
+    #bodyRegister {
+    }
 
     .signup-form {
         margin: 0 auto;
@@ -108,7 +177,7 @@
         text-align: center;
     }
 
-    .signup-form form {
+    .signup-form {
         color: #999;
         border-radius: 3px;
         margin-bottom: 15px;
@@ -157,5 +226,13 @@
     .btn-github {
         color: white;
         background: #4267B2;
+    }
+
+    .btn-github a {
+        color: white;
+    }
+
+    .btn-google a {
+        color: white;
     }
 </style>
