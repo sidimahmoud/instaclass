@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 import store from '../store'
 
 import Login from "../components/auth/Login";
-import LoginGuithub from "../components/auth/GoogleCallback";
+import LoginGoogle from "../components/auth/GoogleCallback";
+import LoginFacebook from "../components/auth/FacebookCallback";
 import Register from "../components/auth/Register";
 
 import Home from "../components/HomeCompnent";
@@ -226,7 +227,7 @@ const routes = [
     {
         path: '/authorize/facebook/callback',
         name: 'Facebook',
-        component: LoginGoogle,
+        component: LoginFacebook,
         meta: {
             requiresAuth: false,
             requiresVisitore: true,
