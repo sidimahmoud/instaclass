@@ -13,9 +13,7 @@
         methods: {
             login() {
 
-                this.$store.dispatch('socialStudentAuthCallback', {
-                    code: this.$route.query.code
-                })
+                this.$store.dispatch('socialStudentAuthCallback', {code: this.$route.query.code})
                     .then((res) => {
                         console.log(res);
                         location.reload();

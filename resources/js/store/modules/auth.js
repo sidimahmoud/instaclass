@@ -57,7 +57,7 @@ const actions = {
     async socialStudentAuthCallback({commit}, payload) {
         return new Promise((resolve, reject) => {
             axios.get(`https://instantclass.herokuapp.com/api/authorize/${payload.provider}/callback`, {
-                params: payload
+                params: payload.code
             })
                 .then(resp => {
                     console.log(resp);
