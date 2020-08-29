@@ -78552,7 +78552,7 @@ var actions = {
                   var token = resp.data.token;
                   var user = {
                     'u': resp.data.user.id,
-                    't': resp.data.user.roles[0].name,
+                    't': "student",
                     'first_name': resp.data.user.first_name
                   };
                   localStorage.setItem('token', token);

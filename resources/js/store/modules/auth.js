@@ -64,7 +64,7 @@ const actions = {
                     const token = resp.data.token;
                     const user = {
                         'u': resp.data.user.id,
-                        't': resp.data.user.roles[0].name,
+                        't': "student",
                         'first_name': resp.data.user.first_name
                     };
                     localStorage.setItem('token', token);
