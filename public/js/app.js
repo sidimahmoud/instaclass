@@ -3640,7 +3640,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
@@ -3683,11 +3682,9 @@ __webpack_require__.r(__webpack_exports__);
     // },
     loginGoogle: function loginGoogle(provider) {
       this.$store.dispatch('socialStudentAuth', provider).then(function (res) {
-        console.log("hello");
-
         if (res.data.url) {
-          console.log("url");
-          console.log(res.data.url); // window.location.href = res.data.url
+          console.log(res.data.url);
+          window.location.href = res.data.url;
         }
       })["catch"](function (err) {
         return console.log(err);
@@ -3723,11 +3720,10 @@ __webpack_require__.r(__webpack_exports__);
     login: function login() {
       var _this = this;
 
-      var data = {
+      this.$store.dispatch('socialStudentAuthCallback', {
         code: this.$route.query.code,
         provider: this.provider
-      };
-      this.$store.dispatch('socialStudentAuthCallback', data).then(function (res) {
+      }).then(function (res) {
         console.log(res);
         location.reload();
 
@@ -47493,10 +47489,6 @@ var render = function() {
               _c(
                 "a",
                 {
-                  attrs: {
-                    href:
-                      "https://instantclass.herokuapp.com/api/authorize/google"
-                  },
                   on: {
                     click: function($event) {
                       return _vm.loginGoogle("google")
@@ -78563,6 +78555,7 @@ var actions = {
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/authorize/".concat(payload.provider, "/callback"), {
                   params: payload.code
                 }).then(function (resp) {
+                  console.log(resp);
                   var token = resp.data.token;
                   var user = {
                     'u': resp.data.user.id,

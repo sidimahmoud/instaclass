@@ -12,11 +12,11 @@
         },
         methods: {
             login() {
-                let data = {
+
+                this.$store.dispatch('socialStudentAuthCallback', {
                     code: this.$route.query.code,
                     provider: this.provider
-                };
-                this.$store.dispatch('socialStudentAuthCallback', data)
+                })
                     .then((res) => {
                         console.log(res);
                         location.reload();

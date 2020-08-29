@@ -60,6 +60,7 @@ const actions = {
                 params: payload.code
             })
                 .then(resp => {
+                    console.log(resp);
                     const token = resp.data.token;
                     const user = {
                         'u': resp.data.user.id,
