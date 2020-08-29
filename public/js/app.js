@@ -3717,20 +3717,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     login: function login() {
-      var _this = this;
-
       this.$store.dispatch('socialStudentAuthCallback', {
         code: this.$route.query.code,
         provider: this.provider
       }).then(function (res) {
         location.reload(); // (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
-
-        user = JSON.parse(localStorage.getItem('user')) || null;
-        if (user) user.t === "teacher" ? _this.$router.push({
-          name: 'TeacherProfile'
-        }) : _this.$router.push({
-          name: 'StudentProfile'
-        });
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -78542,6 +78533,8 @@ var actions = {
     }))();
   },
   socialStudentAuthCallback: function socialStudentAuthCallback(_ref3, payload) {
+    var _this = this;
+
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
       var commit;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
@@ -78562,6 +78555,11 @@ var actions = {
                   localStorage.setItem('token', token);
                   localStorage.setItem('user', JSON.stringify(user));
                   axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                  user.t === "teacher" ? _this.$router.push({
+                    name: 'TeacherProfile'
+                  }) : _this.$router.push({
+                    name: 'StudentProfile'
+                  });
                   resolve(resp);
                 })["catch"](function (err) {
                   commit('auth_error');
