@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                     <div class="signup-form bg-white">
-                        <form @click.prevent="register">
+                        <form @submit.prevent="register">
                             <h2>Teacher registration</h2>
                             <p class="hint-text">Create your account. It takes only a few seconds.</p>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert"
