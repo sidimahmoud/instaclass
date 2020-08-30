@@ -3881,7 +3881,7 @@ __webpack_require__.r(__webpack_exports__);
     register: function register() {
       var _this = this;
 
-      if (this.password1 === this.password2) {
+      if (this.password1 != this.password2) {
         this.errorMessage = "Password confirmation doesn't match Password";
         return;
       }
@@ -3898,7 +3898,8 @@ __webpack_require__.r(__webpack_exports__);
           name: 'StudentProfile'
         });
       })["catch"](function (err) {
-        return _this.errorMessage = err.response.data.message;
+        console.log(err.response.data.errors[Object.keys(err.response.data.errors)[0][0]]);
+        _this.errorMessage = err.response.data.errors[Object.keys(err.response.data.errors)[0]];
       });
     },
     // loginGithub() {
@@ -5719,19 +5720,34 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Register",
-  data: function data() {
-    return {
-      first_name: '',
-      last_name: '',
-      email: '',
-      password1: '',
-      password2: '',
-      errorMessage: ''
-    };
+  register: function register() {
+    var _this = this;
+
+    if (this.password1 != this.password2) {
+      this.errorMessage = "Password confirmation doesn't match Password";
+      return;
+    }
+
+    this.$store.dispatch('register', {
+      first_name: this.first_name,
+      last_name: this.last_name,
+      email: this.email,
+      password: this.password1,
+      type: "teacher"
+    }).then(function (res) {
+      res.data.user.roles[0].name === "teacher" ? _this.$router.push({
+        name: 'TeacherProfile'
+      }) : _this.$router.push({
+        name: 'StudentProfile'
+      });
+    })["catch"](function (err) {
+      console.log(err.response.data.errors[Object.keys(err.response.data.errors)[0][0]]);
+      _this.errorMessage = err.response.data.errors[Object.keys(err.response.data.errors)[0]];
+    });
   },
   methods: {
     register: function register() {
-      var _this = this;
+      var _this2 = this;
 
       if (this.password1 === this.password2) {
         errorMessage = "Password confirmation doesn't match Password";
@@ -5745,13 +5761,13 @@ __webpack_require__.r(__webpack_exports__);
         password: this.password1,
         type: "teacher"
       }).then(function (res) {
-        res.data.user.roles[0].name === "teacher" ? _this.$router.push({
+        res.data.user.roles[0].name === "teacher" ? _this2.$router.push({
           name: 'TeacherProfile'
-        }) : _this.$router.push({
+        }) : _this2.$router.push({
           name: 'StudentProfile'
         });
       })["catch"](function (err) {
-        return _this.errorMessage = err.response.data.message;
+        return _this2.errorMessage = err.response.data.message;
       });
     },
     // loginGithub() {
@@ -47827,9 +47843,8 @@ var render = function() {
                         attrs: { role: "alert" }
                       },
                       [
-                        _c("strong", [_vm._v("Error!")]),
                         _vm._v(
-                          " " +
+                          "\n                            " +
                             _vm._s(_vm.errorMessage) +
                             "\n                            "
                         ),
@@ -51673,9 +51688,8 @@ var render = function() {
                         attrs: { role: "alert" }
                       },
                       [
-                        _c("strong", [_vm._v("Error!")]),
                         _vm._v(
-                          " " +
+                          "\n                            " +
                             _vm._s(_vm.errorMessage) +
                             "\n                            "
                         ),
