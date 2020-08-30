@@ -3882,7 +3882,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (this.password1 === this.password2) {
-        errorMessage = "Password confirmation doesn't match Password";
+        this.errorMessage = "Password confirmation doesn't match Password";
         return;
       }
 
@@ -79215,7 +79215,7 @@ var actions = {
               return _context5.abrupt("return", new Promise(function (resolve, reject) {
                 commit('auth_request');
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  url: 'https://instantclass.herokuapp.com/api/register/',
+                  url: 'https://instantclass.herokuapp.com/api/register',
                   data: user,
                   method: 'POST'
                 }).then(function (resp) {

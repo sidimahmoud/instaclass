@@ -107,7 +107,7 @@ const actions = {
     async register({commit}, user) {
         return new Promise((resolve, reject) => {
             commit('auth_request');
-            axios({url: 'https://instantclass.herokuapp.com/api/register/', data: user, method: 'POST'})
+            axios({url: 'https://instantclass.herokuapp.com/api/register', data: user, method: 'POST'})
                 .then(resp => {
                     const token = resp.data.token;
                     const user = {

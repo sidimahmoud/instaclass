@@ -97,7 +97,7 @@
 
             register() {
                 if (this.password1 === this.password2) {
-                    errorMessage = "Password confirmation doesn't match Password";
+                    this.errorMessage = "Password confirmation doesn't match Password";
                     return
                 }
                 this.$store.dispatch('register', {
