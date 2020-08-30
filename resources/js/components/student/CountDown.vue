@@ -1,8 +1,38 @@
 <template>
-    <div>
-        <h1><strong>Countdown</strong></h1>
-    </div>
+    <div class="text-center font-weight-bolder">
+        <div class="row align-items-center justify-content-center" style="height: 100px">
+            <div class="col-4">
+                <div class="count">
+                    <h3>
+                        00 <br>
+                        Hours
+                    </h3>
 
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="count">
+                    <h3>
+                        00 <br>
+                        Minutes
+                    </h3>
+
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="count">
+                    <h3>
+                        00 <br>
+                        Seconds
+                    </h3>
+
+                </div>
+            </div>
+            <div class="col-12">
+                <h3>Timer enabled when you subscribe to a course</h3>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -28,4 +58,12 @@
         // }
     }
 </script>
+
+<style scoped>
+    .count {
+        background: #0e0938;
+        border-radius: 2%;
+        color: #fff;
+    }
+</style>
 

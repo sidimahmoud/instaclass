@@ -7,7 +7,6 @@ const state = {
 
 };
 
-
 const getters = {
     isLoggedIn: state => state.token,
     loggedInUser: state => state.user,

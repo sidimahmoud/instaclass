@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    CountDown
+                    <Count-down></Count-down>
                 </div>
             </div>
             <div class="row my-4">
