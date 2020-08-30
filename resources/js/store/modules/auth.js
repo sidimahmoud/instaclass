@@ -124,8 +124,6 @@ const actions = {
                 })
                 .catch(err => {
                     console.log(err.response);
-                    err.response.status===500?resolve(err):reject(err);
-
                     commit('auth_error', err);
                     localStorage.removeItem('token');
                     localStorage.removeItem('user');

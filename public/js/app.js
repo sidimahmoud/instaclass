@@ -3604,28 +3604,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "GoogleCallback",
-  methods: {
-    login: function login() {
-      var _this = this;
-
-      this.$store.dispatch('googleCallback', {
-        code: this.$route.query.code
-      }).then(function (res) {
-        location.reload(); // (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
-
-        _this.$router.push({
-          name: 'StudentProfile'
-        });
-      })["catch"](function (err) {
-        return console.log(err);
-      });
-    }
-  },
-  created: function created() {
-    // this.loginGithub()
-    this.login();
-  }
+  name: "GoogleCallback"
 });
 
 /***/ }),
@@ -47592,9 +47571,11 @@ var render = function() {
         )
       ]),
       _vm._v("\n\n    If you need assistance, please "),
-      _c("router-link", { attrs: { to: { name: "Contact" } } }, [
-        _vm._v("\n    contact us.\n\n")
-      ])
+      _c(
+        "router-link",
+        { staticClass: "text-primary", attrs: { to: { name: "Contact" } } },
+        [_vm._v("\n    contact us.\n\n")]
+      )
     ],
     1
   )
@@ -79405,7 +79386,6 @@ var actions = {
                   resolve(resp);
                 })["catch"](function (err) {
                   console.log(err.response);
-                  err.response.status === 500 ? resolve(err) : reject(err);
                   commit('auth_error', err);
                   localStorage.removeItem('token');
                   localStorage.removeItem('user');
