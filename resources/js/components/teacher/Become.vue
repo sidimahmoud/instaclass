@@ -83,9 +83,18 @@
 
     export default {
         name: "Register",
-        errorMessage: "",
+        data() {
+            return {
+                first_name: '',
+                last_name: '',
+                email: '',
+                password1: '',
+                password2: '',
+                errorMessage: '',
+            }
+        },
         register() {
-            if (this.password1 != this.password2) {
+            if (this.password1 !== this.password2) {
                 this.errorMessage = "Password confirmation doesn't match Password";
                 return
             }
