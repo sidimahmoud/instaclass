@@ -83,7 +83,7 @@
 
     export default {
         name: "Register",
-
+        errorMessage: "",
         register() {
             if (this.password1 != this.password2) {
                 this.errorMessage = "Password confirmation doesn't match Password";
