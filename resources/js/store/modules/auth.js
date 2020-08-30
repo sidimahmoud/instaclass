@@ -109,6 +109,7 @@ const actions = {
             commit('auth_request');
             axios({url: 'https://instantclass.herokuapp.com/api/register', data: user, method: 'POST'})
                 .then(resp => {
+                    console.log(resp);
                     const token = resp.data.token;
                     const user = {
                         'u': resp.data.user.id,
@@ -122,6 +123,9 @@ const actions = {
                     resolve(resp);
                 })
                 .catch(err => {
+                    console.log(err.response);
+                    err.response.status===500?resolve(err):reject(err);
+
                     commit('auth_error', err);
                     localStorage.removeItem('token');
                     localStorage.removeItem('user');

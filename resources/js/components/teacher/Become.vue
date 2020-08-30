@@ -93,31 +93,11 @@
                 errorMessage: '',
             }
         },
-        register() {
-            if (this.password1 !== this.password2) {
-                this.errorMessage = "Password confirmation doesn't match Password";
-                return
-            }
-            this.$store.dispatch('register', {
-                first_name: this.first_name,
-                last_name: this.last_name,
-                email: this.email,
-                password: this.password1,
-                type: "teacher",
-            })
-                .then(res => {
-                    (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
-                })
-                .catch(err => {
-                    console.log(err.response.data.errors[Object.keys(err.response.data.errors)[0][0]]);
-                    this.errorMessage = err.response.data.errors[Object.keys(err.response.data.errors)[0]]
-                })
-        },
         methods: {
 
             register() {
-                if (this.password1 === this.password2) {
-                    errorMessage = "Password confirmation doesn't match Password";
+                if (this.password1 != this.password2) {
+                    this.errorMessage = "Password confirmation doesn't match Password";
                     return
                 }
                 this.$store.dispatch('register', {
@@ -125,12 +105,14 @@
                     last_name: this.last_name,
                     email: this.email,
                     password: this.password1,
-                    type: "teacher",
                 })
                     .then(res => {
                         (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
                     })
-                    .catch(err => this.errorMessage = err.response.data.message)
+                    .catch(err => {
+                        console.log(err.response.data.errors[Object.keys(err.response.data.errors)[0][0]]);
+                        this.errorMessage = err.response.data.errors[Object.keys(err.response.data.errors)[0]]
+                    })
             },
             // loginGithub() {
             //     this.$store.dispatch('socialStudentAuth', "google")

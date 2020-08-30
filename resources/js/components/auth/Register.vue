@@ -96,7 +96,7 @@
         methods: {
 
             register() {
-                if (this.password1 != this.password2) {
+                if (this.password1 !== this.password2) {
                     this.errorMessage = "Password confirmation doesn't match Password";
                     return
                 }
@@ -107,7 +107,9 @@
                     password: this.password1,
                 })
                     .then(res => {
-                        (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
+                        console.log(res)
+                        this.$router.push({name: 'Email'})
+                        // (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
                     })
                     .catch(err => {
                         console.log(err.response.data.errors[Object.keys(err.response.data.errors)[0][0]]);

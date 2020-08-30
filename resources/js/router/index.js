@@ -6,6 +6,7 @@ import Login from "../components/auth/Login";
 import LoginGoogle from "../components/auth/GoogleCallback";
 import LoginFacebook from "../components/auth/FacebookCallback";
 import Register from "../components/auth/Register";
+import EmailConfirmation from "../components/auth/EmailConfirmation";
 
 import Home from "../components/HomeCompnent";
 import About from "../components/About";
@@ -242,6 +243,16 @@ const routes = [
             requiresAuth: false,
             requiresVisitore: true,
             title: 'Register'
+        }
+    },
+    {
+        path: '/auth/verify',
+        name: 'Email',
+        component: EmailConfirmation,
+        meta: {
+            requiresAuth: false,
+            requiresVisitore: false,
+            title: 'Email verification'
         }
     },
 
