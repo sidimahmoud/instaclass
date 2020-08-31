@@ -136,7 +136,7 @@
             </div>
             <div class="text-right">
                 <p class="btn btn-primary my-3" @click="addSection">
-                   <i class="fa fa-plus"></i> add section</p>
+                   <i class="fa fa-plus"></i> Ajouter une séance</p>
             </div>
 
             <button class="btn btn-primary btn-block" type="submit">Submit</button>

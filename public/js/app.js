@@ -6426,6 +6426,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6448,7 +6456,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     }
   }),
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["userProfile", "userCourses", "allTeacherDetails"]),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["profileLoading", "userProfile", "userCourses", "allTeacherDetails"]),
   created: function created() {
     this.fetchProfile();
     this.fetchUserCourses();
@@ -52634,7 +52642,10 @@ var render = function() {
               staticClass: "btn btn-primary my-3",
               on: { click: _vm.addSection }
             },
-            [_c("i", { staticClass: "fa fa-plus" }), _vm._v(" add section")]
+            [
+              _c("i", { staticClass: "fa fa-plus" }),
+              _vm._v(" Ajouter une séance")
+            ]
           )
         ]),
         _vm._v(" "),
@@ -53019,388 +53030,461 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "span",
-      { staticClass: "float-right font-weight-bold text-white mr-2" },
-      [_vm._v("Bonjour " + _vm._s(_vm.userProfile.first_name))]
-    ),
+    _vm.profileLoading
+      ? _c("div", { staticClass: "text-center text-primary" }, [_vm._m(0)])
+      : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "jumbotron" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12" }, [
+    !_vm.profileLoading
+      ? _c("div", [
           _c(
-            "button",
-            {
-              staticClass: "btn btn-danger float-right",
-              on: { click: _vm.logout }
-            },
-            [_vm._v("\n                    Logout\n                ")]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-white text-center" }, [
-        _c("img", {
-          staticClass: "rounded-circle",
-          attrs: { src: _vm.userProfile.image, width: "80px", alt: "Avatar" }
-        }),
-        _vm._v(" "),
-        _c("h4", [
-          _vm._v(
-            _vm._s(_vm.userProfile.first_name) +
-              " " +
-              _vm._s(_vm.userProfile.last_name)
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.userProfile.headline))])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "d-flex align-items-center justify-content-center text-white"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "p-4 border border-white text-center",
-              staticStyle: { height: "100px", width: "200px" }
-            },
-            [
-              _c("span", { staticClass: "btn btn-danger" }, [
-                _vm._v(
-                  _vm._s(
-                    _vm.allTeacherDetails.students[0].count > 0
-                      ? _vm.allTeacherDetails.students[0].count
-                      : "0"
-                  ) + " "
-                )
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" Course Enrollments\n            ")
-            ]
+            "span",
+            { staticClass: "float-right font-weight-bold text-white mr-2" },
+            [_vm._v("Bonjour " + _vm._s(_vm.userProfile.first_name))]
           ),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "p-4 border border-white text-center",
-              staticStyle: { height: "100px", width: "150px" }
-            },
-            [
-              _c("span", { staticClass: "btn btn-danger" }, [
+          _c("div", { staticClass: "jumbotron" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-12" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger float-right",
+                    on: { click: _vm.logout }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Logout\n                    "
+                    )
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-white text-center" }, [
+              _c("img", {
+                staticClass: "rounded-circle",
+                attrs: {
+                  src: _vm.userProfile.image,
+                  width: "80px",
+                  alt: "Avatar"
+                }
+              }),
+              _vm._v(" "),
+              _c("h4", [
                 _vm._v(
-                  _vm._s(
-                    _vm.userCourses.length > 0 ? _vm.userCourses.length : "0"
-                  ) + " "
+                  _vm._s(_vm.userProfile.first_name) +
+                    " " +
+                    _vm._s(_vm.userProfile.last_name)
                 )
               ]),
               _vm._v(" "),
-              _c("br"),
-              _vm._v(" Courses\n            ")
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "p-4 border border-white text-center",
-              staticStyle: { height: "100px", width: "200px" }
-            },
-            [
-              _c("span", { staticClass: "btn btn-danger" }, [
-                _vm._v(
-                  _vm._s(
-                    _vm.allTeacherDetails.ratings.length > 0
-                      ? _vm.allTeacherDetails.ratings.length
-                      : "0"
-                  ) + " "
-                )
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" Reviews\n            ")
-            ]
-          )
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "container" }, [
-      _c(
-        "div",
-        { staticClass: "accordion", attrs: { id: "accordionExample" } },
-        [
-          _c("div", { staticClass: "card" }, [
-            _vm._m(0),
+              _c("p", [_vm._v(_vm._s(_vm.userProfile.headline))])
+            ]),
             _vm._v(" "),
             _c(
               "div",
               {
-                staticClass: "collapse",
-                attrs: {
-                  id: "collapseOne",
-                  "aria-labelledby": "headingOne",
-                  "data-parent": "#accordionExample"
-                }
-              },
-              [_c("div", { staticClass: "card-body" }, [_c("new-course")], 1)]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "collapse",
-                attrs: {
-                  id: "collapseSection",
-                  "aria-labelledby": "headingSection",
-                  "data-parent": "#accordionExample"
-                }
-              },
-              [_c("div", { staticClass: "card-body" }, [_c("new-section")], 1)]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card" }, [
-            _vm._m(2),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "collapse",
-                attrs: {
-                  id: "collapsePayment",
-                  "aria-labelledby": "payments",
-                  "data-parent": "#accordionExample"
-                }
-              },
-              [_c("div", { staticClass: "card-body" }, [_c("payments")], 1)]
-            )
-          ]),
-          _vm._v(" "),
-          _vm._m(3),
-          _vm._v(" "),
-          _c("div", { staticClass: "card" }, [
-            _vm._m(4),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "collapse",
-                attrs: {
-                  id: "collapseEval",
-                  "aria-labelledby": "evaluation",
-                  "data-parent": "#accordionExample"
-                }
+                staticClass:
+                  "d-flex align-items-center justify-content-center text-white"
               },
               [
-                _c("div", { staticClass: "card-body" }, [
-                  _vm.allTeacherDetails.ratings.length === 0
-                    ? _c("div", { staticClass: "text-center" }, [
-                        _c("h3", [_vm._v("No reviews")])
-                      ])
-                    : _c(
-                        "div",
-                        _vm._l(_vm.allTeacherDetails.ratings, function(r) {
-                          return _c("review", {
-                            key: r.id,
-                            attrs: { rating: r }
-                          })
-                        }),
-                        1
+                _c(
+                  "div",
+                  {
+                    staticClass: "p-4 border border-white text-center",
+                    staticStyle: { height: "100px", width: "200px" }
+                  },
+                  [
+                    _c("span", { staticClass: "btn btn-danger" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.allTeacherDetails.students[0].count > 0
+                            ? _vm.allTeacherDetails.students[0].count
+                            : "0"
+                        ) + " "
                       )
-                ])
+                    ]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" Course Enrollments\n                ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "p-4 border border-white text-center",
+                    staticStyle: { height: "100px", width: "150px" }
+                  },
+                  [
+                    _c("span", { staticClass: "btn btn-danger" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.userCourses.length > 0
+                            ? _vm.userCourses.length
+                            : "0"
+                        ) + " "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" Courses\n                ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "p-4 border border-white text-center",
+                    staticStyle: { height: "100px", width: "200px" }
+                  },
+                  [
+                    _c("span", { staticClass: "btn btn-danger" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.allTeacherDetails.ratings.length > 0
+                            ? _vm.allTeacherDetails.ratings.length
+                            : "0"
+                        ) + " "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" Reviews\n                ")
+                  ]
+                )
               ]
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card" }, [
-            _vm._m(5),
-            _vm._v(" "),
+          _c("div", { staticClass: "container" }, [
             _c(
               "div",
-              {
-                staticClass: "collapse",
-                attrs: {
-                  id: "collapseThree",
-                  "aria-labelledby": "headingThree",
-                  "data-parent": "#accordionExample"
-                }
-              },
+              { staticClass: "accordion", attrs: { id: "accordionExample" } },
               [
-                _c("div", { staticClass: "card-body" }, [
-                  _c("div", { staticClass: "container" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-md-7 bg-white shadow" }, [
-                        _vm._m(6),
-                        _vm._v(" "),
-                        _c("hr"),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "tab-content my-5" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "tab-pane fade show active",
-                              attrs: { id: "about" }
-                            },
-                            [
-                              _c("h3", { staticClass: "font-weight-bolder" }, [
-                                _vm._v("About Me")
-                              ]),
-                              _vm._v(" "),
-                              _c("p", [
-                                _vm._v(
-                                  "\n                                                " +
-                                    _vm._s(_vm.userProfile.about) +
-                                    "\n                                            "
-                                )
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "tab-pane fade show",
-                              attrs: { id: "courses" }
-                            },
-                            [
-                              _c(
-                                "ul",
-                                { staticClass: "list-unstyled" },
-                                _vm._l(_vm.userCourses, function(course) {
-                                  return _c(
-                                    "li",
+                _c("div", { staticClass: "card" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "collapse",
+                      attrs: {
+                        id: "collapseOne",
+                        "aria-labelledby": "headingOne",
+                        "data-parent": "#accordionExample"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "card-body" },
+                        [_c("new-course")],
+                        1
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card" }, [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "collapse",
+                      attrs: {
+                        id: "collapseSection",
+                        "aria-labelledby": "headingSection",
+                        "data-parent": "#accordionExample"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "card-body" },
+                        [_c("new-section")],
+                        1
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card" }, [
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "collapse",
+                      attrs: {
+                        id: "collapsePayment",
+                        "aria-labelledby": "payments",
+                        "data-parent": "#accordionExample"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "card-body" },
+                        [_c("payments")],
+                        1
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(4),
+                _vm._v(" "),
+                _c("div", { staticClass: "card" }, [
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "collapse",
+                      attrs: {
+                        id: "collapseEval",
+                        "aria-labelledby": "evaluation",
+                        "data-parent": "#accordionExample"
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "card-body" }, [
+                        _vm.allTeacherDetails.ratings.length === 0
+                          ? _c("div", { staticClass: "text-center" }, [
+                              _c("h3", [_vm._v("No reviews")])
+                            ])
+                          : _c(
+                              "div",
+                              _vm._l(_vm.allTeacherDetails.ratings, function(
+                                r
+                              ) {
+                                return _c("review", {
+                                  key: r.id,
+                                  attrs: { rating: r }
+                                })
+                              }),
+                              1
+                            )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card" }, [
+                  _vm._m(6),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "collapse",
+                      attrs: {
+                        id: "collapseThree",
+                        "aria-labelledby": "headingThree",
+                        "data-parent": "#accordionExample"
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "card-body" }, [
+                        _c("div", { staticClass: "container" }, [
+                          _c("div", { staticClass: "row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "col-md-7 bg-white shadow" },
+                              [
+                                _vm._m(7),
+                                _vm._v(" "),
+                                _c("hr"),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "tab-content my-5" }, [
+                                  _c(
+                                    "div",
                                     {
-                                      key: course.id,
-                                      staticClass:
-                                        "media shadow-sm border rounded p-2 mt-4"
+                                      staticClass: "tab-pane fade show active",
+                                      attrs: { id: "about" }
                                     },
                                     [
                                       _c(
-                                        "div",
-                                        { staticClass: "media-body" },
-                                        [
-                                          _c(
-                                            "router-link",
+                                        "h3",
+                                        { staticClass: "font-weight-bolder" },
+                                        [_vm._v("About Me")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _vm._v(
+                                          "\n                                                    " +
+                                            _vm._s(_vm.userProfile.about) +
+                                            "\n                                                "
+                                        )
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "tab-pane fade show",
+                                      attrs: { id: "courses" }
+                                    },
+                                    [
+                                      _c(
+                                        "ul",
+                                        { staticClass: "list-unstyled" },
+                                        _vm._l(_vm.userCourses, function(
+                                          course
+                                        ) {
+                                          return _c(
+                                            "li",
                                             {
-                                              attrs: {
-                                                to: {
-                                                  name: "Detail",
-                                                  params: { slug: course.slug }
-                                                }
-                                              }
+                                              key: course.id,
+                                              staticClass:
+                                                "media shadow-sm border rounded p-2 mt-4"
                                             },
                                             [
                                               _c(
-                                                "h5",
-                                                {
-                                                  staticClass:
-                                                    "mt-0 mb-1 text-danger font-weight-bolder"
-                                                },
+                                                "div",
+                                                { staticClass: "media-body" },
                                                 [
+                                                  _c(
+                                                    "router-link",
+                                                    {
+                                                      attrs: {
+                                                        to: {
+                                                          name: "Detail",
+                                                          params: {
+                                                            slug: course.slug
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "h5",
+                                                        {
+                                                          staticClass:
+                                                            "mt-0 mb-1 text-danger font-weight-bolder"
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                                    " +
+                                                              _vm._s(
+                                                                course.name
+                                                              )
+                                                          )
+                                                        ]
+                                                      )
+                                                    ]
+                                                  ),
                                                   _vm._v(
-                                                    "\n                                                                " +
-                                                      _vm._s(course.name)
-                                                  )
-                                                ]
+                                                    "\n                                                            " +
+                                                      _vm._s(
+                                                        course.short_description
+                                                      ) +
+                                                      "\n                                                            "
+                                                  ),
+                                                  _vm._m(8, true)
+                                                ],
+                                                1
                                               )
                                             ]
-                                          ),
-                                          _vm._v(
-                                            "\n                                                        " +
-                                              _vm._s(course.short_description) +
-                                              "\n                                                        "
-                                          ),
-                                          _vm._m(7, true)
-                                        ],
-                                        1
+                                          )
+                                        }),
+                                        0
                                       )
                                     ]
                                   )
-                                }),
-                                0
-                              )
-                            ]
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-1" }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4 text-center " }, [
-                        _c("div", { staticClass: "card bg-primary" }, [
-                          _c(
-                            "div",
-                            { staticClass: "card-body text-center text-white" },
-                            [
-                              _c("img", {
-                                staticClass: "rounded-circle",
-                                attrs: {
-                                  src: _vm.userProfile.image,
-                                  alt: "Avatar",
-                                  width: "60px"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "h3",
-                                {
-                                  staticClass: "card-title font-weight-bolder"
-                                },
-                                [
-                                  _vm._v(
-                                    _vm._s(_vm.userProfile.first_name) +
-                                      "\n                                                " +
-                                      _vm._s(_vm.userProfile.last_name)
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-md-1" }),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-4 text-center " },
+                              [
+                                _c("div", { staticClass: "card bg-primary" }, [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "card-body text-center text-white"
+                                    },
+                                    [
+                                      _c("img", {
+                                        staticClass: "rounded-circle",
+                                        attrs: {
+                                          src: _vm.userProfile.image,
+                                          alt: "Avatar",
+                                          width: "60px"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "h3",
+                                        {
+                                          staticClass:
+                                            "card-title font-weight-bolder"
+                                        },
+                                        [
+                                          _vm._v(
+                                            _vm._s(_vm.userProfile.first_name) +
+                                              "\n                                                    " +
+                                              _vm._s(_vm.userProfile.last_name)
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("p", { staticClass: "card-text" }, [
+                                        _vm._v(_vm._s(_vm.userProfile.headline))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "router-link",
+                                        {
+                                          staticClass: "btn btn-danger",
+                                          attrs: {
+                                            to: { name: "EditProfile" },
+                                            tag: "a"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Edit Profile\n                                                "
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
                                   )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "card-text" }, [
-                                _vm._v(_vm._s(_vm.userProfile.headline))
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "btn btn-danger",
-                                  attrs: {
-                                    to: { name: "EditProfile" },
-                                    tag: "a"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                                Edit Profile\n                                            "
-                                  )
-                                ]
-                              )
-                            ],
-                            1
-                          )
+                                ])
+                              ]
+                            )
+                          ])
                         ])
                       ])
-                    ])
-                  ])
+                    ]
+                  )
                 ])
               ]
             )
           ])
-        ]
-      )
-    ])
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border", attrs: { role: "status" } },
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -53424,7 +53508,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                            New Course\n                        "
+                "\n                                New Course\n                            "
               )
             ]
           )
@@ -53455,7 +53539,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                            New Course Section\n                        "
+                "\n                                New Course Section\n                            "
               )
             ]
           )
@@ -53486,7 +53570,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                            Payments\n                        "
+                "\n                                Payments\n                            "
               )
             ]
           )
@@ -53515,7 +53599,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                            Receipts\n                        "
+                "\n                                Receipts\n                            "
               )
             ]
           )
@@ -53535,7 +53619,7 @@ var staticRenderFns = [
         [
           _c("div", { staticClass: "card-body" }, [
             _vm._v(
-              "\n                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad\n                        squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa\n                        nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid\n                        single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft\n                        beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice\n                        lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you\n                        probably haven't heard of them accusamus labore sustainable VHS.\n                    "
+              "\n                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad\n                            squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa\n                            nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid\n                            single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft\n                            beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice\n                            lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you\n                            probably haven't heard of them accusamus labore sustainable VHS.\n                        "
             )
           ])
         ]
@@ -53565,7 +53649,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                            Reviews\n                        "
+                "\n                                Reviews\n                            "
               )
             ]
           )
@@ -53596,7 +53680,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                            Personal informations\n                        "
+                "\n                                Personal informations\n                            "
               )
             ]
           )
@@ -53624,7 +53708,7 @@ var staticRenderFns = [
           staticClass: "nav-item nav-link",
           attrs: { href: "#courses", "data-toggle": "tab" }
         },
-        [_vm._v("My\n                                            Courses")]
+        [_vm._v("My\n                                                Courses")]
       )
     ])
   },
@@ -53641,7 +53725,7 @@ var staticRenderFns = [
         },
         [
           _vm._v(
-            "\n                                                                Enrollments "
+            "\n                                                                    Enrollments "
           ),
           _c("span", { staticClass: "badge badge-light" }, [_vm._v("4")])
         ]
@@ -53655,7 +53739,7 @@ var staticRenderFns = [
         },
         [
           _vm._v(
-            "\n                                                                All views "
+            "\n                                                                    All views "
           ),
           _c("span", { staticClass: "badge badge-light" }, [_vm._v("410")])
         ]
@@ -80276,7 +80360,8 @@ var state = {
   enrollments: '',
   TeacherCourses: '',
   teacherDetails: '',
-  teacherPayments: ''
+  teacherPayments: '',
+  profileLoading: false
 };
 var getters = {
   userProfile: function userProfile(state) {
@@ -80296,6 +80381,9 @@ var getters = {
   },
   allTeacherPayments: function allTeacherPayments(state) {
     return state.teacherPayments;
+  },
+  profileLoading: function profileLoading(state) {
+    return state.profileLoading;
   }
 };
 var actions = {
@@ -80307,15 +80395,17 @@ var actions = {
           switch (_context.prev = _context.next) {
             case 0:
               commit = _ref.commit;
+              commit('setProfileLoading', true);
               header();
-              _context.next = 4;
+              _context.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/user');
 
-            case 4:
+            case 5:
               response = _context.sent;
               commit('setProfile', response.data[0]);
+              commit('setProfileLoading', false);
 
-            case 6:
+            case 8:
             case "end":
               return _context.stop();
           }
@@ -80462,6 +80552,9 @@ var mutations = {
   },
   setTeacherPayments: function setTeacherPayments(state, payload) {
     return state.teacherPayments = payload;
+  },
+  setProfileLoading: function setProfileLoading(state, val) {
+    return state.profileLoading = val;
   }
 };
 
