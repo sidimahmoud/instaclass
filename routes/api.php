@@ -27,8 +27,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/user/courses', 'Teacher\CoursesController@teacherCourses');
         Route::get('/teacher/details', 'Admin\UsersController@teacherDetails');
         Route::get('/teacher/payments', 'Admin\UsersController@teacherPayments');
-        Route::resource('/courses', 'CourseController');
-        Route::resource('/courses/sections', 'CourseFileController');
+        Route::post('/courses', 'CourseController@store');
+        Route::post('/courses/sections', 'CourseFileController@store');
     });
 });
 
