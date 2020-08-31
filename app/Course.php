@@ -30,7 +30,7 @@ class Course extends Model
         return $this->hasMany('App\Rating');
     }
 
-    public function files()
+    public function sections()
     {
         return $this->hasMany('App\CourseFile');
     }

@@ -6005,14 +6005,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewCourse",
   data: function data() {
     return {
       course: {
-        sections: 1,
         section_1: '',
         name: '',
         short_description: '',
@@ -6020,6 +6018,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         image: '',
         slug: '',
         category_id: 1,
+        sub_category: '',
         language: '',
         duration: '',
         status: '1',
@@ -52284,41 +52283,35 @@ var render = function() {
                 _vm._v("Sub category")
               ]),
               _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.course.category_id,
-                      expression: "course.category_id"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { id: "subCateg", required: "" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.course,
-                        "category_id",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
+              _c("select", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.course.sub_category,
+                    expression: "course.sub_category"
                   }
-                },
-                [_c("option", [_vm._v("select Sub category")])]
-              )
+                ],
+                staticClass: "form-control",
+                attrs: { id: "subCateg", required: "" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.course,
+                      "sub_category",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              })
             ])
           ]),
           _vm._v(" "),

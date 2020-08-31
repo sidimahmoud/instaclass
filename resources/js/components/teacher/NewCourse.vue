@@ -15,8 +15,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="subCateg">Sub category</label>
-                        <select class="form-control" id="subCateg" v-model="course.category_id" required>
-                            <option>select Sub category</option>
+                        <select class="form-control" id="subCateg" v-model="course.sub_category" required>
                         </select>
                     </div>
                 </div>
@@ -153,7 +152,6 @@
         data() {
             return {
                 course: {
-                    sections: 1,
                     section_1: '',
                     name: '',
                     short_description: '',
@@ -161,6 +159,7 @@
                     image: '',
                     slug: '',
                     category_id: 1,
+                    sub_category: '',
                     language: '',
                     duration: '',
                     status: '1',
