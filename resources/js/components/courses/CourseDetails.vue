@@ -67,10 +67,10 @@
                     <div class="col-md-3">Language : English</div>
                     <div class="col-md-3">Price: $10/session</div>
                 </div>
-                <div class="row justify-content-around align-items-center shadow-sm">
+                <div class="row justify-content-around align-items-center shadow-sm" v-for="section in course.sections" :key="section.id">
                     <div class="col-md-9">
-                        <h4>Section1.title</h4>
-                        <p>Section1.description</p>
+                        <h4>Section.title</h4>
+                        <p>{{section.description}}</p>
                         <p>
                             Availabilities : session1.startDate - Duration: session1.duration
                         </p>

@@ -48940,190 +48940,208 @@ var render = function() {
       ? _c("div", [
           _c("div", { staticClass: "jumbotron" }),
           _vm._v(" "),
-          _c("div", { staticClass: "container bg-white" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "row justify-content-around align-items-center border-bottom border-primary"
-              },
-              [
-                _c("div", { staticClass: "col-md-2 text-center" }, [
-                  _c("img", {
-                    attrs: {
-                      src: _vm.course.user.image,
-                      width: "80px",
-                      alt: "Avatar"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fa fa-star text-warning" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fa fa-star text-warning" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fa fa-star text-warning" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fa fa-star text-warning" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fa fa-star text-warning" })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-3" }, [
-                  _c("div", { staticClass: "font-weight-bolder" }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.course.user.first_name) +
-                        "\n                    "
-                    )
+          _c(
+            "div",
+            { staticClass: "container bg-white" },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "row justify-content-around align-items-center border-bottom border-primary"
+                },
+                [
+                  _c("div", { staticClass: "col-md-2 text-center" }, [
+                    _c("img", {
+                      attrs: {
+                        src: _vm.course.user.image,
+                        width: "80px",
+                        alt: "Avatar"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("i", { staticClass: "fa fa-star text-warning" }),
+                    _vm._v(" "),
+                    _c("i", { staticClass: "fa fa-star text-warning" }),
+                    _vm._v(" "),
+                    _c("i", { staticClass: "fa fa-star text-warning" }),
+                    _vm._v(" "),
+                    _c("i", { staticClass: "fa fa-star text-warning" }),
+                    _vm._v(" "),
+                    _c("i", { staticClass: "fa fa-star text-warning" })
                   ]),
                   _vm._v(" "),
-                  _c("div", [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.course.user.headline) +
-                        "\n                    "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-3" }, [
-                  _c("strong", [_vm._v(_vm._s(_vm.course.name))])
-                ]),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-md-2" },
-                  [
-                    !_vm.enrolled
-                      ? _c(
-                          "router-link",
-                          {
-                            staticClass: "btn btn-primary my-3",
-                            attrs: {
-                              to: {
-                                name: "Checkout",
-                                params: {
-                                  id: _vm.course.id,
-                                  name: _vm.course.name,
-                                  price: _vm.course.price
-                                }
-                              },
-                              tag: "a"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                        S'inscrire à tout les séances\n                    "
-                            )
-                          ]
-                        )
-                      : _vm._e()
-                  ],
-                  1
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "row my-3" }, [
-              _vm.course.category
-                ? _c(
-                    "div",
-                    { staticClass: "col-md-3" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          attrs: {
-                            to: {
-                              name: "CategCourses",
-                              params: { id: _vm.course.category.id }
-                            },
-                            tag: "a"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(_vm.course.category.name) +
-                              "\n                    "
-                          )
-                        ]
-                      ),
+                  _c("div", { staticClass: "col-md-3" }, [
+                    _c("div", { staticClass: "font-weight-bolder" }, [
                       _vm._v(
-                        "\n                    > Sub-categor\n                "
+                        "\n                        " +
+                          _vm._s(_vm.course.user.first_name) +
+                          "\n                    "
                       )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.course.user.headline) +
+                          "\n                    "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3" }, [
+                    _c("strong", [_vm._v(_vm._s(_vm.course.name))])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-md-2" },
+                    [
+                      !_vm.enrolled
+                        ? _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-primary my-3",
+                              attrs: {
+                                to: {
+                                  name: "Checkout",
+                                  params: {
+                                    id: _vm.course.id,
+                                    name: _vm.course.name,
+                                    price: _vm.course.price
+                                  }
+                                },
+                                tag: "a"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        S'inscrire à tout les séances\n                    "
+                              )
+                            ]
+                          )
+                        : _vm._e()
                     ],
                     1
                   )
-                : _vm._e(),
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-3" }, [
-                _vm._v("Number of Sessions: 2")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-3" }, [
-                _vm._v("Language : English")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-3" }, [
-                _vm._v("Price: $10/session")
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "row justify-content-around align-items-center shadow-sm"
-              },
-              [
-                _vm._m(2),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-1 d-none -d-md-flex" }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-md-2" },
-                  [
-                    !_vm.enrolled
-                      ? _c(
+              _c("div", { staticClass: "row my-3" }, [
+                _vm.course.category
+                  ? _c(
+                      "div",
+                      { staticClass: "col-md-3" },
+                      [
+                        _c(
                           "router-link",
                           {
-                            staticClass: "btn btn-primary my-3",
                             attrs: {
                               to: {
-                                name: "Checkout",
-                                params: {
-                                  id: _vm.course.id,
-                                  name: _vm.course.name,
-                                  price: _vm.course.price
-                                }
+                                name: "CategCourses",
+                                params: { id: _vm.course.category.id }
                               },
                               tag: "a"
                             }
                           },
                           [
                             _vm._v(
-                              "\n                        Inscrire\n                    "
+                              "\n                        " +
+                                _vm._s(_vm.course.category.name) +
+                                "\n                    "
                             )
                           ]
+                        ),
+                        _vm._v(
+                          "\n                    > Sub-categor\n                "
                         )
-                      : _vm._e()
-                  ],
-                  1
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-3" }, [
+                  _vm._v("Number of Sessions: 2")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-3" }, [
+                  _vm._v("Language : English")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-3" }, [
+                  _vm._v("Price: $10/session")
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.course.sections, function(section) {
+                return _c(
+                  "div",
+                  {
+                    key: section.id,
+                    staticClass:
+                      "row justify-content-around align-items-center shadow-sm"
+                  },
+                  [
+                    _c("div", { staticClass: "col-md-9" }, [
+                      _c("h4", [_vm._v("Section.title")]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v(_vm._s(section.description))]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "\n                        Availabilities : session1.startDate - Duration: session1.duration\n                    "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-1 d-none -d-md-flex" }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-2" },
+                      [
+                        !_vm.enrolled
+                          ? _c(
+                              "router-link",
+                              {
+                                staticClass: "btn btn-primary my-3",
+                                attrs: {
+                                  to: {
+                                    name: "Checkout",
+                                    params: {
+                                      id: _vm.course.id,
+                                      name: _vm.course.name,
+                                      price: _vm.course.price
+                                    }
+                                  },
+                                  tag: "a"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                        Inscrire\n                    "
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ],
+                      1
+                    )
+                  ]
                 )
-              ]
-            )
-          ]),
+              })
+            ],
+            2
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "container" }, [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-12 bg-white " }, [
-                _vm._m(3),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("hr"),
                 _vm._v(" "),
@@ -49182,9 +49200,9 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(4),
+                      _vm._m(3),
                       _vm._v(" "),
-                      _vm._m(5)
+                      _vm._m(4)
                     ]
                   ),
                   _vm._v(" "),
@@ -49219,6 +49237,8 @@ var render = function() {
                                 [
                                   _c("div", [
                                     _c("div", { staticClass: "star-rating" }, [
+                                      _vm._m(5),
+                                      _vm._v(" "),
                                       _vm._m(6),
                                       _vm._v(" "),
                                       _vm._m(7),
@@ -49226,8 +49246,6 @@ var render = function() {
                                       _vm._m(8),
                                       _vm._v(" "),
                                       _vm._m(9),
-                                      _vm._v(" "),
-                                      _vm._m(10),
                                       _vm._v(" "),
                                       _c(
                                         "b",
@@ -49251,7 +49269,7 @@ var render = function() {
                                     )
                                   ]),
                                   _vm._v(" "),
-                                  _vm._m(11)
+                                  _vm._m(10)
                                 ]
                               ),
                               _vm._v(" "),
@@ -49450,22 +49468,6 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("i", { staticClass: "fa fa-share-alt" })
           ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-9" }, [
-      _c("h4", [_vm._v("Section1.title")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Section1.description")]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "\n                        Availabilities : session1.startDate - Duration: session1.duration\n                    "
         )
       ])
     ])

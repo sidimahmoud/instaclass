@@ -2,11 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', 'Admin\UsersController@show');
-Route::get('/user/enrollments', 'EnrollmentController@userEnrollments');
-Route::post('/enroll', 'EnrollmentController@store');
-Route::post('/pay', 'Admin\PayementController@paymentProcess');
-Route::post('/courses/rate', 'RatingController@store');
+
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::middleware('can:only-admin')->group(function () {
@@ -21,7 +17,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/courses/demands', 'DemandsController@index');
         Route::get('/contacts', 'ContactsController@index');
     });
-
     Route::middleware('can:teacher-or-admin')->group(function () {
         Route::get('/teacher/{id}/courses', 'Admin\UsersController@teacherCourses');
         Route::get('/user/courses', 'Teacher\CoursesController@teacherCourses');
@@ -30,6 +25,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/courses', 'CourseController@store');
         Route::post('/courses/sections', 'CourseFileController@store');
     });
+
+    Route::get('/user', 'Admin\UsersController@show');
+    Route::get('/user/enrollments', 'EnrollmentController@userEnrollments');
+    Route::post('/enroll', 'EnrollmentController@store');
+    Route::post('/pay', 'Admin\PayementController@paymentProcess');
+    Route::post('/courses/rate', 'RatingController@store');
 });
 
 
