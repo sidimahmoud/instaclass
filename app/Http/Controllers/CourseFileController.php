@@ -42,7 +42,7 @@ class CourseFileController extends Controller
         $file->description = $request['description'];
         $file->save();
         if ($file) return response()->json("Section created successfully");
-        return response()->json($file);
+        return response()->json("error");
     }
 
     /**
