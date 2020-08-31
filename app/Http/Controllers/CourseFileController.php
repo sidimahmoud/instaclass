@@ -39,7 +39,9 @@ class CourseFileController extends Controller
         $file = new CourseFile();
         $file->course_id = $request['course_id'];
         $file->file = $request['file'];
+        $file->description = $request['description'];
         $file->save();
+        if ($file) return response()->json("Section created successfully");
         return response()->json($file);
     }
 
