@@ -14,10 +14,17 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="Thumbnail">Video file</label>
-                        <input type="file" class="form-control-file" id="Thumbnail">
+                        <label for="title">section title</label>
+                        <input type="text" class="form-control" id="title">
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="file">Video file</label>
+                        <input type="file" class="form-control-file" id="file">
+                    </div>
+                </div>
+
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="desc">Section description</label>
@@ -41,7 +48,7 @@
             return {
                 section: {
                     course_id: '',
-                    file: '',
+                    title: '',
                     description: '',
                 }
             }
@@ -55,7 +62,25 @@
                 }
             },
             saveSection() {
-                console.log(this.section)
+                const token = localStorage.getItem('token') || null
+                if (token) {
+                    // this.$store.dispatch("saveSection", this.section)
+                    const formData = new FormData();
+                    const imagefile = document.querySelector('#file');
+                    formData.append("course_id", this.section.course_id);
+                    formData.append("title", this.section.title);
+                    formData.append("description", this.section.description);
+                    formData.append("file", imagefile.files[0]);
+                    axios.post('https://instantclass.herokuapp.com/api/courses/sections', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'Authorization': 'Bearer ' + token,
+                        }
+                    }).then(res => console.log(res)).catch(err => console.log(err.response))
+                    console.log(this.section);
+
+                }
+
             },
         },
         computed: {

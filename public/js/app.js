@@ -6005,6 +6005,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewCourse",
@@ -6102,6 +6108,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewSection",
@@ -6109,7 +6122,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       section: {
         course_id: '',
-        file: '',
+        title: '',
         description: ''
       }
     };
@@ -6123,7 +6136,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     saveSection: function saveSection() {
-      console.log(this.section);
+      var token = localStorage.getItem('token') || null;
+
+      if (token) {
+        // this.$store.dispatch("saveSection", this.section)
+        var formData = new FormData();
+        var imagefile = document.querySelector('#file');
+        formData.append("course_id", this.section.course_id);
+        formData.append("title", this.section.title);
+        formData.append("description", this.section.description);
+        formData.append("file", imagefile.files[0]);
+        axios.post('https://instantclass.herokuapp.com/api/courses/sections', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': 'Bearer ' + token
+          }
+        }).then(function (res) {
+          return console.log(res);
+        })["catch"](function (err) {
+          return console.log(err.response);
+        });
+        console.log(this.section);
+      }
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["TeacherCourses"])),
@@ -52602,7 +52636,20 @@ var render = function() {
         _vm._v(" "),
         _vm._l(_vm.sections, function(section, index) {
           return _c("div", { key: index, staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [
+                  _vm._v("Séance " + _vm._s(index + 1) + " title:")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "text" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
               _c("div", { staticClass: "form-group" }, [
                 _c("label", [
                   _vm._v("Séance " + _vm._s(index + 1) + " description:")
@@ -52615,7 +52662,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "col-md-4" }, [
               _c("div", { staticClass: "form-group" }, [
                 _c("label", [
                   _vm._v("Séance " + _vm._s(index + 1) + " video:")
@@ -52868,6 +52915,8 @@ var render = function() {
           _vm._v(" "),
           _vm._m(0),
           _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
           _c("div", { staticClass: "col-md-12" }, [
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "desc" } }, [
@@ -52918,11 +52967,26 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-6" }, [
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "Thumbnail" } }, [_vm._v("Video file")]),
+        _c("label", { attrs: { for: "title" } }, [_vm._v("section title")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", id: "title" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-6" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "file" } }, [_vm._v("Video file")]),
         _vm._v(" "),
         _c("input", {
           staticClass: "form-control-file",
-          attrs: { type: "file", id: "Thumbnail" }
+          attrs: { type: "file", id: "file" }
         })
       ])
     ])
@@ -80215,6 +80279,36 @@ var actions = {
           }
         }
       }, _callee7);
+    }))();
+  },
+  saveSection: function saveSection(_ref8, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+      var commit;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              commit = _ref8.commit;
+              headers();
+              return _context8.abrupt("return", new Promise(function (resolve, reject) {
+                axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  url: 'https://instantclass.herokuapp.com/api/courses/sections',
+                  data: payload,
+                  method: 'POST'
+                }).then(function (resp) {
+                  console.log(resp);
+                  resolve(resp);
+                })["catch"](function (err) {
+                  reject(err);
+                });
+              }));
+
+            case 3:
+            case "end":
+              return _context8.stop();
+          }
+        }
+      }, _callee8);
     }))();
   }
 };

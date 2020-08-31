@@ -120,13 +120,19 @@
                 </div>
             </div>
             <div class="row" v-for="(section, index) in sections" :key="index">
-                <div class="col-md-6">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Séance {{index+1}} title:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Séance {{index+1}} description:</label>
                         <input type="text" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Séance {{index+1}} video:</label>
                         <input type="file" class="form-control-file">

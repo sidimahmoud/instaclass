@@ -38,8 +38,17 @@ class CourseFileController extends Controller
     {
         $file = new CourseFile();
         $file->course_id = $request['course_id'];
-        $file->file = $request['file'];
+        $file->title = $request['title'];
         $file->description = $request['description'];
+        if ($request->hasFile('file')) {
+            $sectionFile = $request['file'];
+            $extension = $sectionFile->getClientOriginalExtension();
+            $sectionFile_name = $request['title'] . "-" . time() . "." . $extension;
+            $sectionFile->move('uploads/sections/', $sectionFile_name);
+            $file->file = 'uploads/sections/' . $sectionFile_name;
+        } else
+            $file->image = $request['file'];
+
         $file->save();
         if ($file) return response()->json("Section created successfully");
         return response()->json("error");

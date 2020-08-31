@@ -75,6 +75,7 @@ const actions = {
                 })
         })
     },
+
     async fetchDemands({commit}) {
         commit('setLoading', true);
         const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/demands`);
@@ -86,6 +87,19 @@ const actions = {
         const response = await axios.get(`https://instantclass.herokuapp.com/api/class/${id}`);
         commit('setCategoryCourses', response.data);
         commit('setLoading', false);
+    },
+    async saveSection({commit}, payload) {
+        headers();
+        return new Promise((resolve, reject) => {
+            axios({url: 'https://instantclass.herokuapp.com/api/courses/sections', data: payload, method: 'POST'})
+                .then(resp => {
+                    console.log(resp);
+                    resolve(resp)
+                })
+                .catch(err => {
+                    reject(err)
+                })
+        })
     },
 };
 const mutations = {
