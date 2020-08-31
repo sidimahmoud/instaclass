@@ -14,6 +14,14 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
+                        <label for="subCateg">Sub category</label>
+                        <select class="form-control" id="subCateg" v-model="course.category_id" required>
+                            <option>select Sub category</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
                         <label for="exampleFormControlSelect1">course language</label>
                         <select class="form-control" id="exampleFormControlSelect1" required>
                             <option>EN</option>
@@ -91,26 +99,46 @@
                         </select>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="short_desc">Short description</label>
-                <input type="text" class="form-control" id="short_desc"
-                       placeholder="Short description" v-model="course.short_description" required>
-            </div>
-            <div class="form-group">
-                <label for="desc">Course description</label>
-                <textarea class="form-control" id="desc" rows="3" v-model="course.description" required> </textarea>
-            </div>
-            <div class="row">
-
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="Thumbnail">Thumbnail</label>
                         <input type="file" class="form-control-file" id="Thumbnail">
                     </div>
                 </div>
-
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="short_desc">Short description</label>
+                        <input type="text" class="form-control" id="short_desc"
+                               placeholder="Short description" v-model="course.short_description" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="desc">Course description</label>
+                        <textarea class="form-control" id="desc" rows="3" v-model="course.description"
+                                  required> </textarea>
+                    </div>
+                </div>
             </div>
+            <div class="row" v-for="(section, index) in sections" :key="index">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Séance {{index+1}} description:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Séance {{index+1}} video:</label>
+                        <input type="file" class="form-control-file">
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="btn btn-primary my-3" @click="addSection">
+                   <i class="fa fa-plus"></i> add section</p>
+            </div>
+
             <button class="btn btn-primary btn-block" type="submit">Submit</button>
         </form>
 
@@ -138,14 +166,29 @@
                     status: '1',
                     type: '1',
                     price: '',
-                }
+                },
+                sections: [
+                    {
+                        course_id: '',
+                        file: '',
+                        description: '',
+                    }
+                ]
             }
         },
         methods: {
             ...mapActions(['fetchCategories']),
             saveCourse() {
                 console.log(this.course)
-            }
+            },
+            addSection() {
+                    this.sections.push({
+                        course_id: '',
+                        file: '',
+                        description: '',
+                    })
+
+            },
         },
         computed: mapGetters(["allCategories"]),
         created() {

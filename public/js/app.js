@@ -5978,6 +5978,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewCourse",
@@ -5997,12 +6025,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         status: '1',
         type: '1',
         price: ''
-      }
+      },
+      sections: [{
+        course_id: '',
+        file: '',
+        description: ''
+      }]
     };
   },
   methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchCategories'])), {}, {
     saveCourse: function saveCourse() {
       console.log(this.course);
+    },
+    addSection: function addSection() {
+      this.sections.push({
+        course_id: '',
+        file: '',
+        description: ''
+      });
     }
   }),
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["allCategories"]),
@@ -52230,6 +52270,50 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
+          _c("div", { staticClass: "col-md-4" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "subCateg" } }, [
+                _vm._v("Sub category")
+              ]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.course.category_id,
+                      expression: "course.category_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "subCateg", required: "" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.course,
+                        "category_id",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [_c("option", [_vm._v("select Sub category")])]
+              )
+            ])
+          ]),
+          _vm._v(" "),
           _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-4" }, [
@@ -52439,71 +52523,120 @@ var render = function() {
           _vm._v(" "),
           _vm.course.type == 2
             ? _c("div", { staticClass: "col-md-4" }, [_vm._m(3)])
-            : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "short_desc" } }, [
-            _vm._v("Short description")
+            : _vm._e(),
+          _vm._v(" "),
+          _vm._m(4),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "short_desc" } }, [
+                _vm._v("Short description")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.course.short_description,
+                    expression: "course.short_description"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "short_desc",
+                  placeholder: "Short description",
+                  required: ""
+                },
+                domProps: { value: _vm.course.short_description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.course,
+                      "short_description",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
           ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.course.short_description,
-                expression: "course.short_description"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "short_desc",
-              placeholder: "Short description",
-              required: ""
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "desc" } }, [
+                _vm._v("Course description")
+              ]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.course.description,
+                    expression: "course.description"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "desc", rows: "3", required: "" },
+                domProps: { value: _vm.course.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.course, "description", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.sections, function(section, index) {
+          return _c("div", { key: index, staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [
+                  _vm._v("Séance " + _vm._s(index + 1) + " description:")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "text" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [
+                  _vm._v("Séance " + _vm._s(index + 1) + " video:")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control-file",
+                  attrs: { type: "file" }
+                })
+              ])
+            ])
+          ])
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-right" }, [
+          _c(
+            "p",
+            {
+              staticClass: "btn btn-primary my-3",
+              on: { click: _vm.addSection }
             },
-            domProps: { value: _vm.course.short_description },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.course, "short_description", $event.target.value)
-              }
-            }
-          })
+            [_c("i", { staticClass: "fa fa-plus" }), _vm._v(" add section")]
+          )
         ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "desc" } }, [
-            _vm._v("Course description")
-          ]),
-          _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.course.description,
-                expression: "course.description"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { id: "desc", rows: "3", required: "" },
-            domProps: { value: _vm.course.description },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.course, "description", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(4),
         _vm._v(" "),
         _c(
           "button",
@@ -52513,7 +52646,8 @@ var render = function() {
           },
           [_vm._v("Submit")]
         )
-      ]
+      ],
+      2
     )
   ])
 }
@@ -52623,16 +52757,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-4" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "Thumbnail" } }, [_vm._v("Thumbnail")]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control-file",
-            attrs: { type: "file", id: "Thumbnail" }
-          })
-        ])
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "Thumbnail" } }, [_vm._v("Thumbnail")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control-file",
+          attrs: { type: "file", id: "Thumbnail" }
+        })
       ])
     ])
   }
