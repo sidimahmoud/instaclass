@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
             'first_name' => 'Admin',
             'last_name' => 'instant',
             'email' => 'admin@gmail.com',
-            'headline' => 'Web Developer',
+            'phone' => '+222 22 33 44 55',
             'image' => 'https://image.flaticon.com/icons/svg/21/21104.svg',
             'about' => "I'm a Web Developer",
             'email_verified_at' => Carbon::now(),
@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
         $teacher= User::create([
             'first_name' => 'Teacher',
             'last_name' => 'instant',
-            'headline' => 'Content Maker',
+            'phone' => '+222 22334455',
             'image' => 'https://image.flaticon.com/icons/svg/21/21104.svg',
             'about' => "I'm a Content Creator",
             'email' => 'teacher@gmail.com',
@@ -45,7 +45,7 @@ class UsersTableSeeder extends Seeder
         $student= User::create([
             'first_name' => 'Student',
             'last_name' => 'instant',
-            'headline' => 'Student',
+            'phone' => '+222 22334455',
             'image' => 'https://image.flaticon.com/icons/svg/21/21104.svg',
             'email' => 'student@gmail.com',
             'about' => "I'm a Student",
