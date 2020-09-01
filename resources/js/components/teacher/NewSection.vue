@@ -15,7 +15,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="title">section title</label>
-                        <input type="text" class="form-control" id="title">
+                        <input type="text" class="form-control" id="title" v-model="section.title">
                     </div>
                 </div>
                 <div class="col-md-6">

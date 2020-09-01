@@ -16,7 +16,7 @@ class CreateCourseFilesTable extends Migration
         Schema::create('course_files', function (Blueprint $table) {
             $table->id();
             $table->integer('course_id');
-            $table->integer('title');
+            $table->string('title');
             $table->string('file');
             $table->string('startDate');
             $table->string('description');

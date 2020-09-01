@@ -2305,6 +2305,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4334,6 +4335,12 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Review */ "./resources/js/components/courses/Review.vue");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -11194,7 +11201,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* card margin*/\n.card[data-v-0104f9b6]:not(:first-child) {\n    margin-left: 15px !important;\n}\n\n/* latest courses border bottom*/\n.latest_courses_border[data-v-0104f9b6] {\n    border-bottom: 5px solid red;\n    max-width: 6%;\n    min-height: 6%;\n    max-height: 6%;\n    min-width: 8%;\n    display: block;\n}\n.jumbotron[data-v-0104f9b6] {\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/images/home/bg.png */ "./resources/js/assets/images/home/bg.png")) + ");\n    border-radius: 0;\n    padding: 15px;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* card margin*/\n.card[data-v-0104f9b6]:not(:first-child) {\n    margin-left: 15px !important;\n}\n\n/* latest courses border bottom*/\n.latest_courses_border[data-v-0104f9b6] {\n    border-bottom: 5px solid red;\n    max-width: 6%;\n    min-height: 6%;\n    max-height: 6%;\n    min-width: 8%;\n    display: block;\n}\n.jumbotron[data-v-0104f9b6] {\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/images/home/bg.png */ "./resources/js/assets/images/home/bg.png")) + ");\n    border-radius: 0;\n    padding: 15px;\n}\n\n", ""]);
 
 // exports
 
@@ -45333,15 +45340,24 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: " text-right pr-5" }, [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("img", {
+      _c(
+        "a",
+        {
           attrs: {
-            src: __webpack_require__(/*! ../assets/images/fb.png */ "./resources/js/assets/images/fb.png"),
-            alt: "fb",
-            width: "150px"
+            href:
+              "https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://www.instantclass.herokuapp.com/courses&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!"
           }
-        })
-      ]),
+        },
+        [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ../assets/images/fb.png */ "./resources/js/assets/images/fb.png"),
+              alt: "fb",
+              width: "150px"
+            }
+          })
+        ]
+      ),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
@@ -49083,62 +49099,36 @@ var render = function() {
                   _c("div", { staticClass: "col-md-3" }, [
                     _c("div", { staticClass: "font-weight-bolder" }, [
                       _vm._v(
-                        "\n                            " +
+                        "\n                        " +
                           _vm._s(_vm.course.user.first_name) +
-                          "\n                        "
+                          "\n                    "
                       )
                     ]),
                     _vm._v(" "),
                     _c("div", [
                       _vm._v(
-                        "\n                            " +
+                        "\n                        " +
                           _vm._s(_vm.course.user.city) +
                           "," +
                           _vm._s(_vm.course.user.country) +
-                          "\n                        "
+                          "\n                    "
                       )
                     ]),
                     _vm._v(" "),
                     _vm.course.user.languages
                       ? _c("div", [
                           _vm._v(
-                            "\n                            Spoken languages: " +
+                            "\n                        Spoken languages: " +
                               _vm._s(_vm.course.user.languages) +
-                              "\n                        "
+                              "\n                    "
                           )
                         ])
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-3" }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "https://www.facebook.com/sharer/sharer.php?s=100&p[url]=" +
-                            this.$route.path +
-                            "&p[images][0]=&p[title]=" +
-                            _vm.course.name +
-                            "&p[summary]=" +
-                            _vm.course.description
-                        }
-                      },
-                      [
-                        _c("img", {
-                          attrs: {
-                            src: __webpack_require__(/*! ../../assets/images/fb.png */ "./resources/js/assets/images/fb.png"),
-                            alt: "fb",
-                            width: "150px"
-                          }
-                        })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("br")
-                  ]),
-                  _vm._v(" "),
                   _vm._m(1),
+                  _vm._v(" "),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -49163,7 +49153,7 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                            S'inscrire à tout les séances\n                        "
+                                "\n                        S'inscrire à tout les séances\n                    "
                               )
                             ]
                           )
@@ -49183,6 +49173,7 @@ var render = function() {
                         _c(
                           "router-link",
                           {
+                            staticClass: "mr-3",
                             attrs: {
                               to: {
                                 name: "CategCourses",
@@ -49192,15 +49183,14 @@ var render = function() {
                             }
                           },
                           [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(_vm.course.category.name) +
-                                "\n                        "
-                            )
+                            _vm._v("\n                        Category: "),
+                            _c("strong", [
+                              _vm._v(_vm._s(_vm.course.category.name))
+                            ])
                           ]
                         ),
                         _vm._v(
-                          "\n                        Sub-category :\n                    "
+                          "\n                    Sub-category :\n                "
                         )
                       ],
                       1
@@ -49238,7 +49228,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", [
                         _vm._v(
-                          "\n                            Availabilities : session1.startDate - Duration: session1.duration\n                        "
+                          "\n                        Availabilities : session1.startDate - Duration: session1.duration\n                    "
                         )
                       ])
                     ]),
@@ -49268,7 +49258,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                            S'inscrire\n                        "
+                                  "\n                        S'inscrire\n                    "
                                 )
                               ]
                             )
@@ -49296,6 +49286,35 @@ var staticRenderFns = [
       { staticClass: "spinner-border", attrs: { role: "status" } },
       [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c(
+        "a",
+        {
+          attrs: {
+            href:
+              "https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://www.instantclass.herokuapp.com/courses&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!"
+          }
+        },
+        [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ../../assets/images/fb.png */ "./resources/js/assets/images/fb.png"),
+              alt: "fb",
+              width: "150px"
+            }
+          }),
+          _vm._v(" "),
+          _c("i", { staticClass: "fa fa-thumbs-up fa-2x text-primary" })
+        ]
+      ),
+      _vm._v(" "),
+      _c("br")
+    ])
   },
   function() {
     var _vm = this
@@ -52489,9 +52508,37 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "title" } }, [
+                _vm._v("section title")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.section.title,
+                    expression: "section.title"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", id: "title" },
+                domProps: { value: _vm.section.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.section, "title", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
           _vm._v(" "),
-          _vm._m(1),
+          _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-12" }, [
             _c("div", { staticClass: "form-group" }, [
@@ -52537,21 +52584,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "title" } }, [_vm._v("section title")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "title" }
-        })
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
