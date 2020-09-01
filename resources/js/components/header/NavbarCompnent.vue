@@ -30,10 +30,10 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
-                    <router-link :to="{ name: 'About'}" tag="a" class="nav-link">
-                        About
-                    </router-link>
-                </li>
+                        <router-link :to="{ name: 'About'}" tag="a" class="nav-link">
+                            About
+                        </router-link>
+                    </li>
                     <li class="nav-item ">
 
                         <router-link :to="{ name: 'Courses'}" tag="a" class="nav-link ">
@@ -62,13 +62,13 @@
                         </router-link>
                     </li>
                     <li class="nav-item " v-if="this.$route.path.includes('/fr')">
-                        <router-link :to="{ name: 'Home'}" tag="a" class="nav-link border border-primary ml-2 rounded">
+                        <router-link :to="{ name: 'Home'}" tag="a" class="nav-link ml-2 rounded">
                             EN
                         </router-link>
                     </li>
                     <li class="nav-item " v-else>
                         <router-link :to="{ name: 'HomeFr'}" tag="a"
-                                     class="nav-link border border-primary ml-2 rounded">
+                                     class="nav-link ml-2 rounded">
                             FR
                         </router-link>
                     </li>

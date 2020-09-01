@@ -48,20 +48,39 @@ class CoursesController extends Controller
         }
         $course = new Course();
         $course->user_id = $request->user()->id;
-        $course->category_id = $request['sub_category_id'];
-        $course->name = $request['name'];
-        $course->short_description = $request['short_description'];
-        $course->description = $request['description'];
-        $course->image = $request['image'];
-        $course->slug = $request['slug'];
-        $course->language = $request['language'];
-        $course->duration = $request['duration'];
-        $course->status = $request['status'];
-        $course->type = $request['type'];
-        $course->price = $request['price'];
+        $course->category_id = $request["category_id"];
+        $course->name = $request["name"];
+        $course->short_description = $request["short_description"];
+        $course->description = $request["description"];
+        $course->image = $request["image"];
+        $course->slug = $request["slug"];
+        $course->language = $request["language"];
+        $course->duration = $request["duration"];
+        $course->status = $request["status"];
+        $course->type = $request["type"];
+        $course->estimated_duration = $request["estimated_duration"];
+        $course->authorized_students = $request["authorized_students"];
+        $course->join_after = $request["join_after"];
+        $course->price = $request["price"];
+        $course->available_from = $request["available_from"];
+        $course->available_to = $request["available_to"];
+        $course->sharable = $request["sharable"];
+        $course->published = $request["published"];
 
+        if ($request->hasFile('image')) {
+            $file = $request['image'];
+            $extension = $file->getClientOriginalExtension();
+            $file_name = $request['name'] . "-" . time() . "." . $extension;
+            $file->move('uploads/categories/', $file_name);
+            $course->image = 'uploads/courses/thumbnails' . $file_name;
+        }
+        else
+            $course->image = $request['image'];
         $course->save();
-        return response()->json($course);
+
+        if ($course)
+        return response()->json("course created successfully");
+        return response()->json("error");
     }
 
     /**

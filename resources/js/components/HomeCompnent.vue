@@ -16,16 +16,14 @@
                 </div>
             </div>
         </div>
-        <div class=" text-right">
-            <a href="#"> <i class="fa fa-facebook mx-3 fa-2x"></i> </a>
-            <a href="#"> <i class="fa fa-instagram mx-3 fa-2x"></i> </a>
+        <div class=" text-right pr-5">
+            <a href="#"> <img src="../assets/images/fb.png" alt="fb" width="150px"></a> <br>
+            <a href="#"> <img src="../assets/images/insta.png" alt="insta" width="150px"></a>
         </div>
         <div class="container d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
             <h3 class="text-primary">Courses by category </h3>
             <span class="latest_courses_border"> </span>
         </div>
-
-
         <div class="container">
             <div class="text-center text-primary" v-if="loadingCategories">
                 <div class="spinner-border" role="status">

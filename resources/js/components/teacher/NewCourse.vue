@@ -7,7 +7,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="selectLang">Select category</label>
-                        <select class="form-control" id="selectLang" v-model="course.category_id" required>
+                        <select class="form-control" id="selectLang" required>
                             <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name}}</option>
                         </select>
                     </div>
@@ -15,16 +15,16 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="subCateg">Sub category</label>
-                        <select class="form-control" id="subCateg" v-model="course.sub_category" required>
+                        <select class="form-control" id="subCateg" v-model="course.category_id" required>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">course language</label>
-                        <select class="form-control" id="exampleFormControlSelect1" required>
-                            <option>EN</option>
-                            <option>FR</option>
+                        <select class="form-control" id="exampleFormControlSelect1" required v-model="course.language">
+                            <option value="EN">EN</option>
+                            <option value="FR">FR</option>
                         </select>
                     </div>
                 </div>
@@ -36,7 +36,6 @@
                             <option value="2">Live</option>
                         </select>
                     </div>
-
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
@@ -58,14 +57,14 @@
                     <div class="form-group">
                         <label for="duration">Estimated duration</label>
                         <input type="text" class="form-control" id="duration"
-                               placeholder="Duration" v-model="course.duration" required>
+                               placeholder="Duration" v-model="course.estimated_duration" required>
                     </div>
                 </div>
                 <div class="col-md-4" v-if="course.type==2">
                     <div class="form-group">
                         <label for="persons">Number of authorized students</label>
                         <input type="number" min="1" class="form-control" id="persons"
-                               placeholder="authorized students" required>
+                               placeholder="authorized students" v-model="course.authorized_students" required>
                     </div>
                 </div>
                 <div class="col-md-4" v-if="course.type==2">
@@ -91,8 +90,7 @@
                 <div class="col-md-4" v-if="course.type==2">
                     <div class="form-group">
                         <label for="partage">Autorisez vous le partage de votre annonce?</label>
-                        <select class="form-control" id="partage" required>
-                            <option value="2">Instantavite peut le partager</option>
+                        <select class="form-control" id="partage" v-model="course.sharable" required>
                             <option value="1">Tout le monde</option>
                             <option value="0">Je n'autorise pas</option>
                         </select>
@@ -100,8 +98,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="Thumbnail">Thumbnail</label>
-                        <input type="file" class="form-control-file" id="Thumbnail">
+                        <label for="thumbnail">Thumbnail</label>
+                        <input type="file" class="form-control-file" id="thumbnail">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -141,7 +139,7 @@
             </div>
             <div class="text-right">
                 <p class="btn btn-primary my-3" @click="addSection">
-                   <i class="fa fa-plus"></i> Ajouter une séance</p>
+                    <i class="fa fa-plus"></i> Ajouter une séance</p>
             </div>
 
             <button class="btn btn-primary btn-block" type="submit">Submit</button>
@@ -158,23 +156,26 @@
         data() {
             return {
                 course: {
-                    section_1: '',
+                    category_id: '',
                     name: '',
                     short_description: '',
                     description: '',
                     image: '',
-                    slug: '',
-                    category_id: 1,
-                    sub_category: '',
                     language: '',
                     duration: '',
-                    status: '1',
-                    type: '1',
+                    status: '',
+                    type: '',
+                    estimated_duration: '',
+                    authorized_students: '',
+                    join_after: '',
                     price: '',
+                    available_from: '',
+                    available_to: '',
+                    sharable: '',
                 },
                 sections: [
                     {
-                        course_id: '',
+                        title: '',
                         file: '',
                         description: '',
                     }
@@ -183,23 +184,72 @@
         },
         methods: {
             ...mapActions(['fetchCategories']),
+            sanitizeTitle: function (title) {
+                var slug = "";
+                // Change to lower case
+                var titleLower = title.toLowerCase();
+                // Letter "e"
+                slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
+                // Letter "a"
+                slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a');
+                // Letter "o"
+                slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o');
+                // Letter "u"
+                slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u');
+                // Letter "d"
+                slug = slug.replace(/đ/gi, 'd');
+                slug = slug.replace(/,/gi, '-');
+                // Trim the last whitespace
+                slug = slug.replace(/\s*$/g, '');
+                // Change whitespace to "-"
+                slug = slug.replace(/\s+/g, '-');
+                return slug;
+            },
             saveCourse() {
-                console.log(this.course)
+                const token = localStorage.getItem('token') || null;
+                if (token) {
+                    // this.$store.dispatch("saveSection", this.section)
+                    const formData = new FormData();
+                    const imagefile = document.querySelector('#thumbnail');
+                    formData.append("image", imagefile.files[0]);
+                    formData.append("category_id", this.course.category_id);
+                    formData.append("name", this.course.name);
+                    formData.append("short_description", this.course.short_description);
+                    formData.append("description", this.course.description);
+                    formData.append("slug", sanitizeTitle(this.course.name));
+                    formData.append("language", this.course.language);
+                    formData.append("status", this.course.status);
+                    formData.append("type", this.course.type);
+                    formData.append("estimated_duration", this.course.estimated_duration);
+                    formData.append("authorized_students", this.course.authorized_students);
+                    formData.append("join_after", this.course.join_after);
+                    formData.append("price", this.course.price);
+                    formData.append("available_from", this.course.available_from);
+                    formData.append("available_to", this.course.available_to);
+                    formData.append("sharable", this.course.sharable);
+                    formData.append("published", this.course.published);
+                    axios.post('https://instantclass.herokuapp.com/api/courses/sections', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'Authorization': 'Bearer ' + token,
+                        }
+                    }).then(res => console.log(res))
+                        .catch(err => console.log(err.response));
+                    console.log(this.section);
+                }
             },
             addSection() {
-                    this.sections.push({
-                        course_id: '',
-                        file: '',
-                        description: '',
-                    })
-
+                this.sections.push({
+                    course_id: '',
+                    file: '',
+                    description: '',
+                })
             },
         },
         computed: mapGetters(["allCategories"]),
         created() {
             this.fetchCategories()
         }
-
     }
 </script>
 

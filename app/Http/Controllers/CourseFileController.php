@@ -45,10 +45,10 @@ class CourseFileController extends Controller
             $extension = $sectionFile->getClientOriginalExtension();
             $sectionFile_name = $request['title'] . "-" . time() . "." . $extension;
             $sectionFile->move('uploads/sections/', $sectionFile_name);
-            $file->file = 'uploads/sections/' . $sectionFile_name;
-        } else
+            $file->file = 'uploads/courses/sections' . $sectionFile_name;
+        }
+        else
             $file->image = $request['file'];
-
         $file->save();
         if ($file) return response()->json("Section created successfully");
         return response()->json("error");

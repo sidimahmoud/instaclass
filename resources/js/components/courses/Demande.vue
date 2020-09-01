@@ -34,7 +34,7 @@
                         <label for="lang1">Langue du cours</label>
                         <input type="text" class="form-control" id="lang1" required v-model="lang">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-5">
                         <label for="email">Email address (optionnel)</label>
                         <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
                                placeholder="Enter email" v-model="email">
@@ -42,7 +42,7 @@
                             Vous serez averti quand le cours sera disponible.
                         </small>
                     </div>
-                    <button class="btn btn-primary btn-block my-3">Envoyer</button>
+                    <button class="btn btn-primary btn-block mt-5">Envoyer</button>
                 </form>
             </div>
         </div>
