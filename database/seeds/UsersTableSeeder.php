@@ -36,6 +36,9 @@ class UsersTableSeeder extends Seeder
             'image' => 'https://image.flaticon.com/icons/svg/21/21104.svg',
             'about' => "I'm a Content Creator",
             'email' => 'teacher@gmail.com',
+            'country' => 'Mauritania',
+            'city' => 'Nouakchott',
+            'languages' => 'English, French',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('password')
         ]);

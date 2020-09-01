@@ -6195,11 +6195,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     loadCourses: function loadCourses() {
-      var user = JSON.parse(localStorage.getItem('user')) || null;
-
-      if (user) {
-        this.$store.dispatch('fetchTeacherCourses', user.u);
-      }
+      this.$store.dispatch('fetchUserCourses');
     },
     saveSection: function saveSection() {
       var token = localStorage.getItem('token') || null;
@@ -6226,7 +6222,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     }
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["TeacherCourses"])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["userCourses"])),
   created: function created() {
     this.loadCourses();
   }
@@ -52496,7 +52492,7 @@ var render = function() {
                     }
                   }
                 },
-                _vm._l(_vm.TeacherCourses, function(c) {
+                _vm._l(_vm.userCourses, function(c) {
                   return _c(
                     "option",
                     { key: c.id, domProps: { value: c.id } },

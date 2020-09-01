@@ -8,7 +8,7 @@
                     <div class="form-group">
                         <label for="selectLang">Select Course</label>
                         <select class="form-control" id="selectLang" v-model="section.course_id" required>
-                            <option v-for="c in TeacherCourses" :key="c.id" :value="c.id">{{c.name}}</option>
+                            <option v-for="c in userCourses" :key="c.id" :value="c.id">{{c.name}}</option>
                         </select>
                     </div>
                 </div>
@@ -55,11 +55,7 @@
         },
         methods: {
             loadCourses() {
-                let user = JSON.parse(localStorage.getItem('user')) || null
-                if (user) {
-
-                    this.$store.dispatch('fetchTeacherCourses', user.u)
-                }
+                    this.$store.dispatch('fetchUserCourses')
             },
             saveSection() {
                 const token = localStorage.getItem('token') || null
@@ -84,7 +80,7 @@
             },
         },
         computed: {
-            ...mapGetters(["TeacherCourses"]),
+            ...mapGetters(["userCourses"]),
         },
         created() {
             this.loadCourses();
