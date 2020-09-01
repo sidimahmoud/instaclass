@@ -43,6 +43,8 @@ class CoursesTableSeeder extends Seeder
             'estimated_duration' => '2H',
             'type' => '1',
             'status' => '2',
+            'authorized_students'=>'70',
+            'sharable'=>0,
             'price' => '19.99',
             'paid' => '1',
             'created_at' => Carbon::now(),
