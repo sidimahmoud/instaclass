@@ -40,6 +40,7 @@ class CourseFileController extends Controller
         $file->course_id = $request['course_id'];
         $file->title = $request['title'];
         $file->description = $request['description'];
+        $file->startDate = $request['startDate'];
         if ($request->hasFile('file')) {
             $sectionFile = $request['file'];
             $extension = $sectionFile->getClientOriginalExtension();

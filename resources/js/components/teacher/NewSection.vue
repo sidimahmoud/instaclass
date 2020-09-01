@@ -14,8 +14,14 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="title">section title</label>
+                        <label for="title">Session title</label>
                         <input type="text" class="form-control" id="title" v-model="section.title">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="file">Availability</label>
+                        <input type="datetime-local" class="form-control" v-model="section.startDate">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -25,9 +31,10 @@
                     </div>
                 </div>
 
+
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="desc">Section description</label>
+                        <label for="desc">Session description</label>
                         <textarea class="form-control" id="desc" rows="3" v-model="section.description"
                                   required> </textarea>
                     </div>
@@ -50,12 +57,13 @@
                     course_id: '',
                     title: '',
                     description: '',
+                    startDate: '',
                 }
             }
         },
         methods: {
             loadCourses() {
-                    this.$store.dispatch('fetchUserCourses')
+                this.$store.dispatch('fetchUserCourses')
             },
             saveSection() {
                 const token = localStorage.getItem('token') || null
@@ -65,6 +73,7 @@
                     const imagefile = document.querySelector('#file');
                     formData.append("course_id", this.section.course_id);
                     formData.append("title", this.section.title);
+                    formData.append("startDate", this.section.startDate);
                     formData.append("description", this.section.description);
                     formData.append("file", imagefile.files[0]);
                     axios.post('https://instantclass.herokuapp.com/api/courses/sections', formData, {

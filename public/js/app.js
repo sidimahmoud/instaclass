@@ -6181,6 +6181,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewSection",
@@ -6189,7 +6196,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       section: {
         course_id: '',
         title: '',
-        description: ''
+        description: '',
+        startDate: ''
       }
     };
   },
@@ -6206,6 +6214,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var imagefile = document.querySelector('#file');
         formData.append("course_id", this.section.course_id);
         formData.append("title", this.section.title);
+        formData.append("startDate", this.section.startDate);
         formData.append("description", this.section.description);
         formData.append("file", imagefile.files[0]);
         axios.post('https://instantclass.herokuapp.com/api/courses/sections', formData, {
@@ -52507,7 +52516,7 @@ var render = function() {
           _c("div", { staticClass: "col-md-6" }, [
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "title" } }, [
-                _vm._v("section title")
+                _vm._v("Session title")
               ]),
               _vm._v(" "),
               _c("input", {
@@ -52534,12 +52543,40 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "file" } }, [_vm._v("Availability")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.section.startDate,
+                    expression: "section.startDate"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "datetime-local" },
+                domProps: { value: _vm.section.startDate },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.section, "startDate", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
           _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-12" }, [
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "desc" } }, [
-                _vm._v("Section description")
+                _vm._v("Session description")
               ]),
               _vm._v(" "),
               _c("textarea", {
