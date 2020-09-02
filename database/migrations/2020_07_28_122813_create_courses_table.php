@@ -29,6 +29,7 @@ class CreateCoursesTable extends Migration
             $table->string('authorized_students')->default('Unlimited');
             $table->string('join_after')->nullable();
             $table->float('price')->nullable();
+            $table->float('currency')->default('usd');
             $table->string('available_from')->nullable();
             $table->string('available_to')->nullable();
             $table->boolean('sharable')->default(1);

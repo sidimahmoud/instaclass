@@ -6283,23 +6283,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       course: {
-        category_id: '1',
-        name: '',
-        short_description: '',
-        description: '',
-        image: '',
+        sub_category_id: '1',
         language: 'EN',
-        duration: '',
-        status: '',
-        type: '',
-        estimated_duration: '',
-        authorized_students: '',
-        join_after: '',
         price: '',
         currency: 'usd',
-        available_from: '',
-        available_to: '',
-        sharable: '1'
+        estimated_duration: '',
+        authorized_students: '',
+        sharable: '1',
+        name: '',
+        image: '' // short_description: '',
+        // description: '',
+        // duration: '',
+        // status: '',
+        // type: '',
+        // join_after: '',
+        // available_from: '',
+        // available_to: '',
+
       },
       sections: [{
         title: '',
@@ -6338,7 +6338,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         formData.append("available_to", this.course.available_to);
         formData.append("sharable", this.course.sharable);
         formData.append("published", this.course.published);
-        axios.post('https://instantclass.herokuapp.com/api/courses/sections', formData, {
+        axios.post('https://instantclass.herokuapp.com/api/course', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
             'Authorization': 'Bearer ' + token
@@ -52712,8 +52712,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.course.category_id,
-                        expression: "course.category_id"
+                        value: _vm.course.sub_category_id,
+                        expression: "course.sub_category_id"
                       }
                     ],
                     staticClass: "form-control",
@@ -52730,7 +52730,7 @@ var render = function() {
                           })
                         _vm.$set(
                           _vm.course,
-                          "category_id",
+                          "sub_category_id",
                           $event.target.multiple
                             ? $$selectedVal
                             : $$selectedVal[0]

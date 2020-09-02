@@ -16,7 +16,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="subCateg">Sub category</label>
-                            <select class="form-control" id="subCateg" v-model="course.category_id" required>
+                            <select class="form-control" id="subCateg" v-model="course.sub_category_id" required>
                                 <option v-for="c in subCategories" :key="c.id" :value="c.id">{{c.name}}</option>
 
                             </select>
@@ -197,7 +197,7 @@
                         <div class="form-group">
                             <label for="section1Title">Session {{index+1}}: Give a title to this session</label>
                             <input type="text" class="form-control" id="section1Title"
-                                   placeholder="Title"  required>
+                                   placeholder="Title" required>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -205,7 +205,7 @@
                             <label for="short_desc">Session {{index+1}} description: GIve a description of what you will
                                 teach in this session</label>
                             <input type="text" class="form-control" id="short_desc"
-                                   placeholder="Short description"  required>
+                                   placeholder="Short description" required>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -234,28 +234,29 @@
 <script>
     import {mapGetters, mapActions} from 'vuex'
     import helpers from '../../mixins/helpers'
+
     export default {
         name: "NewCourse",
         data() {
             return {
                 course: {
-                    category_id: '1',
-                    name: '',
-                    short_description: '',
-                    description: '',
-                    image: '',
+                    sub_category_id: '1',
                     language: 'EN',
-                    duration: '',
-                    status: '',
-                    type: '',
-                    estimated_duration: '',
-                    authorized_students: '',
-                    join_after: '',
                     price: '',
                     currency: 'usd',
-                    available_from: '',
-                    available_to: '',
+                    estimated_duration: '',
+                    authorized_students: '',
                     sharable: '1',
+                    name: '',
+                    image: '',
+                    // short_description: '',
+                    // description: '',
+                    // duration: '',
+                    // status: '',
+                    // type: '',
+                    // join_after: '',
+                    // available_from: '',
+                    // available_to: '',
                 },
                 sections: [
                     {
@@ -269,7 +270,7 @@
         },
         methods: {
             ...mapActions(['fetchCategories']),
-            loadSubs(event){
+            loadSubs(event) {
                 const id = event.target.value;
                 this.$store.dispatch('fetchSubCategories', id)
             },
@@ -296,19 +297,19 @@
                     formData.append("available_to", this.course.available_to);
                     formData.append("sharable", this.course.sharable);
                     formData.append("published", this.course.published);
-                    axios.post('https://instantclass.herokuapp.com/api/courses/sections', formData, {
+                    axios.post('https://instantclass.herokuapp.com/api/course', formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             'Authorization': 'Bearer ' + token,
                         }
                     }).then(res => console.log(res))
-                        .catch(err => console.log(err.response));
+                      .catch(err => console.log(err.response));
                     console.log(this.section);
                 }
             },
             addSection(event) {
                 const sections = event.target.value;
-                this.sections= [];
+                this.sections = [];
                 for (let i = 0; i < sections; i++) {
                     this.sections.push({
                         course_id: '',

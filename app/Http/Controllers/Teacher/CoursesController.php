@@ -9,6 +9,7 @@ use App\Payement;
 use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
 
 class CoursesController extends Controller
 {
@@ -52,7 +53,7 @@ class CoursesController extends Controller
         $course->short_description = $request["short_description"];
         $course->description = $request["description"];
         $course->image = $request["image"];
-        $course->slug = $request["slug"];
+        $course->slug = Str::slug($request["name"], "-");
         $course->language = $request["language"];
         $course->duration = $request["duration"];
         $course->status = $request["status"];
