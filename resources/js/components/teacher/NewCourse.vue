@@ -86,7 +86,6 @@
                             <input type="text" class="form-control" id="name"
                                    placeholder="Name" v-model="course.name" required>
                         </div>
-                        {{sanitizeTitle(course.name)}}
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
@@ -233,8 +232,6 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
-    import helpers from '../../mixins/helpers'
-
     export default {
         name: "NewCourse",
         data() {
@@ -242,7 +239,7 @@
                 course: {
                     sub_category_id: '1',
                     language: 'EN',
-                    price: '',
+                    price: '0',
                     currency: 'usd',
                     estimated_duration: '',
                     authorized_students: '',
@@ -280,23 +277,15 @@
                     // this.$store.dispatch("saveSection", this.section)
                     const formData = new FormData();
                     const imagefile = document.querySelector('#thumbnail');
-                    formData.append("image", imagefile.files[0]);
-                    formData.append("category_id", this.course.category_id);
-                    formData.append("name", this.course.name);
-                    formData.append("short_description", this.course.short_description);
-                    formData.append("description", this.course.description);
-                    formData.append("slug", sanitizeTitle(this.course.name));
+                    formData.append("sub_category_id", this.course.category_id);
                     formData.append("language", this.course.language);
-                    formData.append("status", this.course.status);
-                    formData.append("type", this.course.type);
+                    formData.append("price", this.course.price);
+                    formData.append("currency", this.course.currency);
                     formData.append("estimated_duration", this.course.estimated_duration);
                     formData.append("authorized_students", this.course.authorized_students);
-                    formData.append("join_after", this.course.join_after);
-                    formData.append("price", this.course.price);
-                    formData.append("available_from", this.course.available_from);
-                    formData.append("available_to", this.course.available_to);
                     formData.append("sharable", this.course.sharable);
-                    formData.append("published", this.course.published);
+                    formData.append("name", this.course.name);
+                    formData.append("image", imagefile.files[0]);
                     axios.post('https://instantclass.herokuapp.com/api/course', formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',

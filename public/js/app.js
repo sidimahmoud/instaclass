@@ -6036,7 +6036,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _mixins_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/helpers */ "./resources/js/mixins/helpers.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -6275,8 +6274,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewCourse",
@@ -6285,7 +6282,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       course: {
         sub_category_id: '1',
         language: 'EN',
-        price: '',
+        price: '0',
         currency: 'usd',
         estimated_duration: '',
         authorized_students: '',
@@ -6321,23 +6318,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         // this.$store.dispatch("saveSection", this.section)
         var formData = new FormData();
         var imagefile = document.querySelector('#thumbnail');
-        formData.append("image", imagefile.files[0]);
-        formData.append("category_id", this.course.category_id);
-        formData.append("name", this.course.name);
-        formData.append("short_description", this.course.short_description);
-        formData.append("description", this.course.description);
-        formData.append("slug", sanitizeTitle(this.course.name));
+        formData.append("sub_category_id", this.course.category_id);
         formData.append("language", this.course.language);
-        formData.append("status", this.course.status);
-        formData.append("type", this.course.type);
+        formData.append("price", this.course.price);
+        formData.append("currency", this.course.currency);
         formData.append("estimated_duration", this.course.estimated_duration);
         formData.append("authorized_students", this.course.authorized_students);
-        formData.append("join_after", this.course.join_after);
-        formData.append("price", this.course.price);
-        formData.append("available_from", this.course.available_from);
-        formData.append("available_to", this.course.available_to);
         formData.append("sharable", this.course.sharable);
-        formData.append("published", this.course.published);
+        formData.append("name", this.course.name);
+        formData.append("image", imagefile.files[0]);
         axios.post('https://instantclass.herokuapp.com/api/course', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
@@ -53080,12 +53069,7 @@ var render = function() {
                     }
                   }
                 })
-              ]),
-              _vm._v(
-                "\n                    " +
-                  _vm._s(_vm.sanitizeTitle(_vm.course.name)) +
-                  "\n                "
-              )
+              ])
             ]),
             _vm._v(" "),
             _vm._m(0),
@@ -79324,49 +79308,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Signin_vue_vue_type_template_id_8e6d03cc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./resources/js/mixins/helpers.js":
-/*!****************************************!*\
-  !*** ./resources/js/mixins/helpers.js ***!
-  \****************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.mixin({
-  methods: {
-    capitalizeFirstLetter: function capitalizeFirstLetter(str) {
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    },
-    sanitizeTitle: function sanitizeTitle(title) {
-      var slug = ""; // Change to lower case
-
-      var titleLower = title.toLowerCase(); // Letter "e"
-
-      slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e'); // Letter "a"
-
-      slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a'); // Letter "o"
-
-      slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o'); // Letter "u"
-
-      slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u'); // Letter "d"
-
-      slug = slug.replace(/đ/gi, 'd');
-      slug = slug.replace(/,/gi, '-'); // Trim the last whitespace
-
-      slug = slug.replace(/\s*$/g, ''); // Change whitespace to "-"
-
-      slug = slug.replace(/\s+/g, '-');
-      return slug;
-    }
-  }
-});
 
 /***/ }),
 
