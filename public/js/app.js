@@ -80644,7 +80644,7 @@ var actions = {
               headers();
               return _context5.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  url: 'https://instantclass.herokuapp.com/api/courses/rate',
+                  url: 'https://instantclass.herokuapp.com/api/rate',
                   data: payload,
                   method: 'POST'
                 }).then(function (resp) {
@@ -80673,7 +80673,7 @@ var actions = {
               commit = _ref6.commit;
               headers();
               return _context6.abrupt("return", new Promise(function (resolve, reject) {
-                axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('https://instantclass.herokuapp.com/api/courses' + id).then(function (resp) {
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('https://instantclass.herokuapp.com/api/course' + id).then(function (resp) {
                   console.log(resp);
                   resolve(resp);
                 })["catch"](function (err) {

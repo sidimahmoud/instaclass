@@ -2,40 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-
-Route::middleware('auth:sanctum')->group(function () {
-    Route::middleware('can:only-admin')->group(function () {
-        Route::get('/students', 'Admin\UsersController@students');
-        Route::get('/admins', 'Admin\UsersController@admins');
-        Route::get('/teachers', 'Admin\UsersController@teachers');
-        Route::get('/banned', 'Admin\UsersController@banned');
-        Route::get('/counts', 'Admin\UsersController@counts');
-        Route::get('/payments/received', 'Admin\PayementController@received');
-        Route::get('/payments/sent', 'Admin\PayementController@sent');
-        Route::resource('payments', 'Admin\PayementController');
-        Route::get('/courses/demands', 'DemandsController@index');
-        Route::get('/contacts', 'ContactsController@index');
-    });
-    Route::middleware('can:teacher-or-admin')->group(function () {
-        Route::get('/teacher/{id}/courses', 'Admin\UsersController@teacherCourses');
-        Route::get('/user/courses', 'Teacher\CoursesController@teacherCourses');
-        Route::get('/teacher/details', 'Admin\UsersController@teacherDetails');
-        Route::get('/teacher/payments', 'Admin\UsersController@teacherPayments');
-        Route::resource('/courses', 'CourseController');
-        Route::post('/course/sections', 'CourseFileController@store');
-    });
-
-    Route::get('/user', 'Admin\UsersController@show');
-    Route::get('/user/enrollments', 'EnrollmentController@userEnrollments');
-    Route::post('/enroll', 'EnrollmentController@store');
-    Route::post('/pay', 'Admin\PayementController@paymentProcess');
-    Route::post('/courses/rate', 'RatingController@store');
-});
-
-
-Route::post('login', 'AuthController@login');
-Route::post('register', 'AuthController@register');
+Route::post('/login', 'AuthController@login');
+Route::post('/register', 'AuthController@register');
 Route::resource('/categories', 'CategoryController');
 Route::get('/subcats/{id}', 'SubCategoryController@subCategories');
 Route::resource('/sub-categories', 'SubCategoryController');
@@ -48,3 +16,36 @@ Route::get('/class/{id}', 'CourseController@categoryCourses');
 
 Route::get('authorize/{provider}', 'AuthController@redirectToProvider');
 Route::get('authorize/{provider}/callback', 'AuthController@handleProviderCallback');
+
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware('can:only-admin')->group(function () {
+        Route::get('/students', 'Admin\UsersController@students');
+        Route::get('/admins', 'Admin\UsersController@admins');
+        Route::get('/teachers', 'Admin\UsersController@teachers');
+        Route::get('/banned', 'Admin\UsersController@banned');
+        Route::get('/counts', 'Admin\UsersController@counts');
+        Route::get('/payments/received', 'Admin\PayementController@received');
+        Route::get('/payments/sent', 'Admin\PayementController@sent');
+        Route::resource('payments', 'Admin\PayementController');
+        Route::get('/demands', 'DemandsController@index');
+        Route::get('/contacts', 'ContactsController@index');
+    });
+    Route::middleware('can:teacher-or-admin')->group(function () {
+        Route::get('/teacher/{id}/courses', 'Admin\UsersController@teacherCourses');
+        Route::get('/user/courses', 'Teacher\CoursesController@teacherCourses');
+        Route::get('/teacher/details', 'Admin\UsersController@teacherDetails');
+        Route::get('/teacher/payments', 'Admin\UsersController@teacherPayments');
+        Route::resource('/course', 'CourseController');
+        Route::post('/course/sections', 'CourseFileController@store');
+    });
+
+    Route::get('/user', 'Admin\UsersController@show');
+    Route::get('/user/enrollments', 'EnrollmentController@userEnrollments');
+    Route::post('/enroll', 'EnrollmentController@store');
+    Route::post('/pay', 'Admin\PayementController@paymentProcess');
+    Route::post('/rate', 'RatingController@store');
+});
+
+

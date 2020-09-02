@@ -66,7 +66,7 @@ const actions = {
     async rateCourse({commit}, payload) {
         headers();
         return new Promise((resolve, reject) => {
-            axios({url: 'https://instantclass.herokuapp.com/api/courses/rate', data: payload, method: 'POST'})
+            axios({url: 'https://instantclass.herokuapp.com/api/rate', data: payload, method: 'POST'})
                 .then(resp => {
                     console.log(resp);
                     resolve(resp)
@@ -79,7 +79,7 @@ const actions = {
     async deleteCourse({commit}, id) {
         headers();
         return new Promise((resolve, reject) => {
-            axios.delete('https://instantclass.herokuapp.com/api/courses' + id)
+            axios.delete('https://instantclass.herokuapp.com/api/course' + id)
                 .then(resp => {
                     console.log(resp);
                     resolve(resp)
