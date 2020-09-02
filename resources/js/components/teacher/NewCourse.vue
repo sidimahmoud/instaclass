@@ -95,11 +95,19 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
+                            <label for="desc">Give a short description to this course</label>
+                            <input type="text" class="form-control" id="desc"
+                                   placeholder="Name" v-model="course.short_description" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
                             <label for="sections">Number of session</label>
                             <input type="number" value="1" min="1" class="form-control" id="sections" required
                                    @change="addSection">
                         </div>
                     </div>
+
 
                     <!--                <div class="col-md-4">-->
                     <!--                    <div class="form-group">-->
@@ -237,7 +245,7 @@
         data() {
             return {
                 course: {
-                    sub_category_id: '1',
+                    sub_category_id: 1,
                     language: 'EN',
                     price: '0',
                     currency: 'usd',
@@ -246,7 +254,7 @@
                     sharable: '1',
                     name: '',
                     image: '',
-                    // short_description: '',
+                    short_description: '',
                     // description: '',
                     // duration: '',
                     // status: '',
@@ -277,7 +285,7 @@
                     // this.$store.dispatch("saveSection", this.section)
                     const formData = new FormData();
                     const imagefile = document.querySelector('#thumbnail');
-                    formData.append("sub_category_id", this.course.category_id);
+                    formData.append("sub_category_id", this.course.sub_category_id);
                     formData.append("language", this.course.language);
                     formData.append("price", this.course.price);
                     formData.append("currency", this.course.currency);
@@ -285,6 +293,7 @@
                     formData.append("authorized_students", this.course.authorized_students);
                     formData.append("sharable", this.course.sharable);
                     formData.append("name", this.course.name);
+                    formData.append("short_description", this.course.short_description);
                     formData.append("image", imagefile.files[0]);
                     axios.post('https://instantclass.herokuapp.com/api/course', formData, {
                         headers: {

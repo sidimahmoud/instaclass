@@ -6274,13 +6274,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewCourse",
   data: function data() {
     return {
       course: {
-        sub_category_id: '1',
+        sub_category_id: 1,
         language: 'EN',
         price: '0',
         currency: 'usd',
@@ -6288,8 +6296,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         authorized_students: '',
         sharable: '1',
         name: '',
-        image: '' // short_description: '',
-        // description: '',
+        image: '',
+        short_description: '' // description: '',
         // duration: '',
         // status: '',
         // type: '',
@@ -6318,7 +6326,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         // this.$store.dispatch("saveSection", this.section)
         var formData = new FormData();
         var imagefile = document.querySelector('#thumbnail');
-        formData.append("sub_category_id", this.course.category_id);
+        formData.append("sub_category_id", this.course.sub_category_id);
         formData.append("language", this.course.language);
         formData.append("price", this.course.price);
         formData.append("currency", this.course.currency);
@@ -6326,6 +6334,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         formData.append("authorized_students", this.course.authorized_students);
         formData.append("sharable", this.course.sharable);
         formData.append("name", this.course.name);
+        formData.append("short_description", this.course.short_description);
         formData.append("image", imagefile.files[0]);
         axios.post('https://instantclass.herokuapp.com/api/course', formData, {
           headers: {
@@ -53074,6 +53083,45 @@ var render = function() {
             ]),
             _vm._v(" "),
             _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "desc" } }, [
+                  _vm._v("Give a short description to this course")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.course.short_description,
+                      expression: "course.short_description"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "desc",
+                    placeholder: "Name",
+                    required: ""
+                  },
+                  domProps: { value: _vm.course.short_description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.course,
+                        "short_description",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ])
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-12" }, [
               _c("div", { staticClass: "form-group" }, [
