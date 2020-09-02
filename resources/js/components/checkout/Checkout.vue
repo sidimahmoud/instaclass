@@ -129,7 +129,10 @@
                     course_price: this.course_price
                 };
                 this.$store.dispatch('enroll', payload)
-                    .then(() => alert("Enrolled successfully"))
+                    .then(() => {
+                        alert("Enrolled successfully");
+                        this.$router.push({name: 'StudentProfile'})
+                    })
                     .catch(err => console.log(err))
             }
         },

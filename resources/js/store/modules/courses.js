@@ -75,6 +75,19 @@ const actions = {
                 })
         })
     },
+    async deleteCourse({commit}, id) {
+        headers();
+        return new Promise((resolve, reject) => {
+            axios.delete('https://instantclass.herokuapp.com/api/courses' + id)
+                .then(resp => {
+                    console.log(resp);
+                    resolve(resp)
+                })
+                .catch(err => {
+                    reject(err)
+                })
+        })
+    },
 
     async fetchDemands({commit}) {
         commit('setLoading', true);

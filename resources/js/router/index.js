@@ -31,6 +31,9 @@ import LoginAdmin from "../components/admin/auth/Login";
 
 import Homefr from "../components/fr/Homefr";
 import CategoryCourses from "../components/courses/CategoryCourses";
+import NewCourse from "../components/teacher/NewCourse";
+import EditCourse from "../components/teacher/EditCourse";
+import NewSection from "../components/teacher/NewSection";
 
 Vue.use(VueRouter);
 
@@ -180,6 +183,33 @@ const routes = [
         }
     },
     {
+        path: '/teacher/courses/new',
+        name: 'NewCourse',
+        component: NewCourse,
+        meta: {
+            requiresAuth: true,
+            title: 'Add new course'
+        }
+    },
+    {
+        path: '/teacher/edit/:slug',
+        name: 'EditCourse',
+        component: EditCourse,
+        meta: {
+            requiresAuth: true,
+            title: 'Edit course'
+        }
+    },
+    {
+        path: '/teacher/course/add',
+        name: 'AddSection',
+        component: NewSection,
+        meta: {
+            requiresAuth: true,
+            title: 'New session'
+        }
+    },
+    {
         path: '/student/profile',
         name: 'StudentProfile',
         component: StudentProfile,
@@ -206,7 +236,7 @@ const routes = [
     },
 
     {
-        path: '/auth/login',
+        path: '/login',
         name: 'Login',
         component: Login,
         meta: {
@@ -236,7 +266,7 @@ const routes = [
         }
     },
     {
-        path: '/auth/register',
+        path: '/register',
         name: 'Register',
         component: Register,
         meta: {

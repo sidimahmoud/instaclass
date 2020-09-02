@@ -1,12 +1,12 @@
 <template>
-    <div class="container bootstrap snippet border-top border-primary pt-5">
+    <div class="container bootstrap snippet ">
         <div class="text-center"><h1>{{userProfile.first_name}} {{userProfile.last_name}}</h1></div>
         <div class="row">
             <div class="col-sm-3"><!--left col-->
                 <div class="text-center">
                     <img :src="userProfile.image" class="avatar img-circle img-thumbnail"
                          alt="avatar">
-                    <h6>Choisir une photo</h6>
+                    <h6>Add a photo</h6>
                     <input type="file" class="text-center center-block file-upload">
                 </div>
                 <br>
@@ -37,10 +37,10 @@
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="phone">Title</label>
+                                    <label for="phone">Phone</label>
                                     <input type="text" class="form-control" name="phone" id="phone"
-                                           placeholder="Example : Web developer" title="enter your phone number if any."
-                                           :value="userProfile.headline">
+                                           placeholder="Phone" title="enter your phone number if any."
+                                           :value="userProfile.phone">
                                 </div>
                             </div>
 
@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    <label for="about">About</label>
+                                    <label for="about">About Me</label>
                                     <textarea name="" id="about" class="form-control">{{userProfile.about}}
                                     </textarea>
                                 </div>
@@ -95,20 +95,6 @@
 
     export default {
         name: "EditProfile",
-        methods: {
-            ...mapActions(["fetchProfile"]),
-            logout() {
-                this.$store.dispatch('logout')
-                    .then(() => {
-                        this.$router.push('/')
-                    })
-            }
-
-
-        },
-        computed: mapGetters(["userProfile"]),
-        created() {
-            this.fetchProfile();
-        }
+        props:["userProfile"]
     }
 </script>

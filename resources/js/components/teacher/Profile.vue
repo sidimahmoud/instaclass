@@ -26,7 +26,8 @@
                         <br> Course Enrollments
                     </div>
                     <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">
-                        <span class="btn btn-danger">{{userCourses.length>0?userCourses.length:"0"}} </span> <br> Courses
+                        <span class="btn btn-danger">{{userCourses.length>0?userCourses.length:"0"}} </span> <br>
+                        Courses
                     </div>
 
                     <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
@@ -40,30 +41,63 @@
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne"
                                         aria-expanded="true" aria-controls="collapseOne">
-                                    New Course
+                                    Manage my courses
+                                </button>
+                                <button class="btn btn-link float-right" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="fa fa-plus"></i>
                                 </button>
                             </h2>
                         </div>
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                             data-parent="#accordionExample">
                             <div class="card-body">
-                                <new-course/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingSection">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSection"
-                                        aria-expanded="true" aria-controls="collapseSection">
-                                    New Course Section
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseSection" class="collapse" aria-labelledby="headingSection" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <new-section></new-section>
+                                <div class="text-right">
+                                    <router-link :to="{name: 'NewCourse'}">
+                                        <button class="btn btn-primary">
+                                            <i class="fa fa-plus"></i> New
+                                        </button>
+                                    </router-link>
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li class="media shadow-sm border rounded p-2 mt-4"
+                                        v-for="course in userCourses"
+                                        :key="course.id">
+                                        <div class="media-body">
+                                            <div class="row ">
+                                                <div class="col-md-9 ">
+                                                    <router-link
+                                                        :to="{ name: 'Detail', params: { slug: course.slug}}">
+                                                        <h5 class="mt-0 mb-1 text-primary font-weight-bolder">
+                                                            {{course.name}}</h5>
+                                                    </router-link>
+                                                    {{course.short_description}}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <router-link
+                                                        :to="{ name: 'AddSection'}">
+                                                        <button class="btn btn-success">Add session</button>
+                                                    </router-link>
+                                                    <router-link
+                                                        :to="{ name: 'EditCourse', params: { slug: course.slug}}">
+                                                        <button class="btn btn-warning">Edit</button>
+                                                    </router-link>
+                                                    <a href="javascript:;"  class="btn btn-danger" v-on:click="deleteCourse(course.id)">
+                                                        Delete
+
+                                                    </a>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -73,7 +107,13 @@
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                                         data-target="#collapsePayment" aria-expanded="false"
                                         aria-controls="collapsePayment">
-                                    Payments
+                                    Payments and receipts
+                                </button>
+                                <button class="btn btn-link collapsed float-right" type="button" data-toggle="collapse"
+                                        data-target="#collapsePayment" aria-expanded="false"
+                                        aria-controls="collapsePayment">
+                                    <i class="fa fa-plus"></i>
+
                                 </button>
                             </h2>
                         </div>
@@ -85,135 +125,59 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Receipts
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                                beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-                                lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you
-                                probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
                         <div class="card-header" id="evaluation">
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                                         data-target="#collapseEval" aria-expanded="false" aria-controls="collapseEval">
                                     Reviews
                                 </button>
+                                <button class="btn btn-link collapsed float-right" type="button" data-toggle="collapse"
+                                        data-target="#collapseEval" aria-expanded="false" aria-controls="collapseEval">
+                                    <i class="fa fa-plus"></i>
+
+                                </button>
                             </h2>
                         </div>
-                        <div id="collapseEval" class="collapse" aria-labelledby="evaluation" data-parent="#accordionExample">
+                        <div id="collapseEval" class="collapse" aria-labelledby="evaluation"
+                             data-parent="#accordionExample">
                             <div class="card-body">
                                 <div class="text-center" v-if="allTeacherDetails.ratings.length===0">
                                     <h3>No reviews</h3>
                                 </div>
                                 <div v-else>
-                                    <review v-for="r in allTeacherDetails.ratings" :key="r.id" :rating='r'  />
+                                    <review v-for="r in allTeacherDetails.ratings" :key="r.id" :rating='r'/>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-
                     <div class="card">
                         <div class="card-header" id="headingThree">
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                        data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        data-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
                                     Personal informations
+                                </button>
+                                <button class="btn btn-link collapsed float-right" type="button" data-toggle="collapse"
+                                        data-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                    <i class="fa fa-plus"></i>
                                 </button>
                             </h2>
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                              data-parent="#accordionExample">
                             <div class="card-body">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-7 bg-white shadow">
-                                            <nav class="nav nav-pills nav-fill mt-3">
-                                                <a class="nav-item nav-link active" href="#about"
-                                                   data-toggle="tab">About</a>
-                                                <a class="nav-item nav-link" href="#courses" data-toggle="tab">My
-                                                    Courses</a>
-                                            </nav>
-                                            <hr>
-                                            <div class="tab-content my-5">
-                                                <div class="tab-pane fade show active" id="about">
-                                                    <h3 class="font-weight-bolder">About Me</h3>
-                                                    <p>
-                                                        {{userProfile.about}}
-                                                    </p>
-                                                </div>
-
-                                                <!-- courses-->
-                                                <div class="tab-pane fade show" id="courses">
-                                                    <ul class="list-unstyled">
-                                                        <li class="media shadow-sm border rounded p-2 mt-4"
-                                                            v-for="course in userCourses"
-                                                            :key="course.id">
-                                                            <div class="media-body">
-                                                                <router-link
-                                                                    :to="{ name: 'Detail', params: { slug: course.slug}}">
-                                                                    <h5 class="mt-0 mb-1 text-danger font-weight-bolder">
-                                                                        {{course.name}}</h5>
-                                                                </router-link>
-                                                                {{course.short_description}}
-                                                                <div class="text-center">
-                                                                    <button type="button"
-                                                                            class="btn btn-primary btn-sm disabled">
-                                                                        Enrollments <span class="badge badge-light">4</span>
-                                                                    </button>
-                                                                    <button type="button"
-                                                                            class="btn btn-primary btn-sm disabled ml-5">
-                                                                        All views <span class="badge badge-light">410</span>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-1">
-                                        </div>
-
-                                        <div class="col-md-4 text-center ">
-                                            <div class="card bg-primary">
-                                                <div class="card-body text-center text-white">
-                                                    <img :src="userProfile.image" alt="Avatar" width="60px"
-                                                         class="rounded-circle">
-                                                    <h3 class="card-title font-weight-bolder">{{userProfile.first_name}}
-                                                        {{userProfile.last_name}}</h3>
-                                                    <p class="card-text">{{userProfile.headline}}</p>
-                                                    <router-link :to="{name: 'EditProfile'}" tag="a" class="btn btn-danger">
-                                                        Edit Profile
-                                                    </router-link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <edit-profile :userProfile="userProfile"/>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+
 </template>
 
 <script>
@@ -222,13 +186,17 @@
     import Payments from "./Payments";
     import Review from "../courses/Review";
     import NewSection from "./NewSection";
+    import EditProfile from "../student/EditProfile";
+    import axios from "axios";
+
     export default {
         name: "TeacherProfile",
         components: {
             NewCourse,
             Payments,
             Review,
-            NewSection
+            NewSection,
+            EditProfile
         },
         methods: {
             ...mapActions(["fetchProfile", "fetchUserCourses", "fetchTeacherDetails", "fetchTeacherPayments"]),
@@ -239,8 +207,24 @@
                         this.$router.push('/')
                     })
             },
+            deleteCourse(id) {
+                const token = localStorage.getItem('token')||null;
+                if(token){
+                    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                    if (confirm("Do you really want to delete?")) {
+                        this.$store.dispatch('deleteCourse', id)
+                            .then(resp => {
+                                location.reload();
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            })
+                    }
+                }
+
+            },
         },
-        computed: mapGetters(["profileLoading","userProfile", "userCourses", "allTeacherDetails"]),
+        computed: mapGetters(["profileLoading", "userProfile", "userCourses", "allTeacherDetails"]),
         created() {
             this.fetchProfile();
             this.fetchUserCourses();

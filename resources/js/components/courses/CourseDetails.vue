@@ -83,7 +83,7 @@
                         <h4>{{section.title}}</h4>
                         <p>{{section.description}}</p>
                         <p>
-                            Availabilities : session1.startDate - Duration: session1.duration
+                            Availabilities : {{section.startDate}}
                         </p>
                     </div>
                     <div class="col-md-1 d-none -d-md-flex"></div>

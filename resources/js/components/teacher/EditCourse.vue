@@ -2,13 +2,13 @@
     <div class="border-top border-primary pt-5">
         <div class="container rounded py-3 bg-white">
 
-            <h3 class="text-center">Submit new course</h3>
+            <h3 class="text-center">Edit {{course.name}}</h3>
             <form class="my-3" method="post" @submit.prevent="saveCourse">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="selectLang">Select category</label>
-                            <select class="form-control" id="selectLang" @change="loadSubs" required>
+                            <select class="form-control" id="selectLang" required>
                                 <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name}}</option>
                             </select>
                         </div>
@@ -17,8 +17,6 @@
                         <div class="form-group">
                             <label for="subCateg">Sub category</label>
                             <select class="form-control" id="subCateg" v-model="course.category_id" required>
-                                <option v-for="c in subCategories" :key="c.id" :value="c.id">{{c.name}}</option>
-
                             </select>
                         </div>
                     </div>
@@ -191,29 +189,29 @@
                     <!--                </div>-->
 
                 </div>
-                <div class="row" v-for="(section, index) in sections" :key="index">
-                    <div class="col-md-12">
+                <h3>Sessions: </h3>
+                <div class="row " v-for="(section, index) in course.sections" :key="index">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label for="section1Title">Session {{index+1}}: Give a title to this session</label>
+                            <label for="section1Title">Session {{index+1}} Title</label>
                             <input type="text" class="form-control" id="section1Title"
-                                   placeholder="Title"  required>
+                                   placeholder="Title" required>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label for="short_desc">Session {{index+1}} description: GIve a description of what you will
-                                teach in this session</label>
+                            <label for="short_desc">Session {{index+1}} Description</label>
                             <input type="text" class="form-control" id="short_desc"
-                                   placeholder="Short description"  required>
+                                   placeholder="Short description" required>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Session {{index+1}} availabilities:</label>
                             <input type="datetime-local" class="form-control" required>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Séance {{index+1}} video:</label>
                             <input type="file" class="form-control-file">
@@ -222,7 +220,7 @@
                 </div>
 
 
-                <button class="btn btn-primary btn-block" type="submit">Publish course</button>
+                <button class="btn btn-primary btn-block" type="submit">Save course</button>
             </form>
 
         </div>
@@ -232,30 +230,31 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
+    import Review from "../courses/Review";
 
     export default {
         name: "NewCourse",
         data() {
             return {
-                course: {
-                    category_id: '',
-                    name: '',
-                    short_description: '',
-                    description: '',
-                    image: '',
-                    language: '',
-                    duration: '',
-                    status: '',
-                    type: '',
-                    estimated_duration: '',
-                    authorized_students: '',
-                    join_after: '',
-                    price: '',
-                    currency: 'usd',
-                    available_from: '',
-                    available_to: '',
-                    sharable: '1',
-                },
+                // course: {
+                //     category_id: '',
+                //     name: '',
+                //     short_description: '',
+                //     description: '',
+                //     image: '',
+                //     language: '',
+                //     duration: '',
+                //     status: '',
+                //     type: '',
+                //     estimated_duration: '',
+                //     authorized_students: '',
+                //     join_after: '',
+                //     price: '',
+                //     currency: 'usd',
+                //     available_from: '',
+                //     available_to: '',
+                //     sharable: '1',
+                // },
                 sections: [
                     {
                         title: '',
@@ -268,30 +267,8 @@
         },
         methods: {
             ...mapActions(['fetchCategories']),
-            loadSubs(event){
-                const id = event.target.value;
-                this.$store.dispatch('fetchSubCategories', id)
-            },
-            sanitizeTitle: function (title) {
-                var slug = "";
-                // Change to lower case
-                var titleLower = title.toLowerCase();
-                // Letter "e"
-                slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
-                // Letter "a"
-                slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a');
-                // Letter "o"
-                slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o');
-                // Letter "u"
-                slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u');
-                // Letter "d"
-                slug = slug.replace(/đ/gi, 'd');
-                slug = slug.replace(/,/gi, '-');
-                // Trim the last whitespace
-                slug = slug.replace(/\s*$/g, '');
-                // Change whitespace to "-"
-                slug = slug.replace(/\s+/g, '-');
-                return slug;
+            findCourse() {
+                this.$store.dispatch('getCourse', this.$route.params.slug)
             },
             saveCourse() {
                 const token = localStorage.getItem('token') || null;
@@ -328,7 +305,7 @@
             },
             addSection(event) {
                 const sections = event.target.value;
-                this.sections= [];
+                this.sections = [];
                 for (let i = 0; i < sections; i++) {
                     this.sections.push({
                         course_id: '',
@@ -340,11 +317,35 @@
 
 
             },
+            sanitizeTitle: function (title) {
+                var slug = "";
+                // Change to lower case
+                var titleLower = title.toLowerCase();
+                // Letter "e"
+                slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
+                // Letter "a"
+                slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a');
+                // Letter "o"
+                slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o');
+                // Letter "u"
+                slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u');
+                // Letter "d"
+                slug = slug.replace(/đ/gi, 'd');
+                slug = slug.replace(/,/gi, '-');
+                // Trim the last whitespace
+                slug = slug.replace(/\s*$/g, '');
+                // Change whitespace to "-"
+                slug = slug.replace(/\s+/g, '-');
+                return slug;
+            },
         },
-        computed: mapGetters(["allCategories", "subCategories"]),
+        computed: mapGetters(["allCategories", "course", "loading"]),
         created() {
-            this.fetchCategories()
+            this.fetchCategories();
+            this.findCourse();
+
         }
+
     }
 </script>
 

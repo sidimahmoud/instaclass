@@ -47,12 +47,10 @@
                         </div>
                     </div>
                     <div class="row  mt-2">
-                        <div class="col-md-4">
+                        <div class="col-md-4" v-if="course.sharable">
                             <b>Partager sur </b>
 
                             <i class="fa fa-facebook  mr-3"></i>
-                            <i class="fa fa-twitter  mr-3"></i>
-                            <i class="fa fa-linkedin  mr-3"></i>
                             <i class="fa fa-instagram  mr-3"></i>
 
                         </div>

@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/user/courses', 'Teacher\CoursesController@teacherCourses');
         Route::get('/teacher/details', 'Admin\UsersController@teacherDetails');
         Route::get('/teacher/payments', 'Admin\UsersController@teacherPayments');
-        Route::post('/courses', 'CourseController@store');
+        Route::resource('/courses', 'CourseController');
         Route::post('/courses/sections', 'CourseFileController@store');
     });
 
@@ -37,6 +37,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::post('login', 'AuthController@login');
 Route::post('register', 'AuthController@register');
 Route::resource('/categories', 'CategoryController');
+Route::resource('/categories/sub/{id}', 'SubCategoryController@');
 Route::get('/courses', 'CourseController@index');
 Route::get('/courses/{id}', 'CourseController@show');
 Route::get('/courses/search/{q}', 'CourseController@search');
