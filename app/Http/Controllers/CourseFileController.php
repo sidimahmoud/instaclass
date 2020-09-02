@@ -49,7 +49,7 @@ class CourseFileController extends Controller
             $file->file = 'uploads/courses/sections' . $sectionFile_name;
         }
         else
-            $file->image = $request['file'];
+            $file->file = $request['file'];
         $file->save();
         if ($file) return response()->json("Section created successfully");
         return response()->json("error");

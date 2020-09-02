@@ -76,7 +76,7 @@
                     formData.append("startDate", this.section.startDate);
                     formData.append("description", this.section.description);
                     formData.append("file", imagefile.files[0]);
-                    axios.post('https://instantclass.herokuapp.com/api/courses/sections', formData, {
+                    axios.post('https://instantclass.herokuapp.com/api/course/sections', formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             'Authorization': 'Bearer ' + token,

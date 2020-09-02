@@ -4643,6 +4643,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5443,6 +5454,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6447,7 +6467,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         formData.append("startDate", this.section.startDate);
         formData.append("description", this.section.description);
         formData.append("file", imagefile.files[0]);
-        axios.post('https://instantclass.herokuapp.com/api/courses/sections', formData, {
+        axios.post('https://instantclass.herokuapp.com/api/course/sections', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
             'Authorization': 'Bearer ' + token
@@ -49281,217 +49301,243 @@ var render = function() {
       ? _c("div", [
           _c("div", { staticClass: "jumbotron" }),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "container bg-white" },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "row justify-content-around align-items-center border-bottom border-primary"
-                },
-                [
-                  _c("div", { staticClass: "col-md-2 text-center" }, [
-                    _c("img", {
-                      attrs: {
-                        src: _vm.course.user.image,
-                        width: "80px",
-                        alt: "Avatar"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "fa fa-star text-warning" }),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "fa fa-star text-warning" }),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "fa fa-star text-warning" }),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "fa fa-star text-warning" }),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "fa fa-star text-warning" })
+          _c("div", { staticClass: "container bg-white" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "row justify-content-around align-items-center border-bottom border-primary"
+              },
+              [
+                _c("div", { staticClass: "col-md-2 text-center" }, [
+                  _c("img", {
+                    attrs: {
+                      src: _vm.course.user.image,
+                      width: "80px",
+                      alt: "Avatar"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fa fa-star text-warning" }),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fa fa-star text-warning" }),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fa fa-star text-warning" }),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fa fa-star text-warning" }),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fa fa-star text-warning" })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-3" }, [
+                  _c("div", { staticClass: "font-weight-bolder" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.course.user.first_name) +
+                        "\n                    "
+                    )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-3" }, [
-                    _c("div", { staticClass: "font-weight-bolder" }, [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.course.user.first_name) +
-                          "\n                    "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.course.user.city) +
-                          "," +
-                          _vm._s(_vm.course.user.country) +
-                          "\n                    "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm.course.user.languages
-                      ? _c("div", [
-                          _vm._v(
-                            "\n                        Spoken languages: " +
-                              _vm._s(_vm.course.user.languages) +
-                              "\n                    "
-                          )
-                        ])
-                      : _vm._e()
+                  _c("div", [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.course.user.city) +
+                        "," +
+                        _vm._s(_vm.course.user.country) +
+                        "\n                    "
+                    )
                   ]),
                   _vm._v(" "),
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-md-2" },
-                    [
-                      !_vm.enrolled
-                        ? _c(
-                            "router-link",
-                            {
-                              staticClass: "btn btn-primary my-3",
-                              attrs: {
-                                to: {
-                                  name: "Checkout",
-                                  params: {
-                                    id: _vm.course.id,
-                                    name: _vm.course.name,
-                                    price: _vm.course.price
-                                  }
-                                },
-                                tag: "a"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                        S'inscrire à tout les séances\n                    "
-                              )
-                            ]
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "row my-3" }, [
-                _vm.course.category
-                  ? _c(
-                      "div",
-                      { staticClass: "col-md-3" },
-                      [
-                        _c(
+                  _vm.course.user.languages
+                    ? _c("div", [
+                        _vm._v(
+                          "\n                        Spoken languages: " +
+                            _vm._s(_vm.course.user.languages) +
+                            "\n                    "
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-2" },
+                  [
+                    !_vm.enrolled
+                      ? _c(
                           "router-link",
                           {
-                            staticClass: "mr-3",
+                            staticClass: "btn btn-primary my-3",
                             attrs: {
                               to: {
-                                name: "CategCourses",
-                                params: { id: _vm.course.category.id }
+                                name: "Checkout",
+                                params: {
+                                  id: _vm.course.id,
+                                  name: _vm.course.name,
+                                  price: _vm.course.price
+                                }
                               },
                               tag: "a"
                             }
                           },
                           [
-                            _vm._v("\n                        Category: "),
-                            _c("strong", [
-                              _vm._v(_vm._s(_vm.course.category.name))
-                            ])
+                            _vm._v(
+                              "\n                        S'inscrire à tout les séances\n                    "
+                            )
                           ]
-                        ),
-                        _vm._v(
-                          "\n                    Sub-category :\n                "
                         )
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-3" }, [
-                  _vm._v(
-                    "Number of Sessions: " + _vm._s(_vm.course.sections.length)
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.enrolled
+                      ? _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-primary my-3",
+                            attrs: { tag: "a" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        Deja inscrit\n                    "
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ],
+                  1
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "row my-3" }, [
+              _vm.course.sub_category
+                ? _c(
+                    "div",
+                    { staticClass: "col-md-4" },
+                    [
+                      _vm._v(
+                        "\n                    Category:\n                    "
+                      ),
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "mr-2 text-primary",
+                          attrs: {
+                            to: {
+                              name: "CategCourses",
+                              params: {
+                                id: _vm.course.sub_category.category.id
+                              }
+                            },
+                            tag: "a"
+                          }
+                        },
+                        [
+                          _c("strong", [
+                            _vm._v(
+                              _vm._s(_vm.course.sub_category.category.name)
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(
+                        "\n                    Sub-category : " +
+                          _vm._s(_vm.course.sub_category.name) +
+                          "\n                "
+                      )
+                    ],
+                    1
                   )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-3" }, [
-                  _vm._v("Language : " + _vm._s(_vm.course.language))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-3" }, [
-                  _vm._v("Price: $" + _vm._s(_vm.course.price) + "/session")
-                ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3" }, [
+                _vm._v("Sessions: " + _vm._s(_vm.course.sections.length))
               ]),
               _vm._v(" "),
-              _vm._l(_vm.course.sections, function(section) {
-                return _c(
+              _c("div", { staticClass: "col-md-2" }, [
+                _vm._v("Language : " + _vm._s(_vm.course.language))
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3" }, [
+                _vm._v("Price: $" + _vm._s(_vm.course.price) + "/session")
+              ])
+            ]),
+            _vm._v(" "),
+            _vm.course.sections.length === 0
+              ? _c("div", { staticClass: "text-center my-3" }, [
+                  _c("h3", [_vm._v("This course has no sessions yet")])
+                ])
+              : _c(
                   "div",
-                  {
-                    key: section.id,
-                    staticClass:
-                      "row justify-content-around align-items-center shadow-sm"
-                  },
-                  [
-                    _c("div", { staticClass: "col-md-9" }, [
-                      _c("h4", [_vm._v(_vm._s(section.title))]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(section.description))]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "\n                        Availabilities : " +
-                            _vm._s(section.startDate) +
-                            "\n                    "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-1 d-none -d-md-flex" }),
-                    _vm._v(" "),
-                    _c(
+                  _vm._l(_vm.course.sections, function(section) {
+                    return _c(
                       "div",
-                      { staticClass: "col-md-2" },
+                      {
+                        key: section.id,
+                        staticClass:
+                          "row justify-content-around align-items-center shadow-sm"
+                      },
                       [
-                        !_vm.enrolled
-                          ? _c(
-                              "router-link",
-                              {
-                                staticClass: "btn btn-primary my-3",
-                                attrs: {
-                                  to: {
-                                    name: "Checkout",
-                                    params: {
-                                      id: _vm.course.id,
-                                      name: _vm.course.name,
-                                      price: _vm.course.price
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("h4", [_vm._v(_vm._s(section.title))]),
+                          _vm._v(" "),
+                          _c("p", [_vm._v(_vm._s(section.description))]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "\n                            Availabilities : " +
+                                _vm._s(section.startDate) +
+                                "\n                        "
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", {
+                          staticClass: "col-md-1 d-none -d-md-flex"
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-md-2" },
+                          [
+                            !_vm.enrolled
+                              ? _c(
+                                  "router-link",
+                                  {
+                                    staticClass: "btn btn-primary my-3",
+                                    attrs: {
+                                      to: {
+                                        name: "Checkout",
+                                        params: {
+                                          id: _vm.course.id,
+                                          name: _vm.course.name,
+                                          price: _vm.course.price
+                                        }
+                                      },
+                                      tag: "a"
                                     }
                                   },
-                                  tag: "a"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                        S'inscrire\n                    "
+                                  [
+                                    _vm._v(
+                                      "\n                            S'inscrire\n                        "
+                                    )
+                                  ]
                                 )
-                              ]
-                            )
-                          : _vm._e()
-                      ],
-                      1
+                              : _vm._e()
+                          ],
+                          1
+                        )
+                      ]
                     )
-                  ]
+                  }),
+                  0
                 )
-              })
-            ],
-            2
-          )
+          ])
         ])
       : _vm._e()
   ])
@@ -51285,6 +51331,25 @@ var render = function() {
                         title: "enter your email."
                       },
                       domProps: { value: _vm.userProfile.email }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "col-xs-6" }, [
+                    _c("label", { attrs: { for: "lang" } }, [
+                      _vm._v("Spoken languages")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        name: "email",
+                        id: "lang",
+                        title: "enter your email."
+                      },
+                      domProps: { value: _vm.userProfile.languages }
                     })
                   ])
                 ]),

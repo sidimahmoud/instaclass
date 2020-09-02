@@ -54,6 +54,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="lang">Spoken languages</label>
+                                    <input type="text" class="form-control" name="email" id="lang"
+                                            title="enter your email."
+                                           :value="userProfile.languages">
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="about">About Me</label>
                                     <textarea name="" id="about" class="form-control">{{userProfile.about}}

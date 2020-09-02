@@ -64,35 +64,46 @@
                             tag="a" class="btn btn-primary my-3" v-if="!enrolled">
                             S'inscrire à tout les séances
                         </router-link>
+                        <router-link tag="a" class="btn btn-primary my-3" v-if="enrolled">
+                            Deja inscrit
+                        </router-link>
                     </div>
                 </div>
                 <div class="row my-3">
-                    <div class="col-md-3" v-if="course.category">
-                        <router-link :to="{ name: 'CategCourses', params: { id: course.category.id}}" tag="a" class="mr-3">
-                            Category: <strong>{{course.category.name}}</strong>
+                    <div class="col-md-4" v-if="course.sub_category">
+                        Category:
+                        <router-link :to="{ name: 'CategCourses', params: { id: course.sub_category.category.id}}"
+                                     tag="a" class="mr-2 text-primary">
+                            <strong>{{course.sub_category.category.name}}</strong>
                         </router-link>
-                        Sub-category :
+                        Sub-category : {{course.sub_category.name}}
                     </div>
-                    <div class="col-md-3">Number of Sessions: {{course.sections.length}}</div>
-                    <div class="col-md-3">Language : {{course.language}}</div>
+                    <div class="col-md-3">Sessions: {{course.sections.length}}</div>
+                    <div class="col-md-2">Language : {{course.language}}</div>
                     <div class="col-md-3">Price: ${{course.price}}/session</div>
                 </div>
-                <div class="row justify-content-around align-items-center shadow-sm" v-for="section in course.sections"
-                     :key="section.id">
-                    <div class="col-md-9">
-                        <h4>{{section.title}}</h4>
-                        <p>{{section.description}}</p>
-                        <p>
-                            Availabilities : {{section.startDate}}
-                        </p>
-                    </div>
-                    <div class="col-md-1 d-none -d-md-flex"></div>
-                    <div class="col-md-2">
-                        <router-link
-                            :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
-                            tag="a" class="btn btn-primary my-3" v-if="!enrolled">
-                            S'inscrire
-                        </router-link>
+                <div class="text-center my-3" v-if="course.sections.length===0">
+                    <h3>This course has no sessions yet</h3>
+                </div>
+                <div v-else>
+                    <div class="row justify-content-around align-items-center shadow-sm"
+                         v-for="section in course.sections"
+                         :key="section.id">
+                        <div class="col-md-9">
+                            <h4>{{section.title}}</h4>
+                            <p>{{section.description}}</p>
+                            <p>
+                                Availabilities : {{section.startDate}}
+                            </p>
+                        </div>
+                        <div class="col-md-1 d-none -d-md-flex"></div>
+                        <div class="col-md-2">
+                            <router-link
+                                :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
+                                tag="a" class="btn btn-primary my-3" v-if="!enrolled">
+                                S'inscrire
+                            </router-link>
+                        </div>
                     </div>
                 </div>
             </div>
