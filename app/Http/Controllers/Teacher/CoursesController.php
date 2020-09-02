@@ -65,7 +65,7 @@ class CoursesController extends Controller
         $course->available_from = $request["available_from"];
         $course->available_to = $request["available_to"];
         $course->sharable = $request["sharable"];
-        $course->published = $request["published"];
+        $course->published = 1;
 
         if ($request->hasFile('image')) {
             $file = $request['image'];
