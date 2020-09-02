@@ -36,7 +36,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/user/courses', 'Teacher\CoursesController@teacherCourses');
         Route::get('/teacher/details', 'Admin\UsersController@teacherDetails');
         Route::get('/teacher/payments', 'Admin\UsersController@teacherPayments');
-        Route::resource('/course', 'CourseController');
+        Route::resource('/course', 'CoursesController');
         Route::post('/course/sections', 'CourseFileController@store');
     });
 
