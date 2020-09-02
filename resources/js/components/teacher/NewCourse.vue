@@ -343,7 +343,8 @@
         },
         computed: mapGetters(["allCategories", "subCategories"]),
         created() {
-            this.fetchCategories()
+            this.fetchCategories();
+            this.$store.dispatch('fetchSubCategories', 1)
         }
     }
 </script>

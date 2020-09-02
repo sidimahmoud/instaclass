@@ -6564,6 +6564,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["allCategories", "subCategories"]),
   created: function created() {
     this.fetchCategories();
+    this.$store.dispatch('fetchSubCategories', 1);
   }
 });
 
