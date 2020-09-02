@@ -80484,7 +80484,7 @@ var actions = {
               commit = _ref2.commit;
               commit('loadingCategories', true);
               _context2.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/categories/sub/' + id);
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/sub-categories/' + id);
 
             case 4:
               response = _context2.sent;

@@ -23,7 +23,7 @@ const actions = {
     },
     async fetchSubCategories({commit}, id) {
         commit('loadingCategories', true);
-        const response = await axios.get('https://instantclass.herokuapp.com/api/categories/sub/'+id);
+        const response = await axios.get('https://instantclass.herokuapp.com/api/sub-categories/'+id);
         commit('setSubCategories', response.data);
         commit('loadingCategories', false);
 

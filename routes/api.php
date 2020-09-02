@@ -38,7 +38,7 @@ Route::post('login', 'AuthController@login');
 Route::post('register', 'AuthController@register');
 Route::resource('/categories', 'CategoryController');
 Route::get('/categories/sub/{id}', 'SubCategoryController@subCategories');
-Route::resource('/categories/sub', 'SubCategoryController');
+Route::resource('/sub-categories/sub', 'SubCategoryController');
 Route::get('/courses', 'CourseController@index');
 Route::get('/courses/{id}', 'CourseController@show');
 Route::get('/courses/search/{q}', 'CourseController@search');
