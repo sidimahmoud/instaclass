@@ -13,16 +13,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <ul class="navbar-nav ">
-                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                    <form class="form-inline my-2 my-lg-0 mr-lg-2" @submit.prevent="search">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search for courses"
-                               v-model="search" aria-label="Search">
-                        <router-link :to="{name: 'Search', params:{q:search}}"
-                                     class="btn btn-outline-primary my-2 my-sm-0" type="submit">
+                               v-model="q" aria-label="Search">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
                             Search
-                        </router-link>
+                        </button>
                     </form>
                 </ul>
-
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item " v-if="!$route.matched.some(({ name }) => name === 'Home')">
                         <router-link :to="{ name: 'Home'}" tag="a" class="nav-link ">
@@ -85,7 +83,7 @@
         computed: mapGetters(["isLoggedIn"]),
         data() {
             return {
-                search: '',
+                q: '',
             }
         },
         methods: {
@@ -94,6 +92,10 @@
                     .then(() => {
                         this.$router.push('/')
                     })
+            },
+            search() {
+                this.$store.dispatch('search', this.q)
+                    .then(res=>this.$router.push({name: 'Search'}))
             }
         }
     }

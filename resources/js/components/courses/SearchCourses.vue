@@ -28,15 +28,8 @@
         components: {
             Course
         },
-        methods: {
-            search() {
-                this.$store.dispatch('search', this.$route.params.q)
-            }
-        },
         computed: mapGetters(["allCourses", "loading"]),
-        created() {
-            this.search();
-        }
+
     }
 </script>
 

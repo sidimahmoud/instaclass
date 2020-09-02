@@ -64,7 +64,7 @@
 
                         </div>
 
-                        <button class="btn btn-primary btn-lg btn-block" type="submit" >Valider</button>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit" >Enroll</button>
 
                     </form>
 

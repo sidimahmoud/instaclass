@@ -35,7 +35,7 @@
                     <div class="col-md-12">
                         <div class="form-row mb-3">
                             <div class="col">
-                                <label for="price">Price per session</label>
+                                <label for="price">Estimated price per session</label>
                                 <input type="text" class="form-control" id="price" aria-describedby="priceHelp"
                                        placeholder="Price" v-model="course.price" required>
                                 <small id="priceHelp" class="form-text text-muted">A reasonable price will give you the

@@ -79,7 +79,7 @@ const actions = {
     async deleteCourse({commit}, id) {
         headers();
         return new Promise((resolve, reject) => {
-            axios.delete('https://instantclass.herokuapp.com/api/course' + id)
+            axios.delete('https://instantclass.herokuapp.com/api/course/' + id)
                 .then(resp => {
                     console.log(resp);
                     resolve(resp)

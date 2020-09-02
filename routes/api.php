@@ -12,12 +12,10 @@ Route::get('/courses/{id}', 'CourseController@show');
 Route::get('/courses/search/{q}', 'CourseController@search');
 Route::post('/courses/demander', 'DemandsController@store');
 Route::post('/contacter', 'ContactsController@store');
-Route::get('/class/{id}', 'CourseController@categoryCourses');
+Route::get('/class/{id}', 'CourseController@subCategoryCourses');
 
 Route::get('authorize/{provider}', 'AuthController@redirectToProvider');
 Route::get('authorize/{provider}/callback', 'AuthController@handleProviderCallback');
-
-
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::middleware('can:only-admin')->group(function () {
@@ -32,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/demands', 'DemandsController@index');
         Route::get('/contacts', 'ContactsController@index');
     });
+
     Route::middleware('can:teacher-or-admin')->group(function () {
         Route::get('/teacher/{id}/courses', 'Admin\UsersController@teacherCourses');
         Route::get('/user/courses', 'Teacher\CoursesController@teacherCourses');

@@ -22,8 +22,9 @@
                         </div>
                     </div>
                     <div class="row text-left ">
-                        <div class="col-6 " v-if="course.category">
-                            Category :{{course.category.name}}
+                        <div class="col-6 " v-if="course.sub_category">
+                           Category: <strong>{{course.sub_category.category.name}}</strong> >
+                            <strong>{{course.sub_category.name}}</strong>
                         </div>
                         <div class="col-6 text-right">
                             Price: <b>{{course.price==0?"Free":"$"+course.price}}</b>

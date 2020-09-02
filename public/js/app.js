@@ -4321,6 +4321,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Course",
   props: ["course"]
@@ -5228,15 +5229,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Course: _CourseComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  methods: {
-    search: function search() {
-      this.$store.dispatch('search', this.$route.params.q);
-    }
-  },
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(["allCourses", "loading"]),
-  created: function created() {
-    this.search();
-  }
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(["allCourses", "loading"])
 });
 
 /***/ }),
@@ -5350,15 +5343,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AppNav',
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["isLoggedIn"]),
   data: function data() {
     return {
-      search: ''
+      q: ''
     };
   },
   methods: {
@@ -5367,6 +5358,15 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$store.dispatch('logout').then(function () {
         _this.$router.push('/');
+      });
+    },
+    search: function search() {
+      var _this2 = this;
+
+      this.$store.dispatch('search', this.q).then(function (res) {
+        return _this2.$router.push({
+          name: 'Search'
+        });
       });
     }
   }
@@ -48859,7 +48859,7 @@ var render = function() {
                     staticClass: "btn btn-primary btn-lg btn-block",
                     attrs: { type: "submit" }
                   },
-                  [_vm._v("Valider")]
+                  [_vm._v("Enroll")]
                 )
               ]
             )
@@ -49166,13 +49166,18 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "row text-left " }, [
-                    _vm.course.category
+                    _vm.course.sub_category
                       ? _c("div", { staticClass: "col-6 " }, [
-                          _vm._v(
-                            "\n                        Category :" +
-                              _vm._s(_vm.course.category.name) +
-                              "\n                    "
-                          )
+                          _vm._v("\n                       Category: "),
+                          _c("strong", [
+                            _vm._v(
+                              _vm._s(_vm.course.sub_category.category.name)
+                            )
+                          ]),
+                          _vm._v(" >\n                        "),
+                          _c("strong", [
+                            _vm._v(_vm._s(_vm.course.sub_category.name))
+                          ])
                         ])
                       : _vm._e(),
                     _vm._v(" "),
@@ -50860,15 +50865,23 @@ var render = function() {
             _c("ul", { staticClass: "navbar-nav " }, [
               _c(
                 "form",
-                { staticClass: "form-inline my-2 my-lg-0 mr-lg-2" },
+                {
+                  staticClass: "form-inline my-2 my-lg-0 mr-lg-2",
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.search($event)
+                    }
+                  }
+                },
                 [
                   _c("input", {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.search,
-                        expression: "search"
+                        value: _vm.q,
+                        expression: "q"
                       }
                     ],
                     staticClass: "form-control mr-sm-2",
@@ -50877,25 +50890,22 @@ var render = function() {
                       placeholder: "Search for courses",
                       "aria-label": "Search"
                     },
-                    domProps: { value: _vm.search },
+                    domProps: { value: _vm.q },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.search = $event.target.value
+                        _vm.q = $event.target.value
                       }
                     }
                   }),
                   _vm._v(" "),
                   _c(
-                    "router-link",
+                    "button",
                     {
                       staticClass: "btn btn-outline-primary my-2 my-sm-0",
-                      attrs: {
-                        to: { name: "Search", params: { q: _vm.search } },
-                        type: "submit"
-                      }
+                      attrs: { type: "submit" }
                     },
                     [
                       _vm._v(
@@ -50903,8 +50913,7 @@ var render = function() {
                       )
                     ]
                   )
-                ],
-                1
+                ]
               )
             ]),
             _vm._v(" "),
@@ -52793,7 +52802,7 @@ var render = function() {
               _c("div", { staticClass: "form-row mb-3" }, [
                 _c("div", { staticClass: "col" }, [
                   _c("label", { attrs: { for: "price" } }, [
-                    _vm._v("Price per session")
+                    _vm._v("Estimated price per session")
                   ]),
                   _vm._v(" "),
                   _c("input", {
@@ -80738,7 +80747,7 @@ var actions = {
               commit = _ref6.commit;
               headers();
               return _context6.abrupt("return", new Promise(function (resolve, reject) {
-                axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('https://instantclass.herokuapp.com/api/course' + id).then(function (resp) {
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('https://instantclass.herokuapp.com/api/course/' + id).then(function (resp) {
                   console.log(resp);
                   resolve(resp);
                 })["catch"](function (err) {

@@ -15,9 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-//        if (Gate::denies('only-admin'))
-//            return response()->json(["response"=>"not admin"]);
-        return response()->json(Category::all());
+        $cats = Category::all();
+        return response()->json($cats);
     }
 
     /**

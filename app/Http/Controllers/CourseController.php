@@ -33,15 +33,16 @@ class CourseController extends Controller
         return response()->json($course);
     }
 
-    public function categoryCourses($id)
+    public function subCategoryCourses($id)
     {
-        $course = Course::with('subCategory.category')->where('category_id', $id)->get();
+        $course = Course::with('subCategory.category')->where('sub_category_id', $id)->get();
         return response()->json($course);
     }
     public function search($search)
     {
         $courses = Course::with('subCategory.category')->where('name', 'ilike', "%"."$search"."%")
             ->orWhere('description', 'ilike', "%".$search."%")
+            ->orWhere()
             ->get();
         return response()->json($courses);
 
