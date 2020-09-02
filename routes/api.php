@@ -37,8 +37,8 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::post('login', 'AuthController@login');
 Route::post('register', 'AuthController@register');
 Route::resource('/categories', 'CategoryController');
-Route::get('/categories/sub/{id}', 'SubCategoryController@subCategories');
-Route::resource('/sub-categories/sub', 'SubCategoryController');
+Route::get('/subcats/{id}', 'SubCategoryController@subCategories');
+Route::resource('/sub-categories', 'SubCategoryController');
 Route::get('/courses', 'CourseController@index');
 Route::get('/courses/{id}', 'CourseController@show');
 Route::get('/courses/search/{q}', 'CourseController@search');
