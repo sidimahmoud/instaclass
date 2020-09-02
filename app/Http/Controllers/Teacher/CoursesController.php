@@ -55,7 +55,6 @@ class CoursesController extends Controller
         $course->image = $request["image"];
         $course->slug = Str::slug($request["name"], "-");
         $course->language = $request["language"];
-        $course->duration = $request["duration"];
         $course->status = $request["status"];
         $course->type = $request["type"];
         $course->estimated_duration = $request["estimated_duration"];

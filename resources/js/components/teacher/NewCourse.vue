@@ -291,7 +291,10 @@
                             'Content-Type': 'multipart/form-data',
                             'Authorization': 'Bearer ' + token,
                         }
-                    }).then(res => console.log(res))
+                    }).then(res => {
+                        console.log(res);
+                        alert("Your course was published successfully")
+                    })
                       .catch(err => console.log(err.response));
                     console.log(this.section);
                 }

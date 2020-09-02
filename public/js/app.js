@@ -6333,7 +6333,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             'Authorization': 'Bearer ' + token
           }
         }).then(function (res) {
-          return console.log(res);
+          console.log(res);
+          alert("Your course was published successfully");
         })["catch"](function (err) {
           return console.log(err.response);
         });
