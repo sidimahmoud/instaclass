@@ -73,8 +73,8 @@
                         <div class="form-group">
                             <label for="partage">Autorisez vous le partage de votre annonce?</label>
                             <select class="form-control" id="partage" v-model="course.sharable" required>
-                                <option value="1">Instatavite peut le partager</option>
-                                <option value="0">Je n'autorise pas</option>
+                                <option value="true">Instatavite peut le partager</option>
+                                <option value="false">Je n'autorise pas</option>
                             </select>
                         </div>
                     </div>
@@ -93,30 +93,31 @@
                     </div>
                 </div>
                 <h3>Sessions: </h3>
-                <div class="row " v-for="(section, index) in course.sections" :key="index">
+                <div class="row border m-3" v-for="(section, index) in course.sections" :key="index">
+                    <div class="col-12"><strong>Session {{index+1}}:</strong></div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="section1Title">Session {{index+1}} Title</label>
+                            <label for="section1Title">Title</label>
                             <input type="text" class="form-control" id="section1Title"
-                                   placeholder="Title" required>
+                                   placeholder="Title" v-model="section.title" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="short_desc">Session {{index+1}} Description</label>
+                            <label for="short_desc">Description</label>
                             <input type="text" class="form-control" id="short_desc"
-                                   placeholder="Short description" required>
+                                   placeholder="Short description" v-model="section.description" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Session {{index+1}} availabilities:</label>
-                            <input type="datetime-local" class="form-control" required>
+                            <label>Availabilities:</label>
+                            <input type="datetime-local" class="form-control" v-model="section.startDate" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Séance {{index+1}} video:</label>
+                            <label>Video:</label>
                             <input type="file" class="form-control-file">
                         </div>
                     </div>
@@ -141,8 +142,6 @@
             findCourse() {
                 this.$store.dispatch('getCourse', this.$route.params.slug)
             },
-
-
         },
         computed: mapGetters(["allCategories", "course", "loading"]),
         created() {

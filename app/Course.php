@@ -11,9 +11,9 @@ class Course extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function category()
+    public function subCategory()
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\SubCategory');
     }
     public function status()
     {

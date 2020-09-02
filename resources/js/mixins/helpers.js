@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import axios from "axios";
 
 Vue.mixin({
      methods: {
@@ -25,16 +24,9 @@ Vue.mixin({
             slug = slug.replace(/\s+/g, '-');
             return slug;
         },
-        headers() {
-            let token = localStorage.getItem('token') || '';
-            if (token) {
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-            }
-        }
     },
 
 });
 
-export default {
 
-}
+

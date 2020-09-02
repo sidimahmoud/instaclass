@@ -233,7 +233,7 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
-    import {sanitizeTitle} from '../../helpers'
+    import helpers from '../../mixins/helpers'
     export default {
         name: "NewCourse",
         data() {

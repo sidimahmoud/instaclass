@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {headers} from '../../helpers'
+
 const state = {
     courses: [],
     course: '',
@@ -17,6 +17,7 @@ const getters = {
     enrolled: (state) => state.enrolled,
 };
 
+
 const actions = {
     async fetchCourses({commit}, page) {
         commit('setLoading', true);
@@ -25,7 +26,7 @@ const actions = {
         commit('setLoading', false);
     },
     async getCourse({commit}, slug) {
-        headers()
+        headers();
         commit('setLoading', true);
         const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/${slug}`,);
         commit('setCourse', response.data[0]);
@@ -33,8 +34,7 @@ const actions = {
         commit('setEnrolled', false);
         if (me) {
             response.data[0].enrollments.map(item => {
-                if (item.user_id === me.u)
-                {
+                if (item.user_id === me.u) {
                     commit('setEnrolled', true);
                     console.log("enrolled")
                 }
@@ -124,6 +124,12 @@ const mutations = {
     setLoading: (state, val) => (state.loading = val),
     setEnrolled: (state, val) => (state.enrolled = val),
 };
+function headers() {
+    let token = localStorage.getItem('token') || '';
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+    }
+}
 
 export default {
     state,
