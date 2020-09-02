@@ -105,7 +105,7 @@ const actions = {
     async saveSection({commit}, payload) {
         headers();
         return new Promise((resolve, reject) => {
-            axios({url: 'https://instantclass.herokuapp.com/api/courses/sections', data: payload, method: 'POST'})
+            axios({url: 'https://instantclass.herokuapp.com/api/course/sections', data: payload, method: 'POST'})
                 .then(resp => {
                     console.log(resp);
                     resolve(resp)

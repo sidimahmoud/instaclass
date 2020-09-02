@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/teacher/details', 'Admin\UsersController@teacherDetails');
         Route::get('/teacher/payments', 'Admin\UsersController@teacherPayments');
         Route::resource('/courses', 'CourseController');
-        Route::post('/courses/sections', 'CourseFileController@store');
+        Route::post('/course/sections', 'CourseFileController@store');
     });
 
     Route::get('/user', 'Admin\UsersController@show');

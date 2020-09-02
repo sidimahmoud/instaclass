@@ -80750,7 +80750,7 @@ var actions = {
               headers();
               return _context9.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  url: 'https://instantclass.herokuapp.com/api/courses/sections',
+                  url: 'https://instantclass.herokuapp.com/api/course/sections',
                   data: payload,
                   method: 'POST'
                 }).then(function (resp) {
