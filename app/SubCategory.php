@@ -8,7 +8,7 @@ class SubCategory extends Model
 {
 
     public function category(){
-        return $this->belongsTo('App/Category');
+        return $this->hasOne('App/Category');
     }
     public function courses(){
         return $this->hasMany('App/Course');

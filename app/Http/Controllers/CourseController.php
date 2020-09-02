@@ -19,14 +19,14 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::with('subCategory')->paginate(10);
+        $courses = Course::with('subCategory.category')->paginate(10);
         return response()->json($courses);
     }
 
 
     public function show($slug)
     {
-        $course = Course::with('ratings.user', 'sections', 'enrollments', 'user', 'subCategory')
+        $course = Course::with('ratings.user', 'sections', 'enrollments', 'user', 'subCategory.category')
             ->where('slug', $slug)
             ->get();
 
