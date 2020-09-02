@@ -5849,7 +5849,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _courses_Review__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../courses/Review */ "./resources/js/components/courses/Review.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -5989,210 +5988,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewCourse",
-  data: function data() {
-    return {
-      // course: {
-      //     category_id: '',
-      //     name: '',
-      //     short_description: '',
-      //     description: '',
-      //     image: '',
-      //     language: '',
-      //     duration: '',
-      //     status: '',
-      //     type: '',
-      //     estimated_duration: '',
-      //     authorized_students: '',
-      //     join_after: '',
-      //     price: '',
-      //     currency: 'usd',
-      //     available_from: '',
-      //     available_to: '',
-      //     sharable: '1',
-      // },
-      sections: [{
-        title: '',
-        file: '',
-        description: '',
-        stratDate: ''
-      }]
-    };
-  },
   methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchCategories'])), {}, {
     findCourse: function findCourse() {
       this.$store.dispatch('getCourse', this.$route.params.slug);
-    },
-    saveCourse: function saveCourse() {
-      var token = localStorage.getItem('token') || null;
-
-      if (token) {
-        // this.$store.dispatch("saveSection", this.section)
-        var formData = new FormData();
-        var imagefile = document.querySelector('#thumbnail');
-        formData.append("image", imagefile.files[0]);
-        formData.append("category_id", this.course.category_id);
-        formData.append("name", this.course.name);
-        formData.append("short_description", this.course.short_description);
-        formData.append("description", this.course.description);
-        formData.append("slug", sanitizeTitle(this.course.name));
-        formData.append("language", this.course.language);
-        formData.append("status", this.course.status);
-        formData.append("type", this.course.type);
-        formData.append("estimated_duration", this.course.estimated_duration);
-        formData.append("authorized_students", this.course.authorized_students);
-        formData.append("join_after", this.course.join_after);
-        formData.append("price", this.course.price);
-        formData.append("available_from", this.course.available_from);
-        formData.append("available_to", this.course.available_to);
-        formData.append("sharable", this.course.sharable);
-        formData.append("published", this.course.published);
-        axios.post('https://instantclass.herokuapp.com/api/courses/sections', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            'Authorization': 'Bearer ' + token
-          }
-        }).then(function (res) {
-          return console.log(res);
-        })["catch"](function (err) {
-          return console.log(err.response);
-        });
-        console.log(this.section);
-      }
-    },
-    addSection: function addSection(event) {
-      var sections = event.target.value;
-      this.sections = [];
-
-      for (var i = 0; i < sections; i++) {
-        this.sections.push({
-          course_id: '',
-          file: '',
-          description: '',
-          stratDate: ''
-        });
-      }
-    },
-    sanitizeTitle: function sanitizeTitle(title) {
-      var slug = ""; // Change to lower case
-
-      var titleLower = title.toLowerCase(); // Letter "e"
-
-      slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e'); // Letter "a"
-
-      slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a'); // Letter "o"
-
-      slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o'); // Letter "u"
-
-      slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u'); // Letter "d"
-
-      slug = slug.replace(/đ/gi, 'd');
-      slug = slug.replace(/,/gi, '-'); // Trim the last whitespace
-
-      slug = slug.replace(/\s*$/g, ''); // Change whitespace to "-"
-
-      slug = slug.replace(/\s+/g, '-');
-      return slug;
     }
   }),
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["allCategories", "course", "loading"]),
@@ -6214,6 +6015,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -6452,18 +6254,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewCourse",
   data: function data() {
     return {
       course: {
-        category_id: '',
+        category_id: '1',
         name: '',
         short_description: '',
         description: '',
         image: '',
-        language: '',
+        language: 'EN',
         duration: '',
         status: '',
         type: '',
@@ -6489,27 +6293,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var id = event.target.value;
       this.$store.dispatch('fetchSubCategories', id);
     },
-    sanitizeTitle: function sanitizeTitle(title) {
-      var slug = ""; // Change to lower case
-
-      var titleLower = title.toLowerCase(); // Letter "e"
-
-      slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e'); // Letter "a"
-
-      slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a'); // Letter "o"
-
-      slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o'); // Letter "u"
-
-      slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u'); // Letter "d"
-
-      slug = slug.replace(/đ/gi, 'd');
-      slug = slug.replace(/,/gi, '-'); // Trim the last whitespace
-
-      slug = slug.replace(/\s*$/g, ''); // Change whitespace to "-"
-
-      slug = slug.replace(/\s+/g, '-');
-      return slug;
-    },
     saveCourse: function saveCourse() {
       var token = localStorage.getItem('token') || null;
 
@@ -6522,7 +6305,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         formData.append("name", this.course.name);
         formData.append("short_description", this.course.short_description);
         formData.append("description", this.course.description);
-        formData.append("slug", sanitizeTitle(this.course.name));
+        formData.append("slug", Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["sanitizeTitle"])(this.course.name));
         formData.append("language", this.course.language);
         formData.append("status", this.course.status);
         formData.append("type", this.course.type);
@@ -52357,14 +52140,6 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.course.price,
-                        expression: "course.price"
-                      }
-                    ],
                     staticClass: "form-control",
                     attrs: {
                       type: "text",
@@ -52373,15 +52148,7 @@ var render = function() {
                       placeholder: "Price",
                       required: ""
                     },
-                    domProps: { value: _vm.course.price },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.course, "price", $event.target.value)
-                      }
-                    }
+                    domProps: { value: _vm.course.price }
                   }),
                   _vm._v(" "),
                   _c(
@@ -52634,27 +52401,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-12" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "sections" } }, [
-                  _vm._v("Number of session")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "number",
-                    value: "1",
-                    min: "1",
-                    id: "sections",
-                    required: ""
-                  },
-                  on: { change: _vm.addSection }
-                })
-              ])
-            ])
+            _vm._m(0)
           ]),
           _vm._v(" "),
           _c("h3", [_vm._v("Sessions: ")]),
@@ -53201,7 +52948,12 @@ var render = function() {
                     }
                   }
                 })
-              ])
+              ]),
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.sanitizeTitle(_vm.course.name)) +
+                  "\n                "
+              )
             ]),
             _vm._v(" "),
             _vm._m(0),
@@ -53228,7 +52980,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _vm._l(_vm.sections, function(section, index) {
-            return _c("div", { key: index, staticClass: "row" }, [
+            return _c("div", { key: index, staticClass: "row border m-2 " }, [
               _c("div", { staticClass: "col-md-12" }, [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "section1Title" } }, [
@@ -53273,7 +53025,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "col-md-6" }, [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", [
                     _vm._v("Session " + _vm._s(index + 1) + " availabilities:")
@@ -53286,10 +53038,10 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "col-md-6" }, [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", [
-                    _vm._v("Séance " + _vm._s(index + 1) + " video:")
+                    _vm._v("Session " + _vm._s(index + 1) + " video:")
                   ]),
                   _vm._v(" "),
                   _c("input", {
@@ -79443,6 +79195,60 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/helpers.js":
+/*!*********************************!*\
+  !*** ./resources/js/helpers.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.mixin({
+  methods: {
+    capitalizeFirstLetter: function capitalizeFirstLetter(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    },
+    sanitizeTitle: function sanitizeTitle(title) {
+      var slug = ""; // Change to lower case
+
+      var titleLower = title.toLowerCase(); // Letter "e"
+
+      slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e'); // Letter "a"
+
+      slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a'); // Letter "o"
+
+      slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o'); // Letter "u"
+
+      slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u'); // Letter "d"
+
+      slug = slug.replace(/đ/gi, 'd');
+      slug = slug.replace(/,/gi, '-'); // Trim the last whitespace
+
+      slug = slug.replace(/\s*$/g, ''); // Change whitespace to "-"
+
+      slug = slug.replace(/\s+/g, '-');
+      return slug;
+    },
+    headers: function headers() {
+      var token = localStorage.getItem('token') || '';
+
+      if (token) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      }
+    }
+  }
+});
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
 /***/ "./resources/js/router/index.js":
 /*!**************************************!*\
   !*** ./resources/js/router/index.js ***!
@@ -80625,11 +80431,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 var state = {
@@ -80694,11 +80502,12 @@ var actions = {
           switch (_context2.prev = _context2.next) {
             case 0:
               commit = _ref2.commit;
+              Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["headers"])();
               commit('setLoading', true);
-              _context2.next = 4;
+              _context2.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/".concat(slug));
 
-            case 4:
+            case 5:
               response = _context2.sent;
               commit('setCourse', response.data[0]);
               me = JSON.parse(localStorage.getItem('user')) || null;
@@ -80715,7 +80524,7 @@ var actions = {
 
               commit('setLoading', false);
 
-            case 10:
+            case 11:
             case "end":
               return _context2.stop();
           }
@@ -80787,7 +80596,7 @@ var actions = {
           switch (_context5.prev = _context5.next) {
             case 0:
               commit = _ref5.commit;
-              headers();
+              Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["headers"])();
               return _context5.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   url: 'https://instantclass.herokuapp.com/api/courses/rate',
@@ -80817,7 +80626,7 @@ var actions = {
           switch (_context6.prev = _context6.next) {
             case 0:
               commit = _ref6.commit;
-              headers();
+              Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["headers"])();
               return _context6.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('https://instantclass.herokuapp.com/api/courses' + id).then(function (resp) {
                   console.log(resp);
@@ -80893,7 +80702,7 @@ var actions = {
           switch (_context9.prev = _context9.next) {
             case 0:
               commit = _ref9.commit;
-              headers();
+              Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["headers"])();
               return _context9.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   url: 'https://instantclass.herokuapp.com/api/courses/sections',
@@ -80936,15 +80745,6 @@ var mutations = {
     return state.enrolled = val;
   }
 };
-
-function headers() {
-  var token = localStorage.getItem('token') || '';
-
-  if (token) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-  }
-}
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: state,
   getters: getters,

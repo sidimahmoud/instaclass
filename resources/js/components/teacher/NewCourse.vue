@@ -86,6 +86,7 @@
                             <input type="text" class="form-control" id="name"
                                    placeholder="Name" v-model="course.name" required>
                         </div>
+                        {{sanitizeTitle(course.name)}}
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
@@ -191,7 +192,7 @@
                     <!--                </div>-->
 
                 </div>
-                <div class="row" v-for="(section, index) in sections" :key="index">
+                <div class="row border m-2 " v-for="(section, index) in sections" :key="index">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="section1Title">Session {{index+1}}: Give a title to this session</label>
@@ -207,15 +208,15 @@
                                    placeholder="Short description"  required>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Session {{index+1}} availabilities:</label>
                             <input type="datetime-local" class="form-control" required>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label>Séance {{index+1}} video:</label>
+                            <label>Session {{index+1}} video:</label>
                             <input type="file" class="form-control-file">
                         </div>
                     </div>
@@ -232,18 +233,18 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
-
+    import {sanitizeTitle} from '../../helpers'
     export default {
         name: "NewCourse",
         data() {
             return {
                 course: {
-                    category_id: '',
+                    category_id: '1',
                     name: '',
                     short_description: '',
                     description: '',
                     image: '',
-                    language: '',
+                    language: 'EN',
                     duration: '',
                     status: '',
                     type: '',
@@ -271,27 +272,6 @@
             loadSubs(event){
                 const id = event.target.value;
                 this.$store.dispatch('fetchSubCategories', id)
-            },
-            sanitizeTitle: function (title) {
-                var slug = "";
-                // Change to lower case
-                var titleLower = title.toLowerCase();
-                // Letter "e"
-                slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
-                // Letter "a"
-                slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a');
-                // Letter "o"
-                slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o');
-                // Letter "u"
-                slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u');
-                // Letter "d"
-                slug = slug.replace(/đ/gi, 'd');
-                slug = slug.replace(/,/gi, '-');
-                // Trim the last whitespace
-                slug = slug.replace(/\s*$/g, '');
-                // Change whitespace to "-"
-                slug = slug.replace(/\s+/g, '-');
-                return slug;
             },
             saveCourse() {
                 const token = localStorage.getItem('token') || null;
