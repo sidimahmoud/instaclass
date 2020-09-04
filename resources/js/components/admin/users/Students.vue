@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <big-sppiner v-if="fetchingUsers" />
+    <div v-else>
         <div>
             <form class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search " aria-label="Search">
@@ -42,13 +43,15 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
+    import BigSppiner from "../../spinners/BigSppiner";
 
     export default {
         name: "Students",
+        components: {BigSppiner},
         methods: {
             ...mapActions(["fetchStudents"])
         },
-        computed: mapGetters(["allStudents"]),
+        computed: mapGetters(["allStudents", "fetchingUsers"]),
 
         created() {
             this.fetchStudents();

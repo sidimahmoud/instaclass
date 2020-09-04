@@ -1,10 +1,40 @@
 <template>
-    <h1>Platform messages</h1>
+    <div>
+        <h1 class="text-center">All Messages</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">email</th>
+                <th scope="col">Message</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="d in allContacts">
+                <th scope="row">{{d.id}}</th>
+                <td>{{d.name}}</td>
+                <td>{{d.email}}</td>
+                <td>{{d.message}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </template>
 
 <script>
+    import {mapActions, mapGetters} from "vuex";
+
     export default {
-        name: "Messages"
+        name: "Messages",
+        methods: {
+            ...mapActions(["fetchContacts"])
+        },
+        computed: mapGetters(["allContacts"]),
+        created() {
+            this.fetchContacts();
+        }
     }
 </script>
 

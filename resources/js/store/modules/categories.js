@@ -28,6 +28,7 @@ const actions = {
         commit('loadingCategories', false);
     },
 
+
 };
 const mutations = {
     setCategories: (state, categories) => (state.categories = categories),

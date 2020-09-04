@@ -14,7 +14,7 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all();
+        $contacts = Contact::orderBy('id', 'DESC')->get();;
         return response()->json($contacts);
     }
 

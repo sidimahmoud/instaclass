@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <div>
             <form class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
@@ -44,7 +45,7 @@
         methods: {
             ...mapActions(["fetchReceived"])
         },
-        computed: mapGetters(["allReceived"]),
+        computed: mapGetters(["allReceived", "fetchingUsers"]),
         created() {
             this.fetchReceived();
         }

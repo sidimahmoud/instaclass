@@ -73,8 +73,7 @@ class CoursesController extends Controller
             $file_name = $request['name'] . "-" . time() . "." . $extension;
             $file->move('uploads/categories/', $file_name);
             $course->image = 'uploads/courses/thumbnails' . $file_name;
-        } else
-            $course->image = $request['image'];
+        }
         $course->save();
 
         if ($course)

@@ -11,8 +11,9 @@
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Categories
                                 </div>
+                                <big-sppiner v-if="fetchingUsers" />
                                 <div class="h5 mb-0 font-weight-bold ">
-                                    {{counts.categories}}
+                                    {{allCounts.categories}}
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -30,8 +31,9 @@
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Courses
                                 </div>
+                                <big-sppiner v-if="fetchingUsers" />
                                 <div class="h5 mb-0 font-weight-bold ">
-                                    {{counts.courses}}
+                                    {{allCounts.courses}}
 
                                 </div>
                             </div>
@@ -50,8 +52,9 @@
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Teachers
                                 </div>
+                                <big-sppiner v-if="fetchingUsers" />
                                 <div class="h5 mb-0 font-weight-bold ">
-                                    {{counts.teachers}}
+                                    {{allCounts.teachers}}
 
                                 </div>
                             </div>
@@ -70,8 +73,9 @@
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Students
                                 </div>
+                                <big-sppiner v-if="fetchingUsers" />
                                 <div class="h5 mb-0 font-weight-bold ">
-                                    {{counts.students}}
+                                    {{allCounts.students}}
 
                                 </div>
                             </div>
@@ -82,33 +86,23 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
 
     </div>
 </template>
 
 <script>
-    import axios from "axios";
-
+    import BigSppiner from "../spinners/BigSppiner";
+    import {mapGetters} from 'vuex'
     export default {
         name: "Home",
-        data(){
-            return {
-                counts: '',
-            }
-        },
+        components:{BigSppiner},
+        computed: mapGetters(["allCounts", "fetchingUsers"]),
         created() {
-            let token = localStorage.getItem('token') || '';
-            if (token) {
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-            }
-            axios.get('https://instantclass.herokuapp.com/api/counts').then(res => this.counts = res.data).catch(err => console.log(err))
+            this.$store.dispatch("loadCounts")
         }
     }
 </script>
-
 
 <style scoped>
 

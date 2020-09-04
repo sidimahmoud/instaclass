@@ -17,10 +17,10 @@ class CreateCourseFilesTable extends Migration
             $table->id();
             $table->integer('course_id');
             $table->string('title');
-            $table->string('file')->nullable();
+            $table->string('description');
             $table->string('startDate');
             $table->string('duration')->nullable();
-            $table->string('description');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

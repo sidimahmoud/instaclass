@@ -20,18 +20,16 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="file">Availability</label>
+                        <label>Availability</label>
                         <input type="datetime-local" class="form-control" v-model="section.startDate">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="file">Video file</label>
-                        <input type="file" class="form-control-file" id="file">
+                        <label for="duration">Duration</label>
+                        <input type="text" class="form-control" id="duration">
                     </div>
                 </div>
-
-
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="desc">Session description</label>
@@ -48,7 +46,6 @@
 
 <script>
     import {mapGetters} from 'vuex'
-
     export default {
         name: "NewSection",
         data() {
@@ -56,8 +53,9 @@
                 section: {
                     course_id: '',
                     title: '',
+                    stratDate: '',
+                    duration: '',
                     description: '',
-                    startDate: '',
                 }
             }
         },
@@ -66,23 +64,15 @@
                 this.$store.dispatch('fetchUserCourses')
             },
             saveSection() {
-                const token = localStorage.getItem('token') || null
+                const token = localStorage.getItem('token') || null;
                 if (token) {
                     // this.$store.dispatch("saveSection", this.section)
-                    const formData = new FormData();
-                    const imagefile = document.querySelector('#file');
-                    formData.append("course_id", this.section.course_id);
-                    formData.append("title", this.section.title);
-                    formData.append("startDate", this.section.startDate);
-                    formData.append("description", this.section.description);
-                    formData.append("file", imagefile.files[0]);
-                    axios.post('https://instantclass.herokuapp.com/api/course/sections', formData, {
+                    axios.post('https://instantclass.herokuapp.com/api/course/sections', this.section, {
                         headers: {
-                            'Content-Type': 'multipart/form-data',
                             'Authorization': 'Bearer ' + token,
                         }
-                    }).then(res => console.log(res)).catch(err => console.log(err.response))
-                    console.log(this.section);
+                    }).then(res => alert("Session saved successfully"))
+                        .catch(err => console.log(err.response));
 
                 }
 

@@ -4,6 +4,7 @@ const state = {
     contacts:[],
 };
 const getters = {
+    allContacts:(state) => state.contacts,
 };
 
 const actions = {
@@ -24,7 +25,6 @@ const actions = {
         const response = await axios.get(`https://instantclass.herokuapp.com/api/contacts`);
         commit('setContcts', response.data);
     },
-
 };
 const mutations = {
     setContcts: (state, payload) => (state.contacts = payload),

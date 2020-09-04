@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <big-sppiner v-if="fetchingUsers" />
+    <div v-else>
         <h1 class="text-center">List of admins</h1>
 
         <table class="table">
@@ -37,13 +38,15 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
+    import BigSppiner from "../../spinners/BigSppiner";
 
     export default {
         name: "Teachers",
+        components: {BigSppiner},
         methods: {
             ...mapActions(["fetchAdmins"])
         },
-        computed: mapGetters(["allAdmins"]),
+        computed: mapGetters(["allAdmins", "fetchingUsers"]),
         created() {
             this.fetchAdmins();
         }

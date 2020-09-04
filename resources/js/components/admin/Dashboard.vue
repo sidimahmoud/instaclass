@@ -1,6 +1,5 @@
 <template>
     <div id="wrapper" >
-
         <!-- Sidebar -->
         <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -92,7 +91,8 @@
                         <h6 class="collapse-header">Choisir:</h6>
 
                         <a class="collapse-item" href="#categories" @click="component='Categories'">All categories</a>
-                        <a class="collapse-item" href="#">New category</a>
+                        <a class="collapse-item" href="#newCategory" @click="component='NewCategory'">New category</a>
+                        <a class="collapse-item" href="#Sub-categories" @click="component='SubCategories'">Sub-categories</a>
                     </div>
                 </div>
             </li>
@@ -208,6 +208,8 @@
     import Categories from "./categories/Categories";
     import Home from "./Home";
     import Banned from "./users/Banned";
+    import NewCategory from "./categories/NewCategory";
+    import SubCategories from "./categories/SubCategories";
     export default {
         name: "Dashboard",
         components: {
@@ -221,6 +223,8 @@
             CourseDemands,
             Statistics,
             Categories,
+            SubCategories,
+            NewCategory,
             Messages,
             Home,
             Banned,

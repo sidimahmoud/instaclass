@@ -223,13 +223,12 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Session {{index+1}} video:</label>
-                            <input type="file" class="form-control-file">
+                            <label>Session {{index+1}} estimated duration:</label>
+                            <input type="text" class="form-control" required>
                         </div>
                     </div>
+
                 </div>
-
-
                 <button class="btn btn-primary btn-block" type="submit">Publish course</button>
             </form>
 
@@ -240,6 +239,7 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
+
     export default {
         name: "NewCourse",
         data() {
@@ -265,10 +265,11 @@
                 },
                 sections: [
                     {
+                        course_id: '',
                         title: '',
-                        file: '',
+                        stratDate: '',
+                        duration: '',
                         description: '',
-                        stratDate: ''
                     }
                 ]
             }
@@ -304,19 +305,21 @@
                         console.log(res);
                         alert("Your course was published successfully")
                     })
-                      .catch(err => console.log(err.response));
+                        .catch(err => console.log(err.response));
                     console.log(this.section);
                 }
             },
+
             addSection(event) {
                 const sections = event.target.value;
                 this.sections = [];
                 for (let i = 0; i < sections; i++) {
                     this.sections.push({
                         course_id: '',
-                        file: '',
+                        title: '',
+                        stratDate: '',
+                        duration: '',
                         description: '',
-                        stratDate: ''
                     })
                 }
 
