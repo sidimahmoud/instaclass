@@ -2,7 +2,7 @@
     <div class="p-5">
         <h1 class="text-2xl mb-4">Laravel Video Chat</h1>
         <div class="grid grid-flow-row grid-cols-3 grid-rows-3 gap-4 bg-black">
-            <div id="my-video-chat-window"></div>
+            <div id="video-chat-window"></div>
         </div>
     </div>
 </template>

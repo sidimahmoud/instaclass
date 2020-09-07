@@ -73757,7 +73757,7 @@ var staticRenderFns = [
           staticClass:
             "grid grid-flow-row grid-cols-3 grid-rows-3 gap-4 bg-black"
         },
-        [_c("div", { attrs: { id: "my-video-chat-window" } })]
+        [_c("div", { attrs: { id: "video-chat-window" } })]
       )
     ])
   }
