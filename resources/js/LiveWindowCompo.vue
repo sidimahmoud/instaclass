@@ -27,6 +27,8 @@
                     .then(function (response) {
                         _this.accessToken = response.data
                         console.log(response.data)
+                        _this.connectToRoom()
+
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -34,6 +36,27 @@
                     .then(function () {
                         console.log(_this.accessToken)
                     });
+            },
+            connectToRoom : function () {
+
+                const { connect, createLocalVideoTrack } = require('twilio-video');
+
+                connect( this.accessToken, { name:'cool room' }).then(room => {
+
+                    console.log(`Successfully joined a Room: ${room}`);
+
+                    const videoChatWindow = document.getElementById('video-chat-window');
+
+                    createLocalVideoTrack().then(track => {
+                        videoChatWindow.appendChild(track.attach());
+                    });
+
+                    room.on('participantConnected', participant => {
+                        console.log(`A remote Participant connected: ${participant}`);
+                    });
+                }, error => {
+                    console.error(`Unable to connect to Room: ${error.message}`);
+                });
             }
         },
         mounted: function () {
