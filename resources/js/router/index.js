@@ -34,6 +34,7 @@ import CategoryCourses from "../components/courses/CategoryCourses";
 import NewCourse from "../components/teacher/NewCourse";
 import EditCourse from "../components/teacher/EditCourse";
 import NewSection from "../components/teacher/NewSection";
+import LiveWindowCompo from "../LiveWindowCompo";
 
 Vue.use(VueRouter);
 
@@ -131,6 +132,16 @@ const routes = [
         path: '/player/live/:slug',
         name: 'Live',
         component: Live,
+        meta: {
+            requiresAuth: true,
+            title: 'Live course'
+
+        }
+    },
+    {
+        path: '/live',
+        name: 'LiveCourse',
+        component: LiveWindowCompo,
         meta: {
             requiresAuth: true,
             title: 'Live course'

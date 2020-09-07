@@ -1911,6 +1911,59 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/LiveWindowCompo.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/LiveWindowCompo.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'LiveWindowCompo',
+  data: function data() {
+    return {
+      accessToken: ''
+    };
+  },
+  methods: {
+    getAccessToken: function getAccessToken() {
+      var _this = this; // Request a new token
+
+
+      var token = localStorage.getItem('token');
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('https://instantclass.herokuapp.com/api/access_token').then(function (response) {
+        _this.accessToken = response.data;
+        console.log(response.data);
+      })["catch"](function (error) {
+        console.log(error);
+      }).then(function () {
+        console.log(_this.accessToken);
+      });
+    }
+  },
+  mounted: function mounted() {
+    console.log('Video chat room loading...');
+    this.getAccessToken();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/About.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/About.vue?vue&type=script&lang=js& ***!
@@ -2253,7 +2306,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -11762,7 +11814,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* card margin*/\n.card[data-v-0104f9b6]:not(:first-child) {\n    margin-left: 15px !important;\n}\n\n/* latest courses border bottom*/\n.latest_courses_border[data-v-0104f9b6] {\n    border-bottom: 5px solid red;\n    max-width: 6%;\n    min-height: 6%;\n    max-height: 6%;\n    min-width: 8%;\n    display: block;\n}\n.jumbotron[data-v-0104f9b6] {\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/images/home/bg.png */ "./resources/js/assets/images/home/bg.png")) + ");\n    border-radius: 0;\n    padding: 15px;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* card margin*/\n.card[data-v-0104f9b6]:not(:first-child) {\n    margin-left: 15px !important;\n}\n\n/* latest courses border bottom*/\n.latest_courses_border[data-v-0104f9b6] {\n    border-bottom: 5px solid red;\n    max-width: 6%;\n    min-height: 6%;\n    max-height: 6%;\n    min-width: 8%;\n    display: block;\n}\n.jumbotron[data-v-0104f9b6] {\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/images/home/bg.png */ "./resources/js/assets/images/home/bg.png")) + ");\n    border-radius: 0;\n    padding: 15px;\n}\n\n", ""]);
 
 // exports
 
@@ -45136,6 +45188,50 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/LiveWindowCompo.vue?vue&type=template&id=7ad28b14&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/LiveWindowCompo.vue?vue&type=template&id=7ad28b14& ***!
+  \*******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "p-5" }, [
+      _c("h1", { staticClass: "text-2xl mb-4" }, [
+        _vm._v("Laravel Video Chat")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "grid grid-flow-row grid-cols-3 grid-rows-3 gap-4 bg-black"
+        },
+        [_c("div", { attrs: { id: "my-video-chat-window" } })]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/About.vue?vue&type=template&id=fb05e49c&scoped=true&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/About.vue?vue&type=template&id=fb05e49c&scoped=true& ***!
@@ -76343,6 +76439,75 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/LiveWindowCompo.vue":
+/*!******************************************!*\
+  !*** ./resources/js/LiveWindowCompo.vue ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LiveWindowCompo_vue_vue_type_template_id_7ad28b14___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LiveWindowCompo.vue?vue&type=template&id=7ad28b14& */ "./resources/js/LiveWindowCompo.vue?vue&type=template&id=7ad28b14&");
+/* harmony import */ var _LiveWindowCompo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LiveWindowCompo.vue?vue&type=script&lang=js& */ "./resources/js/LiveWindowCompo.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _LiveWindowCompo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _LiveWindowCompo_vue_vue_type_template_id_7ad28b14___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LiveWindowCompo_vue_vue_type_template_id_7ad28b14___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/LiveWindowCompo.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/LiveWindowCompo.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/LiveWindowCompo.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LiveWindowCompo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib??ref--4-0!../../node_modules/vue-loader/lib??vue-loader-options!./LiveWindowCompo.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/LiveWindowCompo.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LiveWindowCompo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/LiveWindowCompo.vue?vue&type=template&id=7ad28b14&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/LiveWindowCompo.vue?vue&type=template&id=7ad28b14& ***!
+  \*************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LiveWindowCompo_vue_vue_type_template_id_7ad28b14___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./LiveWindowCompo.vue?vue&type=template&id=7ad28b14& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/LiveWindowCompo.vue?vue&type=template&id=7ad28b14&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LiveWindowCompo_vue_vue_type_template_id_7ad28b14___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LiveWindowCompo_vue_vue_type_template_id_7ad28b14___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -80339,6 +80504,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_teacher_NewCourse__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../components/teacher/NewCourse */ "./resources/js/components/teacher/NewCourse.vue");
 /* harmony import */ var _components_teacher_EditCourse__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../components/teacher/EditCourse */ "./resources/js/components/teacher/EditCourse.vue");
 /* harmony import */ var _components_teacher_NewSection__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../components/teacher/NewSection */ "./resources/js/components/teacher/NewSection.vue");
+/* harmony import */ var _LiveWindowCompo__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../LiveWindowCompo */ "./resources/js/LiveWindowCompo.vue");
+
 
 
 
@@ -80446,6 +80613,14 @@ var routes = [{
   path: '/player/live/:slug',
   name: 'Live',
   component: _components_courses_Live__WEBPACK_IMPORTED_MODULE_16__["default"],
+  meta: {
+    requiresAuth: true,
+    title: 'Live course'
+  }
+}, {
+  path: '/live',
+  name: 'LiveCourse',
+  component: _LiveWindowCompo__WEBPACK_IMPORTED_MODULE_30__["default"],
   meta: {
     requiresAuth: true,
     title: 'Live course'

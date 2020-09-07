@@ -9,6 +9,9 @@ use Twilio\Jwt\Grants\VideoGrant;
 class LiveCoursesController extends Controller
 {
 
+public function __construct()
+{
+}
 
     public function generate_token()
     {

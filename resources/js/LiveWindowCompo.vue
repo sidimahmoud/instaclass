@@ -9,30 +9,34 @@
 
 <script>
     import axios from 'axios'
+
     export default {
-        name: 'video-chat',
+        name: 'LiveWindowCompo',
         data: function () {
             return {
                 accessToken: ''
             }
         },
-        methods : {
-            getAccessToken : function () {
+        methods: {
+            getAccessToken: function () {
                 const _this = this;
                 // Request a new token
-                axios.get('/api/access_token')
+                let token = localStorage.getItem('token');
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                axios.get('https://instantclass.herokuapp.com/api/access_token')
                     .then(function (response) {
                         _this.accessToken = response.data
+                        console.log(response.data)
                     })
                     .catch(function (error) {
                         console.log(error);
                     })
                     .then(function () {
-                        console.log( _this.accessToken )
+                        console.log(_this.accessToken)
                     });
             }
         },
-        mounted : function () {
+        mounted: function () {
             console.log('Video chat room loading...')
 
             this.getAccessToken()
