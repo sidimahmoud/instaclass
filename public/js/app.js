@@ -5699,15 +5699,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CountDown",
+  props: ["year", "month", "day", "hour", "minute", "second"],
   data: function data() {
     return {
       displayDays: 0,
       displayHours: 0,
       displayMinutes: 0,
-      displaySeconds: 0
+      displaySeconds: 0,
+      expired: false
     };
   },
   computed: {
@@ -5722,6 +5727,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     _days: function _days() {
       return this._hours * 24;
+    },
+    end: function end() {
+      return new Date(this.year, this.month, this.day, this.hour, this.minute, this.second);
     }
   },
   mounted: function mounted() {
@@ -5732,12 +5740,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var timer = setInterval(function () {
-        var now = new Date();
-        var end = new Date(2020, 9, 15, 10, 10, 0, 0);
-        var distance = Number(end.getTime()) - Number(now.getTime());
+        var now = new Date(); // const end = new Date(2020, 9, 15, 10, 10, 0, 0);
+
+        var distance = Number(_this.end.getTime()) - Number(now.getTime());
 
         if (distance < 0) {
           clearInterval(timer);
+          _this.expired = true;
           return;
         }
 
@@ -5895,6 +5904,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -51842,10 +51858,7 @@ var render = function() {
   return _c("div", { staticClass: "text-center font-weight-bolder" }, [
     _c(
       "div",
-      {
-        staticClass: "row align-items-center justify-content-center",
-        staticStyle: { height: "100px" }
-      },
+      { staticClass: "row align-items-center justify-content-center" },
       [
         _c("div", { staticClass: "col-3" }, [
           _c("div", { staticClass: "count" }, [
@@ -51891,21 +51904,22 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "col-12" }, [
+          _vm.expired
+            ? _c("h3", [_vm._v("Timer enabled when you subscribe to a course")])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12" }, [
+          !_vm.expired
+            ? _c("h3", [_vm._v("Before your next course")])
+            : _vm._e()
+        ])
       ]
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [
-      _c("h3", [_vm._v("Timer enabled when you subscribe to a course")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -52211,7 +52225,23 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [_c("Count-down")], 1)
+        _c(
+          "div",
+          { staticClass: "col-md-6" },
+          [
+            _c("Count-down", {
+              attrs: {
+                year: 2020,
+                month: 9,
+                day: 1,
+                hour: 0,
+                minute: 0,
+                second: 0
+              }
+            })
+          ],
+          1
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row my-4" }, [
@@ -52262,13 +52292,13 @@ var render = function() {
                                   _c("h5", { staticClass: "mt-0 mb-1" }, [
                                     _vm._v(
                                       _vm._s(e.course.name) +
-                                        ",\n                                            " +
+                                        ",\n                                        " +
                                         _vm._s(
                                           e.course.created_at.slice(0, 10)
                                         ) +
                                         ", " +
                                         _vm._s(e.course.user.first_name) +
-                                        "\n                                            " +
+                                        "\n                                        " +
                                         _vm._s(e.course.user.last_name)
                                     )
                                   ])
@@ -52393,11 +52423,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "text-center" }, [
-      _vm._v("\n                                        visit "),
+      _vm._v("\n                                    visit "),
       _c("a", { attrs: { href: "/courses" } }, [
-        _vm._v(" courses\n                                    ")
+        _vm._v(" courses\n                                ")
       ]),
-      _vm._v(" to get started\n                                    ")
+      _vm._v(" to get started\n                                ")
     ])
   },
   function() {
@@ -52419,11 +52449,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "text-center" }, [
-      _vm._v("\n                                        visit "),
+      _vm._v("\n                                    visit "),
       _c("a", { attrs: { href: "/courses" } }, [
-        _vm._v(" courses\n                                    ")
+        _vm._v(" courses\n                                ")
       ]),
-      _vm._v(" to get started\n                                    ")
+      _vm._v(" to get started\n                                ")
     ])
   }
 ]

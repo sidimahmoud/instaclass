@@ -44,4 +44,10 @@ return [
         'client_secret' => env('FACEBOOK_APP_SECRET'),
         'redirect' => 'https://instantclass.herokuapp.com/authorize/facebook/callback',
     ],
+    'twilio' => [
+        'sid' => env('TWILIO_ACCOUNT_SID'),
+        'token' => env('TWILIO_ACCOUNT_TOKEN'),
+        'key' => env('TWILIO_API_KEY'),
+        'secret' => env('TWILIO_API_SECRET')
+    ],
 ];

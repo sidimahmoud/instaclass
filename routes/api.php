@@ -45,6 +45,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/enroll', 'EnrollmentController@store');
     Route::post('/pay', 'Admin\PayementController@paymentProcess');
     Route::post('/rate', 'RatingController@store');
+    Route::get('access_token', 'LiveCoursesController@generate_token');
+
 });
 
 

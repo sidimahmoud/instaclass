@@ -95,7 +95,7 @@
             },
             search() {
                 this.$store.dispatch('search', this.q)
-                    .then(res=>this.$router.push({name: 'Search'}))
+                    .then(res => this.$router.push({name: 'Search'}))
             }
         }
     }

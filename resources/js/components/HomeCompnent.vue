@@ -40,7 +40,6 @@
                                  :src="'https://instantclass.herokuapp.com/'+categ.image"
                                  alt="Card image cap">
                         </router-link>
-
                         <div class="card-body text-center">
                             <h5 class="card-title  font-weight-bolder">{{categ.name}}</h5>
                             <p class="card-text">{{categ.description}}</p>

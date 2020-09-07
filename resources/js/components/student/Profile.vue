@@ -25,7 +25,14 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <Count-down></Count-down>
+                    <Count-down
+                        :year="2020"
+                        :month="9"
+                        :day="1"
+                        :hour="0"
+                        :minute="0"
+                        :second="0"
+                    />
                 </div>
             </div>
             <div class="row my-4">
@@ -41,19 +48,19 @@
                         <div class="tab-pane fade show active" id="courses">
                             <ul class="list-unstyled">
                                 <li class=" mt-4" v-if="userEnrollments.length==0">
-                                        <h5 class="mt-0 mb-1">No courses</h5>
-                                        <p class="text-center">
-                                            visit <a href="/courses"> courses
-                                        </a> to get started
-                                        </p>
+                                    <h5 class="mt-0 mb-1">No courses</h5>
+                                    <p class="text-center">
+                                        visit <a href="/courses"> courses
+                                    </a> to get started
+                                    </p>
                                 </li>
                                 <li class=" mt-4" v-for="e in userEnrollments" :key="e.id">
-                                        <router-link :to="{name: 'Player', params: { slug: e.course.slug} }"
-                                                     v-if="e.course.type==1">
-                                            <h5 class="mt-0 mb-1">{{e.course.name}},
-                                                {{e.course.created_at.slice(0,10)}}, {{e.course.user.first_name}}
-                                                {{e.course.user.last_name}}</h5>
-                                        </router-link>
+                                    <router-link :to="{name: 'Player', params: { slug: e.course.slug} }"
+                                                 v-if="e.course.type==1">
+                                        <h5 class="mt-0 mb-1">{{e.course.name}},
+                                            {{e.course.created_at.slice(0,10)}}, {{e.course.user.first_name}}
+                                            {{e.course.user.last_name}}</h5>
+                                    </router-link>
                                 </li>
 
                             </ul>
@@ -66,15 +73,15 @@
                             <ul class="list-unstyled">
                                 <li class="mt-4" v-if="userEnrollments.length==0">
 
-                                        <h5 class="mt-0 mb-1">No courses</h5>
-                                        <p class="text-center">
-                                            visit <a href="/courses"> courses
-                                        </a> to get started
-                                        </p>
+                                    <h5 class="mt-0 mb-1">No courses</h5>
+                                    <p class="text-center">
+                                        visit <a href="/courses"> courses
+                                    </a> to get started
+                                    </p>
 
                                 </li>
                                 <li class="mt-4" v-for="e in userEnrollments" :key="e.id">
-                                    <div  v-if="e.course.type==2">
+                                    <div v-if="e.course.type==2">
                                         <router-link :to="{name: 'Live', params: { slug: e.course.slug} }">
                                             <h5 class="mt-0 mb-1">{{e.course.name}},
                                                 {{e.course.created_at.slice(0,10)}}, {{e.course.user.first_name}}

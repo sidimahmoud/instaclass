@@ -1,6 +1,6 @@
 <template>
     <div class="text-center font-weight-bolder">
-        <div class="row align-items-center justify-content-center" style="height: 100px">
+        <div class="row align-items-center justify-content-center" >
             <div class="col-3">
                 <div class="count">
                     <h3>
@@ -38,7 +38,10 @@
                 </div>
             </div>
             <div class="col-12">
-                <h3>Timer enabled when you subscribe to a course</h3>
+                <h3 v-if="expired">Timer enabled when you subscribe to a course</h3>
+            </div>
+            <div class="col-12">
+                <h3 v-if="!expired">Before your next course</h3>
             </div>
         </div>
     </div>
@@ -49,12 +52,14 @@
 
     export default {
         name: "CountDown",
+        props:["year", "month", "day", "hour", "minute", "second"],
         data() {
             return {
                 displayDays: 0,
                 displayHours: 0,
                 displayMinutes: 0,
                 displaySeconds: 0,
+                expired: false
             }
         },
         computed: {
@@ -67,6 +72,16 @@
             },
             _days() {
                 return this._hours * 24
+            },
+            end(){
+                return new Date(
+                    this.year,
+                    this.month,
+                    this.day,
+                    this.hour,
+                    this.minute,
+                    this.second,
+                )
             }
         },
         mounted() {
@@ -76,10 +91,11 @@
             showRemaining(){
                 const timer = setInterval(()=>{
                     const now = new Date();
-                    const end = new Date(2020, 9, 15, 10, 10, 0, 0);
-                    const distance = Number(end.getTime()) - Number(now.getTime());
+                    // const end = new Date(2020, 9, 15, 10, 10, 0, 0);
+                    const distance = Number(this.end.getTime()) - Number(now.getTime());
                     if(distance<0){
                         clearInterval(timer);
+                        this.expired = true;
                         return
                     }
                     const days = Math.floor(distance/ this._days);
