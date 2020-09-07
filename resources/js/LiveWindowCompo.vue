@@ -52,7 +52,18 @@
                     });
 
                     room.on('participantConnected', participant => {
-                        console.log(`A remote Participant connected: ${participant}`);
+                        console.log(`Participant "${participant.identity}" connected`);
+
+                        participant.tracks.forEach(publication => {
+                            if (publication.isSubscribed) {
+                                const track = publication.track;
+                                videoChatWindow.appendChild(track.attach());
+                            }
+                        });
+
+                        participant.on('trackSubscribed', track => {
+                            videoChatWindow.appendChild(track.attach());
+                        });
                     });
                 }, error => {
                     console.error(`Unable to connect to Room: ${error.message}`);
