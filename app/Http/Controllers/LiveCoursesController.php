@@ -9,10 +9,6 @@ use Twilio\Jwt\Grants\VideoGrant;
 class LiveCoursesController extends Controller
 {
 
-public function __construct()
-{
-}
-
     public function generate_token()
     {
         // Substitute your Twilio Account SID and API Key details
