@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <p class="text-center text-white my-2">
-                            <router-link :to="{name : 'LiveCourse'}" tag="button" class="btn btn-danger">
+                            <router-link :to="{name : 'LiveCourse', params:{slug: 'hello'}}" tag="button" class="btn btn-danger">
                                 Go to course page
                             </router-link>
 

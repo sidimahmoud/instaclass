@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Twilio\Jwt\AccessToken;
 use Twilio\Jwt\Grants\VideoGrant;
+use Twilio\Rest\Client;
 
 class LiveCoursesController extends Controller
 {
@@ -26,7 +27,6 @@ class LiveCoursesController extends Controller
             3600,
             $identity
         );
-
         // Grant access to Video
         $grant = new VideoGrant();
         $grant->setRoom('cool room');
@@ -34,6 +34,32 @@ class LiveCoursesController extends Controller
 
         // Serialize the token as a JWT
         echo $token->toJWT();
+    }
+
+    public function closeRoom($myRoom)
+    {
+        $sid = env('TWILIO_ACCOUNT_SID');
+        $token = env('TWILIO_ACCOUNT_TOKEN');
+        $twilio = new Client($sid, $token);
+        $room = $twilio->video->v1->rooms($myRoom)
+            ->update("completed");
+        return response()->json("Room completed");
+    }
+
+    public function createRoom($myRoom)
+    {
+        $sid = env('TWILIO_ACCOUNT_SID');
+        $token = env('TWILIO_ACCOUNT_TOKEN');
+        $twilio = new Client($sid, $token);
+        $room = $twilio->video->v1->rooms
+            ->create([
+                    "recordParticipantsOnConnect" => True,
+                    "statusCallback" => "https://instantclass.herokuapp.com/room-events",
+                    "type" => "group",
+                    "uniqueName" => $myRoom
+                ]
+            );
+        return response()->json($room);
     }
 
     /**

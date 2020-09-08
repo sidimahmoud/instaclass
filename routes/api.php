@@ -38,6 +38,9 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/teacher/payments', 'Admin\UsersController@teacherPayments');
         Route::resource('/course', 'Teacher\CoursesController');
         Route::post('/course/sections', 'CourseFileController@store');
+        //Live courses
+        Route::get('/access_token', 'LiveCoursesController@generate_token');
+        Route::post('/endroom', 'LiveCoursesController@closeRoom');
     });
 
     Route::get('/user', 'Admin\UsersController@show');
@@ -45,7 +48,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/enroll', 'EnrollmentController@store');
     Route::post('/pay', 'Admin\PayementController@paymentProcess');
     Route::post('/rate', 'RatingController@store');
-    Route::get('access_token', 'LiveCoursesController@generate_token');
 
 });
 

@@ -8732,6 +8732,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8791,9 +8794,12 @@ __webpack_require__.r(__webpack_exports__);
       }, function (error) {
         console.error("Unable to connect to Room: ".concat(error.message));
       });
+    },
+    endRoom: function endRoom() {
+      this.$router.push({
+        name: "TeacherProfile"
+      });
     }
-  },
-  mounted: function mounted() {// this.getAccessToken()
   }
 });
 
@@ -80113,24 +80119,35 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm._m(0)
+      _vm.started
+        ? _c(
+            "div",
+            {
+              staticClass:
+                "grid grid-flow-row grid-cols-3 grid-rows-3 gap-4 bg-black text-center"
+            },
+            [
+              _c("div", {
+                staticClass: "border border-dark m-2 p-1 rounded",
+                attrs: { id: "video-chat-window" }
+              })
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.started
+        ? _c("div", { staticClass: "text-center" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-danger", on: { click: _vm.endRoom } },
+              [_vm._v("End course")]
+            )
+          ])
+        : _vm._e()
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "grid grid-flow-row grid-cols-3 grid-rows-3 gap-4 bg-black"
-      },
-      [_c("div", { attrs: { id: "video-chat-window" } })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -82487,6 +82504,7 @@ var render = function() {
                   attrs: {
                     type: "number",
                     min: "1",
+                    max: "50",
                     id: "persons",
                     placeholder: "authorized students",
                     required: ""
@@ -83228,7 +83246,10 @@ var render = function() {
                       "router-link",
                       {
                         staticClass: "btn btn-danger",
-                        attrs: { to: { name: "LiveCourse" }, tag: "button" }
+                        attrs: {
+                          to: { name: "LiveCourse", params: { slug: "hello" } },
+                          tag: "button"
+                        }
                       },
                       [
                         _vm._v(
@@ -109349,9 +109370,19 @@ var routes = [{
     title: 'Live course'
   }
 }, {
-  path: '/live',
+  path: '/live/:slug',
   name: 'LiveCourse',
   component: _components_courses_LiveWindowCompo__WEBPACK_IMPORTED_MODULE_30__["default"],
+  beforeEnter: function beforeEnter(to, from, next) {
+    var user = JSON.parse(localStorage.getItem('user')) || null;
+    if (user.t === "teacher") next();else if (user.t === "admin") next({
+      name: 'Admin'
+    });else if (user.t === "student") next({
+      name: 'StudentProfile'
+    });else next({
+      name: 'Home'
+    });
+  },
   meta: {
     requiresAuth: true,
     title: 'Live course'

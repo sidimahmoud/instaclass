@@ -95,7 +95,6 @@ const routes = [
         meta: {
             requiresAuth: false,
             title: 'Course details'
-
         }
     },
     {
@@ -135,13 +134,19 @@ const routes = [
         meta: {
             requiresAuth: true,
             title: 'Live course'
-
         }
     },
     {
-        path: '/live',
+        path: '/live/:slug',
         name: 'LiveCourse',
         component: LiveWindowCompo,
+        beforeEnter: (to, from, next) => {
+            let user = JSON.parse(localStorage.getItem('user')) || null;
+            if (user.t === "teacher") next();
+            else if (user.t === "admin") next({name: 'Admin'});
+            else if (user.t === "student") next({name: 'StudentProfile'});
+            else next({name: 'Home'});
+        },
         meta: {
             requiresAuth: true,
             title: 'Live course'

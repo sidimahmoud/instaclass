@@ -67,7 +67,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="persons">Number of authorized students</label>
-                            <input type="number" min="1" class="form-control" id="persons"
+                            <input type="number" min="1" max="50" class="form-control" id="persons"
                                    placeholder="authorized students" v-model="course.authorized_students" required>
                         </div>
                     </div>

@@ -18,8 +18,11 @@
             <button class="btn btn-primary" @click="getAccessToken">Start now</button>
         </div>
 
-        <div class="grid grid-flow-row grid-cols-3 grid-rows-3 gap-4 bg-black">
-            <div id="video-chat-window"></div>
+        <div class="grid grid-flow-row grid-cols-3 grid-rows-3 gap-4 bg-black text-center" v-if="started">
+            <div class="border border-dark m-2 p-1 rounded" id="video-chat-window"></div>
+        </div>
+        <div class="text-center" v-if="started">
+            <button class="btn btn-danger" @click="endRoom">End course</button>
         </div>
     </div>
 </template>
@@ -90,10 +93,10 @@
                 }, error => {
                     console.error(`Unable to connect to Room: ${error.message}`);
                 });
+            },
+            endRoom(){
+                this.$router.push({name: "TeacherProfile"})
             }
         },
-        mounted: function () {
-            // this.getAccessToken()
-        }
     }
 </script>
