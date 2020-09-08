@@ -8800,7 +8800,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('https://instantclass.herokuapp.com/api/endroom').then(function () {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('https://instantclass.herokuapp.com/api/endroom').then(function () {
         console.log("ended");
 
         _this2.$router.push({
