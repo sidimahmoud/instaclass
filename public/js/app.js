@@ -8804,7 +8804,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/endroom/".concat(this.roomSid)).then(function () {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/endroom/cool room").then(function () {
         console.log("ended");
 
         _this3.$router.push({
