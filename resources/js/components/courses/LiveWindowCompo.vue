@@ -104,15 +104,15 @@
                         this.$router.push({name: "TeacherProfile"});
                     }
                 ).catch(err => console.log(err.response))
-            }
+            },
             roomDetails() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.post(`https://instantclass.herokuapp.com/api/$myRoom/cool room`).then(res => {
+                axios.get(`https://instantclass.herokuapp.com/api/room/cool room`).then(res => {
                         console.log(res.data);
                     }
                 ).catch(err => console.log(err.response))
-            }
+            },
         },
     }
 </script>

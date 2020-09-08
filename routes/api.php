@@ -41,7 +41,7 @@ Route::middleware('auth:sanctum')->group(function () {
         //Live courses
         Route::get('/access_token', 'LiveCoursesController@generate_token');
         Route::post('/endroom/{myRoom}', 'LiveCoursesController@closeRoom');
-        Route::post('/room/{myRoom}', 'LiveCoursesController@closeRoom');
+        Route::get('/room/{myRoom}', 'LiveCoursesController@closeRoom');
     });
 
     Route::get('/user', 'Admin\UsersController@show');
