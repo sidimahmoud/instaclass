@@ -34,7 +34,7 @@ import CategoryCourses from "../components/courses/CategoryCourses";
 import NewCourse from "../components/teacher/NewCourse";
 import EditCourse from "../components/teacher/EditCourse";
 import NewSection from "../components/teacher/NewSection";
-import LiveWindowCompo from "../LiveWindowCompo";
+import LiveWindowCompo from "../components/courses/LiveWindowCompo";
 
 Vue.use(VueRouter);
 

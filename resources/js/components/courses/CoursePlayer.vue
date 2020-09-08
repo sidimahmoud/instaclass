@@ -130,7 +130,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -162,7 +161,6 @@
         created() {
             this.findCourse();
         }
-
     }
 </script>
 

@@ -6,36 +6,68 @@
             </div>
         </div>
         <div v-if="!profileLoading">
-            <span class="float-right font-weight-bold text-white mr-2">Bonjour {{userProfile.first_name}}</span>
-            <div class="jumbotron">
+            <div class="jumbotron py-0">
+                <div class="text-right">
+                    <span class="font-weight-bold text-white mr-2">Bonjour {{userProfile.first_name}}</span>
+                    <button class="btn btn-danger" @click="logout">
+                        Logout
+                    </button>
+                </div>
                 <div class="row">
                     <div class="col-12">
-                        <button class="btn btn-danger float-right" @click="logout">
-                            Logout
-                        </button>
+                        <div class="text-white text-center">
+                            <img :src="userProfile.image" width="80px" alt="Avatar" class="rounded-circle">
+                            <h4>{{userProfile.first_name}} {{userProfile.last_name}}</h4>
+                            <p>{{userProfile.headline}}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="text-white text-center">
-                    <img :src="userProfile.image" width="80px" alt="Avatar" class="rounded-circle">
-                    <h4>{{userProfile.first_name}} {{userProfile.last_name}}</h4>
-                    <p>{{userProfile.headline}}</p>
-                </div>
-                <div class="d-flex align-items-center justify-content-center text-white">
-                    <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
-                        <span class="btn btn-danger">{{allTeacherDetails.students[0].count>0?allTeacherDetails.students[0].count:"0"}} </span>
-                        <br> Course Enrollments
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center justify-content-center text-white">
+                            <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
+                                <span class="btn btn-danger">{{allTeacherDetails.students[0].count>0?allTeacherDetails.students[0].count:"0"}} </span>
+                                <br> Course Enrollments
+                            </div>
+                            <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">
+                                <span class="btn btn-danger">{{userCourses.length>0?userCourses.length:"0"}} </span>
+                                <br>
+                                Courses
+                            </div>
+
+                            <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
+                                <span class="btn btn-danger">{{allTeacherDetails.ratings.length>0?allTeacherDetails.ratings.length:"0"}} </span>
+                                <br> Reviews
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">
-                        <span class="btn btn-danger">{{userCourses.length>0?userCourses.length:"0"}} </span> <br>
-                        Courses
+                    <div class="col-md-6">
+                        <h4 class="text-center my-2 text-white">You have one course to start after</h4>
+                        <div class="row">
+                            <div class="col mx-auto">
+                                <Count-down
+                                    :year="2020"
+                                    :month="9"
+                                    :day="1"
+                                    :hour="0"
+                                    :minute="0"
+                                    :second="0"
+                                    :text="false"
+                                />
+                            </div>
+                        </div>
+                        <p class="text-center text-white my-2">
+                            <router-link :to="{name : 'LiveCourse'}" tag="button" class="btn btn-danger">
+                                Go to course page
+                            </router-link>
+
+                        </p>
+
                     </div>
 
-                    <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
-                        <span class="btn btn-danger">{{allTeacherDetails.ratings.length>0?allTeacherDetails.ratings.length:"0"}} </span>
-                        <br> Reviews
-                    </div>
                 </div>
+
+
             </div>
+
             <div class="container">
                 <div class="accordion" id="accordionExample">
                     <div class="card">
@@ -86,7 +118,8 @@
                                                         :to="{ name: 'EditCourse', params: { slug: course.slug}}">
                                                         <button class="btn btn-warning">Edit</button>
                                                     </router-link>
-                                                    <a href="javascript:;"  class="btn btn-danger" v-on:click="deleteCourse(course.id)">
+                                                    <a href="javascript:;" class="btn btn-danger"
+                                                       v-on:click="deleteCourse(course.id)">
                                                         Delete
 
                                                     </a>
@@ -187,6 +220,7 @@
     import Review from "../courses/Review";
     import NewSection from "./NewSection";
     import EditProfile from "../student/EditProfile";
+    import CountDown from "../CountDown";
     import axios from "axios";
 
     export default {
@@ -196,7 +230,8 @@
             Payments,
             Review,
             NewSection,
-            EditProfile
+            EditProfile,
+            CountDown,
         },
         methods: {
             ...mapActions(["fetchProfile", "fetchUserCourses", "fetchTeacherDetails", "fetchTeacherPayments"]),
@@ -208,8 +243,8 @@
                     })
             },
             deleteCourse(id) {
-                const token = localStorage.getItem('token')||null;
-                if(token){
+                const token = localStorage.getItem('token') || null;
+                if (token) {
                     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                     if (confirm("Do you really want to delete?")) {
                         this.$store.dispatch('deleteCourse', id)

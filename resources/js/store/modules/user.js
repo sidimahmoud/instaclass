@@ -16,16 +16,14 @@ const getters = {
     userEnrollments: (state) => state.enrollments,
     allTeacherDetails: (state) => state.teacherDetails,
     allTeacherPayments: (state) => state.teacherPayments,
-    profileLoading:(state)=>state.profileLoading,
+    profileLoading: (state) => state.profileLoading,
 };
 
 const actions = {
     async fetchProfile({commit}) {
-        commit('setProfileLoading', true);
         header();
         const response = await axios.get('https://instantclass.herokuapp.com/api/user');
         commit('setProfile', response.data[0]);
-        commit('setProfileLoading', false);
     },
     async fetchTeacherCourses({commit}, id) {
         const response = await axios.get(`https://instantclass.herokuapp.com/api/teacher/${id}/courses`);
@@ -44,14 +42,19 @@ const actions = {
     },
 
     async fetchUserCourses({commit}) {
+        commit('setProfileLoading', true);
         header();
         const response = await axios.get(`https://instantclass.herokuapp.com/api/user/courses`);
         commit('setCourses', response.data);
+        commit('setProfileLoading', false);
     },
     async fetchUserEnrollments({commit}) {
+        commit('setProfileLoading', true);
         header();
         const response = await axios.get(`https://instantclass.herokuapp.com/api/user/enrollments`);
         commit('setEnrollments', response.data);
+        commit('setProfileLoading', false);
+
     },
 };
 

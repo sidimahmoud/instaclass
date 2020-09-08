@@ -76,6 +76,21 @@ const actions = {
                 })
         })
     },
+    async enroll({commit}, payload) {
+        headers();
+        commit('setLoading', true);
+        return new Promise((resolve, reject) => {
+            axios({url: 'https://instantclass.herokuapp.com/api/enroll', data: payload, method: 'POST'})
+                .then(resp => {
+                    commit('setLoading', false);
+                    resolve(resp)
+                })
+                .catch(err => {
+                    commit('auth_error');
+                    reject(err)
+                })
+        })
+    },
     async deleteCourse({commit}, id) {
         headers();
         return new Promise((resolve, reject) => {
