@@ -16,6 +16,7 @@
                 </div>
             </div>
             <button class="btn btn-primary" @click="getAccessToken">Start now</button>
+            <button class="btn btn-primary" @click="roomDetails">Details</button>
         </div>
 
         <div class="grid grid-flow-row grid-cols-3 grid-rows-3 gap-4 bg-black text-center" v-if="started">
@@ -101,6 +102,14 @@
                 axios.post(`https://instantclass.herokuapp.com/api/endroom/cool room`).then(() => {
                         console.log("ended");
                         this.$router.push({name: "TeacherProfile"});
+                    }
+                ).catch(err => console.log(err.response))
+            }
+            roomDetails() {
+                let token = localStorage.getItem('token');
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                axios.post(`https://instantclass.herokuapp.com/api/$myRoom/cool room`).then(res => {
+                        console.log(res.data);
                     }
                 ).catch(err => console.log(err.response))
             }

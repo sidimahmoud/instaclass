@@ -45,6 +45,15 @@ class LiveCoursesController extends Controller
             ->update("completed");
         return response()->json("Room completed");
     }
+    public function roomDetails($myRoom)
+    {
+        $sid = env('TWILIO_ACCOUNT_SID');
+        $token = env('TWILIO_ACCOUNT_TOKEN');
+        $twilio = new Client($sid, $token);
+        $room = $twilio->video->v1->rooms($myRoom)
+            ->fetch();
+        return response()->json($room);
+    }
 
     public function createRoom($myRoom)
     {
