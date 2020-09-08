@@ -10,10 +10,11 @@ use Twilio\Rest\Client;
 class LiveCoursesController extends Controller
 {
 
-    public function generate_token()
+    public function generate_token($myRoom)
     {
         // Substitute your Twilio Account SID and API Key details
         $accountSid = env('TWILIO_ACCOUNT_SID');
+        $token = env('TWILIO_ACCOUNT_TOKEN');
         $apiKeySid = env('TWILIO_API_KEY');
         $apiKeySecret = env('TWILIO_API_SECRET');
 
@@ -27,13 +28,22 @@ class LiveCoursesController extends Controller
             3600,
             $identity
         );
+        $twilio = new Client($accountSid, $token);
+        $room = $twilio->video->v1->rooms
+            ->create([
+                    "recordParticipantsOnConnect" => True,
+                    "statusCallback" => "https://instantclass.herokuapp.com/room-events",
+                    "type" => "group",
+                    "uniqueName" => $myRoom
+                ]
+            );
         // Grant access to Video
         $grant = new VideoGrant();
-        $grant->setRoom('cool room');
+        $grant->setRoom($myRoom);
         $token->addGrant($grant);
 
         // Serialize the token as a JWT
-        echo $token->toJWT();
+        return response()->json(['token'=>$token->toJWT(), 'room'=>$room]);
     }
 
     public function closeRoom($myRoom)
