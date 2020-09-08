@@ -27,6 +27,7 @@ class LiveCoursesController extends Controller
             3600,
             $identity
         );
+
         // Grant access to Video
         $grant = new VideoGrant();
         $grant->setRoom('cool room');
@@ -45,24 +46,6 @@ class LiveCoursesController extends Controller
             ->update("completed");
         return response()->json("Room completed");
     }
-    public function myRooms()
-    {
-        $sid = env('TWILIO_ACCOUNT_SID');
-        $token = env('TWILIO_ACCOUNT_TOKEN');
-        $twilio = new Client($sid, $token);
-        $rooms = $twilio->video->v1->rooms->read(["uniqueName" => "3302"], 20);
-
-        return response()->json($rooms);
-    }
-    public function roomDetails($myRoom)
-    {
-        $sid = env('TWILIO_ACCOUNT_SID');
-        $token = env('TWILIO_ACCOUNT_TOKEN');
-        $twilio = new Client($sid, $token);
-        $room = $twilio->video->v1->rooms($myRoom)
-            ->fetch();
-        return response()->json($room);
-    }
 
     public function createRoom($myRoom)
     {
@@ -72,7 +55,7 @@ class LiveCoursesController extends Controller
         $room = $twilio->video->v1->rooms
             ->create([
                     "recordParticipantsOnConnect" => True,
-                    "statusCallback" => "https://instantclass.herokuapp.com/room-events",
+                    "statusCallback" => "https://instantclass.herokuapp.com/",
                     "type" => "group",
                     "uniqueName" => $myRoom
                 ]
