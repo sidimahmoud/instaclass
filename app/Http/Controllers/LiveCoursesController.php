@@ -45,7 +45,7 @@ class LiveCoursesController extends Controller
             ->update("completed");
         return response()->json("Room completed");
     }
-    public function myRooms($myRoom)
+    public function myRooms()
     {
         $sid = env('TWILIO_ACCOUNT_SID');
         $token = env('TWILIO_ACCOUNT_TOKEN');
