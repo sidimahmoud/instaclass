@@ -95,11 +95,11 @@
                 });
             },
             endRoom() {
-                axios.get('https://instantclass.herokuapp.com/api/endroom').then(() =>
-                    console.log("ended");
-                this.$router.push({name: "TeacherProfile"});
-            ).
-                catch(err => console.log(err.response))
+                axios.get('https://instantclass.herokuapp.com/api/endroom').then(() => {
+                        console.log("ended");
+                        this.$router.push({name: "TeacherProfile"});
+                    }
+                ).catch(err => console.log(err.response))
             }
         },
     }
