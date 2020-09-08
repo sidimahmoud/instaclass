@@ -39,7 +39,8 @@
         data() {
             return {
                 accessToken: '',
-                started: false
+                started: false,
+                roomSid: ''
             }
         },
         methods: {
@@ -69,7 +70,7 @@
                 connect(this.accessToken, {name: 'hello'}).then(room => {
 
                     console.log(`Successfully joined a Room: ${room}`);
-
+                    this.roomSid = room;
                     const videoChatWindow = document.getElementById('video-chat-window');
 
                     createLocalVideoTrack().then(track => {
@@ -97,7 +98,7 @@
             endRoom() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.post('https://instantclass.herokuapp.com/api/endroom').then(() => {
+                axios.post(`https://instantclass.herokuapp.com/api/endroom/${this.roomSid}`).then(() => {
                         console.log("ended");
                         this.$router.push({name: "TeacherProfile"});
                     }

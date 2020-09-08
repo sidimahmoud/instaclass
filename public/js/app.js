@@ -8745,7 +8745,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       accessToken: '',
-      started: false
+      started: false,
+      roomSid: ''
     };
   },
   methods: {
@@ -8767,6 +8768,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     connectToRoom: function connectToRoom() {
+      var _this2 = this;
+
       var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
           connect = _require.connect,
           createLocalVideoTrack = _require.createLocalVideoTrack;
@@ -8775,6 +8778,7 @@ __webpack_require__.r(__webpack_exports__);
         name: 'hello'
       }).then(function (room) {
         console.log("Successfully joined a Room: ".concat(room));
+        _this2.roomSid = room;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalVideoTrack().then(function (track) {
           videoChatWindow.appendChild(track.attach());
@@ -8796,14 +8800,14 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     endRoom: function endRoom() {
-      var _this2 = this;
+      var _this3 = this;
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('https://instantclass.herokuapp.com/api/endroom').then(function () {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/endroom/".concat(this.roomSid)).then(function () {
         console.log("ended");
 
-        _this2.$router.push({
+        _this3.$router.push({
           name: "TeacherProfile"
         });
       })["catch"](function (err) {
