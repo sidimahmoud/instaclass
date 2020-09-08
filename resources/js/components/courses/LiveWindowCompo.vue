@@ -50,7 +50,7 @@
                 // Request a new token
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get('https://instantclass.herokuapp.com/api/access_token/medab')
+                axios.get('https://instantclass.herokuapp.com/api/access_token')
                     .then(function (response) {
                         _this.accessToken = response.data;
                         _this.started = true;
