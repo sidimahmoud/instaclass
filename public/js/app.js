@@ -8772,7 +8772,7 @@ __webpack_require__.r(__webpack_exports__);
           createLocalVideoTrack = _require.createLocalVideoTrack;
 
       connect(this.accessToken, {
-        name: 'cool room'
+        name: 'hello'
       }).then(function (room) {
         console.log("Successfully joined a Room: ".concat(room));
         var videoChatWindow = document.getElementById('video-chat-window');

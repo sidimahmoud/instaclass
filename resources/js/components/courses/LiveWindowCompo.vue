@@ -66,7 +66,7 @@
 
                 const {connect, createLocalVideoTrack} = require('twilio-video');
 
-                connect(this.accessToken, {name: 'cool room'}).then(room => {
+                connect(this.accessToken, {name: 'hello'}).then(room => {
 
                     console.log(`Successfully joined a Room: ${room}`);
 
