@@ -94,8 +94,12 @@
                     console.error(`Unable to connect to Room: ${error.message}`);
                 });
             },
-            endRoom(){
-                this.$router.push({name: "TeacherProfile"})
+            endRoom() {
+                axios.get('https://instantclass.herokuapp.com/api/endroom').then(() =>
+                    console.log("ended");
+                this.$router.push({name: "TeacherProfile"});
+            ).
+                catch(err => console.log(err.response))
             }
         },
     }
