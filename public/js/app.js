@@ -8788,7 +8788,7 @@ __webpack_require__.r(__webpack_exports__);
           $('#remote-media > video').css({
             'width': '100%'
           });
-          $('#local-media > video').css({
+          $('#video-chat-window > video').css({
             'width': '100%',
             'margin-left': '0px'
           });

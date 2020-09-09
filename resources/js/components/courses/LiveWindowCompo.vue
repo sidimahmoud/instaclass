@@ -79,7 +79,7 @@
                     createLocalVideoTrack().then(track => {
                         videoChatWindow.appendChild(track.attach());
                         $('#remote-media > video').css({'width': '100%'});
-                        $('#local-media > video').css({'width': '100%', 'margin-left': '0px'});
+                        $('#video-chat-window > video').css({'width': '100%', 'margin-left': '0px'});
                     });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
