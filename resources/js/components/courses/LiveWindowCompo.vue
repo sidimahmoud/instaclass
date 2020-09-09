@@ -26,6 +26,7 @@
         </div>
         <div class="m-2 bg-black text-center" v-if="started">
             <div class="border border-dark m-2 p-1 rounded" id="video-chat-window"></div>
+            <div class="border border-dark m-2 rounded" id="remote-media"></div>
         </div>
         <div class="text-center" v-if="started">
             <button class="btn btn-danger" @click="endRoom">End course</button>
@@ -78,8 +79,20 @@
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack().then(track => {
                         videoChatWindow.appendChild(track.attach());
-                        $('#remote-media > video').css({'width': '100%'});
-                        $('#video-chat-window > video').css({'width': '100%', 'margin-left': '0px'});
+                        $('#video-chat-window > video').css({
+                            'width': '100%',
+                            'position': 'relative',
+                            'height': '80%',
+                            'margin-left': '0px'
+                        });
+                        $('#remote-media > video').css({
+                            'width': '20%',
+                            'position': 'absolute',
+                            'z-index': '50',
+                            'top': '30px',
+                            'right': '0',
+                            'left': '0',
+                        });
                     });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);

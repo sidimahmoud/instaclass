@@ -8741,6 +8741,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8785,12 +8786,19 @@ __webpack_require__.r(__webpack_exports__);
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalVideoTrack().then(function (track) {
           videoChatWindow.appendChild(track.attach());
-          $('#remote-media > video').css({
-            'width': '100%'
-          });
           $('#video-chat-window > video').css({
             'width': '100%',
+            'position': 'relative',
+            'height': '80%',
             'margin-left': '0px'
+          });
+          $('#remote-media > video').css({
+            'width': '20%',
+            'position': 'absolute',
+            'z-index': '50',
+            'top': '30px',
+            'right': '0',
+            'left': '0'
           });
         });
         room.on('participantConnected', function (participant) {
@@ -80226,6 +80234,11 @@ var render = function() {
             _c("div", {
               staticClass: "border border-dark m-2 p-1 rounded",
               attrs: { id: "video-chat-window" }
+            }),
+            _vm._v(" "),
+            _c("div", {
+              staticClass: "border border-dark m-2 rounded",
+              attrs: { id: "remote-media" }
             })
           ])
         : _vm._e(),
