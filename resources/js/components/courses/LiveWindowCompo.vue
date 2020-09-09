@@ -25,7 +25,7 @@
             <button class="btn btn-primary" @click="roomDetails">Details</button>
         </div>
 
-        <div class="grid grid-flow-row grid-cols-3 grid-rows-3 gap-4 bg-black text-center" v-if="started">
+        <div class="m-2 bg-black text-center" v-if="started">
             <div class="border border-dark m-2 p-1 rounded" id="video-chat-window"></div>
         </div>
         <div class="text-center" v-if="started">
@@ -51,7 +51,7 @@
             }
         },
         methods: {
-            getAccessToken: function () {
+            getAccessToken() {
                 const _this = this;
                 // Request a new token
                 let token = localStorage.getItem('token');
@@ -70,7 +70,7 @@
                         console.log(_this.accessToken)
                     });
             },
-            connectToRoom: function () {
+            connectToRoom() {
 
                 const {connect, createLocalVideoTrack} = require('twilio-video');
 

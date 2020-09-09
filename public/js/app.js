@@ -80216,19 +80216,12 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm.started
-        ? _c(
-            "div",
-            {
-              staticClass:
-                "grid grid-flow-row grid-cols-3 grid-rows-3 gap-4 bg-black text-center"
-            },
-            [
-              _c("div", {
-                staticClass: "border border-dark m-2 p-1 rounded",
-                attrs: { id: "video-chat-window" }
-              })
-            ]
-          )
+        ? _c("div", { staticClass: "m-2 bg-black text-center" }, [
+            _c("div", {
+              staticClass: "border border-dark m-2 p-1 rounded",
+              attrs: { id: "video-chat-window" }
+            })
+          ])
         : _vm._e(),
       _vm._v(" "),
       _vm.started

@@ -56,7 +56,7 @@ class LiveCoursesController extends Controller
         $token = env('TWILIO_ACCOUNT_TOKEN');
         $twilio = new Client($sid, $token);
         $room = $twilio->video->v1->rooms($myRoom)->fetch();
-        return response()->json([$room->uniqueName, $room->sid, $room->fetch()]);
+        return response()->json([$room->uniqueName, $room->sid, $room->accountSid]);
     }
 
     public function closeRoom($myRoom)
@@ -75,8 +75,8 @@ class LiveCoursesController extends Controller
         $token = env('TWILIO_ACCOUNT_TOKEN');
         $twilio = new Client($sid, $token);
         $rooms = $twilio->video->v1->rooms->read(["uniqueName" => "3302"], 20);
-        echo $rooms;
-//        return response()->json($rooms);
+//        echo $rooms;
+        return response()->json($rooms);
     }
 
 
