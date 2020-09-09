@@ -4,6 +4,7 @@
             <input type="text" class="form-control" v-model="myRoom">
             <button class="btn btn-primary" @click="createRoom">Create</button>
             <button class="btn btn-primary" @click="roomDetails">Fetch</button>
+            <button class="btn btn-primary" @click="rooms">My rooms</button>
         </div>
         <div class="text-center" v-if="!started">
             <h1>Course has to start after</h1>
@@ -122,6 +123,14 @@
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.get(`https://instantclass.herokuapp.com/api/room/${this.myRoom}`).then(res => {
+                        console.log(res.data);
+                    }
+                ).catch(err => console.log(err.response))
+            },
+            rooms() {
+                let token = localStorage.getItem('token');
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                axios.get(`https://instantclass.herokuapp.com/api/rooms`).then(res => {
                         console.log(res.data);
                     }
                 ).catch(err => console.log(err.response))

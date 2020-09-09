@@ -47,7 +47,7 @@ class LiveCoursesController extends Controller
                     "uniqueName" => $myRoom
                 ]
             );
-        return response()->json($room->fetch());
+        return response()->json($room);
     }
 
     public function roomDetails($myRoom)
@@ -57,7 +57,7 @@ class LiveCoursesController extends Controller
         $twilio = new Client($sid, $token);
         $room = $twilio->video->v1->rooms($myRoom)
             ->fetch();
-        return response()->json($room);
+        return response()->json($room->uniqueName);
     }
 
     public function closeRoom($myRoom)

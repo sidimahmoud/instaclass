@@ -8741,6 +8741,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8830,6 +8831,15 @@ __webpack_require__.r(__webpack_exports__);
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.myRoom)).then(function (res) {
+        console.log(res.data);
+      })["catch"](function (err) {
+        return console.log(err.response);
+      });
+    },
+    rooms: function rooms() {
+      var token = localStorage.getItem('token');
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/rooms").then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -80151,6 +80161,12 @@ var render = function() {
           "button",
           { staticClass: "btn btn-primary", on: { click: _vm.roomDetails } },
           [_vm._v("Fetch")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", on: { click: _vm.rooms } },
+          [_vm._v("My rooms")]
         )
       ]),
       _vm._v(" "),
