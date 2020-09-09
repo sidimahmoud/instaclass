@@ -1,5 +1,10 @@
 <template>
     <div class="container-fluid border-top border-primary pt-4">
+        <div class="form-group">
+            <input type="text" class="form-control" v-model="myRoom">
+            <button class="btn btn-primary" @click="createRoom">Create</button>
+            <button class="btn btn-primary" @click="roomDetails">Fetch</button>
+        </div>
         <div class="text-center" v-if="!started">
             <h1>Course has to start after</h1>
             <div class="row my-3">
@@ -41,7 +46,7 @@
             return {
                 accessToken: '',
                 started: false,
-                roomSid: ''
+                myRoom: ''
             }
         },
         methods: {
@@ -71,7 +76,6 @@
                 connect(this.accessToken, {name: 'hello'}).then(room => {
 
                     console.log(`Successfully joined a Room: ${room}`);
-                    this.roomSid = room;
                     const videoChatWindow = document.getElementById('video-chat-window');
 
                     createLocalVideoTrack().then(track => {
@@ -99,16 +103,25 @@
             endRoom() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.post(`https://instantclass.herokuapp.com/api/endroom/cool room`).then(() => {
+                axios.post(`https://instantclass.herokuapp.com/api/endroom/${this.myRoom}`).then(() => {
                         console.log("ended");
                         this.$router.push({name: "TeacherProfile"});
+                    }
+                ).catch(err => console.log(err.response))
+            },
+            createRoom() {
+                let token = localStorage.getItem('token');
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                axios.post(`https://instantclass.herokuapp.com/api/create_room/${this.myRoom}`).then(res => {
+                        console.log(res.data);
+                        //this.$router.push({name: "TeacherProfile"});
                     }
                 ).catch(err => console.log(err.response))
             },
             roomDetails() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get(`https://instantclass.herokuapp.com/api/room/cool room`).then(res => {
+                axios.get(`https://instantclass.herokuapp.com/api/room/${this.myRoom}`).then(res => {
                         console.log(res.data);
                     }
                 ).catch(err => console.log(err.response))

@@ -28,10 +28,10 @@ class LiveCoursesController extends Controller
         );
         // Grant access to Video
         $grant = new VideoGrant();
-        $grant->setRoom('cool room');
+        $grant->setRoom('hello');
         $token->addGrant($grant);
         // Serialize the token as a JWT
-        echo $token->toJWT();
+        return $token->toJWT();
     }
 
     public function createRoom($myRoom)
@@ -42,7 +42,7 @@ class LiveCoursesController extends Controller
         $room = $twilio->video->v1->rooms
             ->create([
                     "recordParticipantsOnConnect" => True,
-                    "statusCallback" => "https://instantclass.herokuapp.com",
+                    "statusCallback" => "https://instantclass.herokuapp.com/room-envents",
                     "type" => "group",
                     "uniqueName" => $myRoom
                 ]

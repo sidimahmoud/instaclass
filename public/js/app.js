@@ -8736,6 +8736,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8747,7 +8752,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       accessToken: '',
       started: false,
-      roomSid: ''
+      myRoom: ''
     };
   },
   methods: {
@@ -8769,8 +8774,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     connectToRoom: function connectToRoom() {
-      var _this2 = this;
-
       var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
           connect = _require.connect,
           createLocalVideoTrack = _require.createLocalVideoTrack;
@@ -8779,7 +8782,6 @@ __webpack_require__.r(__webpack_exports__);
         name: 'hello'
       }).then(function (room) {
         console.log("Successfully joined a Room: ".concat(room));
-        _this2.roomSid = room;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalVideoTrack().then(function (track) {
           videoChatWindow.appendChild(track.attach());
@@ -8801,16 +8803,25 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     endRoom: function endRoom() {
-      var _this3 = this;
+      var _this2 = this;
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/endroom/cool room").then(function () {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/endroom/".concat(this.myRoom)).then(function () {
         console.log("ended");
 
-        _this3.$router.push({
+        _this2.$router.push({
           name: "TeacherProfile"
         });
+      })["catch"](function (err) {
+        return console.log(err.response);
+      });
+    },
+    createRoom: function createRoom() {
+      var token = localStorage.getItem('token');
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom)).then(function (res) {
+        console.log(res.data); //this.$router.push({name: "TeacherProfile"});
       })["catch"](function (err) {
         return console.log(err.response);
       });
@@ -8818,7 +8829,7 @@ __webpack_require__.r(__webpack_exports__);
     roomDetails: function roomDetails() {
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/room/cool room").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -80107,6 +80118,42 @@ var render = function() {
     "div",
     { staticClass: "container-fluid border-top border-primary pt-4" },
     [
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.myRoom,
+              expression: "myRoom"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text" },
+          domProps: { value: _vm.myRoom },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.myRoom = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", on: { click: _vm.createRoom } },
+          [_vm._v("Create")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", on: { click: _vm.roomDetails } },
+          [_vm._v("Fetch")]
+        )
+      ]),
+      _vm._v(" "),
       !_vm.started
         ? _c("div", { staticClass: "text-center" }, [
             _c("h1", [_vm._v("Course has to start after")]),
