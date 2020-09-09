@@ -24,7 +24,6 @@
             <button class="btn btn-primary" @click="getAccessToken">Start now</button>
             <button class="btn btn-primary" @click="roomDetails">Details</button>
         </div>
-
         <div class="m-2 bg-black text-center" v-if="started">
             <div class="border border-dark m-2 p-1 rounded" id="video-chat-window"></div>
         </div>
@@ -61,7 +60,6 @@
                         _this.accessToken = response.data;
                         _this.started = true;
                         _this.connectToRoom()
-
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -78,11 +76,11 @@
 
                     console.log(`Successfully joined a Room: ${room}`);
                     const videoChatWindow = document.getElementById('video-chat-window');
-
                     createLocalVideoTrack().then(track => {
                         videoChatWindow.appendChild(track.attach());
+                        $('#remote-media > video').css({'width': '100%'});
+                        $('#local-media > video').css({'width': '100%', 'margin-left': '0px'});
                     });
-
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
 

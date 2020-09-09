@@ -8741,7 +8741,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8786,6 +8785,13 @@ __webpack_require__.r(__webpack_exports__);
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalVideoTrack().then(function (track) {
           videoChatWindow.appendChild(track.attach());
+          $('#remote-media > video').css({
+            'width': '100%'
+          });
+          $('#local-media > video').css({
+            'width': '100%',
+            'margin-left': '0px'
+          });
         });
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
