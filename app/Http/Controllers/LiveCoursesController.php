@@ -9,7 +9,6 @@ use Twilio\Rest\Client;
 
 class LiveCoursesController extends Controller
 {
-
     public function generate_token()
     {
         // Substitute your Twilio Account SID and API Key details
@@ -31,9 +30,34 @@ class LiveCoursesController extends Controller
         $grant = new VideoGrant();
         $grant->setRoom('cool room');
         $token->addGrant($grant);
-
         // Serialize the token as a JWT
         echo $token->toJWT();
+    }
+
+    public function createRoom($myRoom)
+    {
+        $sid = env('TWILIO_ACCOUNT_SID');
+        $token = env('TWILIO_ACCOUNT_TOKEN');
+        $twilio = new Client($sid, $token);
+        $room = $twilio->video->v1->rooms
+            ->create([
+                    "recordParticipantsOnConnect" => True,
+                    "statusCallback" => "https://instantclass.herokuapp.com",
+                    "type" => "group",
+                    "uniqueName" => $myRoom
+                ]
+            );
+        return response()->json($room->fetch());
+    }
+
+    public function roomDetails($myRoom)
+    {
+        $sid = env('TWILIO_ACCOUNT_SID');
+        $token = env('TWILIO_ACCOUNT_TOKEN');
+        $twilio = new Client($sid, $token);
+        $room = $twilio->video->v1->rooms($myRoom)
+            ->fetch();
+        return response()->json($room);
     }
 
     public function closeRoom($myRoom)
@@ -45,40 +69,17 @@ class LiveCoursesController extends Controller
             ->update("completed");
         return response()->json("Room completed");
     }
+
     public function myRooms()
     {
         $sid = env('TWILIO_ACCOUNT_SID');
         $token = env('TWILIO_ACCOUNT_TOKEN');
         $twilio = new Client($sid, $token);
         $rooms = $twilio->video->v1->rooms->read(["uniqueName" => "3302"], 20);
-
-        return response()->json($rooms);
-    }
-    public function roomDetails($myRoom)
-    {
-        $sid = env('TWILIO_ACCOUNT_SID');
-        $token = env('TWILIO_ACCOUNT_TOKEN');
-        $twilio = new Client($sid, $token);
-        $room = $twilio->video->v1->rooms($myRoom)
-            ->fetch();
-        return response()->json($room);
+        echo $rooms;
+//        return response()->json($rooms);
     }
 
-    public function createRoom($myRoom)
-    {
-        $sid = env('TWILIO_ACCOUNT_SID');
-        $token = env('TWILIO_ACCOUNT_TOKEN');
-        $twilio = new Client($sid, $token);
-        $room = $twilio->video->v1->rooms
-            ->create([
-                    "recordParticipantsOnConnect" => True,
-                    "statusCallback" => "https://instantclass.herokuapp.com/room-events",
-                    "type" => "group",
-                    "uniqueName" => $myRoom
-                ]
-            );
-        return response()->json($room);
-    }
 
     /**
      * Display a listing of the resource.
