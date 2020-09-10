@@ -63,9 +63,7 @@
                 myRoom: 'hello',
                 user: 'teacher@gmail.com',
                 roomSid: false,
-                participants:[
-
-                ]
+                participants: []
             }
         },
         methods: {
@@ -92,7 +90,7 @@
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     console.log(room);
-                    this.roomSid=room.sid;
+                    this.roomSid = room.sid;
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack().then(track => {
                         videoChatWindow.appendChild(track.attach());
@@ -104,14 +102,14 @@
                     });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
-                        participant.tracks.forEach(publication => {
-                            if (publication.isSubscribed) {
-                                this.participants.push(participant.identity)
-                            }
-                        });
-                        participant.on('trackSubscribed', track => {
+                        this.participants.push(participant.identity);
+                        // participant.tracks.forEach(publication => {
+                        //     if (publication.isSubscribed) {
+                        //     }
+                        // });
+                        // participant.on('trackSubscribed', track => {
                             // videoChatWindow.appendChild(track.attach());
-                        });
+                        // });
                     });
                 }, error => {
                     console.error(`Unable to connect to Room: ${error.message}`);

@@ -8814,13 +8814,15 @@ __webpack_require__.r(__webpack_exports__);
         });
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
-          participant.tracks.forEach(function (publication) {
-            if (publication.isSubscribed) {
-              _this2.participants.push(participant.identity);
-            }
-          });
-          participant.on('trackSubscribed', function (track) {// videoChatWindow.appendChild(track.attach());
-          });
+
+          _this2.participants.push(participant.identity); // participant.tracks.forEach(publication => {
+          //     if (publication.isSubscribed) {
+          //     }
+          // });
+          // participant.on('trackSubscribed', track => {
+          // videoChatWindow.appendChild(track.attach());
+          // });
+
         });
       }, function (error) {
         console.error("Unable to connect to Room: ".concat(error.message));
