@@ -8796,7 +8796,8 @@ __webpack_require__.r(__webpack_exports__);
         name: this.myRoom
       }).then(function (room) {
         console.log("Successfully joined a Room: ".concat(room));
-        _this2.roomSid = room;
+        console.log(room);
+        _this2.roomSid = room.sid;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalVideoTrack().then(function (track) {
           videoChatWindow.appendChild(track.attach());
