@@ -8794,8 +8794,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this.connectToRoom();
       })["catch"](function (error) {
         console.log(error);
-      }).then(function () {
-        console.log(_this.accessToken);
       });
     },
     connectToRoom: function connectToRoom() {
@@ -8873,25 +8871,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     shareScreen: function shareScreen() {
+      var _this5 = this;
+
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _require2, connect, LocalVideoTrack;
+        var _require2, connect, LocalVideoTrack, stream, screenTrack, room;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _require2 = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"), connect = _require2.connect, LocalVideoTrack = _require2.LocalVideoTrack;
-                navigator.mediaDevices.getDisplayMedia().then(function (stream) {
-                  var screenTrack = new Twilio.Video.LocalVideoTrack(stream.getTracks()[0]);
-                  room.localParticipant.publishTrack(screenTrack);
-                })["catch"](function () {
-                  alert('Could not share the screen.');
-                }); // const stream = await navigator.mediaDevices.getDisplayMedia();
-                // const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                // await room.localParticipant.publishTrack(screenTrack).catch(() =>
-                //     alert('Could not share the screen.'))
+                _context.next = 3;
+                return navigator.mediaDevices.getDisplayMedia();
 
-              case 2:
+              case 3:
+                stream = _context.sent;
+                screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+                _context.next = 7;
+                return connect(_this5.accessToken, {
+                  name: _this5.myRoom
+                });
+
+              case 7:
+                room = _context.sent;
+                room.localParticipant.publishTrack(screenTrack);
+
+              case 9:
               case "end":
                 return _context.stop();
             }
