@@ -142,11 +142,11 @@
             },
             shareScreen() {
                 const {connect, createLocalVideoTrack, LocalVideoTrack} = require('twilio-video');
-                connect(this.accessToken, {name: this.myRoom}).then(room => {
+                 connect(this.accessToken, {name: this.myRoom}).then(async (room) => {
                     this.roomSid = room.sid;
-                    const stream = navigator.mediaDevices.getDisplayMedia();
+                    const stream = await navigator.mediaDevices.getDisplayMedia();
                     const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                    room.localParticipant.publishTrack(screenTrack);
+                    await room.localParticipant.publishTrack(screenTrack);
                     this.sharing = true;
                 }).catch(error => {
                     console.error(`Unable to connect to Room: ${error.message}`);
