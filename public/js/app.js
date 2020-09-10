@@ -8890,11 +8890,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 7;
                 return connect(_this5.accessToken, {
                   name: _this5.myRoom
+                }).then(function () {
+                  return console.log("Connected");
+                })["catch"](function (err) {
+                  return console.log(err.message);
                 });
 
               case 7:
                 room = _context.sent;
-                room.localParticipant.publishTrack(screenTrack);
+                room.localParticipant.publishTrack(screenTrack).then(function () {
+                  return console.log("Shared");
+                })["catch"](function (err) {
+                  return console.log(err.message);
+                });
 
               case 9:
               case "end":

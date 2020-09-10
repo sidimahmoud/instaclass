@@ -145,8 +145,10 @@
                 const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
                 const room = await connect(this.accessToken, {
                     name: this.myRoom
-                });
-                room.localParticipant.publishTrack(screenTrack);
+                }).then(() => console.log("Connected")).catch(err => console.log(err.message));
+                room.localParticipant.publishTrack(screenTrack)
+                    .then(() => console.log("Shared"))
+                    .catch(err => console.log(err.message));
             },
 
 
