@@ -45,7 +45,7 @@ class LiveCoursesController extends Controller
                     "uniqueName" => $myRoom
                 ]
             );
-        return response()->json($room);
+        return response()->json(["name" => $room->uniqueName, "sid" => $room->sid, "duration" => $room->duration]);
     }
 
     public function roomDetails($myRoom)
