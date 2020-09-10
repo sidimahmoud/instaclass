@@ -56,7 +56,8 @@
             return {
                 accessToken: '',
                 started: false,
-                myRoom: '',
+                myRoom: 'hello',
+                user: 'teacher@gmail.com',
                 roomSid: false
             }
         },
