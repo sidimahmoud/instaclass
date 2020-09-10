@@ -88,7 +88,6 @@
                 const {connect, createLocalVideoTrack, LocalVideoTrack} = require('twilio-video');
                 connect(this.accessToken, {
                     name: this.myRoom,
-                    tracks: [screenTrack]
                 }).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
