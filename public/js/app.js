@@ -8806,7 +8806,7 @@ __webpack_require__.r(__webpack_exports__);
           participant.tracks.forEach(function (publication) {
             if (publication.isSubscribed) {
               var track = publication.track;
-              videoChatWindow.appendChild(track.attach());
+              $('#remote-media').appendChild(track.attach());
             }
           });
           participant.on('trackSubscribed', function (track) {
