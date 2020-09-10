@@ -8742,6 +8742,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8753,7 +8754,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       accessToken: '',
       started: false,
-      myRoom: ''
+      myRoom: '',
+      roomSid: ''
     };
   },
   methods: {
@@ -8780,7 +8782,7 @@ __webpack_require__.r(__webpack_exports__);
           createLocalVideoTrack = _require.createLocalVideoTrack;
 
       connect(this.accessToken, {
-        name: 'hello'
+        name: this.myRoom
       }).then(function (room) {
         console.log("Successfully joined a Room: ".concat(room));
         var videoChatWindow = document.getElementById('video-chat-window');
@@ -8833,10 +8835,13 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     createRoom: function createRoom() {
+      var _this3 = this;
+
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom)).then(function (res) {
-        console.log(res.data); //this.$router.push({name: "TeacherProfile"});
+        console.log(res.data);
+        _this3.roomSid = res.data.sid; //this.$router.push({name: "TeacherProfile"});
       })["catch"](function (err) {
         return console.log(err.response);
       });
@@ -8845,6 +8850,15 @@ __webpack_require__.r(__webpack_exports__);
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.myRoom)).then(function (res) {
+        console.log(res.data);
+      })["catch"](function (err) {
+        return console.log(err.response);
+      });
+    },
+    participants: function participants() {
+      var token = localStorage.getItem('token');
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.roomSid, "/participants")).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -80181,6 +80195,12 @@ var render = function() {
           "button",
           { staticClass: "btn btn-primary", on: { click: _vm.rooms } },
           [_vm._v("My rooms")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", on: { click: _vm.participants } },
+          [_vm._v("Participants")]
         )
       ]),
       _vm._v(" "),
