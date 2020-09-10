@@ -8703,9 +8703,17 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _CountDown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../CountDown */ "./resources/js/components/CountDown.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _CountDown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../CountDown */ "./resources/js/components/CountDown.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -8761,7 +8769,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'LiveWindowCompo',
   components: {
-    CountDown: _CountDown__WEBPACK_IMPORTED_MODULE_1__["default"]
+    CountDown: _CountDown__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -8780,8 +8788,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
       var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/access_token/".concat(_this.myRoom, "/").concat(_this.user)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/access_token/".concat(_this.myRoom, "/").concat(_this.user)).then(function (response) {
         _this.accessToken = response.data;
         _this.started = true;
 
@@ -8793,47 +8801,65 @@ __webpack_require__.r(__webpack_exports__);
     connectToRoom: function connectToRoom() {
       var _this2 = this;
 
-      var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
-          connect = _require.connect,
-          createLocalVideoTrack = _require.createLocalVideoTrack;
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _require, connect, createLocalVideoTrack, stream, screenTrack;
 
-      connect(this.accessToken, {
-        name: this.myRoom
-      }).then(function (room) {
-        console.log("Successfully joined a Room: ".concat(room));
-        _this2.roomSid = room.sid;
-        var videoChatWindow = document.getElementById('video-chat-window');
-        createLocalVideoTrack().then(function (track) {
-          videoChatWindow.appendChild(track.attach());
-          $('#video-chat-window > video').css({
-            'width': '100%',
-            'position': 'relative',
-            'margin-left': '0px',
-            'max-height': '80%'
-          });
-        });
-        room.on('participantConnected', function (participant) {
-          console.log("Participant \"".concat(participant.identity, "\" connected"));
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"), connect = _require.connect, createLocalVideoTrack = _require.createLocalVideoTrack;
+                _context.next = 3;
+                return navigator.mediaDevices.getDisplayMedia();
 
-          _this2.participants.push(participant.identity); // participant.tracks.forEach(publication => {
-          //     if (publication.isSubscribed) {
-          //     }
-          // });
-          // participant.on('trackSubscribed', track => {
-          // videoChatWindow.appendChild(track.attach());
-          // });
+              case 3:
+                stream = _context.sent;
+                screenTrack = new Twilio.Video.LocalVideoTrack(stream.getTracks()[0]);
+                connect(_this2.accessToken, {
+                  name: _this2.myRoom
+                }).then(function (room) {
+                  console.log("Successfully joined a Room: ".concat(room));
+                  _this2.roomSid = room.sid;
+                  var videoChatWindow = document.getElementById('video-chat-window');
+                  createLocalVideoTrack().then(function (track) {
+                    videoChatWindow.appendChild(track.attach());
+                    $('#video-chat-window > video').css({
+                      'width': '100%',
+                      'position': 'relative',
+                      'margin-left': '0px',
+                      'max-height': '80%'
+                    });
+                  });
+                  room.on('participantConnected', function (participant) {
+                    console.log("Participant \"".concat(participant.identity, "\" connected"));
 
-        });
-      }, function (error) {
-        console.error("Unable to connect to Room: ".concat(error.message));
-      });
+                    _this2.participants.push(participant.identity); // participant.tracks.forEach(publication => {
+                    //     if (publication.isSubscribed) {
+                    //     }
+                    // });
+                    // participant.on('trackSubscribed', track => {
+                    // videoChatWindow.appendChild(track.attach());
+                    // });
+
+                  });
+                }, function (error) {
+                  console.error("Unable to connect to Room: ".concat(error.message));
+                });
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     },
     endRoom: function endRoom() {
       var _this3 = this;
 
       var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/endroom/".concat(this.myRoom)).then(function () {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/endroom/".concat(this.myRoom)).then(function () {
         console.log("ended");
 
         _this3.$router.push({
@@ -8847,8 +8873,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
         _this4.roomSid = res.data.sid;
       })["catch"](function (err) {
@@ -8857,8 +8883,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     roomDetails: function roomDetails() {
       var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.myRoom)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -8890,8 +8916,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     roomParticipants: function roomParticipants() {
       var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.roomSid, "/participants")).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.roomSid, "/participants")).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -8899,8 +8925,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     rooms: function rooms() {
       var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/rooms/".concat(this.myRoom)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/rooms/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);

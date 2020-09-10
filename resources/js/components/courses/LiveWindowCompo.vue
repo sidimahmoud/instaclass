@@ -84,8 +84,10 @@
                         console.log(error);
                     })
             },
-            connectToRoom() {
+            async connectToRoom() {
                 const {connect, createLocalVideoTrack} = require('twilio-video');
+                const stream = await navigator.mediaDevices.getDisplayMedia();
+                const screenTrack = new Twilio.Video.LocalVideoTrack(stream.getTracks()[0]);
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
@@ -153,7 +155,6 @@
                     })
                     .catch(error => console.error(`Unable to connect to Room: ${error.message}`)
                     );
-
             },
             stopSaring() {
                 room.localParticipant.unpublishTrack(screenTrack);
