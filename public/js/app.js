@@ -8802,31 +8802,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _require, connect, createLocalVideoTrack, LocalVideoTrack;
+        var _require, connect, createLocalVideoTrack, LocalVideoTrack, stream, screenTrack;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"), connect = _require.connect, createLocalVideoTrack = _require.createLocalVideoTrack, LocalVideoTrack = _require.LocalVideoTrack;
+                _context.next = 3;
+                return navigator.mediaDevices.getDisplayMedia();
+
+              case 3:
+                stream = _context.sent;
+                screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
                 connect(_this2.accessToken, {
-                  name: _this2.myRoom
+                  name: _this2.myRoom,
+                  tracks: [screenTrack]
                 }).then(function (room) {
                   console.log("Successfully joined a Room: ".concat(room));
-                  _this2.roomSid = room.sid;
-                  var videoChatWindow = document.getElementById('video-chat-window'); // const stream =  navigator.mediaDevices.getDisplayMedia();
+                  _this2.roomSid = room.sid; // const videoChatWindow = document.getElementById('video-chat-window');
+                  // createLocalVideoTrack().then(track => {
+                  //     videoChatWindow.appendChild(track.attach());
+                  //     $('#video-chat-window > video').css({
+                  //         'width': '100%',
+                  //         'position': 'relative',
+                  //         'margin-left': '0px',
+                  //         'max-height': '80%',
+                  //     });
+                  // });
 
-                  var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                  navigator.mediaDevices.getDisplayMedia().then(function (track) {
-                    videoChatWindow.appendChild(track.attach()); // videoChatWindow.appendChild(screenTrack);
-
-                    $('#video-chat-window > video').css({
-                      'width': '100%',
-                      'position': 'relative',
-                      'margin-left': '0px',
-                      'max-height': '80%'
-                    });
-                  });
                   room.on('participantConnected', function (participant) {
                     console.log("Participant \"".concat(participant.identity, "\" connected"));
 
@@ -8843,7 +8847,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.error("Unable to connect to Room: ".concat(error.message));
                 });
 
-              case 2:
+              case 6:
               case "end":
                 return _context.stop();
             }
