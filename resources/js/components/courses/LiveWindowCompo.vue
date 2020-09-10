@@ -6,7 +6,7 @@
                     <h1>Course has to start after</h1>
                     <div class="form-group">
                         <label for="user">User</label>
-                        <input type="text" id="user" v-model="user">
+                        <input type="text" id="user" class="form-control" v-model="user">
                     </div>
                     <div class="row my-3">
                         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -39,7 +39,7 @@
                     <h3 class="border-bottom text-center">Participants</h3>
                 </div>
                 <ul id="participants-list">
-
+                    <li v-for="p in participants">{{p}}</li>
                 </ul>
             </div>
         </div>
@@ -62,7 +62,10 @@
                 started: false,
                 myRoom: 'hello',
                 user: 'teacher@gmail.com',
-                roomSid: false
+                roomSid: false,
+                participants:[
+
+                ]
             }
         },
         methods: {
@@ -103,14 +106,11 @@
                         console.log(`Participant "${participant.identity}" connected`);
                         participant.tracks.forEach(publication => {
                             if (publication.isSubscribed) {
-                                const node = document.createElement("LI");
-                                const textnode = document.createTextNode(participant.identity);
-                                node.appendChild(textnode);
-                                document.getElementById('#participants-list').appendChild(node);
+                                this.participants.push(participant.identity)
                             }
                         });
                         participant.on('trackSubscribed', track => {
-                            videoChatWindow.appendChild(track.attach());
+                            // videoChatWindow.appendChild(track.attach());
                         });
                     });
                 }, error => {

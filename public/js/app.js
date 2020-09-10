@@ -8768,7 +8768,8 @@ __webpack_require__.r(__webpack_exports__);
       started: false,
       myRoom: 'hello',
       user: 'teacher@gmail.com',
-      roomSid: false
+      roomSid: false,
+      participants: []
     };
   },
   methods: {
@@ -8815,14 +8816,10 @@ __webpack_require__.r(__webpack_exports__);
           console.log("Participant \"".concat(participant.identity, "\" connected"));
           participant.tracks.forEach(function (publication) {
             if (publication.isSubscribed) {
-              var node = document.createElement("LI");
-              var textnode = document.createTextNode(participant.identity);
-              node.appendChild(textnode);
-              document.getElementById('#participants-list').appendChild(node);
+              _this2.participants.push(participant.identity);
             }
           });
-          participant.on('trackSubscribed', function (track) {
-            videoChatWindow.appendChild(track.attach());
+          participant.on('trackSubscribed', function (track) {// videoChatWindow.appendChild(track.attach());
           });
         });
       }, function (error) {
@@ -80184,6 +80181,7 @@ var render = function() {
                         expression: "user"
                       }
                     ],
+                    staticClass: "form-control",
                     attrs: { type: "text", id: "user" },
                     domProps: { value: _vm.user },
                     on: {
@@ -80274,7 +80272,18 @@ var render = function() {
             : _vm._e()
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "col-md-3" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { attrs: { id: "participants-list" } },
+            _vm._l(_vm.participants, function(p) {
+              return _c("li", [_vm._v(_vm._s(p))])
+            }),
+            0
+          )
+        ])
       ])
     ]
   )
@@ -80284,14 +80293,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("div", [
-        _c("h3", { staticClass: "border-bottom text-center" }, [
-          _vm._v("Participants")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("ul", { attrs: { id: "participants-list" } })
+    return _c("div", [
+      _c("h3", { staticClass: "border-bottom text-center" }, [
+        _vm._v("Participants")
+      ])
     ])
   }
 ]
