@@ -8703,17 +8703,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _CountDown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../CountDown */ "./resources/js/components/CountDown.vue");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _CountDown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../CountDown */ "./resources/js/components/CountDown.vue");
+//
 //
 //
 //
@@ -8768,7 +8761,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'LiveWindowCompo',
   components: {
-    CountDown: _CountDown__WEBPACK_IMPORTED_MODULE_2__["default"]
+    CountDown: _CountDown__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -8777,7 +8770,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       myRoom: 'hello',
       user: 'teacher@gmail.com',
       roomSid: false,
-      participants: []
+      participants: [],
+      sharing: false
     };
   },
   methods: {
@@ -8786,8 +8780,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
       var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/access_token/".concat(_this.myRoom, "/").concat(_this.user)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/access_token/".concat(_this.myRoom, "/").concat(_this.user)).then(function (response) {
         _this.accessToken = response.data;
         _this.started = true;
 
@@ -8838,8 +8832,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this3 = this;
 
       var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/endroom/".concat(this.myRoom)).then(function () {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/endroom/".concat(this.myRoom)).then(function () {
         console.log("ended");
 
         _this3.$router.push({
@@ -8853,8 +8847,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this4 = this;
 
       var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
         _this4.roomSid = res.data.sid;
       })["catch"](function (err) {
@@ -8863,8 +8857,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     roomDetails: function roomDetails() {
       var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.myRoom)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -8873,46 +8867,42 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     shareScreen: function shareScreen() {
       var _this5 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _require2, connect, createLocalVideoTrack, LocalVideoTrack;
+      var _require2 = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
+          connect = _require2.connect,
+          createLocalVideoTrack = _require2.createLocalVideoTrack,
+          LocalVideoTrack = _require2.LocalVideoTrack;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _require2 = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"), connect = _require2.connect, createLocalVideoTrack = _require2.createLocalVideoTrack, LocalVideoTrack = _require2.LocalVideoTrack;
-                connect(_this5.accessToken, {
-                  name: _this5.myRoom
-                }).then(function (room) {
-                  _this5.roomSid = room.sid;
-                  var stream = navigator.mediaDevices.getDisplayMedia();
-                  var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                  room.localParticipant.publishTrack(screenTrack);
-                })["catch"](function (error) {
-                  console.error("Unable to connect to Room: ".concat(error.message));
-                }); //     const {connect, LocalVideoTrack} = require('twilio-video');
-                //     const stream = await navigator.mediaDevices.getDisplayMedia();
-                //     const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                //     const room = await connect(this.accessToken, {
-                //         name: this.myRoom
-                //     }).then((room) => {
-                //         console.log("Connected");
-                //         room.localParticipant.publishTrack(screenTrack);
-                //         console.log("Shared");
-                //     }).catch(err => console.log(err.message));
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+      connect(this.accessToken, {
+        name: this.myRoom
+      }).then(function (room) {
+        _this5.roomSid = room.sid;
+        var stream = navigator.mediaDevices.getDisplayMedia();
+        var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+        room.localParticipant.publishTrack(screenTrack);
+        _this5.sharing = true;
+      })["catch"](function (error) {
+        console.error("Unable to connect to Room: ".concat(error.message));
+      }); //     const {connect, LocalVideoTrack} = require('twilio-video');
+      //     const stream = await navigator.mediaDevices.getDisplayMedia();
+      //     const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+      //     const room = await connect(this.accessToken, {
+      //         name: this.myRoom
+      //     }).then((room) => {
+      //         console.log("Connected");
+      //         room.localParticipant.publishTrack(screenTrack);
+      //         console.log("Shared");
+      //     }).catch(err => console.log(err.message));
+    },
+    stopSaring: function stopSaring() {
+      room.localParticipant.unpublishTrack(screenTrack);
+      screenTrack.stop();
+      screenTrack = null;
+      this.sharing = false;
     },
     roomParticipants: function roomParticipants() {
       var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.roomSid, "/participants")).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.roomSid, "/participants")).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -8920,8 +8910,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     rooms: function rooms() {
       var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/rooms/".concat(this.myRoom)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/rooms/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -80285,14 +80275,27 @@ var render = function() {
           _vm._v(" "),
           _vm.started
             ? _c("div", { staticClass: "text-center" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    on: { click: _vm.shareScreen }
-                  },
-                  [_vm._v("Share screen")]
-                ),
+                !_vm.sharing
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        on: { click: _vm.shareScreen }
+                      },
+                      [_vm._v("Share screen")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.sharing
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        on: { click: _vm.stopSaring }
+                      },
+                      [_vm._v("Stop sharing")]
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "button",

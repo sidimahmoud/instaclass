@@ -27,7 +27,8 @@
                     <div class="border border-dark m-2 p-1 rounded" id="video-chat-window"></div>
                 </div>
                 <div class="text-center" v-if="started">
-                    <button class="btn btn-primary" @click="shareScreen">Share screen</button>
+                    <button class="btn btn-primary" @click="shareScreen" v-if="!sharing">Share screen</button>
+                    <button class="btn btn-primary" @click="stopSaring" v-if="sharing">Stop sharing</button>
                     <button class="btn btn-danger" @click="endRoom">End course</button>
                     <button class="btn btn-primary" @click="roomDetails" :disabled="!roomSid">Details</button>
                     <button class="btn btn-primary" @click="roomParticipants">Participants</button>
@@ -63,7 +64,8 @@
                 myRoom: 'hello',
                 user: 'teacher@gmail.com',
                 roomSid: false,
-                participants: []
+                participants: [],
+                sharing: false,
             }
         },
         methods: {
@@ -138,13 +140,14 @@
                     }
                 ).catch(err => console.log(err.response))
             },
-            async shareScreen() {
+            shareScreen() {
                 const {connect, createLocalVideoTrack, LocalVideoTrack} = require('twilio-video');
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     this.roomSid = room.sid;
                     const stream = navigator.mediaDevices.getDisplayMedia();
                     const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
                     room.localParticipant.publishTrack(screenTrack);
+                    this.sharing = true;
                 }).catch(error => {
                     console.error(`Unable to connect to Room: ${error.message}`);
                 });
@@ -160,8 +163,12 @@
                 //         console.log("Shared");
                 //     }).catch(err => console.log(err.message));
             },
-
-
+            stopSaring(){
+                room.localParticipant.unpublishTrack(screenTrack);
+                screenTrack.stop();
+                screenTrack = null;
+                this.sharing = false;
+            },
             roomParticipants() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
