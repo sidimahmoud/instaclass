@@ -140,29 +140,18 @@
                     }
                 ).catch(err => console.log(err.response))
             },
-            shareScreen() {
+            async shareScreen() {
                 const {connect, LocalVideoTrack} = require('twilio-video');
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
-                    this.roomSid = room.sid;
-                    const stream = navigator.mediaDevices.getDisplayMedia();
-                    const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                    room.localParticipant.publishTrack(screenTrack);
-                    this.sharing = true;
-                }).catch(error => {
-                    console.error(`Unable to connect to Room: ${error.message}`);
-                });
-
-                //     const stream = await navigator.mediaDevices.getDisplayMedia();
-                //     const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                //     const room = await connect(this.accessToken, {
-                //         name: this.myRoom
-                //     }).then((room) => {
-                //         console.log("Connected");
-                //         room.localParticipant.publishTrack(screenTrack);
-                //         console.log("Shared");
-                //     }).catch(err => console.log(err.message));
+                    navigator.mediaDevices.getDisplayMedia().then(stream => {
+                        const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+                        room.localParticipant.publishTrack(screenTrack);
+                    }).catch(() => {
+                        alert('Could not share the screen.')
+                    });
+                })
             },
-            stopSaring(){
+            stopSaring() {
                 room.localParticipant.unpublishTrack(screenTrack);
                 screenTrack.stop();
                 screenTrack = null;
