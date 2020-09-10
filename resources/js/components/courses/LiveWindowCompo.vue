@@ -66,7 +66,7 @@
                 // Request a new token
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get('https://instantclass.herokuapp.com/api/access_token')
+                axios.get(`https://instantclass.herokuapp.com/api/access_token/${_this.myRoom}/${_this.user}`)
                     .then(function (response) {
                         _this.accessToken = response.data;
                         _this.started = true;
@@ -82,8 +82,7 @@
             connectToRoom() {
 
                 const {connect, createLocalVideoTrack} = require('twilio-video');
-
-                connect(this.accessToken, {name: 'hello'}).then(room => {
+                connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack().then(track => {
@@ -128,7 +127,6 @@
                 axios.post(`https://instantclass.herokuapp.com/api/create_room/${this.myRoom}`).then(res => {
                         console.log(res.data);
                         this.roomSid = res.data.sid;
-                        //this.$router.push({name: "TeacherProfile"});
                     }
                 ).catch(err => console.log(err.response))
             },
