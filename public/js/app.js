@@ -8751,6 +8751,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8802,9 +8806,8 @@ __webpack_require__.r(__webpack_exports__);
         createLocalVideoTrack().then(function (track) {
           videoChatWindow.appendChild(track.attach());
           $('#video-chat-window > video').css({
-            'width': '80%',
+            'width': '100%',
             'position': 'relative',
-            // 'height': '80%',
             'margin-left': '0px'
           });
         });
@@ -80168,6 +80171,31 @@ var render = function() {
           !_vm.started
             ? _c("div", { staticClass: "text-center" }, [
                 _c("h1", [_vm._v("Course has to start after")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "user" } }, [_vm._v("User")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.user,
+                        expression: "user"
+                      }
+                    ],
+                    attrs: { type: "text", id: "user" },
+                    domProps: { value: _vm.user },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.user = $event.target.value
+                      }
+                    }
+                  })
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row my-3" }, [
                   _c(

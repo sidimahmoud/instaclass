@@ -4,6 +4,10 @@
             <div class="col-md-9">
                 <div class="text-center" v-if="!started">
                     <h1>Course has to start after</h1>
+                    <div class="form-group">
+                        <label for="user">User</label>
+                        <input type="text" id="user" v-model="user">
+                    </div>
                     <div class="row my-3">
                         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                             <Count-down
@@ -81,19 +85,17 @@
                     });
             },
             connectToRoom() {
-
                 const {connect, createLocalVideoTrack} = require('twilio-video');
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
-                    console.log(room)
+                    console.log(room);
                     this.roomSid=room.sid;
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack().then(track => {
                         videoChatWindow.appendChild(track.attach());
                         $('#video-chat-window > video').css({
-                            'width': '80%',
+                            'width': '100%',
                             'position': 'relative',
-                            // 'height': '80%',
                             'margin-left': '0px'
                         });
                     });
