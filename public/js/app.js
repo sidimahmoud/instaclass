@@ -8859,7 +8859,7 @@ __webpack_require__.r(__webpack_exports__);
     participants: function participants() {
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.roomSid, "/participants")).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://video.twilio.com/v1/Rooms/".concat(this.roomSid, "/Participants/")).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);

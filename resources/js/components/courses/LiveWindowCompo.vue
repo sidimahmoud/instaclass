@@ -49,7 +49,7 @@
                 accessToken: '',
                 started: false,
                 myRoom: '',
-                roomSid:'',
+                roomSid: '',
                 user: "teacher@gmail.com"
             }
         },
@@ -145,7 +145,7 @@
             participants() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get(`https://instantclass.herokuapp.com/api/room/${this.roomSid}/participants`).then(res => {
+                axios.get(`https://video.twilio.com/v1/Rooms/${this.roomSid}/Participants/`).then(res => {
                         console.log(res.data);
                     }
                 ).catch(err => console.log(err.response))
