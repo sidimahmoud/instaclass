@@ -8853,7 +8853,7 @@ __webpack_require__.r(__webpack_exports__);
     rooms: function rooms() {
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/rooms").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/rooms/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);

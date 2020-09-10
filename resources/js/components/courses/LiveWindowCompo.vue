@@ -141,7 +141,7 @@
             rooms() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get(`https://instantclass.herokuapp.com/api/rooms`).then(res => {
+                axios.get(`https://instantclass.herokuapp.com/api/rooms/${this.myRoom}`).then(res => {
                         console.log(res.data);
                     }
                 ).catch(err => console.log(err.response))

@@ -69,12 +69,12 @@ class LiveCoursesController extends Controller
         return response()->json("Room completed");
     }
 
-    public function myRooms()
+    public function myRooms($uniqueName)
     {
         $sid = env('TWILIO_ACCOUNT_SID');
         $token = env('TWILIO_ACCOUNT_TOKEN');
         $twilio = new Client($sid, $token);
-        $rooms = $twilio->video->v1->rooms->read(["uniqueName" => "3302"], 20);
+        $rooms = $twilio->video->v1->rooms->read(["uniqueName" =>$uniqueName], 20);
 //        echo $rooms;
         return response()->json($rooms);
     }
