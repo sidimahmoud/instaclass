@@ -84,26 +84,21 @@
                         console.log(error);
                     })
             },
-            async connectToRoom() {
-                const {connect, createLocalVideoTrack, LocalVideoTrack} = require('twilio-video');
-                const stream = await navigator.mediaDevices.getDisplayMedia();
-                const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                connect(this.accessToken, {
-                    name: this.myRoom,
-                    tracks: [screenTrack]
-                }).then(room => {
+            connectToRoom() {
+                const {connect, createLocalVideoTrack} = require('twilio-video');
+                connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
-                    // const videoChatWindow = document.getElementById('video-chat-window');
-                    // createLocalVideoTrack().then(track => {
-                    //     videoChatWindow.appendChild(track.attach());
-                    //     $('#video-chat-window > video').css({
-                    //         'width': '100%',
-                    //         'position': 'relative',
-                    //         'margin-left': '0px',
-                    //         'max-height': '80%',
-                    //     });
-                    // });
+                    const videoChatWindow = document.getElementById('video-chat-window');
+                    createLocalVideoTrack().then(track => {
+                        videoChatWindow.appendChild(track.attach());
+                        $('#video-chat-window > video').css({
+                            'width': '100%',
+                            'position': 'relative',
+                            'margin-left': '0px',
+                            'max-height': '80%',
+                        });
+                    });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
                         this.participants.push(participant.identity);
@@ -147,19 +142,27 @@
             },
             shareScreen() {
                 const {connect, LocalVideoTrack} = require('twilio-video');
-                connect(this.accessToken, {name: this.myRoom})
-                    .then(room => {
-                        navigator.mediaDevices.getDisplayMedia().then(stream => {
-                            const screenTrack = new Twilio.Video.LocalVideoTrack(stream.getTracks()[0]);
-                            room.localParticipant.publishTrack(screenTrack);
-                        }).catch(() => {
-                            alert('Could not share the screen.')
-                        });
-                    })
-                    .catch(error => console.error(`Unable to connect to Room: ${error.message}`)
-                    );
+                connect(this.accessToken, {name: this.myRoom}).then(room => {
+                    this.roomSid = room.sid;
+                    const stream = navigator.mediaDevices.getDisplayMedia();
+                    const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+                    room.localParticipant.publishTrack(screenTrack);
+                    this.sharing = true;
+                }).catch(error => {
+                    console.error(`Unable to connect to Room: ${error.message}`);
+                });
+
+                //     const stream = await navigator.mediaDevices.getDisplayMedia();
+                //     const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+                //     const room = await connect(this.accessToken, {
+                //         name: this.myRoom
+                //     }).then((room) => {
+                //         console.log("Connected");
+                //         room.localParticipant.publishTrack(screenTrack);
+                //         console.log("Shared");
+                //     }).catch(err => console.log(err.message));
             },
-            stopSaring() {
+            stopSaring(){
                 room.localParticipant.unpublishTrack(screenTrack);
                 screenTrack.stop();
                 screenTrack = null;
