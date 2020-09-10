@@ -27,11 +27,11 @@
                     <div class="border border-dark m-2 p-1 rounded" id="video-chat-window"></div>
                 </div>
                 <div class="text-center" v-if="started">
+                    <button class="btn btn-primary" @click="shareScreen">Share screen</button>
                     <button class="btn btn-danger" @click="endRoom">End course</button>
-                    <!--                    <button class="btn btn-primary" @click="createRoom">Create</button>-->
                     <button class="btn btn-primary" @click="roomDetails" :disabled="!roomSid">Details</button>
                     <button class="btn btn-primary" @click="roomParticipants">Participants</button>
-                    <button class="btn btn-primary" @click="rooms">My rooms</button>
+                    <!--                    <button class="btn btn-primary" @click="rooms">My rooms</button>-->
                 </div>
             </div>
             <div class="col-md-3">
@@ -89,7 +89,6 @@
                 const {connect, createLocalVideoTrack} = require('twilio-video');
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
-                    console.log(room);
                     this.roomSid = room.sid;
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack().then(track => {
@@ -97,7 +96,8 @@
                         $('#video-chat-window > video').css({
                             'width': '100%',
                             'position': 'relative',
-                            'margin-left': '0px'
+                            'margin-left': '0px',
+                            'max-height': '80%',
                         });
                     });
                     room.on('participantConnected', participant => {
@@ -108,7 +108,7 @@
                         //     }
                         // });
                         // participant.on('trackSubscribed', track => {
-                            // videoChatWindow.appendChild(track.attach());
+                        // videoChatWindow.appendChild(track.attach());
                         // });
                     });
                 }, error => {
@@ -141,6 +141,16 @@
                     }
                 ).catch(err => console.log(err.response))
             },
+            shareScreen() {
+                navigator.mediaDevices.getDisplayMedia().then(stream => {
+                    screenTrack = new Twilio.Video.LocalVideoTrack(stream.getTracks()[0]);
+                    room.localParticipant.publishTrack(screenTrack);
+                }).catch(() => {
+                    alert('Could not share the screen.')
+                });
+            },
+
+
             roomParticipants() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;

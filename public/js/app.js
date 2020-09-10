@@ -8801,7 +8801,6 @@ __webpack_require__.r(__webpack_exports__);
         name: this.myRoom
       }).then(function (room) {
         console.log("Successfully joined a Room: ".concat(room));
-        console.log(room);
         _this2.roomSid = room.sid;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalVideoTrack().then(function (track) {
@@ -8809,7 +8808,8 @@ __webpack_require__.r(__webpack_exports__);
           $('#video-chat-window > video').css({
             'width': '100%',
             'position': 'relative',
-            'margin-left': '0px'
+            'margin-left': '0px',
+            'max-height': '80%'
           });
         });
         room.on('participantConnected', function (participant) {
@@ -8862,6 +8862,14 @@ __webpack_require__.r(__webpack_exports__);
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
+      });
+    },
+    shareScreen: function shareScreen() {
+      navigator.mediaDevices.getDisplayMedia().then(function (stream) {
+        screenTrack = new Twilio.Video.LocalVideoTrack(stream.getTracks()[0]);
+        room.localParticipant.publishTrack(screenTrack);
+      })["catch"](function () {
+        alert('Could not share the screen.');
       });
     },
     roomParticipants: function roomParticipants() {
@@ -80242,6 +80250,15 @@ var render = function() {
             ? _c("div", { staticClass: "text-center" }, [
                 _c(
                   "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: { click: _vm.shareScreen }
+                  },
+                  [_vm._v("Share screen")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
                   { staticClass: "btn btn-danger", on: { click: _vm.endRoom } },
                   [_vm._v("End course")]
                 ),
@@ -80263,12 +80280,6 @@ var render = function() {
                     on: { click: _vm.roomParticipants }
                   },
                   [_vm._v("Participants")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", on: { click: _vm.rooms } },
-                  [_vm._v("My rooms")]
                 )
               ])
             : _vm._e()
