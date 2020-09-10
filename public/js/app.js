@@ -8891,20 +8891,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return connect(_this5.accessToken, {
                   name: _this5.myRoom
                 }).then(function () {
-                  return console.log("Connected");
+                  console.log("Connected");
+                  room.localParticipant.publishTrack(screenTrack);
+                  console.log("Shared");
                 })["catch"](function (err) {
                   return console.log(err.message);
                 });
 
               case 7:
                 room = _context.sent;
-                room.localParticipant.publishTrack(screenTrack).then(function () {
-                  return console.log("Shared");
-                })["catch"](function (err) {
-                  return console.log(err.message);
-                });
 
-              case 9:
+              case 8:
               case "end":
                 return _context.stop();
             }
