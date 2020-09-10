@@ -141,29 +141,21 @@
                 ).catch(err => console.log(err.response))
             },
             shareScreen() {
-                const {connect, createLocalVideoTrack, LocalVideoTrack} = require('twilio-video');
-                 connect(this.accessToken, {name: this.myRoom}).then(async (room) => {
-                    this.roomSid = room.sid;
-                    const stream = await navigator.mediaDevices.getDisplayMedia();
-                    const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                    await room.localParticipant.publishTrack(screenTrack);
-                    this.sharing = true;
-                }).catch(error => {
-                    console.error(`Unable to connect to Room: ${error.message}`);
-                });
+                const {connect, LocalVideoTrack} = require('twilio-video');
+                connect(this.accessToken, {name: this.myRoom})
+                    .then(room => {
+                        navigator.mediaDevices.getDisplayMedia().then(stream => {
+                            const screenTrack = new Twilio.Video.LocalVideoTrack(stream.getTracks()[0]);
+                            room.localParticipant.publishTrack(screenTrack);
+                        }).catch(() => {
+                            alert('Could not share the screen.')
+                        });
+                    })
+                    .catch(error => console.error(`Unable to connect to Room: ${error.message}`)
+                    );
 
-                //     const {connect, LocalVideoTrack} = require('twilio-video');
-                //     const stream = await navigator.mediaDevices.getDisplayMedia();
-                //     const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                //     const room = await connect(this.accessToken, {
-                //         name: this.myRoom
-                //     }).then((room) => {
-                //         console.log("Connected");
-                //         room.localParticipant.publishTrack(screenTrack);
-                //         console.log("Shared");
-                //     }).catch(err => console.log(err.message));
             },
-            stopSaring(){
+            stopSaring() {
                 room.localParticipant.unpublishTrack(screenTrack);
                 screenTrack.stop();
                 screenTrack = null;
