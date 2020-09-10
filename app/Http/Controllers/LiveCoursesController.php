@@ -63,7 +63,7 @@ class LiveCoursesController extends Controller
         $token = env('TWILIO_ACCOUNT_TOKEN');
         $client = new Client($sid, $token);
 
-        $participants = $client->video->rooms("DailyStandup")
+        $participants = $client->video->rooms($roomSid)
             ->participants->read(array("status" => "connected"));
         foreach ($participants as $participant) {
             echo $participant->sid;
@@ -89,8 +89,6 @@ class LiveCoursesController extends Controller
 //        echo $rooms;
         return response()->json($rooms);
     }
-
-
     /**
      * Display a listing of the resource.
      *
