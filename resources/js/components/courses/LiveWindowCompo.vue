@@ -145,7 +145,7 @@
                 const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
                 const room = await connect(this.accessToken, {
                     name: this.myRoom
-                }).then(() => {
+                }).then((room) => {
                     console.log("Connected");
                     room.localParticipant.publishTrack(screenTrack);
                     console.log("Shared");

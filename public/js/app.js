@@ -8890,7 +8890,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 7;
                 return connect(_this5.accessToken, {
                   name: _this5.myRoom
-                }).then(function () {
+                }).then(function (room) {
                   console.log("Connected");
                   room.localParticipant.publishTrack(screenTrack);
                   console.log("Shared");
