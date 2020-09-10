@@ -93,12 +93,12 @@
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
                     const videoChatWindow = document.getElementById('video-chat-window');
-                    const stream =  navigator.mediaDevices.getDisplayMedia();
+                    // const stream =  navigator.mediaDevices.getDisplayMedia();
                     const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
 
-                    createLocalVideoTrack().then(track => {
-                        // videoChatWindow.appendChild(track.attach());
-                        videoChatWindow.appendChild(screenTrack);
+                    navigator.mediaDevices.getDisplayMedia().then(track => {
+                        videoChatWindow.appendChild(track.attach());
+                        // videoChatWindow.appendChild(screenTrack);
                         $('#video-chat-window > video').css({
                             'width': '100%',
                             'position': 'relative',

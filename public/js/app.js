@@ -8815,12 +8815,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }).then(function (room) {
                   console.log("Successfully joined a Room: ".concat(room));
                   _this2.roomSid = room.sid;
-                  var videoChatWindow = document.getElementById('video-chat-window');
-                  var stream = navigator.mediaDevices.getDisplayMedia();
+                  var videoChatWindow = document.getElementById('video-chat-window'); // const stream =  navigator.mediaDevices.getDisplayMedia();
+
                   var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                  createLocalVideoTrack().then(function (track) {
-                    // videoChatWindow.appendChild(track.attach());
-                    videoChatWindow.appendChild(screenTrack);
+                  navigator.mediaDevices.getDisplayMedia().then(function (track) {
+                    videoChatWindow.appendChild(track.attach()); // videoChatWindow.appendChild(screenTrack);
+
                     $('#video-chat-window > video').css({
                       'width': '100%',
                       'position': 'relative',
