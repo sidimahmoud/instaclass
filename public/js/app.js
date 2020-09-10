@@ -8743,7 +8743,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -80193,12 +80192,6 @@ var render = function() {
         _c(
           "button",
           { staticClass: "btn btn-primary", on: { click: _vm.roomDetails } },
-          [_vm._v("Fetch")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", on: { click: _vm.join } },
           [_vm._v("Fetch")]
         ),
         _vm._v(" "),
