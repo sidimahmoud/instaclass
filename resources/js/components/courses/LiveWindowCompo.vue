@@ -50,6 +50,7 @@
                 started: false,
                 myRoom: '',
                 roomSid:'',
+                user: "teacher@gmail.com"
             }
         },
         methods: {
@@ -58,7 +59,7 @@
                 // Request a new token
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get('https://instantclass.herokuapp.com/api/access_token')
+                axios.get(`https://instantclass.herokuapp.com/api/access_token/${_this.myRoom}/${_this.user}`)
                     .then(function (response) {
                         _this.accessToken = response.data;
                         _this.started = true;

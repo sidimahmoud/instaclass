@@ -9,15 +9,13 @@ use Twilio\Rest\Client;
 
 class LiveCoursesController extends Controller
 {
-    public function generate_token()
+    public function generate_token($room, $user)
     {
         // Substitute your Twilio Account SID and API Key details
         $accountSid = env('TWILIO_ACCOUNT_SID');
         $apiKeySid = env('TWILIO_API_KEY');
         $apiKeySecret = env('TWILIO_API_SECRET');
-
-        $identity = uniqid();
-
+        $identity = $user;
         // Create an Access Token
         $token = new AccessToken(
             $accountSid,
@@ -28,7 +26,7 @@ class LiveCoursesController extends Controller
         );
         // Grant access to Video
         $grant = new VideoGrant();
-        $grant->setRoom('hello');
+        $grant->setRoom($room);
         $token->addGrant($grant);
         // Serialize the token as a JWT
         return $token->toJWT();

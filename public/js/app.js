@@ -8755,7 +8755,8 @@ __webpack_require__.r(__webpack_exports__);
       accessToken: '',
       started: false,
       myRoom: '',
-      roomSid: ''
+      roomSid: '',
+      user: "teacher@gmail.com"
     };
   },
   methods: {
@@ -8765,7 +8766,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('https://instantclass.herokuapp.com/api/access_token').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/access_token/".concat(_this.myRoom, "/").concat(_this.user)).then(function (response) {
         _this.accessToken = response.data;
         _this.started = true;
 
