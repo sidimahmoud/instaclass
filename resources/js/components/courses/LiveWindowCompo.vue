@@ -1,36 +1,45 @@
 <template>
     <div class="container-fluid border-top border-primary pt-4">
-        <div class="form-group">
-            <input type="text" class="form-control" v-model="myRoom">
-            <button class="btn btn-primary" @click="createRoom">Create</button>
-            <button class="btn btn-primary" @click="roomDetails">Fetch</button>
-            <button class="btn btn-primary" @click="rooms">My rooms</button>
-        </div>
-        <div class="text-center" v-if="!started">
-            <h1>Course has to start after</h1>
-            <div class="row my-3">
-                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                    <Count-down
-                        :year="2020"
-                        :month="9"
-                        :day="1"
-                        :hour="0"
-                        :minute="0"
-                        :second="0"
-                        :text="false"
-                    />
+        <div class="row">
+            <div class="col-md-9">
+                <div class="text-center" v-if="!started">
+                    <h1>Course has to start after</h1>
+                    <div class="row my-3">
+                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                            <Count-down
+                                :year="2020"
+                                :month="9"
+                                :day="1"
+                                :hour="0"
+                                :minute="0"
+                                :second="0"
+                                :text="false"
+                            />
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" @click="getAccessToken">Start now</button>
+                </div>
+                <div class="m-2 bg-black text-center" v-if="started">
+                    <div class="border border-dark m-2 p-1 rounded" id="video-chat-window"></div>
+                </div>
+                <div class="text-center" v-if="started">
+                    <button class="btn btn-danger" @click="endRoom">End course</button>
+                    <!--                    <button class="btn btn-primary" @click="createRoom">Create</button>-->
+                    <button class="btn btn-primary" @click="roomDetails" :disabled="!roomSid">Details</button>
+                    <button class="btn btn-primary" @click="roomParticipants">Participants</button>
+                    <button class="btn btn-primary" @click="rooms">My rooms</button>
                 </div>
             </div>
-            <button class="btn btn-primary" @click="getAccessToken">Start now</button>
-            <button class="btn btn-primary" @click="roomDetails">Details</button>
+            <div class="col-md-3">
+                <div>
+                    <h3 class="border-bottom text-center">Participants</h3>
+                </div>
+                <ul id="participants-list">
+
+                </ul>
+            </div>
         </div>
-        <div class="m-2 bg-black text-center" v-if="started">
-            <div class="border border-dark m-2 p-1 rounded" id="video-chat-window"></div>
-            <div class="border border-dark m-2 rounded" id="remote-media"></div>
-        </div>
-        <div class="text-center" v-if="started">
-            <button class="btn btn-danger" @click="endRoom">End course</button>
-        </div>
+
     </div>
 </template>
 
@@ -47,7 +56,8 @@
             return {
                 accessToken: '',
                 started: false,
-                myRoom: ''
+                myRoom: '',
+                roomSid: false
             }
         },
         methods: {
@@ -74,7 +84,6 @@
                 const {connect, createLocalVideoTrack} = require('twilio-video');
 
                 connect(this.accessToken, {name: 'hello'}).then(room => {
-
                     console.log(`Successfully joined a Room: ${room}`);
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack().then(track => {
@@ -85,24 +94,17 @@
                             // 'height': '80%',
                             'margin-left': '0px'
                         });
-                        $('#remote-media > video').css({
-                            'width': '20%',
-                            'position': 'absolute',
-                            'z-index': '50',
-                            'top': '30px',
-                            'right': '0',
-                            'left': '0',
-                        });
                     });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
                         participant.tracks.forEach(publication => {
                             if (publication.isSubscribed) {
-                                const track = publication.track;
-                                $('#remote-media').appendChild(track.attach());
+                                const node = document.createElement("LI");
+                                const textnode = document.createTextNode(participant.identity);
+                                node.appendChild(textnode);
+                                document.getElementById('#participants-list').appendChild(node);
                             }
                         });
-
                         participant.on('trackSubscribed', track => {
                             videoChatWindow.appendChild(track.attach());
                         });
@@ -125,6 +127,7 @@
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.post(`https://instantclass.herokuapp.com/api/create_room/${this.myRoom}`).then(res => {
                         console.log(res.data);
+                        this.roomSid = res.data.sid;
                         //this.$router.push({name: "TeacherProfile"});
                     }
                 ).catch(err => console.log(err.response))
@@ -133,6 +136,14 @@
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.get(`https://instantclass.herokuapp.com/api/room/${this.myRoom}`).then(res => {
+                        console.log(res.data);
+                    }
+                ).catch(err => console.log(err.response))
+            },
+            roomParticipants() {
+                let token = localStorage.getItem('token');
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                axios.get(`https://instantclass.herokuapp.com/api/room/${this.roomSid}/participants`).then(res => {
                         console.log(res.data);
                     }
                 ).catch(err => console.log(err.response))

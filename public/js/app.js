@@ -8742,6 +8742,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8753,7 +8762,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       accessToken: '',
       started: false,
-      myRoom: ''
+      myRoom: '',
+      roomSid: false
     };
   },
   methods: {
@@ -8792,21 +8802,15 @@ __webpack_require__.r(__webpack_exports__);
             // 'height': '80%',
             'margin-left': '0px'
           });
-          $('#remote-media > video').css({
-            'width': '20%',
-            'position': 'absolute',
-            'z-index': '50',
-            'top': '30px',
-            'right': '0',
-            'left': '0'
-          });
         });
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
           participant.tracks.forEach(function (publication) {
             if (publication.isSubscribed) {
-              var track = publication.track;
-              $('#remote-media').appendChild(track.attach());
+              var node = document.createElement("LI");
+              var textnode = document.createTextNode(participant.identity);
+              node.appendChild(textnode);
+              document.getElementById('#participants-list').appendChild(node);
             }
           });
           participant.on('trackSubscribed', function (track) {
@@ -8833,10 +8837,13 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     createRoom: function createRoom() {
+      var _this3 = this;
+
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom)).then(function (res) {
-        console.log(res.data); //this.$router.push({name: "TeacherProfile"});
+        console.log(res.data);
+        _this3.roomSid = res.data.sid; //this.$router.push({name: "TeacherProfile"});
       })["catch"](function (err) {
         return console.log(err.response);
       });
@@ -8845,6 +8852,15 @@ __webpack_require__.r(__webpack_exports__);
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.myRoom)).then(function (res) {
+        console.log(res.data);
+      })["catch"](function (err) {
+        return console.log(err.response);
+      });
+    },
+    roomParticipants: function roomParticipants() {
+      var token = localStorage.getItem('token');
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.roomSid, "/participants")).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -80142,120 +80158,110 @@ var render = function() {
     "div",
     { staticClass: "container-fluid border-top border-primary pt-4" },
     [
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.myRoom,
-              expression: "myRoom"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text" },
-          domProps: { value: _vm.myRoom },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.myRoom = $event.target.value
-            }
-          }
-        }),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-9" }, [
+          !_vm.started
+            ? _c("div", { staticClass: "text-center" }, [
+                _c("h1", [_vm._v("Course has to start after")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row my-3" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-sm-9 col-md-7 col-lg-5 mx-auto" },
+                    [
+                      _c("Count-down", {
+                        attrs: {
+                          year: 2020,
+                          month: 9,
+                          day: 1,
+                          hour: 0,
+                          minute: 0,
+                          second: 0,
+                          text: false
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: { click: _vm.getAccessToken }
+                  },
+                  [_vm._v("Start now")]
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.started
+            ? _c("div", { staticClass: "m-2 bg-black text-center" }, [
+                _c("div", {
+                  staticClass: "border border-dark m-2 p-1 rounded",
+                  attrs: { id: "video-chat-window" }
+                })
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.started
+            ? _c("div", { staticClass: "text-center" }, [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-danger", on: { click: _vm.endRoom } },
+                  [_vm._v("End course")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { disabled: !_vm.roomSid },
+                    on: { click: _vm.roomDetails }
+                  },
+                  [_vm._v("Details")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: { click: _vm.roomParticipants }
+                  },
+                  [_vm._v("Participants")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", on: { click: _vm.rooms } },
+                  [_vm._v("My rooms")]
+                )
+              ])
+            : _vm._e()
+        ]),
         _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", on: { click: _vm.createRoom } },
-          [_vm._v("Create")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", on: { click: _vm.roomDetails } },
-          [_vm._v("Fetch")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", on: { click: _vm.rooms } },
-          [_vm._v("My rooms")]
-        )
-      ]),
-      _vm._v(" "),
-      !_vm.started
-        ? _c("div", { staticClass: "text-center" }, [
-            _c("h1", [_vm._v("Course has to start after")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row my-3" }, [
-              _c(
-                "div",
-                { staticClass: "col-sm-9 col-md-7 col-lg-5 mx-auto" },
-                [
-                  _c("Count-down", {
-                    attrs: {
-                      year: 2020,
-                      month: 9,
-                      day: 1,
-                      hour: 0,
-                      minute: 0,
-                      second: 0,
-                      text: false
-                    }
-                  })
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                on: { click: _vm.getAccessToken }
-              },
-              [_vm._v("Start now")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                on: { click: _vm.roomDetails }
-              },
-              [_vm._v("Details")]
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.started
-        ? _c("div", { staticClass: "m-2 bg-black text-center" }, [
-            _c("div", {
-              staticClass: "border border-dark m-2 p-1 rounded",
-              attrs: { id: "video-chat-window" }
-            }),
-            _vm._v(" "),
-            _c("div", {
-              staticClass: "border border-dark m-2 rounded",
-              attrs: { id: "remote-media" }
-            })
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.started
-        ? _c("div", { staticClass: "text-center" }, [
-            _c(
-              "button",
-              { staticClass: "btn btn-danger", on: { click: _vm.endRoom } },
-              [_vm._v("End course")]
-            )
-          ])
-        : _vm._e()
+        _vm._m(0)
+      ])
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", [
+        _c("h3", { staticClass: "border-bottom text-center" }, [
+          _vm._v("Participants")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("ul", { attrs: { id: "participants-list" } })
+    ])
+  }
+]
 render._withStripped = true
 
 

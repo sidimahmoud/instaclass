@@ -57,14 +57,13 @@ class LiveCoursesController extends Controller
         return response()->json(["name" => $room->uniqueName, "sid" => $room->sid, "duration" => $room->duration]);
     }
 
-    public function roomParticipants($myRoom)
+    public function roomParticipants($roomSid)
     {
         $sid = env('TWILIO_ACCOUNT_SID');
         $token = env('TWILIO_ACCOUNT_TOKEN');
         $client = new Client($sid, $token);
 
-        $participants = $client->video->rooms($myRoom)
-            ->participants->read(array("status" => "connected"));
+        $participants = $client->video->rooms($roomSid)->participants();
 
         foreach ($participants as $participant) {
             echo $participant->sid;
