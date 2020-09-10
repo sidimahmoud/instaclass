@@ -80,9 +80,9 @@
                     createLocalVideoTrack().then(track => {
                         videoChatWindow.appendChild(track.attach());
                         $('#video-chat-window > video').css({
-                            'width': '100%',
+                            'width': '80%',
                             'position': 'relative',
-                            'height': '80%',
+                            // 'height': '80%',
                             'margin-left': '0px'
                         });
                         $('#remote-media > video').css({
