@@ -8802,19 +8802,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _require, connect, createLocalVideoTrack, LocalVideoTrack, stream, screenTrack;
+        var _require, connect, createLocalVideoTrack, LocalVideoTrack;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"), connect = _require.connect, createLocalVideoTrack = _require.createLocalVideoTrack, LocalVideoTrack = _require.LocalVideoTrack;
-                _context.next = 3;
-                return navigator.mediaDevices.getDisplayMedia();
-
-              case 3:
-                stream = _context.sent;
-                screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
                 connect(_this2.accessToken, {
                   name: _this2.myRoom,
                   tracks: [screenTrack]
@@ -8822,8 +8816,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.log("Successfully joined a Room: ".concat(room));
                   _this2.roomSid = room.sid;
                   var videoChatWindow = document.getElementById('video-chat-window');
+                  var stream = navigator.mediaDevices.getDisplayMedia();
+                  var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
                   createLocalVideoTrack().then(function (track) {
-                    videoChatWindow.appendChild(track.attach());
+                    // videoChatWindow.appendChild(track.attach());
+                    videoChatWindow.appendChild(screenTrack);
                     $('#video-chat-window > video').css({
                       'width': '100%',
                       'position': 'relative',
@@ -8847,7 +8844,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.error("Unable to connect to Room: ".concat(error.message));
                 });
 
-              case 6:
+              case 2:
               case "end":
                 return _context.stop();
             }
