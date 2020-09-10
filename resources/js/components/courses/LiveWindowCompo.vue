@@ -4,6 +4,7 @@
             <input type="text" class="form-control" v-model="myRoom">
             <button class="btn btn-primary" @click="createRoom">Create</button>
             <button class="btn btn-primary" @click="roomDetails">Fetch</button>
+            <button class="btn btn-primary" @click="join">Fetch</button>
             <button class="btn btn-primary" @click="rooms">My rooms</button>
             <button class="btn btn-primary" @click="participants">Participants</button>
         </div>
@@ -48,7 +49,7 @@
             return {
                 accessToken: '',
                 started: false,
-                myRoom: '',
+                myRoom: 'hello',
                 roomSid: '',
                 user: "teacher@gmail.com"
             }
