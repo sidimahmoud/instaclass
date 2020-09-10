@@ -8786,6 +8786,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     connectToRoom: function connectToRoom() {
+      var _this2 = this;
+
       var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
           connect = _require.connect,
           createLocalVideoTrack = _require.createLocalVideoTrack;
@@ -8794,6 +8796,7 @@ __webpack_require__.r(__webpack_exports__);
         name: this.myRoom
       }).then(function (room) {
         console.log("Successfully joined a Room: ".concat(room));
+        _this2.roomSid = room;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalVideoTrack().then(function (track) {
           videoChatWindow.appendChild(track.attach());
@@ -8823,14 +8826,14 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     endRoom: function endRoom() {
-      var _this2 = this;
+      var _this3 = this;
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/endroom/".concat(this.myRoom)).then(function () {
         console.log("ended");
 
-        _this2.$router.push({
+        _this3.$router.push({
           name: "TeacherProfile"
         });
       })["catch"](function (err) {
@@ -8838,13 +8841,13 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     createRoom: function createRoom() {
-      var _this3 = this;
+      var _this4 = this;
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
-        _this3.roomSid = res.data.sid;
+        _this4.roomSid = res.data.sid;
       })["catch"](function (err) {
         return console.log(err.response);
       });

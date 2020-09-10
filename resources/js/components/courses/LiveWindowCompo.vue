@@ -85,6 +85,7 @@
                 const {connect, createLocalVideoTrack} = require('twilio-video');
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
+                    this.roomSid=room;
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack().then(track => {
                         videoChatWindow.appendChild(track.attach());
