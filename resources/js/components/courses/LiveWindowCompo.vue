@@ -139,17 +139,26 @@
                 ).catch(err => console.log(err.response))
             },
             async shareScreen() {
-                const {connect, LocalVideoTrack} = require('twilio-video');
-
-                const stream = await navigator.mediaDevices.getDisplayMedia();
-                const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                const room = await connect(this.accessToken, {
-                    name: this.myRoom
-                }).then((room) => {
-                    console.log("Connected");
+                const {connect, createLocalVideoTrack, LocalVideoTrack} = require('twilio-video');
+                connect(this.accessToken, {name: this.myRoom}).then(room => {
+                    this.roomSid = room.sid;
+                    const stream = navigator.mediaDevices.getDisplayMedia();
+                    const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
                     room.localParticipant.publishTrack(screenTrack);
-                    console.log("Shared");
-                }).catch(err => console.log(err.message));
+                }).catch(error => {
+                    console.error(`Unable to connect to Room: ${error.message}`);
+                });
+
+                //     const {connect, LocalVideoTrack} = require('twilio-video');
+                //     const stream = await navigator.mediaDevices.getDisplayMedia();
+                //     const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+                //     const room = await connect(this.accessToken, {
+                //         name: this.myRoom
+                //     }).then((room) => {
+                //         console.log("Connected");
+                //         room.localParticipant.publishTrack(screenTrack);
+                //         console.log("Shared");
+                //     }).catch(err => console.log(err.message));
             },
 
 

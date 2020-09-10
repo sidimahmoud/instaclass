@@ -8874,34 +8874,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this5 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _require2, connect, LocalVideoTrack, stream, screenTrack, room;
+        var _require2, connect, createLocalVideoTrack, LocalVideoTrack;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _require2 = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"), connect = _require2.connect, LocalVideoTrack = _require2.LocalVideoTrack;
-                _context.next = 3;
-                return navigator.mediaDevices.getDisplayMedia();
-
-              case 3:
-                stream = _context.sent;
-                screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                _context.next = 7;
-                return connect(_this5.accessToken, {
+                _require2 = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"), connect = _require2.connect, createLocalVideoTrack = _require2.createLocalVideoTrack, LocalVideoTrack = _require2.LocalVideoTrack;
+                connect(_this5.accessToken, {
                   name: _this5.myRoom
                 }).then(function (room) {
-                  console.log("Connected");
+                  _this5.roomSid = room.sid;
+                  var stream = navigator.mediaDevices.getDisplayMedia();
+                  var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
                   room.localParticipant.publishTrack(screenTrack);
-                  console.log("Shared");
-                })["catch"](function (err) {
-                  return console.log(err.message);
-                });
+                })["catch"](function (error) {
+                  console.error("Unable to connect to Room: ".concat(error.message));
+                }); //     const {connect, LocalVideoTrack} = require('twilio-video');
+                //     const stream = await navigator.mediaDevices.getDisplayMedia();
+                //     const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+                //     const room = await connect(this.accessToken, {
+                //         name: this.myRoom
+                //     }).then((room) => {
+                //         console.log("Connected");
+                //         room.localParticipant.publishTrack(screenTrack);
+                //         console.log("Shared");
+                //     }).catch(err => console.log(err.message));
 
-              case 7:
-                room = _context.sent;
-
-              case 8:
+              case 2:
               case "end":
                 return _context.stop();
             }
