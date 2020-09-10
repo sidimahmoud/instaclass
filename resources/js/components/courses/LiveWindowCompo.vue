@@ -5,7 +5,6 @@
             <button class="btn btn-primary" @click="createRoom">Create</button>
             <button class="btn btn-primary" @click="roomDetails">Fetch</button>
             <button class="btn btn-primary" @click="rooms">My rooms</button>
-            <button class="btn btn-primary" @click="participants">Participants</button>
         </div>
         <div class="text-center" v-if="!started">
             <h1>Course has to start after</h1>
@@ -48,9 +47,7 @@
             return {
                 accessToken: '',
                 started: false,
-                myRoom: 'hello',
-                roomSid: '',
-                user: "teacher@gmail.com"
+                myRoom: ''
             }
         },
         methods: {
@@ -59,7 +56,7 @@
                 // Request a new token
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get(`https://instantclass.herokuapp.com/api/access_token/${_this.myRoom}/${_this.user}`)
+                axios.get('https://instantclass.herokuapp.com/api/access_token')
                     .then(function (response) {
                         _this.accessToken = response.data;
                         _this.started = true;
@@ -76,10 +73,9 @@
 
                 const {connect, createLocalVideoTrack} = require('twilio-video');
 
-                connect(this.accessToken, {name: this.myRoom}).then(room => {
+                connect(this.accessToken, {name: 'hello'}).then(room => {
 
                     console.log(`Successfully joined a Room: ${room}`);
-                    this.roomSid= room;
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack().then(track => {
                         videoChatWindow.appendChild(track.attach());
@@ -130,7 +126,6 @@
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.post(`https://instantclass.herokuapp.com/api/create_room/${this.myRoom}`).then(res => {
                         console.log(res.data);
-                        this.roomSid = res.data.sid
                         //this.$router.push({name: "TeacherProfile"});
                     }
                 ).catch(err => console.log(err.response))
@@ -139,14 +134,6 @@
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.get(`https://instantclass.herokuapp.com/api/room/${this.myRoom}`).then(res => {
-                        console.log(res.data);
-                    }
-                ).catch(err => console.log(err.response))
-            },
-            participants() {
-                let token = localStorage.getItem('token');
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get(`https://video.twilio.com/v1/Rooms/${this.roomSid}/Participants/`).then(res => {
                         console.log(res.data);
                     }
                 ).catch(err => console.log(err.response))
