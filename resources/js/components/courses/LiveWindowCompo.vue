@@ -85,10 +85,13 @@
                     })
             },
             async connectToRoom() {
-                const {connect, createLocalVideoTrack} = require('twilio-video');
+                const {connect, createLocalVideoTrack, LocalVideoTrack} = require('twilio-video');
                 const stream = await navigator.mediaDevices.getDisplayMedia();
-                const screenTrack = new Twilio.Video.LocalVideoTrack(stream.getTracks()[0]);
-                connect(this.accessToken, {name: this.myRoom}).then(room => {
+                const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+                connect(this.accessToken, {
+                    name: this.myRoom,
+                    tracks: [screenTrack]
+                }).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
                     const videoChatWindow = document.getElementById('video-chat-window');
