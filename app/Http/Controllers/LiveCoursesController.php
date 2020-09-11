@@ -24,11 +24,11 @@ class LiveCoursesController extends Controller
             3600,
             $identity
         );
-        // Grant access to Video
-        $grant = new VideoGrant();
-        $grant->setRoom($myRoom);
-        $token->addGrant($grant);
-        // Serialize the token as a JWT
+//        // Grant access to Video
+//        $grant = new VideoGrant();
+//        $grant->setRoom($myRoom);
+//        $token->addGrant($grant);
+//        // Serialize the token as a JWT
         return $token->toJWT();
     }
 
