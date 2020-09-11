@@ -43,7 +43,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/create-room/{myRoom}/{user}/{recorded}', 'LiveCoursesController@createRoom');
         Route::post('/endroom/{myRoom}', 'LiveCoursesController@closeRoom');
         Route::get('/room-details/{myRoom}', 'LiveCoursesController@roomDetails');
-        Route::get('/room-recordings', 'LiveCoursesController@roomRecordings');
+        Route::get('/room-recordings/{roomSid}', 'LiveCoursesController@roomRecordings');
         Route::get('/room/{roomSid}/participants', 'LiveCoursesController@roomParticipants');
         Route::get('/rooms/{uniqueName}', 'LiveCoursesController@myRooms');
     });
