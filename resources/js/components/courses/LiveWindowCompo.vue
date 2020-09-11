@@ -105,7 +105,7 @@
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalTracks({
                         audio: true,
-                        video: {width: 1024, height: 576},
+                        video: {width: 1080, height: 500},
                     }).then(localTracks => {
                         localTracks.forEach(function(track) {
                         videoChatWindow.appendChild(track.attach());
