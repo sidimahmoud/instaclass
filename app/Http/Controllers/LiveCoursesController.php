@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Twilio\Exceptions\ConfigurationException;
 use Twilio\Jwt\AccessToken;
 use Twilio\Jwt\Grants\VideoGrant;
 use Twilio\Rest\Client;
@@ -32,7 +33,7 @@ class LiveCoursesController extends Controller
         return $token->toJWT();
     }
 
-    public function createRoom($myRoom)
+    public function createRoom($myRoom, $user, $recorded)
     {
         $sid = env('TWILIO_ACCOUNT_SID');
         $token = env('TWILIO_ACCOUNT_TOKEN');
@@ -42,7 +43,7 @@ class LiveCoursesController extends Controller
         $twilio = new Client($sid, $token);
         $room = $twilio->video->v1->rooms
             ->create([
-                    "recordParticipantsOnConnect" => True,
+                    "recordParticipantsOnConnect" => $recorded,
                     "statusCallback" => "https://instantclass.herokuapp.com/room-envents",
                     "type" => "group",
                     "uniqueName" => $myRoom
@@ -61,7 +62,11 @@ class LiveCoursesController extends Controller
         $grant = new VideoGrant();
         $grant->setRoom($myRoom);
         $myToken->addGrant($grant);
-        return response()->json(["name" => $room->uniqueName, "token" => $myToken->toJWT(), "sid" => $room->sid, "duration" => $room->duration]);
+        return response()->json([
+            "sid" => $room->sid,
+            "name" => $room->uniqueName,
+            "token" => $myToken->toJWT(),
+            "duration" => $room->duration]);
     }
 
     public function roomDetails($myRoom)
@@ -70,7 +75,25 @@ class LiveCoursesController extends Controller
         $token = env('TWILIO_ACCOUNT_TOKEN');
         $twilio = new Client($sid, $token);
         $room = $twilio->video->v1->rooms($myRoom)->fetch();
-        return response()->json(["name" => $room->uniqueName, "sid" => $room->sid, "duration" => $room->duration]);
+        return response()->json([
+            "name" => $room->uniqueName,
+            "sid" => $room->sid,
+            "status" => $room->status,
+            "start" => $room->dateCreated,
+            "end" => $room->endTime,
+            "max_participants" => $room->maxParticipants,
+            "duration" => $room->duration]);
+    }
+    public function roomRecordings($roomSid)
+    {
+        $sid = env('TWILIO_ACCOUNT_SID');
+        $token = env('TWILIO_ACCOUNT_TOKEN');
+        $twilio = new Client($sid, $token);
+
+        $recording = $twilio->video->v1->recordings($roomSid)
+            ->fetch();
+
+        print($recording->trackName);
     }
 
     public function roomParticipants($roomSid)

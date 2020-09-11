@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid border-top border-primary pt-4">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-10">
                 <div class="text-center" v-if="!started">
                     <h1>Course has to start after</h1>
                     <div class="row my-3">
@@ -28,13 +28,14 @@
 
                     <button class="btn btn-danger" @click="endRoom">End course</button>
                     <button class="btn btn-primary" @click="shareScreen" v-if="!sharing">Share screen</button>
-                    <button class="btn btn-primary" @click="stopSaring" v-if="sharing">Stop sharing</button>
+                    <button class="btn btn-danger" @click="stopSaring" v-if="sharing">Stop sharing</button>
                     <button class="btn btn-primary" @click="roomDetails" :disabled="!roomSid">Details</button>
                     <button class="btn btn-primary" @click="roomParticipants">Participants</button>
+                    <button class="btn btn-primary" @click="roomRecordings">Recordings</button>
                     <!--<button class="btn btn-primary" @click="rooms">My rooms</button>-->
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div>
                     <h3 class="border-bottom text-center">Participants</h3>
                 </div>
@@ -137,7 +138,15 @@
             roomDetails() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get(`https://instantclass.herokuapp.com/api/room/${this.myRoom}`).then(res => {
+                axios.get(`https://instantclass.herokuapp.com/api/room-details/${this.myRoom}`).then(res => {
+                        console.log(res.data);
+                    }
+                ).catch(err => console.log(err.response))
+            },
+            roomRecordings() {
+                let token = localStorage.getItem('token');
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                axios.get(`https://instantclass.herokuapp.com/api/room-recordings}`).then(res => {
                         console.log(res.data);
                     }
                 ).catch(err => console.log(err.response))

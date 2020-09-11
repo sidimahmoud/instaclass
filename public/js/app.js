@@ -8762,6 +8762,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8869,7 +8870,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     roomDetails: function roomDetails() {
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.myRoom)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/room-details/".concat(this.myRoom)).then(function (res) {
+        console.log(res.data);
+      })["catch"](function (err) {
+        return console.log(err.response);
+      });
+    },
+    roomRecordings: function roomRecordings() {
+      var token = localStorage.getItem('token');
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/room-recordings}").then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -80213,7 +80223,7 @@ var render = function() {
     { staticClass: "container-fluid border-top border-primary pt-4" },
     [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-9" }, [
+        _c("div", { staticClass: "col-md-10" }, [
           !_vm.started
             ? _c("div", { staticClass: "text-center" }, [
                 _c("h1", [_vm._v("Course has to start after")]),
@@ -80311,7 +80321,7 @@ var render = function() {
                   ? _c(
                       "button",
                       {
-                        staticClass: "btn btn-primary",
+                        staticClass: "btn btn-danger",
                         on: { click: _vm.stopSaring }
                       },
                       [_vm._v("Stop sharing")]
@@ -80335,12 +80345,21 @@ var render = function() {
                     on: { click: _vm.roomParticipants }
                   },
                   [_vm._v("Participants")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: { click: _vm.roomRecordings }
+                  },
+                  [_vm._v("Recordings")]
                 )
               ])
             : _vm._e()
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "col-md-2" }, [
           _vm._m(0),
           _vm._v(" "),
           _c(
