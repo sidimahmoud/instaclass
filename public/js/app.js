@@ -8828,7 +8828,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         console.log("Successfully joined a Room: ".concat(room));
         _this3.roomSid = room.sid;
         var videoChatWindow = document.getElementById('video-chat-window');
-        createLocalVideoTrack().then(function (track) {
+        createLocalVideoTrack({
+          audio: true,
+          video: {
+            width: 200
+          }
+        }).then(function (track) {
           videoChatWindow.appendChild(track.attach());
           $('#video-chat-window > video').css({
             'width': '100%',
@@ -80295,7 +80300,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          1
+          _vm.started
             ? _c("div", { staticClass: "m-2 bg-black text-center" }, [
                 _c("div", {
                   staticClass: "border border-dark m-2 p-1 rounded",
@@ -80358,7 +80363,7 @@ var render = function() {
                   [_vm._v("Recordings")]
                 )
               ])
-            : undefined
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-2" }, [
