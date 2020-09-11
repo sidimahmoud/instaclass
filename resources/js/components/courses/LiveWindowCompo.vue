@@ -120,25 +120,20 @@
                                 videoChatWindow.appendChild(track.attach());
                             }
                         });
-
                         participant.on('trackSubscribed', track => {
                             videoChatWindow.appendChild(track.attach());
                         });
                     });
-
-                    room.on('disconnected', room => {
-                        localParticipantTracks.forEach(track => {
-                            const attachedElements = track.detach();
-                            attachedElements.forEach(element => element.remove());
-                        });
-
-                        remoteParticipants.forEach(participant => {
-                            participant.tracks.forEach(track => {
-                                const attachedElements = track.detach();
-                                attachedElements.forEach(element => element.remove());
+                    room.on('participantDisconnected', participant => {
+                        console.log(`Participant "${participant.identity}" disconnected`);
+                        this.participants.splice(this.participants.indexOf(participant.identity), 1);
+                        participant.tracks.forEach(function (track) {
+                            track.detach().forEach(function (mediaElement) {
+                                mediaElement.remove();
                             });
                         });
                     });
+
                 }, error => {
                     console.error(`Unable to connect to Room: ${error.message}`);
                 });

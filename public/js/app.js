@@ -8855,19 +8855,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             videoChatWindow.appendChild(track.attach());
           });
         });
-        room.on('disconnected', function (room) {
-          localParticipantTracks.forEach(function (track) {
-            var attachedElements = track.detach();
-            attachedElements.forEach(function (element) {
-              return element.remove();
-            });
-          });
-          remoteParticipants.forEach(function (participant) {
-            participant.tracks.forEach(function (track) {
-              var attachedElements = track.detach();
-              attachedElements.forEach(function (element) {
-                return element.remove();
-              });
+        room.on('participantDisconnected', function (participant) {
+          console.log("Participant \"".concat(participant.identity, "\" disconnected"));
+
+          _this3.participants.splice(_this3.participants.indexOf(participant.identity), 1);
+
+          participant.tracks.forEach(function (track) {
+            track.detach().forEach(function (mediaElement) {
+              mediaElement.remove();
             });
           });
         });
