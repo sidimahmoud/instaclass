@@ -79,11 +79,13 @@ class LiveCoursesController extends Controller
             "name" => $room->uniqueName,
             "sid" => $room->sid,
             "status" => $room->status,
+            "recorded" => $room->recordParticipantsOnConnect,
             "start" => $room->dateCreated,
             "end" => $room->endTime,
             "max_participants" => $room->maxParticipants,
             "duration" => $room->duration]);
     }
+
     public function roomRecordings($roomSid)
     {
         $sid = env('TWILIO_ACCOUNT_SID');

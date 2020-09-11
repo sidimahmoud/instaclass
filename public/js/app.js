@@ -80295,7 +80295,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.started
+          1
             ? _c("div", { staticClass: "m-2 bg-black text-center" }, [
                 _c("div", {
                   staticClass: "border border-dark m-2 p-1 rounded",
@@ -80358,7 +80358,7 @@ var render = function() {
                   [_vm._v("Recordings")]
                 )
               ])
-            : _vm._e()
+            : undefined
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-2" }, [

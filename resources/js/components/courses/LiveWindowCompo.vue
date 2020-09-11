@@ -23,7 +23,7 @@
                     <button class="btn btn-primary" @click="createRoom">Start now</button>
                     <button class="btn btn-primary" @click="getAccessToken">Join Test</button>
                 </div>
-                <div class="m-2 bg-black text-center" v-if="started">
+                <div class="m-2 bg-black text-center" v-if="1">
                     <div class="border border-dark m-2 p-1 rounded" id="video-chat-window"></div>
 
                     <button class="btn btn-danger" @click="endRoom">End course</button>
