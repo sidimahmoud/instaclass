@@ -90,7 +90,7 @@
                     this.roomSid = room.sid;
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack().then(track => {
-                        videoChatWindow.appendChild(track.attach());
+                        $('#video-chat-window').appendChild(track.attach());
                         $('#video-chat-window > video').css({
                             'width': '100%',
                             'position': 'relative',
