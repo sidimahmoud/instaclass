@@ -96,9 +96,10 @@ class LiveCoursesController extends Controller
             ->recordings
             ->read([], 20);
 
-        foreach ($recordings as $record) {
-            print($record->sid);
-        }
+//        foreach ($recordings as $record) {
+//            print($record->sid);
+//        }
+        return response()->json($recordings);
     }
 
     public function roomParticipants($roomSid)
@@ -109,9 +110,10 @@ class LiveCoursesController extends Controller
 
         $participants = $client->video->rooms($roomSid)
             ->participants->read(array("status" => "connected"));
-        foreach ($participants as $participant) {
-            echo $participant->sid;
-        }
+//        foreach ($participants as $participant) {
+//            echo $participant->identity;
+//        }
+        return response()->json($participants)
     }
 
     public function closeRoom($myRoom)
