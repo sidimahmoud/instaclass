@@ -105,7 +105,7 @@
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack({
                         audio: true,
-                        video: { width: 200 },
+                        video: {width: 200},
                     }).then(track => {
                         videoChatWindow.appendChild(track.attach());
                         $('#video-chat-window > video').css({
@@ -123,7 +123,7 @@
                         //     }
                         // });
                         participant.on('trackSubscribed', track => {
-                        videoChatWindow.appendChild(track.attach());
+                            videoChatWindow.appendChild(track.attach());
                         });
                     });
                 }, error => {
@@ -135,6 +135,7 @@
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.post(`https://instantclass.herokuapp.com/api/endroom/${this.myRoom}`).then(() => {
                         console.log("ended");
+                        MediaStreamTrack.stop()
                         this.$router.push({name: "TeacherProfile"});
                     }
                 ).catch(err => console.log(err.response))
