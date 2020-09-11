@@ -8762,7 +8762,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -80218,9 +80217,28 @@ var render = function() {
             ? _c("div", { staticClass: "text-center" }, [
                 _c("h1", [_vm._v("Course has to start after")]),
                 _vm._v(" "),
+                _c("div", { staticClass: "row my-3" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-sm-9 col-md-7 col-lg-5 mx-auto" },
+                    [
+                      _c("Count-down", {
+                        attrs: {
+                          year: 2020,
+                          month: 9,
+                          day: 1,
+                          hour: 0,
+                          minute: 0,
+                          second: 0,
+                          text: false
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "user" } }, [_vm._v("User")]),
-                  _vm._v(" "),
                   _c("input", {
                     directives: [
                       {
@@ -80242,27 +80260,6 @@ var render = function() {
                       }
                     }
                   })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row my-3" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-sm-9 col-md-7 col-lg-5 mx-auto" },
-                    [
-                      _c("Count-down", {
-                        attrs: {
-                          year: 2020,
-                          month: 9,
-                          day: 1,
-                          hour: 0,
-                          minute: 0,
-                          second: 0,
-                          text: false
-                        }
-                      })
-                    ],
-                    1
-                  )
                 ]),
                 _vm._v(" "),
                 _c(

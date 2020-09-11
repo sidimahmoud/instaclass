@@ -4,10 +4,6 @@
             <div class="col-md-9">
                 <div class="text-center" v-if="!started">
                     <h1>Course has to start after</h1>
-                    <div class="form-group">
-                        <label for="user">User</label>
-                        <input type="text" id="user" class="form-control" v-model="user">
-                    </div>
                     <div class="row my-3">
                         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                             <Count-down
@@ -20,6 +16,9 @@
                                 :text="false"
                             />
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="user" class="form-control" v-model="user">
                     </div>
                     <button class="btn btn-primary" @click="createRoom">Start now</button>
                     <button class="btn btn-primary" @click="getAccessToken">Join Test</button>
