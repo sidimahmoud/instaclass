@@ -8858,6 +8858,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom)).then(function (res) {
+        console.log(res.data);
         _this4.roomSid = res.data.sid;
         _this4.accessToken = res.data.token;
         _this4.myRoom = res.data.name;
