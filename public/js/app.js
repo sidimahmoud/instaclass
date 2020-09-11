@@ -8832,7 +8832,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         createLocalTracks({
           audio: true,
           video: {
-            width: 1280,
+            width: '100%',
             height: 200
           }
         }).then(function (localTracks) {
