@@ -8820,7 +8820,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
           connect = _require.connect,
-          createLocalVideoTrack = _require.createLocalVideoTrack,
+          createLocalAudioTrack = _require.createLocalAudioTrack,
           createLocalTracks = _require.createLocalTracks;
 
       connect(this.accessToken, {
@@ -8829,19 +8829,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         console.log("Successfully joined a Room: ".concat(room));
         _this3.roomSid = room.sid;
         var videoChatWindow = document.getElementById('video-chat-window');
-        createLocalTracks({
+        createLocalAudioTrack({
           audio: true,
           video: {
             width: 200
           }
         }).then(function (track) {
           videoChatWindow.appendChild(track.attach());
-          $('#video-chat-window > video').css({
-            'width': '100%',
-            'position': 'relative',
-            'margin-left': '0px',
-            'max-height': '80%'
-          });
         });
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
