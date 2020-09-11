@@ -80296,7 +80296,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.started
+          1
             ? _c("div", { staticClass: "text-center" }, [
                 !_vm.sharing
                   ? _c(
@@ -80345,7 +80345,7 @@ var render = function() {
                   [_vm._v("Participants")]
                 )
               ])
-            : _vm._e()
+            : undefined
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-3" }, [
