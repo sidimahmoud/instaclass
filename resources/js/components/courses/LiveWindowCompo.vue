@@ -134,8 +134,10 @@
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.post(`https://instantclass.herokuapp.com/api/endroom/${this.myRoom}`).then(() => {
+                        stream.getTracks().forEach(function (track) {
+                            track.stop();
+                        });
                         console.log("ended");
-                        MediaStreamTrack.stop()
                         this.$router.push({name: "TeacherProfile"});
                     }
                 ).catch(err => console.log(err.response))
