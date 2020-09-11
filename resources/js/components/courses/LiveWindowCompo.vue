@@ -82,6 +82,18 @@
                         console.log(error);
                     })
             },
+            createRoom() {
+                let token = localStorage.getItem('token');
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                axios.post(`https://instantclass.herokuapp.com/api/create_room/${this.myRoom}`).then(res => {
+                        console.log(res.data);
+                        this.roomSid = res.data.sid;
+                        this.accessToken = res.data.token;
+                        this.myRoom = res.data.name;
+                        this.connectToRoom();
+                    }
+                ).catch(err => console.log(err.response))
+            },
             connectToRoom() {
                 const {connect, createLocalVideoTrack} = require('twilio-video');
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
@@ -104,9 +116,9 @@
                         //     if (publication.isSubscribed) {
                         //     }
                         // });
-                        // participant.on('trackSubscribed', track => {
-                        // videoChatWindow.appendChild(track.attach());
-                        // });
+                        participant.on('trackSubscribed', track => {
+                        videoChatWindow.appendChild(track.attach());
+                        });
                     });
                 }, error => {
                     console.error(`Unable to connect to Room: ${error.message}`);
@@ -121,18 +133,7 @@
                     }
                 ).catch(err => console.log(err.response))
             },
-            createRoom() {
-                let token = localStorage.getItem('token');
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.post(`https://instantclass.herokuapp.com/api/create_room/${this.myRoom}`).then(res => {
-                        console.log(res.data)
-                        this.roomSid = res.data.sid;
-                        this.accessToken = res.data.token;
-                        this.myRoom = res.data.name;
-                        this.connectToRoom();
-                    }
-                ).catch(err => console.log(err.response))
-            },
+
             roomDetails() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;

@@ -8796,8 +8796,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         console.log(error);
       });
     },
-    connectToRoom: function connectToRoom() {
+    createRoom: function createRoom() {
       var _this2 = this;
+
+      var token = localStorage.getItem('token');
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom)).then(function (res) {
+        console.log(res.data);
+        _this2.roomSid = res.data.sid;
+        _this2.accessToken = res.data.token;
+        _this2.myRoom = res.data.name;
+
+        _this2.connectToRoom();
+      })["catch"](function (err) {
+        return console.log(err.response);
+      });
+    },
+    connectToRoom: function connectToRoom() {
+      var _this3 = this;
 
       var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
           connect = _require.connect,
@@ -8807,7 +8823,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: this.myRoom
       }).then(function (room) {
         console.log("Successfully joined a Room: ".concat(room));
-        _this2.roomSid = room.sid;
+        _this3.roomSid = room.sid;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalVideoTrack().then(function (track) {
           videoChatWindow.appendChild(track.attach());
@@ -8821,46 +8837,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
 
-          _this2.participants.push(participant.identity); // participant.tracks.forEach(publication => {
+          _this3.participants.push(participant.identity); // participant.tracks.forEach(publication => {
           //     if (publication.isSubscribed) {
           //     }
           // });
-          // participant.on('trackSubscribed', track => {
-          // videoChatWindow.appendChild(track.attach());
-          // });
 
+
+          participant.on('trackSubscribed', function (track) {
+            videoChatWindow.appendChild(track.attach());
+          });
         });
       }, function (error) {
         console.error("Unable to connect to Room: ".concat(error.message));
       });
     },
     endRoom: function endRoom() {
-      var _this3 = this;
+      var _this4 = this;
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/endroom/".concat(this.myRoom)).then(function () {
         console.log("ended");
 
-        _this3.$router.push({
+        _this4.$router.push({
           name: "TeacherProfile"
         });
-      })["catch"](function (err) {
-        return console.log(err.response);
-      });
-    },
-    createRoom: function createRoom() {
-      var _this4 = this;
-
-      var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom)).then(function (res) {
-        console.log(res.data);
-        _this4.roomSid = res.data.sid;
-        _this4.accessToken = res.data.token;
-        _this4.myRoom = res.data.name;
-
-        _this4.connectToRoom();
       })["catch"](function (err) {
         return console.log(err.response);
       });
