@@ -8829,23 +8829,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         console.log("Successfully joined a Room: ".concat(room));
         _this3.roomSid = room.sid;
         var videoChatWindow = document.getElementById('video-chat-window');
-        createLocalAudioTrack({
+        createLocalTracks({
           audio: true,
           video: {
             width: 200
           }
-        }).then(function (track) {
-          videoChatWindow.appendChild(track.attach());
+        }).then(function (localTracks) {
+          localTracks.forEach(function (track) {
+            videoChatWindow.appendChild(track.attach());
+          });
         });
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
+          participant.tracks.forEach(function (publication) {
+            _this3.participants.push(participant.identity);
 
-          _this3.participants.push(participant.identity); // participant.tracks.forEach(publication => {
-          //     if (publication.isSubscribed) {
-          //     }
-          // });
-
-
+            if (publication.isSubscribed) {
+              var track = publication.track;
+              videoChatWindow.appendChild(track.attach());
+            }
+          });
           participant.on('trackSubscribed', function (track) {
             videoChatWindow.appendChild(track.attach());
           });

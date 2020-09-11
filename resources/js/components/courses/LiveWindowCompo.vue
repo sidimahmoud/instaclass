@@ -103,23 +103,30 @@
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
                     const videoChatWindow = document.getElementById('video-chat-window');
-                    createLocalAudioTrack({
+                    createLocalTracks({
                         audio: true,
                         video: {width: 200},
-                    }).then(track => {
+                    }).then(localTracks => {
+                        localTracks.forEach(function(track) {
                         videoChatWindow.appendChild(track.attach());
+                        });
                     });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
-                        this.participants.push(participant.identity);
-                        // participant.tracks.forEach(publication => {
-                        //     if (publication.isSubscribed) {
-                        //     }
-                        // });
+
+                        participant.tracks.forEach(publication => {
+                            this.participants.push(participant.identity);
+                            if (publication.isSubscribed) {
+                                const track = publication.track;
+                                videoChatWindow.appendChild(track.attach());
+                            }
+                        });
+
                         participant.on('trackSubscribed', track => {
                             videoChatWindow.appendChild(track.attach());
                         });
                     });
+
                     room.on('disconnected', room => {
                         localParticipantTracks.forEach(track => {
                             const attachedElements = track.detach();
