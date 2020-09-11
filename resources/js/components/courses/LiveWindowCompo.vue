@@ -98,24 +98,23 @@
                 ).catch(err => console.log(err.response))
             },
             connectToRoom() {
-                const {connect, createLocalAudioTrack, createLocalTracks, } = require('twilio-video');
+                const {connect, createLocalAudioTrack, createLocalTracks,} = require('twilio-video');
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalTracks({
                         audio: true,
-                        video: {width: '100%', height: 200},
+                        video: {width: 1280, height: 720},
                     }).then(localTracks => {
-                        localTracks.forEach(function(track) {
-                        videoChatWindow.appendChild(track.attach());
+                        localTracks.forEach(function (track) {
+                            videoChatWindow.appendChild(track.attach());
                         });
                     });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
-
+                        this.participants.push(participant.identity);
                         participant.tracks.forEach(publication => {
-                            this.participants.push(participant.identity);
                             if (publication.isSubscribed) {
                                 const track = publication.track;
                                 videoChatWindow.appendChild(track.attach());
@@ -149,8 +148,8 @@
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.post(`https://instantclass.herokuapp.com/api/endroom/${this.myRoom}`).then(() => {
                         console.log("ended");
-                    localstream.stop();
-                    this.$router.push({name: "TeacherProfile"});
+                        localstream.stop();
+                        this.$router.push({name: "TeacherProfile"});
                     }
                 ).catch(err => console.log(err.response))
             },

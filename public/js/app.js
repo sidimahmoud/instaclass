@@ -8832,8 +8832,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         createLocalTracks({
           audio: true,
           video: {
-            width: '100%',
-            height: 200
+            width: 1280,
+            height: 720
           }
         }).then(function (localTracks) {
           localTracks.forEach(function (track) {
@@ -8842,9 +8842,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         });
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
-          participant.tracks.forEach(function (publication) {
-            _this3.participants.push(participant.identity);
 
+          _this3.participants.push(participant.identity);
+
+          participant.tracks.forEach(function (publication) {
             if (publication.isSubscribed) {
               var track = publication.track;
               videoChatWindow.appendChild(track.attach());
