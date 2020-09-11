@@ -8810,7 +8810,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this2.roomSid = room.sid;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalVideoTrack().then(function (track) {
-          $('#video-chat-window').appendChild(track.attach());
+          videoChatWindow.appendChild(track.attach());
           $('#video-chat-window > video').css({
             'width': '100%',
             'position': 'relative',

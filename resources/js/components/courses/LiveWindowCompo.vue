@@ -31,7 +31,7 @@
                     <button class="btn btn-primary" @click="stopSaring" v-if="sharing">Stop sharing</button>
                     <button class="btn btn-primary" @click="roomDetails" :disabled="!roomSid">Details</button>
                     <button class="btn btn-primary" @click="roomParticipants">Participants</button>
-                    <!--                    <button class="btn btn-primary" @click="rooms">My rooms</button>-->
+                    <!--<button class="btn btn-primary" @click="rooms">My rooms</button>-->
                 </div>
             </div>
             <div class="col-md-3">
@@ -89,7 +89,7 @@
                     this.roomSid = room.sid;
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack().then(track => {
-                        $('#video-chat-window').appendChild(track.attach());
+                        videoChatWindow.appendChild(track.attach());
                         $('#video-chat-window > video').css({
                             'width': '100%',
                             'position': 'relative',
