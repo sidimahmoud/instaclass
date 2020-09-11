@@ -8874,8 +8874,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/endroom/".concat(this.myRoom)).then(function () {
-        console.log("ended");
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/endroom/".concat(this.myRoom)).then(function (res) {
+        console.log(res.data);
         localstream.stop();
 
         _this4.$router.push({

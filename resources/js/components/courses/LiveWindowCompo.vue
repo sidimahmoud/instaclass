@@ -141,8 +141,8 @@
             endRoom() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.post(`https://instantclass.herokuapp.com/api/endroom/${this.myRoom}`).then(() => {
-                        console.log("ended");
+                axios.post(`https://instantclass.herokuapp.com/api/endroom/${this.myRoom}`).then(res => {
+                        console.log(res.data);
                         localstream.stop();
                         this.$router.push({name: "TeacherProfile"});
                     }
