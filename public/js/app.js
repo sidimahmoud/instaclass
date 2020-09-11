@@ -8856,7 +8856,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           });
         });
         room.on('participantDisconnected', function (participant) {
-          console.log("Participant \"".concat(participant.identity, "\" disconnected"));
+          console.log("Participant ".concat(participant.identity, " disconnected"));
 
           _this3.participants.splice(_this3.participants.indexOf(participant.identity), 1);
 

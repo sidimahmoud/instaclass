@@ -125,7 +125,7 @@
                         });
                     });
                     room.on('participantDisconnected', participant => {
-                        console.log(`Participant "${participant.identity}" disconnected`);
+                        console.log(`Participant ${participant.identity} disconnected`);
                         this.participants.splice(this.participants.indexOf(participant.identity), 1);
                         participant.tracks.forEach(function (track) {
                             track.detach().forEach(function (mediaElement) {
