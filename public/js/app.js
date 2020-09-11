@@ -8850,10 +8850,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               var track = publication.track;
               videoChatWindow.appendChild(track.attach());
             }
-          });
-          participant.on('trackSubscribed', function (track) {
-            videoChatWindow.appendChild(track.attach());
-          });
+          }); // participant.on('trackSubscribed', track => {
+          //     videoChatWindow.appendChild(track.attach());
+          // });
         });
         room.on('participantDisconnected', function (participant) {
           console.log("Participant ".concat(participant.identity, " disconnected"));
