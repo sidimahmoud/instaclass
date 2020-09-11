@@ -40,7 +40,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/course/sections', 'CourseFileController@store');
         //Live courses
         Route::get('/access_token/{muRoom}/{user}', 'LiveCoursesController@generate_token');
-        Route::post('/create_room/{myRoom}/{user}/{recorded}', 'LiveCoursesController@createRoom');
+        Route::post('/create-room/{myRoom}/{user}/{recorded}', 'LiveCoursesController@createRoom');
         Route::post('/endroom/{myRoom}', 'LiveCoursesController@closeRoom');
         Route::get('/room-details/{myRoom}', 'LiveCoursesController@roomDetails');
         Route::get('/room-recordings', 'LiveCoursesController@roomRecordings');
