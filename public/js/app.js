@@ -8897,7 +8897,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     roomRecordings: function roomRecordings() {
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/room-recordings}").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/room-recordings").then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
