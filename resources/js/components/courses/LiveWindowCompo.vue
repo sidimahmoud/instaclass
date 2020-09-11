@@ -126,6 +126,19 @@
                             videoChatWindow.appendChild(track.attach());
                         });
                     });
+                    room.on('disconnected', room => {
+                        localParticipantTracks.forEach(track => {
+                            const attachedElements = track.detach();
+                            attachedElements.forEach(element => element.remove());
+                        });
+
+                        remoteParticipants.forEach(participant => {
+                            participant.tracks.forEach(track => {
+                                const attachedElements = track.detach();
+                                attachedElements.forEach(element => element.remove());
+                            });
+                        });
+                    });
                 }, error => {
                     console.error(`Unable to connect to Room: ${error.message}`);
                 });
@@ -134,14 +147,9 @@
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.post(`https://instantclass.herokuapp.com/api/endroom/${this.myRoom}`).then(() => {
-                        navigator.mediaDevices.getDisplayMedia().then(stream => {
-                            stream.getTracks().forEach(function (track) {
-                                track.stop();
-                            });
-                        });
-
                         console.log("ended");
-                        this.$router.push({name: "TeacherProfile"});
+                    localstream.stop();
+                    this.$router.push({name: "TeacherProfile"});
                     }
                 ).catch(err => console.log(err.response))
             },
