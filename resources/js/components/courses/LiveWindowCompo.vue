@@ -98,12 +98,12 @@
                 ).catch(err => console.log(err.response))
             },
             connectToRoom() {
-                const {connect, createLocalVideoTrack} = require('twilio-video');
+                const {connect, createLocalVideoTrack, createLocalTracks} = require('twilio-video');
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
                     const videoChatWindow = document.getElementById('video-chat-window');
-                    createLocalVideoTrack({
+                    createLocalTracks({
                         audio: true,
                         video: {width: 200},
                     }).then(track => {

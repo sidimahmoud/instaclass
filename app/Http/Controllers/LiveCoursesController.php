@@ -92,10 +92,13 @@ class LiveCoursesController extends Controller
         $token = env('TWILIO_ACCOUNT_TOKEN');
         $twilio = new Client($sid, $token);
 
-        $recording = $twilio->video->v1->recordings($roomSid)
-            ->fetch();
+        $recordings = $twilio->video->v1->rooms($roomSid)
+            ->recordings
+            ->read([], 20);
 
-        print($recording->trackName);
+        foreach ($recordings as $record) {
+            print($record->sid);
+        }
     }
 
     public function roomParticipants($roomSid)
