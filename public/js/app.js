@@ -8774,7 +8774,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       accessToken: '',
       started: false,
-      myRoom: 'test',
+      recorded: true,
+      myRoom: 'hello',
       user: 'teacher@gmail.com',
       roomSid: false,
       participants: [],
@@ -8802,7 +8803,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom, "/").concat(this.user, "/").concat(this.recorded)).then(function (res) {
         console.log(res.data);
         _this2.roomSid = res.data.sid;
         _this2.accessToken = res.data.token;

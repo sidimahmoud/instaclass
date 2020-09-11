@@ -60,7 +60,8 @@
             return {
                 accessToken: '',
                 started: false,
-                myRoom: 'test',
+                recorded: true,
+                myRoom: 'hello',
                 user: 'teacher@gmail.com',
                 roomSid: false,
                 participants: [],
@@ -86,7 +87,7 @@
             createRoom() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.post(`https://instantclass.herokuapp.com/api/create_room/${this.myRoom}`).then(res => {
+                axios.post(`https://instantclass.herokuapp.com/api/create_room/${this.myRoom}/${this.user}/${this.recorded}`).then(res => {
                         console.log(res.data);
                         this.roomSid = res.data.sid;
                         this.accessToken = res.data.token;
