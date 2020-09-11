@@ -61,8 +61,7 @@ class LiveCoursesController extends Controller
         $grant = new VideoGrant();
         $grant->setRoom($myRoom);
         $myToken->addGrant($grant);
-        // Serialize the token as a JWT
-        return response()->json(["name" => $room->uniqueName, "token" => $myToken, "sid" => $room->sid, "duration" => $room->duration]);
+        return response()->json(["name" => $room->uniqueName, "token" => $myToken->toJWT(), "sid" => $room->sid, "duration" => $room->duration]);
     }
 
     public function roomDetails($myRoom)
