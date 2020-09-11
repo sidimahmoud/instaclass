@@ -113,7 +113,7 @@ class LiveCoursesController extends Controller
 //        foreach ($participants as $participant) {
 //            echo $participant->identity;
 //        }
-        return response()->json($participants)
+        return response()->json($participants);
     }
 
     public function closeRoom($myRoom)
