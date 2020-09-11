@@ -22,15 +22,14 @@
                         </div>
                     </div>
                     <button class="btn btn-primary" @click="createRoom">Start now</button>
-                    <button class="btn btn-primary" @click="getAccessToken">Join</button>
+                    <button class="btn btn-primary" @click="getAccessToken">Join Test</button>
                 </div>
                 <div class="m-2 bg-black text-center" v-if="started">
                     <div class="border border-dark m-2 p-1 rounded" id="video-chat-window"></div>
-                </div>
-                <div class="text-center" v-if="started">
+
+                    <button class="btn btn-danger" @click="endRoom">End course</button>
                     <button class="btn btn-primary" @click="shareScreen" v-if="!sharing">Share screen</button>
                     <button class="btn btn-primary" @click="stopSaring" v-if="sharing">Stop sharing</button>
-                    <button class="btn btn-danger" @click="endRoom">End course</button>
                     <button class="btn btn-primary" @click="roomDetails" :disabled="!roomSid">Details</button>
                     <button class="btn btn-primary" @click="roomParticipants">Participants</button>
                     <!--                    <button class="btn btn-primary" @click="rooms">My rooms</button>-->
@@ -45,7 +44,6 @@
                 </ul>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -62,7 +60,7 @@
             return {
                 accessToken: '',
                 started: false,
-                myRoom: 'hello',
+                myRoom: 'test',
                 user: 'teacher@gmail.com',
                 roomSid: false,
                 participants: [],
@@ -128,7 +126,7 @@
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.post(`https://instantclass.herokuapp.com/api/create_room/${this.myRoom}`).then(res => {
-                    console.log(res.data)
+                        console.log(res.data)
                         this.roomSid = res.data.sid;
                         this.accessToken = res.data.token;
                         this.myRoom = res.data.name;

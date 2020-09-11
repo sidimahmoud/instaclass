@@ -8763,8 +8763,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8776,7 +8774,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       accessToken: '',
       started: false,
-      myRoom: 'hello',
+      myRoom: 'test',
       user: 'teacher@gmail.com',
       roomSid: false,
       participants: [],
@@ -80282,7 +80280,7 @@ var render = function() {
                     staticClass: "btn btn-primary",
                     on: { click: _vm.getAccessToken }
                   },
-                  [_vm._v("Join")]
+                  [_vm._v("Join Test")]
                 )
               ])
             : _vm._e(),
@@ -80292,12 +80290,14 @@ var render = function() {
                 _c("div", {
                   staticClass: "border border-dark m-2 p-1 rounded",
                   attrs: { id: "video-chat-window" }
-                })
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.started
-            ? _c("div", { staticClass: "text-center" }, [
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-danger", on: { click: _vm.endRoom } },
+                  [_vm._v("End course")]
+                ),
+                _vm._v(" "),
                 !_vm.sharing
                   ? _c(
                       "button",
@@ -80319,12 +80319,6 @@ var render = function() {
                       [_vm._v("Stop sharing")]
                     )
                   : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-danger", on: { click: _vm.endRoom } },
-                  [_vm._v("End course")]
-                ),
                 _vm._v(" "),
                 _c(
                   "button",
