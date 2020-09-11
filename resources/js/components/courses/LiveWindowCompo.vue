@@ -21,7 +21,8 @@
                             />
                         </div>
                     </div>
-                    <button class="btn btn-primary" @click="getAccessToken">Start now</button>
+                    <button class="btn btn-primary" @click="createRoom">Start now</button>
+                    <button class="btn btn-primary" @click="getAccessToken">Join</button>
                 </div>
                 <div class="m-2 bg-black text-center" v-if="started">
                     <div class="border border-dark m-2 p-1 rounded" id="video-chat-window"></div>
@@ -127,8 +128,10 @@
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.post(`https://instantclass.herokuapp.com/api/create_room/${this.myRoom}`).then(res => {
-                        console.log(res.data);
                         this.roomSid = res.data.sid;
+                        this.accessToken = res.data.token;
+                        this.myRoom = res.data.name;
+                        this.connectToRoom();
                     }
                 ).catch(err => console.log(err.response))
             },

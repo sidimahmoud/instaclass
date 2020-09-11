@@ -24,11 +24,11 @@ class LiveCoursesController extends Controller
             3600,
             $identity
         );
-//        // Grant access to Video
-//        $grant = new VideoGrant();
-//        $grant->setRoom($myRoom);
-//        $token->addGrant($grant);
-//        // Serialize the token as a JWT
+        // Grant access to Video
+        $grant = new VideoGrant();
+        $grant->setRoom($myRoom);
+        $token->addGrant($grant);
+        // Serialize the token as a JWT
         return $token->toJWT();
     }
 
@@ -36,6 +36,9 @@ class LiveCoursesController extends Controller
     {
         $sid = env('TWILIO_ACCOUNT_SID');
         $token = env('TWILIO_ACCOUNT_TOKEN');
+        $apiKeySid = env('TWILIO_API_KEY');
+        $apiKeySecret = env('TWILIO_API_SECRET');
+
         $twilio = new Client($sid, $token);
         $room = $twilio->video->v1->rooms
             ->create([
@@ -45,7 +48,21 @@ class LiveCoursesController extends Controller
                     "uniqueName" => $myRoom
                 ]
             );
-        return response()->json(["name" => $room->uniqueName, "sid" => $room->sid, "duration" => $room->duration]);
+        // Grant access to Video
+        $identity = uniqid();
+        // Create an Access Token
+        $myToken = new AccessToken(
+            $sid,
+            $apiKeySid,
+            $apiKeySecret,
+            3600,
+            $identity
+        );
+        $grant = new VideoGrant();
+        $grant->setRoom($myRoom);
+        $myToken->addGrant($grant);
+        // Serialize the token as a JWT
+        return response()->json(["name" => $room->uniqueName, "token" => $myToken, "sid" => $room->sid, "duration" => $room->duration]);
     }
 
     public function roomDetails($myRoom)
@@ -89,6 +106,7 @@ class LiveCoursesController extends Controller
 //        echo $rooms;
         return response()->json($rooms);
     }
+
     /**
      * Display a listing of the resource.
      *

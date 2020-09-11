@@ -8764,6 +8764,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8857,8 +8858,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/create_room/".concat(this.myRoom)).then(function (res) {
-        console.log(res.data);
         _this4.roomSid = res.data.sid;
+        _this4.accessToken = res.data.token;
+        _this4.myRoom = res.data.name;
+
+        _this4.connectToRoom();
       })["catch"](function (err) {
         return console.log(err.response);
       });
@@ -80266,9 +80270,18 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-primary",
-                    on: { click: _vm.getAccessToken }
+                    on: { click: _vm.createRoom }
                   },
                   [_vm._v("Start now")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: { click: _vm.getAccessToken }
+                  },
+                  [_vm._v("Join")]
                 )
               ])
             : _vm._e(),
