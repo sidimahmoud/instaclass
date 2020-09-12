@@ -32,7 +32,6 @@
                     <button class="btn btn-primary" @click="roomDetails" :disabled="!roomSid">Details</button>
                     <button class="btn btn-primary" @click="roomParticipants">Participants</button>
                     <button class="btn btn-primary" @click="roomRecordings">Recordings</button>
-                    <!--<button class="btn btn-primary" @click="rooms">My rooms</button>-->
                 </div>
             </div>
             <div class="col-md-2">
@@ -74,7 +73,7 @@
                 // Request a new token
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get(`https://instantclass.herokuapp.com/api/access_token/${_this.myRoom}/${_this.user}`)
+                axios.get(`/access_token/${_this.myRoom}/${_this.user}`)
                     .then(function (response) {
                         _this.accessToken = response.data;
                         _this.started = true;
@@ -87,7 +86,7 @@
             createRoom() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.post(`https://instantclass.herokuapp.com/api/create-room/${this.myRoom}/${this.user}/${this.recorded}`).then(res => {
+                axios.post(`/create-room/${this.myRoom}/${this.user}/${this.recorded}`).then(res => {
                         console.log(res.data);
                         this.started = true;
                         this.roomSid = res.data.sid;
@@ -141,9 +140,8 @@
             endRoom() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.post(`https://instantclass.herokuapp.com/api/endroom/${this.myRoom}`).then(res => {
+                axios.post(`/endroom/${this.myRoom}`).then(res => {
                         console.log(res.data);
-                        localstream.stop();
                         this.$router.push({name: "TeacherProfile"});
                     }
                 ).catch(err => console.log(err.response))
@@ -152,7 +150,7 @@
             roomDetails() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get(`https://instantclass.herokuapp.com/api/room-details/${this.myRoom}`).then(res => {
+                axios.get(`/room-details/${this.myRoom}`).then(res => {
                         console.log(res.data);
                     }
                 ).catch(err => console.log(err.response))
@@ -160,7 +158,7 @@
             roomRecordings() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get(`https://instantclass.herokuapp.com/api/room-recordings/${this.roomSid}`).then(res => {
+                axios.get(`/room-recordings/${this.roomSid}`).then(res => {
                         console.log(res.data);
                     }
                 ).catch(err => console.log(err.response))
@@ -185,15 +183,7 @@
             roomParticipants() {
                 let token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get(`https://instantclass.herokuapp.com/api/room/${this.roomSid}/participants`).then(res => {
-                        console.log(res.data);
-                    }
-                ).catch(err => console.log(err.response))
-            },
-            rooms() {
-                let token = localStorage.getItem('token');
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get(`https://instantclass.herokuapp.com/api/rooms/${this.myRoom}`).then(res => {
+                axios.get(`room/${this.roomSid}/participants`).then(res => {
                         console.log(res.data);
                     }
                 ).catch(err => console.log(err.response))

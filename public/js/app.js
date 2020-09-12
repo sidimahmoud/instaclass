@@ -5427,6 +5427,330 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FAQ.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FAQ.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "FAQ"
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FooterComponent.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FooterComponent.vue?vue&type=script&lang=js& ***!
@@ -8762,7 +9086,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8789,7 +9112,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/access_token/".concat(_this.myRoom, "/").concat(_this.user)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/access_token/".concat(_this.myRoom, "/").concat(_this.user)).then(function (response) {
         _this.accessToken = response.data;
         _this.started = true;
 
@@ -8803,7 +9126,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/create-room/".concat(this.myRoom, "/").concat(this.user, "/").concat(this.recorded)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/create-room/".concat(this.myRoom, "/").concat(this.user, "/").concat(this.recorded)).then(function (res) {
         console.log(res.data);
         _this2.started = true;
         _this2.roomSid = res.data.sid;
@@ -8874,9 +9197,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("https://instantclass.herokuapp.com/api/endroom/".concat(this.myRoom)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/endroom/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
-        localstream.stop();
 
         _this4.$router.push({
           name: "TeacherProfile"
@@ -8888,7 +9210,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     roomDetails: function roomDetails() {
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/room-details/".concat(this.myRoom)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/room-details/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -8897,7 +9219,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     roomRecordings: function roomRecordings() {
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/room-recordings/".concat(this.roomSid)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/room-recordings/".concat(this.roomSid)).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -8942,16 +9264,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     roomParticipants: function roomParticipants() {
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/room/".concat(this.roomSid, "/participants")).then(function (res) {
-        console.log(res.data);
-      })["catch"](function (err) {
-        return console.log(err.response);
-      });
-    },
-    rooms: function rooms() {
-      var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/rooms/".concat(this.myRoom)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("room/".concat(this.roomSid, "/participants")).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -74419,6 +74732,791 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FAQ.vue?vue&type=template&id=c602b80a&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FAQ.vue?vue&type=template&id=c602b80a&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _c("div", { staticClass: "text-center my-3" }, [
+      _c(
+        "h5",
+        [
+          _vm._v(
+            "Pour toutes questions supplémentaires, veuillez nous écrire sous l’onglet\n        "
+          ),
+          _c(
+            "router-link",
+            {
+              staticClass: "text-primary",
+              attrs: { to: { name: "Contact" }, tag: "a" }
+            },
+            [_vm._v("\n            Contactez-nous\n        ")]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-center border-top border-primary pt-5 mb-3" },
+      [_c("h3", [_vm._v("Réponses aux questions les plus fréquemment posées")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "accordion", attrs: { id: "accordionExample" } },
+      [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header", attrs: { id: "heading1" } }, [
+            _c("h2", { staticClass: "mb-0" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-link",
+                  attrs: {
+                    "data-toggle": "collapse",
+                    "data-target": "#collapse1",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapseOne"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Est-ce que les professeurs d’Instantaclasse doivent être des professeurs seulement?\n                    "
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse show",
+              attrs: {
+                id: "collapse1",
+                "aria-labelledby": "heading1",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Non les professionnels et non professionnels peuvent enseigner des cours cependant nous vous\n                    conseillons de maitriser la matière à enseigner.\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header", attrs: { id: "heading2" } }, [
+            _c("h2", { staticClass: "mb-0" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-link",
+                  attrs: {
+                    "data-toggle": "collapse",
+                    "data-target": "#collapse2",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapse2"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Est-ce qu’en tant qu’étudiant je suis obligé de me filmer pendant la séance?\n                    "
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse2",
+                "aria-labelledby": "heading2",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Seul le professeur doit se filmer, cependant nous croyons qu’il est préférable que le professeur\n                    et les étudiants se voient durant une séance.\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header", attrs: { id: "heading3" } }, [
+            _c("h2", { staticClass: "mb-0" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-link",
+                  attrs: {
+                    "data-toggle": "collapse",
+                    "data-target": "#collapse3",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapse3"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Qu’arrive-t-il si un(e) étudiant(e) ou un(e) professeur(e) est mal poli ou désagréable\n                        pendant la séance? "
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse3",
+                "aria-labelledby": "heading3",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Sachez que nos administrateurs s’assurent que les séances se déroulent dans le respect et la\n                    courtoisie, ainsi nous suivons tous les cours en direct et nous pouvons en tout temps arrêter un\n                    cours ou supprimer et bannir un(e) étudiant(e) ou un(e) professeur(e). De plus, les propos\n                    discriminatoires, sexismes, homophobes ou toute autre forme encourageant la haine ne seront pas\n                    tolérés.\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header", attrs: { id: "heading4" } }, [
+            _c("h2", { staticClass: "mb-0" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-link",
+                  attrs: {
+                    "data-toggle": "collapse",
+                    "data-target": "#collapse4",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapse4"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Qui peut voir une séance en cours?\n                    "
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse4",
+                "aria-labelledby": "heading4",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Une séance en cours est visionnée par les étudiants inscrits au cours, le professeur lui-même et\n                    un administrateur désigné pour s’assurer du bon déroulement de ce dernier.\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header", attrs: { id: "heading5" } }, [
+            _c("h2", { staticClass: "mb-0" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-link",
+                  attrs: {
+                    "data-toggle": "collapse",
+                    "data-target": "#collapse5",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapse5"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Un(e) professeur(e) peut-il/elle recevoir du pourboire? "
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse5",
+                "aria-labelledby": "heading5",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Oui en effet les étudiants peuvent selon leur discrétion laisser un pourboire, ce dernier va en\n                    totalité au professeur(e).\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header", attrs: { id: "heading6" } }, [
+            _c("h2", { staticClass: "mb-0" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-link",
+                  attrs: {
+                    "data-toggle": "collapse",
+                    "data-target": "#collapse6",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapse6"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Puis-je partager une fiche des cours sur les médias sociaux?\n                    "
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse6",
+                "aria-labelledby": "heading6",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Lorsque les onglets de partage sont présente sur une fiche de cours, c’est que le professeur\n                    autorise que sa fiche peux être partagé\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header", attrs: { id: "heading7" } }, [
+            _c("h2", { staticClass: "mb-0" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-link",
+                  attrs: {
+                    "data-toggle": "collapse",
+                    "data-target": "#collapse7",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapse7"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Pourquoi les évaluations des professeurs sont-elles visible? "
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse7",
+                "aria-labelledby": "heading7",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Les étudiants ont le choix d’évaluer les cours à la fin de chaque séance, ainsi il devient\n                    important de structurer sa matière et veiller à ce que les cours soient d’une grande qualité.\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header", attrs: { id: "heading8" } }, [
+            _c("h2", { staticClass: "mb-0" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-link",
+                  attrs: {
+                    "data-toggle": "collapse",
+                    "data-target": "#collapse8",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapse8"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Quelles séances sont gratuites?\n                    "
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse8",
+                "aria-labelledby": "heading8",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Lorsqu’un professeur prévoit enseigner un cours ayant plus de 3 séances, la première séance sera\n                    gratuite pour les étudiants, cependant ils doivent s’inscrire à la totalité des séances du\n                    cours.\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header", attrs: { id: "heading9" } }, [
+            _c("h2", { staticClass: "mb-0" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-link",
+                  attrs: {
+                    "data-toggle": "collapse",
+                    "data-target": "#collapse9",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapse9"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Quand est-ce que les professeurs sont payés?\n                    "
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse9",
+                "aria-labelledby": "heading9",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Le paiement s’effectue une semaine après que le cours ait été donné.\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c(
+            "div",
+            { staticClass: "card-header", attrs: { id: "heading10" } },
+            [
+              _c("h2", { staticClass: "mb-0" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-link",
+                    attrs: {
+                      "data-toggle": "collapse",
+                      "data-target": "#collapse10",
+                      "aria-expanded": "true",
+                      "aria-controls": "collapse10"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Comment fonctionne le virement interac?\n                    "
+                    )
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse10",
+                "aria-labelledby": "heading10",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Pour recevoir le paiement par virement interac, vous devez fournir deux courriels électroniques,\n                    le premier sera utilisé pour envoyer la question et le deuxième pour la réponse à la question.\n                    Les reçus sont envoyés dans l’espace dédié au reçu dans votre compte de professeur.\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c(
+            "div",
+            { staticClass: "card-header", attrs: { id: "heading11" } },
+            [
+              _c("h2", { staticClass: "mb-0" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-link",
+                    attrs: {
+                      "data-toggle": "collapse",
+                      "data-target": "#collapse11",
+                      "aria-expanded": "true",
+                      "aria-controls": "collapse11"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Qu’arrive-il si les étudiants jugent qu’un cours ne correspondait pas du tout aux\n                        attentes?\n                    "
+                    )
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse11",
+                "aria-labelledby": "heading11",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Lorsqu’un tel cas arrive, nos administrateurs vont visionner la séance, s’ils constatent que\n                    c’est le cas, ils ne paieront pas le professeur, ils vont cependant rembourser les étudiants.\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c(
+            "div",
+            { staticClass: "card-header", attrs: { id: "heading12" } },
+            [
+              _c("h2", { staticClass: "mb-0" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-link",
+                    attrs: {
+                      "data-toggle": "collapse",
+                      "data-target": "#collapse12",
+                      "aria-expanded": "true",
+                      "aria-controls": "collapse12"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Peut-on enregistrer une séance?\n                    "
+                    )
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse12",
+                "aria-labelledby": "heading12",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Oui en effet, un professeur peut enregistrer une séance et laisser les enregistrements à ses\n                    étudiants à la fin du cours.\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c(
+            "div",
+            { staticClass: "card-header", attrs: { id: "heading13" } },
+            [
+              _c("h2", { staticClass: "mb-0" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-link",
+                    attrs: {
+                      "data-toggle": "collapse",
+                      "data-target": "#collapse13",
+                      "aria-expanded": "true",
+                      "aria-controls": "collapse13"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Qu’arrive-il si le cours que je veux enseigner n’est pas répertorié sur la plateforme?\n                    "
+                    )
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse13",
+                "aria-labelledby": "heading13",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Lorsque vous désirez enseigner un cours que vous ne trouvez pas sur la plateforme, vous avez la\n                    possibilité de le créer directement, cependant nous vérifierons si ce dernier correspond aux\n                    cours permis d’enseigner sur cette plateforme et communiquerons avec vous au besoin.\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c(
+            "div",
+            { staticClass: "card-header", attrs: { id: "heading14" } },
+            [
+              _c("h2", { staticClass: "mb-0" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-link",
+                    attrs: {
+                      "data-toggle": "collapse",
+                      "data-target": "#collapse14",
+                      "aria-expanded": "true",
+                      "aria-controls": "collapse14"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Quel est le pourcentage perçu par Instantaclasse?\n                    "
+                    )
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse14",
+                "aria-labelledby": "heading14",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Pour le bon déroulement et maintien de la plateforme une commission de 10% est perçue par séance\n                    pour chaque étudiant inscrit à un cours, mais seulement lorsque les séances sont payantes.\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c(
+            "div",
+            { staticClass: "card-header", attrs: { id: "heading15" } },
+            [
+              _c("h2", { staticClass: "mb-0" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-link",
+                    attrs: {
+                      "data-toggle": "collapse",
+                      "data-target": "#collapse15",
+                      "aria-expanded": "true",
+                      "aria-controls": "collapse15"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Puis-je me joindre à une séance en cours? "
+                    )
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse15",
+                "aria-labelledby": "heading15",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Il revient à la discrétion du professeur d’autoriser ou non si un étudiant peut se joindre à une\n                    séance en cours ou pas.\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c(
+            "div",
+            { staticClass: "card-header", attrs: { id: "heading16" } },
+            [
+              _c("h2", { staticClass: "mb-0" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-link",
+                    attrs: {
+                      "data-toggle": "collapse",
+                      "data-target": "#collapse16",
+                      "aria-expanded": "true",
+                      "aria-controls": "collapse16"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Qu’arrive-il si j’oublie que j’avais un cours à suivre? "
+                    )
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse",
+              attrs: {
+                id: "collapse16",
+                "aria-labelledby": "heading16",
+                "data-parent": "#accordionExample"
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    Nous vous enverrons des rappels des cours par courriel 24h avant les séances et 1h avant le\n                    début. Cependant si un professeur n’est pas disponible à l’heure prévu sans avoir averti\n                    l’administration d’Instantaclasse, les mesures disciplinaires s’appliqueront. Si la même\n                    situation se produit pour un étudiant, il ne sera pas remboursé pour la séance manqué.\n                "
+                )
+              ])
+            ]
+          )
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FooterComponent.vue?vue&type=template&id=abfbddf2&scoped=true&":
 /*!******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FooterComponent.vue?vue&type=template&id=abfbddf2&scoped=true& ***!
@@ -105607,6 +106705,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: true
 // });
 
+axios.defaults.baseURL = 'https://instantclass.herokuapp.com/api';
+
 /***/ }),
 
 /***/ "./resources/js/components/About.vue":
@@ -105865,6 +106965,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CountDown_vue_vue_type_template_id_4c6de3f6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CountDown_vue_vue_type_template_id_4c6de3f6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/FAQ.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/components/FAQ.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _FAQ_vue_vue_type_template_id_c602b80a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FAQ.vue?vue&type=template&id=c602b80a&scoped=true& */ "./resources/js/components/FAQ.vue?vue&type=template&id=c602b80a&scoped=true&");
+/* harmony import */ var _FAQ_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FAQ.vue?vue&type=script&lang=js& */ "./resources/js/components/FAQ.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FAQ_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FAQ_vue_vue_type_template_id_c602b80a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FAQ_vue_vue_type_template_id_c602b80a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "c602b80a",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/FAQ.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/FAQ.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/FAQ.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FAQ_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./FAQ.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FAQ.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FAQ_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/FAQ.vue?vue&type=template&id=c602b80a&scoped=true&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/FAQ.vue?vue&type=template&id=c602b80a&scoped=true& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FAQ_vue_vue_type_template_id_c602b80a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./FAQ.vue?vue&type=template&id=c602b80a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FAQ.vue?vue&type=template&id=c602b80a&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FAQ_vue_vue_type_template_id_c602b80a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FAQ_vue_vue_type_template_id_c602b80a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -109514,6 +110683,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_teacher_EditCourse__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../components/teacher/EditCourse */ "./resources/js/components/teacher/EditCourse.vue");
 /* harmony import */ var _components_teacher_NewSection__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../components/teacher/NewSection */ "./resources/js/components/teacher/NewSection.vue");
 /* harmony import */ var _components_courses_LiveWindowCompo__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../components/courses/LiveWindowCompo */ "./resources/js/components/courses/LiveWindowCompo.vue");
+/* harmony import */ var _components_FAQ__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../components/FAQ */ "./resources/js/components/FAQ.vue");
+
 
 
 
@@ -109561,6 +110732,14 @@ var routes = [{
   meta: {
     requiresAuth: false,
     title: 'About'
+  }
+}, {
+  path: '/faq',
+  name: 'Faq',
+  component: _components_FAQ__WEBPACK_IMPORTED_MODULE_31__["default"],
+  meta: {
+    requiresAuth: false,
+    title: 'FAQ'
   }
 }, {
   path: '/contact',

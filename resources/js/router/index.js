@@ -35,6 +35,7 @@ import NewCourse from "../components/teacher/NewCourse";
 import EditCourse from "../components/teacher/EditCourse";
 import NewSection from "../components/teacher/NewSection";
 import LiveWindowCompo from "../components/courses/LiveWindowCompo";
+import FAQ from "../components/FAQ";
 
 Vue.use(VueRouter);
 
@@ -56,6 +57,16 @@ const routes = [
         meta: {
             requiresAuth: false,
             title: 'About'
+
+        }
+    },
+    {
+        path: '/faq',
+        name: 'Faq',
+        component: FAQ,
+        meta: {
+            requiresAuth: false,
+            title: 'FAQ'
 
         }
     },
