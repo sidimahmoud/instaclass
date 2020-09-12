@@ -87,6 +87,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dd(355321);
         $category = Category::find($id);
         $category->name = $request['name'];
         $category->description = $request['description'];
