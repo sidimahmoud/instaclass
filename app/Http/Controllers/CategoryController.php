@@ -99,7 +99,6 @@ class CategoryController extends Controller
         } else
             $category->image = $request['image'];
         $category->save();
-
         if ($category)
             return response()->json(["response" => "category updated successfully"]);
         return response()->json(["response" => "error"]);
