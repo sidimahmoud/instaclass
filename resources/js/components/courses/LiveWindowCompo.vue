@@ -29,6 +29,7 @@
                     <button class="btn btn-danger" @click="endRoom">End course</button>
                     <button class="btn btn-primary" @click="shareScreen" v-if="!sharing">Share screen</button>
                     <button class="btn btn-danger" @click="stopSaring" v-if="sharing">Stop sharing</button>
+                    <button class="btn btn-danger" @click="leaveCourse" v-if="sharing">Leave Course</button>
                     <button class="btn btn-primary" @click="roomDetails" :disabled="!roomSid">Details</button>
                     <button class="btn btn-primary" @click="roomParticipants">Participants</button>
                     <button class="btn btn-primary" @click="roomRecordings">Recordings</button>
@@ -63,6 +64,7 @@
                 myRoom: 'hello',
                 user: 'teacher@gmail.com',
                 roomSid: false,
+                actveRoom: '',
                 participants: [],
                 sharing: false,
             }
@@ -72,14 +74,12 @@
                 const _this = this;
                 // Request a new token
                 axios.get(`/access_token/${this.myRoom}/${this.user}`)
-                    .then(response=> {
+                    .then(response => {
                         _this.accessToken = response.data;
                         _this.started = true;
                         _this.connectToRoom()
                     })
-                    .catch(function (error) {
-                        console.log(error);
-                    })
+                    .catch(error => console.log(error))
             },
             createRoom() {
                 let token = localStorage.getItem('token');
@@ -99,12 +99,13 @@
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
+                    this.actveRoom = room;
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalTracks({
                         audio: true,
                         video: {width: 1280, height: 300},
                     }).then(localTracks => {
-                        localTracks.forEach(track=> videoChatWindow.appendChild(track.attach())
+                        localTracks.forEach(track => videoChatWindow.appendChild(track.attach())
                         );
                     });
                     room.on('participantConnected', participant => {
@@ -154,19 +155,26 @@
                     }
                 ).catch(err => console.log(err.response))
             },
-            async shareScreen() {
-                const {connect, LocalVideoTrack} = require('twilio-video');
-                connect(this.accessToken, {name: this.myRoom}).then(room => {
-                    navigator.mediaDevices.getDisplayMedia().then(stream => {
+            shareScreen() {
+                navigator.mediaDevices.getDisplayMedia()
+                    .then(stream => {
                         const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                        room.localParticipant.publishTrack(screenTrack);
+                        this.actveRoom.localParticipant.publishTrack(screenTrack);
                     }).catch(() => {
-                        alert('Could not share the screen.')
-                    });
-                })
+                    alert('Could not share the screen.')
+                });
             },
             stopSaring() {
-                room.localParticipant.unpublishTrack(screenTrack);
+                this.actveRoom.localParticipant.unpublishTrack(screenTrack);
+                screenTrack.stop();
+                screenTrack = null;
+                this.sharing = false;
+            },
+            leaveCourse() {
+                this.activeRoom.localParticipant.tracks.forEach(track => {
+                    track.stop()
+                });
+                this.actveRoom.localParticipant.unpublishTrack(screenTrack);
                 screenTrack.stop();
                 screenTrack = null;
                 this.sharing = false;

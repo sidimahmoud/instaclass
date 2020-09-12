@@ -9027,17 +9027,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _CountDown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../CountDown */ "./resources/js/components/CountDown.vue");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _CountDown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../CountDown */ "./resources/js/components/CountDown.vue");
+//
 //
 //
 //
@@ -9091,7 +9084,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'LiveWindowCompo',
   components: {
-    CountDown: _CountDown__WEBPACK_IMPORTED_MODULE_2__["default"]
+    CountDown: _CountDown__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -9101,6 +9094,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       myRoom: 'hello',
       user: 'teacher@gmail.com',
       roomSid: false,
+      actveRoom: '',
       participants: [],
       sharing: false
     };
@@ -9110,21 +9104,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this; // Request a new token
 
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/access_token/".concat(this.myRoom, "/").concat(this.user)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/access_token/".concat(this.myRoom, "/").concat(this.user)).then(function (response) {
         _this.accessToken = response.data;
         _this.started = true;
 
         _this.connectToRoom();
       })["catch"](function (error) {
-        console.log(error);
+        return console.log(error);
       });
     },
     createRoom: function createRoom() {
       var _this2 = this;
 
       var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/create-room/".concat(this.myRoom, "/").concat(this.user, "/").concat(this.recorded)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/create-room/".concat(this.myRoom, "/").concat(this.user, "/").concat(this.recorded)).then(function (res) {
         console.log(res.data);
         _this2.started = true;
         _this2.roomSid = res.data.sid;
@@ -9148,6 +9142,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }).then(function (room) {
         console.log("Successfully joined a Room: ".concat(room));
         _this3.roomSid = room.sid;
+        _this3.actveRoom = room;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalTracks({
           audio: true,
@@ -9193,7 +9188,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     endRoom: function endRoom() {
       var _this4 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/endroom/".concat(this.myRoom)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/endroom/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
 
         _this4.$router.push({
@@ -9204,14 +9199,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     roomDetails: function roomDetails() {
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/room-details/".concat(this.myRoom)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/room-details/".concat(this.myRoom)).then(function (res) {
         return console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
       });
     },
     roomRecordings: function roomRecordings() {
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/room-recordings/".concat(this.roomSid)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/room-recordings/".concat(this.roomSid)).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -9220,41 +9215,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     shareScreen: function shareScreen() {
       var _this5 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _require2, connect, LocalVideoTrack;
+      navigator.mediaDevices.getDisplayMedia().then(function (stream) {
+        var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _require2 = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"), connect = _require2.connect, LocalVideoTrack = _require2.LocalVideoTrack;
-                connect(_this5.accessToken, {
-                  name: _this5.myRoom
-                }).then(function (room) {
-                  navigator.mediaDevices.getDisplayMedia().then(function (stream) {
-                    var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                    room.localParticipant.publishTrack(screenTrack);
-                  })["catch"](function () {
-                    alert('Could not share the screen.');
-                  });
-                });
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+        _this5.actveRoom.localParticipant.publishTrack(screenTrack);
+      })["catch"](function () {
+        alert('Could not share the screen.');
+      });
     },
     stopSaring: function stopSaring() {
-      room.localParticipant.unpublishTrack(screenTrack);
+      this.actveRoom.localParticipant.unpublishTrack(screenTrack);
+      screenTrack.stop();
+      screenTrack = null;
+      this.sharing = false;
+    },
+    leaveCourse: function leaveCourse() {
+      this.activeRoom.localParticipant.tracks.forEach(function (track) {
+        track.stop();
+      });
+      this.actveRoom.localParticipant.unpublishTrack(screenTrack);
       screenTrack.stop();
       screenTrack = null;
       this.sharing = false;
     },
     roomParticipants: function roomParticipants() {
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("room/".concat(this.roomSid, "/participants")).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("room/".concat(this.roomSid, "/participants")).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -81431,6 +81416,17 @@ var render = function() {
                         on: { click: _vm.stopSaring }
                       },
                       [_vm._v("Stop sharing")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.sharing
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        on: { click: _vm.leaveCourse }
+                      },
+                      [_vm._v("Leave Course")]
                     )
                   : _vm._e(),
                 _vm._v(" "),
