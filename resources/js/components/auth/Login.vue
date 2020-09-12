@@ -20,13 +20,11 @@
                             <input type="password" class="form-control" name="password" placeholder="Password"
                                    required="required" v-model="password">
                         </div>
-
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block " :disabled="authLoading">
                                 <span v-if="!authLoading">Sign in </span>
                                 <div class="text-center text-white" v-if="authLoading">
-                                    <span class="spinner-border spinner-border-sm" role="status"
-                                          aria-hidden="true"></span>
+                                    <span class="spinner-border spinner-border-sm" role="staitus" aria-hidden="true"/>
                                     Loading...
                                 </div>
                             </button>

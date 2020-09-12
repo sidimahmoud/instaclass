@@ -7616,8 +7616,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
@@ -9094,7 +9092,7 @@ __webpack_require__.r(__webpack_exports__);
       myRoom: 'hello',
       user: 'teacher@gmail.com',
       roomSid: false,
-      actveRoom: '',
+      activeRoom: '',
       participants: [],
       sharing: false
     };
@@ -9142,7 +9140,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (room) {
         console.log("Successfully joined a Room: ".concat(room));
         _this3.roomSid = room.sid;
-        _this3.actveRoom = room;
+        _this3.activeRoom = room;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalTracks({
           audio: true,
@@ -9219,15 +9217,15 @@ __webpack_require__.r(__webpack_exports__);
           LocalVideoTrack = _require2.LocalVideoTrack;
 
       navigator.mediaDevices.getDisplayMedia().then(function (stream) {
-        var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+        var scknreenTrack = new LocalVideoTrack(stream.getTracks()[0]);
 
-        _this5.actveRoom.localParticipant.publishTrack(screenTrack);
+        _this5.activeRoom.localParticipant.publishTrack(screenTrack);
       })["catch"](function (err) {
         console.log(err); // alert('Could not share the screen.')
       });
     },
     stopSaring: function stopSaring() {
-      this.actveRoom.localParticipant.unpublishTrack(screenTrack);
+      this.activeRoom.localParticipant.unpublishTrack(screenTrack);
       screenTrack.stop();
       screenTrack = null;
       this.sharing = false;
@@ -9236,7 +9234,7 @@ __webpack_require__.r(__webpack_exports__);
       this.activeRoom.localParticipant.tracks.forEach(function (track) {
         track.stop();
       });
-      this.actveRoom.localParticipant.unpublishTrack(screenTrack);
+      this.activeRoom.localParticipant.unpublishTrack(screenTrack);
       screenTrack.stop();
       screenTrack = null;
       this.sharing = false;
@@ -9785,8 +9783,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-//
-//
 //
 //
 //
@@ -10912,7 +10908,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-//
 //
 //
 //
@@ -15806,7 +15801,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#bodyRegister[data-v-8e6d03cc] {\n}\n.signup-form[data-v-8e6d03cc] {\n    margin: 0 auto;\n    padding: 30px 0;\n}\n.signup-form h2[data-v-8e6d03cc] {\n    color: #636363;\n    margin: 0 0 15px;\n    position: relative;\n    text-align: center;\n}\n.signup-form h2[data-v-8e6d03cc]:before, .signup-form h2[data-v-8e6d03cc]:after {\n    content: \"\";\n    height: 2px;\n    width: 30%;\n    background: #d4d4d4;\n    position: absolute;\n    top: 50%;\n    z-index: 2;\n}\n.signup-form h2[data-v-8e6d03cc]:before {\n    left: 0;\n}\n.signup-form h2[data-v-8e6d03cc]:after {\n    right: 0;\n}\n.signup-form .hint-text[data-v-8e6d03cc] {\n    color: #999;\n    margin-bottom: 30px;\n    text-align: center;\n}\n.signup-form[data-v-8e6d03cc] {\n    color: #999;\n    border-radius: 3px;\n    margin-bottom: 15px;\n    background: #ffffff;\n    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);\n    padding: 30px;\n}\n.signup-form .form-group[data-v-8e6d03cc] {\n    margin-bottom: 20px;\n}\n.signup-form input[type=\"checkbox\"][data-v-8e6d03cc] {\n    margin-top: 3px;\n}\n.signup-form .btn[data-v-8e6d03cc] {\n    font-size: 16px;\n    font-weight: bold;\n    min-width: 140px;\n    outline: none !important;\n}\n.signup-form .row div[data-v-8e6d03cc]:first-child {\n    padding-right: 10px;\n}\n.signup-form .row div[data-v-8e6d03cc]:last-child {\n    padding-left: 10px;\n}\n.signup-form a[data-v-8e6d03cc]:hover {\n    text-decoration: none;\n}\n.signup-form form a[data-v-8e6d03cc]:hover {\n    text-decoration: underline;\n}\n.btn-google[data-v-8e6d03cc] {\n    color: white;\n    background-color: #ea4335\n}\n.btn-github[data-v-8e6d03cc] {\n    color: white;\n    background: #4267B2;\n}\n.btn-github a[data-v-8e6d03cc]{\n    color: white;\n}\n.btn-google a[data-v-8e6d03cc]{\n    color: white;\n}\n", ""]);
+exports.push([module.i, "\n#bodyRegister[data-v-8e6d03cc] {\n}\n.signup-form[data-v-8e6d03cc] {\n    margin: 0 auto;\n    padding: 30px 0;\n}\n.signup-form h2[data-v-8e6d03cc] {\n    color: #636363;\n    margin: 0 0 15px;\n    position: relative;\n    text-align: center;\n}\n.signup-form h2[data-v-8e6d03cc]:before, .signup-form h2[data-v-8e6d03cc]:after {\n    content: \"\";\n    height: 2px;\n    width: 30%;\n    background: #d4d4d4;\n    position: absolute;\n    top: 50%;\n    z-index: 2;\n}\n.signup-form h2[data-v-8e6d03cc]:before {\n    left: 0;\n}\n.signup-form h2[data-v-8e6d03cc]:after {\n    right: 0;\n}\n.signup-form .hint-text[data-v-8e6d03cc] {\n    color: #999;\n    margin-bottom: 30px;\n    text-align: center;\n}\n.signup-form[data-v-8e6d03cc] {\n    color: #999;\n    border-radius: 3px;\n    margin-bottom: 15px;\n    background: #ffffff;\n    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);\n    padding: 30px;\n}\n.signup-form .form-group[data-v-8e6d03cc] {\n    margin-bottom: 20px;\n}\n.signup-form input[type=\"checkbox\"][data-v-8e6d03cc] {\n    margin-top: 3px;\n}\n.signup-form .btn[data-v-8e6d03cc] {\n    font-size: 16px;\n    font-weight: bold;\n    min-width: 140px;\n    outline: none !important;\n}\n.signup-form .row div[data-v-8e6d03cc]:first-child {\n    padding-right: 10px;\n}\n.signup-form .row div[data-v-8e6d03cc]:last-child {\n    padding-left: 10px;\n}\n.signup-form a[data-v-8e6d03cc]:hover {\n    text-decoration: none;\n}\n.signup-form form a[data-v-8e6d03cc]:hover {\n    text-decoration: underline;\n}\n.btn-google[data-v-8e6d03cc] {\n    color: white;\n    background-color: #ea4335\n}\n.btn-github[data-v-8e6d03cc] {\n    color: white;\n    background: #4267B2;\n}\n.btn-github a[data-v-8e6d03cc] {\n    color: white;\n}\n.btn-google a[data-v-8e6d03cc] {\n    color: white;\n}\n", ""]);
 
 // exports
 
@@ -76925,8 +76920,8 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary btn-lg btn-block",
-                      attrs: { type: "submit" }
+                      staticClass: "btn btn-primary btn-lg btn-block ",
+                      attrs: { type: "submit", disabled: _vm.authLoading }
                     },
                     [
                       !_vm.authLoading
@@ -76936,11 +76931,11 @@ var render = function() {
                       _vm.authLoading
                         ? _c("div", { staticClass: "text-center text-white" }, [
                             _c("span", {
-                              staticClass: "spinner-grow spinner-grow-sm",
-                              attrs: { role: "status", "aria-hidden": "true" }
+                              staticClass: "spinner-border spinner-border-sm",
+                              attrs: { role: "staitus", "aria-hidden": "true" }
                             }),
                             _vm._v(
-                              "\n                                Wait...\n                            "
+                              "\n                                Loading...\n                            "
                             )
                           ])
                         : _vm._e()
@@ -78881,8 +78876,8 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-primary btn-lg btn-block",
-                    attrs: { type: "submit" }
+                    staticClass: "btn btn-primary btn-lg btn-block ",
+                    attrs: { type: "submit", disabled: _vm.authLoading }
                   },
                   [
                     !_vm.authLoading
@@ -78893,7 +78888,7 @@ var render = function() {
                       ? _c("div", { staticClass: "text-center text-white" }, [
                           _c("span", {
                             staticClass: "spinner-border spinner-border-sm",
-                            attrs: { role: "status", "aria-hidden": "true" }
+                            attrs: { role: "staitus", "aria-hidden": "true" }
                           }),
                           _vm._v(
                             "\n                                Loading...\n                            "
@@ -82818,8 +82813,8 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary btn-lg btn-block",
-                      attrs: { type: "submit" }
+                      staticClass: "btn btn-primary btn-lg btn-block ",
+                      attrs: { type: "submit", disabled: _vm.authLoading }
                     },
                     [
                       !_vm.authLoading
@@ -82830,7 +82825,7 @@ var render = function() {
                         ? _c("div", { staticClass: "text-center text-white" }, [
                             _c("span", {
                               staticClass: "spinner-border spinner-border-sm",
-                              attrs: { role: "status", "aria-hidden": "true" }
+                              attrs: { role: "staitus", "aria-hidden": "true" }
                             }),
                             _vm._v(
                               "\n                                    Loading...\n                                "
@@ -85177,8 +85172,8 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-primary btn-lg btn-block",
-                    attrs: { type: "submit" }
+                    staticClass: "btn btn-primary btn-lg btn-block ",
+                    attrs: { type: "submit", disabled: _vm.authLoading }
                   },
                   [
                     !_vm.authLoading
@@ -85187,7 +85182,13 @@ var render = function() {
                     _vm._v(" "),
                     _vm.authLoading
                       ? _c("div", { staticClass: "text-center text-white" }, [
-                          _vm._m(0)
+                          _c("span", {
+                            staticClass: "spinner-border spinner-border-sm",
+                            attrs: { role: "staitus", "aria-hidden": "true" }
+                          }),
+                          _vm._v(
+                            "\n                                Loading...\n                            "
+                          )
                         ])
                       : _vm._e()
                   ]
@@ -85247,18 +85248,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "spinner-border", attrs: { role: "status" } },
-      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -109498,15 +109488,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************************!*\
   !*** ./resources/js/components/courses/LiveWindowCompo.vue ***!
   \*************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LiveWindowCompo_vue_vue_type_template_id_028b1932___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LiveWindowCompo.vue?vue&type=template&id=028b1932& */ "./resources/js/components/courses/LiveWindowCompo.vue?vue&type=template&id=028b1932&");
 /* harmony import */ var _LiveWindowCompo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LiveWindowCompo.vue?vue&type=script&lang=js& */ "./resources/js/components/courses/LiveWindowCompo.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _LiveWindowCompo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _LiveWindowCompo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -109536,7 +109525,7 @@ component.options.__file = "resources/js/components/courses/LiveWindowCompo.vue"
 /*!**************************************************************************************!*\
   !*** ./resources/js/components/courses/LiveWindowCompo.vue?vue&type=script&lang=js& ***!
   \**************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

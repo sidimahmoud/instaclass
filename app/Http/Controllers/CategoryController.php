@@ -75,7 +75,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -88,19 +88,21 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
-        $category->name = $request["name"];
-        $category->description = $request["description"];
-
+        $category->name = $request['name'];
+        $category->description = $request['description'];
         if ($request->hasFile('image')) {
             $file = $request['image'];
             $extension = $file->getClientOriginalExtension();
             $file_name = $request['name'] . "-" . time() . "." . $extension;
             $file->move('uploads/categories/', $file_name);
-            $category->image =  $file_name;
+            $category->image = 'uploads/categories/' . $file_name;
         } else
             $category->image = $request['image'];
         $category->save();
-        return response()->json($category);
+
+        if ($category)
+            return response()->json(["response" => "category created successfully"]);
+        return response()->json(["response" => "error"]);
     }
 
     /**

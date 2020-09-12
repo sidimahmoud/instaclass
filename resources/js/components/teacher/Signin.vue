@@ -16,12 +16,11 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block " :disabled="authLoading">
                                 <span v-if="!authLoading">Sign in </span>
                                 <div class="text-center text-white" v-if="authLoading">
-                                    <div class="spinner-border" role="status">
-                                        <span class="sr-only">Loading...</span>
-                                    </div>
+                                    <span class="spinner-border spinner-border-sm" role="staitus" aria-hidden="true"/>
+                                    Loading...
                                 </div>
                             </button>
                         </div>
@@ -64,8 +63,8 @@
                 let email = this.email;
                 let password = this.password;
                 this.$store.dispatch('login', {email, password})
-                    .then(res=>{
-                        (res.data.user.roles[0].name==="teacher")?this.$router.push({name: 'TeacherProfile'}):this.$router.push({name: 'StudentProfile'});
+                    .then(res => {
+                        (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
                     })
                     .catch(err => this.errorMessage = err.response.data.message)
             },
@@ -186,10 +185,12 @@
         color: white;
         background: #4267B2;
     }
-    .btn-github a{
+
+    .btn-github a {
         color: white;
     }
-    .btn-google a{
+
+    .btn-google a {
         color: white;
     }
 </style>

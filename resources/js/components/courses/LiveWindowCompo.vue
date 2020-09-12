@@ -64,7 +64,7 @@
                 myRoom: 'hello',
                 user: 'teacher@gmail.com',
                 roomSid: false,
-                actveRoom: '',
+                activeRoom: '',
                 participants: [],
                 sharing: false,
             }
@@ -99,7 +99,7 @@
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
-                    this.actveRoom = room;
+                    this.activeRoom = room;
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalTracks({
                         audio: true,
@@ -156,19 +156,19 @@
                 ).catch(err => console.log(err.response))
             },
             shareScreen() {
-                const { LocalVideoTrack, } = require('twilio-video');
+                const { LocalVideoTrack } = require('twilio-video');
 
                 navigator.mediaDevices.getDisplayMedia()
                     .then(stream => {
-                        const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                        this.actveRoom.localParticipant.publishTrack(screenTrack);
+                        const scknreenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+                        this.activeRoom.localParticipant.publishTrack(screenTrack);
                     }).catch(err => {
                     console.log(err)
                     // alert('Could not share the screen.')
                 });
             },
             stopSaring() {
-                this.actveRoom.localParticipant.unpublishTrack(screenTrack);
+                this.activeRoom.localParticipant.unpublishTrack(screenTrack);
                 screenTrack.stop();
                 screenTrack = null;
                 this.sharing = false;
@@ -177,7 +177,7 @@
                 this.activeRoom.localParticipant.tracks.forEach(track => {
                     track.stop()
                 });
-                this.actveRoom.localParticipant.unpublishTrack(screenTrack);
+                this.activeRoom.localParticipant.unpublishTrack(screenTrack);
                 screenTrack.stop();
                 screenTrack = null;
                 this.sharing = false;

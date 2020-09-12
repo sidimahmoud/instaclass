@@ -22,11 +22,11 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block " :disabled="authLoading">
                                 <span v-if="!authLoading">Sign in </span>
                                 <div class="text-center text-white" v-if="authLoading">
-                                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                                    Wait...
+                                    <span class="spinner-border spinner-border-sm" role="staitus" aria-hidden="true"/>
+                                    Loading...
                                 </div>
                             </button>
                         </div>
