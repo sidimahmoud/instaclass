@@ -160,8 +160,9 @@
                     .then(stream => {
                         const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
                         this.actveRoom.localParticipant.publishTrack(screenTrack);
-                    }).catch(() => {
-                    alert('Could not share the screen.')
+                    }).catch(err => {
+                    console.log(err)
+                    // alert('Could not share the screen.')
                 });
             },
             stopSaring() {

@@ -9219,8 +9219,8 @@ __webpack_require__.r(__webpack_exports__);
         var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
 
         _this5.actveRoom.localParticipant.publishTrack(screenTrack);
-      })["catch"](function () {
-        alert('Could not share the screen.');
+      })["catch"](function (err) {
+        console.log(err); // alert('Could not share the screen.')
       });
     },
     stopSaring: function stopSaring() {
