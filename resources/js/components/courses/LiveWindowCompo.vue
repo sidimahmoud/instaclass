@@ -69,15 +69,12 @@
         },
         methods: {
             getAccessToken() {
-                const _this = this;
                 // Request a new token
-                let token = localStorage.getItem('token');
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get(`/access_token/${_this.myRoom}/${_this.user}`)
+                axios.get(`/access_token/${this.myRoom}/${this.user}`)
                     .then(function (response) {
-                        _this.accessToken = response.data;
-                        _this.started = true;
-                        _this.connectToRoom()
+                        this.accessToken = response.data;
+                        this.started = true;
+                        this.connectToRoom()
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -138,26 +135,20 @@
                 });
             },
             endRoom() {
-                let token = localStorage.getItem('token');
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.post(`/endroom/${this.myRoom}`).then(res => {
+                axios.post(`/endroom/${this.myRoom}`)
+                    .then(res => {
                         console.log(res.data);
                         this.$router.push({name: "TeacherProfile"});
-                    }
-                ).catch(err => console.log(err.response))
+                    })
+                    .catch(err => console.log(err.response))
             },
 
             roomDetails() {
-                let token = localStorage.getItem('token');
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                axios.get(`/room-details/${this.myRoom}`).then(res => {
-                        console.log(res.data);
-                    }
-                ).catch(err => console.log(err.response))
+                axios.get(`/room-details/${this.myRoom}`)
+                    .then(res => console.log(res.data))
+                    .catch(err => console.log(err.response))
             },
             roomRecordings() {
-                let token = localStorage.getItem('token');
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.get(`/room-recordings/${this.roomSid}`).then(res => {
                         console.log(res.data);
                     }
@@ -181,8 +172,6 @@
                 this.sharing = false;
             },
             roomParticipants() {
-                let token = localStorage.getItem('token');
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.get(`room/${this.roomSid}/participants`).then(res => {
                         console.log(res.data);
                     }

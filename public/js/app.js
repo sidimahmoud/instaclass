@@ -9107,39 +9107,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     getAccessToken: function getAccessToken() {
-      var _this = this; // Request a new token
-
-
-      var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/access_token/".concat(_this.myRoom, "/").concat(_this.user)).then(function (response) {
-        _this.accessToken = response.data;
-        _this.started = true;
-
-        _this.connectToRoom();
+      // Request a new token
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/access_token/".concat(this.myRoom, "/").concat(this.user)).then(function (response) {
+        this.accessToken = response.data;
+        this.started = true;
+        this.connectToRoom();
       })["catch"](function (error) {
         console.log(error);
       });
     },
     createRoom: function createRoom() {
-      var _this2 = this;
+      var _this = this;
 
       var token = localStorage.getItem('token');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/create-room/".concat(this.myRoom, "/").concat(this.user, "/").concat(this.recorded)).then(function (res) {
         console.log(res.data);
-        _this2.started = true;
-        _this2.roomSid = res.data.sid;
-        _this2.accessToken = res.data.token;
-        _this2.myRoom = res.data.name;
+        _this.started = true;
+        _this.roomSid = res.data.sid;
+        _this.accessToken = res.data.token;
+        _this.myRoom = res.data.name;
 
-        _this2.connectToRoom();
+        _this.connectToRoom();
       })["catch"](function (err) {
         return console.log(err.response);
       });
     },
     connectToRoom: function connectToRoom() {
-      var _this3 = this;
+      var _this2 = this;
 
       var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
           connect = _require.connect,
@@ -9149,7 +9144,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: this.myRoom
       }).then(function (room) {
         console.log("Successfully joined a Room: ".concat(room));
-        _this3.roomSid = room.sid;
+        _this2.roomSid = room.sid;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalTracks({
           audio: true,
@@ -9165,7 +9160,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
 
-          _this3.participants.push(participant.identity);
+          _this2.participants.push(participant.identity);
 
           participant.tracks.forEach(function (publication) {
             if (publication.isSubscribed) {
@@ -9179,7 +9174,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         room.on('participantDisconnected', function (participant) {
           console.log("Participant ".concat(participant.identity, " disconnected"));
 
-          _this3.participants.splice(_this3.participants.indexOf(participant.identity), 1);
+          _this2.participants.splice(_this2.participants.indexOf(participant.identity), 1);
 
           participant.tracks.forEach(function (track) {
             track.detach().forEach(function (mediaElement) {
@@ -9192,14 +9187,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     endRoom: function endRoom() {
-      var _this4 = this;
+      var _this3 = this;
 
-      var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/endroom/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
 
-        _this4.$router.push({
+        _this3.$router.push({
           name: "TeacherProfile"
         });
       })["catch"](function (err) {
@@ -9207,17 +9200,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     roomDetails: function roomDetails() {
-      var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/room-details/".concat(this.myRoom)).then(function (res) {
-        console.log(res.data);
+        return console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
       });
     },
     roomRecordings: function roomRecordings() {
-      var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/room-recordings/".concat(this.roomSid)).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
@@ -9225,7 +9214,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     shareScreen: function shareScreen() {
-      var _this5 = this;
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var _require2, connect, LocalVideoTrack;
@@ -9235,8 +9224,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _require2 = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"), connect = _require2.connect, LocalVideoTrack = _require2.LocalVideoTrack;
-                connect(_this5.accessToken, {
-                  name: _this5.myRoom
+                connect(_this4.accessToken, {
+                  name: _this4.myRoom
                 }).then(function (room) {
                   navigator.mediaDevices.getDisplayMedia().then(function (stream) {
                     var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
@@ -9261,8 +9250,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.sharing = false;
     },
     roomParticipants: function roomParticipants() {
-      var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("room/".concat(this.roomSid, "/participants")).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
@@ -106665,8 +106652,13 @@ module.exports = "/images/logo.png?f3cadca715f9aecb8db8d3c9f3d1620c";
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
@@ -106690,6 +106682,9 @@ try {
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+var token = localStorage.getItem('token');
+if (token) axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = 'https://instantclass.herokuapp.com/api';
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -106703,8 +106698,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
-
-axios.defaults.baseURL = 'https://instantclass.herokuapp.com/api';
 
 /***/ }),
 
