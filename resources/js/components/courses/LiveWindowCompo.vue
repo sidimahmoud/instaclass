@@ -110,15 +110,15 @@
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
                         this.participants.push(participant.identity);
-                        participant.tracks.forEach(publication => {
-                            if (publication.isSubscribed) {
-                                const track = publication.track;
-                                videoChatWindow.appendChild(track.attach());
-                            }
-                        });
-                        // participant.on('trackSubscribed', track => {
-                        //     videoChatWindow.appendChild(track.attach());
+                        // participant.tracks.forEach(publication => {
+                        //     if (publication.isSubscribed) {
+                        //         const track = publication.track;
+                        //         videoChatWindow.appendChild(track.attach());
+                        //     }
                         // });
+                        participant.on('trackSubscribed', track => {
+                            videoChatWindow.appendChild(track.attach());
+                        });
                     });
                     room.on('participantDisconnected', participant => {
                         console.log(`Participant ${participant.identity} disconnected`);

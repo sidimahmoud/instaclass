@@ -9160,16 +9160,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
 
-          _this2.participants.push(participant.identity);
-
-          participant.tracks.forEach(function (publication) {
-            if (publication.isSubscribed) {
-              var track = publication.track;
-              videoChatWindow.appendChild(track.attach());
-            }
-          }); // participant.on('trackSubscribed', track => {
-          //     videoChatWindow.appendChild(track.attach());
+          _this2.participants.push(participant.identity); // participant.tracks.forEach(publication => {
+          //     if (publication.isSubscribed) {
+          //         const track = publication.track;
+          //         videoChatWindow.appendChild(track.attach());
+          //     }
           // });
+
+
+          participant.on('trackSubscribed', function (track) {
+            videoChatWindow.appendChild(track.attach());
+          });
         });
         room.on('participantDisconnected', function (participant) {
           console.log("Participant ".concat(participant.identity, " disconnected"));
