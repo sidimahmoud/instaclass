@@ -156,6 +156,8 @@
                 ).catch(err => console.log(err.response))
             },
             shareScreen() {
+                const { LocalVideoTrack, } = require('twilio-video');
+
                 navigator.mediaDevices.getDisplayMedia()
                     .then(stream => {
                         const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);

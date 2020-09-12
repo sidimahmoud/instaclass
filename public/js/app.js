@@ -9215,6 +9215,9 @@ __webpack_require__.r(__webpack_exports__);
     shareScreen: function shareScreen() {
       var _this5 = this;
 
+      var _require2 = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
+          LocalVideoTrack = _require2.LocalVideoTrack;
+
       navigator.mediaDevices.getDisplayMedia().then(function (stream) {
         var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
 
