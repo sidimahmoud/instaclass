@@ -85,7 +85,7 @@ class CategoryController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request )
     {
         $category = Category::find($id);
         $category->name = $request['name'];
