@@ -69,12 +69,13 @@
         },
         methods: {
             getAccessToken() {
+                const _this = this;
                 // Request a new token
                 axios.get(`/access_token/${this.myRoom}/${this.user}`)
-                    .then(function (response) {
-                        this.accessToken = response.data;
-                        this.started = true;
-                        this.connectToRoom()
+                    .then(response=> {
+                        _this.accessToken = response.data;
+                        _this.started = true;
+                        _this.connectToRoom()
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -103,9 +104,8 @@
                         audio: true,
                         video: {width: 1280, height: 300},
                     }).then(localTracks => {
-                        localTracks.forEach(function (track) {
-                            videoChatWindow.appendChild(track.attach());
-                        });
+                        localTracks.forEach(track=> videoChatWindow.appendChild(track.attach())
+                        );
                     });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
