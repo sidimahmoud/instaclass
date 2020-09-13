@@ -269,7 +269,7 @@
                         stratDate: '',
                         duration: '',
                         description: '',
-                    }
+                    },
                 ]
             }
         },

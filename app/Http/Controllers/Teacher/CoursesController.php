@@ -44,7 +44,8 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $phpArray = json_decode($request["sections"],false);
+        dd($phpArray);
         if (Gate::denies('teacher-or-admin')) {
             return response()->json(["response" => 'unauthorized']);
         }
