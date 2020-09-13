@@ -110837,6 +110837,12 @@ var routes = [{
 }, {
   path: '/teacher/login',
   name: 'Signin',
+  beforeEnter: function beforeEnter(to, from, next) {
+    var user = JSON.parse(localStorage.getItem('user')) || null;
+    if (user.t === "teacher") next({
+      name: 'TeacherProfile'
+    });
+  },
   component: _components_teacher_Signin__WEBPACK_IMPORTED_MODULE_19__["default"],
   meta: {
     requiresAuth: false,
@@ -110846,6 +110852,12 @@ var routes = [{
   path: '/teacher/register',
   name: 'Become',
   component: _components_teacher_Become__WEBPACK_IMPORTED_MODULE_18__["default"],
+  beforeEnter: function beforeEnter(to, from, next) {
+    var user = JSON.parse(localStorage.getItem('user')) || null;
+    if (user.t === "teacher") next({
+      name: 'TeacherProfile'
+    });
+  },
   meta: {
     requiresAuth: false,
     title: 'Become instructor'
