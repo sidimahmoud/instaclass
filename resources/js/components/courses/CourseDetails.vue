@@ -83,7 +83,7 @@
                     <div class="col-md-3">Price: ${{course.price}}/session</div>
                 </div>
                 <div class="text-center my-3" v-if="course.sections.length===0">
-                    <h3>This course has no sessions yet</h3>
+                    <h3>This first course will be available soon...</h3>
                 </div>
                 <div v-else>
                     <div class="row justify-content-around align-items-center shadow-sm"

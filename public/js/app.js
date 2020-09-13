@@ -80101,7 +80101,9 @@ var render = function() {
             _vm._v(" "),
             _vm.course.sections.length === 0
               ? _c("div", { staticClass: "text-center my-3" }, [
-                  _c("h3", [_vm._v("This course has no sessions yet")])
+                  _c("h3", [
+                    _vm._v("This first course will be available soon...")
+                  ])
                 ])
               : _c(
                   "div",
