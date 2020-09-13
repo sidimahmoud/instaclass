@@ -310,7 +310,6 @@
                 this.sections = [];
                 for (let i = 0; i < sections; i++) {
                     this.sections.push({
-                        course_id: '',
                         title: '',
                         stratDate: '',
                         duration: '',

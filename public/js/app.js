@@ -10417,7 +10417,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       for (var i = 0; i < sections; i++) {
         this.sections.push({
-          course_id: '',
           title: '',
           stratDate: '',
           duration: '',
