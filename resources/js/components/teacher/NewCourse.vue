@@ -265,7 +265,6 @@
                 },
                 sections: [
                     {
-                        course_id: '',
                         title: '',
                         stratDate: '',
                         duration: '',
@@ -281,33 +280,29 @@
                 this.$store.dispatch('fetchSubCategories', id)
             },
             saveCourse() {
-                const token = localStorage.getItem('token') || null;
-                if (token) {
-                    // this.$store.dispatch("saveSection", this.section)
-                    const formData = new FormData();
-                    const imagefile = document.querySelector('#thumbnail');
-                    formData.append("sub_category_id", this.course.sub_category_id);
-                    formData.append("language", this.course.language);
-                    formData.append("price", this.course.price);
-                    formData.append("currency", this.course.currency);
-                    formData.append("estimated_duration", this.course.estimated_duration);
-                    formData.append("authorized_students", this.course.authorized_students);
-                    formData.append("sharable", this.course.sharable);
-                    formData.append("name", this.course.name);
-                    formData.append("short_description", this.course.short_description);
-                    formData.append("image", imagefile.files[0]);
-                    axios.post('https://instantclass.herokuapp.com/api/course', formData, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data',
-                            'Authorization': 'Bearer ' + token,
-                        }
-                    }).then(res => {
-                        console.log(res);
-                        alert("Your course was published successfully")
-                    })
-                        .catch(err => console.log(err.response));
-                    console.log(this.section);
-                }
+                const formData = new FormData();
+                const imagefile = document.querySelector('#thumbnail');
+                formData.append("sub_category_id", this.course.sub_category_id);
+                formData.append("language", this.course.language);
+                formData.append("price", this.course.price);
+                formData.append("currency", this.course.currency);
+                formData.append("estimated_duration", this.course.estimated_duration);
+                formData.append("authorized_students", this.course.authorized_students);
+                formData.append("sharable", this.course.sharable);
+                formData.append("name", this.course.name);
+                formData.append("short_description", this.course.short_description);
+                formData.append("sections", this.sections);
+                formData.append("image", imagefile.files[0]);
+                axios.post('https://instantclass.herokuapp.com/api/course', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
+                }).then(res => {
+                    console.log(res);
+                    alert("Your course was published successfully")
+                })
+                    .catch(err => console.log(err.response));
+                console.log(this.section);
             },
 
             addSection(event) {
