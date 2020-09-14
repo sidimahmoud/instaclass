@@ -16,7 +16,7 @@ class LiveCoursesController extends Controller
         $accountSid = env('TWILIO_ACCOUNT_SID');
         $apiKeySid = env('TWILIO_API_KEY');
         $apiKeySecret = env('TWILIO_API_SECRET');
-        $identity = $user;
+        $identity = $user.uniqid();
         // Create an Access Token
         $token = new AccessToken(
             $accountSid,
@@ -124,6 +124,16 @@ class LiveCoursesController extends Controller
         $room = $twilio->video->v1->rooms($myRoom)
             ->update("completed");
         return response()->json("Room completed");
+    }
+    public function removeParticipant($roomSid, $user)
+    {
+        $sid = env('TWILIO_ACCOUNT_SID');
+        $token = env('TWILIO_ACCOUNT_TOKEN');
+        $client = new Client($sid, $token);
+        $participant = $client->video->rooms($roomSid)
+            ->participants($user)
+            ->update(array("status" => "disconnected"));
+        return response()->json(["status"=>$participant->status, "user"=>$participant->identity]);
     }
 
     public function myRooms($uniqueName)

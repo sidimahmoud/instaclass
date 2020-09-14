@@ -10641,6 +10641,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _CountDown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../CountDown */ "./resources/js/components/CountDown.vue");
+/* harmony import */ var _store_modules_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/modules/user */ "./resources/js/store/modules/user.js");
 //
 //
 //
@@ -10688,6 +10689,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -10803,6 +10807,13 @@ __webpack_require__.r(__webpack_exports__);
         _this4.$router.push({
           name: "TeacherProfile"
         });
+      })["catch"](function (err) {
+        return console.log(err.response);
+      });
+    },
+    removeParticipant: function removeParticipant() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/remove-participant/".concat(this.roomSid, "/").concat(this.user)).then(function (res) {
+        console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
       });
@@ -85024,8 +85035,15 @@ var render = function() {
             { attrs: { id: "participants-list" } },
             _vm._l(_vm.participants, function(p) {
               return _c("li", [
-                _vm._v(_vm._s(p) + " "),
-                _c("i", { staticClass: "fa fa-ban" })
+                _vm._v(_vm._s(p) + "\n                    "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger ml-3",
+                    on: { click: _vm.removeParticipant }
+                  },
+                  [_vm._v("X")]
+                )
               ])
             }),
             0

@@ -38,7 +38,9 @@
                     <h3 class="border-bottom text-center">Participants</h3>
                 </div>
                 <ul id="participants-list">
-                    <li v-for="p in participants">{{p}} <i class="fa fa-ban"></i> </li>
+                    <li v-for="p in participants">{{p}}
+                        <button class="btn btn-danger ml-3" @click="removeParticipant">X</button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -48,6 +50,7 @@
 <script>
     import axios from 'axios'
     import CountDown from "../CountDown";
+    import user from "../../store/modules/user";
 
     export default {
         name: 'LiveWindowCompo',
@@ -141,6 +144,13 @@
                     })
                     .catch(err => console.log(err.response))
             },
+            removeParticipant() {
+                axios.post(`/remove-participant/${this.roomSid}/${this.user}`)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                    .catch(err => console.log(err.response))
+            },
 
             roomDetails() {
                 axios.get(`/room-details/${this.myRoom}`)
@@ -154,7 +164,7 @@
                 ).catch(err => console.log(err.response))
             },
             shareScreen() {
-                const { LocalVideoTrack } = require('twilio-video');
+                const {LocalVideoTrack} = require('twilio-video');
 
                 navigator.mediaDevices.getDisplayMedia()
                     .then(stream => {
