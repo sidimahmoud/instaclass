@@ -21,7 +21,6 @@
                         <input type="text" id="user" class="form-control" v-model="user">
                     </div>
                     <button class="btn btn-primary" @click="createRoom">Start now</button>
-                    <button class="btn btn-primary" @click="getAccessToken">Join Test</button>
                 </div>
                 <div class="m-2 bg-black text-center" v-if="started">
                     <div class="border border-dark m-2 p-1 rounded" id="video-chat-window"></div>
@@ -29,7 +28,6 @@
                     <button class="btn btn-danger" @click="endRoom">End course</button>
                     <button class="btn btn-primary" @click="shareScreen" v-if="!sharing">Share screen</button>
                     <button class="btn btn-danger" @click="stopSaring" v-if="sharing">Stop sharing</button>
-                    <button class="btn btn-danger" @click="leaveCourse" v-if="sharing">Leave Course</button>
                     <button class="btn btn-primary" @click="roomDetails" :disabled="!roomSid">Details</button>
                     <button class="btn btn-primary" @click="roomParticipants">Participants</button>
                     <button class="btn btn-primary" @click="roomRecordings">Recordings</button>
@@ -40,7 +38,7 @@
                     <h3 class="border-bottom text-center">Participants</h3>
                 </div>
                 <ul id="participants-list">
-                    <li v-for="p in participants">{{p}}</li>
+                    <li v-for="p in participants">{{p}} <i class="fa fa-ban"></i> </li>
                 </ul>
             </div>
         </div>

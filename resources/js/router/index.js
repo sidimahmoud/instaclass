@@ -17,7 +17,7 @@ import Details from "../components/courses/CourseDetails";
 import Courses from "../components/courses/Courses";
 import CoursePlayer from "../components/courses/CoursePlayer";
 import Demande from "../components/courses/Demande";
-import Live from "../components/courses/Live";
+import Live from "../components/student/Live";
 import SearchCourses from "../components/courses/SearchCourses";
 
 import Become from "../components/teacher/Become";
@@ -34,7 +34,7 @@ import CategoryCourses from "../components/courses/CategoryCourses";
 import NewCourse from "../components/teacher/NewCourse";
 import EditCourse from "../components/teacher/EditCourse";
 import NewSection from "../components/teacher/NewSection";
-import LiveWindowCompo from "../components/courses/LiveWindowCompo";
+import LiveWindowCompo from "../components/teacher/StartLive";
 import FAQ from "../components/FAQ";
 
 Vue.use(VueRouter);
