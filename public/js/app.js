@@ -10143,7 +10143,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       if (token) {
         // this.$store.dispatch("saveSection", this.section)
-        axios.post('https://instantclass.herokuapp.com/api/course/sections', this.section, {
+        axios.post('/course/sections', this.section, {
           headers: {
             'Authorization': 'Bearer ' + token
           }

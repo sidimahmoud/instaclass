@@ -67,7 +67,7 @@
                 const token = localStorage.getItem('token') || null;
                 if (token) {
                     // this.$store.dispatch("saveSection", this.section)
-                    axios.post('https://instantclass.herokuapp.com/api/course/sections', this.section, {
+                    axios.post('/course/sections', this.section, {
                         headers: {
                             'Authorization': 'Bearer ' + token,
                         }
