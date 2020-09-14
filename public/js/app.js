@@ -106479,8 +106479,8 @@ try {
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = localStorage.getItem('token');
-if (token) axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token; // axios.defaults.baseURL = 'https://instantclass.herokuapp.com/api';
-
+if (token) axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = 'https://instantclass.herokuapp.com/api';
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
