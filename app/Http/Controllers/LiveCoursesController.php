@@ -16,7 +16,7 @@ class LiveCoursesController extends Controller
         $accountSid = env('TWILIO_ACCOUNT_SID');
         $apiKeySid = env('TWILIO_API_KEY');
         $apiKeySecret = env('TWILIO_API_SECRET');
-        $identity = $user.uniqid();
+        $identity = $user."+".uniqid();
         // Create an Access Token
         $token = new AccessToken(
             $accountSid,

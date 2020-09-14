@@ -10690,7 +10690,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -10771,14 +10770,14 @@ __webpack_require__.r(__webpack_exports__);
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
 
-          _this3.participants.push(participant.identity); // participant.tracks.forEach(publication => {
-          //     if (publication.isSubscribed) {
-          //         const track = publication.track;
-          //         videoChatWindow.appendChild(track.attach());
-          //     }
-          // });
+          _this3.participants.push("".concat(participant.identity, "<button class=\"btn btn-danger ml-3\" @click=\"removeParticipant(").concat(participant.identity, ")\">X</button>"));
 
-
+          participant.tracks.forEach(function (publication) {
+            if (publication.isSubscribed) {
+              var track = publication.track;
+              videoChatWindow.appendChild(track.attach());
+            }
+          });
           participant.on('trackSubscribed', function (track) {
             videoChatWindow.appendChild(track.attach());
           });
@@ -10811,8 +10810,8 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(err.response);
       });
     },
-    removeParticipant: function removeParticipant() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/remove-participant/".concat(this.roomSid, "/").concat(this.user)).then(function (res) {
+    removeParticipant: function removeParticipant(user) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/remove-participant/".concat(this.roomSid, "/").concat(user)).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err.response);
@@ -85034,17 +85033,7 @@ var render = function() {
             "ul",
             { attrs: { id: "participants-list" } },
             _vm._l(_vm.participants, function(p) {
-              return _c("li", [
-                _vm._v(_vm._s(p) + "\n                    "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger ml-3",
-                    on: { click: _vm.removeParticipant }
-                  },
-                  [_vm._v("X")]
-                )
-              ])
+              return _c("li", [_vm._v(_vm._s(p) + "\n                ")])
             }),
             0
           )

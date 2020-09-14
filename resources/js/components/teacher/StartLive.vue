@@ -39,7 +39,6 @@
                 </div>
                 <ul id="participants-list">
                     <li v-for="p in participants">{{p}}
-                        <button class="btn btn-danger ml-3" @click="removeParticipant">X</button>
                     </li>
                 </ul>
             </div>
@@ -111,13 +110,13 @@
                     });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
-                        this.participants.push(participant.identity);
-                        // participant.tracks.forEach(publication => {
-                        //     if (publication.isSubscribed) {
-                        //         const track = publication.track;
-                        //         videoChatWindow.appendChild(track.attach());
-                        //     }
-                        // });
+                        this.participants.push(`${participant.identity}<button class="btn btn-danger ml-3" @click="removeParticipant(${participant.identity})">X</button>`);
+                        participant.tracks.forEach(publication => {
+                            if (publication.isSubscribed) {
+                                const track = publication.track;
+                                videoChatWindow.appendChild(track.attach());
+                            }
+                        });
                         participant.on('trackSubscribed', track => {
                             videoChatWindow.appendChild(track.attach());
                         });
@@ -144,8 +143,8 @@
                     })
                     .catch(err => console.log(err.response))
             },
-            removeParticipant() {
-                axios.post(`/remove-participant/${this.roomSid}/${this.user}`)
+            removeParticipant(user) {
+                axios.post(`/remove-participant/${this.roomSid}/${user}`)
                     .then(res => {
                         console.log(res.data);
                     })
