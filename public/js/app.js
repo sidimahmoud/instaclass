@@ -85033,7 +85033,9 @@ var render = function() {
             "ul",
             { attrs: { id: "participants-list" } },
             _vm._l(_vm.participants, function(p) {
-              return _c("li", [_vm._v(_vm._s(p) + "\n                ")])
+              return _c("li", { domProps: { innerHTML: _vm._s(p) } }, [
+                _vm._v(_vm._s(p) + "\n                ")
+              ])
             }),
             0
           )

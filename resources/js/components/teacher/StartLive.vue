@@ -38,7 +38,7 @@
                     <h3 class="border-bottom text-center">Participants</h3>
                 </div>
                 <ul id="participants-list">
-                    <li v-for="p in participants">{{p}}
+                    <li v-for="p in participants" v-html="p">{{p}}
                     </li>
                 </ul>
             </div>
@@ -110,7 +110,8 @@
                     });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
-                        this.participants.push(`${participant.identity}<button class="btn btn-danger ml-3" @click="removeParticipant(${participant.identity})">X</button>`);
+                        this.participants.push(
+                            `${participant.identity}<button class="btn btn-danger ml-3" @click="removeParticipant(${participant.identity})">X</button>`);
                         participant.tracks.forEach(publication => {
                             if (publication.isSubscribed) {
                                 const track = publication.track;
