@@ -39,14 +39,14 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::resource('/course', 'Teacher\CoursesController');
         Route::post('/course/sections', 'CourseFileController@store');
         //Live courses
-        Route::get('/access_token/{muRoom}/{user}', 'LiveCoursesController@generate_token');
         Route::post('/create-room/{myRoom}/{user}/{recorded}', 'LiveCoursesController@createRoom');
         Route::post('/endroom/{myRoom}', 'LiveCoursesController@closeRoom');
         Route::get('/room-details/{myRoom}', 'LiveCoursesController@roomDetails');
-        Route::get('/room-recordings/{roomSid}', 'LiveCoursesController@roomRecordings');
         Route::get('/room/{roomSid}/participants', 'LiveCoursesController@roomParticipants');
         Route::get('/rooms/{uniqueName}', 'LiveCoursesController@myRooms');
     });
+        Route::get('/room-recordings/{roomSid}', 'LiveCoursesController@roomRecordings');
+        Route::get('/access_token/{muRoom}/{user}', 'LiveCoursesController@generate_token');
 
     Route::get('/user', 'Admin\UsersController@show');
     Route::get('/user/enrollments', 'EnrollmentController@userEnrollments');

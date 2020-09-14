@@ -78727,7 +78727,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-primary btn-lg btn-block ",
-                    attrs: { type: "submit", disabled: _vm.authLoading }
+                    attrs: { type: "submit" }
                   },
                   [
                     !_vm.authLoading
