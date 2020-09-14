@@ -22,21 +22,21 @@ const getters = {
 const actions = {
     async fetchProfile({commit}) {
         header();
-        const response = await axios.get('https://instantclass.herokuapp.com/api/user');
+        const response = await axios.get('/user');
         commit('setProfile', response.data[0]);
     },
     async fetchTeacherCourses({commit}, id) {
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/teacher/${id}/courses`);
+        const response = await axios.get(`/teacher/${id}/courses`);
         commit('setTeacherCourses', response.data);
     },
     async fetchTeacherDetails({commit}) {
         header();
-        const response = await axios.get('https://instantclass.herokuapp.com/api/teacher/details');
+        const response = await axios.get('/teacher/details');
         commit('setTeacherDetails', response.data);
     },
     async fetchTeacherPayments({commit}) {
         header();
-        const response = await axios.get('https://instantclass.herokuapp.com/api/teacher/payments');
+        const response = await axios.get('/teacher/payments');
         console.log(response.data);
         commit('setTeacherPayments', response.data);
     },
@@ -44,14 +44,14 @@ const actions = {
     async fetchUserCourses({commit}) {
         commit('setProfileLoading', true);
         header();
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/user/courses`);
+        const response = await axios.get(`/user/courses`);
         commit('setCourses', response.data);
         commit('setProfileLoading', false);
     },
     async fetchUserEnrollments({commit}) {
         commit('setProfileLoading', true);
         header();
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/user/enrollments`);
+        const response = await axios.get(`/user/enrollments`);
         commit('setEnrollments', response.data);
         commit('setProfileLoading', false);
 
@@ -66,7 +66,6 @@ const mutations = {
     setTeacherDetails: (state, payload) => (state.teacherDetails = payload),
     setTeacherPayments: (state, payload) => (state.teacherPayments = payload),
     setProfileLoading: (state, val) => (state.profileLoading = val),
-
 };
 
 function header() {

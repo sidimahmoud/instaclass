@@ -16,14 +16,14 @@ const getters = {
 const actions = {
     async fetchCategories({commit}) {
         commit('loadingCategories', true);
-        const response = await axios.get('https://instantclass.herokuapp.com/api/categories');
+        const response = await axios.get('/categories');
         commit('setCategories', response.data);
         commit('loadingCategories', false);
 
     },
     async fetchSubCategories({commit}, id) {
         commit('loadingCategories', true);
-        const response = await axios.get('https://instantclass.herokuapp.com/api/subcats/'+id);
+        const response = await axios.get('/subcats/'+id);
         commit('setSubCategories', response.data);
         commit('loadingCategories', false);
     },

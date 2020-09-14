@@ -6543,7 +6543,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append("name", this.name);
       formData.append("description", this.description);
       formData.append("image", imagefile.files[0]);
-      axios.post('https://instantclass.herokuapp.com/api/categories', formData, {
+      axios.post('/categories', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -10023,7 +10023,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append("short_description", this.course.short_description);
       formData.append("sections", this.sections);
       formData.append("image", imagefile.files[0]);
-      axios.post('https://instantclass.herokuapp.com/api/course', formData, {
+      axios.post('/course', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -106479,8 +106479,8 @@ try {
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = localStorage.getItem('token');
-if (token) axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = 'https://instantclass.herokuapp.com/api';
+if (token) axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token; // axios.defaults.baseURL = 'https://instantclass.herokuapp.com/api';
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -110931,7 +110931,7 @@ var actions = {
               commit = _ref.commit;
               headers();
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/payments/received');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/payments/received');
 
             case 4:
               response = _context.sent;
@@ -110955,7 +110955,7 @@ var actions = {
               commit = _ref2.commit;
               headers();
               _context2.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/payments/sent');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/payments/sent');
 
             case 4:
               response = _context2.sent;
@@ -111055,7 +111055,7 @@ var actions = {
               commit = _ref.commit;
               headers();
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/teachers');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/teachers');
 
             case 4:
               response = _context.sent;
@@ -111081,7 +111081,7 @@ var actions = {
               commit("setFetchingUsers", true);
               headers();
               _context2.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/banned');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/banned');
 
             case 5:
               response = _context2.sent;
@@ -111107,7 +111107,7 @@ var actions = {
               commit("setFetchingUsers", true);
               headers();
               _context3.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/students');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/students');
 
             case 5:
               response = _context3.sent;
@@ -111133,7 +111133,7 @@ var actions = {
               commit("setFetchingUsers", true);
               headers();
               _context4.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/admins');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/admins');
 
             case 5:
               response = _context4.sent;
@@ -111159,7 +111159,7 @@ var actions = {
               commit("setFetchingUsers", true);
               headers();
               _context5.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/counts');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/counts');
 
             case 5:
               response = _context5.sent;
@@ -111261,7 +111261,7 @@ var actions = {
               return _context.abrupt("return", new Promise(function (resolve, reject) {
                 commit('auth_request');
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  url: 'https://instantclass.herokuapp.com/api/login',
+                  url: '/login',
                   data: user,
                   method: 'POST'
                 }).then(function (resp) {
@@ -111302,7 +111302,7 @@ var actions = {
               commit = _ref2.commit;
               commit('auth_request');
               return _context2.abrupt("return", new Promise(function (resolve, reject) {
-                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/authorize/".concat(provider)).then(function (resp) {
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/authorize/".concat(provider)).then(function (resp) {
                   resolve(resp);
                 })["catch"](function (err) {
                   commit('auth_error');
@@ -111327,7 +111327,7 @@ var actions = {
             case 0:
               commit = _ref3.commit;
               return _context3.abrupt("return", new Promise(function (resolve, reject) {
-                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/authorize/google/callback", {
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/authorize/google/callback", {
                   params: payload
                 }).then(function (resp) {
                   console.log(resp);
@@ -111364,7 +111364,7 @@ var actions = {
             case 0:
               commit = _ref4.commit;
               return _context4.abrupt("return", new Promise(function (resolve, reject) {
-                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/authorize/facebook/callback", {
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/authorize/facebook/callback", {
                   params: payload
                 }).then(function (resp) {
                   console.log(resp);
@@ -111403,7 +111403,7 @@ var actions = {
               return _context5.abrupt("return", new Promise(function (resolve, reject) {
                 commit('auth_request');
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  url: 'https://instantclass.herokuapp.com/api/register',
+                  url: '/register',
                   data: user,
                   method: 'POST'
                 }).then(function (resp) {
@@ -111535,7 +111535,7 @@ var actions = {
               commit = _ref.commit;
               commit('loadingCategories', true);
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/categories');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/categories');
 
             case 4:
               response = _context.sent;
@@ -111560,7 +111560,7 @@ var actions = {
               commit = _ref2.commit;
               commit('loadingCategories', true);
               _context2.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/subcats/' + id);
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/subcats/' + id);
 
             case 4:
               response = _context2.sent;
@@ -111635,7 +111635,7 @@ var actions = {
               commit = _ref.commit;
               return _context.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  url: 'https://instantclass.herokuapp.com/api/contacter',
+                  url: '/contacter',
                   data: payload,
                   method: 'POST'
                 }).then(function (resp) {
@@ -111663,7 +111663,7 @@ var actions = {
             case 0:
               commit = _ref2.commit;
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/contacts");
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/contacts");
 
             case 3:
               response = _context2.sent;
@@ -111777,7 +111777,7 @@ var actions = {
               headers();
               commit('setLoading', true);
               _context2.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/".concat(slug));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/courses/".concat(slug));
 
             case 5:
               response = _context2.sent;
@@ -111814,7 +111814,7 @@ var actions = {
               commit = _ref3.commit;
               commit('setLoading', true);
               _context3.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/search/".concat(q));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/courses/search/".concat(q));
 
             case 4:
               response = _context3.sent;
@@ -111840,7 +111840,7 @@ var actions = {
               return _context4.abrupt("return", new Promise(function (resolve, reject) {
                 commit('setLoading', true);
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  url: 'https://instantclass.herokuapp.com/api/courses/demander',
+                  url: '/courses/demander',
                   data: payload,
                   method: 'POST'
                 }).then(function (resp) {
@@ -111902,7 +111902,7 @@ var actions = {
               commit('setLoading', true);
               return _context6.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  url: 'https://instantclass.herokuapp.com/api/enroll',
+                  url: '/enroll',
                   data: payload,
                   method: 'POST'
                 }).then(function (resp) {
@@ -111932,7 +111932,7 @@ var actions = {
               commit = _ref7.commit;
               headers();
               return _context7.abrupt("return", new Promise(function (resolve, reject) {
-                axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('https://instantclass.herokuapp.com/api/course/' + id).then(function (resp) {
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('/course/' + id).then(function (resp) {
                   console.log(resp);
                   resolve(resp);
                 })["catch"](function (err) {
@@ -111958,7 +111958,7 @@ var actions = {
               commit = _ref8.commit;
               commit('setLoading', true);
               _context8.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses/demands");
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/courses/demands");
 
             case 4:
               response = _context8.sent;
@@ -111983,7 +111983,7 @@ var actions = {
               commit = _ref9.commit;
               commit('setLoading', true);
               _context9.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/class/".concat(id));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/class/".concat(id));
 
             case 4:
               response = _context9.sent;
@@ -112009,7 +112009,7 @@ var actions = {
               headers();
               return _context10.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  url: 'https://instantclass.herokuapp.com/api/course/sections',
+                  url: '/course/sections',
                   data: payload,
                   method: 'POST'
                 }).then(function (resp) {
@@ -112155,7 +112155,7 @@ var actions = {
               commit = _ref.commit;
               header();
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/user');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/user');
 
             case 4:
               response = _context.sent;
@@ -112178,7 +112178,7 @@ var actions = {
             case 0:
               commit = _ref2.commit;
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/teacher/".concat(id, "/courses"));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/teacher/".concat(id, "/courses"));
 
             case 3:
               response = _context2.sent;
@@ -112202,7 +112202,7 @@ var actions = {
               commit = _ref3.commit;
               header();
               _context3.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/teacher/details');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/teacher/details');
 
             case 4:
               response = _context3.sent;
@@ -112226,7 +112226,7 @@ var actions = {
               commit = _ref4.commit;
               header();
               _context4.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://instantclass.herokuapp.com/api/teacher/payments');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/teacher/payments');
 
             case 4:
               response = _context4.sent;
@@ -112252,7 +112252,7 @@ var actions = {
               commit('setProfileLoading', true);
               header();
               _context5.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/user/courses");
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/user/courses");
 
             case 5:
               response = _context5.sent;
@@ -112278,7 +112278,7 @@ var actions = {
               commit('setProfileLoading', true);
               header();
               _context6.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/user/enrollments");
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/user/enrollments");
 
             case 5:
               response = _context6.sent;

@@ -13,12 +13,12 @@ const getters = {
 const actions = {
     async fetchReceived({commit}) {
         headers();
-        const response = await axios.get('https://instantclass.herokuapp.com/api/payments/received');
+        const response = await axios.get('/payments/received');
         commit('setReceived', response.data);
     },
     async fetchSent({commit}) {
         headers();
-        const response = await axios.get('https://instantclass.herokuapp.com/api/payments/sent');
+        const response = await axios.get('/payments/sent');
         commit('setSent', response.data);
     },
 

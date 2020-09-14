@@ -20,21 +20,21 @@ const getters = {
 const actions = {
     async fetchTeachers({commit}) {
         headers();
-        const response = await axios.get('https://instantclass.herokuapp.com/api/teachers');
+        const response = await axios.get('/teachers');
         commit('setTeachers', response.data);
         commit("setFetchingUsers", false);
     },
     async fetchBanned({commit}) {
         commit("setFetchingUsers", true);
         headers();
-        const response = await axios.get('https://instantclass.herokuapp.com/api/banned');
+        const response = await axios.get('/banned');
         commit('setBanned', response.data);
         commit("setFetchingUsers", false);
     },
     async fetchStudents({commit}) {
         commit("setFetchingUsers", true);
         headers();
-        const response = await axios.get('https://instantclass.herokuapp.com/api/students');
+        const response = await axios.get('/students');
         commit('setStudents', response.data);
         commit("setFetchingUsers", false);
 
@@ -42,7 +42,7 @@ const actions = {
     async fetchAdmins({commit}) {
         commit("setFetchingUsers", true);
         headers();
-        const response = await axios.get('https://instantclass.herokuapp.com/api/admins');
+        const response = await axios.get('/admins');
         commit('setAdmins', response.data);
         commit("setFetchingUsers", false);
 
@@ -50,7 +50,7 @@ const actions = {
     async loadCounts({commit}) {
         commit("setFetchingUsers", true);
         headers();
-        const response = await axios.get('https://instantclass.herokuapp.com/api/counts')
+        const response = await axios.get('/counts')
         commit("setCounts", response.data);
         commit("setFetchingUsers", false);
 

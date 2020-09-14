@@ -17,7 +17,7 @@ const actions = {
     async login({commit}, user) {
         return new Promise((resolve, reject) => {
             commit('auth_request');
-            axios({url: 'https://instantclass.herokuapp.com/api/login', data: user, method: 'POST'})
+            axios({url: '/login', data: user, method: 'POST'})
                 .then(resp => {
                     const token = resp.data.token;
                     const user = {
@@ -44,7 +44,7 @@ const actions = {
     async socialStudentAuth({commit}, provider) {
         commit('auth_request');
         return new Promise((resolve, reject) => {
-            axios.get(`https://instantclass.herokuapp.com/api/authorize/${provider}`)
+            axios.get(`/authorize/${provider}`)
                 .then(resp => {
                     resolve(resp)
                 })
@@ -56,7 +56,7 @@ const actions = {
     },
     async googleCallback({commit}, payload) {
         return new Promise((resolve, reject) => {
-            axios.get(`https://instantclass.herokuapp.com/api/authorize/google/callback`, {
+            axios.get(`/authorize/google/callback`, {
                 params: payload
             })
                 .then(resp => {
@@ -80,7 +80,7 @@ const actions = {
     },
     async facebookCallback({commit}, payload) {
         return new Promise((resolve, reject) => {
-            axios.get(`https://instantclass.herokuapp.com/api/authorize/facebook/callback`, {
+            axios.get(`/authorize/facebook/callback`, {
                 params: payload
             })
                 .then(resp => {
@@ -106,7 +106,7 @@ const actions = {
     async register({commit}, user) {
         return new Promise((resolve, reject) => {
             commit('auth_request');
-            axios({url: 'https://instantclass.herokuapp.com/api/register', data: user, method: 'POST'})
+            axios({url: '/register', data: user, method: 'POST'})
                 .then(resp => {
                     console.log(resp);
                     const token = resp.data.token;

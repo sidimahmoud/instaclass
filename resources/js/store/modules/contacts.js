@@ -11,7 +11,7 @@ const actions = {
 
     async contacter({commit}, payload) {
         return new Promise((resolve, reject) => {
-            axios({url: 'https://instantclass.herokuapp.com/api/contacter', data: payload, method: 'POST'})
+            axios({url: '/contacter', data: payload, method: 'POST'})
                 .then(resp => {
                     console.log(resp);
                     resolve(resp)
@@ -22,7 +22,7 @@ const actions = {
         })
     },
     async fetchContacts({commit}) {
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/contacts`);
+        const response = await axios.get(`/contacts`);
         commit('setContcts', response.data);
     },
 };

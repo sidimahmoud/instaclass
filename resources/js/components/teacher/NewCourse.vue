@@ -293,7 +293,7 @@
                 formData.append("short_description", this.course.short_description);
                 formData.append("sections", this.sections);
                 formData.append("image", imagefile.files[0]);
-                axios.post('https://instantclass.herokuapp.com/api/course', formData, {
+                axios.post('/course', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     }

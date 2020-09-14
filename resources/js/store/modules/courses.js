@@ -28,7 +28,7 @@ const actions = {
     async getCourse({commit}, slug) {
         headers();
         commit('setLoading', true);
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/${slug}`,);
+        const response = await axios.get(`/courses/${slug}`,);
         commit('setCourse', response.data[0]);
         const me = JSON.parse(localStorage.getItem('user')) || null;
         commit('setEnrolled', false);
@@ -45,14 +45,14 @@ const actions = {
     },
     async search({commit}, q) {
         commit('setLoading', true);
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/search/${q}`);
+        const response = await axios.get(`/courses/search/${q}`);
         commit('setCourses', response.data);
         commit('setLoading', false);
     },
     async demander({commit}, payload) {
         return new Promise((resolve, reject) => {
             commit('setLoading', true);
-            axios({url: 'https://instantclass.herokuapp.com/api/courses/demander', data: payload, method: 'POST'})
+            axios({url: '/courses/demander', data: payload, method: 'POST'})
                 .then(resp => {
                     console.log(resp);
                     commit('setLoading', false);
@@ -80,7 +80,7 @@ const actions = {
         headers();
         commit('setLoading', true);
         return new Promise((resolve, reject) => {
-            axios({url: 'https://instantclass.herokuapp.com/api/enroll', data: payload, method: 'POST'})
+            axios({url: '/enroll', data: payload, method: 'POST'})
                 .then(resp => {
                     commit('setLoading', false);
                     resolve(resp)
@@ -94,7 +94,7 @@ const actions = {
     async deleteCourse({commit}, id) {
         headers();
         return new Promise((resolve, reject) => {
-            axios.delete('https://instantclass.herokuapp.com/api/course/' + id)
+            axios.delete('/course/' + id)
                 .then(resp => {
                     console.log(resp);
                     resolve(resp)
@@ -107,20 +107,20 @@ const actions = {
 
     async fetchDemands({commit}) {
         commit('setLoading', true);
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/courses/demands`);
+        const response = await axios.get(`/courses/demands`);
         commit('setDemands', response.data);
         commit('setLoading', false);
     },
     async getCategoryCourses({commit}, id) {
         commit('setLoading', true);
-        const response = await axios.get(`https://instantclass.herokuapp.com/api/class/${id}`);
+        const response = await axios.get(`/class/${id}`);
         commit('setCategoryCourses', response.data);
         commit('setLoading', false);
     },
     async saveSection({commit}, payload) {
         headers();
         return new Promise((resolve, reject) => {
-            axios({url: 'https://instantclass.herokuapp.com/api/course/sections', data: payload, method: 'POST'})
+            axios({url: '/course/sections', data: payload, method: 'POST'})
                 .then(resp => {
                     console.log(resp);
                     resolve(resp)
