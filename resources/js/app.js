@@ -12,6 +12,7 @@ Vue.component('appnav', require('./components/header/NavbarCompnent.vue').defaul
 Vue.component('appfooter', require('./components/FooterComponent.vue').default);
 
 Vue.component('Home', require('./components/HomeCompnent.vue').default);
+ axios.defaults.baseURL = "http://165.227.44.118/api";
 
 
 import store from './store'
