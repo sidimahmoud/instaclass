@@ -13,8 +13,6 @@ Vue.component('appfooter', require('./components/FooterComponent.vue').default);
 
 Vue.component('Home', require('./components/HomeCompnent.vue').default);
 
-axios.defaults.baseURL = process.env.BASE_URL;
-
 
 import store from './store'
 import router from './router'

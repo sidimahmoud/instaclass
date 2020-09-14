@@ -106332,7 +106332,7 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
@@ -106347,7 +106347,6 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('appnav', __webpack_require__(/*! ./components/header/NavbarCompnent.vue */ "./resources/js/components/header/NavbarCompnent.vue")["default"]);
 Vue.component('appfooter', __webpack_require__(/*! ./components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue")["default"]);
 Vue.component('Home', __webpack_require__(/*! ./components/HomeCompnent.vue */ "./resources/js/components/HomeCompnent.vue")["default"]);
-axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = process.env.BASE_URL;
 
 
 
@@ -106364,7 +106363,6 @@ var app = new Vue({
     }
   }
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -106480,8 +106478,8 @@ try {
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = localStorage.getItem('token');
-if (token) axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = 'http://165.227.44.118/api';
+if (token) axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token; // axios.defaults.baseURL = process.env.BASE_URL;
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -110440,7 +110438,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
@@ -110805,7 +110803,7 @@ var routes = [{
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
-  base: process.env.BASE_URL,
+  base: "process.env.MIX_API_URL",
   routes: routes
 });
 router.beforeEach(function (to, from, next) {
@@ -110836,7 +110834,6 @@ router.beforeEach(function (to, from, next) {
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
