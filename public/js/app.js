@@ -6652,7 +6652,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return;
       }
 
-      axios.post('https://instantclass.herokuapp.com/api/sub-categories', {
+      axios.post('/sub-categories', {
         category_id: this.category_id,
         name: this.name
       }).then(function (res) {
@@ -75638,12 +75638,7 @@ var render = function() {
                         [
                           _c("img", {
                             staticClass: "card-img-top",
-                            attrs: {
-                              src:
-                                "https://instantclass.herokuapp.com/" +
-                                categ.image,
-                              alt: "Card image cap"
-                            }
+                            attrs: { src: categ.image, alt: "Card image cap" }
                           })
                         ]
                       ),
@@ -111752,7 +111747,7 @@ var actions = {
               commit = _ref.commit;
               commit('setLoading', true);
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://instantclass.herokuapp.com/api/courses?page=".concat(page));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/courses?page=".concat(page));
 
             case 4:
               response = _context.sent;

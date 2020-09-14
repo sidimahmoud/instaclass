@@ -75,7 +75,7 @@
                     alert("Select category");
                     return
                 }
-                axios.post('https://instantclass.herokuapp.com/api/sub-categories', {category_id: this.category_id, name:this.name})
+                axios.post('/sub-categories', {category_id: this.category_id, name:this.name})
                     .then(res => {
                     alert("Sub-category created successfully")
                     location.reload()
