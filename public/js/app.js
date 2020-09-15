@@ -9229,13 +9229,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.roomSid = room.sid;
         _this2.activeRoom = room;
         var videoChatWindow = document.getElementById('video-chat-window');
-        createLocalTracks({
-          audio: true,
-          video: {
-            width: 1280,
-            height: 300
-          }
-        }).then(function (track) {
+        createLocalVideoTrack().then(function (track) {
           return videoChatWindow.appendChild(track.attach());
         });
         room.on('participantConnected', function (participant) {
