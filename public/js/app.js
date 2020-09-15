@@ -9191,14 +9191,14 @@ __webpack_require__.r(__webpack_exports__);
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
 
-          _this2.participants.push(participant.identity); // participant.tracks.forEach(publication => {
-          //     if (publication.isSubscribed) {
-          //         const track = publication.track;
-          //         videoChatWindow.appendChild(track.attach());
-          //     }
-          // });
+          _this2.participants.push(participant.identity);
 
-
+          participant.tracks.forEach(function (publication) {
+            if (publication.isSubscribed) {
+              var track = publication.track;
+              videoChatWindow.appendChild(track.attach());
+            }
+          });
           participant.on('trackSubscribed', function (track) {
             videoChatWindow.appendChild(track.attach());
           });
@@ -81807,7 +81807,7 @@ var render = function() {
             "ul",
             { attrs: { id: "participants-list" } },
             _vm._l(_vm.participants, function(p) {
-              return _c("li", [_vm._v(_vm._s(p))])
+              return _c("li", [_vm._v(_vm._s(p) + " ")])
             }),
             0
           )
@@ -110447,7 +110447,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
@@ -110812,7 +110812,7 @@ var routes = [{
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
-  base: process.env.MIX_API_URL,
+  base: "https://instantclass.herokuapp.com/api",
   routes: routes
 });
 router.beforeEach(function (to, from, next) {
@@ -110843,7 +110843,6 @@ router.beforeEach(function (to, from, next) {
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 

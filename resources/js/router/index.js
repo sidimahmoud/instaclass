@@ -10,7 +10,7 @@ import EmailConfirmation from "../components/auth/EmailConfirmation";
 
 import Home from "../components/HomeCompnent";
 import About from "../components/About";
-import Countact from "../components/ContactCompo";
+import Contact from "../components/ContactCompo";
 import Checkout from "../components/checkout/Checkout";
 
 import Details from "../components/courses/CourseDetails";
@@ -73,7 +73,7 @@ const routes = [
     {
         path: '/contact',
         name: 'Contact',
-        component: Countact,
+        component: Contact,
         meta: {
             requiresAuth: false,
             title: 'Contact'
