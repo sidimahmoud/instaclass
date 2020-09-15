@@ -21,6 +21,8 @@
                         <input type="text" id="user" class="form-control" v-model="user">
                     </div>
                     <button class="btn btn-primary" @click="createRoom">Start now</button>
+                    <button class="btn btn-primary" @click="getAccessToken">Join Course</button>
+
                 </div>
                 <div class="m-2 bg-black text-center" v-if="started">
                     <div class="border border-dark m-2 p-1 rounded" id="video-chat-window"></div>
@@ -38,7 +40,8 @@
                     <h3 class="border-bottom text-center">Participants</h3>
                 </div>
                 <ul id="participants-list">
-                    <li v-for="p in participants" v-html="p">{{p}}
+                    <li v-for="p in participants">{{p}}
+                        <button class="btn btn-danger ml-3" @click="removeParticipant(p)">X</button>
                     </li>
                 </ul>
             </div>
@@ -82,8 +85,6 @@
                     .catch(error => console.log(error))
             },
             createRoom() {
-                let token = localStorage.getItem('token');
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                 axios.post(`/create-room/${this.myRoom}/${this.user}/${this.recorded}`).then(res => {
                         console.log(res.data);
                         this.started = true;
@@ -110,8 +111,7 @@
                     });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
-                        this.participants.push(
-                            `${participant.identity}<button class="btn btn-danger ml-3" @click="removeParticipant(${participant.identity})">X</button>`);
+                        this.participants.push(participant.identity);
                         participant.tracks.forEach(publication => {
                             if (publication.isSubscribed) {
                                 const track = publication.track;
@@ -185,10 +185,7 @@
                 this.activeRoom.localParticipant.tracks.forEach(track => {
                     track.stop()
                 });
-                this.activeRoom.localParticipant.unpublishTrack(screenTrack);
-                screenTrack.stop();
-                screenTrack = null;
-                this.sharing = false;
+                this.removeParticipant(this.activeRoom.localParticipant)
             },
             roomParticipants() {
                 axios.get(`room/${this.roomSid}/participants`).then(res => {

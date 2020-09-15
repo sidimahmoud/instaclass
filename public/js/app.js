@@ -9222,10 +9222,6 @@ __webpack_require__.r(__webpack_exports__);
       this.activeRoom.localParticipant.tracks.forEach(function (track) {
         track.stop();
       });
-      this.activeRoom.localParticipant.unpublishTrack(screenTrack);
-      screenTrack.stop();
-      screenTrack = null;
-      this.sharing = false;
     }
   }
 });
@@ -10690,6 +10686,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -10728,8 +10727,6 @@ __webpack_require__.r(__webpack_exports__);
     createRoom: function createRoom() {
       var _this2 = this;
 
-      var token = localStorage.getItem('token');
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/create-room/".concat(this.myRoom, "/").concat(this.user, "/").concat(this.recorded)).then(function (res) {
         console.log(res.data);
         _this2.started = true;
@@ -10770,7 +10767,7 @@ __webpack_require__.r(__webpack_exports__);
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
 
-          _this3.participants.push("".concat(participant.identity, "<button class=\"btn btn-danger ml-3\" @click=\"removeParticipant(").concat(participant.identity, ")\">X</button>"));
+          _this3.participants.push(participant.identity);
 
           participant.tracks.forEach(function (publication) {
             if (publication.isSubscribed) {
@@ -10855,10 +10852,7 @@ __webpack_require__.r(__webpack_exports__);
       this.activeRoom.localParticipant.tracks.forEach(function (track) {
         track.stop();
       });
-      this.activeRoom.localParticipant.unpublishTrack(screenTrack);
-      screenTrack.stop();
-      screenTrack = null;
-      this.sharing = false;
+      this.removeParticipant(this.activeRoom.localParticipant);
     },
     roomParticipants: function roomParticipants() {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("room/".concat(this.roomSid, "/participants")).then(function (res) {
@@ -84956,6 +84950,15 @@ var render = function() {
                     on: { click: _vm.createRoom }
                   },
                   [_vm._v("Start now")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: { click: _vm.getAccessToken }
+                  },
+                  [_vm._v("Join Course")]
                 )
               ])
             : _vm._e(),
@@ -85033,8 +85036,20 @@ var render = function() {
             "ul",
             { attrs: { id: "participants-list" } },
             _vm._l(_vm.participants, function(p) {
-              return _c("li", { domProps: { innerHTML: _vm._s(p) } }, [
-                _vm._v(_vm._s(p) + "\n                ")
+              return _c("li", [
+                _vm._v(_vm._s(p) + "\n                    "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger ml-3",
+                    on: {
+                      click: function($event) {
+                        return _vm.removeParticipant(p)
+                      }
+                    }
+                  },
+                  [_vm._v("X")]
+                )
               ])
             }),
             0

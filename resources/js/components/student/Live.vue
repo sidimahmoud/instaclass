@@ -120,10 +120,6 @@
                 this.activeRoom.localParticipant.tracks.forEach(track => {
                     track.stop()
                 });
-                this.activeRoom.localParticipant.unpublishTrack(screenTrack);
-                screenTrack.stop();
-                screenTrack = null;
-                this.sharing = false;
             },
         },
     }
