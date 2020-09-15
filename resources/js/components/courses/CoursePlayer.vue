@@ -25,18 +25,7 @@
                                         {{course.description}}
                                     </p>
                                     <div>
-                        <span>
-                            <span class="h5 mr-5 font-weight-bold">{{course.enrollments.length}} Total Students</span>
-                        </span>
-                                        <span>
-                                 4.7
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        ({{course.ratings.length}} Rating)
-                        </span>
+                                        <span class="h5 mr-5 font-weight-bold">{{course.enrollments.length}} Total Students</span>
                                     </div>
                                     <div>
                                         <p class="h5 mt-5 font-weight-bold">What you’ll learn?</p>
@@ -80,7 +69,7 @@
             </div>
             <div class="col-md-3 col-sm-12">
                 <div class="row shadow-sm ">
-                    <h4 class="text-center">Course content
+                    <h4 class="text-center">Participants
                     </h4>
                 </div>
             </div>
@@ -134,6 +123,7 @@
 
 <script>
     import {mapGetters} from "vuex";
+    import axios from "axios";
 
     export default {
         name: "CoursePlayer",
@@ -146,15 +136,66 @@
             }
         },
         methods: {
+            getAccessToken() {
+                const _this = this;
+                // Request a new token
+                axios.get(`/access_token/${this.myRoom}/${this.user}`)
+                    .then(response => {
+                        _this.accessToken = response.data;
+                        _this.started = true;
+                        _this.connectToRoom()
+                    })
+                    .catch(error => console.log(error))
+            },
+            connectToRoom() {
+                const {connect, createLocalVideoTrack, createLocalTracks} = require('twilio-video');
+                connect(this.accessToken, {name: this.myRoom}).then(room => {
+                    console.log(`Successfully joined a Room: ${room}`);
+                    this.roomSid = room.sid;
+                    this.activeRoom = room;
+                    const videoChatWindow = document.getElementById('video-chat-window');
+                    createLocalTracks({
+                        audio: true,
+                        video: {width: 1280, height: 300},
+                    }).then(track => videoChatWindow.appendChild(track.attach()));
+                    room.on('participantConnected', participant => {
+                        console.log(`Participant "${participant.identity}" connected`);
+                        this.participants.push(participant.identity);
+
+                        participant.tracks.forEach(publication => {
+                            if (publication.isSubscribed) {
+                                const track = publication.track;
+                                videoChatWindow.appendChild(track.attach());
+                            }
+                        });
+
+                        participant.on('trackSubscribed', track => {
+                            videoChatWindow.appendChild(track.attach());
+                        });
+                    });
+                    room.on('participantDisconnected', participant => {
+                        console.log(`Participant ${participant.identity} disconnected`);
+                        this.participants.splice(this.participants.indexOf(participant.identity), 1);
+                        participant.tracks.forEach(function (track) {
+                            track.detach().forEach(function (mediaElement) {
+                                mediaElement.remove();
+                            });
+                        });
+                    });
+
+                }, error => {
+                    console.error(`Unable to connect to Room: ${error.message}`);
+                });
+            },
             findCourse() {
                 this.$store.dispatch('getCourse', this.$route.params.slug)
             },
             rating() {
-                this.$store.dispatch('rateCourse',{rate: this.rate, review: this.review, course_id: this.course_id})
-                .then(res =>{
-                    res.data==="success"?alert("Success"):alert("error");
-                    window.location.reload()
-                }).catch(err=>console.log(err))
+                this.$store.dispatch('rateCourse', {rate: this.rate, review: this.review, course_id: this.course_id})
+                    .then(res => {
+                        res.data === "success" ? alert("Success") : alert("error");
+                        window.location.reload()
+                    }).catch(err => console.log(err))
             }
         },
         computed: mapGetters(["course"]),

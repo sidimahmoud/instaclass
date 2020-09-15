@@ -53,6 +53,7 @@
     import axios from 'axios'
     import CountDown from "../CountDown";
     import user from "../../store/modules/user";
+
     export default {
         name: 'LiveWindowCompo',
         components: {
@@ -94,8 +95,9 @@
                     }
                 ).catch(err => console.log(err.response))
             },
+
             connectToRoom() {
-                const {connect, createLocalTracks} = require('twilio-video');
+                const {connect, createLocalVideoTrack, createLocalTracks} = require('twilio-video');
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
@@ -104,19 +106,18 @@
                     createLocalTracks({
                         audio: true,
                         video: {width: 1280, height: 300},
-                    }).then(localTracks => {
-                        localTracks.forEach(track => videoChatWindow.appendChild(track.attach())
-                        );
-                    });
+                    }).then(track => videoChatWindow.appendChild(track.attach()));
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
                         this.participants.push(participant.identity);
+
                         participant.tracks.forEach(publication => {
                             if (publication.isSubscribed) {
                                 const track = publication.track;
                                 videoChatWindow.appendChild(track.attach());
                             }
                         });
+
                         participant.on('trackSubscribed', track => {
                             videoChatWindow.appendChild(track.attach());
                         });

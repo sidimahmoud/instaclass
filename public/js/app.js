@@ -8349,17 +8349,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -8484,6 +8475,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CoursePlayer",
   data: function data() {
@@ -8495,6 +8487,73 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    getAccessToken: function getAccessToken() {
+      var _this = this; // Request a new token
+
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/access_token/".concat(this.myRoom, "/").concat(this.user)).then(function (response) {
+        _this.accessToken = response.data;
+        _this.started = true;
+
+        _this.connectToRoom();
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    connectToRoom: function connectToRoom() {
+      var _this2 = this;
+
+      var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
+          connect = _require.connect,
+          createLocalVideoTrack = _require.createLocalVideoTrack,
+          createLocalTracks = _require.createLocalTracks;
+
+      connect(this.accessToken, {
+        name: this.myRoom
+      }).then(function (room) {
+        console.log("Successfully joined a Room: ".concat(room));
+        _this2.roomSid = room.sid;
+        _this2.activeRoom = room;
+        var videoChatWindow = document.getElementById('video-chat-window');
+        createLocalTracks({
+          audio: true,
+          video: {
+            width: 1280,
+            height: 300
+          }
+        }).then(function (track) {
+          return videoChatWindow.appendChild(track.attach());
+        });
+        room.on('participantConnected', function (participant) {
+          console.log("Participant \"".concat(participant.identity, "\" connected"));
+
+          _this2.participants.push(participant.identity);
+
+          participant.tracks.forEach(function (publication) {
+            if (publication.isSubscribed) {
+              var track = publication.track;
+              videoChatWindow.appendChild(track.attach());
+            }
+          });
+          participant.on('trackSubscribed', function (track) {
+            videoChatWindow.appendChild(track.attach());
+          });
+        });
+        room.on('participantDisconnected', function (participant) {
+          console.log("Participant ".concat(participant.identity, " disconnected"));
+
+          _this2.participants.splice(_this2.participants.indexOf(participant.identity), 1);
+
+          participant.tracks.forEach(function (track) {
+            track.detach().forEach(function (mediaElement) {
+              mediaElement.remove();
+            });
+          });
+        });
+      }, function (error) {
+        console.error("Unable to connect to Room: ".concat(error.message));
+      });
+    },
     findCourse: function findCourse() {
       this.$store.dispatch('getCourse', this.$route.params.slug);
     },
@@ -9160,6 +9219,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
           connect = _require.connect,
+          createLocalVideoTrack = _require.createLocalVideoTrack,
           createLocalTracks = _require.createLocalTracks;
 
       connect(this.accessToken, {
@@ -9175,10 +9235,8 @@ __webpack_require__.r(__webpack_exports__);
             width: 1280,
             height: 300
           }
-        }).then(function (localTracks) {
-          localTracks.forEach(function (track) {
-            return videoChatWindow.appendChild(track.attach());
-          });
+        }).then(function (track) {
+          return videoChatWindow.appendChild(track.attach());
         });
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
@@ -9208,11 +9266,6 @@ __webpack_require__.r(__webpack_exports__);
         });
       }, function (error) {
         console.error("Unable to connect to Room: ".concat(error.message));
-      });
-    },
-    leaveCourse: function leaveCourse() {
-      this.activeRoom.localParticipant.tracks.forEach(function (track) {
-        track.stop();
       });
     }
   }
@@ -10736,6 +10789,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
           connect = _require.connect,
+          createLocalVideoTrack = _require.createLocalVideoTrack,
           createLocalTracks = _require.createLocalTracks;
 
       connect(this.accessToken, {
@@ -10751,10 +10805,8 @@ __webpack_require__.r(__webpack_exports__);
             width: 1280,
             height: 300
           }
-        }).then(function (localTracks) {
-          localTracks.forEach(function (track) {
-            return videoChatWindow.appendChild(track.attach());
-          });
+        }).then(function (track) {
+          return videoChatWindow.appendChild(track.attach());
         });
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
@@ -80134,36 +80186,10 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", [
-                      _c("span", [
-                        _c(
-                          "span",
-                          { staticClass: "h5 mr-5 font-weight-bold" },
-                          [
-                            _vm._v(
-                              _vm._s(_vm.course.enrollments.length) +
-                                " Total Students"
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("span", [
+                      _c("span", { staticClass: "h5 mr-5 font-weight-bold" }, [
                         _vm._v(
-                          "\n                             4.7\n                    "
-                        ),
-                        _c("i", { staticClass: "fa fa-star text-warning" }),
-                        _vm._v(" "),
-                        _c("i", { staticClass: "fa fa-star text-warning" }),
-                        _vm._v(" "),
-                        _c("i", { staticClass: "fa fa-star text-warning" }),
-                        _vm._v(" "),
-                        _c("i", { staticClass: "fa fa-star text-warning" }),
-                        _vm._v(" "),
-                        _c("i", { staticClass: "fa fa-star text-warning" }),
-                        _vm._v(
-                          "\n                    (" +
-                            _vm._s(_vm.course.ratings.length) +
-                            " Rating)\n                    "
+                          _vm._s(_vm.course.enrollments.length) +
+                            " Total Students"
                         )
                       ])
                     ]),
@@ -80475,7 +80501,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-md-3 col-sm-12" }, [
       _c("div", { staticClass: "row shadow-sm " }, [
         _c("h4", { staticClass: "text-center" }, [
-          _vm._v("Course content\n                ")
+          _vm._v("Participants\n                ")
         ])
       ])
     ])
@@ -110795,7 +110821,7 @@ var routes = [{
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
-  base: "https://instantclass.herokuapp.com/api",
+  // base: process.env.MIX_API_URL,
   routes: routes
 });
 router.beforeEach(function (to, from, next) {
