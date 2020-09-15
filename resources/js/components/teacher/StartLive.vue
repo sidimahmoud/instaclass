@@ -41,7 +41,7 @@
                 </div>
                 <ul id="participants-list">
                     <li v-for="p in participants">
-                        {{p}}
+                        {{p.slice(0, indexOf("+"))}}
                         <button class="btn btn-danger ml-3" @click="removeParticipant(p)">X</button>
                     </li>
                 </ul>
@@ -114,7 +114,6 @@
                                 videoChatWindow.appendChild(track.attach());
                             }
                         });
-
                         participant.on('trackSubscribed', track => {
                             videoChatWindow.appendChild(track.attach());
                         });
@@ -122,11 +121,23 @@
                     room.on('participantDisconnected', participant => {
                         console.log(`Participant ${participant.identity} disconnected`);
                         this.participants.splice(this.participants.indexOf(participant.identity), 1);
-                        participant.tracks.forEach(function (track) {
-                            track.detach().forEach(function (mediaElement) {
+                        participant.tracks.forEach(function(track) {
+                            track.detach().forEach(function(mediaElement) {
                                 mediaElement.remove();
                             });
                         });
+                    });
+                    room.on('disconnected', function(room, error) {
+                        if (error) {
+                            console.log('Unexpectedly disconnected:', error);
+                        }
+                        room.localParticipant.tracks.forEach(function(track) {
+                            track.stop();
+                            track.detach();
+                        });
+                    });
+                    room.on('trackAdded', function(track, participant) {
+                        videoChatWindow.appendChild(track.attach());
                     });
 
                 }, error => {
@@ -148,7 +159,6 @@
                     })
                     .catch(err => console.log(err.response))
             },
-
 
             roomDetails() {
                 axios.get(`/room-details/${this.myRoom}`)
@@ -180,10 +190,10 @@
                 this.sharing = false;
             },
             leaveCourse() {
+                this.activeRoom.disconnect();
                 this.activeRoom.localParticipant.tracks.forEach(track => {
                     track.stop()
                 });
-                this.removeParticipant(this.activeRoom.localParticipant)
             },
             roomParticipants() {
                 axios.get(`room/${this.roomSid}/participants`).then(res => {

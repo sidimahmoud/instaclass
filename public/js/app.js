@@ -10823,6 +10823,19 @@ __webpack_require__.r(__webpack_exports__);
             });
           });
         });
+        room.on('disconnected', function (room, error) {
+          if (error) {
+            console.log('Unexpectedly disconnected:', error);
+          }
+
+          room.localParticipant.tracks.forEach(function (track) {
+            track.stop();
+            track.detach();
+          });
+        });
+        room.on('trackAdded', function (track, participant) {
+          videoChatWindow.appendChild(track.attach());
+        });
       }, function (error) {
         console.error("Unable to connect to Room: ".concat(error.message));
       });
@@ -10882,10 +10895,10 @@ __webpack_require__.r(__webpack_exports__);
       this.sharing = false;
     },
     leaveCourse: function leaveCourse() {
+      this.activeRoom.disconnect();
       this.activeRoom.localParticipant.tracks.forEach(function (track) {
         track.stop();
       });
-      this.removeParticipant(this.activeRoom.localParticipant);
     },
     roomParticipants: function roomParticipants() {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("room/".concat(this.roomSid, "/participants")).then(function (res) {
@@ -85022,7 +85035,7 @@ var render = function() {
               return _c("li", [
                 _vm._v(
                   "\n                    " +
-                    _vm._s(p) +
+                    _vm._s(p.slice(0, _vm.indexOf("+"))) +
                     "\n                    "
                 ),
                 _c(
