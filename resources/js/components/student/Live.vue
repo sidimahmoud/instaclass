@@ -29,14 +29,6 @@
 
                 </div>
             </div>
-            <div class="col-md-2">
-                <div>
-                    <h3 class="border-bottom text-center">Participants</h3>
-                </div>
-                <ul id="participants-list">
-                    <li v-for="p in participants">{{p}} </li>
-                </ul>
-            </div>
         </div>
     </div>
 </template>

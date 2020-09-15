@@ -9121,14 +9121,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -81792,36 +81784,12 @@ var render = function() {
                   : _vm._e()
               ])
             : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-2" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "ul",
-            { attrs: { id: "participants-list" } },
-            _vm._l(_vm.participants, function(p) {
-              return _c("li", [_vm._v(_vm._s(p) + " ")])
-            }),
-            0
-          )
         ])
       ])
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h3", { staticClass: "border-bottom text-center" }, [
-        _vm._v("Participants")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -110881,6 +110849,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_admin_payments__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/admin/payments */ "./resources/js/store/modules/admin/payments.js");
 /* harmony import */ var _modules_enrollment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/enrollment */ "./resources/js/store/modules/enrollment.js");
 /* harmony import */ var _modules_contacts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/contacts */ "./resources/js/store/modules/contacts.js");
+/* harmony import */ var _modules_liveCourses__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/liveCourses */ "./resources/js/store/modules/liveCourses.js");
+
 
 
 
@@ -110904,7 +110874,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
     users: _modules_admin_users__WEBPACK_IMPORTED_MODULE_6__["default"],
     payments: _modules_admin_payments__WEBPACK_IMPORTED_MODULE_7__["default"],
     enrollment: _modules_enrollment__WEBPACK_IMPORTED_MODULE_8__["default"],
-    contacts: _modules_contacts__WEBPACK_IMPORTED_MODULE_9__["default"]
+    contacts: _modules_contacts__WEBPACK_IMPORTED_MODULE_9__["default"],
+    liveCourses: _modules_liveCourses__WEBPACK_IMPORTED_MODULE_10__["default"]
   }
 }));
 
@@ -112104,6 +112075,108 @@ __webpack_require__.r(__webpack_exports__);
 var state = {};
 var getters = {};
 var actions = {};
+var mutations = {};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/liveCourses.js":
+/*!***************************************************!*\
+  !*** ./resources/js/store/modules/liveCourses.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var state = {
+  activeRoom: '',
+  accessToken: '',
+  roomSid: false
+};
+var getters = {
+  getActiveRoom: function getActiveRoom(state) {
+    return state.activeRoom;
+  }
+};
+var actions = {
+  getAccessToken: function getAccessToken() {
+    var _this = this; // Request a new token
+
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/access_token/".concat(this.myRoom, "/").concat(this.user)).then(function (response) {
+      _this.accessToken = response.data;
+      _this.started = true;
+
+      _this.connectToRoom();
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  },
+  connectToRoom: function connectToRoom() {
+    var _this2 = this;
+
+    var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
+        connect = _require.connect,
+        createLocalTracks = _require.createLocalTracks;
+
+    connect(this.accessToken, {
+      name: this.myRoom
+    }).then(function (room) {
+      console.log("Successfully joined a Room: ".concat(room));
+      _this2.roomSid = room.sid;
+      _this2.activeRoom = room;
+      var videoChatWindow = document.getElementById('video-chat-window');
+      createLocalTracks({
+        audio: true,
+        video: {
+          width: 1280,
+          height: 300
+        }
+      }).then(function (localTracks) {
+        localTracks.forEach(function (track) {
+          return videoChatWindow.appendChild(track.attach());
+        });
+      });
+      room.on('participantConnected', function (participant) {
+        console.log("Participant \"".concat(participant.identity, "\" connected"));
+
+        _this2.participants.push(participant.identity);
+
+        participant.tracks.forEach(function (publication) {
+          if (publication.isSubscribed) {
+            var track = publication.track;
+            videoChatWindow.appendChild(track.attach());
+          }
+        });
+        participant.on('trackSubscribed', function (track) {
+          videoChatWindow.appendChild(track.attach());
+        });
+      });
+      room.on('participantDisconnected', function (participant) {
+        console.log("Participant ".concat(participant.identity, " disconnected"));
+
+        _this2.participants.splice(_this2.participants.indexOf(participant.identity), 1);
+
+        participant.tracks.forEach(function (track) {
+          track.detach().forEach(function (mediaElement) {
+            mediaElement.remove();
+          });
+        });
+      });
+    }, function (error) {
+      console.error("Unable to connect to Room: ".concat(error.message));
+    });
+  }
+};
 var mutations = {};
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: state,

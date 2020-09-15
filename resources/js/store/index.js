@@ -8,15 +8,14 @@ import users from "./modules/admin/users";
 import payments from "./modules/admin/payments";
 import enrollment from "./modules/enrollment";
 import contacts from "./modules/contacts";
+import liveCourses from "./modules/liveCourses";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state: {
-    },
-    mutations: {
-    },
-    actions: {
-    },
+    state: {},
+    mutations: {},
+    actions: {},
     modules: {
         auth,
         courses,
@@ -25,7 +24,8 @@ export default new Vuex.Store({
         users,
         payments,
         enrollment,
-        contacts
+        contacts,
+        liveCourses
     }
 })
 

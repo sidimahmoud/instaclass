@@ -53,7 +53,6 @@
     import axios from 'axios'
     import CountDown from "../CountDown";
     import user from "../../store/modules/user";
-
     export default {
         name: 'LiveWindowCompo',
         components: {
@@ -151,6 +150,7 @@
                     })
                     .catch(err => console.log(err.response))
             },
+
 
             roomDetails() {
                 axios.get(`/room-details/${this.myRoom}`)
