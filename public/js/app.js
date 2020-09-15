@@ -10734,6 +10734,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -10799,7 +10800,7 @@ __webpack_require__.r(__webpack_exports__);
         _this3.roomSid = room.sid;
         _this3.activeRoom = room;
         var videoChatWindow = document.getElementById('video-chat-window');
-        createLocalTracks({
+        createLocalVideoTrack({
           audio: true,
           video: {
             width: 1280,
@@ -85031,7 +85032,11 @@ var render = function() {
             { attrs: { id: "participants-list" } },
             _vm._l(_vm.participants, function(p) {
               return _c("li", [
-                _vm._v(_vm._s(p) + "\n                    "),
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(p) +
+                    "\n                    "
+                ),
                 _c(
                   "button",
                   {
