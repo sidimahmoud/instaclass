@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
             'image' => 'https://image.flaticon.com/icons/svg/21/21104.svg',
             'about' => "I'm a Web Developer",
             'email_verified_at' => Carbon::now(),
-            'password' => Hash::make('password')
+            'password' => Hash::make('pas10/*')
         ]);
         $teacher= User::create([
             'first_name' => 'Teacher',
@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
             'city' => 'Nouakchott',
             'languages' => 'English, French',
             'email_verified_at' => Carbon::now(),
-            'password' => Hash::make('password')
+            'password' => Hash::make('pas10/*')
         ]);
         $student= User::create([
             'first_name' => 'Student',
@@ -50,7 +50,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'student@gmail.com',
             'about' => "I'm a Student",
             'email_verified_at' => Carbon::now(),
-            'password' => Hash::make('password')
+            'password' => Hash::make('pas10/*')
         ]);
         $administR = Role::where('name', 'admin')->first();
         $teacherR = Role::where('name', 'teacher')->first();
