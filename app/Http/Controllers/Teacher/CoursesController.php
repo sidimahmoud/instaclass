@@ -44,7 +44,7 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+//        dd($request->all());
 
         if (Gate::denies('teacher-or-admin')) {
             return response()->json(["response" => 'unauthorized']);
