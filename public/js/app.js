@@ -10797,7 +10797,9 @@ __webpack_require__.r(__webpack_exports__);
         _this3.roomSid = room.sid;
         _this3.activeRoom = room;
         var videoChatWindow = document.getElementById('video-chat-window');
-        createLocalVideoTrack().then(function (track) {
+        createLocalVideoTrack({
+          audio: true
+        }).then(function (track) {
           _this3.stream = track;
           videoChatWindow.appendChild(track.attach());
         });
@@ -85118,7 +85120,7 @@ var render = function() {
             "ul",
             { attrs: { id: "participants-list" } },
             _vm._l(_vm.participants, function(p) {
-              return _c("li", [
+              return _c("li", { staticClass: "my-2 shadow-sm" }, [
                 _vm._v(
                   "\n                    " +
                     _vm._s(p.slice(0, _vm.indexOf("+"))) +

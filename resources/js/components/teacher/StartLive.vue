@@ -40,7 +40,7 @@
                     <h3 class="border-bottom text-center">Participants</h3>
                 </div>
                 <ul id="participants-list">
-                    <li v-for="p in participants">
+                    <li v-for="p in participants" class="my-2 shadow-sm">
                         {{p.slice(0, indexOf("+"))}}
                         <button class="btn btn-danger ml-3" @click="removeParticipant(p)">X</button>
                     </li>
@@ -105,7 +105,7 @@
                     this.roomSid = room.sid;
                     this.activeRoom = room;
                     const videoChatWindow = document.getElementById('video-chat-window');
-                    createLocalVideoTrack().then(track => {
+                    createLocalVideoTrack({audio: true}).then(track => {
                         this.stream = track;
                         videoChatWindow.appendChild(track.attach())
                     });
