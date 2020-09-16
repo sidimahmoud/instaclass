@@ -148,18 +148,15 @@
                 axios.post(`/endroom/${this.myRoom}`)
                     .then(res => {
                         console.log(res.data);
-                        navigator.getUserMedia({audio: false, video: true},
-                            function(stream) {
-                                // can also use getAudioTracks() or getVideoTracks()
-                                var track = stream.getTracks()[0];  // if only one media track
-                                // ...
-                                track.stop();
-                            },
-                            function(error){
-                                console.log('getUserMedia() error', error);
-                            });
-                        this.$router.push({name: "TeacherProfile"});
+                        var localstream;
+                         let videoElem = document.getElementById('video-chat-window');
+                        videoElem.pause();
+                        videoElem.src = "";
+                        localstream.getTracks()[0].stop();
+                        console.log("Vid off");
 
+                        videoElem.srcObject = null;
+                        this.$router.push({name: "TeacherProfile"});
                     })
                     .catch(err => console.log(err.response))
             },

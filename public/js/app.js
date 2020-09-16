@@ -10845,18 +10845,13 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/endroom/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
-        navigator.getUserMedia({
-          audio: false,
-          video: true
-        }, function (stream) {
-          // can also use getAudioTracks() or getVideoTracks()
-          var track = stream.getTracks()[0]; // if only one media track
-          // ...
-
-          track.stop();
-        }, function (error) {
-          console.log('getUserMedia() error', error);
-        });
+        var localstream;
+        var videoElem = document.getElementById('video-chat-window');
+        videoElem.pause();
+        videoElem.src = "";
+        localstream.getTracks()[0].stop();
+        console.log("Vid off");
+        videoElem.srcObject = null;
 
         _this4.$router.push({
           name: "TeacherProfile"
