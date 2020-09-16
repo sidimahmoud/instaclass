@@ -10784,6 +10784,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
           connect = _require.connect,
+          tracks = _require.tracks,
           createLocalVideoTrack = _require.createLocalVideoTrack,
           createLocalTracks = _require.createLocalTracks;
 
@@ -10845,13 +10846,21 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/endroom/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
-        var localstream;
-        var videoElem = document.getElementById('video-chat-window');
-        videoElem.pause();
-        videoElem.src = "";
-        localstream.getTracks()[0].stop();
-        console.log("Vid off");
-        videoElem.srcObject = null;
+        var currentRoom = _this4.activeRoom.currentRoom; //    console.log("The current room is", currentRoom);
+
+        if (currentRoom != null) {
+          _this4.token = null;
+
+          _this4.activeRoom({
+            tracks: {
+              counterparty: {},
+              local: []
+            },
+            disconnected: true
+          });
+
+          currentRoom.disconnect();
+        }
 
         _this4.$router.push({
           name: "TeacherProfile"

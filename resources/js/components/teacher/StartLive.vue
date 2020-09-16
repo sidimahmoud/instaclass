@@ -98,7 +98,7 @@
             },
 
             connectToRoom() {
-                const {connect, createLocalVideoTrack, createLocalTracks} = require('twilio-video');
+                const {connect, tracks,createLocalVideoTrack, createLocalTracks} = require('twilio-video');
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
@@ -148,14 +148,13 @@
                 axios.post(`/endroom/${this.myRoom}`)
                     .then(res => {
                         console.log(res.data);
-                        var localstream;
-                         let videoElem = document.getElementById('video-chat-window');
-                        videoElem.pause();
-                        videoElem.src = "";
-                        localstream.getTracks()[0].stop();
-                        console.log("Vid off");
-
-                        videoElem.srcObject = null;
+                        let { currentRoom } = this.activeRoom;
+                    //    console.log("The current room is", currentRoom);
+                        if (currentRoom != null) {
+                            this.token = null;
+                            this.activeRoom({ tracks: {counterparty: {}, local: []}, disconnected: true });
+                            currentRoom.disconnect();
+                        }
                         this.$router.push({name: "TeacherProfile"});
                     })
                     .catch(err => console.log(err.response))
