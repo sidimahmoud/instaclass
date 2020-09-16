@@ -99,13 +99,17 @@
             },
 
             connectToRoom() {
-                const {connect, tracks, createLocalVideoTrack, createLocalTracks} = require('twilio-video');
+                const {connect, tracks, createLocalVideoTrack, createLocalTracks, createLocalAudioTrack} = require('twilio-video');
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
                     this.activeRoom = room;
                     const videoChatWindow = document.getElementById('video-chat-window');
-                    createLocalVideoTrack({audio: true}).then(track => {
+                    createLocalVideoTrack().then(track => {
+                        this.stream = track;
+                        videoChatWindow.appendChild(track.attach())
+                    });
+                    createLocalAudioTrack().then(track => {
                         this.stream = track;
                         videoChatWindow.appendChild(track.attach())
                     });

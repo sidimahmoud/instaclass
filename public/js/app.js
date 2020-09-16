@@ -10788,7 +10788,8 @@ __webpack_require__.r(__webpack_exports__);
           connect = _require.connect,
           tracks = _require.tracks,
           createLocalVideoTrack = _require.createLocalVideoTrack,
-          createLocalTracks = _require.createLocalTracks;
+          createLocalTracks = _require.createLocalTracks,
+          createLocalAudioTrack = _require.createLocalAudioTrack;
 
       connect(this.accessToken, {
         name: this.myRoom
@@ -10797,9 +10798,11 @@ __webpack_require__.r(__webpack_exports__);
         _this3.roomSid = room.sid;
         _this3.activeRoom = room;
         var videoChatWindow = document.getElementById('video-chat-window');
-        createLocalVideoTrack({
-          audio: true
-        }).then(function (track) {
+        createLocalVideoTrack().then(function (track) {
+          _this3.stream = track;
+          videoChatWindow.appendChild(track.attach());
+        });
+        createLocalAudioTrack().then(function (track) {
           _this3.stream = track;
           videoChatWindow.appendChild(track.attach());
         });
