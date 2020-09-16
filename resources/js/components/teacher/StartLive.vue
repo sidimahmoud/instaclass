@@ -180,7 +180,7 @@
                         this.activeRoom.localParticipant.publishTrack(screenTrack);
                     }).catch(err => {
                     console.log(err)
-                    // alert('Could not share the screen.')
+                    alert('Could not share the screen.')
                 });
             },
             stopSaring() {
