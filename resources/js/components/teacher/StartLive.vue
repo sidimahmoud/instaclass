@@ -122,9 +122,15 @@
                                 videoChatWindow.appendChild(track.attach());
                             }
                         });
-                        participant.on('trackSubscribed', track => {
+                        room.tracks.forEach(publication => {
+                            const track = publication.track;
                             videoChatWindow.appendChild(track.attach());
                         });
+                        participant.on('trackSubscribed', track => {
+
+                            videoChatWindow.appendChild(track.attach());
+                        });
+
                     });
                     room.on('participantDisconnected', participant => {
                         console.log(`Participant ${participant.identity} disconnected`);

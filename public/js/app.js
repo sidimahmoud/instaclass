@@ -10817,6 +10817,10 @@ __webpack_require__.r(__webpack_exports__);
               videoChatWindow.appendChild(track.attach());
             }
           });
+          room.tracks.forEach(function (publication) {
+            var track = publication.track;
+            videoChatWindow.appendChild(track.attach());
+          });
           participant.on('trackSubscribed', function (track) {
             videoChatWindow.appendChild(track.attach());
           });
