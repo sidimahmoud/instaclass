@@ -131,24 +131,21 @@
                         //     });
                         // });
                     });
-
                     room.on('trackAdded', function (track, participant) {
                         videoChatWindow.appendChild(track.attach());
                     });
-
                 }, error => {
                     console.error(`Unable to connect to Room: ${error.message}`);
                 });
             },
             shareScreen() {
                 const {LocalVideoTrack} = require('twilio-video');
-
                 navigator.mediaDevices.getDisplayMedia().then(stream => {
                     let screenTrack = LocalVideoTrack(stream.getTracks()[0]);
                     this.activeRoom.localParticipant.publishTrack(screenTrack);
-                }).catch((err) => {
-                    console.log(err)
-                    alert(err)
+                }).catch(err => {
+                    console.log(err);
+                    alert('Could not share the screen.')
                 });
             },
             stopSaring() {
@@ -160,9 +157,9 @@
             endRoom() {
                 axios.post(`/endroom/${this.myRoom}`)
                     .then(res => {
-                        this.stream.stop().then( ()=>{
+                        this.stream.stop().then(() => {
                             this.$router.push({name: "TeacherProfile"});
-                        } )
+                        })
                     })
                     .catch(err => this.$router.push({name: "TeacherProfile"}))
             },

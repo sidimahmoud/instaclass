@@ -10844,7 +10844,7 @@ __webpack_require__.r(__webpack_exports__);
         _this4.activeRoom.localParticipant.publishTrack(screenTrack);
       })["catch"](function (err) {
         console.log(err);
-        alert(err);
+        alert('Could not share the screen.');
       });
     },
     stopSaring: function stopSaring() {
