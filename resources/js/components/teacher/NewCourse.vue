@@ -293,7 +293,7 @@
                 formData.append("short_description", this.course.short_description);
                 //this.sections.map(item=>)
 
-                formData.append("sections", JSON.stringify(this.sections);
+                formData.append("sections", JSON.stringify(this.sections));
                 formData.append("image", imagefile.files[0]);
                 axios.post('/course', formData, {
                     headers: {

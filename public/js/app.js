@@ -9757,9 +9757,340 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/teacher/NewCourse.vue?vue&type=script&lang=js& ***!
   \****************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\instantclass\\resources\\js\\components\\teacher\\NewCourse.vue: Unexpected token, expected \",\" (296:69)\n\n\u001b[0m \u001b[90m 294 | \u001b[39m            \u001b[90m//this.sections.map(item=>)\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 295 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 296 | \u001b[39m            formData\u001b[33m.\u001b[39mappend(\u001b[32m\"sections\"\u001b[39m\u001b[33m,\u001b[39m \u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mstringify(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msections)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 297 | \u001b[39m            formData\u001b[33m.\u001b[39mappend(\u001b[32m\"image\"\u001b[39m\u001b[33m,\u001b[39m imagefile\u001b[33m.\u001b[39mfiles[\u001b[35m0\u001b[39m])\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 298 | \u001b[39m            axios\u001b[33m.\u001b[39mpost(\u001b[32m'/course'\u001b[39m\u001b[33m,\u001b[39m formData\u001b[33m,\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 299 | \u001b[39m                headers\u001b[33m:\u001b[39m {\u001b[0m\n    at Parser._raise (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:757:17)\n    at Parser.raiseWithData (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:750:17)\n    at Parser.raise (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:744:17)\n    at Parser.unexpected (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:8834:16)\n    at Parser.expect (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:8820:28)\n    at Parser.parseCallExpressionArguments (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9865:14)\n    at Parser.parseSubscript (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9785:31)\n    at Parser.parseSubscripts (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9711:19)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9694:17)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9668:21)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9538:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9511:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9466:21)\n    at Parser.parseExpression (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9418:23)\n    at Parser.parseStatementContent (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11339:23)\n    at Parser.parseStatement (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11210:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11785:25)\n    at Parser.parseBlockBody (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11771:10)\n    at Parser.parseBlock (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:11755:10)\n    at Parser.parseFunctionBody (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10758:24)\n    at Parser.parseFunctionBodyAndFinish (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10741:10)\n    at Parser.parseMethod (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10703:10)\n    at Parser.parseObjectMethod (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10619:19)\n    at Parser.parseObjPropValue (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10661:23)\n    at Parser.parseObjectMember (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10585:10)\n    at Parser.parseObj (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10494:25)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10090:28)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9688:23)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9668:21)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9538:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9511:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:9466:21)\n    at Parser.parseObjectProperty (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10636:101)\n    at Parser.parseObjPropValue (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10661:101)\n    at Parser.parseObjectMember (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10585:10)\n    at Parser.parseObj (C:\\xampp\\htdocs\\instantclass\\node_modules\\@babel\\parser\\lib\\index.js:10494:25)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "NewCourse",
+  data: function data() {
+    return {
+      course: {
+        sub_category_id: 1,
+        language: 'EN',
+        price: '0',
+        currency: 'usd',
+        estimated_duration: '',
+        authorized_students: '',
+        sharable: '1',
+        name: '',
+        image: '',
+        short_description: '' // description: '',
+        // duration: '',
+        // status: '',
+        // type: '',
+        // join_after: '',
+        // available_from: '',
+        // available_to: '',
+
+      },
+      sections: [{
+        title: '',
+        stratDate: '',
+        duration: '',
+        description: ''
+      }]
+    };
+  },
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchCategories'])), {}, {
+    loadSubs: function loadSubs(event) {
+      var id = event.target.value;
+      this.$store.dispatch('fetchSubCategories', id);
+    },
+    saveCourse: function saveCourse() {
+      var formData = new FormData();
+      var imagefile = document.querySelector('#thumbnail');
+      formData.append("sub_category_id", this.course.sub_category_id);
+      formData.append("language", this.course.language);
+      formData.append("price", this.course.price);
+      formData.append("currency", this.course.currency);
+      formData.append("estimated_duration", this.course.estimated_duration);
+      formData.append("authorized_students", this.course.authorized_students);
+      formData.append("sharable", this.course.sharable);
+      formData.append("name", this.course.name);
+      formData.append("short_description", this.course.short_description); //this.sections.map(item=>)
+
+      formData.append("sections", JSON.stringify(this.sections));
+      formData.append("image", imagefile.files[0]);
+      axios.post('/course', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (res) {
+        console.log(res);
+        alert("Your course was published successfully");
+      })["catch"](function (err) {
+        return console.log(err.response);
+      });
+      console.log(this.section);
+    },
+    addSection: function addSection(event) {
+      var sections = event.target.value;
+      this.sections = [];
+
+      for (var i = 0; i < sections; i++) {
+        this.sections.push({
+          title: '',
+          stratDate: '',
+          duration: '',
+          description: ''
+        });
+      }
+    }
+  }),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["allCategories", "subCategories"]),
+  created: function created() {
+    this.fetchCategories();
+    this.$store.dispatch('fetchSubCategories', 1);
+  }
+});
 
 /***/ }),
 
