@@ -75,12 +75,9 @@
                     this.activeRoom = room;
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack().then(track => {
-                        this.stream = track;
                         videoChatWindow.appendChild(track.attach())
                     });
-
                     createLocalAudioTrack().then(track => {
-                        this.stream = track;
                         videoChatWindow.appendChild(track.attach())
                     });
                     room.on('participantConnected', participant => {

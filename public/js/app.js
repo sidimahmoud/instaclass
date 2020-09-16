@@ -9231,11 +9231,9 @@ __webpack_require__.r(__webpack_exports__);
         _this2.activeRoom = room;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalVideoTrack().then(function (track) {
-          _this2.stream = track;
           videoChatWindow.appendChild(track.attach());
         });
         createLocalAudioTrack().then(function (track) {
-          _this2.stream = track;
           videoChatWindow.appendChild(track.attach());
         });
         room.on('participantConnected', function (participant) {
@@ -10811,11 +10809,9 @@ __webpack_require__.r(__webpack_exports__);
         _this3.activeRoom = room;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalVideoTrack().then(function (track) {
-          _this3.stream = track;
           videoChatWindow.appendChild(track.attach());
         });
         createLocalAudioTrack().then(function (track) {
-          _this3.stream = track;
           videoChatWindow.appendChild(track.attach());
         });
         room.on('participantConnected', function (participant) {
