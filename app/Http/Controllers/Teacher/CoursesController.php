@@ -44,8 +44,19 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
-
+        $sections = $request["sections"];
+        dd(count($sections));
+        foreach ($sections as $section) {
+            dump($section->toArray());
+//            $courseSection = new CourseFile();
+//            $courseSection->course_id = $section->$course->id;
+//            $courseSection->title = $section->$section->title;
+//            $courseSection->description = $section->$section->description;
+//            $courseSection->startDate = $section->$section->stratDate;
+//            $courseSection->duration = $section->$section->duration;
+//            $courseSection->save();
+        }
+        dd(555);
         if (Gate::denies('teacher-or-admin')) {
             return response()->json(["response" => 'unauthorized']);
         }
@@ -78,18 +89,7 @@ class CoursesController extends Controller
             $course->image = 'uploads/courses/thumbnails' . $file_name;
         }
         $course->save();
-        $sections = $request["sections"];
-        foreach ($sections as $section) {
-            dump($section->toArray());
-//            $courseSection = new CourseFile();
-//            $courseSection->course_id = $section->$course->id;
-//            $courseSection->title = $section->$section->title;
-//            $courseSection->description = $section->$section->description;
-//            $courseSection->startDate = $section->$section->stratDate;
-//            $courseSection->duration = $section->$section->duration;
-//            $courseSection->save();
-        }
-        dd(555);
+
         if ($course)
             return response()->json("course created successfully");
         return response()->json("error");
