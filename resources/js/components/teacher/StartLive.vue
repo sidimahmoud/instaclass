@@ -105,7 +105,7 @@
                     this.activeRoom = room;
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack().then(track => videoChatWindow.appendChild(track.attach()));
-                    room.on('participantConnected', participant => {
+                    room.on('participantConnected', participant =>              {
                         console.log(`Participant "${participant.identity}" connected`);
                         this.participants.push(participant.identity);
                         participant.tracks.forEach(publication => {
