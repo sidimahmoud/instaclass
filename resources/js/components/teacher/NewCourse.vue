@@ -204,7 +204,7 @@
                         <div class="form-group">
                             <label for="section1Title">Session {{index+1}}: Give a title to this session</label>
                             <input type="text" class="form-control" id="section1Title"
-                                   placeholder="Title" name="title[]" required>
+                                   placeholder="Title" name="title[]" required v-model="sections[index].title">
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -212,19 +212,19 @@
                             <label for="short_desc">Session {{index+1}} description: GIve a description of what you will
                                 teach in this session</label>
                             <input type="text" class="form-control" id="short_desc"
-                                   placeholder="Short description" name="desc[]" required>
+                                   placeholder="Short description" name="desc[]" required v-model="sections[index].description">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Session {{index+1}} availabilities:</label>
-                            <input type="datetime-local" name="date[]" class="form-control" required>
+                            <input type="datetime-local" name="date[]" class="form-control" required v-model="sections[index].stratDate">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Session {{index+1}} estimated duration:</label>
-                            <input type="text" name="session[]" class="form-control" required>
+                            <input type="text" name="session[]" class="form-control" required v-model="sections[index].duration">
                         </div>
                     </div>
 

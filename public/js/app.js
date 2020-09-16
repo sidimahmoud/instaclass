@@ -83637,6 +83637,14 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.sections[index].title,
+                        expression: "sections[index].title"
+                      }
+                    ],
                     staticClass: "form-control",
                     attrs: {
                       type: "text",
@@ -83644,6 +83652,19 @@ var render = function() {
                       placeholder: "Title",
                       name: "title[]",
                       required: ""
+                    },
+                    domProps: { value: _vm.sections[index].title },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.sections[index],
+                          "title",
+                          $event.target.value
+                        )
+                      }
                     }
                   })
                 ])
@@ -83660,6 +83681,14 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.sections[index].description,
+                        expression: "sections[index].description"
+                      }
+                    ],
                     staticClass: "form-control",
                     attrs: {
                       type: "text",
@@ -83667,6 +83696,19 @@ var render = function() {
                       placeholder: "Short description",
                       name: "desc[]",
                       required: ""
+                    },
+                    domProps: { value: _vm.sections[index].description },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.sections[index],
+                          "description",
+                          $event.target.value
+                        )
+                      }
                     }
                   })
                 ])
@@ -83679,11 +83721,32 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.sections[index].stratDate,
+                        expression: "sections[index].stratDate"
+                      }
+                    ],
                     staticClass: "form-control",
                     attrs: {
                       type: "datetime-local",
                       name: "date[]",
                       required: ""
+                    },
+                    domProps: { value: _vm.sections[index].stratDate },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.sections[index],
+                          "stratDate",
+                          $event.target.value
+                        )
+                      }
                     }
                   })
                 ])
@@ -83698,8 +83761,29 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.sections[index].duration,
+                        expression: "sections[index].duration"
+                      }
+                    ],
                     staticClass: "form-control",
-                    attrs: { type: "text", name: "session[]", required: "" }
+                    attrs: { type: "text", name: "session[]", required: "" },
+                    domProps: { value: _vm.sections[index].duration },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.sections[index],
+                          "duration",
+                          $event.target.value
+                        )
+                      }
+                    }
                   })
                 ])
               ])
