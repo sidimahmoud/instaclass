@@ -10818,13 +10818,12 @@ __webpack_require__.r(__webpack_exports__);
         room.on('participantDisconnected', function (participant) {
           console.log("Participant ".concat(participant.identity, " disconnected"));
 
-          _this3.participants.splice(_this3.participants.indexOf(participant.identity), 1);
+          _this3.participants.splice(_this3.participants.indexOf(participant.identity), 1); // participant.tracks.forEach(function (track) {
+          //     track.detach().forEach(function (mediaElement) {
+          //         mediaElement.remove();
+          //     });
+          // });
 
-          participant.tracks.forEach(function (track) {
-            track.detach().forEach(function (mediaElement) {
-              mediaElement.remove();
-            });
-          });
         });
         room.on('trackAdded', function (track, participant) {
           videoChatWindow.appendChild(track.attach());
