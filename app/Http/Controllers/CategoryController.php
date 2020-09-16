@@ -104,6 +104,7 @@ class CategoryController extends Controller
             return response()->json(["response" => "category updated successfully"]);
         return response()->json(["response" => "error"]);
     }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -112,7 +113,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        //dd($id);
         if (Gate::denies('only-admin')) {
             return response()->json(["response" => 'unauthorized'], 403);
         }
