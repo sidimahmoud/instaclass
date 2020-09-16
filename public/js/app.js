@@ -10845,11 +10845,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/endroom/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
-
-        _this4.$router.push({
-          name: "TeacherProfile"
-        });
-
         var videoElem = document.getElementById('video-chat-window');
         var stream = videoElem.srcObject;
         var tracks = stream.getTracks();
@@ -10857,6 +10852,10 @@ __webpack_require__.r(__webpack_exports__);
           track.stop();
         });
         videoElem.srcObject = null;
+
+        _this4.$router.push({
+          name: "TeacherProfile"
+        });
       })["catch"](function (err) {
         return console.log(err.response);
       });

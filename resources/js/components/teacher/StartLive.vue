@@ -148,7 +148,6 @@
                 axios.post(`/endroom/${this.myRoom}`)
                     .then(res => {
                         console.log(res.data);
-                        this.$router.push({name: "TeacherProfile"});
                         let videoElem = document.getElementById('video-chat-window');
                         const stream = videoElem.srcObject;
                         const tracks = stream.getTracks();
@@ -158,6 +157,8 @@
                         });
 
                         videoElem.srcObject = null;
+                        this.$router.push({name: "TeacherProfile"});
+
                     })
                     .catch(err => console.log(err.response))
             },
