@@ -44,19 +44,18 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        $sections = $request["sections"];
-        dd(json_decode($sections));
-        foreach ($sections as $section) {
-            dump($section->toArray());
+        $sections = json_decode($request["sections"]);
+        foreach ($sections as $key => $section) {
+            echo $section->title;
 //            $courseSection = new CourseFile();
-//            $courseSection->course_id = $section->$course->id;
-//            $courseSection->title = $section->$section->title;
-//            $courseSection->description = $section->$section->description;
-//            $courseSection->startDate = $section->$section->stratDate;
-//            $courseSection->duration = $section->$section->duration;
+//            $courseSection->course_id = $course->id;
+//            $courseSection->title = $section->title;
+//            $courseSection->description = $section->description;
+//            $courseSection->startDate = $section->stratDate;
+//            $courseSection->duration = $section->duration;
 //            $courseSection->save();
         }
-        dd(555);
+
         if (Gate::denies('teacher-or-admin')) {
             return response()->json(["response" => 'unauthorized']);
         }
@@ -124,7 +123,7 @@ class CoursesController extends Controller
     public function update(Request $request, $id)
     {
 
-        $course =  Course::find($id);
+        $course = Course::find($id);
         $course->user_id = $request->user()->id;
         $course->category_id = $request["category_id"];
         $course->name = $request["name"];
