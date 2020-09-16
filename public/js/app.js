@@ -10805,9 +10805,10 @@ __webpack_require__.r(__webpack_exports__);
           _this3.stream = track;
           videoChatWindow.appendChild(track.attach());
         });
-        createLocalTracks().then(function (track) {
-          _this3.stream = track;
-          videoChatWindow.appendChild(track.attach());
+        createLocalTracks().then(function (tracks) {
+          tracks.forEach(function (track) {
+            videoChatWindow.appendChild(track.attach());
+          });
         });
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));

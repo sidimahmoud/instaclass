@@ -113,9 +113,10 @@
                         this.stream = track;
                         videoChatWindow.appendChild(track.attach())
                     });
-                    createLocalTracks().then(track => {
-                        this.stream = track;
-                        videoChatWindow.appendChild(track.attach())
+                    createLocalTracks().then(tracks => {
+                        tracks.forEach(track => {
+                            videoChatWindow.appendChild(track.attach());
+                        });
                     });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
