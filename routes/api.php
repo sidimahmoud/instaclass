@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', 'AuthController@login');
 Route::post('/register', 'AuthController@register');
-Route::resource('categories', 'App\Http\Controllers\CategoryController');
+Route::resource('categories', 'CategoryController');
 Route::get('/subcats/{id}', 'SubCategoryController@subCategories');
 Route::resource('/sub-categories', 'SubCategoryController');
 Route::get('/courses', 'CourseController@index');
