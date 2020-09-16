@@ -85130,7 +85130,7 @@ var render = function() {
               return _c("li", { staticClass: "my-2 shadow-sm" }, [
                 _vm._v(
                   "\n                    " +
-                    _vm._s(p.slice(0, _vm.indexOf("+"))) +
+                    _vm._s(p) +
                     "\n                    "
                 ),
                 _c(

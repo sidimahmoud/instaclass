@@ -41,7 +41,7 @@
                 </div>
                 <ul id="participants-list">
                     <li v-for="p in participants" class="my-2 shadow-sm">
-                        {{p.slice(0, indexOf("+"))}}
+                        {{p}}
                         <button class="btn btn-danger ml-3" @click="removeParticipant(p)">X</button>
                     </li>
                 </ul>
