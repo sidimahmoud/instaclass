@@ -111394,17 +111394,17 @@ var actions = {
                   data: user,
                   method: 'POST'
                 }).then(function (resp) {
-                  // console.log(resp.data)
-                  // const token = resp.data.token;
-                  // const user = {
-                  //     'u': resp.data.user.id,
-                  //     't': resp.data.user.roles[0].name, //name of user role
-                  //     'first_name': resp.data.user.first_name
-                  // };
-                  // localStorage.setItem('token', token);
-                  // localStorage.setItem('user', JSON.stringify(user));
-                  //
-                  // axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                  console.log(resp.data);
+                  var token = resp.data.token;
+                  var user = {
+                    'u': resp.data.user.id,
+                    't': resp.data.user.roles[0].name,
+                    //name of user role
+                    'first_name': resp.data.user.first_name
+                  };
+                  localStorage.setItem('token', token);
+                  localStorage.setItem('user', JSON.stringify(user));
+                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                   commit('auth_success', token, user);
                   resolve(resp);
                 })["catch"](function (err) {
