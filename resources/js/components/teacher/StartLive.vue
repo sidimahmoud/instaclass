@@ -109,11 +109,11 @@
                     //     this.stream = track;
                     //     videoChatWindow.appendChild(track.attach())
                     // });
-                    // createLocalAudioTrack().then(track => {
-                    //     this.stream = track;
-                    //     videoChatWindow.appendChild(track.attach())
-                    // });
-                    createLocalTracks({audio: true, video: {width: 1080, height: 200}}).then(tracks => {
+                    createLocalAudioTrack().then(track => {
+                        this.stream = track;
+                        videoChatWindow.appendChild(track.attach())
+                    });
+                    createLocalTracks().then(tracks => {
                         tracks.forEach(track => {
                             videoChatWindow.appendChild(track.attach());
                         });
