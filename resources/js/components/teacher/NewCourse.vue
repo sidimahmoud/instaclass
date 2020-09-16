@@ -291,7 +291,9 @@
                 formData.append("sharable", this.course.sharable);
                 formData.append("name", this.course.name);
                 formData.append("short_description", this.course.short_description);
-                formData.append("sections", this.sections);
+                //this.sections.map(item=>)
+
+                formData.append("sections", JSON.stringify(this.sections);
                 formData.append("image", imagefile.files[0]);
                 axios.post('/course', formData, {
                     headers: {
