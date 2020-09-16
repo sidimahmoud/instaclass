@@ -109,24 +109,18 @@
                     //     this.stream = track;
                     //     videoChatWindow.appendChild(track.attach())
                     // });
-                    createLocalAudioTrack().then(track => {
-                        this.stream = track;
-                        videoChatWindow.appendChild(track.attach())
-                    });
+
                     createLocalTracks().then(tracks => {
                         tracks.forEach(track => {
                             videoChatWindow.appendChild(track.attach());
                         });
                     });
+                    createLocalAudioTrack().then(track => {
+                        this.stream = track;
+                        videoChatWindow.appendChild(track.attach())
+                    });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
-                        participant.remoteVideoTrackStats(track => {
-                            // const track = publication.track;
-                            videoChatWindow.appendChild(track.attach());
-                        });
-                        participant.remoteAudioTrackStats(track => {
-                            videoChatWindow.appendChild(track.attach());
-                        })
                         this.participants.push(participant.identity);
                         participant.tracks.forEach(publication => {
                             if (publication.isSubscribed) {
