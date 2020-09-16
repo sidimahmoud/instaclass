@@ -10746,6 +10746,7 @@ __webpack_require__.r(__webpack_exports__);
       user: 'teacher@gmail.com',
       roomSid: false,
       activeRoom: '',
+      stream: '',
       participants: [],
       sharing: false
     };
@@ -10796,7 +10797,8 @@ __webpack_require__.r(__webpack_exports__);
         _this3.activeRoom = room;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalVideoTrack().then(function (track) {
-          return videoChatWindow.appendChild(track.attach());
+          _this3.stream = track;
+          videoChatWindow.appendChild(track.attach());
         });
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
@@ -10824,16 +10826,6 @@ __webpack_require__.r(__webpack_exports__);
             });
           });
         });
-        room.on('disconnected', function (room, error) {
-          if (error) {
-            console.log('Unexpectedly disconnected:', error);
-          }
-
-          room.localParticipant.tracks.forEach(function (track) {
-            track.stop();
-            track.detach();
-          });
-        });
         room.on('trackAdded', function (track, participant) {
           videoChatWindow.appendChild(track.attach());
         });
@@ -10845,25 +10837,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/endroom/".concat(this.myRoom)).then(function (res) {
-        console.log(res.data);
-        var currentRoom = _this4.activeRoom.currentRoom; //    console.log("The current room is", currentRoom);
-
-        if (currentRoom != null) {
-          _this4.token = null;
-
-          _this4.activeRoom({
-            tracks: {
-              counterparty: {},
-              local: []
-            },
-            disconnected: true
+        _this4.stream.stop().then(function () {
+          _this4.$router.push({
+            name: "TeacherProfile"
           });
-
-          currentRoom.disconnect();
-        }
-
-        _this4.$router.push({
-          name: "TeacherProfile"
         });
       })["catch"](function (err) {
         return console.log(err.response);
@@ -10875,6 +10852,12 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         return console.log(err.response);
       });
+    },
+    vidOff: function vidOff() {
+      vid.pause();
+      vid.src = "";
+      this.stream.stop();
+      console.log("Vid off");
     },
     roomDetails: function roomDetails() {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/room-details/".concat(this.myRoom)).then(function (res) {

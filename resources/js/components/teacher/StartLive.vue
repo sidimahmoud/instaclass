@@ -69,6 +69,7 @@
                 user: 'teacher@gmail.com',
                 roomSid: false,
                 activeRoom: '',
+                stream: '',
                 participants: [],
                 sharing: false,
             }
@@ -98,13 +99,16 @@
             },
 
             connectToRoom() {
-                const {connect, tracks,createLocalVideoTrack, createLocalTracks} = require('twilio-video');
+                const {connect, tracks, createLocalVideoTrack, createLocalTracks} = require('twilio-video');
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
                     this.activeRoom = room;
                     const videoChatWindow = document.getElementById('video-chat-window');
-                    createLocalVideoTrack().then(track => videoChatWindow.appendChild(track.attach()));
+                    createLocalVideoTrack().then(track => {
+                        this.stream = track;
+                        videoChatWindow.appendChild(track.attach())
+                    });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
                         this.participants.push(participant.identity);
@@ -127,15 +131,7 @@
                             });
                         });
                     });
-                    room.on('disconnected', function (room, error) {
-                        if (error) {
-                            console.log('Unexpectedly disconnected:', error);
-                        }
-                        room.localParticipant.tracks.forEach(function (track) {
-                            track.stop();
-                            track.detach();
-                        });
-                    });
+
                     room.on('trackAdded', function (track, participant) {
                         videoChatWindow.appendChild(track.attach());
                     });
@@ -147,15 +143,9 @@
             endRoom() {
                 axios.post(`/endroom/${this.myRoom}`)
                     .then(res => {
-                        console.log(res.data);
-                        let { currentRoom } = this.activeRoom;
-                    //    console.log("The current room is", currentRoom);
-                        if (currentRoom != null) {
-                            this.token = null;
-                            this.activeRoom({ tracks: {counterparty: {}, local: []}, disconnected: true });
-                            currentRoom.disconnect();
-                        }
-                        this.$router.push({name: "TeacherProfile"});
+                        this.stream.stop().then( ()=>{
+                            this.$router.push({name: "TeacherProfile"});
+                        } )
                     })
                     .catch(err => console.log(err.response))
             },
@@ -166,7 +156,12 @@
                     })
                     .catch(err => console.log(err.response))
             },
-
+            vidOff() {
+                vid.pause();
+                vid.src = "";
+                this.stream.stop();
+                console.log("Vid off");
+            },
             roomDetails() {
                 axios.get(`/room-details/${this.myRoom}`)
                     .then(res => console.log(res.data))
