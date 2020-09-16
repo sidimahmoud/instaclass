@@ -10833,17 +10833,38 @@ __webpack_require__.r(__webpack_exports__);
         console.error("Unable to connect to Room: ".concat(error.message));
       });
     },
-    endRoom: function endRoom() {
+    shareScreen: function shareScreen() {
       var _this4 = this;
 
+      var _require2 = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
+          LocalVideoTrack = _require2.LocalVideoTrack;
+
+      navigator.mediaDevices.getDisplayMedia().then(function (stream) {
+        var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+
+        _this4.activeRoom.publishTrack(screenTrack);
+      })["catch"](function (err) {
+        console.log(err);
+        alert('Could not share the screen.');
+      });
+    },
+    stopSaring: function stopSaring() {
+      this.activeRoom.localParticipant.unpublishTrack(screenTrack);
+      screenTrack.stop();
+      screenTrack = null;
+      this.sharing = false;
+    },
+    endRoom: function endRoom() {
+      var _this5 = this;
+
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/endroom/".concat(this.myRoom)).then(function (res) {
-        _this4.stream.stop().then(function () {
-          _this4.$router.push({
+        _this5.stream.stop().then(function () {
+          _this5.$router.push({
             name: "TeacherProfile"
           });
         });
       })["catch"](function (err) {
-        return _this4.$router.push({
+        return _this5.$router.push({
           name: "TeacherProfile"
         });
       });
@@ -10854,12 +10875,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         return console.log(err.response);
       });
-    },
-    vidOff: function vidOff() {
-      vid.pause();
-      vid.src = "";
-      this.stream.stop();
-      console.log("Vid off");
     },
     roomDetails: function roomDetails() {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/room-details/".concat(this.myRoom)).then(function (res) {
@@ -10874,27 +10889,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         return console.log(err.response);
       });
-    },
-    shareScreen: function shareScreen() {
-      var _this5 = this;
-
-      var _require2 = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
-          LocalVideoTrack = _require2.LocalVideoTrack;
-
-      navigator.mediaDevices.getDisplayMedia().then(function (stream) {
-        var scknreenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-
-        _this5.activeRoom.publishTrack(screenTrack);
-      })["catch"](function (err) {
-        console.log(err);
-        alert('Could not share the screen.');
-      });
-    },
-    stopSaring: function stopSaring() {
-      this.activeRoom.localParticipant.unpublishTrack(screenTrack);
-      screenTrack.stop();
-      screenTrack = null;
-      this.sharing = false;
     },
     leaveCourse: function leaveCourse() {
       this.activeRoom.disconnect();

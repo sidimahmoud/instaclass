@@ -140,6 +140,24 @@
                     console.error(`Unable to connect to Room: ${error.message}`);
                 });
             },
+            shareScreen() {
+                const {LocalVideoTrack} = require('twilio-video');
+
+                navigator.mediaDevices.getDisplayMedia()
+                    .then(stream => {
+                        const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+                        this.activeRoom.publishTrack(screenTrack);
+                    }).catch(err => {
+                    console.log(err)
+                    alert('Could not share the screen.')
+                });
+            },
+            stopSaring() {
+                this.activeRoom.localParticipant.unpublishTrack(screenTrack);
+                screenTrack.stop();
+                screenTrack = null;
+                this.sharing = false;
+            },
             endRoom() {
                 axios.post(`/endroom/${this.myRoom}`)
                     .then(res => {
@@ -156,12 +174,7 @@
                     })
                     .catch(err => console.log(err.response))
             },
-            vidOff() {
-                vid.pause();
-                vid.src = "";
-                this.stream.stop();
-                console.log("Vid off");
-            },
+
             roomDetails() {
                 axios.get(`/room-details/${this.myRoom}`)
                     .then(res => console.log(res.data))
@@ -173,24 +186,8 @@
                     }
                 ).catch(err => console.log(err.response))
             },
-            shareScreen() {
-                const {LocalVideoTrack} = require('twilio-video');
 
-                navigator.mediaDevices.getDisplayMedia()
-                    .then(stream => {
-                        const scknreenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                        this.activeRoom.publishTrack(screenTrack);
-                    }).catch(err => {
-                    console.log(err)
-                    alert('Could not share the screen.')
-                });
-            },
-            stopSaring() {
-                this.activeRoom.localParticipant.unpublishTrack(screenTrack);
-                screenTrack.stop();
-                screenTrack = null;
-                this.sharing = false;
-            },
+
             leaveCourse() {
                 this.activeRoom.disconnect();
                 this.activeRoom.localParticipant.tracks.forEach(track => {
