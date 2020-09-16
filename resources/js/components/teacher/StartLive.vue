@@ -122,12 +122,11 @@
                                 videoChatWindow.appendChild(track.attach());
                             }
                         });
-                        room.tracks.forEach(publication => {
-                            const track = publication.track;
+                        room.tracks.forEach(track => {
+                            // const track = publication.track;
                             videoChatWindow.appendChild(track.attach());
                         });
                         participant.on('trackSubscribed', track => {
-
                             videoChatWindow.appendChild(track.attach());
                         });
 
