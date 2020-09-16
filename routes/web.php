@@ -13,3 +13,4 @@ Auth::routes(['verify' => true]);
 
 Route::get('/{any}', 'HomeController@index')->where('any', '.*');
 
+Route::resource('categories', 'CategoryController');
