@@ -105,16 +105,11 @@
                     this.roomSid = room.sid;
                     this.activeRoom = room;
                     const videoChatWindow = document.getElementById('video-chat-window');
-                    // createLocalVideoTrack().then(track => {
-                    //     this.stream = track;
-                    //     videoChatWindow.appendChild(track.attach())
-                    // });
-
-                    createLocalTracks().then(tracks => {
-                        tracks.forEach(track => {
-                            videoChatWindow.appendChild(track.attach());
-                        });
+                    createLocalVideoTrack().then(track => {
+                        this.stream = track;
+                        videoChatWindow.appendChild(track.attach())
                     });
+
                     createLocalAudioTrack().then(track => {
                         this.stream = track;
                         videoChatWindow.appendChild(track.attach())
@@ -128,10 +123,10 @@
                                 videoChatWindow.appendChild(track.attach());
                             }
                         });
-                        room.tracks.forEach(track => {
-                            // const track = publication.track;
-                            videoChatWindow.appendChild(track.attach());
-                        });
+                        // room.tracks.forEach(track => {
+                        //     // const track = publication.track;
+                        //     videoChatWindow.appendChild(track.attach());
+                        // });
                         participant.on('trackSubscribed', track => {
                             videoChatWindow.appendChild(track.attach());
                         });

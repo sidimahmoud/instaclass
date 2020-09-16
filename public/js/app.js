@@ -10796,15 +10796,10 @@ __webpack_require__.r(__webpack_exports__);
         console.log("Successfully joined a Room: ".concat(room));
         _this3.roomSid = room.sid;
         _this3.activeRoom = room;
-        var videoChatWindow = document.getElementById('video-chat-window'); // createLocalVideoTrack().then(track => {
-        //     this.stream = track;
-        //     videoChatWindow.appendChild(track.attach())
-        // });
-
-        createLocalTracks().then(function (tracks) {
-          tracks.forEach(function (track) {
-            videoChatWindow.appendChild(track.attach());
-          });
+        var videoChatWindow = document.getElementById('video-chat-window');
+        createLocalVideoTrack().then(function (track) {
+          _this3.stream = track;
+          videoChatWindow.appendChild(track.attach());
         });
         createLocalAudioTrack().then(function (track) {
           _this3.stream = track;
@@ -10820,11 +10815,11 @@ __webpack_require__.r(__webpack_exports__);
               var track = publication.track;
               videoChatWindow.appendChild(track.attach());
             }
-          });
-          room.tracks.forEach(function (track) {
-            // const track = publication.track;
-            videoChatWindow.appendChild(track.attach());
-          });
+          }); // room.tracks.forEach(track => {
+          //     // const track = publication.track;
+          //     videoChatWindow.appendChild(track.attach());
+          // });
+
           participant.on('trackSubscribed', function (track) {
             videoChatWindow.appendChild(track.attach());
           });
