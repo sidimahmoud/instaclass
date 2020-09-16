@@ -147,7 +147,7 @@
                             this.$router.push({name: "TeacherProfile"});
                         } )
                     })
-                    .catch(err => console.log(err.response))
+                    .catch(err => this.$router.push({name: "TeacherProfile")
             },
             removeParticipant(user) {
                 axios.post(`/remove-participant/${this.roomSid}/${user}`)
