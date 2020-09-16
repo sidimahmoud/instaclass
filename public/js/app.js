@@ -83641,6 +83641,7 @@ var render = function() {
                       type: "text",
                       id: "section1Title",
                       placeholder: "Title",
+                      name: "title[]",
                       required: ""
                     }
                   })
@@ -83663,6 +83664,7 @@ var render = function() {
                       type: "text",
                       id: "short_desc",
                       placeholder: "Short description",
+                      name: "desc[]",
                       required: ""
                     }
                   })
@@ -83677,7 +83679,11 @@ var render = function() {
                   _vm._v(" "),
                   _c("input", {
                     staticClass: "form-control",
-                    attrs: { type: "datetime-local", required: "" }
+                    attrs: {
+                      type: "datetime-local",
+                      name: "date[]",
+                      required: ""
+                    }
                   })
                 ])
               ]),
@@ -83692,7 +83698,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("input", {
                     staticClass: "form-control",
-                    attrs: { type: "text", required: "" }
+                    attrs: { type: "text", name: "session[]", required: "" }
                   })
                 ])
               ])
