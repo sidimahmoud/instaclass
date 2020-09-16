@@ -9219,8 +9219,9 @@ __webpack_require__.r(__webpack_exports__);
 
       var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
           connect = _require.connect,
+          createLocalTracks = _require.createLocalTracks,
           createLocalVideoTrack = _require.createLocalVideoTrack,
-          createLocalTracks = _require.createLocalTracks;
+          createLocalAudioTrack = _require.createLocalAudioTrack;
 
       connect(this.accessToken, {
         name: this.myRoom
@@ -9230,7 +9231,12 @@ __webpack_require__.r(__webpack_exports__);
         _this2.activeRoom = room;
         var videoChatWindow = document.getElementById('video-chat-window');
         createLocalVideoTrack().then(function (track) {
-          return videoChatWindow.appendChild(track.attach());
+          _this2.stream = track;
+          videoChatWindow.appendChild(track.attach());
+        });
+        createLocalAudioTrack().then(function (track) {
+          _this2.stream = track;
+          videoChatWindow.appendChild(track.attach());
         });
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
@@ -9242,7 +9248,11 @@ __webpack_require__.r(__webpack_exports__);
               var track = publication.track;
               videoChatWindow.appendChild(track.attach());
             }
-          });
+          }); // room.tracks.forEach(track => {
+          //     // const track = publication.track;
+          //     videoChatWindow.appendChild(track.attach());
+          // });
+
           participant.on('trackSubscribed', function (track) {
             videoChatWindow.appendChild(track.attach());
           });
@@ -9250,13 +9260,16 @@ __webpack_require__.r(__webpack_exports__);
         room.on('participantDisconnected', function (participant) {
           console.log("Participant ".concat(participant.identity, " disconnected"));
 
-          _this2.participants.splice(_this2.participants.indexOf(participant.identity), 1);
+          _this2.participants.splice(_this2.participants.indexOf(participant.identity), 1); // participant.tracks.forEach(function (track) {
+          //     track.detach().forEach(function (mediaElement) {
+          //         mediaElement.remove();
+          //     });
+          // });
 
-          participant.tracks.forEach(function (track) {
-            track.detach().forEach(function (mediaElement) {
-              mediaElement.remove();
-            });
-          });
+        });
+        room.on('trackAdded', function (track, participant) {
+          console.log(participant.identity + " added track: " + track.kind);
+          videoChatWindow.appendChild(track.attach());
         });
       }, function (error) {
         console.error("Unable to connect to Room: ".concat(error.message));
