@@ -106475,7 +106475,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('appnav', __webpack_require__(/*! ./components/header/NavbarCompnent.vue */ "./resources/js/components/header/NavbarCompnent.vue")["default"]);
 Vue.component('appfooter', __webpack_require__(/*! ./components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue")["default"]);
 Vue.component('Home', __webpack_require__(/*! ./components/HomeCompnent.vue */ "./resources/js/components/HomeCompnent.vue")["default"]);
-axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = "https://instantclass.herokuapp.com/api";
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = "http://instantaclasse.ca/api";
 
 
 
@@ -111394,16 +111394,17 @@ var actions = {
                   data: user,
                   method: 'POST'
                 }).then(function (resp) {
-                  var token = resp.data.token;
-                  var user = {
-                    'u': resp.data.user.id,
-                    't': resp.data.user.roles[0].name,
-                    //name of user role
-                    'first_name': resp.data.user.first_name
-                  };
-                  localStorage.setItem('token', token);
-                  localStorage.setItem('user', JSON.stringify(user));
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                  // console.log(resp.data)
+                  // const token = resp.data.token;
+                  // const user = {
+                  //     'u': resp.data.user.id,
+                  //     't': resp.data.user.roles[0].name, //name of user role
+                  //     'first_name': resp.data.user.first_name
+                  // };
+                  // localStorage.setItem('token', token);
+                  // localStorage.setItem('user', JSON.stringify(user));
+                  //
+                  // axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                   commit('auth_success', token, user);
                   resolve(resp);
                 })["catch"](function (err) {
