@@ -55,42 +55,38 @@ class CoursesController extends Controller
 //            $courseSection->duration = $section->duration;
 //            $courseSection->save();
         }
-
-        if (Gate::denies('teacher-or-admin')) {
-            return response()->json(["response" => 'unauthorized']);
-        }
-        $course = new Course();
-        $course->user_id = $request->user()->id;
-        $course->sub_category_id = $request["sub_category_id"];
-        $course->name = $request["name"];
-        $course->short_description = $request["short_description"];
-        $course->description = $request["description"];
-        $course->image = $request["image"];
-        $course->slug = Str::slug($request["name"], "-");
-        $course->language = $request["language"];
-        $course->status = 2;
-        $course->type = 2;
-        $course->estimated_duration = $request["estimated_duration"];
-        $course->authorized_students = $request["authorized_students"];
-        $course->join_after = $request["join_after"];
-        $course->price = $request["price"];
-        $course->currency = $request["currency"];
-        $course->available_from = $request["available_from"];
-        $course->available_to = $request["available_to"];
-        $course->sharable = $request["sharable"];
-        $course->published = 1;
-
-        if ($request->hasFile('image')) {
-            $file = $request['image'];
-            $extension = $file->getClientOriginalExtension();
-            $file_name = $request['name'] . "-" . time() . "." . $extension;
-            $file->move('uploads/categories/', $file_name);
-            $course->image = 'uploads/courses/thumbnails' . $file_name;
-        }
-        $course->save();
-
-        if ($course)
-            return response()->json("course created successfully");
+//        $course = new Course();
+//        $course->user_id = $request->user()->id;
+//        $course->sub_category_id = $request["sub_category_id"];
+//        $course->name = $request["name"];
+//        $course->short_description = $request["short_description"];
+//        $course->description = $request["description"];
+//        $course->image = $request["image"];
+//        $course->slug = Str::slug($request["name"], "-");
+//        $course->language = $request["language"];
+//        $course->status = 2;
+//        $course->type = 2;
+//        $course->estimated_duration = $request["estimated_duration"];
+//        $course->authorized_students = $request["authorized_students"];
+//        $course->join_after = $request["join_after"];
+//        $course->price = $request["price"];
+//        $course->currency = $request["currency"];
+//        $course->available_from = $request["available_from"];
+//        $course->available_to = $request["available_to"];
+//        $course->sharable = $request["sharable"];
+//        $course->published = 1;
+//
+//        if ($request->hasFile('image')) {
+//            $file = $request['image'];
+//            $extension = $file->getClientOriginalExtension();
+//            $file_name = $request['name'] . "-" . time() . "." . $extension;
+//            $file->move('uploads/categories/', $file_name);
+//            $course->image = 'uploads/courses/thumbnails' . $file_name;
+//        }
+//        $course->save();
+//
+//        if ($course)
+//            return response()->json("course created successfully");
         return response()->json("error");
     }
 
