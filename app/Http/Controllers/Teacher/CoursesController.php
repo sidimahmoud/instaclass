@@ -44,6 +44,8 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
+
         if (Gate::denies('teacher-or-admin')) {
             return response()->json(["response" => 'unauthorized']);
         }
@@ -77,15 +79,15 @@ class CoursesController extends Controller
         }
         $course->save();
         $sections = $request["sections"];
-//        foreach ($sections as $section) {
-//            $courseSection = new CourseFile();
-//            $courseSection->course_id = $section->$course->id;
-//            $courseSection->title = $section->$section->title;
-//            $courseSection->description = $section->$section->description;
-//            $courseSection->startDate = $section->$section->stratDate;
-//            $courseSection->duration = $section->$section->duration;
-//            $courseSection->save();
-//        }
+        foreach ($sections as $section) {
+            $courseSection = new CourseFile();
+            $courseSection->course_id = $section->$course->id;
+            $courseSection->title = $section->$section->title;
+            $courseSection->description = $section->$section->description;
+            $courseSection->startDate = $section->$section->stratDate;
+            $courseSection->duration = $section->$section->duration;
+            $courseSection->save();
+        }
         if ($course)
             return response()->json("course created successfully");
         return response()->json("error");
@@ -119,10 +121,8 @@ class CoursesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (Gate::denies('teacher-or-admin')) {
-            return response()->json(["response" => 'unauthorized']);
-        }
-        $course = new Course();
+
+        $course =  Course::find($id);
         $course->user_id = $request->user()->id;
         $course->category_id = $request["category_id"];
         $course->name = $request["name"];
