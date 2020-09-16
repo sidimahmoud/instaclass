@@ -80,14 +80,16 @@ class CoursesController extends Controller
         $course->save();
         $sections = $request["sections"];
         foreach ($sections as $section) {
-            $courseSection = new CourseFile();
-            $courseSection->course_id = $section->$course->id;
-            $courseSection->title = $section->$section->title;
-            $courseSection->description = $section->$section->description;
-            $courseSection->startDate = $section->$section->stratDate;
-            $courseSection->duration = $section->$section->duration;
-            $courseSection->save();
+            dump($section->toArray());
+//            $courseSection = new CourseFile();
+//            $courseSection->course_id = $section->$course->id;
+//            $courseSection->title = $section->$section->title;
+//            $courseSection->description = $section->$section->description;
+//            $courseSection->startDate = $section->$section->stratDate;
+//            $courseSection->duration = $section->$section->duration;
+//            $courseSection->save();
         }
+        dd(555);
         if ($course)
             return response()->json("course created successfully");
         return response()->json("error");
