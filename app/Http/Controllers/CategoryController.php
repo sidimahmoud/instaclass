@@ -114,9 +114,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //dd($id);
-        if (Gate::denies('only-admin')) {
-            return response()->json(["response" => 'unauthorized'], 403);
-        }
         $category = Category::find($id);
         $category->delete();
         return response()->json(["response" => "category deleted"]);
