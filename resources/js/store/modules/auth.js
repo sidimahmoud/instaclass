@@ -22,7 +22,7 @@ const actions = {
                     const token = resp.data.token;
                     const user = {
                         'u': resp.data.user.id,
-                        't': resp.data.user.roles[0].name,
+                        't': resp.data.user.roles[0].name, //name of user role
                         'first_name': resp.data.user.first_name
                     };
                     localStorage.setItem('token', token);

@@ -177,7 +177,7 @@
                 navigator.mediaDevices.getDisplayMedia()
                     .then(stream => {
                         const scknreenTrack = new LocalVideoTrack(stream.getTracks()[0]);
-                        this.activeRoom.localParticipant.publishTrack(screenTrack);
+                        this.activeRoom.publishTrack(screenTrack);
                     }).catch(err => {
                     console.log(err)
                     alert('Could not share the screen.')

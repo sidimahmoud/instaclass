@@ -10883,7 +10883,7 @@ __webpack_require__.r(__webpack_exports__);
       navigator.mediaDevices.getDisplayMedia().then(function (stream) {
         var scknreenTrack = new LocalVideoTrack(stream.getTracks()[0]);
 
-        _this5.activeRoom.localParticipant.publishTrack(screenTrack);
+        _this5.activeRoom.publishTrack(screenTrack);
       })["catch"](function (err) {
         console.log(err);
         alert('Could not share the screen.');
@@ -111295,6 +111295,7 @@ var actions = {
                   var user = {
                     'u': resp.data.user.id,
                     't': resp.data.user.roles[0].name,
+                    //name of user role
                     'first_name': resp.data.user.first_name
                   };
                   localStorage.setItem('token', token);
