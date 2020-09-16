@@ -10845,6 +10845,13 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/endroom/".concat(this.myRoom)).then(function (res) {
         console.log(res.data);
+        var videoElem = document.getElementById('video-chat-window');
+        var stream = videoElem.srcObject;
+        var tracks = stream.getTracks();
+        tracks.forEach(function (track) {
+          track.stop();
+        });
+        videoElem.srcObject = null;
 
         _this4.$router.push({
           name: "TeacherProfile"

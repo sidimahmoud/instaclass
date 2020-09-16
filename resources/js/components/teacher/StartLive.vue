@@ -105,7 +105,7 @@
                     this.activeRoom = room;
                     const videoChatWindow = document.getElementById('video-chat-window');
                     createLocalVideoTrack().then(track => videoChatWindow.appendChild(track.attach()));
-                    room.on('participantConnected', participant =>              {
+                    room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
                         this.participants.push(participant.identity);
                         participant.tracks.forEach(publication => {
@@ -121,22 +121,22 @@
                     room.on('participantDisconnected', participant => {
                         console.log(`Participant ${participant.identity} disconnected`);
                         this.participants.splice(this.participants.indexOf(participant.identity), 1);
-                        participant.tracks.forEach(function(track) {
-                            track.detach().forEach(function(mediaElement) {
+                        participant.tracks.forEach(function (track) {
+                            track.detach().forEach(function (mediaElement) {
                                 mediaElement.remove();
                             });
                         });
                     });
-                    room.on('disconnected', function(room, error) {
+                    room.on('disconnected', function (room, error) {
                         if (error) {
                             console.log('Unexpectedly disconnected:', error);
                         }
-                        room.localParticipant.tracks.forEach(function(track) {
+                        room.localParticipant.tracks.forEach(function (track) {
                             track.stop();
                             track.detach();
                         });
                     });
-                    room.on('trackAdded', function(track, participant) {
+                    room.on('trackAdded', function (track, participant) {
                         videoChatWindow.appendChild(track.attach());
                     });
 
@@ -148,6 +148,15 @@
                 axios.post(`/endroom/${this.myRoom}`)
                     .then(res => {
                         console.log(res.data);
+                         let videoElem = document.getElementById('video-chat-window');
+                        const stream = videoElem.srcObject;
+                        const tracks = stream.getTracks();
+
+                        tracks.forEach(function (track) {
+                            track.stop();
+                        });
+
+                        videoElem.srcObject = null;
                         this.$router.push({name: "TeacherProfile"});
                     })
                     .catch(err => console.log(err.response))
