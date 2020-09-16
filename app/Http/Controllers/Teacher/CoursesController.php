@@ -45,7 +45,7 @@ class CoursesController extends Controller
     public function store(Request $request)
     {
         $sections = $request["sections"];
-        dd(count($sections));
+        dd(json_encode($sections));
         foreach ($sections as $section) {
             dump($section->toArray());
 //            $courseSection = new CourseFile();
