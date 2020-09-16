@@ -10786,9 +10786,8 @@ __webpack_require__.r(__webpack_exports__);
 
       var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
           connect = _require.connect,
-          tracks = _require.tracks,
-          createLocalVideoTrack = _require.createLocalVideoTrack,
           createLocalTracks = _require.createLocalTracks,
+          createLocalVideoTrack = _require.createLocalVideoTrack,
           createLocalAudioTrack = _require.createLocalAudioTrack;
 
       connect(this.accessToken, {
@@ -10806,8 +10805,20 @@ __webpack_require__.r(__webpack_exports__);
           _this3.stream = track;
           videoChatWindow.appendChild(track.attach());
         });
+        createLocalTracks().then(function (track) {
+          _this3.stream = track;
+          videoChatWindow.appendChild(track.attach());
+        });
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
+          participant.remoteVideoTrackStats(function (track) {
+            // const track = publication.track;
+            videoChatWindow.appendChild(track.attach());
+          });
+          participant.remoteAudioTrackStats(function (track) {
+            // const track = publication.track;
+            videoChatWindow.appendChild(track.attach());
+          });
 
           _this3.participants.push(participant.identity);
 
@@ -10836,6 +10847,7 @@ __webpack_require__.r(__webpack_exports__);
 
         });
         room.on('trackAdded', function (track, participant) {
+          console.log(participant.identity + " added track: " + track.kind);
           videoChatWindow.appendChild(track.attach());
         });
       }, function (error) {

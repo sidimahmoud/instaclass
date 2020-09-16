@@ -99,7 +99,7 @@
             },
 
             connectToRoom() {
-                const {connect, tracks, createLocalVideoTrack, createLocalTracks, createLocalAudioTrack} = require('twilio-video');
+                const {connect, createLocalTracks, createLocalVideoTrack, createLocalAudioTrack} = require('twilio-video');
                 connect(this.accessToken, {name: this.myRoom}).then(room => {
                     console.log(`Successfully joined a Room: ${room}`);
                     this.roomSid = room.sid;
@@ -113,8 +113,20 @@
                         this.stream = track;
                         videoChatWindow.appendChild(track.attach())
                     });
+                    createLocalTracks().then(track => {
+                        this.stream = track;
+                        videoChatWindow.appendChild(track.attach())
+                    });
                     room.on('participantConnected', participant => {
                         console.log(`Participant "${participant.identity}" connected`);
+                        participant.remoteVideoTrackStats(track => {
+                            // const track = publication.track;
+                            videoChatWindow.appendChild(track.attach());
+                        });
+                        participant.remoteAudioTrackStats(track => {
+                            // const track = publication.track;
+                            videoChatWindow.appendChild(track.attach());
+                        })
                         this.participants.push(participant.identity);
                         participant.tracks.forEach(publication => {
                             if (publication.isSubscribed) {
@@ -129,7 +141,6 @@
                         participant.on('trackSubscribed', track => {
                             videoChatWindow.appendChild(track.attach());
                         });
-
                     });
                     room.on('participantDisconnected', participant => {
                         console.log(`Participant ${participant.identity} disconnected`);
@@ -141,6 +152,7 @@
                         // });
                     });
                     room.on('trackAdded', function (track, participant) {
+                        console.log(participant.identity + " added track: " + track.kind);
                         videoChatWindow.appendChild(track.attach());
                     });
                 }, error => {
