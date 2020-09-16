@@ -144,10 +144,11 @@
                 const {LocalVideoTrack} = require('twilio-video');
 
                 navigator.mediaDevices.getDisplayMedia().then(stream => {
-                    let screenTrack = new Twilio.Video.LocalVideoTrack(stream.getTracks()[0]);
+                    let screenTrack = LocalVideoTrack(stream.getTracks()[0]);
                     this.activeRoom.localParticipant.publishTrack(screenTrack);
-                }).catch(() => {
-                    alert('Could not share the screen.')
+                }).catch((err) => {
+                    console.log(err)
+                    //alert('Could not share the screen.')
                 });
             },
             stopSaring() {
