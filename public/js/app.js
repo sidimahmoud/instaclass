@@ -10840,11 +10840,10 @@ __webpack_require__.r(__webpack_exports__);
           LocalVideoTrack = _require2.LocalVideoTrack;
 
       navigator.mediaDevices.getDisplayMedia().then(function (stream) {
-        var screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+        var screenTrack = new Twilio.Video.LocalVideoTrack(stream.getTracks()[0]);
 
-        _this4.activeRoom.publishTrack(screenTrack);
-      })["catch"](function (err) {
-        console.log(err);
+        _this4.activeRoom.localParticipant.publishTrack(screenTrack);
+      })["catch"](function () {
         alert('Could not share the screen.');
       });
     },
