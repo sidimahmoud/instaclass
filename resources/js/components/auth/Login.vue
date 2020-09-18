@@ -34,10 +34,10 @@
                         <router-link :to="{name: 'Register'}">Sign up</router-link>
                     </div>
                     <h2>Or</h2>
-                    <button class="btn btn-lg btn-google btn-block text-uppercase" @click="loginGoogle('google')">
+                    <button class="btn btn-lg btn-google btn-block text-uppercase" @click="authLogin('google')">
                         <i class="fa fa-google mr-2"></i> Continue with Google
                     </button>
-                    <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGoogle('facebook')">
+                    <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="authLogin('facebook')">
                         <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
                     </button>
                 </div>
@@ -67,7 +67,10 @@
                 let password = this.password;
                 this.$store.dispatch('login', {email, password})
                     .then(res => {
-                        (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
+                        (res.data.user.roles[0].name === "teacher") ?
+                            this.$router.push({name: 'TeacherProfile'}) :
+                            (res.data.user.roles[0].name === "student") ?
+                                this.$router.push({name: 'StudentProfile'}) : this.$router.push({name: 'Admin'});
                     })
                     .catch(err => this.errorMessage = err.response.data.message)
             },
@@ -82,7 +85,7 @@
             //         })
             //         .catch(err => console.log(err))
             // },
-            loginGoogle(provider) {
+            authLogin(provider) {
                 this.$store.dispatch('socialStudentAuth', provider)
                     .then((res) => {
                         if (res.data.url) {

@@ -8,7 +8,7 @@
         <div  v-if="!loading">
             <div class="text-center" v-if="allcategCourses.length==0">
                 <h3>
-                    There in no courses in this category yet.
+                    There is no courses in this category yet.
                 </h3>
             </div>
             <course :course="c" v-for="c in allcategCourses" :key="c.id" v-else/>

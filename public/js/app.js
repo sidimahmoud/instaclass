@@ -6472,6 +6472,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6647,6 +6652,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$store.dispatch("fetchSubCategories", id);
     },
     saveSub: function saveSub() {
+      var _this = this;
+
       if (this.category_id === '0') {
         alert("Select category");
         return;
@@ -6657,7 +6664,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         name: this.name
       }).then(function (res) {
         alert("Sub-category created successfully");
-        location.reload();
+        _this.category_id = 0;
+        _this.name = '';
       });
     }
   }),
@@ -7638,8 +7646,10 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         res.data.user.roles[0].name === "teacher" ? _this.$router.push({
           name: 'TeacherProfile'
-        }) : _this.$router.push({
+        }) : res.data.user.roles[0].name === "student" ? _this.$router.push({
           name: 'StudentProfile'
+        }) : _this.$router.push({
+          name: 'Admin'
         });
       })["catch"](function (err) {
         return _this.errorMessage = err.response.data.message;
@@ -7656,7 +7666,7 @@ __webpack_require__.r(__webpack_exports__);
     //         })
     //         .catch(err => console.log(err))
     // },
-    loginGoogle: function loginGoogle(provider) {
+    authLogin: function authLogin(provider) {
       this.$store.dispatch('socialStudentAuth', provider).then(function (res) {
         if (res.data.url) {
           console.log(res.data.url);
@@ -10807,12 +10817,15 @@ __webpack_require__.r(__webpack_exports__);
         console.log("Successfully joined a Room: ".concat(room));
         _this3.roomSid = room.sid;
         _this3.activeRoom = room;
-        var videoChatWindow = document.getElementById('video-chat-window');
-        createLocalVideoTrack().then(function (track) {
-          videoChatWindow.appendChild(track.attach());
-        });
-        createLocalAudioTrack().then(function (track) {
-          videoChatWindow.appendChild(track.attach());
+        var videoChatWindow = document.getElementById('video-chat-window'); // createLocalVideoTrack().then(track => {
+        //     videoChatWindow.appendChild(track.attach())
+        // });
+        // createLocalAudioTrack().then(track => {
+        //     videoChatWindow.appendChild(track.attach())
+        // });
+
+        room.localParticipant.videoTracks.forEach(function (publication) {
+          return videoChatWindow.appendChild(publication.track.attach());
         });
         room.on('participantConnected', function (participant) {
           console.log("Participant \"".concat(participant.identity, "\" connected"));
@@ -76970,6 +76983,12 @@ var render = function() {
                       _c("button", { staticClass: "btn btn-primary" }, [
                         _vm._v("Edit")
                       ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("button", { staticClass: "btn btn-danger" }, [
+                        _c("i", { staticClass: "fa fa-trash text-white" })
+                      ])
                     ])
                   ])
                 }),
@@ -78830,7 +78849,7 @@ var render = function() {
               staticClass: "btn btn-lg btn-google btn-block text-uppercase",
               on: {
                 click: function($event) {
-                  return _vm.loginGoogle("google")
+                  return _vm.authLogin("google")
                 }
               }
             },
@@ -78846,7 +78865,7 @@ var render = function() {
               staticClass: "btn btn-lg btn-github  btn-block text-uppercase",
               on: {
                 click: function($event) {
-                  return _vm.loginGoogle("facebook")
+                  return _vm.authLogin("facebook")
                 }
               }
             },
@@ -79554,7 +79573,7 @@ var render = function() {
                 ? _c("div", { staticClass: "text-center" }, [
                     _c("h3", [
                       _vm._v(
-                        "\n                There in no courses in this category yet.\n            "
+                        "\n                There is no courses in this category yet.\n            "
                       )
                     ])
                   ])
@@ -106475,7 +106494,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('appnav', __webpack_require__(/*! ./components/header/NavbarCompnent.vue */ "./resources/js/components/header/NavbarCompnent.vue")["default"]);
 Vue.component('appfooter', __webpack_require__(/*! ./components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue")["default"]);
 Vue.component('Home', __webpack_require__(/*! ./components/HomeCompnent.vue */ "./resources/js/components/HomeCompnent.vue")["default"]);
-axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = "http://instantaclasse.ca/api";
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = "https://instantclass.herokuapp.com/api";
 
 
 
@@ -110786,7 +110805,7 @@ var routes = [{
     var user = JSON.parse(localStorage.getItem('user')) || null;
     if (user.t === "teacher") next({
       name: 'TeacherProfile'
-    });
+    });else next();
   },
   meta: {
     requiresAuth: false,
