@@ -8970,6 +8970,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AppNav',
@@ -15650,7 +15652,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.router-link-exact-active[data-v-25cc6923] {\n    font-weight: bolder;\n}\n", ""]);
+exports.push([module.i, "\n.router-link-exact-active[data-v-25cc6923] {\n    font-weight: bolder;\n}\n.lang[data-v-25cc6923]{\n    list-style-type: none;\n    margin-top:0;\n    float: right;\n}\n", ""]);
 
 // exports
 
@@ -81391,50 +81393,44 @@ var render = function() {
                   )
                 ],
                 1
-              ),
-              _vm._v(" "),
-              this.$route.path.includes("/fr")
-                ? _c(
-                    "li",
-                    { staticClass: "nav-item " },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "nav-link ml-2 rounded",
-                          attrs: { to: { name: "Home" }, tag: "a" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        EN\n                    "
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                : _c(
-                    "li",
-                    { staticClass: "nav-item " },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "nav-link ml-2 rounded",
-                          attrs: { to: { name: "HomeFr" }, tag: "a" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        FR\n                    "
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
+              )
             ])
           ]
         )
+      ]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "lang float-md-right mt-md-0" }, [
+        this.$route.path.includes("/fr")
+          ? _c(
+              "li",
+              { staticClass: "nav-item " },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-link ml-2 rounded",
+                    attrs: { to: { name: "Home" }, tag: "a" }
+                  },
+                  [_vm._v("\n                EN\n            ")]
+                )
+              ],
+              1
+            )
+          : _c(
+              "li",
+              { staticClass: "nav-item " },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-link ml-2 rounded",
+                    attrs: { to: { name: "HomeFr" }, tag: "a" }
+                  },
+                  [_vm._v("\n                FR\n            ")]
+                )
+              ],
+              1
+            )
       ])
     ]
   )
@@ -110803,9 +110799,12 @@ var routes = [{
   component: _components_teacher_Become__WEBPACK_IMPORTED_MODULE_18__["default"],
   beforeEnter: function beforeEnter(to, from, next) {
     var user = JSON.parse(localStorage.getItem('user')) || null;
-    if (user.t === "teacher") next({
-      name: 'TeacherProfile'
-    });else next();
+
+    if (user) {
+      if (user.t === "teacher") next({
+        name: 'TeacherProfile'
+      });else next();
+    } else next();
   },
   meta: {
     requiresAuth: false,

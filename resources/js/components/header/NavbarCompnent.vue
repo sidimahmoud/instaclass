@@ -59,20 +59,22 @@
                             Account
                         </router-link>
                     </li>
-                    <li class="nav-item " v-if="this.$route.path.includes('/fr')">
-                        <router-link :to="{ name: 'Home'}" tag="a" class="nav-link ml-2 rounded">
-                            EN
-                        </router-link>
-                    </li>
-                    <li class="nav-item " v-else>
-                        <router-link :to="{ name: 'HomeFr'}" tag="a"
-                                     class="nav-link ml-2 rounded">
-                            FR
-                        </router-link>
-                    </li>
                 </ul>
             </div>
         </div>
+        <ul class="lang float-md-right mt-md-0">
+            <li class="nav-item " v-if="this.$route.path.includes('/fr')">
+                <router-link :to="{ name: 'Home'}" tag="a" class="nav-link ml-2 rounded">
+                    EN
+                </router-link>
+            </li>
+            <li class="nav-item " v-else>
+                <router-link :to="{ name: 'HomeFr'}" tag="a"
+                             class="nav-link ml-2 rounded">
+                    FR
+                </router-link>
+            </li>
+        </ul>
     </nav>
 </template>
 <script>
@@ -104,5 +106,10 @@
 <style scoped>
     .router-link-exact-active {
         font-weight: bolder;
+    }
+    .lang{
+        list-style-type: none;
+        margin-top:0;
+        float: right;
     }
 </style>
