@@ -12,8 +12,8 @@ Vue.component('appnav', require('./components/header/NavbarCompnent.vue').defaul
 Vue.component('appfooter', require('./components/FooterComponent.vue').default);
 
 Vue.component('Home', require('./components/HomeCompnent.vue').default);
- // axios.defaults.baseURL = "https://instantclass.herokuapp.com/api";
- axios.defaults.baseURL = "https://instantaclasse.ca/api";
+ axios.defaults.baseURL = "https://instantclass.herokuapp.com/api";
+ // axios.defaults.baseURL = "https://instantaclasse.ca/api";
 
 
 import store from './store'
