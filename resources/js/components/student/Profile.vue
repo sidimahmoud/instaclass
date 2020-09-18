@@ -22,7 +22,7 @@
                                     <h3 class="card-title font-weight-bolder">{{userProfile.first_name}}
                                         {{userProfile.last_name}}</h3>
                                     <p class="card-text">{{userProfile.headline}}</p>
-                                    <router-link :to="{name: 'EditProfile'}" tag="a" class="btn btn-danger">
+                                    <router-link :to="{name: 'EditStudentProfile'}" tag="a" class="btn btn-danger">
                                         Edit Profile
                                     </router-link>
                                 </div>
@@ -66,15 +66,14 @@
                                     <li class=" mt-4" v-if="userEnrollments.length==0">
                                         <h5 class="mt-0 mb-1">No courses</h5>
                                         <p class="text-center">
-                                            visit <a href="/courses"> courses
-                                        </a> to get started
+                                            You have no recorded course for the moment
                                         </p>
                                     </li>
                                     <li class=" mt-4" v-for="e in userEnrollments" :key="e.id">
                                         <router-link :to="{name: 'Player', params: { slug: e.course.slug} }"
                                                      v-if="e.course.type==1">
                                             <h5 class="mt-0 mb-1">{{e.course.name}},
-                                                {{e.course.created_at.slice(0,10)}}, {{e.course.user.first_name}}
+                                                {{e.course.created_at.slice(0,10)}}, {{e.course.created_at.slice(11,16)}}, {{e.course.user.first_name}}
                                                 {{e.course.user.last_name}}</h5>
                                         </router-link>
                                     </li>

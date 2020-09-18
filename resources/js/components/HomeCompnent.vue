@@ -5,7 +5,8 @@
                 <div class="row justify-content-around align-items-center">
                     <div
                         class="col-md-6 col-sm-12 text-center text-md-left px-md-5 justify-content-center align-items-center text-white">
-                        <h1 class="display-4">The perfect Platform For Online <span class="text-danger">Courses</span></h1>
+                        <h1 class="display-4">The perfect Platform For Online <span class="text-danger">Courses</span>
+                        </h1>
 
                     </div>
 
@@ -17,9 +18,13 @@
             </div>
         </div>
         <div class=" text-right pr-5">
-<!--            <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Finstantclass.herokuapp.com%2F&layout=button_count&size=large&appId=223985172274465&width=104&height=28" width="104" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>-->
-            <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://www.instantclass.herokuapp.com/courses&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!"> <img src="../assets/images/fb.png" alt="fb" width="150px"></a> <br>
-            <a href="#"> <img src="../assets/images/insta.png" alt="insta" width="150px"></a>
+            <iframe
+                src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&appId=223985172274465&width=130&height=28"
+                width="130" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                allowTransparency="true" allow="encrypted-media"></iframe>
+            <br>
+            <!--            <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://www.instantclass.herokuapp.com/courses&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!"> <img src="../assets/images/fb.png" alt="fb" width="150px"></a> <br>-->
+            <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> <img src="../assets/images/insta.png" alt="insta" class="rounded" width="130px"></a>
         </div>
         <div class="container d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
             <h3 class="text-primary">Courses by category </h3>
@@ -42,7 +47,9 @@
                         </router-link>
                         <div class="card-body text-center">
                             <h5 class="card-title  font-weight-bolder">{{categ.name}}</h5>
-                            <p class="card-text">{{categ.description}}</p>
+                            <p class="card-text">
+                                <span v-for="(sub, index) in categ.sub_categories" :key="sub.id">{{index>0? ", ":""}} {{sub.name}}</span>
+                            </p>
                         </div>
                     </div>
                 </div>

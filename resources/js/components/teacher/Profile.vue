@@ -219,7 +219,7 @@
     import Payments from "./Payments";
     import Review from "../courses/Review";
     import NewSection from "./NewSection";
-    import EditProfile from "../student/EditProfile";
+    import EditProfile from "./EditProfile";
     import CountDown from "../CountDown";
     import axios from "axios";
 

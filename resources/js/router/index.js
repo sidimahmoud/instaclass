@@ -24,7 +24,7 @@ import Become from "../components/teacher/Become";
 import Signin from "../components/teacher/Signin";
 import TeacherProfile from "../components/teacher/Profile";
 import StudentProfile from "../components/student/Profile";
-import EditProfile from "../components/student/EditProfile";
+import EditStudentProfile from "../components/student/EditProfile";
 
 import Dashboard from "../components/admin/Dashboard";
 import LoginAdmin from "../components/admin/auth/Login";
@@ -193,10 +193,6 @@ const routes = [
     {
         path: '/teacher/login',
         name: 'Signin',
-        beforeEnter: (to, from, next) => {
-            let user = JSON.parse(localStorage.getItem('user')) || null;
-            if (user.t === "teacher") next({name: 'TeacherProfile'});
-        },
         component: Signin,
         meta: {
             requiresAuth: false,
@@ -210,11 +206,8 @@ const routes = [
         component: Become,
         beforeEnter: (to, from, next) => {
             let user = JSON.parse(localStorage.getItem('user')) || null;
-            if(user){
-                if (user.t === "teacher") next({name: 'TeacherProfile'});
-                else next()
-            }else next()
-
+            if (user && user.t === "teacher") next({name: 'TeacherProfile'});
+            else next()
         },
         meta: {
             requiresAuth: false,
@@ -248,6 +241,7 @@ const routes = [
             title: 'New session'
         }
     },
+
     {
         path: '/student/profile',
         name: 'StudentProfile',
@@ -264,10 +258,11 @@ const routes = [
             else next({name: 'Home'});
         },
     },
+
     {
-        path: '/profile/edit',
-        name: 'EditProfile',
-        component: EditProfile,
+        path: '/student/edit',
+        name: 'EditStudentProfile',
+        component: EditStudentProfile,
         meta: {
             requiresAuth: true,
             title: 'Edit Profile'

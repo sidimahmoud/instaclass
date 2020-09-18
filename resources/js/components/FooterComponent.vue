@@ -52,7 +52,9 @@
 
                     <!-- Links -->
                     <p>
-                        <a href="#" class="text-uppercase">faq</a>
+                        <router-link :to="{ name: 'Faq'}" tag="a" class=" text-uppercase">
+                            FAQ
+                        </router-link>
                     </p>
 
                     <p>
@@ -72,13 +74,12 @@
 
                 <!-- Grid column -->
                 <div class="col-md-3 align-content-center text-white mx-auto mb-md-0">
-                    <p>Share</p>
                     <p>Instantclass On Social Media</p>
                     <p class="mt-2">
-                        <i class="fa fa-facebook  mr-3"></i>
-                        <i class="fa fa-twitter  mr-3"></i>
-                        <i class="fa fa-linkedin  mr-3"></i>
-                        <i class="fa fa-instagram  mr-3"></i>
+                        <a href=" https://www.facebook.com/InstantaClasse/?modal=admin_todo_tour " target="_blank">
+                            <i class="fa fa-facebook  mr-3 fa-2x"></i>
+                        </a>
+                        <i class="fa fa-instagram  fa-2x"></i>
                     </p>
                 </div>
                 <!-- Grid column -->

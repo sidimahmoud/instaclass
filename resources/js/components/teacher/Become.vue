@@ -57,7 +57,7 @@
 
                         </form>
                         <div class="text-center">Already have an account?
-                            <router-link :to="{name: 'Login'}">Sign in</router-link>
+                            <router-link :to="{name: 'Signin'}">Sign in</router-link>
                         </div>
                         <h2>Or</h2>
                         <button class="btn btn-lg btn-google btn-block text-uppercase" @click="loginGoogle('google')">

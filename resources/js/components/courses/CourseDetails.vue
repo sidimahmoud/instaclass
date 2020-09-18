@@ -41,7 +41,7 @@
                         <!--                        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=117&layout=button_count&action=like&size=large&share=false&height=21&appId=223985172274465" width="117" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>-->
                     </div>
                     <div class="col-md-2">
-                        <a href="#"> <img src="../../assets/images/insta.png" alt="insta" width="150px"></a>
+                        <a href="#"> <img src="../../assets/images/insta1.png" alt="insta" width="150px"></a>
 
                         <!--                        <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://www.instantclass.herokuapp.com&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!"-->
                         <!--                           target="_blank"-->

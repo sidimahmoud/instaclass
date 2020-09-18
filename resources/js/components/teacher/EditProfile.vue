@@ -1,6 +1,5 @@
 <template>
-
-    <div class="container bootstrap snippet " v-if="!profileLoading">
+    <div class="container bootstrap snippet ">
         <div class="text-center"><h1>{{userProfile.first_name}} {{userProfile.last_name}}</h1></div>
         <div class="row">
             <div class="col-sm-3"><!--left col-->
@@ -96,7 +95,7 @@
         </div>
         <!--/col-9-->
     </div>
-
+    <!--/row-->
 
 </template>
 
@@ -105,14 +104,6 @@
 
     export default {
         name: "EditProfile",
-        methods:{
-            ...mapActions(["fetchProfile"])
-        },
-        computed:{
-            ...mapGetters(["userProfile", "profileLoading"])
-        },
-        created() {
-            this.fetchProfile()
-        }
+        props:["userProfile"]
     }
 </script>
