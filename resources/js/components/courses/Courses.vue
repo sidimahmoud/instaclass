@@ -6,7 +6,7 @@
             </div>
         </div>
         <div v-if="!loading">
-            <course :course="c" v-for="c in allCourses.data" :key="c.id"/>
+            <course  v-for="c in allCourses.data" :key="c.id" :course="c" />
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-end">
 
