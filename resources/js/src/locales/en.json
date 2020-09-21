@@ -1,0 +1,14 @@
+{
+    "title": "The perfect Platform For Online Courses",
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "courses": "All Courses",
+        "become": "Become Instructor",
+        "demande": "Request course",
+        "account": "Account"
+    },
+    "coursesByCateg": "Courses by category",
+    "search": "Search for courses",
+    "searchBtn": "Search"
+}

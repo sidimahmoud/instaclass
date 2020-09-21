@@ -14,41 +14,44 @@
 
                 <ul class="navbar-nav ">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2" @submit.prevent="search">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search for courses"
-                               v-model="q" aria-label="Search">
+                        <input class="form-control mr-sm-2" type="search"
+                               :placeholder="$t('search')"
+                        v-model="q" aria-label="Search">
                         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
-                            Search
+                            {{$t("searchBtn")}}
                         </button>
                     </form>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item " v-if="!$route.matched.some(({ name }) => name === 'Home')">
                         <router-link :to="{ name: 'Home'}" tag="a" class="nav-link ">
-                            Home
+                            {{$t('nav.home')}}
+
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{ name: 'About'}" tag="a" class="nav-link">
-                            About
+                            {{$t('nav.about')}}
+
                         </router-link>
                     </li>
                     <li class="nav-item ">
 
                         <router-link :to="{ name: 'Courses'}" tag="a" class="nav-link ">
-                            All courses
+                            {{$t('nav.courses')}}
                         </router-link>
 
                     </li>
                     <li class="nav-item">
                         <router-link :to="{name: 'Become'}" tag="a"
                                      class="nav-link bg-danger text-white rounded">
-                            Become Instructor
+                            {{$t('nav.become')}}
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{name: 'Demande'}" tag="a"
                                      class="nav-link">
-                            Demande de cours
+                            {{$t('nav.demande')}}
                         </router-link>
                     </li>
 
@@ -56,29 +59,26 @@
                     <li class="nav-item">
                         <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                      class="nav-link ">
-                            Account
+                            {{$t('nav.account')}}
+
                         </router-link>
                     </li>
                 </ul>
             </div>
         </div>
         <ul class="lang float-md-right mt-md-0">
-            <li class="nav-item " v-if="this.$route.path.includes('/fr')">
-                <router-link :to="{ name: 'Home'}" tag="a" class="nav-link ml-2 rounded">
-                    EN
-                </router-link>
+            <li class="btn btn-outline-primary " v-if="locale==='fr'" @click="en">
+                EN
             </li>
-            <li class="nav-item " v-else>
-                <router-link :to="{ name: 'HomeFr'}" tag="a"
-                             class="nav-link ml-2 rounded">
-                    FR
-                </router-link>
+            <li class="btn btn-outline-primary " v-else @click="fr">
+                FR
             </li>
         </ul>
     </nav>
 </template>
 <script>
     import {mapGetters} from 'vuex'
+    import i18n from "../../src/i18n";
 
     export default {
         name: 'AppNav',
@@ -86,9 +86,19 @@
         data() {
             return {
                 q: '',
+                locale: 'en'
             }
         },
         methods: {
+            en() {
+                i18n.locale = "en";
+                this.locale = "en";
+            },
+            fr() {
+                i18n.locale = "fr";
+                this.locale = "fr";
+
+            },
             logout() {
                 this.$store.dispatch('logout')
                     .then(() => {
@@ -107,9 +117,10 @@
     .router-link-exact-active {
         font-weight: bolder;
     }
-    .lang{
+
+    .lang {
         list-style-type: none;
-        margin-top:0;
+        margin-top: 0;
         float: right;
     }
 </style>

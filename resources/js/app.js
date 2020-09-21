@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import i18n from "./src/i18n";
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -22,6 +22,7 @@ const app = new Vue({
     el: '#app',
     store,
     router,
+    i18n,
     components: {
         Home
     },

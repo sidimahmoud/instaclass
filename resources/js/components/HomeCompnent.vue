@@ -5,7 +5,9 @@
                 <div class="row justify-content-around align-items-center">
                     <div
                         class="col-md-6 col-sm-12 text-center text-md-left px-md-5 justify-content-center align-items-center text-white">
-                        <h1 class="display-4">The perfect Platform For Online <span class="text-danger">Courses</span>
+                        <h1 class="display-4">
+                            {{$t('title')}}
+
                         </h1>
 
                     </div>
@@ -27,7 +29,9 @@
             <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> <img src="../assets/images/insta.png" alt="insta" class="rounded" width="130px"></a>
         </div>
         <div class="container d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
-            <h3 class="text-primary">Courses by category </h3>
+            <h3 class="text-primary">
+                {{$t('coursesByCateg')}}
+            </h3>
             <span class="latest_courses_border"> </span>
         </div>
         <div class="container">

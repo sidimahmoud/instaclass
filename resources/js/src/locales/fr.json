@@ -1,0 +1,14 @@
+{
+    "title": "La plateforme parfaite pour les cours en ligne",
+    "nav": {
+        "home": "Accueil",
+        "about": "A props",
+        "courses": "Tous le cours",
+        "become": "Devenir instructeur",
+        "demande": "Demande de cours",
+        "account": "Compte"
+    },
+    "coursesByCateg": "Les cours par categorie",
+    "search": "Chercher des cours",
+    "searchBtn": "Chercher"
+}
