@@ -44,7 +44,6 @@ class LiveCoursesController extends Controller
         $room = $twilio->video->v1->rooms
             ->create([
                     "recordParticipantsOnConnect" => $recorded,
-                    "statusCallback" => "https://instantclass.herokuapp.com/room-envents",
                     "type" => "group",
                     "uniqueName" => $myRoom
                 ]

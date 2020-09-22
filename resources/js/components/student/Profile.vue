@@ -69,7 +69,7 @@
                                             You have no recorded course for the moment
                                         </p>
                                     </li>
-                                    <li class=" mt-4" v-else v-for="e in userEnrollments" :key="e.id">
+                                    <li class=" mt-4" v-for="e in userEnrollments" :key="e.id">
                                         <div v-if="e.course.type==1">
                                             <router-link :to="{name: 'Player', params: { slug: e.course.slug} }">
                                                 <h5 class="mt-0 mb-1">{{e.course.name}},
@@ -78,9 +78,7 @@
                                                     {{e.course.user.last_name}}</h5>
                                             </router-link>
                                         </div>
-
                                     </li>
-
                                 </ul>
                             </div>
 
@@ -88,9 +86,8 @@
                                 <h3 class="text-center">Your receipts will appear here. </h3>
                             </div>
                             <div class="tab-pane fade show " id="live">
-                                <ul class="list-unstyled">
-                                    <li class="mt-4" v-if="userEnrollments.length==0">
-
+                                <ul class="list-unstyled" >
+                                    <li class="mt-4 text-center" v-if="userEnrollments.length==0">
                                         <img src="../../assets/images/cam-icon.png" alt="">
                                         <p class="text-center">
                                             You will be redirected to your live class when you will subscribe to a

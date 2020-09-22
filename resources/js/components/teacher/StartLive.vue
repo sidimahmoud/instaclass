@@ -105,12 +105,6 @@
                     this.roomSid = room.sid;
                     this.activeRoom = room;
                     const videoChatWindow = document.getElementById('video-chat-window');
-                    // createLocalVideoTrack().then(track => {
-                    //     videoChatWindow.appendChild(track.attach())
-                    // });
-                    // createLocalAudioTrack().then(track => {
-                    //     videoChatWindow.appendChild(track.attach())
-                    // });
                     room.localParticipant.videoTracks.forEach(publication =>
                         videoChatWindow.appendChild(publication.track.attach()));
                     room.on('participantConnected', participant => {
@@ -122,10 +116,7 @@
                                 videoChatWindow.appendChild(track.attach());
                             }
                         });
-                        // room.tracks.forEach(track => {
-                        //     // const track = publication.track;
-                        //     videoChatWindow.appendChild(track.attach());
-                        // });
+
                         participant.on('trackSubscribed', track => {
                             videoChatWindow.appendChild(track.attach());
                         });
@@ -133,11 +124,6 @@
                     room.on('participantDisconnected', participant => {
                         console.log(`Participant ${participant.identity} disconnected`);
                         this.participants.splice(this.participants.indexOf(participant.identity), 1);
-                        // participant.tracks.forEach(function (track) {
-                        //     track.detach().forEach(function (mediaElement) {
-                        //         mediaElement.remove();
-                        //     });
-                        // });
                     });
                     room.on('trackAdded', function (track, participant) {
                         console.log(participant.identity + " added track: " + track.kind);

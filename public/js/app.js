@@ -9462,9 +9462,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -10973,13 +10970,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log("Successfully joined a Room: ".concat(room));
         _this3.roomSid = room.sid;
         _this3.activeRoom = room;
-        var videoChatWindow = document.getElementById('video-chat-window'); // createLocalVideoTrack().then(track => {
-        //     videoChatWindow.appendChild(track.attach())
-        // });
-        // createLocalAudioTrack().then(track => {
-        //     videoChatWindow.appendChild(track.attach())
-        // });
-
+        var videoChatWindow = document.getElementById('video-chat-window');
         room.localParticipant.videoTracks.forEach(function (publication) {
           return videoChatWindow.appendChild(publication.track.attach());
         });
@@ -10993,11 +10984,7 @@ __webpack_require__.r(__webpack_exports__);
               var track = publication.track;
               videoChatWindow.appendChild(track.attach());
             }
-          }); // room.tracks.forEach(track => {
-          //     // const track = publication.track;
-          //     videoChatWindow.appendChild(track.attach());
-          // });
-
+          });
           participant.on('trackSubscribed', function (track) {
             videoChatWindow.appendChild(track.attach());
           });
@@ -11005,12 +10992,7 @@ __webpack_require__.r(__webpack_exports__);
         room.on('participantDisconnected', function (participant) {
           console.log("Participant ".concat(participant.identity, " disconnected"));
 
-          _this3.participants.splice(_this3.participants.indexOf(participant.identity), 1); // participant.tracks.forEach(function (track) {
-          //     track.detach().forEach(function (mediaElement) {
-          //         mediaElement.remove();
-          //     });
-          // });
-
+          _this3.participants.splice(_this3.participants.indexOf(participant.identity), 1);
         });
         room.on('trackAdded', function (track, participant) {
           console.log(participant.identity + " added track: " + track.kind);
@@ -84379,70 +84361,68 @@ var render = function() {
                                   )
                                 ])
                               ])
-                            : _vm._l(_vm.userEnrollments, function(e) {
-                                return _c(
-                                  "li",
-                                  { key: e.id, staticClass: " mt-4" },
-                                  [
-                                    e.course.type == 1
-                                      ? _c(
-                                          "div",
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm._l(_vm.userEnrollments, function(e) {
+                            return _c(
+                              "li",
+                              { key: e.id, staticClass: " mt-4" },
+                              [
+                                e.course.type == 1
+                                  ? _c(
+                                      "div",
+                                      [
+                                        _c(
+                                          "router-link",
+                                          {
+                                            attrs: {
+                                              to: {
+                                                name: "Player",
+                                                params: { slug: e.course.slug }
+                                              }
+                                            }
+                                          },
                                           [
                                             _c(
-                                              "router-link",
-                                              {
-                                                attrs: {
-                                                  to: {
-                                                    name: "Player",
-                                                    params: {
-                                                      slug: e.course.slug
-                                                    }
-                                                  }
-                                                }
-                                              },
+                                              "h5",
+                                              { staticClass: "mt-0 mb-1" },
                                               [
-                                                _c(
-                                                  "h5",
-                                                  { staticClass: "mt-0 mb-1" },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(e.course.name) +
-                                                        ",\n                                                " +
-                                                        _vm._s(
-                                                          e.course.created_at.slice(
-                                                            0,
-                                                            10
-                                                          )
-                                                        ) +
-                                                        ",\n                                                " +
-                                                        _vm._s(
-                                                          e.course.created_at.slice(
-                                                            11,
-                                                            16
-                                                          )
-                                                        ) +
-                                                        ", " +
-                                                        _vm._s(
-                                                          e.course.user
-                                                            .first_name
-                                                        ) +
-                                                        "\n                                                " +
-                                                        _vm._s(
-                                                          e.course.user
-                                                            .last_name
-                                                        )
+                                                _vm._v(
+                                                  _vm._s(e.course.name) +
+                                                    ",\n                                                " +
+                                                    _vm._s(
+                                                      e.course.created_at.slice(
+                                                        0,
+                                                        10
+                                                      )
+                                                    ) +
+                                                    ",\n                                                " +
+                                                    _vm._s(
+                                                      e.course.created_at.slice(
+                                                        11,
+                                                        16
+                                                      )
+                                                    ) +
+                                                    ", " +
+                                                    _vm._s(
+                                                      e.course.user.first_name
+                                                    ) +
+                                                    "\n                                                " +
+                                                    _vm._s(
+                                                      e.course.user.last_name
                                                     )
-                                                  ]
                                                 )
                                               ]
                                             )
-                                          ],
-                                          1
+                                          ]
                                         )
-                                      : _vm._e()
-                                  ]
-                                )
-                              })
+                                      ],
+                                      1
+                                    )
+                                  : _vm._e()
+                              ]
+                            )
+                          })
                         ],
                         2
                       )
@@ -84463,7 +84443,7 @@ var render = function() {
                         { staticClass: "list-unstyled" },
                         [
                           _vm.userEnrollments.length == 0
-                            ? _c("li", { staticClass: "mt-4" }, [
+                            ? _c("li", { staticClass: "mt-4 text-center" }, [
                                 _c("img", {
                                   attrs: {
                                     src: __webpack_require__(/*! ../../assets/images/cam-icon.png */ "./resources/js/assets/images/cam-icon.png"),
