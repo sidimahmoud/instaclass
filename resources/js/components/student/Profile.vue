@@ -63,14 +63,14 @@
                             <!-- Enrollments-->
                             <div class="tab-pane fade show active" id="courses">
                                 <ul class="list-unstyled">
-                                    <li class=" mt-4" v-if="userEnrollments.length==0">
+                                    <li class=" mt-4" v-if="recorded.length===0">
                                         <h5 class="mt-0 mb-1">No courses</h5>
                                         <p class="text-center">
                                             You have no recorded course for the moment
                                         </p>
                                     </li>
-                                    <li class=" mt-4" v-for="e in userEnrollments" :key="e.id">
-                                        <div v-if="e.course.type==1">
+                                    <li class=" mt-4" v-for="e in userEnrollments" :key="e.id" v-if="recorded.length>0">
+                                        <div v-if="e.course.type===1">
                                             <router-link :to="{name: 'Player', params: { slug: e.course.slug} }">
                                                 <h5 class="mt-0 mb-1">{{e.course.name}},
                                                     {{e.course.created_at.slice(0,10)}},
@@ -86,16 +86,16 @@
                                 <h3 class="text-center">Your receipts will appear here. </h3>
                             </div>
                             <div class="tab-pane fade show " id="live">
-                                <ul class="list-unstyled" >
-                                    <li class="mt-4 text-center" v-if="userEnrollments.length==0">
-                                        <img src="../../assets/images/cam-icon.png" alt="">
-                                        <p class="text-center">
+                                <ul class="list-unstyled">
+                                    <li class="mt-4 text-center" v-if="lives.length===0">
+                                        <img src="../../assets/images/cam-icon.png" alt="" width="100">
+                                        <p class="text-center font-weight-bold h3 mt-3">
                                             You will be redirected to your live class when you will subscribe to a
                                             course
                                         </p>
-
                                     </li>
-                                    <li class="mt-4" v-else v-for="e in userEnrollments" :key="e.id">
+
+                                    <li class="mt-4" v-for="e in userEnrollments" :key="e.id" v-if="lives.length>0">
                                         <div v-if="e.course.type==2">
                                             <router-link :to="{name: 'Live', params: { slug: e.course.slug} }">
                                                 <h5 class="mt-0 mb-1">{{e.course.name}},
@@ -134,7 +134,18 @@
                     .then(() => {
                         this.$router.push('/')
                     })
-            }
+            },
+            lives() {
+                return this.userEnrollments.map(item => {
+                        return item.course.type === 1
+                    }
+                )
+            },
+            recorded() {
+                return this.userEnrollments.map(item => {
+                    return item.course.type === 2
+                })
+            },
         },
         computed: mapGetters(["userProfile", "userEnrollments", "profileLoading"]),
         created() {

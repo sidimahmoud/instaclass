@@ -9476,6 +9476,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$store.dispatch('logout').then(function () {
         _this.$router.push('/');
       });
+    },
+    lives: function lives() {
+      return this.userEnrollments.map(function (item) {
+        return item.course.type === 1;
+      });
+    },
+    recorded: function recorded() {
+      return this.userEnrollments.map(function (item) {
+        return item.course.type === 2;
+      });
     }
   }),
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["userProfile", "userEnrollments", "profileLoading"]),
@@ -84349,7 +84359,7 @@ var render = function() {
                         "ul",
                         { staticClass: "list-unstyled" },
                         [
-                          _vm.userEnrollments.length == 0
+                          _vm.recorded.length === 0
                             ? _c("li", { staticClass: " mt-4" }, [
                                 _c("h5", { staticClass: "mt-0 mb-1" }, [
                                   _vm._v("No courses")
@@ -84364,64 +84374,64 @@ var render = function() {
                             : _vm._e(),
                           _vm._v(" "),
                           _vm._l(_vm.userEnrollments, function(e) {
-                            return _c(
-                              "li",
-                              { key: e.id, staticClass: " mt-4" },
-                              [
-                                e.course.type == 1
-                                  ? _c(
-                                      "div",
-                                      [
-                                        _c(
-                                          "router-link",
-                                          {
-                                            attrs: {
-                                              to: {
-                                                name: "Player",
-                                                params: { slug: e.course.slug }
+                            return _vm.recorded.length > 0
+                              ? _c("li", { key: e.id, staticClass: " mt-4" }, [
+                                  e.course.type === 1
+                                    ? _c(
+                                        "div",
+                                        [
+                                          _c(
+                                            "router-link",
+                                            {
+                                              attrs: {
+                                                to: {
+                                                  name: "Player",
+                                                  params: {
+                                                    slug: e.course.slug
+                                                  }
+                                                }
                                               }
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "h5",
-                                              { staticClass: "mt-0 mb-1" },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(e.course.name) +
-                                                    ",\n                                                " +
-                                                    _vm._s(
-                                                      e.course.created_at.slice(
-                                                        0,
-                                                        10
+                                            },
+                                            [
+                                              _c(
+                                                "h5",
+                                                { staticClass: "mt-0 mb-1" },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(e.course.name) +
+                                                      ",\n                                                " +
+                                                      _vm._s(
+                                                        e.course.created_at.slice(
+                                                          0,
+                                                          10
+                                                        )
+                                                      ) +
+                                                      ",\n                                                " +
+                                                      _vm._s(
+                                                        e.course.created_at.slice(
+                                                          11,
+                                                          16
+                                                        )
+                                                      ) +
+                                                      ", " +
+                                                      _vm._s(
+                                                        e.course.user.first_name
+                                                      ) +
+                                                      "\n                                                " +
+                                                      _vm._s(
+                                                        e.course.user.last_name
                                                       )
-                                                    ) +
-                                                    ",\n                                                " +
-                                                    _vm._s(
-                                                      e.course.created_at.slice(
-                                                        11,
-                                                        16
-                                                      )
-                                                    ) +
-                                                    ", " +
-                                                    _vm._s(
-                                                      e.course.user.first_name
-                                                    ) +
-                                                    "\n                                                " +
-                                                    _vm._s(
-                                                      e.course.user.last_name
-                                                    )
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  : _vm._e()
-                              ]
-                            )
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    : _vm._e()
+                                ])
+                              : _vm._e()
                           })
                         ],
                         2
@@ -84442,78 +84452,84 @@ var render = function() {
                         "ul",
                         { staticClass: "list-unstyled" },
                         [
-                          _vm.userEnrollments.length == 0
+                          _vm.lives.length === 0
                             ? _c("li", { staticClass: "mt-4 text-center" }, [
                                 _c("img", {
                                   attrs: {
                                     src: __webpack_require__(/*! ../../assets/images/cam-icon.png */ "./resources/js/assets/images/cam-icon.png"),
-                                    alt: ""
+                                    alt: "",
+                                    width: "100"
                                   }
                                 }),
                                 _vm._v(" "),
-                                _c("p", { staticClass: "text-center" }, [
-                                  _vm._v(
-                                    "\n                                        You will be redirected to your live class when you will subscribe to a\n                                        course\n                                    "
-                                  )
-                                ])
-                              ])
-                            : _vm._l(_vm.userEnrollments, function(e) {
-                                return _c(
-                                  "li",
-                                  { key: e.id, staticClass: "mt-4" },
+                                _c(
+                                  "p",
+                                  {
+                                    staticClass:
+                                      "text-center font-weight-bold h3 mt-3"
+                                  },
                                   [
-                                    e.course.type == 2
-                                      ? _c(
-                                          "div",
-                                          [
-                                            _c(
-                                              "router-link",
-                                              {
-                                                attrs: {
-                                                  to: {
-                                                    name: "Live",
-                                                    params: {
-                                                      slug: e.course.slug
-                                                    }
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _c(
-                                                  "h5",
-                                                  { staticClass: "mt-0 mb-1" },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(e.course.name) +
-                                                        ",\n                                                " +
-                                                        _vm._s(
-                                                          e.course.created_at.slice(
-                                                            0,
-                                                            10
-                                                          )
-                                                        ) +
-                                                        ",\n                                                " +
-                                                        _vm._s(
-                                                          e.course.user
-                                                            .first_name
-                                                        ) +
-                                                        "\n                                                " +
-                                                        _vm._s(
-                                                          e.course.user
-                                                            .last_name
-                                                        )
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          ],
-                                          1
-                                        )
-                                      : _vm._e()
+                                    _vm._v(
+                                      "\n                                        You will be redirected to your live class when you will subscribe to a\n                                        course\n                                    "
+                                    )
                                   ]
                                 )
-                              })
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm._l(_vm.userEnrollments, function(e) {
+                            return _vm.lives.length > 0
+                              ? _c("li", { key: e.id, staticClass: "mt-4" }, [
+                                  e.course.type == 2
+                                    ? _c(
+                                        "div",
+                                        [
+                                          _c(
+                                            "router-link",
+                                            {
+                                              attrs: {
+                                                to: {
+                                                  name: "Live",
+                                                  params: {
+                                                    slug: e.course.slug
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "h5",
+                                                { staticClass: "mt-0 mb-1" },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(e.course.name) +
+                                                      ",\n                                                " +
+                                                      _vm._s(
+                                                        e.course.created_at.slice(
+                                                          0,
+                                                          10
+                                                        )
+                                                      ) +
+                                                      ",\n                                                " +
+                                                      _vm._s(
+                                                        e.course.user.first_name
+                                                      ) +
+                                                      "\n                                                " +
+                                                      _vm._s(
+                                                        e.course.user.last_name
+                                                      )
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    : _vm._e()
+                                ])
+                              : _vm._e()
+                          })
                         ],
                         2
                       )
