@@ -1,5 +1,6 @@
 import axios from "axios";
 import i18n from "./src/i18n";
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -12,16 +13,15 @@ Vue.component('appfooter', require('./components/FooterComponent.vue').default);
 Vue.component('Home', require('./components/HomeCompnent.vue').default);
 
 
- // axios.defaults.baseURL = process.env.MIX_API_URL;
- // axios.defaults.baseURL = "https://instantclass.herokuapp.com/api";
+// axios.defaults.baseURL = process.env.MIX_API_URL;
+// axios.defaults.baseURL = "https://instantclass.herokuapp.com/api";
 //axios.defaults.baseURL = "https://mondemenagement.ca/api";
-
-
 
 
 import store from './store'
 import router from './router'
 import Home from './components/HomeCompnent'
+
 const app = new Vue({
     el: '#app',
     store,

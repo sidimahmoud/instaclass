@@ -109070,8 +109070,8 @@ Vue.component('appnav', __webpack_require__(/*! ./components/header/NavbarCompne
 Vue.component('appfooter', __webpack_require__(/*! ./components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue")["default"]);
 Vue.component('Home', __webpack_require__(/*! ./components/HomeCompnent.vue */ "./resources/js/components/HomeCompnent.vue")["default"]); // axios.defaults.baseURL = process.env.MIX_API_URL;
 // axios.defaults.baseURL = "https://instantclass.herokuapp.com/api";
+//axios.defaults.baseURL = "https://mondemenagement.ca/api";
 
-axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = "https://mondemenagement.ca/api";
 
 
 
@@ -109240,6 +109240,14 @@ if (token) axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common[
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+// Create a helper for setting default values if variable is undefined or null.
+
+var sd = function sd(v, d) {
+  return v === undefined || v === null ? d : v;
+};
+
+window.app_api = sd("https://instantclass.herokuapp.com/api", "https://mondemenagement.ca/api");
+window.axios.defaults.baseURL = sd("https://instantclass.herokuapp.com/api", "https://mondemenagement.ca/api");
 
 /***/ }),
 
