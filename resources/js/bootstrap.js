@@ -44,3 +44,10 @@ if (token) axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+// Create a helper for setting default values if variable is undefined or null.
+let sd = (v, d) => {
+    return v === undefined || v === null ? d : v;
+};
+
+window.app_api = sd(process.env.MIX_API_URL, "https://mondemenagement.ca/api"); 
+window.axios.defaults.baseURL = sd(process.env.MIX_API_URL, "https://mondemenagement.ca/api");
