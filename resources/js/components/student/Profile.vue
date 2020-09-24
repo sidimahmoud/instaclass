@@ -64,9 +64,8 @@
                             <div class="tab-pane fade show active" id="courses">
                                 <ul class="list-unstyled">
                                     <li class=" mt-4" v-if="recorded.length===0">
-                                        <h5 class="mt-0 mb-1">No courses</h5>
-                                        <p class="text-center">
-                                            You have no recorded course for the moment
+                                        <p class="text-center h3 mt-3">
+                                            You have no recorded courses for the moment
                                         </p>
                                     </li>
                                     <li class=" mt-4" v-for="e in userEnrollments" :key="e.id" v-if="recorded.length>0">
@@ -89,7 +88,7 @@
                                 <ul class="list-unstyled">
                                     <li class="mt-4 text-center" v-if="lives.length===0">
                                         <img src="../../assets/images/cam-icon.png" alt="" width="100">
-                                        <p class="text-center font-weight-bold h3 mt-3">
+                                        <p class="text-center h3 mt-3">
                                             You will be redirected to your live class when you will subscribe to a
                                             course
                                         </p>
@@ -105,13 +104,9 @@
                                             </router-link>
                                         </div>
                                     </li>
-
                                 </ul>
                             </div>
-
                         </div>
-
-
                     </div>
                 </div>
 

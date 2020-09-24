@@ -9457,11 +9457,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -84361,15 +84356,15 @@ var render = function() {
                         [
                           _vm.recorded.length === 0
                             ? _c("li", { staticClass: " mt-4" }, [
-                                _c("h5", { staticClass: "mt-0 mb-1" }, [
-                                  _vm._v("No courses")
-                                ]),
-                                _vm._v(" "),
-                                _c("p", { staticClass: "text-center" }, [
-                                  _vm._v(
-                                    "\n                                        You have no recorded course for the moment\n                                    "
-                                  )
-                                ])
+                                _c(
+                                  "p",
+                                  { staticClass: "text-center h3 mt-3" },
+                                  [
+                                    _vm._v(
+                                      "\n                                        You have no recorded courses for the moment\n                                    "
+                                    )
+                                  ]
+                                )
                               ])
                             : _vm._e(),
                           _vm._v(" "),
@@ -84464,10 +84459,7 @@ var render = function() {
                                 _vm._v(" "),
                                 _c(
                                   "p",
-                                  {
-                                    staticClass:
-                                      "text-center font-weight-bold h3 mt-3"
-                                  },
+                                  { staticClass: "text-center h3 mt-3" },
                                   [
                                     _vm._v(
                                       "\n                                        You will be redirected to your live class when you will subscribe to a\n                                        course\n                                    "
@@ -109076,9 +109068,9 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('appnav', __webpack_require__(/*! ./components/header/NavbarCompnent.vue */ "./resources/js/components/header/NavbarCompnent.vue")["default"]);
 Vue.component('appfooter', __webpack_require__(/*! ./components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue")["default"]);
-Vue.component('Home', __webpack_require__(/*! ./components/HomeCompnent.vue */ "./resources/js/components/HomeCompnent.vue")["default"]);
-axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = "https://instantclass.herokuapp.com/api"; // axios.defaults.baseURL = "https://mondemenagement.ca/api";
+Vue.component('Home', __webpack_require__(/*! ./components/HomeCompnent.vue */ "./resources/js/components/HomeCompnent.vue")["default"]); // axios.defaults.baseURL = "https://instantclass.herokuapp.com/api";
 
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = "https://mondemenagement.ca/api";
 
 
 
