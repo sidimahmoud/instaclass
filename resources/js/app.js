@@ -14,7 +14,7 @@ Vue.component('Home', require('./components/HomeCompnent.vue').default);
 
  // axios.defaults.baseURL = process.env.MIX_API_URL;
  // axios.defaults.baseURL = "https://instantclass.herokuapp.com/api";
- axios.defaults.baseURL = "https://mondemenagement.ca/api";
+//axios.defaults.baseURL = "https://mondemenagement.ca/api";
 
 
 
