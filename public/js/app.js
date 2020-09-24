@@ -109068,7 +109068,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('appnav', __webpack_require__(/*! ./components/header/NavbarCompnent.vue */ "./resources/js/components/header/NavbarCompnent.vue")["default"]);
 Vue.component('appfooter', __webpack_require__(/*! ./components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue")["default"]);
-Vue.component('Home', __webpack_require__(/*! ./components/HomeCompnent.vue */ "./resources/js/components/HomeCompnent.vue")["default"]); // axios.defaults.baseURL = "https://instantclass.herokuapp.com/api";
+Vue.component('Home', __webpack_require__(/*! ./components/HomeCompnent.vue */ "./resources/js/components/HomeCompnent.vue")["default"]); // axios.defaults.baseURL = process.env.MIX_API_URL;
+// axios.defaults.baseURL = "https://instantclass.herokuapp.com/api";
 
 axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = "https://mondemenagement.ca/api";
 
