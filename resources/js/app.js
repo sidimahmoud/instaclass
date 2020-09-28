@@ -11,9 +11,12 @@ window.Vue = require('vue');
 Vue.component('appnav', require('./components/header/NavbarCompnent.vue').default);
 Vue.component('appfooter', require('./components/FooterComponent.vue').default);
 Vue.component('Home', require('./components/HomeCompnent.vue').default);
+<<<<<<< HEAD
 
 
 // axios.defaults.baseURL = process.env.MIX_API_URL;
+=======
+>>>>>>> 08c750248bcad9613515767504712e8cec54d921
 // axios.defaults.baseURL = "https://instantclass.herokuapp.com/api";
 //axios.defaults.baseURL = "https://mondemenagement.ca/api";
 

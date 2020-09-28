@@ -8,6 +8,7 @@ const state = {
     teacherDetails: '',
     teacherPayments: '',
     profileLoading: false,
+    loadingEnrollments: false,
 };
 const getters = {
     userProfile: (state) => state.profile,
@@ -17,6 +18,8 @@ const getters = {
     allTeacherDetails: (state) => state.teacherDetails,
     allTeacherPayments: (state) => state.teacherPayments,
     profileLoading: (state) => state.profileLoading,
+    loadingEnrollments: (state) => state.loadingEnrollments,
+
 };
 
 const actions = {
@@ -66,6 +69,7 @@ const mutations = {
     setTeacherDetails: (state, payload) => (state.teacherDetails = payload),
     setTeacherPayments: (state, payload) => (state.teacherPayments = payload),
     setProfileLoading: (state, val) => (state.profileLoading = val),
+    setloadingEnrollments: (state, val) => (state.loadingEnrollments = val),
 };
 
 function header() {

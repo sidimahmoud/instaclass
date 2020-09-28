@@ -16,7 +16,7 @@
                     <form class="form-inline my-2 my-lg-0 mr-lg-2" @submit.prevent="search">
                         <input class="form-control mr-sm-2" type="search"
                                :placeholder="$t('search')"
-                        v-model="q" aria-label="Search">
+                               v-model="q" aria-label="Search">
                         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
                             {{$t("searchBtn")}}
                         </button>
@@ -60,7 +60,6 @@
                         <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                      class="nav-link ">
                             {{$t('nav.account')}}
-
                         </router-link>
                     </li>
                 </ul>

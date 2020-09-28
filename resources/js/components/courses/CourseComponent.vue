@@ -23,7 +23,7 @@
                     </div>
                     <div class="row text-left ">
                         <div class="col-6 " v-if="course.sub_category">
-                           Category: <strong>{{course.sub_category.category.name}}</strong> >
+                            <!--Category: <strong>{{course.sub_category.category.name}}</strong> >-->
                             <strong>{{course.sub_category.name}}</strong>
                         </div>
                         <div class="col-6 text-right">
@@ -56,7 +56,9 @@
 
                         </div>
                         <div class="col-md-6 text-right">
-                            <router-link :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}" tag="a" class="btn btn-primary my-3">
+                            <router-link
+                                :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
+                                tag="a" class="btn btn-primary my-3">
                                 S'inscrire à ce cours
                             </router-link>
                         </div>
