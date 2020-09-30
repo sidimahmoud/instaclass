@@ -112,7 +112,7 @@
                         // (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
                     })
                     .catch(err => {
-                        console.log(err.response.data.errors[Object.keys(err.response.data.errors)[0][0]]);
+                        // console.log(err.response.data.errors[Object.keys(err.response.data.errors)[0][0]]);
                         this.errorMessage = err.response.data.errors[Object.keys(err.response.data.errors)[0]]
                     })
             },

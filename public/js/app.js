@@ -7751,7 +7751,7 @@ __webpack_require__.r(__webpack_exports__);
         }); // (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
 
       })["catch"](function (err) {
-        console.log(err.response.data.errors[Object.keys(err.response.data.errors)[0][0]]);
+        // console.log(err.response.data.errors[Object.keys(err.response.data.errors)[0][0]]);
         _this.errorMessage = err.response.data.errors[Object.keys(err.response.data.errors)[0]];
       });
     },
@@ -114147,17 +114147,17 @@ var actions = {
                   data: user,
                   method: 'POST'
                 }).then(function (resp) {
-                  console.log(resp);
-                  var token = resp.data.token;
-                  var user = {
-                    'u': resp.data.user.id,
-                    't': resp.data.user.roles[0].name,
-                    'first_name': resp.data.user.first_name
-                  };
-                  localStorage.setItem('token', token);
-                  localStorage.setItem('user', JSON.stringify(user));
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = token;
-                  commit('auth_success', token, user);
+                  console.log(resp); // const token = resp.data.token;
+                  // const user = {
+                  //     'u': resp.data.user.id,
+                  //     't': resp.data.user.roles[0].name,
+                  //     'first_name': resp.data.user.first_name
+                  // };
+                  // localStorage.setItem('token', token);
+                  // localStorage.setItem('user', JSON.stringify(user));
+                  // axios.defaults.headers.common['Authorization'] = token;
+                  // commit('auth_success', token, user);
+
                   resolve(resp);
                 })["catch"](function (err) {
                   console.log(err.response);

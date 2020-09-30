@@ -75,7 +75,7 @@ class AuthController extends Controller
                 $user->roles()->attach($role);
             }
             $user->sendEmailVerificationNotification();
-            return response()->json("success");
+            return response()->json($user);
         }
         return response()->json("error");
     }
