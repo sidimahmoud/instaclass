@@ -19,6 +19,7 @@ class UsersController extends Controller
     {
         $this->middleware('auth:sanctum');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +36,8 @@ class UsersController extends Controller
     {
         $teachers = User::whereHas(
             'roles', function ($q) {
-            $q->where('name', 'teacher');
+            $q->where('name', 'teacher')
+                ->where("active", 1);
         }
         )->get();
         return response()->json($teachers);
@@ -45,7 +47,8 @@ class UsersController extends Controller
     {
         $students = User::whereHas(
             'roles', function ($q) {
-            $q->where('name', 'student');
+            $q->where('name', 'student')
+                ->where("active", 1);
         }
         )->get();
         return response()->json($students);
@@ -67,6 +70,7 @@ class UsersController extends Controller
         $banned = User::where('active', 0)->get();
         return response()->json($banned);
     }
+
     public function banish($id)
     {
         $user = User::find($id);
