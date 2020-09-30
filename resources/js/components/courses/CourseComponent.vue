@@ -7,33 +7,29 @@
                 </div>
                 <div class="col-md-9 justify-content-center align-items-center">
                     <div class="row text-left">
-                        <div class="col-md-4 col-sm-12 justify-content-center align-items-center ">
-                            <h5 class="card-title text-left">{{course.name}}</h5>
+                        <div class="col-md-3 col-sm-12 justify-content-center align-items-center ">
+                            <!--Category: <strong>{{course.sub_category.category.name}}</strong> >-->
+                            Category > <strong>{{course.sub_category.name}}</strong>
                         </div>
-                        <div class="col-md-2 col-sm-12 justify-content-center align-items-center "><b>Duration:</b>{{course.duration}}
+                        <div class="col-md-3 col-sm-12 justify-content-center align-items-center "><b>Number of
+                            Sessions:</b> 3
                         </div>
-                        <div class="col-md-2 col-sm-12 justify-content-center align-items-center "><b>Language:</b>
+                        <div class="col-md-3 col-sm-12 justify-content-center align-items-center "><b>Duration per
+                            session:</b>{{course.duration}}
+                        </div>
+                        <div class="col-md-3 col-sm-12 justify-content-center align-items-center "><b>Language:</b>
                             {{course.language}}
                         </div>
-                        <div class="col-md-2 col-sm-12 justify-content-center align-items-center "><b>Sessions:</b> 3
-                        </div>
-                        <div class="col-md-2 col-sm-12 justify-content-center align-items-center "><b>Type:</b>
-                            {{course.type==1?"Recorded":"Live"}}
-                        </div>
+
                     </div>
                     <div class="row text-left ">
-                        <div class="col-6 " v-if="course.sub_category">
-                            <!--Category: <strong>{{course.sub_category.category.name}}</strong> >-->
-                            <strong>{{course.sub_category.name}}</strong>
-                        </div>
-                        <div class="col-6 text-right">
-                            Price: <b>{{course.price==0?"Free":"$"+course.price}}</b>
-                        </div>
-                        <div class="col-12">
-                            <b>Description</b> <br>
+                        <div class="col-6">
+                            <b>Description :</b> <br>
                             {{course.short_description}}
                         </div>
-
+                        <div class="col-6 text-right">
+                            Price per session: <b>{{course.price==0?"Free":"$"+course.price}}</b>
+                        </div>
 
                     </div>
                     <div class="row text-left mt-2">
@@ -48,12 +44,12 @@
                         </div>
                     </div>
                     <div class="row  mt-2">
-                        <div class="col-md-4" v-if="course.sharable">
-                            <b>Partager sur </b>
-
-                            <i class="fa fa-facebook  mr-3"></i>
-                            <i class="fa fa-instagram  mr-3"></i>
-
+                        <div class="col-md-6 align-items-center">
+                            <div v-if="course.sharable">
+                                <b>Partager sur </b>
+                                <i class="fa fa-facebook  mr-3"></i>
+                                <i class="fa fa-instagram  mr-3"></i>
+                            </div>
                         </div>
                         <div class="col-md-6 text-right">
                             <router-link

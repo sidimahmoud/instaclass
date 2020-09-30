@@ -6,10 +6,12 @@ use App\Course;
 use App\CourseFile;
 use App\Enrollment;
 use App\Http\Controllers\Controller;
+use App\Mail\Mails;
 use App\Payement;
 use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class CoursesController extends Controller
@@ -85,7 +87,14 @@ class CoursesController extends Controller
             $courseSection->duration = $section->duration;
             $courseSection->save();
         }
-        return response()->json("course created successfully");
+        if ($course){
+            Mail::to("medab.vall@gmail.com.com")->send(new Mails());
+
+//            Mail::to("clem2001@hotmail.com")->send(new Mails());
+//            Mail::to("nyveline87@yahoo.fr")->send(new Mails());
+        }
+
+            return response()->json("course created successfully");
         return response()->json("error");
     }
 

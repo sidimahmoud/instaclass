@@ -8143,10 +8143,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Course",
   props: ["course"]
@@ -78003,7 +77999,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: " text-right pr-5" }, [
       _c("iframe", {
-        staticStyle: { border: "none", overflow: "hidden" },
+        staticStyle: {
+          border: "none",
+          overflow: "hidden",
+          "min-width": "130px"
+        },
         attrs: {
           src:
             "https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&appId=223985172274465&width=130&height=28",
@@ -81858,11 +81858,12 @@ var render = function() {
                       "div",
                       {
                         staticClass:
-                          "col-md-4 col-sm-12 justify-content-center align-items-center "
+                          "col-md-3 col-sm-12 justify-content-center align-items-center "
                       },
                       [
-                        _c("h5", { staticClass: "card-title text-left" }, [
-                          _vm._v(_vm._s(_vm.course.name))
+                        _vm._v("\n                        Category > "),
+                        _c("strong", [
+                          _vm._v(_vm._s(_vm.course.sub_category.name))
                         ])
                       ]
                     ),
@@ -81871,10 +81872,28 @@ var render = function() {
                       "div",
                       {
                         staticClass:
-                          "col-md-2 col-sm-12 justify-content-center align-items-center "
+                          "col-md-3 col-sm-12 justify-content-center align-items-center "
                       },
                       [
-                        _c("b", [_vm._v("Duration:")]),
+                        _c("b", [
+                          _vm._v("Number of\n                        Sessions:")
+                        ]),
+                        _vm._v(" 3\n                    ")
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "col-md-3 col-sm-12 justify-content-center align-items-center "
+                      },
+                      [
+                        _c("b", [
+                          _vm._v(
+                            "Duration per\n                        session:"
+                          )
+                        ]),
                         _vm._v(
                           _vm._s(_vm.course.duration) + "\n                    "
                         )
@@ -81885,7 +81904,7 @@ var render = function() {
                       "div",
                       {
                         staticClass:
-                          "col-md-2 col-sm-12 justify-content-center align-items-center "
+                          "col-md-3 col-sm-12 justify-content-center align-items-center "
                       },
                       [
                         _c("b", [_vm._v("Language:")]),
@@ -81895,48 +81914,23 @@ var render = function() {
                             "\n                    "
                         )
                       ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "col-md-2 col-sm-12 justify-content-center align-items-center "
-                      },
-                      [
-                        _c("b", [_vm._v("Sessions:")]),
-                        _vm._v(" 3\n                    ")
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "col-md-2 col-sm-12 justify-content-center align-items-center "
-                      },
-                      [
-                        _c("b", [_vm._v("Type:")]),
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.course.type == 1 ? "Recorded" : "Live") +
-                            "\n                    "
-                        )
-                      ]
                     )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "row text-left " }, [
-                    _vm.course.sub_category
-                      ? _c("div", { staticClass: "col-6 " }, [
-                          _c("strong", [
-                            _vm._v(_vm._s(_vm.course.sub_category.name))
-                          ])
-                        ])
-                      : _vm._e(),
+                    _c("div", { staticClass: "col-6" }, [
+                      _c("b", [_vm._v("Description :")]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.course.short_description) +
+                          "\n                    "
+                      )
+                    ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-6 text-right" }, [
-                      _vm._v("\n                        Price: "),
+                      _vm._v("\n                        Price per session: "),
                       _c("b", [
                         _vm._v(
                           _vm._s(
@@ -81946,17 +81940,6 @@ var render = function() {
                           )
                         )
                       ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12" }, [
-                      _c("b", [_vm._v("Description")]),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.course.short_description) +
-                          "\n                    "
-                      )
                     ])
                   ]),
                   _vm._v(" "),
@@ -81979,15 +81962,17 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "row  mt-2" }, [
-                    _vm.course.sharable
-                      ? _c("div", { staticClass: "col-md-4" }, [
-                          _c("b", [_vm._v("Partager sur ")]),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "fa fa-facebook  mr-3" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "fa fa-instagram  mr-3" })
-                        ])
-                      : _vm._e(),
+                    _c("div", { staticClass: "col-md-6 align-items-center" }, [
+                      _vm.course.sharable
+                        ? _c("div", [
+                            _c("b", [_vm._v("Partager sur ")]),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fa fa-facebook  mr-3" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fa fa-instagram  mr-3" })
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
                     _c(
                       "div",

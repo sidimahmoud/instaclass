@@ -22,7 +22,7 @@
         <div class=" text-right pr-5">
             <iframe
                 src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&appId=223985172274465&width=130&height=28"
-                width="130" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                width="130" height="28" style="border:none;overflow:hidden; min-width: 130px" scrolling="no" frameborder="0"
                 allowTransparency="true" allow="encrypted-media"></iframe>
             <br>
             <!--            <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://www.instantclass.herokuapp.com/courses&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!"> <img src="../assets/images/fb.png" alt="fb" width="150px"></a> <br>-->
