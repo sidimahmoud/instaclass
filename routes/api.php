@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/admins', 'Admin\UsersController@admins');
         Route::get('/teachers', 'Admin\UsersController@teachers');
         Route::get('/banned', 'Admin\UsersController@banned');
-        Route::get('/banish/{id}', 'Admin\UsersController@banned');
+        Route::get('/banish/{id}', 'Admin\UsersController@banish');
         Route::get('/counts', 'Admin\UsersController@counts');
         Route::get('/payments/received', 'Admin\PayementController@received');
         Route::get('/payments/sent', 'Admin\PayementController@sent');
