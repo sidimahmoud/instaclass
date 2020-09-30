@@ -83405,8 +83405,7 @@ var render = function() {
                         expression: "q"
                       }
                     ],
-                    staticClass: "form-control  mr-sm-2",
-                    staticStyle: { width: "20%" },
+                    staticClass: "form-control  mr-sm-2 w-75",
                     attrs: {
                       type: "text",
                       placeholder: _vm.$t("search"),
@@ -83441,7 +83440,7 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _c("ul", { staticClass: "navbar-nav " }, [
+            _c("ul", { staticClass: "navbar-nav w-100 justify-content-end" }, [
               !_vm.$route.matched.some(function(ref) {
                 var name = ref.name
 

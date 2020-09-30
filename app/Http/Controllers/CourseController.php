@@ -40,9 +40,9 @@ class CourseController extends Controller
     }
     public function search($search)
     {
-        $courses = Course::with('subCategory.category')->where('name', 'ilike', "%"."$search"."%")
+        $courses = Course::with('subCategory.category')
+            ->where('name', 'ilike', "%"."$search"."%")
             ->orWhere('description', 'ilike', "%".$search."%")
-            ->orWhere()
             ->get();
         return response()->json($courses);
 

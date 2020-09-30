@@ -23,15 +23,15 @@
                 <form class="form-inline  my-lg-0 mr-lg-2 w-50" @submit.prevent="search">
 
                     <div class="form-group w-100">
-                        <input class="form-control  mr-sm-2" type="text"
+                        <input class="form-control  mr-sm-2 w-75" type="text"
                                :placeholder="$t('search')"
-                               v-model="q" aria-label="Search" style="width: 20%">
+                               v-model="q" aria-label="Search">
                         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
                             {{$t("searchBtn")}}
                         </button>
                     </div>
                 </form>
-                <ul class="navbar-nav ">
+                <ul class="navbar-nav w-100 justify-content-end">
                     <li class="nav-item " v-if="!$route.matched.some(({ name }) => name === 'Home')">
                         <router-link :to="{ name: 'Home'}" tag="a" class="nav-link ">
                             {{$t('nav.home')}}
