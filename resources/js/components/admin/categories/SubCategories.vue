@@ -26,7 +26,7 @@
             </div>
             <h3 class="text-center">Or create new sub category</h3>
             <div class="row ">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="cats">Select category</label>
                         <select class="form-control" id="cats" v-model="category_id">
@@ -36,13 +36,19 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="title">Category name</label>
                         <input type="text" class="form-control" id="title" v-model="name">
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="nom">Category name (French)</label>
+                        <input type="text" class="form-control" id="nom" v-model="nom">
+                    </div>
+                </div>
+                <div class="col-md-3">
                     <label>Click to save</label>
                     <button class="btn btn-primary btn-block" @click="saveSub">Create</button>
                 </div>
@@ -62,6 +68,7 @@
             return {
                 category_id: '0',
                 name: '',
+                nom: '',
             }
         },
         methods: {
@@ -75,7 +82,7 @@
                     alert("Select category");
                     return
                 }
-                axios.post('/sub-categories', {category_id: this.category_id, name: this.name})
+                axios.post('/sub-categories', {category_id: this.category_id, name: this.name, nom: this.nom})
                     .then(res => {
                         alert("Sub-category created successfully");
                         this.category_id = 0;

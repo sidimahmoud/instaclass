@@ -6579,6 +6579,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6589,7 +6595,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       category_id: '0',
-      name: ''
+      name: '',
+      nom: ''
     };
   },
   methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchCategories"])), {}, {
@@ -6607,7 +6614,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       axios.post('/sub-categories', {
         category_id: this.category_id,
-        name: this.name
+        name: this.name,
+        nom: this.nom
       }).then(function (res) {
         alert("Sub-category created successfully");
         _this.category_id = 0;
@@ -79427,7 +79435,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row " }, [
-          _c("div", { staticClass: "col-md-4" }, [
+          _c("div", { staticClass: "col-md-3" }, [
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "cats" } }, [
                 _vm._v("Select category")
@@ -79483,7 +79491,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }, [
+          _c("div", { staticClass: "col-md-3" }, [
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "title" } }, [
                 _vm._v("Category name")
@@ -79513,7 +79521,37 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }, [
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "nom" } }, [
+                _vm._v("Category name (French)")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.nom,
+                    expression: "nom"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", id: "nom" },
+                domProps: { value: _vm.nom },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.nom = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3" }, [
             _c("label", [_vm._v("Click to save")]),
             _vm._v(" "),
             _c(
@@ -108787,8 +108825,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = "https://test-inst.herokuapp.com/api"; // const files = require.context('./', true, /\.vue$/i)
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('appnav', __webpack_require__(/*! ./components/header/NavbarCompnent.vue */ "./resources/js/components/header/NavbarCompnent.vue")["default"]);
