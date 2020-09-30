@@ -17,8 +17,6 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name_fr');
             $table->string('name_en');
-            $table->string('description_fr')->nullable();
-            $table->string('description_en')->nullable();
             $table->string('image')->nullable();
             $table->boolean('published')->default(1);
             $table->timestamps();
