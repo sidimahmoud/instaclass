@@ -1,5 +1,5 @@
 <template>
-    <big-sppiner v-if="fetchingUsers" />
+    <big-sppiner v-if="fetchingUsers"/>
     <div v-else>
         <div>
             <form class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
@@ -30,8 +30,8 @@
                 <td>{{t.headline}}</td>
 
                 <td>
-                    <button class="btn btn-danger">
-                        &times
+                    <button class="btn btn-danger" @click="banish(t.id)">
+                        X
                     </button>
                 </td>
 
@@ -49,7 +49,12 @@
         name: "Students",
         components: {BigSppiner},
         methods: {
-            ...mapActions(["fetchStudents"])
+            ...mapActions(["fetchStudents"]),
+            banish(id) {
+                this.$store.dispatch("banish", id).then(() => {
+                    alert("Banned successfully")
+                })
+            }
         },
         computed: mapGetters(["allStudents", "fetchingUsers"]),
 

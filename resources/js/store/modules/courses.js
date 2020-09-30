@@ -107,7 +107,7 @@ const actions = {
 
     async fetchDemands({commit}) {
         commit('setLoading', true);
-        const response = await axios.get(`/courses/demands`);
+        const response = await axios.get(`/demands`);
         commit('setDemands', response.data);
         commit('setLoading', false);
     },

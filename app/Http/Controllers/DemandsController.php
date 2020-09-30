@@ -15,7 +15,6 @@ class DemandsController extends Controller
     public function index()
     {
         $demands = Demands::all();
-        dd("dmdnd".$demands);
         return response()->json($demands);
     }
 

@@ -29,8 +29,8 @@
                 <td><input type="checkbox" name="" id="" checked disabled></td>
                 <td>{{t.headline}}</td>
                 <td>
-                    <button class="btn btn-danger">
-                        &times
+                    <button class="btn btn-danger" @click="banish(t.id)">
+                        X
                     </button>
                 </td>
 
@@ -48,7 +48,12 @@
         name: "Teachers",
         components: {BigSppiner},
         methods: {
-            ...mapActions(["fetchTeachers"])
+            ...mapActions(["fetchTeachers"]),
+            banish(id) {
+                this.$store.dispatch("banish", id).then(() => {
+                    alert("Banned successfully")
+                })
+            }
         },
         computed: mapGetters(["allTeachers", "fetchingUsers"]),
         created() {

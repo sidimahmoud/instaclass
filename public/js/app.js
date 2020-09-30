@@ -7161,7 +7161,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   components: {
     BigSppiner: _spinners_BigSppiner__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchAdmins"])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchAdmins"])), {}, {
+    banish: function banish(id) {
+      this.$store.dispatch("banish", id).then(function () {
+        alert("Banned successfully");
+      });
+    }
+  }),
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["allAdmins", "fetchingUsers"]),
   created: function created() {
     this.fetchAdmins();
@@ -7313,7 +7319,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   components: {
     BigSppiner: _spinners_BigSppiner__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchStudents"])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchStudents"])), {}, {
+    banish: function banish(id) {
+      this.$store.dispatch("banish", id).then(function () {
+        alert("Banned successfully");
+      });
+    }
+  }),
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["allStudents", "fetchingUsers"]),
   created: function created() {
     this.fetchStudents();
@@ -7388,7 +7400,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   components: {
     BigSppiner: _spinners_BigSppiner__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchTeachers"])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchTeachers"])), {}, {
+    banish: function banish(id) {
+      this.$store.dispatch("banish", id).then(function () {
+        alert("Banned successfully");
+      });
+    }
+  }),
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["allTeachers", "fetchingUsers"]),
   created: function created() {
     this.fetchTeachers();
@@ -80475,9 +80493,18 @@ var render = function() {
                 _c("td", [_vm._v(_vm._s(t.headline))]),
                 _vm._v(" "),
                 _c("td", [
-                  _c("button", { staticClass: "btn btn-danger" }, [
-                    _vm._v("\n                    ×\n                ")
-                  ])
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      on: {
+                        click: function($event) {
+                          return _vm.banish(t.id)
+                        }
+                      }
+                    },
+                    [_vm._v("\n                    X\n                ")]
+                  )
                 ])
               ])
             }),
@@ -80689,9 +80716,18 @@ var render = function() {
                 _c("td", [_vm._v(_vm._s(t.headline))]),
                 _vm._v(" "),
                 _c("td", [
-                  _c("button", { staticClass: "btn btn-danger" }, [
-                    _vm._v("\n                    ×\n                ")
-                  ])
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      on: {
+                        click: function($event) {
+                          return _vm.banish(t.id)
+                        }
+                      }
+                    },
+                    [_vm._v("\n                    X\n                ")]
+                  )
                 ])
               ])
             }),
@@ -80799,9 +80835,18 @@ var render = function() {
                 _c("td", [_vm._v(_vm._s(t.headline))]),
                 _vm._v(" "),
                 _c("td", [
-                  _c("button", { staticClass: "btn btn-danger" }, [
-                    _vm._v("\n                    ×\n                ")
-                  ])
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      on: {
+                        click: function($event) {
+                          return _vm.banish(t.id)
+                        }
+                      }
+                    },
+                    [_vm._v("\n                    X\n                ")]
+                  )
                 ])
               ])
             }),
@@ -113979,16 +114024,15 @@ var actions = {
           switch (_context.prev = _context.next) {
             case 0:
               commit = _ref.commit;
-              headers();
-              _context.next = 4;
+              _context.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/teachers');
 
-            case 4:
+            case 3:
               response = _context.sent;
               commit('setTeachers', response.data);
               commit("setFetchingUsers", false);
 
-            case 7:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -114005,16 +114049,15 @@ var actions = {
             case 0:
               commit = _ref2.commit;
               commit("setFetchingUsers", true);
-              headers();
-              _context2.next = 5;
+              _context2.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/banned');
 
-            case 5:
+            case 4:
               response = _context2.sent;
               commit('setBanned', response.data);
               commit("setFetchingUsers", false);
 
-            case 8:
+            case 7:
             case "end":
               return _context2.stop();
           }
@@ -114031,16 +114074,15 @@ var actions = {
             case 0:
               commit = _ref3.commit;
               commit("setFetchingUsers", true);
-              headers();
-              _context3.next = 5;
+              _context3.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/students');
 
-            case 5:
+            case 4:
               response = _context3.sent;
               commit('setStudents', response.data);
               commit("setFetchingUsers", false);
 
-            case 8:
+            case 7:
             case "end":
               return _context3.stop();
           }
@@ -114057,16 +114099,15 @@ var actions = {
             case 0:
               commit = _ref4.commit;
               commit("setFetchingUsers", true);
-              headers();
-              _context4.next = 5;
+              _context4.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/admins');
 
-            case 5:
+            case 4:
               response = _context4.sent;
               commit('setAdmins', response.data);
               commit("setFetchingUsers", false);
 
-            case 8:
+            case 7:
             case "end":
               return _context4.stop();
           }
@@ -114074,7 +114115,7 @@ var actions = {
       }, _callee4);
     }))();
   },
-  loadCounts: function loadCounts(_ref5) {
+  banish: function banish(_ref5, id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
@@ -114082,22 +114123,43 @@ var actions = {
           switch (_context5.prev = _context5.next) {
             case 0:
               commit = _ref5.commit;
-              commit("setFetchingUsers", true);
-              headers();
-              _context5.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/counts');
+              _context5.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/banish/' + id);
 
-            case 5:
+            case 3:
               response = _context5.sent;
-              commit("setCounts", response.data);
-              commit("setFetchingUsers", false);
 
-            case 8:
+            case 4:
             case "end":
               return _context5.stop();
           }
         }
       }, _callee5);
+    }))();
+  },
+  loadCounts: function loadCounts(_ref6) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              commit = _ref6.commit;
+              commit("setFetchingUsers", true);
+              _context6.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/counts');
+
+            case 4:
+              response = _context6.sent;
+              commit("setCounts", response.data);
+              commit("setFetchingUsers", false);
+
+            case 7:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6);
     }))();
   }
 };
@@ -114121,15 +114183,6 @@ var mutations = {
     return state.fetchingUsers = val;
   }
 };
-
-function headers() {
-  var token = localStorage.getItem('token') || '';
-
-  if (token) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-  }
-}
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: state,
   getters: getters,
@@ -114886,7 +114939,7 @@ var actions = {
               commit = _ref8.commit;
               commit('setLoading', true);
               _context8.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/courses/demands");
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/demands");
 
             case 4:
               response = _context8.sent;

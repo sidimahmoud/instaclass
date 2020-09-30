@@ -66,6 +66,13 @@ class UsersController extends Controller
         $banned = User::where('active', 0)->get();
         return response()->json($banned);
     }
+    public function banish($id)
+    {
+        $user = User::findOrFail($id);
+        $user->active = 0;
+        $user->save();
+        return response()->json("Banned successfully");
+    }
 
     public function counts()
     {

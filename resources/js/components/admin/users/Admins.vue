@@ -1,5 +1,5 @@
 <template>
-    <big-sppiner v-if="fetchingUsers" />
+    <big-sppiner v-if="fetchingUsers"/>
     <div v-else>
         <h1 class="text-center">List of admins</h1>
 
@@ -25,8 +25,8 @@
                 <td>{{t.headline}}</td>
 
                 <td>
-                    <button class="btn btn-danger">
-                        &times
+                    <button class="btn btn-danger" @click="banish(t.id)">
+                        X
                     </button>
                 </td>
 
@@ -42,9 +42,15 @@
 
     export default {
         name: "Teachers",
+
         components: {BigSppiner},
         methods: {
-            ...mapActions(["fetchAdmins"])
+            ...mapActions(["fetchAdmins"]),
+            banish(id) {
+                this.$store.dispatch("banish", id).then(() => {
+                    alert("Banned successfully")
+                })
+            }
         },
         computed: mapGetters(["allAdmins", "fetchingUsers"]),
         created() {
