@@ -22,11 +22,14 @@
         <div class=" text-right pr-5">
             <iframe
                 src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&appId=223985172274465&width=130&height=28"
-                width="130" height="28" style="border:none;overflow:hidden; min-width: 130px" scrolling="no" frameborder="0"
+                width="130" height="28" style="border:none;overflow:hidden; min-width: 130px" scrolling="no"
+                frameborder="0"
                 allowTransparency="true" allow="encrypted-media"></iframe>
             <br>
             <!--            <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://www.instantclass.herokuapp.com/courses&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!"> <img src="../assets/images/fb.png" alt="fb" width="150px"></a> <br>-->
-            <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> <img src="../assets/images/insta.png" alt="insta" class="rounded" width="130px"></a>
+            <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> <img src="../assets/images/insta.png"
+                                                                                    alt="insta" class="rounded"
+                                                                                    width="130px"></a>
         </div>
         <div class="container d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
             <h3 class="text-primary">
@@ -41,41 +44,26 @@
                 </div>
             </div>
 
-            <div class="row  align-items-center" v-if="!loadingCategories">
-                <div class="col-md-3 col-sm-12 p-2 text-center" v-for="categ in allCategories" :key="categ.id">
-                    <div class="card">
-                        <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="a">
-                            <img class="card-img-top"
-                                 :src="categ.image"
-                                 alt="Card image cap">
-                        </router-link>
-                        <div class="card-body text-center">
-                            <h5 class="card-title  font-weight-bolder">{{(lang==="en")? categ.name_en: categ.name_fr}}</h5>
-<!--                            <p class="card-text">-->
-<!--                            </p>-->
-                        </div>
-                    </div>
-                </div>
+            <div class="row" v-if="!loadingCategories">
+                <category-compo v-for="category in allCategories" :categ="category" :key="category.id" />
             </div>
         </div>
     </div>
 </template>
 <script>
-    import Course from "./courses/CourseComponent";
     import {mapGetters, mapActions} from "vuex";
-    import i18n from "../src/i18n";
-
+    import CategoryCompo from "./courses/CategoryCompo";
     export default {
         name: 'Home',
 
         components: {
-            Course
+            CategoryCompo,
         },
         methods: {
             ...mapActions(["fetchCategories"])
         },
         computed: {
-            ...mapGetters(["allCategories", "loadingCategories", "lang"]),
+            ...mapGetters(["allCategories", "loadingCategories"]),
         },
         created() {
             this.fetchCategories();

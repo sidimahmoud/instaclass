@@ -15,6 +15,7 @@ class DemandsController extends Controller
     public function index()
     {
         $demands = Demands::all();
+        dd("dmdnd".$demands);
         return response()->json($demands);
     }
 
@@ -31,7 +32,7 @@ class DemandsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
@@ -44,14 +45,14 @@ class DemandsController extends Controller
 
         $demand->save();
         if ($demand)
-        return response()->json("Merci, votre message de demande de cours a été envoyé.");
+            return response()->json("Merci, votre message de demande de cours a été envoyé.");
         return response()->json("Erreur, Ressayer.");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -62,7 +63,7 @@ class DemandsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -73,8 +74,8 @@ class DemandsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -85,7 +86,7 @@ class DemandsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
