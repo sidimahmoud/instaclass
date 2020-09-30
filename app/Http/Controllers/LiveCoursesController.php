@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Twilio\Exceptions\ConfigurationException;
+use Illuminate\Support\Facades\Log;
 use Twilio\Jwt\AccessToken;
 use Twilio\Jwt\Grants\VideoGrant;
 use Twilio\Rest\Client;
@@ -16,7 +16,7 @@ class LiveCoursesController extends Controller
         $accountSid = env('TWILIO_ACCOUNT_SID');
         $apiKeySid = env('TWILIO_API_KEY');
         $apiKeySecret = env('TWILIO_API_SECRET');
-        $identity = $user."+".uniqid();
+        $identity = $user . "-" . uniqid();
         // Create an Access Token
         $token = new AccessToken(
             $accountSid,
@@ -43,13 +43,13 @@ class LiveCoursesController extends Controller
         $twilio = new Client($sid, $token);
         $room = $twilio->video->v1->rooms
             ->create([
-                    "recordParticipantsOnConnect" => $recorded,
-                    "type" => "group",
-                    "uniqueName" => $myRoom
-                ]
+                "recordParticipantsOnConnect" => $recorded,
+                "type" => "group",
+                "uniqueName" => $myRoom,
+            ]
             );
         // Grant access to Video
-        $identity = uniqid();
+        $identity = "teacher-identity";
         // Create an Access Token
         $myToken = new AccessToken(
             $sid,
@@ -70,19 +70,26 @@ class LiveCoursesController extends Controller
 
     public function roomDetails($myRoom)
     {
-        $sid = env('TWILIO_ACCOUNT_SID');
-        $token = env('TWILIO_ACCOUNT_TOKEN');
-        $twilio = new Client($sid, $token);
-        $room = $twilio->video->v1->rooms($myRoom)->fetch();
-        return response()->json([
-            "name" => $room->uniqueName,
-            "sid" => $room->sid,
-            "status" => $room->status,
-            "recorded" => $room->recordParticipantsOnConnect,
-            "start" => $room->dateCreated,
-            "end" => $room->endTime,
-            "max_participants" => $room->maxParticipants,
-            "duration" => $room->duration]);
+        try {
+            $sid = env('TWILIO_ACCOUNT_SID');
+            $token = env('TWILIO_ACCOUNT_TOKEN');
+            $twilio = new Client($sid, $token);
+            $room = $twilio->video->v1->rooms($myRoom)->fetch();
+            Log::info("success");
+            return response()->json([
+                "name" => $room->uniqueName,
+                "sid" => $room->sid,
+                "status" => $room->status,
+                "recorded" => $room->recordParticipantsOnConnect,
+                "start" => $room->dateCreated,
+                "end" => $room->endTime,
+                "max_participants" => $room->maxParticipants,
+                "duration" => $room->duration]);
+        } catch (\Throwable $e) {
+            Log::info("error");
+            Log::info($e);
+            return [];
+        }
     }
 
     public function roomRecordings($roomSid)
@@ -96,8 +103,8 @@ class LiveCoursesController extends Controller
             ->read([], 20);
 
 //        foreach ($recordings as $record) {
-//            print($record->sid);
-//        }
+        //            print($record->sid);
+        //        }
         return response()->json($recordings);
     }
 
@@ -110,8 +117,8 @@ class LiveCoursesController extends Controller
         $participants = $client->video->rooms($roomSid)
             ->participants->read(array("status" => "connected"));
 //        foreach ($participants as $participant) {
-//            echo $participant->identity;
-//        }
+        //            echo $participant->identity;
+        //        }
         return response()->json($participants);
     }
 
@@ -132,7 +139,7 @@ class LiveCoursesController extends Controller
         $participant = $client->video->rooms($roomSid)
             ->participants($user)
             ->update(array("status" => "disconnected"));
-        return response()->json(["status"=>$participant->status, "user"=>$participant->identity]);
+        return response()->json(["status" => $participant->status, "user" => $participant->identity]);
     }
 
     public function myRooms($uniqueName)
@@ -143,6 +150,28 @@ class LiveCoursesController extends Controller
         $rooms = $twilio->video->v1->rooms->read(["uniqueName" => $uniqueName], 20);
 //        echo $rooms;
         return response()->json($rooms);
+    }
+
+    public function retrieveRoomsbyStatus($status)
+    {
+        try {
+            $sid = env('TWILIO_ACCOUNT_SID');
+            $token = env('TWILIO_ACCOUNT_TOKEN');
+            $twilio = new Client($sid, $token);
+            $rooms = $twilio->video->v1->rooms->read(["status" => $status], 20);
+            $final_json = [];
+            foreach ($rooms as $v) {
+                $item['sid'] = $v->sid;
+                $item['uniqueName'] = $v->uniqueName;
+                $item['dateCreated'] = date_format($v->dateCreated, "Y-m-d H:i:s");
+                $final_json[] = $item;
+            }
+            return response()->json($final_json);
+        } catch (\Throwable $e) {
+            Log::info("error" . $e);
+            return [];
+        }
+
     }
 
     /**

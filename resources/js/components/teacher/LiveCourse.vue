@@ -21,7 +21,15 @@
           <div class="form-group">
             <input type="text" id="user" class="form-control" v-model="user" />
           </div>
-          <button class="btn btn-primary" @click="onJoinCourse">
+          <!-- <button class="btn btn-primary" @click="createRoom">Start now</button> -->
+          <router-link
+            :to="{ name: 'StartLive' }"
+            tag="button"
+            class="btn btn-primary"
+          >
+            Start now
+          </router-link>
+          <button class="btn btn-primary" @click="getAccessToken">
             Join Course
           </button>
         </div>
@@ -33,38 +41,31 @@
 <script>
 import axios from "axios";
 import CountDown from "../CountDown";
+import user from "../../store/modules/user";
 
 export default {
-  name: "LiveWindowCompo",
+  name: "LiveCourse",
   components: {
     CountDown,
   },
-  data() {
+  data: function () {
     return {
-      myRoom: this.$route.params.slug,
-      sid: this.$route.params.sid,
-      user: "Student",
+      user: "teacher",
     };
   },
   methods: {
-    onJoinCourse() {
+    getAccessToken() {
       const _this = this;
+      return;
       // Request a new token
-      axios
-        .get(`/room-details/${this.sid}`)
-        .then((res) => {
-          console.log("result", res.data);
-          var response = res.data;
-          if (response.status == "in-progress") {
-            this.$router.push({
-              name: "LiveVideo",
-              params: { slug: this.myRoom, sid: this.sid },
-            });
-          } else {
-            this.$router.push({ name: "StudentProfile" });
-          }
-        })
-        .catch((err) => console.log("error", err.response));
+      // axios
+      //   .get(`/access_token/${this.myRoom}/${this.user}`)
+      //   .then((response) => {
+      //     _this.accessToken = response.data;
+      //     _this.started = true;
+      //     _this.connectToRoom();
+      //   })
+      //   .catch((error) => console.log(error));
     },
   },
 };
