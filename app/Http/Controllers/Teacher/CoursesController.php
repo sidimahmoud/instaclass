@@ -88,7 +88,7 @@ class CoursesController extends Controller
             $courseSection->save();
         }
         if ($course){
-            Mail::to("medab.vall@gmail.com.com")->send(new Mails());
+            Mail::to("medab.vall@gmail.com")->send(new Mails());
 
 //            Mail::to("clem2001@hotmail.com")->send(new Mails());
 //            Mail::to("nyveline87@yahoo.fr")->send(new Mails());
