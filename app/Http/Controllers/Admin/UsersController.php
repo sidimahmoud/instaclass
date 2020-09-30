@@ -55,7 +55,8 @@ class UsersController extends Controller
     {
         $admins = User::whereHas(
             'roles', function ($q) {
-            $q->where('name', 'admin');
+            $q->where('name', 'admin')
+                ->where("active", 1);
         }
         )->get();
         return response()->json($admins);
@@ -68,8 +69,8 @@ class UsersController extends Controller
     }
     public function banish($id)
     {
-        $user = User::findOrFail($id);
-        $user->active = 0;
+        $user = User::find($id);
+        $user->active = false;
         $user->save();
         return response()->json("Banned successfully");
     }
