@@ -50,15 +50,15 @@
                         />
                     </div>
                 </div>
-                <div class="row my-4">
-                    <div class="col-md-12 bg-white shadow">
+                <div class="row my-4 ">
+                    <div class="col-md-12 bg shadow">
                         <nav class="nav nav-pills nav-fill mt-3">
                             <a class="nav-item nav-link active" href="#courses" data-toggle="tab">My recorded
                                 courses</a>
                             <a class="nav-item nav-link " href="#receipts" data-toggle="tab">My receipts</a>
                             <a class="nav-item nav-link " href="#live" data-toggle="tab">Go live</a>
                         </nav>
-                        <hr>
+                        <hr class="bg-dark">
                         <div class="tab-content my-1">
                             <!-- Enrollments-->
                             <div class="tab-pane fade show active" id="courses">
@@ -71,15 +71,15 @@
                                     <li class=" mt-4" v-else>
                                         <div v-for="e in en" :key="e.id">
                                             {{e}}
-<!--                                            <div v-if="e.course.type==1">-->
-<!--                                                <router-link :to="{name: 'Player', params: { slug: e.course.slug} }">-->
-<!--                                                    <h5 class="mt-0 mb-1">{{e.course.name}},-->
-<!--                                                        {{e.course.created_at.slice(0,10)}},-->
-<!--                                                        {{e.course.created_at.slice(11,16)}},-->
-<!--                                                        {{e.course.user.first_name}}-->
-<!--                                                        {{e.course.user.last_name}}</h5>-->
-<!--                                                </router-link>-->
-<!--                                            </div>-->
+                                            <!--                                            <div v-if="e.course.type==1">-->
+                                            <!--                                                <router-link :to="{name: 'Player', params: { slug: e.course.slug} }">-->
+                                            <!--                                                    <h5 class="mt-0 mb-1">{{e.course.name}},-->
+                                            <!--                                                        {{e.course.created_at.slice(0,10)}},-->
+                                            <!--                                                        {{e.course.created_at.slice(11,16)}},-->
+                                            <!--                                                        {{e.course.user.first_name}}-->
+                                            <!--                                                        {{e.course.user.last_name}}</h5>-->
+                                            <!--                                                </router-link>-->
+                                            <!--                                            </div>-->
                                         </div>
                                     </li>
                                 </ul>
@@ -166,9 +166,12 @@
 
 <style scoped>
     .jumbotron {
-        background-image: url('../../assets/images/teaprofile/bg.png');
+        background-image: url('../../assets/images/about/bg.png');
         border-radius: 0;
         padding: 0;
+    }
 
+    .bg {
+        background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);
     }
 </style>

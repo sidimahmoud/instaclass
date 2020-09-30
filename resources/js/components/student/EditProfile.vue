@@ -1,7 +1,9 @@
 <template>
 
-    <div class="container bootstrap snippet " v-if="!profileLoading">
-        <div class="text-center"><h1>{{userProfile.first_name}} {{userProfile.last_name}}</h1></div>
+    <div class="container bootstrap snippet rounded pt-3" v-if="!profileLoading">
+        <div class="text-center">
+            <h1 class="font-weight-bolder">{{userProfile.first_name}} {{userProfile.last_name}}</h1>
+        </div>
         <div class="row">
             <div class="col-sm-3"><!--left col-->
                 <div class="text-center">
@@ -13,7 +15,6 @@
                 <br>
             </div><!--/col-3-->
             <div class="col-sm-9">
-
                 <div class="tab-content">
                     <div class="tab-pane active" id="home">
                         <form class="form" action="#" method="post" id="registrationForm">
@@ -26,7 +27,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-
                                 <div class="col-xs-6">
                                     <label for="last_name">Last name</label>
                                     <input type="text" class="form-control" name="last_name" id="last_name"
@@ -34,9 +34,7 @@
                                            :value="userProfile.last_name">
                                 </div>
                             </div>
-
                             <div class="form-group">
-
                                 <div class="col-xs-6">
                                     <label for="phone">Phone</label>
                                     <input type="text" class="form-control" name="phone" id="phone"
@@ -44,7 +42,6 @@
                                            :value="userProfile.phone">
                                 </div>
                             </div>
-
                             <div class="form-group">
 
                                 <div class="col-xs-6">
@@ -59,7 +56,7 @@
                                 <div class="col-xs-6">
                                     <label for="lang">Spoken languages</label>
                                     <input type="text" class="form-control" name="email" id="lang"
-                                            title="enter your email."
+                                           title="enter your email."
                                            :value="userProfile.languages">
                                 </div>
                             </div>
@@ -105,10 +102,10 @@
 
     export default {
         name: "EditProfile",
-        methods:{
+        methods: {
             ...mapActions(["fetchProfile"])
         },
-        computed:{
+        computed: {
             ...mapGetters(["userProfile", "profileLoading"])
         },
         created() {
@@ -116,3 +113,9 @@
         }
     }
 </script>
+
+<style scoped>
+    .container {
+        background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);
+    }
+</style>

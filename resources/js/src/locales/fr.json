@@ -2,13 +2,14 @@
     "title": "La plateforme parfaite pour les cours en ligne",
     "nav": {
         "home": "Accueil",
-        "about": "A props",
-        "courses": "Tous le cours",
+        "about": "A propos",
+        "courses": "Tous les cours",
         "become": "Devenir instructeur",
         "demande": "Demande de cours",
-        "account": "Compte"
+        "account": "Compte Etudiant"
     },
     "coursesByCateg": "Les cours par categorie",
     "search": "Chercher des cours",
-    "searchBtn": "Chercher"
+    "searchBtn": "Chercher",
+    "noCourses": "Il n'y a pas de cours dans cette catégorie pour l’instant."
 }

@@ -22,7 +22,7 @@
                         </textarea>
                     </div>
                     <div class="form-group" v-if="lang ==='fr'|| lang ==='en'||lang === 'es'">
-                        <label for="lang">Langue du cours</label>
+                        <label for="lang">Langue du cours desiré</label>
                         <select class="form-control" id="lang" v-model="lang">
                             <option value="fr">Français</option>
                             <option value="en">Anglais</option>

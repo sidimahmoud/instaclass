@@ -29,7 +29,6 @@ import EditStudentProfile from "../components/student/EditProfile";
 import Dashboard from "../components/admin/Dashboard";
 import LoginAdmin from "../components/admin/auth/Login";
 
-import Homefr from "../components/fr/Homefr";
 import CategoryCourses from "../components/courses/CategoryCourses";
 import NewCourse from "../components/teacher/NewCourse";
 import EditCourse from "../components/teacher/EditCourse";
@@ -194,6 +193,11 @@ const routes = [
         path: '/teacher/login',
         name: 'Signin',
         component: Signin,
+        beforeEnter: (to, from, next) => {
+            let user = JSON.parse(localStorage.getItem('user')) || null;
+            if (user && user.t === "teacher") next({name: 'TeacherProfile'});
+            else next()
+        },
         meta: {
             requiresAuth: false,
             title: 'Login'
@@ -320,15 +324,6 @@ const routes = [
         }
     },
 
-    // fr routes
-    {
-        path: '/fr',
-        name: 'HomeFr',
-        component: Homefr,
-        meta: {
-            requiresAuth: false,
-        }
-    },
 
 
     // Admin routes

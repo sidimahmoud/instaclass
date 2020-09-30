@@ -15,7 +15,6 @@
                 <th scope="col">Course Language</th>
                 <th scope="col">email</th>
                 <th scope="col">Status</th>
-
             </tr>
             </thead>
             <tbody>

@@ -1,60 +1,65 @@
 <template>
     <!-- ======= Contact Us Section ======= -->
-    <section id="contact" class="contact border-top border-primary">
-        <div class="container mt-4">
-            <div class="section-title text-center">
-                <div class="row">
-                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
-                        <div class="alert alert-success alert-dismissible fade show" role="alert" v-if="alert">
-                         <i class="fa fa-check text-success fa-2x mr-2"></i>
-                            {{alert}}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+
+    <div>
+        <div class="jumbotron text-right" style="height: 200px"></div>
+        <section id="contact" class="contact">
+            <div class="container mt-4">
+                <div class="section-title text-center">
+                    <div class="row">
+                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert" v-if="alert">
+                                <i class="fa fa-check text-success fa-2x mr-2"></i>
+                                {{alert}}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
+
+                    <h2>Contact</h2>
+                    <p>Contactez nous pour toutes questions ou commentaires</p>
                 </div>
 
-                <h2>Contact</h2>
-                <p>Contactez nous pour toutes questions ou commentaires</p>
-            </div>
+                <div class="row">
+                    <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
+                        <form class="php-email-form" @submit.prevent="send">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="name">Votre nom</label>
+                                    <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4"
+                                           data-msg="Please enter at least 4 chars" required v-model="name"/>
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="name">Votre Email</label>
+                                    <input type="email" class="form-control" name="email" id="email" data-rule="email"
+                                           data-msg="Please enter a valid email" required v-model="email"/>
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
 
-            <div class="row">
-                <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-                    <form  class="php-email-form" @submit.prevent="send">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="name">Votre nom</label>
-                                <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4"
-                                       data-msg="Please enter at least 4 chars" required v-model="name" />
+                            <div class="form-group">
+                                <label for="name">Message</label>
+                                <textarea class="form-control" name="message" rows="10" data-rule="required"
+                                          data-msg="Please write something for us"
+                                          required v-model="msg"></textarea>
                                 <div class="validate"></div>
                             </div>
-                            <div class="form-group col-md-12">
-                                <label for="name">Votre Email</label>
-                                <input type="email" class="form-control" name="email" id="email" data-rule="email"
-                                       data-msg="Please enter a valid email" required v-model="email" />
-                                <div class="validate"></div>
+
+                            <div class="text-center">
+                                <button type="submit">Envoyer</button>
                             </div>
-                        </div>
+                        </form>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="name">Message</label>
-                            <textarea class="form-control" name="message" rows="10" data-rule="required"
-                                      data-msg="Please write something for us"
-                            required v-model="msg"></textarea>
-                            <div class="validate"></div>
-                        </div>
-
-                        <div class="text-center">
-                            <button type="submit">Envoyer</button>
-                        </div>
-                    </form>
                 </div>
 
             </div>
-
-        </div>
-    </section><!-- End Contact Us Section -->
+        </section>
+    </div>
+    <!-- End Contact Us Section -->
 </template>
 
 <script>
@@ -88,6 +93,10 @@
 </script>
 
 <style scoped>
+    .jumbotron {
+        background-image: url('../assets/images/teaprofile/bg.jpg');
+        border-radius: 0;
+    }
     .contact .info {
         border-top: 3px solid #2b63f3;
         border-bottom: 3px solid #2b63f3;

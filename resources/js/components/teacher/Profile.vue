@@ -55,25 +55,21 @@
                             </div>
                         </div>
                         <p class="text-center text-white my-2">
-                            <router-link :to="{name : 'LiveCourse', params:{slug: 'hello'}}" tag="button" class="btn btn-danger">
+                            <router-link :to="{name : 'LiveCourse', params:{slug: 'hello'}}" tag="button"
+                                         class="btn btn-danger">
                                 Go to course page
                             </router-link>
-
                         </p>
-
                     </div>
-
                 </div>
-
-
             </div>
-
             <div class="container">
                 <div class="accordion" id="accordionExample">
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                <button class="btn btn-link font-weight-bolder rounded" type="button"
+                                        data-toggle="collapse"
                                         data-target="#collapseOne"
                                         aria-expanded="true" aria-controls="collapseOne">
                                     Manage my courses
@@ -96,7 +92,7 @@
                                     </router-link>
                                 </div>
                                 <ul class="list-unstyled">
-                                    <li class="media shadow-sm border rounded p-2 mt-4"
+                                    <li class="media border border-light rounded-lg p-2 mt-4"
                                         v-for="course in userCourses"
                                         :key="course.id">
                                         <div class="media-body">
@@ -104,7 +100,7 @@
                                                 <div class="col-md-9 ">
                                                     <router-link
                                                         :to="{ name: 'Detail', params: { slug: course.slug}}">
-                                                        <h5 class="mt-0 mb-1 text-primary font-weight-bolder">
+                                                        <h5 class="mt-0 mb-1 text-primary font-weight-bolder rounded">
                                                             {{course.name}}</h5>
                                                     </router-link>
                                                     {{course.short_description}}
@@ -121,13 +117,9 @@
                                                     <a href="javascript:;" class="btn btn-danger"
                                                        v-on:click="deleteCourse(course.id)">
                                                         Delete
-
                                                     </a>
-
-
                                                 </div>
                                             </div>
-
                                         </div>
                                     </li>
                                 </ul>
@@ -137,7 +129,8 @@
                     <div class="card">
                         <div class="card-header" id="payments">
                             <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                <button class="btn btn-link font-weight-bolder rounded collapsed" type="button"
+                                        data-toggle="collapse"
                                         data-target="#collapsePayment" aria-expanded="false"
                                         aria-controls="collapsePayment">
                                     Payments and receipts
@@ -146,7 +139,6 @@
                                         data-target="#collapsePayment" aria-expanded="false"
                                         aria-controls="collapsePayment">
                                     <i class="fa fa-plus"></i>
-
                                 </button>
                             </h2>
                         </div>
@@ -160,7 +152,8 @@
                     <div class="card">
                         <div class="card-header" id="evaluation">
                             <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                <button class="btn btn-link font-weight-bolder rounded collapsed" type="button"
+                                        data-toggle="collapse"
                                         data-target="#collapseEval" aria-expanded="false" aria-controls="collapseEval">
                                     Reviews
                                 </button>
@@ -174,7 +167,7 @@
                         <div id="collapseEval" class="collapse" aria-labelledby="evaluation"
                              data-parent="#accordionExample">
                             <div class="card-body">
-                                <div class="text-center" v-if="allTeacherDetails.ratings.length===0">
+                                <div class="text-center " v-if="allTeacherDetails.ratings.length===0">
                                     <h3>No reviews</h3>
                                 </div>
                                 <div v-else>
@@ -187,7 +180,8 @@
                     <div class="card">
                         <div class="card-header" id="headingThree">
                             <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                <button class="btn btn-link font-weight-bolder collapsed" type="button"
+                                        data-toggle="collapse"
                                         data-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
                                     Personal informations
@@ -210,7 +204,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -269,10 +262,16 @@
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .jumbotron {
-        background-image: url('../../assets/images/teaprofile/bg.png');
+        background-image: url('../../assets/images/teaprofile/bg.jpg');
         border-radius: 0;
+    }
+
+    .card {
+        background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);
+        margin-top: 6px;
+        margin-bottom: 6px;
     }
 
 </style>

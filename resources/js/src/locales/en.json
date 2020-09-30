@@ -5,10 +5,12 @@
         "about": "About",
         "courses": "All Courses",
         "become": "Become Instructor",
-        "demande": "Request course",
-        "account": "Account"
+        "demande": "Request a course",
+        "account": "Student Account"
     },
     "coursesByCateg": "Courses by category",
     "search": "Search for courses",
-    "searchBtn": "Search"
+    "searchBtn": "Search",
+    "noCourses": "There is no courses in this category yet."
+
 }

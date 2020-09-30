@@ -51,9 +51,8 @@
                         </router-link>
                         <div class="card-body text-center">
                             <h5 class="card-title  font-weight-bolder">{{categ.name}}</h5>
-                            <p class="card-text">
-                                <span v-for="(sub, index) in categ.sub_categories" :key="sub.id">{{index>0? ", ":""}} {{sub.name}}</span>
-                            </p>
+<!--                            <p class="card-text">-->
+<!--                            </p>-->
                         </div>
                     </div>
                 </div>

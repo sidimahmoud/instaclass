@@ -58,9 +58,6 @@
                     </p>
 
                     <p>
-                        <a href="#" class="text-uppercase">privacy policy</a>
-                    </p>
-                    <p>
                         <a href="#" class="text-uppercase"> Terms & conditions</a>
                     </p>
                     <p>
@@ -74,7 +71,7 @@
 
                 <!-- Grid column -->
                 <div class="col-md-3 align-content-center text-white mx-auto mb-md-0">
-                    <p>Instantclass On Social Media</p>
+                    <p>Instantaclasse On Social Media</p>
                     <p class="mt-2">
                         <a href=" https://www.facebook.com/InstantaClasse/?modal=admin_todo_tour " target="_blank">
                             <i class="fa fa-facebook  mr-3 fa-2x"></i>
@@ -91,7 +88,7 @@
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3 text-capitalize text-white">
             © 2020 Copyright:
-            <a href="https://instantclass.ca/">instantclass.ca</a>
+            <a href="https://instantaclasse.ca/">instantaclasse.ca</a>
         </div>
         <!-- Copyright -->
 
@@ -111,8 +108,8 @@
     }
 
     .page-footer {
-        background-color: #0e0938 !important;
-        margin-top: 25vh;
+        /*background-color: #0e0938 !important;*/
+        background-image: url('../assets/images/footer.png');
     }
 
     hr {

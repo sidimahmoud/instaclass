@@ -1,6 +1,15 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
+    <div>
+        <ul class="lang float-md-right mt-md-0">
+            <li class="btn btn-light " v-if="locale==='fr'" @click="en">
+                EN
+            </li>
+            <li class="btn btn-light" v-else @click="fr">
+                FR
+            </li>
+        </ul>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand text-primary font-weight-bolder" href="/">
                 <img src="../../assets/logo.png" alt="" width="80px">
             </a>
@@ -11,18 +20,18 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="form-inline  my-lg-0 mr-lg-2 w-50" @submit.prevent="search">
 
-                <ul class="navbar-nav ">
-                    <form class="form-inline my-2 my-lg-0 mr-lg-2" @submit.prevent="search">
-                        <input class="form-control mr-sm-2" type="search"
+                    <div class="form-group w-100">
+                        <input class="form-control  mr-sm-2" type="text"
                                :placeholder="$t('search')"
-                               v-model="q" aria-label="Search">
+                               v-model="q" aria-label="Search" style="width: 20%">
                         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
                             {{$t("searchBtn")}}
                         </button>
-                    </form>
-                </ul>
-                <ul class="navbar-nav ml-auto">
+                    </div>
+                </form>
+                <ul class="navbar-nav ">
                     <li class="nav-item " v-if="!$route.matched.some(({ name }) => name === 'Home')">
                         <router-link :to="{ name: 'Home'}" tag="a" class="nav-link ">
                             {{$t('nav.home')}}
@@ -43,7 +52,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <router-link :to="{name: 'Become'}" tag="a"
+                        <router-link :to="{name: 'Signin'}" tag="a"
                                      class="nav-link bg-danger text-white rounded">
                             {{$t('nav.become')}}
                         </router-link>
@@ -58,22 +67,15 @@
 
                     <li class="nav-item">
                         <router-link :to="{name: 'TeacherProfile'}" tag="a"
-                                     class="nav-link ">
+                                     class="nav-link bg-danger text-white rounded">
                             {{$t('nav.account')}}
                         </router-link>
                     </li>
                 </ul>
             </div>
-        </div>
-        <ul class="lang float-md-right mt-md-0">
-            <li class="btn btn-outline-primary " v-if="locale==='fr'" @click="en">
-                EN
-            </li>
-            <li class="btn btn-outline-primary " v-else @click="fr">
-                FR
-            </li>
-        </ul>
-    </nav>
+        </nav>
+    </div>
+
 </template>
 <script>
     import {mapGetters} from 'vuex'
