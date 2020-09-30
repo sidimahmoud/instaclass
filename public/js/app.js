@@ -7597,7 +7597,11 @@ __webpack_require__.r(__webpack_exports__);
           name: 'Admin'
         });
       })["catch"](function (err) {
-        return _this.errorMessage = err.response.data.message;
+        console.log(err.response.data.response);
+        err.response.data.response === "email unverified" ? _this.$router.push({
+          name: 'Email'
+        }) : "";
+        _this.errorMessage = err.response.data.response;
       });
     },
     // loginGithub() {
@@ -114156,8 +114160,8 @@ var actions = {
                   // localStorage.setItem('token', token);
                   // localStorage.setItem('user', JSON.stringify(user));
                   // axios.defaults.headers.common['Authorization'] = token;
-                  // commit('auth_success', token, user);
 
+                  commit('auth_success', '', '');
                   resolve(resp);
                 })["catch"](function (err) {
                   console.log(err.response);

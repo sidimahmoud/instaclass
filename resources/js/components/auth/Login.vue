@@ -21,7 +21,7 @@
                                    required="required" v-model="password">
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block " >
+                            <button type="submit" class="btn btn-primary btn-lg btn-block ">
                                 <span v-if="!authLoading">Sign in </span>
                                 <div class="text-center text-white" v-if="authLoading">
                                     <span class="spinner-border spinner-border-sm" role="staitus" aria-hidden="true"/>
@@ -61,7 +61,6 @@
             }
         },
         methods: {
-
             login() {
                 let email = this.email;
                 let password = this.password;
@@ -72,7 +71,12 @@
                             (res.data.user.roles[0].name === "student") ?
                                 this.$router.push({name: 'StudentProfile'}) : this.$router.push({name: 'Admin'});
                     })
-                    .catch(err => this.errorMessage = err.response.data.message)
+                    .catch(err => {
+                        console.log(err.response.data.response);
+                        (err.response.data.response === "email unverified") ? this.$router.push({name: 'Email'}) : "";
+
+                        this.errorMessage = err.response.data.response
+                    })
             },
             // loginGithub() {
             //     this.$store.dispatch('socialStudentAuth', "google")
