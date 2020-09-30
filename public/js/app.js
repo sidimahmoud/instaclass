@@ -108815,7 +108815,7 @@ var app = new Vue({
   },
   watch: {
     '$route': function $route(to, from) {
-      document.title = "Instantclass | " + to.meta.title;
+      document.title = "Instantaclass | " + to.meta.title;
     }
   }
 });
