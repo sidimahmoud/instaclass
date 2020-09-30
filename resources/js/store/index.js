@@ -9,11 +9,15 @@ import payments from "./modules/admin/payments";
 import enrollment from "./modules/enrollment";
 import contacts from "./modules/contacts";
 import liveCourses from "./modules/liveCourses";
+import i18n from "../src/i18n";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {},
+    getters:{
+        lang : ()=>i18n.locale
+    },
     mutations: {},
     actions: {},
     modules: {

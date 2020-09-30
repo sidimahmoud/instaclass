@@ -50,7 +50,7 @@
                                  alt="Card image cap">
                         </router-link>
                         <div class="card-body text-center">
-                            <h5 class="card-title  font-weight-bolder">{{categ.name}}</h5>
+                            <h5 class="card-title  font-weight-bolder">{{(lang==="en")? categ.name_en: categ.name_fr}}</h5>
 <!--                            <p class="card-text">-->
 <!--                            </p>-->
                         </div>
@@ -63,16 +63,20 @@
 <script>
     import Course from "./courses/CourseComponent";
     import {mapGetters, mapActions} from "vuex";
+    import i18n from "../src/i18n";
 
     export default {
         name: 'Home',
+
         components: {
             Course
         },
         methods: {
             ...mapActions(["fetchCategories"])
         },
-        computed: mapGetters(["allCategories", "loadingCategories"]),
+        computed: {
+            ...mapGetters(["allCategories", "loadingCategories", "lang"]),
+        },
         created() {
             this.fetchCategories();
         }

@@ -5809,6 +5809,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _courses_CourseComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./courses/CourseComponent */ "./resources/js/components/courses/CourseComponent.vue");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _src_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../src/i18n */ "./resources/js/src/i18n.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -5879,13 +5880,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Home',
   components: {
     Course: _courses_CourseComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(["fetchCategories"])),
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(["allCategories", "loadingCategories"]),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(["allCategories", "loadingCategories", "lang"])),
   created: function created() {
     this.fetchCategories();
   }
@@ -6383,8 +6385,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
 //
 //
 //
@@ -15568,7 +15568,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* card margin*/\n.card[data-v-0104f9b6]:not(:first-child) {\n    margin-left: 15px !important;\n}\n\n/* latest courses border bottom*/\n.latest_courses_border[data-v-0104f9b6] {\n    border-bottom: 5px solid red;\n    max-width: 6%;\n    min-height: 6%;\n    max-height: 6%;\n    min-width: 8%;\n    display: block;\n}\n.jumbotron[data-v-0104f9b6] {\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/images/home/bg.png */ "./resources/js/assets/images/home/bg.png")) + ");\n    border-radius: 0;\n    padding: 15px;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* card margin*/\n.card[data-v-0104f9b6]:not(:first-child) {\n    margin-left: 15px !important;\n}\n\n/* latest courses border bottom*/\n.latest_courses_border[data-v-0104f9b6] {\n    border-bottom: 5px solid red;\n    max-width: 6%;\n    min-height: 6%;\n    max-height: 6%;\n    min-width: 8%;\n    display: block;\n}\n.jumbotron[data-v-0104f9b6] {\n    background-image: url(" + escape(__webpack_require__(/*! ../assets/images/home/bg.png */ "./resources/js/assets/images/home/bg.png")) + ");\n    border-radius: 0;\n    padding: 15px;\n}\n\n", ""]);
 
 // exports
 
@@ -77966,7 +77966,15 @@ var render = function() {
                         _c(
                           "h5",
                           { staticClass: "card-title  font-weight-bolder" },
-                          [_vm._v(_vm._s(categ.name))]
+                          [
+                            _vm._v(
+                              _vm._s(
+                                _vm.lang === "en"
+                                  ? categ.name_en
+                                  : categ.name_fr
+                              )
+                            )
+                          ]
                         )
                       ])
                     ],
@@ -79157,10 +79165,6 @@ var render = function() {
                   _vm._v(" "),
                   _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
                   _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [
-                    _vm._v("Description")
-                  ]),
-                  _vm._v(" "),
                   _c("th", { attrs: { scope: "col" } }, [_vm._v("Published")]),
                   _vm._v(" "),
                   _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")])
@@ -79175,9 +79179,7 @@ var render = function() {
                       _vm._v(_vm._s(t.id))
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(t.name))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(t.description))]),
+                    _c("td", [_vm._v(_vm._s(t.name_en))]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(t.published))]),
                     _vm._v(" "),
@@ -79388,7 +79390,7 @@ var render = function() {
                       _vm._v(
                         _vm._s(t.id) +
                           "-" +
-                          _vm._s(t.name) +
+                          _vm._s(t.name_en) +
                           "\n                        "
                       )
                     ])
@@ -79412,7 +79414,7 @@ var render = function() {
                   attrs: { multiple: "", id: "exampleFormControlSelect2" }
                 },
                 _vm._l(_vm.subCategories, function(c) {
-                  return _c("option", [_vm._v(_vm._s(c.name))])
+                  return _c("option", [_vm._v(_vm._s(c.name_en))])
                 }),
                 0
               )
@@ -79470,7 +79472,7 @@ var render = function() {
                       _vm._v(
                         _vm._s(t.id) +
                           "-" +
-                          _vm._s(t.name) +
+                          _vm._s(t.name_en) +
                           "\n                        "
                       )
                     ])
@@ -108785,7 +108787,8 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // const files = require.context('./', true, /\.vue$/i)
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = "https://test-inst.herokuapp.com/api"; // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('appnav', __webpack_require__(/*! ./components/header/NavbarCompnent.vue */ "./resources/js/components/header/NavbarCompnent.vue")["default"]);
@@ -109075,8 +109078,8 @@ var sd = function sd(v, d) {
   return v === undefined || v === null ? d : v;
 };
 
-window.app_api = sd("https://instantclass.herokuapp.com/api", "https://mondemenagement.ca/api");
-window.axios.defaults.baseURL = sd("https://instantclass.herokuapp.com/api", "https://mondemenagement.ca/api");
+window.app_api = sd("https://test-inst.herokuapp.com/api", "https://mondemenagement.ca/api");
+window.axios.defaults.baseURL = sd("https://test-inst.herokuapp.com/api", "https://mondemenagement.ca/api");
 
 /***/ }),
 
@@ -113599,6 +113602,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_enrollment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/enrollment */ "./resources/js/store/modules/enrollment.js");
 /* harmony import */ var _modules_contacts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/contacts */ "./resources/js/store/modules/contacts.js");
 /* harmony import */ var _modules_liveCourses__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/liveCourses */ "./resources/js/store/modules/liveCourses.js");
+/* harmony import */ var _src_i18n__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../src/i18n */ "./resources/js/src/i18n.js");
+
 
 
 
@@ -113613,6 +113618,11 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {},
+  getters: {
+    lang: function lang() {
+      return _src_i18n__WEBPACK_IMPORTED_MODULE_11__["default"].locale;
+    }
+  },
   mutations: {},
   actions: {},
   modules: {

@@ -14,7 +14,6 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Description</th>
                     <th scope="col">Published</th>
                     <th scope="col">Edit</th>
                 </tr>
@@ -22,8 +21,7 @@
                 <tbody>
                 <tr v-for="t in allCategories">
                     <th scope="row">{{t.id}}</th>
-                    <td>{{t.name}}</td>
-                    <td>{{t.description}}</td>
+                    <td>{{t.name_en}}</td>
                     <td>{{t.published}}</td>
                     <td>
                         <button class="btn btn-primary">Edit</button>

@@ -10,7 +10,7 @@
                         <label for="exampleFormControlSelect1">Select category</label>
                         <select class="form-control" id="exampleFormControlSelect1" @change="loadsubs">
                             <option value="0">Select category</option>
-                            <option v-for="t in allCategories" :value="t.id">{{t.id}}-{{t.name}}
+                            <option v-for="t in allCategories" :value="t.id">{{t.id}}-{{t.name_en}}
                             </option>
                         </select>
                     </div>
@@ -19,7 +19,7 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect2">Sub-categories</label>
                         <select multiple class="form-control" id="exampleFormControlSelect2">
-                            <option v-for="c in subCategories">{{c.name}}</option>
+                            <option v-for="c in subCategories">{{c.name_en}}</option>
                         </select>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                         <label for="cats">Select category</label>
                         <select class="form-control" id="cats" v-model="category_id">
                             <option value="0">Select category</option>
-                            <option v-for="t in allCategories" :value="t.id">{{t.id}}-{{t.name}}
+                            <option v-for="t in allCategories" :value="t.id">{{t.id}}-{{t.name_en}}
                             </option>
                         </select>
                     </div>
