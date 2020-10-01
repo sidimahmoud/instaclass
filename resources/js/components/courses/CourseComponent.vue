@@ -8,8 +8,8 @@
                 <div class="col-md-9 justify-content-center align-items-center">
                     <div class="row text-left">
                         <div class="col-md-3 col-sm-12 justify-content-center align-items-center ">
-                            <!--Category: <strong>{{course.sub_category.category.name}}</strong> >-->
-                            Category > <strong>{{course.sub_category.name}}</strong>
+                            <strong>{{course.sub_category.category.name_en}}</strong> >
+                             <strong>{{course.sub_category.name_en}}</strong>
                         </div>
                         <div class="col-md-3 col-sm-12 justify-content-center align-items-center "><b>Number of
                             Sessions:</b> 3

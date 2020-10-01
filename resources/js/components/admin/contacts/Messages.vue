@@ -8,6 +8,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">email</th>
                 <th scope="col">Message</th>
+                <th scope="col">Date</th>
 
             </tr>
             </thead>
@@ -17,6 +18,7 @@
                 <td>{{d.name}}</td>
                 <td>{{d.email}}</td>
                 <td>{{d.message}}</td>
+                <td>{{d.created_at}}</td>
             </tr>
             </tbody>
         </table>

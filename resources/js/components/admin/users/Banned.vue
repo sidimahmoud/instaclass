@@ -30,7 +30,7 @@
                 <td>{{t.headline}}</td>
 
                 <td>
-                    <button class="btn btn-danger">
+                    <button class="btn btn-success">
                         <i class="fa fa-check text-primary"></i>
                     </button>
                 </td>

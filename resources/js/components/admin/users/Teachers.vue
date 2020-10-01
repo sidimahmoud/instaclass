@@ -16,8 +16,8 @@
                 <th scope="col">Last name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Active</th>
-                <th scope="col">Bio</th>
-                <th scope="col">Block</th>
+                <th scope="col">Date of subscription</th>
+                <th scope="col">Banish</th>
             </tr>
             </thead>
             <tbody>
@@ -27,9 +27,9 @@
                 <td>{{t.last_name}}</td>
                 <td>{{t.email.toLocaleLowerCase()}}</td>
                 <td><input type="checkbox" name="" id="" checked disabled></td>
-                <td>{{t.headline}}</td>
+                <td>{{t.created_at}}</td>
                 <td>
-                    <button class="btn btn-danger" @click="banish(t.id)">
+                    <button class="btn btn-success" @click="banish(t.id)">
                         X
                     </button>
                 </td>

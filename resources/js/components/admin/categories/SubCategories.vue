@@ -87,6 +87,7 @@
                         alert("Sub-category created successfully");
                         this.category_id = 0;
                         this.name = '';
+                        this.nom = '';
                     })
             }
         },

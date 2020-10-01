@@ -6608,6 +6608,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         alert("Sub-category created successfully");
         _this.category_id = 0;
         _this.name = '';
+        _this.nom = '';
       });
     }
   }),
@@ -6635,6 +6636,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -6748,6 +6751,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -8601,6 +8606,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CourseComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CourseComponent */ "./resources/js/components/courses/CourseComponent.vue");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+//
 //
 //
 //
@@ -79606,7 +79612,9 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(d.email))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(d.message))])
+            _c("td", [_vm._v(_vm._s(d.message))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(d.created_at))])
           ])
         }),
         0
@@ -79627,7 +79635,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("email")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Message")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Message")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date")])
       ])
     ])
   }
@@ -79673,7 +79683,7 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(d.email))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(d.status))])
+            _c("td", [_vm._v(_vm._s(d.created_at))])
           ])
         }),
         0
@@ -79726,7 +79736,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("email")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Status")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date")])
       ])
     ])
   }
@@ -79768,7 +79778,9 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(t.name))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.language))])
+            _c("td", [_vm._v(_vm._s(t.language))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(t.created_at))])
           ])
         }),
         0
@@ -79817,7 +79829,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Language")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Language")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date of creation")])
       ])
     ])
   }
@@ -80606,7 +80620,7 @@ var render = function() {
                 _c("td", [_vm._v(_vm._s(t.headline))]),
                 _vm._v(" "),
                 _c("td", [
-                  _c("button", { staticClass: "btn btn-danger" }, [
+                  _c("button", { staticClass: "btn btn-success" }, [
                     _c("i", { staticClass: "fa fa-check text-primary" })
                   ])
                 ])
@@ -80683,9 +80697,11 @@ var render = function() {
               _vm._v(" "),
               _c("th", { attrs: { scope: "col" } }, [_vm._v("Active")]),
               _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Bio")]),
+              _c("th", { attrs: { scope: "col" } }, [
+                _vm._v("Date of subscription")
+              ]),
               _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Block")])
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Banish")])
             ])
           ]),
           _vm._v(" "),
@@ -80713,13 +80729,13 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(t.headline))]),
+                _c("td", [_vm._v(_vm._s(t.created_at))]),
                 _vm._v(" "),
                 _c("td", [
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-danger",
+                      staticClass: "btn btn-success",
                       on: {
                         click: function($event) {
                           return _vm.banish(t.id)
@@ -80802,9 +80818,11 @@ var render = function() {
               _vm._v(" "),
               _c("th", { attrs: { scope: "col" } }, [_vm._v("Active")]),
               _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Bio")]),
+              _c("th", { attrs: { scope: "col" } }, [
+                _vm._v("Date of subscription")
+              ]),
               _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Block")])
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Banish")])
             ])
           ]),
           _vm._v(" "),
@@ -80832,13 +80850,13 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(t.headline))]),
+                _c("td", [_vm._v(_vm._s(t.created_at))]),
                 _vm._v(" "),
                 _c("td", [
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-danger",
+                      staticClass: "btn btn-success",
                       on: {
                         click: function($event) {
                           return _vm.banish(t.id)
@@ -82018,9 +82036,14 @@ var render = function() {
                           "col-md-3 col-sm-12 justify-content-center align-items-center "
                       },
                       [
-                        _vm._v("\n                        Category > "),
                         _c("strong", [
-                          _vm._v(_vm._s(_vm.course.sub_category.name))
+                          _vm._v(
+                            _vm._s(_vm.course.sub_category.category.name_en)
+                          )
+                        ]),
+                        _vm._v(" >\n                         "),
+                        _c("strong", [
+                          _vm._v(_vm._s(_vm.course.sub_category.name_en))
                         ])
                       ]
                     ),
@@ -82939,131 +82962,140 @@ var render = function() {
                 return _c("course", { key: c.id, attrs: { course: c } })
               }),
               _vm._v(" "),
-              _c(
-                "nav",
-                { attrs: { "aria-label": "Page navigation example" } },
-                [
-                  _c("ul", { staticClass: "pagination justify-content-end" }, [
-                    _c(
-                      "li",
-                      {
-                        class: [
-                          "page-item",
-                          { disabled: !_vm.allCourses.prev_page_url }
-                        ]
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "page-link ",
-                            attrs: { href: "#" },
-                            on: { click: _vm.first }
-                          },
-                          [
-                            _vm._v(
-                              "\n                        First\n                    "
-                            )
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        class: [
-                          "page-item",
-                          { disabled: !_vm.allCourses.prev_page_url }
-                        ]
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "page-link ",
-                            attrs: { href: "#" },
-                            on: { click: _vm.previous }
-                          },
-                          [
-                            _vm._v(
-                              "\n                        <<\n                    "
-                            )
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "page-item" }, [
+              _vm.allCourses.data.length > 16
+                ? _c(
+                    "nav",
+                    { attrs: { "aria-label": "Page navigation example" } },
+                    [
                       _c(
-                        "a",
-                        { staticClass: "page-link", attrs: { href: "#" } },
+                        "ul",
+                        { staticClass: "pagination justify-content-end" },
                         [
-                          _vm._v(
-                            _vm._s(_vm.allCourses.current_page) +
-                              " of\n                    " +
-                              _vm._s(_vm.allCourses.last_page)
+                          _c(
+                            "li",
+                            {
+                              class: [
+                                "page-item",
+                                { disabled: !_vm.allCourses.prev_page_url }
+                              ]
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link ",
+                                  attrs: { href: "#" },
+                                  on: { click: _vm.first }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        First\n                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              class: [
+                                "page-item",
+                                { disabled: !_vm.allCourses.prev_page_url }
+                              ]
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link ",
+                                  attrs: { href: "#" },
+                                  on: { click: _vm.previous }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        <<\n                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("li", { staticClass: "page-item" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "page-link",
+                                attrs: { href: "#" }
+                              },
+                              [
+                                _vm._v(
+                                  _vm._s(_vm.allCourses.current_page) +
+                                    " of\n                    " +
+                                    _vm._s(_vm.allCourses.last_page)
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              class: [
+                                "page-item",
+                                { disabled: !_vm.allCourses.next_page_url }
+                              ]
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: { click: _vm.next }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        >>\n                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              class: [
+                                "page-item",
+                                { disabled: !_vm.allCourses.next_page_url }
+                              ]
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.last(_vm.allCourses.last_page)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        last\n                    "
+                                  )
+                                ]
+                              )
+                            ]
                           )
                         ]
                       )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        class: [
-                          "page-item",
-                          { disabled: !_vm.allCourses.next_page_url }
-                        ]
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "page-link",
-                            attrs: { href: "#" },
-                            on: { click: _vm.next }
-                          },
-                          [
-                            _vm._v(
-                              "\n                        >>\n                    "
-                            )
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        class: [
-                          "page-item",
-                          { disabled: !_vm.allCourses.next_page_url }
-                        ]
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "page-link",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.last(_vm.allCourses.last_page)
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                        last\n                    "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ])
-                ]
-              )
+                    ]
+                  )
+                : _vm._e()
             ],
             2
           )
