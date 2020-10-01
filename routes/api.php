@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::resource('payments', 'Admin\PayementController');
         Route::get('/demands', 'DemandsController@index');
         Route::get('/contacts', 'ContactsController@index');
+        Route::get('/statistics', 'Teacher\CoursesController@statistics');
     });
 
     Route::middleware('can:teacher-or-admin')->group(function () {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Teacher;
 
+use App\Category;
 use App\Course;
 use App\CourseFile;
 use App\Enrollment;
@@ -35,6 +36,11 @@ class CoursesController extends Controller
         $user = $request->user();
         $courses = Course::where('user_id', $user->id)->get();
         return response()->json($courses);
+    }
+    public function statistics(Request $request)
+    {
+        $categories = Category::with("subCategories.courses.enrollments")->get();
+        return response()->json($categories);
     }
 
 

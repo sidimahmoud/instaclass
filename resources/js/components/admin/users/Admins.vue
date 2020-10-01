@@ -29,7 +29,6 @@
                         X
                     </button>
                 </td>
-
             </tr>
             </tbody>
         </table>
@@ -42,7 +41,6 @@
 
     export default {
         name: "Teachers",
-
         components: {BigSppiner},
         methods: {
             ...mapActions(["fetchAdmins"]),

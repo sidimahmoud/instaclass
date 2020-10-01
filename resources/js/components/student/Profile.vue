@@ -69,17 +69,16 @@
                                         </p>
                                     </li>
                                     <li class=" mt-4" v-else>
-                                        <div v-for="e in en" :key="e.id">
-                                            {{e}}
-                                            <!--                                            <div v-if="e.course.type==1">-->
-                                            <!--                                                <router-link :to="{name: 'Player', params: { slug: e.course.slug} }">-->
-                                            <!--                                                    <h5 class="mt-0 mb-1">{{e.course.name}},-->
-                                            <!--                                                        {{e.course.created_at.slice(0,10)}},-->
-                                            <!--                                                        {{e.course.created_at.slice(11,16)}},-->
-                                            <!--                                                        {{e.course.user.first_name}}-->
-                                            <!--                                                        {{e.course.user.last_name}}</h5>-->
-                                            <!--                                                </router-link>-->
-                                            <!--                                            </div>-->
+                                        <div v-for="e in userEnrollments" :key="e.id">
+                                            <div v-if="e.course.type==1">
+                                                <router-link :to="{name: 'Player', params: { slug: e.course.slug} }">
+                                                    <h5 class="mt-0 mb-1">{{e.course.name}},
+                                                        {{e.course.created_at.slice(0,10)}},
+                                                        {{e.course.created_at.slice(11,16)}},
+                                                        {{e.course.user.first_name}}
+                                                        {{e.course.user.last_name}}</h5>
+                                                </router-link>
+                                            </div>
                                         </div>
                                     </li>
                                 </ul>
@@ -98,16 +97,16 @@
                                             course
                                         </p>
                                     </li>
-                                    <!--                                    <li class="mt-4" v-for="e in userEnrollments" :key="e.id" v-else>-->
-                                    <!--                                        <div v-if="e.course.type===2">-->
-                                    <!--                                            <router-link :to="{name: 'Live', params: { slug: e.course.slug} }">-->
-                                    <!--                                                <h5 class="mt-0 mb-1">{{e.course.name}},-->
-                                    <!--                                                    {{e.course.created_at.slice(0,10)}},-->
-                                    <!--                                                    {{e.course.user.first_name}}-->
-                                    <!--                                                    {{e.course.user.last_name}}</h5>-->
-                                    <!--                                            </router-link>-->
-                                    <!--                                        </div>-->
-                                    <!--                                    </li>-->
+                                    <li class="mt-4" v-for="e in userEnrollments" :key="e.id" v-else>
+                                        <div v-if="e.course.type===2">
+                                            <router-link :to="{name: 'Live', params: { slug: e.course.slug} }">
+                                                <h5 class="mt-0 mb-1">{{e.course.name}},
+                                                    {{e.course.created_at.slice(0,10)}},
+                                                    {{e.course.user.first_name}}
+                                                    {{e.course.user.last_name}}</h5>
+                                            </router-link>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -125,11 +124,7 @@
     export default {
         name: "StudentProfile",
         components: {CountDown},
-        data() {
-            return {
-                en: '',
-            }
-        },
+
         methods: {
             ...mapActions(["fetchProfile", "fetchUserEnrollments"]),
             logout() {
@@ -140,13 +135,13 @@
             },
             lives() {
                 return this.userEnrollments.map(item => {
-                        return item.course.type === 2
+                        return item.course.type == 2
                     }
                 )
             },
             recorded() {
                 return this.userEnrollments.map(item => {
-                    return item.course.type === 1
+                    return item.course.type == 1
                 })
             },
         },
@@ -155,12 +150,7 @@
             this.fetchProfile();
             this.fetchUserEnrollments();
         },
-        mounted() {
-            setTimeout(() => {
-                this.en = this.userEnrollments
-                console.log(this.en[0])
-            }, 10)
-        }
+
     }
 </script>
 

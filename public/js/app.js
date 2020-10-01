@@ -6803,12 +6803,46 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Statistics"
+  name: "Statistics",
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchStatistics"])),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["allStatistics"]),
+  created: function created() {
+    this.fetchStatistics();
+  }
 });
 
 /***/ }),
@@ -7121,7 +7155,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -8880,6 +8913,17 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _src_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../src/i18n */ "./resources/js/src/i18n.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8963,14 +9007,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AppNav',
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["isLoggedIn"]),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["isLoggedIn", "userProfile"]),
   data: function data() {
     return {
       q: '',
       locale: 'en'
     };
   },
-  methods: {
+  methods: _objectSpread({
     en: function en() {
       _src_i18n__WEBPACK_IMPORTED_MODULE_1__["default"].locale = "en";
       this.locale = "en";
@@ -8995,6 +9039,9 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     }
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchProfile"])),
+  created: function created() {
+    this.fetchProfile();
   }
 });
 
@@ -9431,18 +9478,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "StudentProfile",
   components: {
     CountDown: _CountDown__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
-  data: function data() {
-    return {
-      en: ''
-    };
   },
   methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchProfile", "fetchUserEnrollments"])), {}, {
     logout: function logout() {
@@ -9454,12 +9495,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     lives: function lives() {
       return this.userEnrollments.map(function (item) {
-        return item.course.type === 2;
+        return item.course.type == 2;
       });
     },
     recorded: function recorded() {
       return this.userEnrollments.map(function (item) {
-        return item.course.type === 1;
+        return item.course.type == 1;
       });
     }
   }),
@@ -9467,14 +9508,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   created: function created() {
     this.fetchProfile();
     this.fetchUserEnrollments();
-  },
-  mounted: function mounted() {
-    var _this2 = this;
-
-    setTimeout(function () {
-      _this2.en = _this2.userEnrollments;
-      console.log(_this2.en[0]);
-    }, 10);
   }
 });
 
@@ -79857,9 +79890,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Courses statistics")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("h1", { staticClass: "text-center" }, [_vm._v("Courses statistics")]),
+      _vm._v(" "),
+      _c("table", { staticClass: "table" }, [
+        _c("thead", [
+          _c("tr", [
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Category")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [
+              _vm._v("Sub category associated")
+            ]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [
+              _vm._v("Number of courses")
+            ]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [
+              _vm._v("Subscribed students")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tbody", [
+          _c("tr", [
+            _c("th", { attrs: { scope: "row" } }, [_vm._v("Cat")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("subCat")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("217")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("3054")])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -83532,14 +83606,24 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("ul", { staticClass: "lang float-md-right mt-md-0" }, [
+    _c("ul", { staticClass: "lang float-md-right mt-md-0 p-0" }, [
       _vm.locale === "fr"
         ? _c("li", { staticClass: "btn btn-light ", on: { click: _vm.en } }, [
             _vm._v("\n            EN\n        ")
           ])
         : _c("li", { staticClass: "btn btn-light", on: { click: _vm.fr } }, [
             _vm._v("\n            FR\n        ")
-          ])
+          ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("strong", [
+          _vm._v(
+            "\n                " +
+              _vm._s(_vm.userProfile.first_name) +
+              "\n            "
+          )
+        ])
+      ])
     ]),
     _vm._v(" "),
     _c(
@@ -83614,145 +83698,152 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _c("ul", { staticClass: "navbar-nav w-100 justify-content-end" }, [
-              !_vm.$route.matched.some(function(ref) {
-                var name = ref.name
+            _c(
+              "ul",
+              {
+                staticClass: "navbar-nav  justify-content-end",
+                staticStyle: { width: "65%" }
+              },
+              [
+                !_vm.$route.matched.some(function(ref) {
+                  var name = ref.name
 
-                return name === "Home"
-              })
-                ? _c(
-                    "li",
-                    { staticClass: "nav-item " },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "nav-link ",
-                          attrs: { to: { name: "Home" }, tag: "a" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(_vm.$t("nav.home")) +
-                              "\n\n                    "
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "About" }, tag: "a" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.$t("nav.about")) +
-                          "\n\n                    "
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item " },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link ",
-                      attrs: { to: { name: "Courses" }, tag: "a" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.$t("nav.courses")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link bg-danger text-white rounded",
-                      attrs: { to: { name: "Signin" }, tag: "a" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.$t("nav.become")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "Demande" }, tag: "a" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.$t("nav.demande")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link bg-danger text-white rounded",
-                      attrs: { to: { name: "TeacherProfile" }, tag: "a" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.$t("nav.account")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ],
-                1
-              )
-            ])
+                  return name === "Home"
+                })
+                  ? _c(
+                      "li",
+                      { staticClass: "nav-item " },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "nav-link ",
+                            attrs: { to: { name: "Home" }, tag: "a" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(_vm.$t("nav.home")) +
+                                "\n\n                    "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { to: { name: "About" }, tag: "a" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("nav.about")) +
+                            "\n\n                    "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item " },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link ",
+                        attrs: { to: { name: "Courses" }, tag: "a" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("nav.courses")) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link bg-danger text-white rounded",
+                        attrs: { to: { name: "Signin" }, tag: "a" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("nav.become")) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { to: { name: "Demande" }, tag: "a" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("nav.demande")) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link bg-danger text-white rounded",
+                        attrs: { to: { name: "TeacherProfile" }, tag: "a" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("nav.account")) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]
+            )
           ]
         )
       ]
@@ -84363,13 +84454,62 @@ var render = function() {
                           : _c(
                               "li",
                               { staticClass: " mt-4" },
-                              _vm._l(_vm.en, function(e) {
+                              _vm._l(_vm.userEnrollments, function(e) {
                                 return _c("div", { key: e.id }, [
-                                  _vm._v(
-                                    "\n                                        " +
-                                      _vm._s(e) +
-                                      "\n                                        "
-                                  )
+                                  e.course.type == 1
+                                    ? _c(
+                                        "div",
+                                        [
+                                          _c(
+                                            "router-link",
+                                            {
+                                              attrs: {
+                                                to: {
+                                                  name: "Player",
+                                                  params: {
+                                                    slug: e.course.slug
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "h5",
+                                                { staticClass: "mt-0 mb-1" },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(e.course.name) +
+                                                      ",\n                                                    " +
+                                                      _vm._s(
+                                                        e.course.created_at.slice(
+                                                          0,
+                                                          10
+                                                        )
+                                                      ) +
+                                                      ",\n                                                    " +
+                                                      _vm._s(
+                                                        e.course.created_at.slice(
+                                                          11,
+                                                          16
+                                                        )
+                                                      ) +
+                                                      ",\n                                                    " +
+                                                      _vm._s(
+                                                        e.course.user.first_name
+                                                      ) +
+                                                      "\n                                                    " +
+                                                      _vm._s(
+                                                        e.course.user.last_name
+                                                      )
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    : _vm._e()
                                 ])
                               }),
                               0
@@ -84394,25 +84534,90 @@ var render = function() {
                           _vm._s(_vm.recorded.length) +
                           "\n                            "
                       ),
-                      _c("ul", { staticClass: "list-unstyled" }, [
-                        _vm.lives.length === 0
-                          ? _c("li", { staticClass: "mt-4 text-center" }, [
-                              _c("img", {
-                                attrs: {
-                                  src: __webpack_require__(/*! ../../assets/images/cam-icon.png */ "./resources/js/assets/images/cam-icon.png"),
-                                  alt: "",
-                                  width: "100"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "text-center h3 mt-3" }, [
-                                _vm._v(
-                                  "\n                                        You will be redirected to your live class when you will subscribe to a\n                                        course\n                                    "
+                      _c(
+                        "ul",
+                        { staticClass: "list-unstyled" },
+                        [
+                          _vm.lives.length === 0
+                            ? _c("li", { staticClass: "mt-4 text-center" }, [
+                                _c("img", {
+                                  attrs: {
+                                    src: __webpack_require__(/*! ../../assets/images/cam-icon.png */ "./resources/js/assets/images/cam-icon.png"),
+                                    alt: "",
+                                    width: "100"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  { staticClass: "text-center h3 mt-3" },
+                                  [
+                                    _vm._v(
+                                      "\n                                        You will be redirected to your live class when you will subscribe to a\n                                        course\n                                    "
+                                    )
+                                  ]
                                 )
                               ])
-                            ])
-                          : _vm._e()
-                      ])
+                            : _vm._l(_vm.userEnrollments, function(e) {
+                                return _c(
+                                  "li",
+                                  { key: e.id, staticClass: "mt-4" },
+                                  [
+                                    e.course.type === 2
+                                      ? _c(
+                                          "div",
+                                          [
+                                            _c(
+                                              "router-link",
+                                              {
+                                                attrs: {
+                                                  to: {
+                                                    name: "Live",
+                                                    params: {
+                                                      slug: e.course.slug
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "h5",
+                                                  { staticClass: "mt-0 mb-1" },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(e.course.name) +
+                                                        ",\n                                                " +
+                                                        _vm._s(
+                                                          e.course.created_at.slice(
+                                                            0,
+                                                            10
+                                                          )
+                                                        ) +
+                                                        ",\n                                                " +
+                                                        _vm._s(
+                                                          e.course.user
+                                                            .first_name
+                                                        ) +
+                                                        "\n                                                " +
+                                                        _vm._s(
+                                                          e.course.user
+                                                            .last_name
+                                                        )
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              })
+                        ],
+                        2
+                      )
                     ]
                   )
                 ])
@@ -114731,7 +114936,8 @@ var state = {
   categCourses: [],
   demands: [],
   loading: false,
-  enrolled: false
+  enrolled: false,
+  statistics: ''
 };
 var getters = {
   allCourses: function allCourses(state) {
@@ -114742,6 +114948,9 @@ var getters = {
   },
   allDemands: function allDemands(state) {
     return state.demands;
+  },
+  allStatistics: function allStatistics(state) {
+    return state.statistics;
   },
   course: function course(state) {
     return state.course;
@@ -114986,7 +115195,7 @@ var actions = {
       }, _callee8);
     }))();
   },
-  getCategoryCourses: function getCategoryCourses(_ref9, id) {
+  fetchStatistics: function fetchStatistics(_ref9) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
@@ -114996,11 +115205,11 @@ var actions = {
               commit = _ref9.commit;
               commit('setLoading', true);
               _context9.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/class/".concat(id));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/statistics");
 
             case 4:
               response = _context9.sent;
-              commit('setCategoryCourses', response.data);
+              commit('setStatistics', response.data);
               commit('setLoading', false);
 
             case 7:
@@ -115011,16 +115220,41 @@ var actions = {
       }, _callee9);
     }))();
   },
-  saveSection: function saveSection(_ref10, payload) {
+  getCategoryCourses: function getCategoryCourses(_ref10, id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
-      var commit;
+      var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
         while (1) {
           switch (_context10.prev = _context10.next) {
             case 0:
               commit = _ref10.commit;
+              commit('setLoading', true);
+              _context10.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/class/".concat(id));
+
+            case 4:
+              response = _context10.sent;
+              commit('setCategoryCourses', response.data);
+              commit('setLoading', false);
+
+            case 7:
+            case "end":
+              return _context10.stop();
+          }
+        }
+      }, _callee10);
+    }))();
+  },
+  saveSection: function saveSection(_ref11, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
+      var commit;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
+        while (1) {
+          switch (_context11.prev = _context11.next) {
+            case 0:
+              commit = _ref11.commit;
               headers();
-              return _context10.abrupt("return", new Promise(function (resolve, reject) {
+              return _context11.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   url: '/course/sections',
                   data: payload,
@@ -115035,10 +115269,10 @@ var actions = {
 
             case 3:
             case "end":
-              return _context10.stop();
+              return _context11.stop();
           }
         }
-      }, _callee10);
+      }, _callee11);
     }))();
   }
 };
@@ -115054,6 +115288,9 @@ var mutations = {
   },
   setCategoryCourses: function setCategoryCourses(state, payload) {
     return state.categCourses = payload;
+  },
+  setStatistics: function setStatistics(state, payload) {
+    return state.statistics = payload;
   },
   setLoading: function setLoading(state, val) {
     return state.loading = val;
@@ -115272,15 +115509,14 @@ var actions = {
           switch (_context.prev = _context.next) {
             case 0:
               commit = _ref.commit;
-              header();
-              _context.next = 4;
+              _context.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/user');
 
-            case 4:
+            case 3:
               response = _context.sent;
               commit('setProfile', response.data[0]);
 
-            case 6:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -115319,15 +115555,14 @@ var actions = {
           switch (_context3.prev = _context3.next) {
             case 0:
               commit = _ref3.commit;
-              header();
-              _context3.next = 4;
+              _context3.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/teacher/details');
 
-            case 4:
+            case 3:
               response = _context3.sent;
               commit('setTeacherDetails', response.data);
 
-            case 6:
+            case 5:
             case "end":
               return _context3.stop();
           }
@@ -115343,16 +115578,15 @@ var actions = {
           switch (_context4.prev = _context4.next) {
             case 0:
               commit = _ref4.commit;
-              header();
-              _context4.next = 4;
+              _context4.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/teacher/payments');
 
-            case 4:
+            case 3:
               response = _context4.sent;
               console.log(response.data);
               commit('setTeacherPayments', response.data);
 
-            case 7:
+            case 6:
             case "end":
               return _context4.stop();
           }
@@ -115369,16 +115603,15 @@ var actions = {
             case 0:
               commit = _ref5.commit;
               commit('setProfileLoading', true);
-              header();
-              _context5.next = 5;
+              _context5.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/user/courses");
 
-            case 5:
+            case 4:
               response = _context5.sent;
               commit('setCourses', response.data);
               commit('setProfileLoading', false);
 
-            case 8:
+            case 7:
             case "end":
               return _context5.stop();
           }
@@ -115395,16 +115628,15 @@ var actions = {
             case 0:
               commit = _ref6.commit;
               commit('setProfileLoading', true);
-              header();
-              _context6.next = 5;
+              _context6.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/user/enrollments");
 
-            case 5:
+            case 4:
               response = _context6.sent;
               commit('setEnrollments', response.data);
               commit('setProfileLoading', false);
 
-            case 8:
+            case 7:
             case "end":
               return _context6.stop();
           }
@@ -115439,15 +115671,6 @@ var mutations = {
     return state.loadingEnrollments = val;
   }
 };
-
-function header() {
-  var token = localStorage.getItem('token') || '';
-
-  if (token) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-  }
-}
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: state,
   getters: getters,

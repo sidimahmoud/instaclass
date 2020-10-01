@@ -1,11 +1,16 @@
 <template>
     <div>
-        <ul class="lang float-md-right mt-md-0">
+        <ul class="lang float-md-right mt-md-0 p-0">
             <li class="btn btn-light " v-if="locale==='fr'" @click="en">
                 EN
             </li>
-            <li class="btn btn-light" v-else @click="fr">
+            <li class="btn btn-light" v-else @click="fr" >
                 FR
+            </li>
+            <li >
+                <strong>
+                    {{userProfile.first_name}}
+                </strong>
             </li>
         </ul>
 
@@ -31,7 +36,7 @@
                         </button>
                     </div>
                 </form>
-                <ul class="navbar-nav w-100 justify-content-end">
+                <ul class="navbar-nav  justify-content-end" style="width:65%">
                     <li class="nav-item " v-if="!$route.matched.some(({ name }) => name === 'Home')">
                         <router-link :to="{ name: 'Home'}" tag="a" class="nav-link ">
                             {{$t('nav.home')}}
@@ -78,16 +83,16 @@
 
 </template>
 <script>
-    import {mapGetters} from 'vuex'
+    import {mapGetters, mapActions} from 'vuex'
     import i18n from "../../src/i18n";
 
     export default {
         name: 'AppNav',
-        computed: mapGetters(["isLoggedIn"]),
+        computed: mapGetters(["isLoggedIn", "userProfile"]),
         data() {
             return {
                 q: '',
-                locale: 'en'
+                locale: 'en',
             }
         },
         methods: {
@@ -109,9 +114,14 @@
             search() {
                 this.$store.dispatch('search', this.q)
                     .then(res => this.$router.push({name: 'Search'}))
-            }
+            },
+            ...mapActions(["fetchProfile"])
+        },
+        created(){
+            this.fetchProfile()
         }
     }
+
 </script>
 
 <style scoped>

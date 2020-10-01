@@ -7,11 +7,13 @@ const state = {
     demands: [],
     loading: false,
     enrolled: false,
+    statistics: '',
 };
 const getters = {
     allCourses: (state) => state.courses,
     allcategCourses: (state) => state.categCourses,
     allDemands: (state) => state.demands,
+    allStatistics: (state) => state.statistics,
     course: (state) => state.course,
     loading: (state) => state.loading,
     enrolled: (state) => state.enrolled,
@@ -111,6 +113,12 @@ const actions = {
         commit('setDemands', response.data);
         commit('setLoading', false);
     },
+    async fetchStatistics({commit}) {
+        commit('setLoading', true);
+        const response = await axios.get(`/statistics`);
+        commit('setStatistics', response.data);
+        commit('setLoading', false);
+    },
     async getCategoryCourses({commit}, id) {
         commit('setLoading', true);
         const response = await axios.get(`/class/${id}`);
@@ -136,6 +144,7 @@ const mutations = {
     setCourse: (state, course) => (state.course = course),
     setDemands: (state, payload) => (state.demands = payload),
     setCategoryCourses: (state, payload) => (state.categCourses = payload),
+    setStatistics: (state, payload) => (state.statistics = payload),
     setLoading: (state, val) => (state.loading = val),
     setEnrolled: (state, val) => (state.enrolled = val),
 };
