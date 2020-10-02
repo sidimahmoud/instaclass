@@ -305,7 +305,6 @@
                     alert("Your course was published successfully")
                 })
                     .catch(err => console.log(err.response));
-                console.log(this.section);
             },
 
             addSection(event) {

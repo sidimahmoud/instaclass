@@ -177,13 +177,24 @@ class UsersController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-//        dd($request->types);
-        $user->roles()->sync($request->types);
-        return redirect()->route('users.index');
+        $user = User::find($id);
+        $user->first_name = $request["first_name"];
+        $user->last_name = $request["last_name"];
+        $user->phone = $request["phone"];
+        $user->country = $request["country"];
+        $user->city = $request["city"];
+        $user->email = $request["email"];
+        $user->password = $request["password"];
+        $user->image = $request["image"];
+        $user->about = $request["about"];
+        $user->languages = $request["languages"];
+        $user->save();
+        if ($user) return response()->json(["response" => "Updated successfully"]);
+        return response()->json(["response" => "error"]);
     }
 
     /**

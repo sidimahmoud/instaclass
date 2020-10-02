@@ -10,20 +10,21 @@
                     <img :src="userProfile.image" class="avatar img-circle img-thumbnail"
                          alt="avatar">
                     <h6>Add a photo</h6>
-                    <input type="file" class="text-center center-block file-upload">
+                    <input type="file" class="text-center center-block file-upload" id="img">
                 </div>
                 <br>
             </div><!--/col-3-->
             <div class="col-sm-9">
                 <div class="tab-content">
                     <div class="tab-pane active" id="home">
-                        <form class="form" action="#" method="post" id="registrationForm">
+                        <form class="form" @submit.prevent="userProfile">
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="first_name">First name</label>
                                     <input type="text" class="form-control" name="first_name" id="first_name"
                                            placeholder="first name" title="enter your first name if any."
                                            :value="userProfile.first_name">
+                                    <input type="hidden" v-model="userProfile.id">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -36,7 +37,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    <label for="phone">Phone</label>
+                                    <label for="phone">Phone (optional)</label>
                                     <input type="text" class="form-control" name="phone" id="phone"
                                            placeholder="Phone" title="enter your phone number if any."
                                            :value="userProfile.phone">
@@ -55,7 +56,7 @@
 
                                 <div class="col-xs-6">
                                     <label for="lang">Spoken languages</label>
-                                    <input type="text" class="form-control" name="email" id="lang"
+                                    <input type="text" class="form-control" id="lang"
                                            title="enter your email."
                                            :value="userProfile.languages">
                                 </div>
@@ -80,10 +81,7 @@
                                     </button>
                                 </div>
                             </div>
-
-
                         </form>
-
                     </div><!--/tab-pane-->
 
                 </div><!--/tab-pane-->
@@ -102,8 +100,37 @@
 
     export default {
         name: "EditProfile",
+        data() {
+            return {
+                user: ''
+            }
+        },
         methods: {
-            ...mapActions(["fetchProfile"])
+            ...mapActions(["fetchProfile"]),
+            updateProfile() {
+                const formData = new FormData();
+                const imagefile = document.querySelector('#img');
+                formData.append("first_name", document.querySelector('#first_name'));
+                formData.append("last_name", document.querySelector('#last_name'));
+                formData.append("phone", document.querySelector('#phone'));
+                // formData.append("country", document.querySelector('#img'));
+                // formData.append("city", document.querySelector('#img'));
+                formData.append("email", document.querySelector('#email'));
+                formData.append("image", imagefile.files[0]);
+                formData.append("about", document.querySelector('#about'));
+                formData.append("languages", document.querySelector('#lang'));
+
+                axios.PUT('/user', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        // 'method': '_update'
+                    }
+                }).then(res => {
+                    console.log(res);
+                    alert("Your course was published successfully")
+                })
+                    .catch(err => console.log(err.response));
+            },
         },
         computed: {
             ...mapGetters(["userProfile", "profileLoading"])

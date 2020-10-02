@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="row my-4 ">
-                    <div class="col-md-12 bg shadow">
+                    <div class="col-md-12  shadow">
                         <nav class="nav nav-pills nav-fill mt-3">
                             <a class="nav-item nav-link active" href="#courses" data-toggle="tab">My recorded
                                 courses</a>
@@ -84,7 +84,29 @@
                                 </ul>
                             </div>
                             <div class="tab-pane fade show " id="receipts">
-                                <h3 class="text-center">Your receipts will appear here. </h3>
+<!--                                <h3 class="text-center">Your receipts will appear here. </h3>-->
+                                <div class="accordion" id="accordionExample">
+                                    <div class="card" v-for="n in 3">
+                                        <div class="card-header" id="headingOne">
+                                            <h2 class="mb-0">
+                                                <p class="btn btn-link font-weight-bolder rounded" type="button"
+                                                        data-toggle="collapse"
+                                                        data-target="#collapseOne"
+                                                        aria-expanded="true" aria-controls="collapseOne">
+                                                    Order N°#1, 2020-09-02, 6:10, Teacher Instant
+                                                </p>
+                                            </h2>
+                                        </div>
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                             data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <receipt  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </div>
                             <div class="tab-pane fade show " id="live">
                                 lives {{ lives.length}}
@@ -120,10 +142,10 @@
 <script>
     import {mapActions, mapGetters} from "vuex";
     import CountDown from "../CountDown";
-
+    import Receipt from "./Receipt";
     export default {
         name: "StudentProfile",
-        components: {CountDown},
+        components: {CountDown, Receipt},
 
         methods: {
             ...mapActions(["fetchProfile", "fetchUserEnrollments"]),
