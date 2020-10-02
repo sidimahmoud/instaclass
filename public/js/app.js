@@ -6835,6 +6835,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Statistics",
@@ -79890,45 +79908,77 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    [
+      _c("h1", { staticClass: "text-center" }, [_vm._v("Courses statistics")]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._l(_vm.allStatistics, function(categ) {
+        return _c(
+          "div",
+          { key: categ.id, staticClass: "row border mb-1 rounded py-1" },
+          [
+            _c("div", { staticClass: "col-md-2" }, [
+              _vm._v(
+                "\n                " + _vm._s(categ.name_en) + "\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-10" },
+              _vm._l(categ.sub_categories, function(sub) {
+                return _c("div", { staticClass: "row border mb-1 rounded" }, [
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _vm._v(_vm._s(sub.name_en))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-md-8" },
+                    _vm._l(sub.courses, function(c) {
+                      return _c("div", { staticClass: "row " }, [
+                        _c("div", { staticClass: "col-8" }, [
+                          _vm._v(_vm._s(c.name))
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-4" }, [
+                          _vm._v(_vm._s(c.enrollments.length))
+                        ])
+                      ])
+                    }),
+                    0
+                  )
+                ])
+              }),
+              0
+            )
+          ]
+        )
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h1", { staticClass: "text-center" }, [_vm._v("Courses statistics")]),
-      _vm._v(" "),
-      _c("table", { staticClass: "table" }, [
-        _c("thead", [
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Category")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Sub category associated")
-            ]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Number of courses")
-            ]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Subscribed students")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("th", { attrs: { scope: "row" } }, [_vm._v("Cat")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("subCat")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("217")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("3054")])
-          ])
+    return _c("table", { staticClass: "table" }, [
+      _c("thead", [
+        _c("tr", [
+          _c("th", { attrs: { scope: "col" } }, [_vm._v("Category")]),
+          _vm._v(" "),
+          _c("th", { attrs: { scope: "col" } }, [
+            _vm._v("Sub category associated")
+          ]),
+          _vm._v(" "),
+          _c("th", { attrs: { scope: "col" } }, [_vm._v("Number of courses")]),
+          _vm._v(" "),
+          _c("th", { attrs: { scope: "col" } }, [_vm._v("Subscribed students")])
         ])
       ])
     ])
