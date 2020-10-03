@@ -9098,6 +9098,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _store_modules_user__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../store/modules/user */ "./resources/js/store/modules/user.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -9202,6 +9203,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EditProfile",
   data: function data() {
@@ -9209,23 +9211,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       user: ''
     };
   },
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchProfile"])), {}, {
+  methods: {
     updateProfile: function updateProfile() {
       var formData = new FormData();
       var imagefile = document.querySelector('#img');
-      formData.append("first_name", document.querySelector('#first_name'));
+      formData.append("first_name", 4545); //document.querySelector('#first_name'));
+
       formData.append("last_name", document.querySelector('#last_name'));
       formData.append("phone", document.querySelector('#phone')); // formData.append("country", document.querySelector('#img'));
       // formData.append("city", document.querySelector('#img'));
 
-      formData.append("email", document.querySelector('#email'));
-      formData.append("image", imagefile.files[0]);
+      formData.append("email", document.querySelector('#email')); // formData.append("image", imagefile.files[0]);
+
       formData.append("about", document.querySelector('#about'));
       formData.append("languages", document.querySelector('#lang'));
-      axios.PUT('/user', formData, {
+      console.log(formData);
+      axios.patch('/user/' + this.userProfile.id, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data' // 'method': '_update'
-
+          'Content-Type': 'multipart/form-data',
+          'method': 'update'
         }
       }).then(function (res) {
         console.log(res);
@@ -9234,11 +9238,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return console.log(err.response);
       });
     }
-  }),
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["userProfile", "profileLoading"])),
-  created: function created() {
-    this.fetchProfile();
-  }
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["userProfile", "profileLoading"]))
 });
 
 /***/ }),
@@ -9406,6 +9407,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -10299,71 +10301,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewCourse",
@@ -10392,7 +10329,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         title: '',
         stratDate: '',
         duration: '',
-        description: ''
+        description: '',
+        timeZone: 'ET',
+        frequency: '0'
       }]
     };
   },
@@ -10416,6 +10355,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       formData.append("sections", JSON.stringify(this.sections));
       formData.append("image", imagefile.files[0]);
+      console.log(formData);
       axios.post('/course', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -10436,7 +10376,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           title: '',
           stratDate: '',
           duration: '',
-          description: ''
+          description: '',
+          timeZone: '',
+          frequency: ''
         });
       }
     }
@@ -10643,11 +10585,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
 //
 //
 //
@@ -84163,7 +84100,9 @@ var render = function() {
                 attrs: { type: "file", id: "img" }
               })
             ]),
-            _vm._v(" "),
+            _vm._v(
+              "\n            " + _vm._s(_vm.userProfile.id) + "\n            "
+            ),
             _c("br")
           ]),
           _vm._v(" "),
@@ -84180,7 +84119,7 @@ var render = function() {
                       on: {
                         submit: function($event) {
                           $event.preventDefault()
-                          return _vm.userProfile($event)
+                          return _vm.updateProfile($event)
                         }
                       }
                     },
@@ -84201,31 +84140,6 @@ var render = function() {
                               title: "enter your first name if any."
                             },
                             domProps: { value: _vm.userProfile.first_name }
-                          }),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.userProfile.id,
-                                expression: "userProfile.id"
-                              }
-                            ],
-                            attrs: { type: "hidden" },
-                            domProps: { value: _vm.userProfile.id },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.userProfile,
-                                  "id",
-                                  $event.target.value
-                                )
-                              }
-                            }
                           })
                         ])
                       ]),
@@ -84512,10 +84426,7 @@ var render = function() {
   return _c("div", [
     _vm.profileLoading
       ? _c("div", { staticClass: "text-center text-primary" }, [_vm._m(0)])
-      : _vm._e(),
-    _vm._v(" "),
-    !_vm.profileLoading
-      ? _c("div", [
+      : _c("div", [
           _c("div", { staticClass: "jumbotron text-right" }, [
             _c("span", { staticClass: "font-weight-bold text-white mr-2" }, [
               _vm._v("Bonjour " + _vm._s(_vm.userProfile.first_name))
@@ -84655,7 +84566,7 @@ var render = function() {
                     },
                     [
                       _c("ul", { staticClass: "list-unstyled" }, [
-                        _vm.userEnrollments.length == 0
+                        _vm.userEnrollments.enrollments.length === 0
                           ? _c("li", { staticClass: " mt-4" }, [
                               _c("p", { staticClass: "text-center h3 mt-3" }, [
                                 _vm._v(
@@ -84666,62 +84577,16 @@ var render = function() {
                           : _c(
                               "li",
                               { staticClass: " mt-4" },
-                              _vm._l(_vm.userEnrollments, function(e) {
+                              _vm._l(_vm.userEnrollments.enrollments, function(
+                                e
+                              ) {
                                 return _c("div", { key: e.id }, [
-                                  e.course.type == 1
-                                    ? _c(
-                                        "div",
-                                        [
-                                          _c(
-                                            "router-link",
-                                            {
-                                              attrs: {
-                                                to: {
-                                                  name: "Player",
-                                                  params: {
-                                                    slug: e.course.slug
-                                                  }
-                                                }
-                                              }
-                                            },
-                                            [
-                                              _c(
-                                                "h5",
-                                                { staticClass: "mt-0 mb-1" },
-                                                [
-                                                  _vm._v(
-                                                    _vm._s(e.course.name) +
-                                                      ",\n                                                        " +
-                                                      _vm._s(
-                                                        e.course.created_at.slice(
-                                                          0,
-                                                          10
-                                                        )
-                                                      ) +
-                                                      ",\n                                                        " +
-                                                      _vm._s(
-                                                        e.course.created_at.slice(
-                                                          11,
-                                                          16
-                                                        )
-                                                      ) +
-                                                      ",\n                                                        " +
-                                                      _vm._s(
-                                                        e.course.user.first_name
-                                                      ) +
-                                                      "\n                                                        " +
-                                                      _vm._s(
-                                                        e.course.user.last_name
-                                                      )
-                                                  )
-                                                ]
-                                              )
-                                            ]
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    : _vm._e()
+                                  _vm._v(
+                                    "\n                                            " +
+                                      _vm._s(e) +
+                                      " "
+                                  ),
+                                  _c("br")
                                 ])
                               }),
                               0
@@ -84785,91 +84650,7 @@ var render = function() {
                           _vm._s(_vm.lives.length) +
                           "\n                                recs " +
                           _vm._s(_vm.recorded.length) +
-                          "\n                                "
-                      ),
-                      _c(
-                        "ul",
-                        { staticClass: "list-unstyled" },
-                        [
-                          _vm.lives.length === 0
-                            ? _c("li", { staticClass: "mt-4 text-center" }, [
-                                _c("img", {
-                                  attrs: {
-                                    src: __webpack_require__(/*! ../../assets/images/cam-icon.png */ "./resources/js/assets/images/cam-icon.png"),
-                                    alt: "",
-                                    width: "100"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "p",
-                                  { staticClass: "text-center h3 mt-3" },
-                                  [
-                                    _vm._v(
-                                      "\n                                            You will be redirected to your live class when you will subscribe to a\n                                            course\n                                        "
-                                    )
-                                  ]
-                                )
-                              ])
-                            : _vm._l(_vm.userEnrollments, function(e) {
-                                return _c(
-                                  "li",
-                                  { key: e.id, staticClass: "mt-4" },
-                                  [
-                                    e.course.type === 2
-                                      ? _c(
-                                          "div",
-                                          [
-                                            _c(
-                                              "router-link",
-                                              {
-                                                attrs: {
-                                                  to: {
-                                                    name: "Live",
-                                                    params: {
-                                                      slug: e.course.slug
-                                                    }
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _c(
-                                                  "h5",
-                                                  { staticClass: "mt-0 mb-1" },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(e.course.name) +
-                                                        ",\n                                                    " +
-                                                        _vm._s(
-                                                          e.course.created_at.slice(
-                                                            0,
-                                                            10
-                                                          )
-                                                        ) +
-                                                        ",\n                                                    " +
-                                                        _vm._s(
-                                                          e.course.user
-                                                            .first_name
-                                                        ) +
-                                                        "\n                                                    " +
-                                                        _vm._s(
-                                                          e.course.user
-                                                            .last_name
-                                                        )
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          ],
-                                          1
-                                        )
-                                      : _vm._e()
-                                  ]
-                                )
-                              })
-                        ],
-                        2
+                          "\n"
                       )
                     ]
                   )
@@ -84878,7 +84659,6 @@ var render = function() {
             ])
           ])
         ])
-      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -86313,7 +86093,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "container rounded py-3 bg font-weight-bold" }, [
       _c("h3", { staticClass: "text-center font-weight-bolder" }, [
-        _vm._v("Submit new course")
+        _vm._v("create a new course")
       ]),
       _vm._v(" "),
       _c(
@@ -86407,56 +86187,97 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-                  _vm._v("In which language will you teach")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.course.language,
-                        expression: "course.language"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { id: "exampleFormControlSelect1", required: "" },
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.course,
-                          "language",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
-                    }
-                  },
-                  [
-                    _c("option", { attrs: { value: "EN" } }, [_vm._v("EN")]),
+              _vm.course.language === "FR" || _vm.course.language === "EN"
+                ? _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "label",
+                      { attrs: { for: "exampleFormControlSelect1" } },
+                      [_vm._v("In which language will you teach?")]
+                    ),
                     _vm._v(" "),
-                    _c("option", { attrs: { value: "FR" } }, [_vm._v("FR")])
-                  ]
-                )
-              ])
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.course.language,
+                            expression: "course.language"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          id: "exampleFormControlSelect1",
+                          required: ""
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.course,
+                              "language",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "EN" } }, [
+                          _vm._v("EN")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "FR" } }, [
+                          _vm._v("FR")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Create")
+                        ])
+                      ]
+                    )
+                  ])
+                : _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "lang1" } }, [
+                      _vm._v("In which language will you teach?")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.course.language,
+                          expression: "course.language"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "lang1", required: "" },
+                      domProps: { value: _vm.course.language },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.course, "language", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-12" }, [
               _c("div", { staticClass: "form-row mb-3" }, [
-                _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "col-md-3" }, [
                   _c("label", { attrs: { for: "price" } }, [
                     _vm._v("Estimated price per session")
                   ]),
@@ -86497,13 +86318,33 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "A reasonable price will give you the\n                                chance to have students enrolled in your course."
+                        "A reasonable price will give you the\n                                chance to have students enrolled in your course.\n                            "
                       )
                     ]
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "col-md-3" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "sections" } }, [
+                      _vm._v("Number of sessions")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        value: "1",
+                        min: "1",
+                        id: "sections",
+                        required: ""
+                      },
+                      on: { change: _vm.addSection }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-3" }, [
                   _c("label", { attrs: { for: "price" } }, [
                     _vm._v("Currency")
                   ]),
@@ -86569,14 +86410,16 @@ var render = function() {
                       )
                     ]
                   )
-                ])
+                ]),
+                _vm._v(" "),
+                _vm._m(0)
               ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-6" }, [
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "duration" } }, [
-                  _vm._v("Estimated duration")
+                  _vm._v("Estimated duration with all sessions")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -86615,7 +86458,7 @@ var render = function() {
             _c("div", { staticClass: "col-md-6" }, [
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "persons" } }, [
-                  _vm._v("Number of authorized students")
+                  _vm._v("Number of authorized students per session")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -86705,47 +86548,10 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "name" } }, [
-                  _vm._v("Course name")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.course.name,
-                      expression: "course.name"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "name",
-                    placeholder: "Name",
-                    required: ""
-                  },
-                  domProps: { value: _vm.course.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.course, "name", $event.target.value)
-                    }
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
             _c("div", { staticClass: "col-md-12" }, [
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "desc" } }, [
-                  _vm._v("Give a short description to this course")
+                  _vm._v("Summerize the course")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -86758,12 +86564,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "desc",
-                    placeholder: "Name",
-                    required: ""
-                  },
+                  attrs: { type: "text", id: "desc", required: "" },
                   domProps: { value: _vm.course.short_description },
                   on: {
                     input: function($event) {
@@ -86777,26 +86578,6 @@ var render = function() {
                       )
                     }
                   }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-12" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "sections" } }, [
-                  _vm._v("Number of session")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "number",
-                    value: "1",
-                    min: "1",
-                    id: "sections",
-                    required: ""
-                  },
-                  on: { change: _vm.addSection }
                 })
               ])
             ])
@@ -86892,7 +86673,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "col-md-3" }, [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", [
                     _vm._v("Session " + _vm._s(index + 1) + " availabilities:")
@@ -86930,7 +86711,59 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "col-md-3" }, [
+                _c("label", [_vm._v("Time Zone")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.sections[index].timeZone,
+                        expression: "sections[index].timeZone"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { required: "" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.sections[index],
+                          "timeZone",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "ET" } }, [
+                      _vm._v("Eastern Time ET")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "PT" } }, [
+                      _vm._v("Pacific Time PT")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "AT" } }, [
+                      _vm._v("Atlantic Time ET")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3" }, [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", [
                     _vm._v(
@@ -86948,7 +86781,12 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { type: "text", name: "session[]", required: "" },
+                    attrs: {
+                      type: "text",
+                      name: "session[]",
+                      "aria-describedby": "durationHelp",
+                      required: ""
+                    },
                     domProps: { value: _vm.sections[index].duration },
                     on: {
                       input: function($event) {
@@ -86962,8 +86800,71 @@ var render = function() {
                         )
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      staticClass: "form-text text-muted",
+                      attrs: { id: "durationHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            We suggest you arround 1h per session\n                        "
+                      )
+                    ]
+                  )
                 ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3" }, [
+                _c("label", [_vm._v("I can teach this session every")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.sections[index].frequency,
+                        expression: "sections[index].frequency"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { required: "" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.sections[index],
+                          "frequency",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "0" } }, [_vm._v("None")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "weekly" } }, [
+                      _vm._v("Week")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "monthly" } }, [
+                      _vm._v("Month")
+                    ])
+                  ]
+                )
               ])
             ])
           }),
@@ -86987,14 +86888,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "thumbnail" } }, [_vm._v("Thumbnail")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control-file",
-          attrs: { type: "file", id: "thumbnail" }
-        })
+    return _c("div", { staticClass: "col-3" }, [
+      _c("p", { staticClass: " font-weight-light" }, [
+        _vm._v(
+          "\n                                Your estimated total earnings for the course will depend of your estimated price,\n                                number of sessions and students enrolled.\n                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "font-weight-bolder" }, [
+        _vm._v(
+          "Note:\n                                When the number of sessions exceed 3, your third course will be free student\n                                enrolled.\n                            "
+        )
       ])
     ])
   }
@@ -87477,7 +87381,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                            Go to course page\n                        "
+                          "\n                            Go to the course page\n                        "
                         )
                       ]
                     )
@@ -87522,7 +87426,7 @@ var render = function() {
                                   [
                                     _c("i", { staticClass: "fa fa-plus" }),
                                     _vm._v(
-                                      " New\n                                    "
+                                      " Create a new course\n                                    "
                                     )
                                   ]
                                 )
@@ -87587,26 +87491,8 @@ var render = function() {
                                     _vm._v(" "),
                                     _c(
                                       "div",
-                                      { staticClass: "col-md-3" },
+                                      { staticClass: "col-md-3 text-right" },
                                       [
-                                        _c(
-                                          "router-link",
-                                          {
-                                            attrs: {
-                                              to: { name: "AddSection" }
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "button",
-                                              {
-                                                staticClass: "btn btn-success"
-                                              },
-                                              [_vm._v("Add session")]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
                                         _c(
                                           "router-link",
                                           {
@@ -87703,7 +87589,7 @@ var render = function() {
                       _c("div", { staticClass: "card-body" }, [
                         _vm.allTeacherDetails.ratings.length === 0
                           ? _c("div", { staticClass: "text-center " }, [
-                              _c("h3", [_vm._v("No reviews")])
+                              _c("h3", [_vm._v("No ratings yet")])
                             ])
                           : _c(
                               "div",
@@ -87882,7 +87768,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                                Reviews\n                            "
+                "\n                                Ratings\n                            "
               )
             ]
           ),
@@ -109763,17 +109649,6 @@ module.exports = "/images/bg.png?4f3758fa823f3ca24ed6041ede63e621";
 
 /***/ }),
 
-/***/ "./resources/js/assets/images/cam-icon.png":
-/*!*************************************************!*\
-  !*** ./resources/js/assets/images/cam-icon.png ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/cam-icon.png?2519073c6248816c3b166cbb846a0308";
-
-/***/ }),
-
 /***/ "./resources/js/assets/images/details/bg.png":
 /*!***************************************************!*\
   !*** ./resources/js/assets/images/details/bg.png ***!
@@ -116161,14 +116036,15 @@ var actions = {
               commit = _ref6.commit;
               commit('setProfileLoading', true);
               _context6.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/user/enrollments");
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/enrollments");
 
             case 4:
               response = _context6.sent;
-              commit('setEnrollments', response.data);
+              commit('setEnrollments', response.data[0]);
+              console.log(response.data[0]);
               commit('setProfileLoading', false);
 
-            case 7:
+            case 8:
             case "end":
               return _context6.stop();
           }

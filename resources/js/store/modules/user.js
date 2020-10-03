@@ -48,8 +48,9 @@ const actions = {
     },
     async fetchUserEnrollments({commit}) {
         commit('setProfileLoading', true);
-        const response = await axios.get(`/user/enrollments`);
-        commit('setEnrollments', response.data);
+        const response = await axios.get(`/enrollments`);
+        commit('setEnrollments', response.data[0]);
+        console.log(response.data[0])
         commit('setProfileLoading', false);
 
     },

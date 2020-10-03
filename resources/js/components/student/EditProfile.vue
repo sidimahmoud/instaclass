@@ -12,19 +12,19 @@
                     <h6>Add a photo</h6>
                     <input type="file" class="text-center center-block file-upload" id="img">
                 </div>
+                {{userProfile.id}}
                 <br>
             </div><!--/col-3-->
             <div class="col-sm-9">
                 <div class="tab-content">
                     <div class="tab-pane active" id="home">
-                        <form class="form" @submit.prevent="userProfile">
+                        <form class="form" @submit.prevent="updateProfile">
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="first_name">First name</label>
                                     <input type="text" class="form-control" name="first_name" id="first_name"
                                            placeholder="first name" title="enter your first name if any."
                                            :value="userProfile.first_name">
-                                    <input type="hidden" v-model="userProfile.id">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -97,6 +97,7 @@
 
 <script>
     import {mapActions, mapGetters} from "vuex";
+    import user from "../../store/modules/user";
 
     export default {
         name: "EditProfile",
@@ -106,24 +107,23 @@
             }
         },
         methods: {
-            ...mapActions(["fetchProfile"]),
             updateProfile() {
                 const formData = new FormData();
                 const imagefile = document.querySelector('#img');
-                formData.append("first_name", document.querySelector('#first_name'));
+                formData.append("first_name",4545) //document.querySelector('#first_name'));
                 formData.append("last_name", document.querySelector('#last_name'));
                 formData.append("phone", document.querySelector('#phone'));
                 // formData.append("country", document.querySelector('#img'));
                 // formData.append("city", document.querySelector('#img'));
                 formData.append("email", document.querySelector('#email'));
-                formData.append("image", imagefile.files[0]);
+                // formData.append("image", imagefile.files[0]);
                 formData.append("about", document.querySelector('#about'));
                 formData.append("languages", document.querySelector('#lang'));
-
-                axios.PUT('/user', formData, {
+                console.log(formData)
+                axios.patch('/user/'+this.userProfile.id, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        // 'method': '_update'
+                        'method': 'update'
                     }
                 }).then(res => {
                     console.log(res);
@@ -135,9 +135,6 @@
         computed: {
             ...mapGetters(["userProfile", "profileLoading"])
         },
-        created() {
-            this.fetchProfile()
-        }
     }
 </script>
 

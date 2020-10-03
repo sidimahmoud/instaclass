@@ -57,7 +57,7 @@
                         <p class="text-center text-white my-2">
                             <router-link :to="{name : 'LiveCourse', params:{slug: 'hello'}}" tag="button"
                                          class="btn btn-danger">
-                                Go to course page
+                                Go to the course page
                             </router-link>
                         </p>
                     </div>
@@ -87,7 +87,7 @@
                                 <div class="text-right">
                                     <router-link :to="{name: 'NewCourse'}">
                                         <button class="btn btn-primary">
-                                            <i class="fa fa-plus"></i> New
+                                            <i class="fa fa-plus"></i> Create a new course
                                         </button>
                                     </router-link>
                                 </div>
@@ -105,11 +105,7 @@
                                                     </router-link>
                                                     {{course.short_description}}
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <router-link
-                                                        :to="{ name: 'AddSection'}">
-                                                        <button class="btn btn-success">Add session</button>
-                                                    </router-link>
+                                                <div class="col-md-3 text-right">
                                                     <router-link
                                                         :to="{ name: 'EditCourse', params: { slug: course.slug}}">
                                                         <button class="btn btn-warning">Edit</button>
@@ -155,12 +151,11 @@
                                 <button class="btn btn-link font-weight-bolder rounded collapsed" type="button"
                                         data-toggle="collapse"
                                         data-target="#collapseEval" aria-expanded="false" aria-controls="collapseEval">
-                                    Reviews
+                                    Ratings
                                 </button>
                                 <button class="btn btn-link collapsed float-right" type="button" data-toggle="collapse"
                                         data-target="#collapseEval" aria-expanded="false" aria-controls="collapseEval">
                                     <i class="fa fa-plus"></i>
-
                                 </button>
                             </h2>
                         </div>
@@ -168,7 +163,7 @@
                              data-parent="#accordionExample">
                             <div class="card-body">
                                 <div class="text-center " v-if="allTeacherDetails.ratings.length===0">
-                                    <h3>No reviews</h3>
+                                    <h3>No ratings yet</h3>
                                 </div>
                                 <div v-else>
                                     <review v-for="r in allTeacherDetails.ratings" :key="r.id" :rating='r'/>
@@ -249,7 +244,6 @@
                             })
                     }
                 }
-
             },
         },
         computed: mapGetters(["profileLoading", "userProfile", "userCourses", "allTeacherDetails"]),

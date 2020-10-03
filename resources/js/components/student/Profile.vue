@@ -5,7 +5,7 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <div v-if="!profileLoading">
+        <div v-else>
             <div class="jumbotron text-right">
                 <span class="font-weight-bold text-white mr-2">Bonjour {{userProfile.first_name}}</span>
                 <button class="btn btn-danger" @click="logout">
@@ -63,22 +63,23 @@
                             <!-- Enrollments-->
                             <div class="tab-pane fade show active" id="courses">
                                 <ul class="list-unstyled">
-                                    <li class=" mt-4" v-if="userEnrollments.length==0">
+                                    <li class=" mt-4" v-if="userEnrollments.enrollments.length===0">
                                         <p class="text-center h3 mt-3">
                                             You have no recorded courses for the moment
                                         </p>
                                     </li>
                                     <li class=" mt-4" v-else>
-                                        <div v-for="e in userEnrollments" :key="e.id">
-                                            <div v-if="e.course.type==1">
-                                                <router-link :to="{name: 'Player', params: { slug: e.course.slug} }">
-                                                    <h5 class="mt-0 mb-1">{{e.course.name}},
-                                                        {{e.course.created_at.slice(0,10)}},
-                                                        {{e.course.created_at.slice(11,16)}},
-                                                        {{e.course.user.first_name}}
-                                                        {{e.course.user.last_name}}</h5>
-                                                </router-link>
-                                            </div>
+                                        <div v-for="e in userEnrollments.enrollments" :key="e.id">
+                                            {{e}} <br>
+<!--                                            <div v-if="e.course.type==1">-->
+<!--                                                <router-link :to="{name: 'Player', params: { slug: e.course.slug} }">-->
+<!--                                                    <h5 class="mt-0 mb-1">{{e.course.name}},-->
+<!--                                                        {{e.course.created_at.slice(0,10)}},-->
+<!--                                                        {{e.course.created_at.slice(11,16)}},-->
+<!--                                                        {{e.course.user.first_name}}-->
+<!--                                                        {{e.course.user.last_name}}</h5>-->
+<!--                                                </router-link>-->
+<!--                                            </div>-->
                                         </div>
                                     </li>
                                 </ul>
@@ -111,25 +112,25 @@
                             <div class="tab-pane fade show " id="live">
                                 lives {{ lives.length}}
                                 recs {{ recorded.length}}
-                                <ul class="list-unstyled">
-                                    <li class="mt-4 text-center" v-if="lives.length===0">
-                                        <img src="../../assets/images/cam-icon.png" alt="" width="100">
-                                        <p class="text-center h3 mt-3">
-                                            You will be redirected to your live class when you will subscribe to a
-                                            course
-                                        </p>
-                                    </li>
-                                    <li class="mt-4" v-for="e in userEnrollments" :key="e.id" v-else>
-                                        <div v-if="e.course.type===2">
-                                            <router-link :to="{name: 'Live', params: { slug: e.course.slug} }">
-                                                <h5 class="mt-0 mb-1">{{e.course.name}},
-                                                    {{e.course.created_at.slice(0,10)}},
-                                                    {{e.course.user.first_name}}
-                                                    {{e.course.user.last_name}}</h5>
-                                            </router-link>
-                                        </div>
-                                    </li>
-                                </ul>
+<!--                                <ul class="list-unstyled">-->
+<!--                                    <li class="mt-4 text-center" v-if="lives.length===0">-->
+<!--                                        <img src="../../assets/images/cam-icon.png" alt="" width="100">-->
+<!--                                        <p class="text-center h3 mt-3">-->
+<!--                                            You will be redirected to your live class when you will subscribe to a-->
+<!--                                            course-->
+<!--                                        </p>-->
+<!--                                    </li>-->
+<!--                                    <li class="mt-4" v-for="e in userEnrollments" :key="e.id" v-else>-->
+<!--                                        <div v-if="e.course.type===2">-->
+<!--                                            <router-link :to="{name: 'Live', params: { slug: e.course.slug} }">-->
+<!--                                                <h5 class="mt-0 mb-1">{{e.course.name}},-->
+<!--                                                    {{e.course.created_at.slice(0,10)}},-->
+<!--                                                    {{e.course.user.first_name}}-->
+<!--                                                    {{e.course.user.last_name}}</h5>-->
+<!--                                            </router-link>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
                             </div>
                         </div>
                     </div>
