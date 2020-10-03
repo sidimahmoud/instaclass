@@ -9,7 +9,8 @@ window.Vue = require('vue');
 
 Vue.component('appnav', require('./components/header/NavbarCompnent.vue').default);
 Vue.component('appfooter', require('./components/FooterComponent.vue').default);
-Vue.component('Home', require('./components/HomeCompnent.vue').default);
+Vue.component('Login', require('./components/auth/Login').default);
+Vue.component('Register', require('./components/auth/Register').default);
 
 import store from './store'
 import router from './router'
@@ -21,7 +22,7 @@ const app = new Vue({
     router,
     i18n,
     components: {
-        Home
+        Home,
     },
     watch: {
         '$route'(to, from) {

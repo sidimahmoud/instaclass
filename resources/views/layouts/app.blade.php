@@ -19,7 +19,6 @@
 <body class="bg-light">
 <div id="app">
     <appnav v-if="!$route.meta.admin"></appnav>
-
     <main>
         @yield('content')
     </main>
