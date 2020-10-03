@@ -23,7 +23,7 @@ const getters = {
 
 const actions = {
     async fetchProfile({commit}) {
-        const response = await axios.get('/user');
+        const response = await axios.get('/me');
         commit('setProfile', response.data[0]);
     },
     async fetchTeacherCourses({commit}, id) {
@@ -49,8 +49,7 @@ const actions = {
     async fetchUserEnrollments({commit}) {
         commit('setProfileLoading', true);
         const response = await axios.get(`/enrollments`);
-        commit('setEnrollments', response.data[0]);
-        console.log(response.data[0])
+        commit('setEnrollments', response.data);
         commit('setProfileLoading', false);
 
     },

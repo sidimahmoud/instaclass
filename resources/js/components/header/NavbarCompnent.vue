@@ -4,10 +4,10 @@
             <li class="btn btn-light " v-if="locale==='fr'" @click="en">
                 EN
             </li>
-            <li class="btn btn-light" v-else @click="fr" >
+            <li class="btn btn-light" v-else @click="fr">
                 FR
             </li>
-            <li >
+            <li>
                 <strong>
                     {{userProfile.first_name}}
                 </strong>
@@ -56,7 +56,13 @@
                         </router-link>
 
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" v-if="isLoggedIn">
+                        <router-link :to="{name: 'Signin'}" tag="a"
+                                     class="nav-link">
+                            {{$t('nav.become')}}
+                        </router-link>
+                    </li>
+                    <li class="nav-item" v-else>
                         <router-link :to="{name: 'Signin'}" tag="a"
                                      class="nav-link bg-danger text-white rounded">
                             {{$t('nav.become')}}
@@ -70,12 +76,19 @@
                     </li>
 
 
-                    <li class="nav-item">
+                    <li class="nav-item" v-if="!isLoggedIn">
                         <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                      class="nav-link bg-danger text-white rounded">
                             {{$t('nav.account')}}
                         </router-link>
                     </li>
+                    <li class="nav-item" v-else>
+                        <router-link :to="{name: 'TeacherProfile'}" tag="a"
+                                     class="nav-link bg-danger text-white rounded">
+                            Account
+                        </router-link>
+                    </li>
+
                 </ul>
             </div>
         </nav>
@@ -117,7 +130,7 @@
             },
             ...mapActions(["fetchProfile"])
         },
-        created(){
+        created() {
             this.fetchProfile()
         }
     }
