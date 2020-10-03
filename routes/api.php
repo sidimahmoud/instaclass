@@ -51,7 +51,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/room-recordings/{roomSid}', 'LiveCoursesController@roomRecordings');
         Route::get('/access_token/{muRoom}/{user}', 'LiveCoursesController@generate_token');
 
-    Route::resource('/me', 'Admin\UsersController@show');
+    Route::get('/me', 'Admin\UsersController@show');
     Route::resource('/user', 'Admin\UsersController');
     Route::get('/enrollments', 'EnrollmentController@userEnrollments');
     Route::post('/enroll', 'EnrollmentController@store');
