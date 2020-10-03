@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="nom">Category name (French)</label>
+                        <label for="nom">Name (French)</label>
                         <input type="text" class="form-control" id="nom" v-model="nom">
                     </div>
                 </div>

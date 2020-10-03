@@ -64,8 +64,36 @@ class EnrollmentController extends Controller
     {
         $enrollment = new Enrollment();
         $enrollment->user_id = $request->user()->id;
-        $enrollment->course_id = $request['course_id'];
+        $enrollment->section_id = $request['section_id'];
         $enrollment->save();
+        if ($enrollment) {
+            $payment = new Payement();
+            $payment->enrollment_id = $enrollment->id;
+            $payment->user_id = $request->user()->id;
+            $payment->amount = $request['course_price'];
+            $payment->method = $request['paymentMethod'];
+            $payment->object = $request['course_name'];
+            $payment->save();
+        }
+        $course = Course::find($request['course_id']);
+        $teacher = $course->user_id;
+        $user = User::find($teacher);
+        $user->notify(new NewSubscription());
+
+        return response()->json("Enrolled successfully");
+    }
+
+    public function EnrollInAllSections(Request $request)
+    {
+        $course = Course::find($request["course_id"]);
+        $sections = $course->sections;
+        foreach ($sections as $section) {
+            $enrollment = new Enrollment();
+            $enrollment->user_id = $request->user()->id;
+            $enrollment->section_id = $section->id;
+            $enrollment->save();
+        }
+
         if ($enrollment) {
             $payment = new Payement();
             $payment->enrollment_id = $enrollment->id;

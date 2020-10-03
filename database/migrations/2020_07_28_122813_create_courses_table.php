@@ -20,8 +20,8 @@ class CreateCoursesTable extends Migration
             $table->string('name')->nullable();
             $table->string('short_description');
             $table->string('description')->nullable();
-            $table->string('image')->default('https://instantclass.herokuapp.com/uploads/logo.png');
-            $table->string('slug')->unique();
+            $table->string('image')->nullable()->default('/uploads/logo.png');
+            $table->string('slug')->unique()->nullable();
             $table->string('language');
             $table->integer('status')->default(2); // free 1 or paid 2
             $table->integer('type')->default(2);  // recorded 1 or live 2

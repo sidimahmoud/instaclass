@@ -232,7 +232,6 @@
                 //this.sections.map(item=>)
 
                 formData.append("sections", JSON.stringify(this.sections));
-                formData.append("image", imagefile.files[0]);
                 console.log(formData)
                 axios.post('/course', formData, {
                     headers: {

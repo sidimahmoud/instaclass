@@ -10386,7 +10386,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append("short_description", this.course.short_description); //this.sections.map(item=>)
 
       formData.append("sections", JSON.stringify(this.sections));
-      formData.append("image", imagefile.files[0]);
       console.log(formData);
       axios.post('/course', formData, {
         headers: {
@@ -79692,9 +79691,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "col-md-3" }, [
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "nom" } }, [
-                _vm._v("Category name (French)")
-              ]),
+              _c("label", { attrs: { for: "nom" } }, [_vm._v("Name (French)")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
