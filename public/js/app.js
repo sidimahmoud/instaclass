@@ -86392,7 +86392,7 @@ var render = function() {
                     return _c(
                       "option",
                       { key: c.id, domProps: { value: c.id } },
-                      [_vm._v(_vm._s(c.name))]
+                      [_vm._v(_vm._s(c.name_en))]
                     )
                   }),
                   0
@@ -86443,7 +86443,7 @@ var render = function() {
                     return _c(
                       "option",
                       { key: c.id, domProps: { value: c.id } },
-                      [_vm._v(_vm._s(c.name))]
+                      [_vm._v(_vm._s(c.name_en))]
                     )
                   }),
                   0

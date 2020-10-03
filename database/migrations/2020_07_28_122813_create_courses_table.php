@@ -17,7 +17,7 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('sub_category_id');
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('short_description');
             $table->string('description')->nullable();
             $table->string('image')->default('https://instantclass.herokuapp.com/uploads/logo.png');
