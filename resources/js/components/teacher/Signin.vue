@@ -6,6 +6,12 @@
                     <form method="post" @submit.prevent="login">
                         <h2>Sign in</h2>
                         <p class="hint-text">Login to access into your teacher space.</p>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="errorMessage">
+                            <strong>Error!</strong> {{errorMessage}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" placeholder="Email"
                                    required="required" v-model="email">
@@ -54,8 +60,8 @@
         data() {
             return {
                 email: '',
-                password: ''
-
+                password: '',
+                errorMessage: ''
             }
         },
         methods: {
@@ -66,7 +72,10 @@
                     .then(res => {
                         (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
                     })
-                    .catch(err => this.errorMessage = err.response.data.message)
+                    .catch(err => {
+                        console.log(err.response.data)
+                        this.errorMessage = err.response.data.message
+                    })
             },
             loginGithub() {
                 this.$store.dispatch('loginGithub')

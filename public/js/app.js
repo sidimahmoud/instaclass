@@ -7669,9 +7669,9 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.log(err.response.data);
         _this.errorMessage = err.response.data.message;
-        err.response.data.response === "email unverified" ? _this.$router.push({
+        err.response.data.message === "email unverified" ? _this.$router.push({
           name: 'Email'
-        }) : _this.errorMessage = err.response.data.response;
+        }) : _this.errorMessage = err.response.data.message;
       });
     },
     // loginGithub() {
@@ -9561,6 +9561,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -10906,13 +10927,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Signin",
   data: function data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     };
   },
   methods: {
@@ -10931,7 +10959,8 @@ __webpack_require__.r(__webpack_exports__);
           name: 'StudentProfile'
         });
       })["catch"](function (err) {
-        return _this.errorMessage = err.response.data.message;
+        console.log(err.response.data);
+        _this.errorMessage = err.response.data.message;
       });
     },
     loginGithub: function loginGithub() {
@@ -84490,7 +84519,7 @@ var render = function() {
             _c(
               "button",
               { staticClass: "btn btn-danger", on: { click: _vm.logout } },
-              [_vm._v("\n                    Logout\n                ")]
+              [_vm._v("\n                Logout\n            ")]
             )
           ]),
           _vm._v(" "),
@@ -84518,7 +84547,7 @@ var render = function() {
                           [
                             _vm._v(
                               _vm._s(_vm.userProfile.first_name) +
-                                "\n                                        " +
+                                "\n                                    " +
                                 _vm._s(_vm.userProfile.last_name)
                             )
                           ]
@@ -84539,7 +84568,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                        Edit Profile\n                                    "
+                              "\n                                    Edit Profile\n                                "
                             )
                           ]
                         )
@@ -84625,7 +84654,7 @@ var render = function() {
                           ? _c("li", { staticClass: " mt-4" }, [
                               _c("p", { staticClass: "text-center h3 mt-3" }, [
                                 _vm._v(
-                                  "\n                                            You have no recorded courses for the moment\n                                        "
+                                  "\n                                        You have no recorded courses for the moment\n                                    "
                                 )
                               ])
                             ])
@@ -84657,25 +84686,25 @@ var render = function() {
                                                 [
                                                   _vm._v(
                                                     _vm._s(e.course.name) +
-                                                      ",\n                                                        " +
+                                                      ",\n                                                    " +
                                                       _vm._s(
                                                         e.course.created_at.slice(
                                                           0,
                                                           10
                                                         )
                                                       ) +
-                                                      ",\n                                                        " +
+                                                      ",\n                                                    " +
                                                       _vm._s(
                                                         e.course.created_at.slice(
                                                           11,
                                                           16
                                                         )
                                                       ) +
-                                                      ",\n                                                        " +
+                                                      ",\n                                                    " +
                                                       _vm._s(
                                                         e.course.user.first_name
                                                       ) +
-                                                      "\n                                                        " +
+                                                      "\n                                                    " +
                                                       _vm._s(
                                                         e.course.user.last_name
                                                       )
@@ -84747,11 +84776,11 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                                lives " +
+                        "\n                            lives " +
                           _vm._s(_vm.lives.length) +
-                          "\n                                recs " +
+                          "\n                            recs " +
                           _vm._s(_vm.recorded.length) +
-                          "\n                                "
+                          "\n                            "
                       ),
                       _c(
                         "ul",
@@ -84772,7 +84801,7 @@ var render = function() {
                                   { staticClass: "text-center h3 mt-3" },
                                   [
                                     _vm._v(
-                                      "\n                                            You will be redirected to your live class when you will subscribe to a\n                                            course\n                                        "
+                                      "\n                                        You will be redirected to your live class when you will subscribe to a\n                                        course\n                                    "
                                     )
                                   ]
                                 )
@@ -84805,19 +84834,19 @@ var render = function() {
                                                   [
                                                     _vm._v(
                                                       _vm._s(e.course.name) +
-                                                        ",\n                                                    " +
+                                                        ",\n                                                " +
                                                         _vm._s(
                                                           e.course.created_at.slice(
                                                             0,
                                                             10
                                                           )
                                                         ) +
-                                                        ",\n                                                    " +
+                                                        ",\n                                                " +
                                                         _vm._s(
                                                           e.course.user
                                                             .first_name
                                                         ) +
-                                                        "\n                                                    " +
+                                                        "\n                                                " +
                                                         _vm._s(
                                                           e.course.user
                                                             .last_name
@@ -84838,7 +84867,9 @@ var render = function() {
                         2
                       )
                     ]
-                  )
+                  ),
+                  _vm._v(" "),
+                  _vm._m(3)
                 ])
               ])
             ])
@@ -84868,7 +84899,7 @@ var staticRenderFns = [
           staticClass: "nav-item nav-link active",
           attrs: { href: "#courses", "data-toggle": "tab" }
         },
-        [_vm._v("My recorded\n                                courses")]
+        [_vm._v("My recorded\n                            courses")]
       ),
       _vm._v(" "),
       _c(
@@ -84887,6 +84918,15 @@ var staticRenderFns = [
           attrs: { href: "#live", "data-toggle": "tab" }
         },
         [_vm._v("Go live")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "nav-item nav-link ",
+          attrs: { href: "#ratings", "data-toggle": "tab" }
+        },
+        [_vm._v("Ratings")]
       )
     ])
   },
@@ -84913,10 +84953,50 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                                                    Order N°#1, 2020-09-02, 6:10, Teacher Instant\n                                                "
+                "\n                                                Order N°#1, 2020-09-02, 6:10, Teacher Instant\n                                            "
               )
             ]
           )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "tab-pane fade show ", attrs: { id: "ratings" } },
+      [
+        _c("table", { staticClass: "table" }, [
+          _c("thead", [
+            _c("tr", [
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Teacher Name")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Date")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Rating")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Comment")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tbody", [
+            _c("tr", [
+              _c("th", { attrs: { scope: "row" } }, [_vm._v("tt")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("20/10/2020")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("5")]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, tenetur!"
+                )
+              ])
+            ])
+          ])
         ])
       ]
     )
@@ -88066,6 +88146,26 @@ var render = function() {
                 _vm._v("Login to access into your teacher space.")
               ]),
               _vm._v(" "),
+              _vm.errorMessage
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "alert alert-danger alert-dismissible fade show",
+                      attrs: { role: "alert" }
+                    },
+                    [
+                      _c("strong", [_vm._v("Error!")]),
+                      _vm._v(
+                        " " +
+                          _vm._s(_vm.errorMessage) +
+                          "\n                        "
+                      ),
+                      _vm._m(0)
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("input", {
                   directives: [
@@ -88204,7 +88304,25 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "alert",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  }
+]
 render._withStripped = true
 
 

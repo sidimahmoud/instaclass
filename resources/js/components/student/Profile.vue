@@ -57,6 +57,7 @@
                                 courses</a>
                             <a class="nav-item nav-link " href="#receipts" data-toggle="tab">My receipts</a>
                             <a class="nav-item nav-link " href="#live" data-toggle="tab">Go live</a>
+                            <a class="nav-item nav-link " href="#ratings" data-toggle="tab">Ratings</a>
                         </nav>
                         <hr class="bg-dark">
                         <div class="tab-content my-1">
@@ -84,15 +85,15 @@
                                 </ul>
                             </div>
                             <div class="tab-pane fade show " id="receipts">
-<!--                                <h3 class="text-center">Your receipts will appear here. </h3>-->
+                                <!--                                <h3 class="text-center">Your receipts will appear here. </h3>-->
                                 <div class="accordion" id="accordionExample">
                                     <div class="card" v-for="n in 3">
                                         <div class="card-header" id="headingOne">
                                             <h2 class="mb-0">
                                                 <p class="btn btn-link font-weight-bolder rounded" type="button"
-                                                        data-toggle="collapse"
-                                                        data-target="#collapseOne"
-                                                        aria-expanded="true" aria-controls="collapseOne">
+                                                   data-toggle="collapse"
+                                                   data-target="#collapseOne"
+                                                   aria-expanded="true" aria-controls="collapseOne">
                                                     Order N°#1, 2020-09-02, 6:10, Teacher Instant
                                                 </p>
                                             </h2>
@@ -100,7 +101,7 @@
                                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
                                              data-parent="#accordionExample">
                                             <div class="card-body">
-                                                <receipt  />
+                                                <receipt/>
                                             </div>
                                         </div>
                                     </div>
@@ -131,6 +132,26 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div class="tab-pane fade show " id="ratings">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Teacher Name</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Rating</th>
+                                        <th scope="col">Comment</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">tt</th>
+                                        <td>20/10/2020</td>
+                                        <td>5</td>
+                                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, tenetur!</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -143,6 +164,7 @@
     import {mapActions, mapGetters} from "vuex";
     import CountDown from "../CountDown";
     import Receipt from "./Receipt";
+
     export default {
         name: "StudentProfile",
         components: {CountDown, Receipt},
