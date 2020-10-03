@@ -7667,11 +7667,11 @@ __webpack_require__.r(__webpack_exports__);
           name: 'Admin'
         });
       })["catch"](function (err) {
-        console.log(err.response.data.response);
+        console.log(err.response.data);
+        _this.errorMessage = err.response.data.message;
         err.response.data.response === "email unverified" ? _this.$router.push({
           name: 'Email'
-        }) : "";
-        _this.errorMessage = err.response.data.response;
+        }) : _this.errorMessage = err.response.data.response;
       });
     },
     // loginGithub() {
@@ -9072,7 +9072,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchProfile"])),
   created: function created() {
-    this.fetchProfile();
+    if (this.isLoggedIn) this.fetchProfile();
   }
 });
 
@@ -9591,7 +9591,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }),
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["userProfile", "userEnrollments", "profileLoading", "loadingEnrollments"]),
   created: function created() {
-    this.fetchProfile();
     this.fetchUserEnrollments();
   }
 });
@@ -10844,7 +10843,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }),
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["profileLoading", "userProfile", "userCourses", "allTeacherDetails"]),
   created: function created() {
-    this.fetchProfile();
     this.fetchUserCourses();
     this.fetchTeacherDetails();
   }
@@ -83744,10 +83742,10 @@ var render = function() {
   return _c("div", [
     _c("ul", { staticClass: "lang float-md-right mt-md-0 p-0" }, [
       _vm.locale === "fr"
-        ? _c("li", { staticClass: "btn btn-light ", on: { click: _vm.en } }, [
+        ? _c("li", { staticClass: "btn", on: { click: _vm.en } }, [
             _vm._v("\n            EN\n        ")
           ])
-        : _c("li", { staticClass: "btn btn-light", on: { click: _vm.fr } }, [
+        : _c("li", { staticClass: "btn ", on: { click: _vm.fr } }, [
             _vm._v("\n            FR\n        ")
           ]),
       _vm._v(" "),

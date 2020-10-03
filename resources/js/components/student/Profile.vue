@@ -169,7 +169,6 @@
         },
         computed: mapGetters(["userProfile", "userEnrollments", "profileLoading", "loadingEnrollments"]),
         created() {
-            this.fetchProfile();
             this.fetchUserEnrollments();
         },
 

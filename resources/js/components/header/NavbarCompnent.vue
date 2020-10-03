@@ -1,10 +1,10 @@
 <template>
     <div>
         <ul class="lang float-md-right mt-md-0 p-0">
-            <li class="btn btn-light " v-if="locale==='fr'" @click="en">
+            <li class="btn" v-if="locale==='fr'" @click="en">
                 EN
             </li>
-            <li class="btn btn-light" v-else @click="fr">
+            <li class="btn " v-else @click="fr">
                 FR
             </li>
             <li>
@@ -131,6 +131,7 @@
             ...mapActions(["fetchProfile"])
         },
         created() {
+            if (this.isLoggedIn)
             this.fetchProfile()
         }
     }

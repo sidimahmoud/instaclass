@@ -72,10 +72,9 @@
                                 this.$router.push({name: 'StudentProfile'}) : this.$router.push({name: 'Admin'});
                     })
                     .catch(err => {
-                        console.log(err.response.data.response);
-                        (err.response.data.response === "email unverified") ? this.$router.push({name: 'Email'}) : "";
-
-                        this.errorMessage = err.response.data.response
+                        console.log(err.response.data);
+                        this.errorMessage = err.response.data.message
+                        err.response.data.response === "email unverified" ? this.$router.push({name: 'Email'}) : this.errorMessage = err.response.data.response;
                     })
             },
             // loginGithub() {

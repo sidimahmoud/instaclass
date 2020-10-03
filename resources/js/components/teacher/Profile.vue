@@ -248,7 +248,6 @@
         },
         computed: mapGetters(["profileLoading", "userProfile", "userCourses", "allTeacherDetails"]),
         created() {
-            this.fetchProfile();
             this.fetchUserCourses();
             this.fetchTeacherDetails();
         }
