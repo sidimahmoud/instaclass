@@ -126,7 +126,7 @@
                     }
                 }).then(res => {
                     console.log(res);
-                    alert("Your course was published successfully");
+                    alert("Your profile was updated successfully");
                     location.reload()
 
                 })

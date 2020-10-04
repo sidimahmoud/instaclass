@@ -9408,7 +9408,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }).then(function (res) {
         console.log(res);
-        alert("Your course was published successfully");
+        alert("Your profile was updated successfully");
         location.reload();
       })["catch"](function (err) {
         return console.log(err.response);
@@ -10325,7 +10325,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }).then(function (res) {
         console.log(res);
-        alert("Your course was published successfully");
+        alert("Your profile was updated successfully");
         location.reload();
       })["catch"](function (err) {
         return console.log(err.response);
@@ -86451,7 +86451,7 @@ var render = function() {
                 staticClass: "form",
                 attrs: { id: "registrationForm" },
                 on: {
-                  click: function($event) {
+                  submit: function($event) {
                     $event.preventDefault()
                     return _vm.updateProfile($event)
                   }

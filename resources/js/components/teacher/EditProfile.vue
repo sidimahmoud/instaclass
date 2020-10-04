@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-sm-3"><!--left col-->
                 <div class="text-center">
-                    <img :src="userProfile.image"  class="avatar img-circle img-thumbnail"
+                    <img :src="userProfile.image" class="avatar img-circle img-thumbnail"
                          alt="avatar">
                     <h6>Add a photo</h6>
                     <input type="file" class="text-center center-block file-upload" id="img">
@@ -15,7 +15,7 @@
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="home">
-                        <form class="form" id="registrationForm" @click.prevent="updateProfile">
+                        <form class="form" id="registrationForm" @submit.prevent="updateProfile">
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="first_name">First name</label>
@@ -123,7 +123,7 @@
                     }
                 }).then(res => {
                     console.log(res);
-                    alert("Your course was published successfully");
+                    alert("Your profile was updated successfully");
                     location.reload()
                 })
                     .catch(err => console.log(err.response));
