@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class CourseFile extends Model
 {
-    public function comments()
+    public function enrollments()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\Enrollment');
     }
-
 
     public function course()
     {

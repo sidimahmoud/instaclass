@@ -136,7 +136,7 @@ class CoursesController extends Controller
         $course = Course::find($id);
         $course->user_id = $request->user()->id;
         $course->category_id = $request["category_id"];
-        $course->name = $request["name"];
+//        $course->name = $request["name"];
         $course->short_description = $request["short_description"];
         $course->description = $request["description"];
         $course->image = $request["image"];

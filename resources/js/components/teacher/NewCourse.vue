@@ -10,7 +10,7 @@
                         <div class="form-group">
                             <label for="selectLang">Select category</label>
                             <select class="form-control" id="selectLang" @change="loadSubs" required>
-                                <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name}}</option>
+                                <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name_en}}</option>
                             </select>
                         </div>
                     </div>
@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <label for="subCateg">Sub category</label>
                             <select class="form-control" id="subCateg" v-model="course.sub_category_id" required>
-                                <option v-for="c in subCategories" :key="c.id" :value="c.id">{{c.name}}</option>
+                                <option v-for="c in subCategories" :key="c.id" :value="c.id">{{c.name_en}}</option>
 
                             </select>
                         </div>
@@ -232,7 +232,6 @@
                 //this.sections.map(item=>)
 
                 formData.append("sections", JSON.stringify(this.sections));
-                formData.append("image", imagefile.files[0]);
                 console.log(formData)
                 axios.post('/course', formData, {
                     headers: {

@@ -10384,7 +10384,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append("short_description", this.course.short_description); //this.sections.map(item=>)
 
       formData.append("sections", JSON.stringify(this.sections));
-      formData.append("image", imagefile.files[0]);
       console.log(formData);
       axios.post('/course', formData, {
         headers: {
@@ -79690,9 +79689,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "col-md-3" }, [
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "nom" } }, [
-                _vm._v("Category name (French)")
-              ]),
+              _c("label", { attrs: { for: "nom" } }, [_vm._v("Name (French)")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -86390,7 +86387,7 @@ var render = function() {
                     return _c(
                       "option",
                       { key: c.id, domProps: { value: c.id } },
-                      [_vm._v(_vm._s(c.name))]
+                      [_vm._v(_vm._s(c.name_en))]
                     )
                   }),
                   0
@@ -86441,7 +86438,7 @@ var render = function() {
                     return _c(
                       "option",
                       { key: c.id, domProps: { value: c.id } },
-                      [_vm._v(_vm._s(c.name))]
+                      [_vm._v(_vm._s(c.name_en))]
                     )
                   }),
                   0
@@ -109830,7 +109827,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('appnav', __webpack_require__(/*! ./components/header/NavbarCompnent.vue */ "./resources/js/components/header/NavbarCompnent.vue")["default"]);
 Vue.component('appfooter', __webpack_require__(/*! ./components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue")["default"]);
-Vue.component('Home', __webpack_require__(/*! ./components/HomeCompnent.vue */ "./resources/js/components/HomeCompnent.vue")["default"]);
+Vue.component('Login', __webpack_require__(/*! ./components/auth/Login */ "./resources/js/components/auth/Login.vue")["default"]);
+Vue.component('Register', __webpack_require__(/*! ./components/auth/Register */ "./resources/js/components/auth/Register.vue")["default"]);
 
 
 
