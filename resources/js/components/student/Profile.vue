@@ -29,17 +29,18 @@
                             </div>
                         </div>
                     </div>
+                    {{userEnrollments[0].course_file.startDate.slice(14,16)}}
                     <div class="col-md-6" v-if="userEnrollments.length>0">
                         <Count-down
                             :year="userEnrollments[0].course_file.startDate.slice(0,4)"
-                            :month="userEnrollments[0].course.created_at.slice(5,7)-1"
-                            :day="userEnrollments[0].course.created_at.slice(8,10)"
-                            :hour="userEnrollments[0].course.created_at.slice(11,13)"
-                            :minute="userEnrollments[0].course.created_at.slice(14,16)"
-                            :second="userEnrollments[0].course.created_at.slice(17,19)"
+                            :month="userEnrollments[0].course_file.startDate.slice(5,7)-1"
+                            :day="userEnrollments[0].course_file.startDate.slice(8,9)"
+                            :hour="userEnrollments[0].course_file.startDate.slice(11,13)"
+                            :minute="userEnrollments[0].course_file.startDate.slice(14,16)"
+                            :second="0"
                         />
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" v-else>
                         <Count-down
                             :year="2020"
                             :month="1"

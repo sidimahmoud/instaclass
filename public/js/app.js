@@ -9750,6 +9750,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -85035,7 +85036,13 @@ var render = function() {
                   ])
                 ])
               ]),
-              _vm._v(" "),
+              _vm._v(
+                "\n                " +
+                  _vm._s(
+                    _vm.userEnrollments[0].course_file.startDate.slice(14, 16)
+                  ) +
+                  "\n                "
+              ),
               _vm.userEnrollments.length > 0
                 ? _c(
                     "div",
@@ -85048,50 +85055,45 @@ var render = function() {
                             4
                           ),
                           month:
-                            _vm.userEnrollments[0].course.created_at.slice(
+                            _vm.userEnrollments[0].course_file.startDate.slice(
                               5,
                               7
                             ) - 1,
-                          day: _vm.userEnrollments[0].course.created_at.slice(
+                          day: _vm.userEnrollments[0].course_file.startDate.slice(
                             8,
-                            10
+                            9
                           ),
-                          hour: _vm.userEnrollments[0].course.created_at.slice(
+                          hour: _vm.userEnrollments[0].course_file.startDate.slice(
                             11,
                             13
                           ),
-                          minute: _vm.userEnrollments[0].course.created_at.slice(
+                          minute: _vm.userEnrollments[0].course_file.startDate.slice(
                             14,
                             16
                           ),
-                          second: _vm.userEnrollments[0].course.created_at.slice(
-                            17,
-                            19
-                          )
+                          second: 0
                         }
                       })
                     ],
                     1
                   )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-md-6" },
-                [
-                  _c("Count-down", {
-                    attrs: {
-                      year: 2020,
-                      month: 1,
-                      day: 1,
-                      hour: 0,
-                      minute: 0,
-                      second: 0
-                    }
-                  })
-                ],
-                1
-              )
+                : _c(
+                    "div",
+                    { staticClass: "col-md-6" },
+                    [
+                      _c("Count-down", {
+                        attrs: {
+                          year: 2020,
+                          month: 1,
+                          day: 1,
+                          hour: 0,
+                          minute: 0,
+                          second: 0
+                        }
+                      })
+                    ],
+                    1
+                  )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "row my-4 " }, [
