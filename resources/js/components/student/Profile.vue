@@ -29,11 +29,10 @@
                             </div>
                         </div>
                     </div>
-                    {{userEnrollments[0].course_file.startDate.slice(14,16)}}
                     <div class="col-md-6" v-if="userEnrollments.length>0">
                         <Count-down
                             :year="userEnrollments[0].course_file.startDate.slice(0,4)"
-                            :month="userEnrollments[0].course_file.startDate.slice(5,7)-1"
+                            :month="userEnrollments[0].course_file.startDate.slice(5,7)"
                             :day="userEnrollments[0].course_file.startDate.slice(8,9)"
                             :hour="userEnrollments[0].course_file.startDate.slice(11,13)"
                             :minute="userEnrollments[0].course_file.startDate.slice(14,16)"
@@ -111,10 +110,8 @@
 
                             </div>
                             <div class="tab-pane fade show " id="live">
-                                lives {{ lives.length}}
-                                recs {{ recorded.length}}
                                 <ul class="list-unstyled">
-                                    <li class="mt-4 text-center" v-if="lives.length===0">
+                                    <li class="mt-4 text-center" v-if="userEnrollments.length===0">
                                         <img src="../../assets/images/cam-icon.png" alt="" width="100">
                                         <p class="text-center h3 mt-3">
                                             You will be redirected to your live class when you will subscribe to a
@@ -179,17 +176,6 @@
                     .then(() => {
                         this.$router.push('/')
                     })
-            },
-            lives() {
-                return this.userEnrollments.map(item => {
-                        return item.course.type === 2
-                    }
-                )
-            },
-            recorded() {
-                return this.userEnrollments.map(item => {
-                    return item.course.type === 1
-                })
             },
         },
         computed: mapGetters(["userProfile", "userEnrollments", "profileLoading", "loadingEnrollments"]),

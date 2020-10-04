@@ -9748,9 +9748,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 
 
@@ -9766,16 +9763,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.$store.dispatch('logout').then(function () {
         _this.$router.push('/');
-      });
-    },
-    lives: function lives() {
-      return this.userEnrollments.map(function (item) {
-        return item.course.type === 2;
-      });
-    },
-    recorded: function recorded() {
-      return this.userEnrollments.map(function (item) {
-        return item.course.type === 1;
       });
     }
   }),
@@ -85036,13 +85023,7 @@ var render = function() {
                   ])
                 ])
               ]),
-              _vm._v(
-                "\n                " +
-                  _vm._s(
-                    _vm.userEnrollments[0].course_file.startDate.slice(14, 16)
-                  ) +
-                  "\n                "
-              ),
+              _vm._v(" "),
               _vm.userEnrollments.length > 0
                 ? _c(
                     "div",
@@ -85054,11 +85035,10 @@ var render = function() {
                             0,
                             4
                           ),
-                          month:
-                            _vm.userEnrollments[0].course_file.startDate.slice(
-                              5,
-                              7
-                            ) - 1,
+                          month: _vm.userEnrollments[0].course_file.startDate.slice(
+                            5,
+                            7
+                          ),
                           day: _vm.userEnrollments[0].course_file.startDate.slice(
                             8,
                             9
@@ -85239,15 +85219,8 @@ var render = function() {
                       attrs: { id: "live" }
                     },
                     [
-                      _vm._v(
-                        "\n                            lives " +
-                          _vm._s(_vm.lives.length) +
-                          "\n                            recs " +
-                          _vm._s(_vm.recorded.length) +
-                          "\n                            "
-                      ),
                       _c("ul", { staticClass: "list-unstyled" }, [
-                        _vm.lives.length === 0
+                        _vm.userEnrollments.length === 0
                           ? _c("li", { staticClass: "mt-4 text-center" }, [
                               _c("img", {
                                 attrs: {
