@@ -87,7 +87,7 @@
                             <div class="tab-pane fade show " id="receipts">
                                 <!--                                <h3 class="text-center">Your receipts will appear here. </h3>-->
                                 <div class="accordion" id="accordionExample">
-                                    <div class="card" v-for="n in 3">
+                                    <div class="card">
                                         <div class="card-header" id="headingOne">
                                             <h2 class="mb-0">
                                                 <p class="btn btn-link font-weight-bolder rounded" type="button"

@@ -85090,9 +85090,9 @@ var render = function() {
                           staticClass: "accordion",
                           attrs: { id: "accordionExample" }
                         },
-                        _vm._l(3, function(n) {
-                          return _c("div", { staticClass: "card" }, [
-                            _vm._m(2, true),
+                        [
+                          _c("div", { staticClass: "card" }, [
+                            _vm._m(2),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -85114,8 +85114,7 @@ var render = function() {
                               ]
                             )
                           ])
-                        }),
-                        0
+                        ]
                       )
                     ]
                   ),
@@ -88032,16 +88031,14 @@ var render = function() {
                                               [
                                                 _vm._v(
                                                   "\n                                                        " +
-                                                    _vm._s(course.name)
+                                                    _vm._s(
+                                                      course.short_description
+                                                    ) +
+                                                    "\n                                                    "
                                                 )
                                               ]
                                             )
                                           ]
-                                        ),
-                                        _vm._v(
-                                          "\n                                                " +
-                                            _vm._s(course.short_description) +
-                                            "\n                                            "
                                         )
                                       ],
                                       1

@@ -101,9 +101,9 @@
                                                     <router-link
                                                         :to="{ name: 'Detail', params: { slug: course.slug}}">
                                                         <h5 class="mt-0 mb-1 text-primary font-weight-bolder rounded">
-                                                            {{course.name}}</h5>
+                                                            {{course.short_description}}
+                                                        </h5>
                                                     </router-link>
-                                                    {{course.short_description}}
                                                 </div>
                                                 <div class="col-md-3 text-right">
                                                     <router-link
