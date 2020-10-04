@@ -7,9 +7,7 @@
                         class="col-md-6 col-sm-12 text-center text-md-left px-md-5 justify-content-center align-items-center text-white">
                         <h1 class="display-4">
                             {{$t('title')}}
-
                         </h1>
-
                     </div>
 
                     <div class="col-md-6 d-none d-md-block">
@@ -45,7 +43,7 @@
             </div>
 
             <div class="row" v-if="!loadingCategories">
-                <category-compo v-for="category in allCategories" :categ="category" :key="category.id" />
+                <category-compo v-for="category in allCategories" :categ="category" :key="category.id"/>
             </div>
         </div>
     </div>
@@ -53,6 +51,7 @@
 <script>
     import {mapGetters, mapActions} from "vuex";
     import CategoryCompo from "./courses/CategoryCompo";
+
     export default {
         name: 'Home',
 
