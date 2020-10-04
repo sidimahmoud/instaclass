@@ -11,12 +11,12 @@ class Enrollment extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function section()
+    public function CourseFile()
     {
-        return $this->belongsTo('App\CourseFile');
+        return $this->belongsTo(CourseFile::class);
     }
 
-    public function payement()
+    public function payment()
     {
         return $this->hasOne('App\Payement');
     }

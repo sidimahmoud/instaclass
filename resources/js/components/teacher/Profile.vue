@@ -18,7 +18,7 @@
                         <div class="text-white text-center">
                             <img :src="userProfile.image" width="80px" alt="Avatar" class="rounded-circle">
                             <h4>{{userProfile.first_name}} {{userProfile.last_name}}</h4>
-                            <p>{{userProfile.headline}}</p>
+                            <p>{{userProfile.phone}}</p>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -100,7 +100,7 @@
                                             <div class="row ">
                                                 <div class="col-md-9 ">
                                                     <router-link
-                                                        :to="{ name: 'Detail', params: { slug: course.slug}}">
+                                                        :to="{ name: 'Detail', params: { slug: course.id}}">
                                                         <h5 class="mt-0 mb-1 text-primary font-weight-bolder rounded">
                                                             {{course.short_description}}
                                                         </h5>
@@ -108,7 +108,7 @@
                                                 </div>
                                                 <div class="col-md-3 text-right">
                                                     <router-link
-                                                        :to="{ name: 'EditCourse', params: { slug: course.slug}}">
+                                                        :to="{ name: 'EditCourse', params: { slug: course.id}}">
                                                         <button class="btn btn-warning">Edit</button>
                                                     </router-link>
                                                     <a href="javascript:;" class="btn btn-danger"
@@ -188,7 +188,7 @@
                                         data-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
                                     <i class="fa fa-plus" v-if="collapsedPersonal"></i>
-                                    <i class="fa fa-minus" v-else></i>                                </button>
+                                    <i class="fa fa-minus" v-else></i></button>
                             </h2>
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"

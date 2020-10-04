@@ -8,7 +8,7 @@ class CourseFile extends Model
 {
     public function enrollments()
     {
-        return $this->hasMany('App\Enrollment');
+        return $this->hasMany(Enrollment::class);
     }
 
     public function course()

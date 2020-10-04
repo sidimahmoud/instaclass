@@ -13,7 +13,7 @@
             <div class="container bg-white">
                 <div class="row justify-content-around align-items-center border-bottom border-primary">
                     <div class="col-md-2 text-center">
-                        <img :src="course.user.image" width="80px" alt="Avatar">
+                        <img :src="course.user.image" width="80px" alt="Avatar" class="border rounded-circle">
                         <br>
                         <i class="fa fa-star text-warning"></i>
                         <i class="fa fa-star text-warning"></i>
@@ -64,7 +64,8 @@
                             tag="a" class="btn btn-primary my-3" v-if="!enrolled">
                             S'inscrire à tout les séances
                         </router-link>
-                        <router-link :to="{name: 'StudentProfile'}" tag="a" class="btn btn-primary my-3" v-if="enrolled">
+                        <router-link :to="{name: 'StudentProfile'}" tag="a" class="btn btn-primary my-3"
+                                     v-if="enrolled">
                             Deja inscrit
                         </router-link>
                     </div>
@@ -98,7 +99,8 @@
                         </div>
                         <div class="col-md-1 d-none -d-md-flex"></div>
                         <div class="col-md-2">
-                            <router-link :to="{ name: 'BuyOneSection', params: {id: section.id, name: section.title, price: course.price}}"
+                            <router-link
+                                :to="{ name: 'BuyOneSection', params: {id: section.id, name: section.title, price: course.price}}"
                                 tag="a" class="btn btn-primary my-3" v-if="!enrolled">
                                 S'inscrire
                             </router-link>
