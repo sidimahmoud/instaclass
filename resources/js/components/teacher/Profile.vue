@@ -67,7 +67,7 @@
                 <div class="accordion" id="accordionExample">
                     <div class="card">
                         <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
+                            <h2 class="mb-0" @click="collapsedCourses=!collapsedCourses">
                                 <button class="btn btn-link font-weight-bolder rounded" type="button"
                                         data-toggle="collapse"
                                         data-target="#collapseOne"
@@ -77,7 +77,8 @@
                                 <button class="btn btn-link float-right" type="button" data-toggle="collapse"
                                         data-target="#collapseOne"
                                         aria-expanded="true" aria-controls="collapseOne">
-                                    <i class="fa fa-plus"></i>
+                                    <i class="fa fa-plus" v-if="collapsedCourses"></i>
+                                    <i class="fa fa-minus" v-else></i>
                                 </button>
                             </h2>
                         </div>
@@ -124,7 +125,7 @@
                     </div>
                     <div class="card">
                         <div class="card-header" id="payments">
-                            <h2 class="mb-0">
+                            <h2 class="mb-0" @click="collapsedPayments=!collapsedPayments">
                                 <button class="btn btn-link font-weight-bolder rounded collapsed" type="button"
                                         data-toggle="collapse"
                                         data-target="#collapsePayment" aria-expanded="false"
@@ -134,7 +135,8 @@
                                 <button class="btn btn-link collapsed float-right" type="button" data-toggle="collapse"
                                         data-target="#collapsePayment" aria-expanded="false"
                                         aria-controls="collapsePayment">
-                                    <i class="fa fa-plus"></i>
+                                    <i class="fa fa-plus" v-if="collapsedPayments"></i>
+                                    <i class="fa fa-minus" v-else></i>
                                 </button>
                             </h2>
                         </div>
@@ -147,7 +149,7 @@
                     </div>
                     <div class="card">
                         <div class="card-header" id="evaluation">
-                            <h2 class="mb-0">
+                            <h2 class="mb-0" @click="collapsedRatings=!collapsedRatings">
                                 <button class="btn btn-link font-weight-bolder rounded collapsed" type="button"
                                         data-toggle="collapse"
                                         data-target="#collapseEval" aria-expanded="false" aria-controls="collapseEval">
@@ -155,7 +157,8 @@
                                 </button>
                                 <button class="btn btn-link collapsed float-right" type="button" data-toggle="collapse"
                                         data-target="#collapseEval" aria-expanded="false" aria-controls="collapseEval">
-                                    <i class="fa fa-plus"></i>
+                                    <i class="fa fa-plus" v-if="collapsedRatings"></i>
+                                    <i class="fa fa-minus" v-else></i>
                                 </button>
                             </h2>
                         </div>
@@ -174,7 +177,7 @@
                     </div>
                     <div class="card">
                         <div class="card-header" id="headingThree">
-                            <h2 class="mb-0">
+                            <h2 class="mb-0" @click="collapsedPersonal=!collapsedPersonal">
                                 <button class="btn btn-link font-weight-bolder collapsed" type="button"
                                         data-toggle="collapse"
                                         data-target="#collapseThree" aria-expanded="false"
@@ -184,8 +187,8 @@
                                 <button class="btn btn-link collapsed float-right" type="button" data-toggle="collapse"
                                         data-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
-                                    <i class="fa fa-plus"></i>
-                                </button>
+                                    <i class="fa fa-plus" v-if="collapsedPersonal"></i>
+                                    <i class="fa fa-minus" v-else></i>                                </button>
                             </h2>
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
@@ -213,6 +216,15 @@
 
     export default {
         name: "TeacherProfile",
+        data() {
+            return {
+                collapsedCourses: true,
+                collapsedPayments: true,
+                collapsedReceipts: true,
+                collapsedRatings: true,
+                collapsedPersonal: true,
+            }
+        },
         components: {
             NewCourse,
             Payments,

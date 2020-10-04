@@ -11014,6 +11014,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -11024,6 +11027,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TeacherProfile",
+  data: function data() {
+    return {
+      collapsedCourses: true,
+      collapsedPayments: true,
+      collapsedReceipts: true,
+      collapsedRatings: true,
+      collapsedPersonal: true
+    };
+  },
   components: {
     NewCourse: _NewCourse__WEBPACK_IMPORTED_MODULE_1__["default"],
     Payments: _Payments__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -87955,7 +87967,63 @@ var render = function() {
               { staticClass: "accordion", attrs: { id: "accordionExample" } },
               [
                 _c("div", { staticClass: "card" }, [
-                  _vm._m(1),
+                  _c(
+                    "div",
+                    { staticClass: "card-header", attrs: { id: "headingOne" } },
+                    [
+                      _c(
+                        "h2",
+                        {
+                          staticClass: "mb-0",
+                          on: {
+                            click: function($event) {
+                              _vm.collapsedCourses = !_vm.collapsedCourses
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-link font-weight-bolder rounded",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "collapse",
+                                "data-target": "#collapseOne",
+                                "aria-expanded": "true",
+                                "aria-controls": "collapseOne"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                Manage my courses\n                            "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-link float-right",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "collapse",
+                                "data-target": "#collapseOne",
+                                "aria-expanded": "true",
+                                "aria-controls": "collapseOne"
+                              }
+                            },
+                            [
+                              _vm.collapsedCourses
+                                ? _c("i", { staticClass: "fa fa-plus" })
+                                : _c("i", { staticClass: "fa fa-minus" })
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -88104,7 +88172,63 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card" }, [
-                  _vm._m(2),
+                  _c(
+                    "div",
+                    { staticClass: "card-header", attrs: { id: "payments" } },
+                    [
+                      _c(
+                        "h2",
+                        {
+                          staticClass: "mb-0",
+                          on: {
+                            click: function($event) {
+                              _vm.collapsedPayments = !_vm.collapsedPayments
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-link font-weight-bolder rounded collapsed",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "collapse",
+                                "data-target": "#collapsePayment",
+                                "aria-expanded": "false",
+                                "aria-controls": "collapsePayment"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                Payments and receipts\n                            "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-link collapsed float-right",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "collapse",
+                                "data-target": "#collapsePayment",
+                                "aria-expanded": "false",
+                                "aria-controls": "collapsePayment"
+                              }
+                            },
+                            [
+                              _vm.collapsedPayments
+                                ? _c("i", { staticClass: "fa fa-plus" })
+                                : _c("i", { staticClass: "fa fa-minus" })
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -88128,7 +88252,63 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card" }, [
-                  _vm._m(3),
+                  _c(
+                    "div",
+                    { staticClass: "card-header", attrs: { id: "evaluation" } },
+                    [
+                      _c(
+                        "h2",
+                        {
+                          staticClass: "mb-0",
+                          on: {
+                            click: function($event) {
+                              _vm.collapsedRatings = !_vm.collapsedRatings
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-link font-weight-bolder rounded collapsed",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "collapse",
+                                "data-target": "#collapseEval",
+                                "aria-expanded": "false",
+                                "aria-controls": "collapseEval"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                Ratings\n                            "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-link collapsed float-right",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "collapse",
+                                "data-target": "#collapseEval",
+                                "aria-expanded": "false",
+                                "aria-controls": "collapseEval"
+                              }
+                            },
+                            [
+                              _vm.collapsedRatings
+                                ? _c("i", { staticClass: "fa fa-plus" })
+                                : _c("i", { staticClass: "fa fa-minus" })
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -88164,7 +88344,66 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card" }, [
-                  _vm._m(4),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "card-header",
+                      attrs: { id: "headingThree" }
+                    },
+                    [
+                      _c(
+                        "h2",
+                        {
+                          staticClass: "mb-0",
+                          on: {
+                            click: function($event) {
+                              _vm.collapsedPersonal = !_vm.collapsedPersonal
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-link font-weight-bolder collapsed",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "collapse",
+                                "data-target": "#collapseThree",
+                                "aria-expanded": "false",
+                                "aria-controls": "collapseThree"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                Personal informations\n                            "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-link collapsed float-right",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "collapse",
+                                "data-target": "#collapseThree",
+                                "aria-expanded": "false",
+                                "aria-controls": "collapseThree"
+                              }
+                            },
+                            [
+                              _vm.collapsedPersonal
+                                ? _c("i", { staticClass: "fa fa-plus" })
+                                : _c("i", { staticClass: "fa fa-minus" })
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -88206,190 +88445,6 @@ var staticRenderFns = [
       "div",
       { staticClass: "spinner-border", attrs: { role: "status" } },
       [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header", attrs: { id: "headingOne" } },
-      [
-        _c("h2", { staticClass: "mb-0" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link font-weight-bolder rounded",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#collapseOne",
-                "aria-expanded": "true",
-                "aria-controls": "collapseOne"
-              }
-            },
-            [
-              _vm._v(
-                "\n                                Manage my courses\n                            "
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link float-right",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#collapseOne",
-                "aria-expanded": "true",
-                "aria-controls": "collapseOne"
-              }
-            },
-            [_c("i", { staticClass: "fa fa-plus" })]
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header", attrs: { id: "payments" } },
-      [
-        _c("h2", { staticClass: "mb-0" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link font-weight-bolder rounded collapsed",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#collapsePayment",
-                "aria-expanded": "false",
-                "aria-controls": "collapsePayment"
-              }
-            },
-            [
-              _vm._v(
-                "\n                                Payments and receipts\n                            "
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link collapsed float-right",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#collapsePayment",
-                "aria-expanded": "false",
-                "aria-controls": "collapsePayment"
-              }
-            },
-            [_c("i", { staticClass: "fa fa-plus" })]
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header", attrs: { id: "evaluation" } },
-      [
-        _c("h2", { staticClass: "mb-0" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link font-weight-bolder rounded collapsed",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#collapseEval",
-                "aria-expanded": "false",
-                "aria-controls": "collapseEval"
-              }
-            },
-            [
-              _vm._v(
-                "\n                                Ratings\n                            "
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link collapsed float-right",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#collapseEval",
-                "aria-expanded": "false",
-                "aria-controls": "collapseEval"
-              }
-            },
-            [_c("i", { staticClass: "fa fa-plus" })]
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header", attrs: { id: "headingThree" } },
-      [
-        _c("h2", { staticClass: "mb-0" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link font-weight-bolder collapsed",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#collapseThree",
-                "aria-expanded": "false",
-                "aria-controls": "collapseThree"
-              }
-            },
-            [
-              _vm._v(
-                "\n                                Personal informations\n                            "
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link collapsed float-right",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#collapseThree",
-                "aria-expanded": "false",
-                "aria-controls": "collapseThree"
-              }
-            },
-            [_c("i", { staticClass: "fa fa-plus" })]
-          )
-        ])
-      ]
     )
   }
 ]
