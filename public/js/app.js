@@ -110539,6 +110539,7 @@ var sd = function sd(v, d) {
 
 window.app_api = sd("http://127.0.0.1:8000/api", "https://mondemenagement.ca/api");
 window.axios.defaults.baseURL = sd("http://127.0.0.1:8000/api", "https://mondemenagement.ca/api");
+window.axios.defaults.baseURL = "https://instantaclass.herokuapp.com/api";
 
 /***/ }),
 
