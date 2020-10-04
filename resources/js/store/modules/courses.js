@@ -32,16 +32,17 @@ const actions = {
         commit('setLoading', true);
         const response = await axios.get(`/courses/${slug}`,);
         commit('setCourse', response.data[0]);
+        console.log(response.data)
         const me = JSON.parse(localStorage.getItem('user')) || null;
         commit('setEnrolled', false);
-        if (me) {
-            response.data[0].enrollments.map(item => {
-                if (item.user_id === me.u) {
-                    commit('setEnrolled', true);
-                    console.log("enrolled")
-                }
-            })
-        }
+        // if (me) {
+        //     response.data.enrollments.map(item => {
+        //         if (item.user_id === me.u) {
+        //             commit('setEnrolled', true);
+        //             console.log("enrolled")
+        //         }
+        //     })
+        // }
 
         commit('setLoading', false);
     },
@@ -83,6 +84,21 @@ const actions = {
         commit('setLoading', true);
         return new Promise((resolve, reject) => {
             axios({url: '/enroll', data: payload, method: 'POST'})
+                .then(resp => {
+                    commit('setLoading', false);
+                    resolve(resp)
+                })
+                .catch(err => {
+                    commit('auth_error');
+                    reject(err)
+                })
+        })
+    },
+    async enrollInAllSection({commit}, payload) {
+        headers();
+        commit('setLoading', true);
+        return new Promise((resolve, reject) => {
+            axios({url: '/enroll-in-course', data: payload, method: 'POST'})
                 .then(resp => {
                     commit('setLoading', false);
                     resolve(resp)
@@ -148,6 +164,7 @@ const mutations = {
     setLoading: (state, val) => (state.loading = val),
     setEnrolled: (state, val) => (state.enrolled = val),
 };
+
 function headers() {
     let token = localStorage.getItem('token') || '';
     if (token) {

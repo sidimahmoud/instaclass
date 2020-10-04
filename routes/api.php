@@ -55,6 +55,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('/user', 'Admin\UsersController');
     Route::get('/enrollments', 'EnrollmentController@userEnrollments');
     Route::post('/enroll', 'EnrollmentController@store');
+    Route::post('/enroll-in-course', 'EnrollmentController@EnrollInAllSections');
     Route::post('/pay', 'Admin\PayementController@paymentProcess');
     Route::post('/rate', 'RatingController@store');
 

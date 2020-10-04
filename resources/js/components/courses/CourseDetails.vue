@@ -98,7 +98,7 @@
                         </div>
                         <div class="col-md-1 d-none -d-md-flex"></div>
                         <div class="col-md-2">
-                            <router-link :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
+                            <router-link :to="{ name: 'BuyOneSection', params: {id: section.id, name: section.title, price: course.price}}"
                                 tag="a" class="btn btn-primary my-3" v-if="!enrolled">
                                 S'inscrire
                             </router-link>

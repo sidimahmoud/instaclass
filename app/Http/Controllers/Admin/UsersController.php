@@ -107,7 +107,7 @@ class UsersController extends Controller
     public function teacherDetails(Request $request)
     {
         $user = $request->user();
-        $students = DB::select("select distinct count(id) from enrollments e where e.course_id in(select id from courses where user_id=$user->id)");
+        $students = DB::select("select distinct count(id) from enrollments e where e.course_file_id in(select id from course_files where id in(select id from courses where user_id=$user->id) )");
         $ratings = Rating::with('user')->where('teacher_id', $user->id)->get();
         return response()->json(["students" => $students, "ratings" => $ratings]);
     }
@@ -181,6 +181,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+//        dd($request->all());
         $user = User::find($id);
         $user->first_name = $request["first_name"];
         $user->last_name = $request["last_name"];
@@ -188,8 +189,14 @@ class UsersController extends Controller
         $user->country = $request["country"];
         $user->city = $request["city"];
         $user->email = $request["email"];
-        $user->password = $request["password"];
-        $user->image = $request["image"];
+//        $user->password = $request["password"];
+        if ($request->hasFile('image')) {
+            $file = $request['image'];
+            $extension = $file->getClientOriginalExtension();
+            $file_name = $request['name'] . "-" . time() . "." . $extension;
+            $file->move('uploads/profiles/', $file_name);
+            $user->image = '/uploads/profiles/' . $file_name;
+        }
         $user->about = $request["about"];
         $user->languages = $request["languages"];
         $user->save();

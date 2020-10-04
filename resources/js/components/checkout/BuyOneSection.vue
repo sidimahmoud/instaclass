@@ -1,7 +1,7 @@
 <template>
     <div class="container border-top border-primary pt-5">
         <!-- Heading -->
-        <h2 class=" h2 text-center">Checkout form</h2>
+        <h2 class=" h2 text-center">Enroll in this session</h2>
         <!--Grid row-->
         <div class="row">
             <!--Grid column-->
@@ -13,7 +13,7 @@
                         <!--Grid row-->
                         <!-- payement info-->
                         <div class="my-3">
-                            <div class="text-center" v-if="course_price===0">
+                            <div class="text-center" v-if="course_price==0">
                                 <h3>This course is free</h3>
                                 <h5>No payment required</h5>
                             </div>
@@ -32,6 +32,7 @@
                                             Please select a valid payment method.
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="row border rounded" v-if="paymentMethod==='card'">
                                     <div class="col-12">
@@ -92,7 +93,7 @@
                             <h6 class="my-0">
                                 <span class="font-weight-bold">
                                         {{course_name}}
-                                </span>
+                                    </span>
                             </h6>
                         </div>
                         <span class="text-muted">${{course_price}}</span>
@@ -117,25 +118,9 @@
     import Stripe from "../checkout/CardElement";
 
     export default {
-        name: "Checkout",
+        name: "BuyOneSection",
         components: {
             Stripe
-        },
-        methods: {
-            checkout() {
-                let payload = {
-                    paymentMethod: this.paymentMethod,
-                    course_id: this.course_id,
-                    course_name: this.course_name,
-                    course_price: this.course_price
-                };
-                this.$store.dispatch('enrollInAllSection', payload)
-                    .then(() => {
-                        alert("Enrolled successfully");
-                        this.$router.push({name: 'StudentProfile'})
-                    })
-                    .catch(err => console.log(err))
-            }
         },
         data() {
             return {
@@ -145,8 +130,25 @@
                 paymentMethod: 'card',
 
             }
-
         },
+        methods: {
+
+            checkout() {
+                let payload = {
+                    paymentMethod: this.paymentMethod,
+                    section_id: this.course_id,
+                    course_name: "section "+this.section_id,
+                    course_price: this.course_price
+                };
+                this.$store.dispatch('enroll', payload)
+                    .then(() => {
+                        alert("Enrolled successfully");
+                        this.$router.push({name: 'StudentProfile'})
+                    })
+                    .catch(err => console.log(err))
+            }
+        },
+
 
     }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <router-link :to="{ name: 'Detail', params: { slug: course.slug}}" tag="a">
+        <router-link :to="{ name: 'Detail', params: { slug: course.id}}" tag="a">
             <div class="row mb-2 shadow-sm px-0 py-2 bg-white justify-content-around align-items-center text-center">
                 <div class="col-md-3  align-items-center">
                     <img class="w-100 rounded-circle" :src="course.image" alt="Card image cap">
@@ -9,7 +9,7 @@
                     <div class="row text-left">
                         <div class="col-md-3 col-sm-12 justify-content-center align-items-center ">
                             <strong>{{course.sub_category.category.name_en}}</strong> >
-                             <strong>{{course.sub_category.name_en}}</strong>
+                            <strong>{{course.sub_category.name_en}}</strong>
                         </div>
                         <div class="col-md-3 col-sm-12 justify-content-center align-items-center "><b>Number of
                             Sessions:</b> 3

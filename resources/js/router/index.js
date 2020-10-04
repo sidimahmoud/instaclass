@@ -12,6 +12,7 @@ import Home from "../components/HomeCompnent";
 import About from "../components/About";
 import Contact from "../components/ContactCompo";
 import Checkout from "../components/checkout/Checkout";
+import BuyOneSection from "../components/checkout/BuyOneSection";
 
 import Details from "../components/courses/CourseDetails";
 import Courses from "../components/courses/Courses";
@@ -167,6 +168,15 @@ const routes = [
         path: '/checkout/:slug',
         name: 'Checkout',
         component: Checkout,
+        meta: {
+            requiresAuth: true,
+            title: 'Checkout'
+        }
+    },
+    {
+        path: '/checkout/:slug',
+        name: 'BuyOneSection',
+        component: BuyOneSection,
         meta: {
             requiresAuth: true,
             title: 'Checkout'

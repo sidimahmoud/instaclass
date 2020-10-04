@@ -12,7 +12,6 @@
                     <h6>Add a photo</h6>
                     <input type="file" class="text-center center-block file-upload" id="img">
                 </div>
-                {{userProfile.id}}
                 <br>
             </div><!--/col-3-->
             <div class="col-sm-9">
@@ -64,8 +63,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="about">About Me</label>
-                                    <textarea name="" id="about" class="form-control">{{userProfile.about}}
-                                    </textarea>
+                                    <textarea name="" id="about" class="form-control">{{userProfile.about}}</textarea>
                                 </div>
                             </div>
 
@@ -110,24 +108,27 @@
             updateProfile() {
                 const formData = new FormData();
                 const imagefile = document.querySelector('#img');
-                formData.append("first_name",4545) //document.querySelector('#first_name'));
-                formData.append("last_name", document.querySelector('#last_name'));
-                formData.append("phone", document.querySelector('#phone'));
+                formData.append("first_name", document.querySelector('#first_name').value);
+                formData.append("last_name", document.querySelector('#last_name').value);
+                formData.append("phone", document.querySelector('#phone').value);
                 // formData.append("country", document.querySelector('#img'));
                 // formData.append("city", document.querySelector('#img'));
-                formData.append("email", document.querySelector('#email'));
-                // formData.append("image", imagefile.files[0]);
-                formData.append("about", document.querySelector('#about'));
-                formData.append("languages", document.querySelector('#lang'));
-                console.log(formData)
-                axios.patch('/user/'+this.userProfile.id, formData, {
+                formData.append("email", document.querySelector('#email').value);
+                formData.append("image", imagefile.files[0]);
+                formData.append("about", document.querySelector('#about').value);
+                formData.append("languages", document.querySelector('#lang').value);
+                formData.append("_method", "put");
+              //  console.log(formData)
+                axios.post('/user/' + this.userProfile.id, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'method': 'update'
+                        'accept':'Application/json'
                     }
                 }).then(res => {
                     console.log(res);
-                    alert("Your course was published successfully")
+                    alert("Your course was published successfully");
+                    location.reload()
+
                 })
                     .catch(err => console.log(err.response));
             },

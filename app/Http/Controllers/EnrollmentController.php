@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\CourseFile;
 use App\Enrollment;
 use App\Notifications\NewSubscription;
 use App\Payement;
@@ -29,7 +30,7 @@ class EnrollmentController extends Controller
      */
     public function userEnrollments(Request $request)
     {
-        $enrollments = Enrollment::with('course.user')->where('user_id', $request->user()->id)->get();
+        $enrollments = Enrollment::with('section.course.user')->where('user_id', $request->user()->id)->get();
         return response()->json($enrollments);
     }
 
@@ -40,7 +41,7 @@ class EnrollmentController extends Controller
      */
     public function courseEnrollments($id)
     {
-        $enrollments = Enrollment::where('course_id', $id);
+        $enrollments = Enrollment::where('section_id', $id);
         return response()->json($enrollments);
     }
 
@@ -64,7 +65,7 @@ class EnrollmentController extends Controller
     {
         $enrollment = new Enrollment();
         $enrollment->user_id = $request->user()->id;
-        $enrollment->section_id = $request['section_id'];
+        $enrollment->course_file_id = $request['section_id'];
         $enrollment->save();
         if ($enrollment) {
             $payment = new Payement();
@@ -75,10 +76,10 @@ class EnrollmentController extends Controller
             $payment->object = $request['course_name'];
             $payment->save();
         }
-        $course = Course::find($request['course_id']);
-        $teacher = $course->user_id;
-        $user = User::find($teacher);
-        $user->notify(new NewSubscription());
+//        $course = CourseFile::find($request['section_id'])->course->id;
+//        $teacher = $course->user_id;
+//        $user = User::find($teacher);
+//        $user->notify(new NewSubscription());
 
         return response()->json("Enrolled successfully");
     }
@@ -90,7 +91,7 @@ class EnrollmentController extends Controller
         foreach ($sections as $section) {
             $enrollment = new Enrollment();
             $enrollment->user_id = $request->user()->id;
-            $enrollment->section_id = $section->id;
+            $enrollment->course_file_id = $section->id;
             $enrollment->save();
         }
 

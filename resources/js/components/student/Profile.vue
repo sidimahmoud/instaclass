@@ -29,17 +29,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6" v-if="userEnrollments.length>0">
-                        <Count-down
-                            :year="userEnrollments[0].course.created_at.slice(0,4)"
-                            :month="userEnrollments[0].course.created_at.slice(5,7)-1"
-                            :day="userEnrollments[0].course.created_at.slice(8,10)"
-                            :hour="userEnrollments[0].course.created_at.slice(11,13)"
-                            :minute="userEnrollments[0].course.created_at.slice(14,16)"
-                            :second="userEnrollments[0].course.created_at.slice(17,19)"
-                        />
-                    </div>
-                    <div class="col-md-6" v-else>
+<!--                    <div class="col-md-6" v-if="userEnrollments.length>0">-->
+<!--                        <Count-down-->
+<!--                            :year="userEnrollments[0].course.created_at.slice(0,4)"-->
+<!--                            :month="userEnrollments[0].course.created_at.slice(5,7)-1"-->
+<!--                            :day="userEnrollments[0].course.created_at.slice(8,10)"-->
+<!--                            :hour="userEnrollments[0].course.created_at.slice(11,13)"-->
+<!--                            :minute="userEnrollments[0].course.created_at.slice(14,16)"-->
+<!--                            :second="userEnrollments[0].course.created_at.slice(17,19)"-->
+<!--                        />-->
+<!--                    </div>-->
+                    <div class="col-md-6" >
                         <Count-down
                             :year="2020"
                             :month="1"
@@ -71,15 +71,15 @@
                                     </li>
                                     <li class=" mt-4" v-else>
                                         <div v-for="e in userEnrollments" :key="e.id">
-                                            <div v-if="e.course.type==1">
-                                                <router-link :to="{name: 'Player', params: { slug: e.course.slug} }">
-                                                    <h5 class="mt-0 mb-1">{{e.course.name}},
-                                                        {{e.course.created_at.slice(0,10)}},
-                                                        {{e.course.created_at.slice(11,16)}},
-                                                        {{e.course.user.first_name}}
-                                                        {{e.course.user.last_name}}</h5>
-                                                </router-link>
-                                            </div>
+<!--                                            <div v-if="e.course.type==1">-->
+<!--                                                <router-link :to="{name: 'Player', params: { slug: e.course.slug} }">-->
+<!--                                                    <h5 class="mt-0 mb-1">{{e.course.name}},-->
+<!--                                                        {{e.course.created_at.slice(0,10)}},-->
+<!--                                                        {{e.course.created_at.slice(11,16)}},-->
+<!--                                                        {{e.course.user.first_name}}-->
+<!--                                                        {{e.course.user.last_name}}</h5>-->
+<!--                                                </router-link>-->
+<!--                                            </div>-->
                                         </div>
                                     </li>
                                 </ul>
@@ -120,16 +120,16 @@
                                             course
                                         </p>
                                     </li>
-                                    <li class="mt-4" v-for="e in userEnrollments" :key="e.id" v-else>
-                                        <div v-if="e.course.type===2">
-                                            <router-link :to="{name: 'Live', params: { slug: e.course.slug} }">
-                                                <h5 class="mt-0 mb-1">{{e.course.name}},
-                                                    {{e.course.created_at.slice(0,10)}},
-                                                    {{e.course.user.first_name}}
-                                                    {{e.course.user.last_name}}</h5>
-                                            </router-link>
-                                        </div>
-                                    </li>
+<!--                                    <li class="mt-4" v-for="e in userEnrollments" :key="e.id" v-else>-->
+<!--                                        <div v-if="e.course.type===2">-->
+<!--                                            <router-link :to="{name: 'Live', params: { slug: e.course.slug} }">-->
+<!--                                                <h5 class="mt-0 mb-1">{{e.course.name}},-->
+<!--                                                    {{e.course.created_at.slice(0,10)}},-->
+<!--                                                    {{e.course.user.first_name}}-->
+<!--                                                    {{e.course.user.last_name}}</h5>-->
+<!--                                            </router-link>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
                                 </ul>
                             </div>
                             <div class="tab-pane fade show " id="ratings">
