@@ -12,6 +12,9 @@
                             <select class="form-control" id="selectLang" @change="loadSubs" required>
                                 <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name_en}}</option>
                             </select>
+                            <button class="btn  btn-sm" data-toggle="modal"
+                                    data-target="#exampleModalCenter">New
+                            </button>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -19,8 +22,10 @@
                             <label for="subCateg">Sub category</label>
                             <select class="form-control" id="subCateg" v-model="course.sub_category_id" required>
                                 <option v-for="c in subCategories" :key="c.id" :value="c.id">{{c.name_en}}</option>
-
                             </select>
+                            <button class="btn  btn-sm" data-toggle="modal"
+                                    data-target="#modelSub">New
+                            </button>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -107,7 +112,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="desc">Summerize the course</label>
-                            <input type="text" class="form-control" id="desc"
+                            <input type="text" class="form-control"
                                    v-model="course.short_description" required>
                         </div>
                     </div>
@@ -167,7 +172,103 @@
                 </div>
                 <button class="btn btn-primary btn-block" type="submit">Publish course</button>
             </form>
-
+        </div>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">New Category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="my-3" method="post" @submit.prevent="saveCategory">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="title">Name (English)</label>
+                                        <input type="text" class="form-control" id="title" v-model="newCateg.name"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="desc">Name (french)</label>
+                                        <input type="text" class="form-control" id="desc" v-model="newCateg.nom"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="image">Image</label>
+                                        <input type="file" class="form-control-file" id="image" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                        </form>
+                    </div>
+                    <!--                    <div class="modal-footer">-->
+                    <!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                    <!--                        <button type="button" class="btn btn-primary ">-->
+                    <!--                            Save-->
+                    <!--                        </button>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modelSub" tabindex="-1" role="dialog"
+             aria-labelledby="modelSubTitle"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modelSubTitle">New Sub-category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="my-3" method="post" @submit.prevent="saveSub">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="selCat">Select category</label>
+                                        <select class="form-control" id="selCat" @change="loadSubs" required v-model="newSub.catId">
+                                            <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name_en}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="nfr">Name (English)</label>
+                                        <input type="text" class="form-control" id="nfr" v-model="newSub.name"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="nen">Name (french)</label>
+                                        <input type="text" class="form-control" id="nen" v-model="newSub.nom"
+                                               required>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                        </form>
+                    </div>
+                    <!--                    <div class="modal-footer">-->
+                    <!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                    <!--                        <button type="button" class="btn btn-primary ">-->
+                    <!--                            Save-->
+                    <!--                        </button>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
         </div>
     </div>
 
@@ -208,15 +309,52 @@
                         timeZone: 'ET',
                         frequency: '0',
                     },
-                ]
+                ],
+                newCateg: {
+                    name: '',
+                    nom: '',
+                },
+                newSub: {
+                    catId:'',
+                    name: '',
+                    nom: '',
+                }
             }
         },
         methods: {
             ...mapActions(['fetchCategories']),
+            saveCategory() {
+                const formData = new FormData();
+                const imagefile = document.querySelector('#image');
+                formData.append("name", this.newCateg.name);
+                formData.append("nom", this.newCateg.nom);
+                formData.append("image", imagefile.files[0]);
+                axios.post('/categories', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
+                }).then(res => {
+                    console.log(res);
+                    alert("Category created successfully")
+                    location.reload()
+                })
+            },
+            saveSub() {
+                if (this.newSub.catId === '0') {
+                    alert("Select category");
+                    return
+                }
+                axios.post('/sub-categories', {category_id: this.newSub.catId, name: this.newSub.name, nom: this.newSub.nom})
+                    .then(res => {
+                        alert("Sub-category created successfully");
+                        location.reload()
+                    })
+            },
             loadSubs(event) {
                 const id = event.target.value;
                 this.$store.dispatch('fetchSubCategories', id)
-            },
+            }
+            ,
             saveCourse() {
                 const formData = new FormData();
                 const imagefile = document.querySelector('#thumbnail');
@@ -242,7 +380,8 @@
                     alert("Your course was published successfully")
                 })
                     .catch(err => console.log(err.response));
-            },
+            }
+            ,
 
             addSection(event) {
                 const sections = event.target.value;
@@ -259,7 +398,8 @@
                 }
 
 
-            },
+            }
+            ,
         },
         computed: mapGetters(["allCategories", "subCategories"]),
         created() {

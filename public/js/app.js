@@ -5416,7 +5416,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CountDown",
@@ -8708,6 +8707,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8716,86 +8722,19 @@ __webpack_require__.r(__webpack_exports__);
     return {
       rate: 5,
       review: "",
-      course_id: "",
+      course_id: '',
       sending: false
     };
   },
   methods: {
-    getAccessToken: function getAccessToken() {
-      var _this = this; // Request a new token
-
-
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/access_token/".concat(this.myRoom, "/").concat(this.user)).then(function (response) {
-        _this.accessToken = response.data;
-        _this.started = true;
-
-        _this.connectToRoom();
-      })["catch"](function (error) {
-        return console.log(error);
-      });
-    },
-    connectToRoom: function connectToRoom() {
-      var _this2 = this;
-
-      var _require = __webpack_require__(/*! twilio-video */ "./node_modules/twilio-video/es5/index.js"),
-          connect = _require.connect,
-          createLocalVideoTrack = _require.createLocalVideoTrack,
-          createLocalTracks = _require.createLocalTracks;
-
-      connect(this.accessToken, {
-        name: this.myRoom
-      }).then(function (room) {
-        console.log("Successfully joined a Room: ".concat(room));
-        _this2.roomSid = room.sid;
-        _this2.activeRoom = room;
-        var videoChatWindow = document.getElementById('video-chat-window');
-        createLocalTracks({
-          audio: true,
-          video: {
-            width: 1280,
-            height: 300
-          }
-        }).then(function (track) {
-          return videoChatWindow.appendChild(track.attach());
-        });
-        room.on('participantConnected', function (participant) {
-          console.log("Participant \"".concat(participant.identity, "\" connected"));
-
-          _this2.participants.push(participant.identity);
-
-          participant.tracks.forEach(function (publication) {
-            if (publication.isSubscribed) {
-              var track = publication.track;
-              videoChatWindow.appendChild(track.attach());
-            }
-          });
-          participant.on('trackSubscribed', function (track) {
-            videoChatWindow.appendChild(track.attach());
-          });
-        });
-        room.on('participantDisconnected', function (participant) {
-          console.log("Participant ".concat(participant.identity, " disconnected"));
-
-          _this2.participants.splice(_this2.participants.indexOf(participant.identity), 1);
-
-          participant.tracks.forEach(function (track) {
-            track.detach().forEach(function (mediaElement) {
-              mediaElement.remove();
-            });
-          });
-        });
-      }, function (error) {
-        console.error("Unable to connect to Room: ".concat(error.message));
-      });
-    },
     findCourse: function findCourse() {
-      this.$store.dispatch('getCourse', this.$route.params.slug);
+      this.$store.dispatch('getSection', this.$route.params.slug);
     },
     rating: function rating() {
       this.$store.dispatch('rateCourse', {
         rate: this.rate,
         review: this.review,
-        course_id: this.course_id
+        course_id: this.course.id
       }).then(function (res) {
         res.data === "success" ? alert("Success") : alert("error");
         window.location.reload();
@@ -9470,6 +9409,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -9586,6 +9526,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -10521,6 +10467,107 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewCourse",
@@ -10552,10 +10599,50 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         description: '',
         timeZone: 'ET',
         frequency: '0'
-      }]
+      }],
+      newCateg: {
+        name: '',
+        nom: ''
+      },
+      newSub: {
+        catId: '',
+        name: '',
+        nom: ''
+      }
     };
   },
   methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchCategories'])), {}, {
+    saveCategory: function saveCategory() {
+      var formData = new FormData();
+      var imagefile = document.querySelector('#image');
+      formData.append("name", this.newCateg.name);
+      formData.append("nom", this.newCateg.nom);
+      formData.append("image", imagefile.files[0]);
+      axios.post('/categories', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (res) {
+        console.log(res);
+        alert("Category created successfully");
+        location.reload();
+      });
+    },
+    saveSub: function saveSub() {
+      if (this.newSub.catId === '0') {
+        alert("Select category");
+        return;
+      }
+
+      axios.post('/sub-categories', {
+        category_id: this.newSub.catId,
+        name: this.newSub.name,
+        nom: this.newSub.nom
+      }).then(function (res) {
+        alert("Sub-category created successfully");
+        location.reload();
+      });
+    },
     loadSubs: function loadSubs(event) {
       var id = event.target.value;
       this.$store.dispatch('fetchSubCategories', id);
@@ -11009,7 +11096,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -11037,7 +11123,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     EditProfile: _EditProfile__WEBPACK_IMPORTED_MODULE_5__["default"],
     CountDown: _CountDown__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchProfile", "fetchUserCourses", "fetchTeacherDetails", "fetchTeacherPayments"])), {}, {
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchProfile", "fetchUserCourses", "fetchTeacherDetails", "fetchTeacherPayments", "getUpcomingSections"])), {}, {
     logout: function logout() {
       var _this = this;
 
@@ -11061,10 +11147,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     }
   }),
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["profileLoading", "userProfile", "userCourses", "allTeacherDetails"]),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["profileLoading", "userProfile", "userCourses", "allTeacherDetails", "upComingSections"]),
   created: function created() {
     this.fetchUserCourses();
     this.fetchTeacherDetails();
+    this.getUpcomingSections();
   }
 });
 
@@ -11204,7 +11291,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _CountDown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../CountDown */ "./resources/js/components/CountDown.vue");
-/* harmony import */ var _store_modules_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/modules/user */ "./resources/js/store/modules/user.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -11425,6 +11520,10 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(err.response);
       });
     }
+  },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])(["getEnrolledStudents"]),
+  created: function created() {
+    this.$store.dispatch("getSectionEnrollments", this.$route.params.slug);
   }
 });
 
@@ -77650,14 +77749,14 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-12" }, [
-        _vm.expired
-          ? _c("h3", [_vm._v("Timer enabled when you have an upcoming course")])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
       _vm.text
         ? _c("div", { staticClass: "col-12" }, [
+            _vm.expired
+              ? _c("h3", [
+                  _vm._v("Timer enabled when you have an upcoming course")
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             !_vm.expired
               ? _c("h3", [_vm._v("Before your next course")])
               : _vm._e()
@@ -83241,69 +83340,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-4" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-9 col-sm-12" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "row mt-1" }, [
-          _c("div", { staticClass: "col-md-12" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c("div", { staticClass: "tab-content my-5" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "tab-pane fade show active",
-                  attrs: { id: "overview" }
-                },
-                [
-                  _c("div", { staticClass: "container" }, [
-                    _c("h3", { staticClass: "font-weight-bolder" }, [
-                      _vm._v(_vm._s(_vm.course.name))
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        "\n                                    " +
-                          _vm._s(_vm.course.description) +
-                          "\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c("span", { staticClass: "h5 mr-5 font-weight-bold" }, [
-                        _vm._v(
-                          _vm._s(_vm.course.enrollments.length) +
-                            " Total Students"
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _vm._m(3)
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "tab-pane fade show", attrs: { id: "FAQ" } },
-                [
-                  _vm._v(
-                    "\n                            FAQ\n                        "
-                  )
-                ]
-              )
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._m(4)
-    ]),
+    _vm._m(0),
     _vm._v(" "),
     _c(
       "div",
@@ -83315,11 +83352,6 @@ var render = function() {
           role: "dialog",
           "aria-labelledby": "exampleModalCenterTitle",
           "aria-hidden": "true"
-        },
-        on: {
-          click: function($event) {
-            _vm.course_id = _vm.course.id
-          }
         }
       },
       [
@@ -83331,62 +83363,141 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(5),
+              _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "my-3" }, [
-                  _vm._v(
-                    "\n                        Give it a star\n                        "
+                _c("h3", [_vm._v("How was the session with the teacher")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "pl-5" }, [
+                  _c(
+                    "p",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.rate = 5
+                        }
+                      }
+                    },
+                    [
+                      _vm._l(5, function(n) {
+                        return _c("i", {
+                          staticClass: "fa fa-star text-warning mx-2 rateStar"
+                        })
+                      }),
+                      _vm._v(" "),
+                      _c("strong", [_vm._v("Excellent")])
+                    ],
+                    2
                   ),
-                  _c("i", {
-                    staticClass: "fa fa-star text-warning mx-4 rateStar",
-                    on: {
-                      click: function($event) {
-                        _vm.rate = 1
-                      }
-                    }
-                  }),
                   _vm._v(" "),
-                  _c("i", {
-                    staticClass: "fa fa-star text-warning mx-4 rateStar",
-                    on: {
-                      click: function($event) {
-                        _vm.rate = 2
+                  _c(
+                    "p",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.rate = 4
+                        }
                       }
-                    }
-                  }),
+                    },
+                    [
+                      _vm._l(4, function(n) {
+                        return _c("i", {
+                          staticClass: "fa fa-star text-warning mx-2 rateStar"
+                        })
+                      }),
+                      _vm._v(" "),
+                      _c("i", {
+                        staticClass: "fa fa-star text-secondary mx-2 rateStar"
+                      }),
+                      _vm._v(" "),
+                      _c("strong", [_vm._v("Above Average")])
+                    ],
+                    2
+                  ),
                   _vm._v(" "),
-                  _c("i", {
-                    staticClass: "fa fa-star text-warning mx-4 rateStar",
-                    on: {
-                      click: function($event) {
-                        _vm.rate = 3
+                  _c(
+                    "p",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.rate = 3
+                        }
                       }
-                    }
-                  }),
+                    },
+                    [
+                      _vm._l(3, function(n) {
+                        return _c("i", {
+                          staticClass: "fa fa-star text-warning mx-2 rateStar"
+                        })
+                      }),
+                      _vm._v(" "),
+                      _vm._l(2, function(n) {
+                        return _c("i", {
+                          staticClass: "fa fa-star text-secondary mx-2 rateStar"
+                        })
+                      }),
+                      _vm._v(" "),
+                      _c("strong", [_vm._v("Average")])
+                    ],
+                    2
+                  ),
                   _vm._v(" "),
-                  _c("i", {
-                    staticClass: "fa fa-star text-warning mx-4 rateStar",
-                    on: {
-                      click: function($event) {
-                        _vm.rate = 4
+                  _c(
+                    "p",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.rate = 2
+                        }
                       }
-                    }
-                  }),
+                    },
+                    [
+                      _vm._l(2, function(n) {
+                        return _c("i", {
+                          staticClass: "fa fa-star text-warning mx-2 rateStar"
+                        })
+                      }),
+                      _vm._v(" "),
+                      _vm._l(3, function(n) {
+                        return _c("i", {
+                          staticClass: "fa fa-star text-secondary mx-2 rateStar"
+                        })
+                      }),
+                      _vm._v(" "),
+                      _c("strong", [_vm._v("Below Average")])
+                    ],
+                    2
+                  ),
                   _vm._v(" "),
-                  _c("i", {
-                    staticClass: "fa fa-star text-warning mx-4 rateStar",
-                    on: {
-                      click: function($event) {
-                        _vm.rate = 4
+                  _c(
+                    "p",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.rate = 1
+                        }
                       }
-                    }
-                  })
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "fa fa-star text-warning mx-2 rateStar"
+                      }),
+                      _vm._v(" "),
+                      _vm._l(4, function(n) {
+                        return _c("i", {
+                          staticClass: "fa fa-star text-secondary mx-2 rateStar"
+                        })
+                      }),
+                      _vm._v(" "),
+                      _c("strong", [_vm._v("Poor")])
+                    ],
+                    2
+                  )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "desc" } }, [
-                    _vm._v("Write a review")
+                    _vm._v("Leave a comment")
                   ]),
                   _vm._v(" "),
                   _c("textarea", {
@@ -83434,7 +83545,7 @@ var render = function() {
                     !_vm.sending
                       ? _c("span", [
                           _vm._v(
-                            "\n                            Save changes\n                        "
+                            "\n                            Submit review\n                        "
                           )
                         ])
                       : _vm._e(),
@@ -83465,131 +83576,33 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "embed-responsive embed-responsive-16by9" },
-      [
-        _c("iframe", {
-          staticClass: "embed-responsive-item",
-          attrs: {
-            src: "https://www.youtube.com/embed/zpOULjyy-n8?rel=0",
-            allowfullscreen: ""
-          }
-        })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "nav nav-pills nav-fill" }, [
-      _c(
-        "a",
-        {
-          staticClass: "nav-item nav-link active",
-          attrs: { href: "#overview", "data-toggle": "tab" }
-        },
-        [_vm._v("Overview")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "nav-item nav-link",
-          attrs: { href: "#FAQ", "data-toggle": "tab" }
-        },
-        [_vm._v("FAQ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: {
-            type: "button",
-            "data-toggle": "modal",
-            "data-target": "#exampleModalCenter"
-          }
-        },
-        [
-          _c("span", { staticClass: "float-right font-weight-bold" }, [
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "embed-responsive embed-responsive-16by9" }, [
+          _c("iframe", {
+            staticClass: "embed-responsive-item",
+            attrs: {
+              src: "https://www.youtube.com/embed/zpOULjyy-n8?rel=0",
+              allowfullscreen: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: {
+              type: "button",
+              "data-toggle": "modal",
+              "data-target": "#exampleModalCenter"
+            }
+          },
+          [
             _c("i", { staticClass: "fa fa-heart text-danger" }),
-            _vm._v(" Rate this course")
-          ])
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("p", { staticClass: "h5 mt-5 font-weight-bold" }, [
-        _vm._v("What you’ll learn?")
-      ]),
-      _vm._v(" "),
-      _c("ul", [
-        _c("li", [_vm._v("Phasellus enim magna, varius et commodo ut.")]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("Sed consequat justo non mauris pretium at tempor justo.")
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v(
-            "Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel\n                                            justo.\n                                        "
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [_vm._v("Phasellus enim magna, varius et commodo ut.")]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("Sed consequat justo non mauris pretium at tempor justo.")
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v(
-            "Nulla tellus, eleifend euismod pellentesque vel, sagittis vel justo.\n                                        "
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("p", { staticClass: "h5 mt-5 font-weight-bold" }, [
-        _vm._v("Requirements")
-      ]),
-      _vm._v(" "),
-      _c("ul", [
-        _c("li", [_vm._v("Phasellus enim magna, varius et commodo ut.")]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("Sed consequat justo non mauris pretium at tempor justo.")
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v(
-            "Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel\n                                            justo.\n                                        "
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3 col-sm-12" }, [
-      _c("div", { staticClass: "row shadow-sm " }, [
-        _c("h4", { staticClass: "text-center" }, [
-          _vm._v("Participants\n                ")
-        ])
+            _vm._v(" Rate this course\n            ")
+          ]
+        )
       ])
     ])
   },
@@ -85236,7 +85249,73 @@ var render = function() {
                                 )
                               ])
                             ])
-                          : _vm._e()
+                          : _c(
+                              "li",
+                              { staticClass: " mt-4" },
+                              _vm._l(_vm.userEnrollments, function(e) {
+                                return _c("div", { key: e.id }, [
+                                  e.course_file.course.type === 2
+                                    ? _c(
+                                        "div",
+                                        [
+                                          _c(
+                                            "router-link",
+                                            {
+                                              attrs: {
+                                                to: {
+                                                  name: "Live",
+                                                  params: {
+                                                    slug: e.course_file.id
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "h5",
+                                                { staticClass: "mt-0 mb-1" },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      e.course_file.title
+                                                    ) +
+                                                      ",\n                                                    " +
+                                                      _vm._s(
+                                                        e.course_file.created_at.slice(
+                                                          0,
+                                                          10
+                                                        )
+                                                      ) +
+                                                      ",\n                                                    " +
+                                                      _vm._s(
+                                                        e.course_file.created_at.slice(
+                                                          11,
+                                                          16
+                                                        )
+                                                      ) +
+                                                      ",\n                                                    " +
+                                                      _vm._s(
+                                                        e.course_file.course
+                                                          .user.first_name
+                                                      ) +
+                                                      "\n                                                    " +
+                                                      _vm._s(
+                                                        e.course_file.course
+                                                          .user.last_name
+                                                      )
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    : _vm._e()
+                                ])
+                              }),
+                              0
+                            )
                       ])
                     ]
                   ),
@@ -86774,6 +86853,18 @@ var render = function() {
                     )
                   }),
                   0
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn  btn-sm",
+                    attrs: {
+                      "data-toggle": "modal",
+                      "data-target": "#exampleModalCenter"
+                    }
+                  },
+                  [_vm._v("New\n                        ")]
                 )
               ])
             ]),
@@ -86825,6 +86916,18 @@ var render = function() {
                     )
                   }),
                   0
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn  btn-sm",
+                    attrs: {
+                      "data-toggle": "modal",
+                      "data-target": "#modelSub"
+                    }
+                  },
+                  [_vm._v("New\n                        ")]
                 )
               ])
             ]),
@@ -87207,7 +87310,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", id: "desc", required: "" },
+                  attrs: { type: "text", required: "" },
                   domProps: { value: _vm.course.short_description },
                   on: {
                     input: function($event) {
@@ -87523,7 +87626,313 @@ var render = function() {
         ],
         2
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "exampleModalCenter",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalCenterTitle",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    staticClass: "my-3",
+                    attrs: { method: "post" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.saveCategory($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "title" } }, [
+                            _vm._v("Name (English)")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newCateg.name,
+                                expression: "newCateg.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "title", required: "" },
+                            domProps: { value: _vm.newCateg.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newCateg,
+                                  "name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "desc" } }, [
+                            _vm._v("Name (french)")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newCateg.nom,
+                                expression: "newCateg.nom"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "desc", required: "" },
+                            domProps: { value: _vm.newCateg.nom },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newCateg,
+                                  "nom",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(2)
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary btn-block",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Submit")]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "modelSub",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "modelSubTitle",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    staticClass: "my-3",
+                    attrs: { method: "post" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.saveSub($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "selCat" } }, [
+                            _vm._v("Select category")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.newSub.catId,
+                                  expression: "newSub.catId"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { id: "selCat", required: "" },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.newSub,
+                                      "catId",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  _vm.loadSubs
+                                ]
+                              }
+                            },
+                            _vm._l(_vm.allCategories, function(c) {
+                              return _c(
+                                "option",
+                                { key: c.id, domProps: { value: c.id } },
+                                [
+                                  _vm._v(
+                                    _vm._s(c.name_en) +
+                                      "\n                                        "
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "nfr" } }, [
+                            _vm._v("Name (English)")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newSub.name,
+                                expression: "newSub.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "nfr", required: "" },
+                            domProps: { value: _vm.newSub.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newSub,
+                                  "name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "nen" } }, [
+                            _vm._v("Name (french)")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newSub.nom,
+                                expression: "newSub.nom"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "nen", required: "" },
+                            domProps: { value: _vm.newSub.nom },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.newSub, "nom", $event.target.value)
+                              }
+                            }
+                          })
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary btn-block",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Submit")]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -87543,6 +87952,69 @@ var staticRenderFns = [
           "Note:\n                                When the number of sessions exceed 3, your third course will be free student\n                                enrolled.\n                            "
         )
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
+        [_vm._v("New Category")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "image" } }, [_vm._v("Image")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control-file",
+          attrs: { type: "file", id: "image", required: "" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "modelSubTitle" } }, [
+        _vm._v("New Sub-category")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
     ])
   }
 ]
@@ -87989,24 +88461,40 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col mx-auto" },
-                    [
-                      _c("Count-down", {
-                        attrs: {
-                          year: 2020,
-                          month: 9,
-                          day: 1,
-                          hour: 0,
-                          minute: 0,
-                          second: 0,
-                          text: false
-                        }
-                      })
-                    ],
-                    1
-                  )
+                  _vm.upComingSections.length > 0
+                    ? _c(
+                        "div",
+                        { staticClass: "mx-auto" },
+                        [
+                          _c("Count-down", {
+                            attrs: {
+                              year: _vm.upComingSections[0].startDate.slice(
+                                0,
+                                4
+                              ),
+                              month: _vm.upComingSections[0].startDate.slice(
+                                5,
+                                7
+                              ),
+                              day: _vm.upComingSections[0].startDate.slice(
+                                8,
+                                9
+                              ),
+                              hour: _vm.upComingSections[0].startDate.slice(
+                                11,
+                                13
+                              ),
+                              minute: _vm.upComingSections[0].startDate.slice(
+                                14,
+                                16
+                              ),
+                              second: 0
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c(
@@ -88018,7 +88506,10 @@ var render = function() {
                       {
                         staticClass: "btn btn-danger",
                         attrs: {
-                          to: { name: "LiveCourse", params: { slug: "hello" } },
+                          to: {
+                            name: "LiveCourse",
+                            params: { slug: _vm.upComingSections[0].id }
+                          },
                           tag: "button"
                         }
                       },
@@ -88794,28 +89285,29 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user,
-                        expression: "user"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "user" },
-                    domProps: { value: _vm.user },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.user = $event.target.value
-                      }
-                    }
-                  })
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", [
+                  _c("h3", [
+                    _vm._v("Name of students enrolled in the session")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "ol",
+                    { staticClass: "text-left" },
+                    _vm._l(_vm.getEnrolledStudents, function(s) {
+                      return _c("li", [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(s.user.first_name) +
+                            " " +
+                            _vm._s(s.user.last_name) +
+                            "\n                        "
+                        )
+                      ])
+                    }),
+                    0
+                  )
                 ]),
                 _vm._v(" "),
                 _c(
@@ -110539,7 +111031,6 @@ var sd = function sd(v, d) {
 
 window.app_api = sd("http://127.0.0.1:8000/api", "https://mondemenagement.ca/api");
 window.axios.defaults.baseURL = sd("http://127.0.0.1:8000/api", "https://mondemenagement.ca/api");
-window.axios.defaults.baseURL = "https://instantaclass.herokuapp.com/api";
 
 /***/ }),
 
@@ -116158,7 +116649,9 @@ var state = {
   demands: [],
   loading: false,
   enrolled: false,
-  statistics: ''
+  statistics: '',
+  enrolledStudents: '',
+  upComing: ''
 };
 var getters = {
   allCourses: function allCourses(state) {
@@ -116181,6 +116674,12 @@ var getters = {
   },
   enrolled: function enrolled(state) {
     return state.enrolled;
+  },
+  getEnrolledStudents: function getEnrolledStudents(state) {
+    return state.enrolledStudents;
+  },
+  upComingSections: function upComingSections(state) {
+    return state.upComing;
   }
 };
 var actions = {
@@ -116246,9 +116745,9 @@ var actions = {
       }, _callee2);
     }))();
   },
-  search: function search(_ref3, q) {
+  getSection: function getSection(_ref3, slug) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-      var commit, response;
+      var commit, response, me;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
@@ -116256,14 +116755,25 @@ var actions = {
               commit = _ref3.commit;
               commit('setLoading', true);
               _context3.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/courses/search/".concat(q));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/sections/".concat(slug));
 
             case 4:
               response = _context3.sent;
-              commit('setCourses', response.data);
+              commit('setCourse', response.data[0]);
+              console.log(response.data);
+              me = JSON.parse(localStorage.getItem('user')) || null;
+              commit('setEnrolled', false); // if (me) {
+              //     response.data.enrollments.map(item => {
+              //         if (item.user_id === me.u) {
+              //             commit('setEnrolled', true);
+              //             console.log("enrolled")
+              //         }
+              //     })
+              // }
+
               commit('setLoading', false);
 
-            case 7:
+            case 10:
             case "end":
               return _context3.stop();
           }
@@ -116271,15 +116781,92 @@ var actions = {
       }, _callee3);
     }))();
   },
-  demander: function demander(_ref4, payload) {
+  getSectionEnrollments: function getSectionEnrollments(_ref4, id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-      var commit;
+      var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
               commit = _ref4.commit;
-              return _context4.abrupt("return", new Promise(function (resolve, reject) {
+              commit('setLoading', true);
+              _context4.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/enrolled-students/".concat(id));
+
+            case 4:
+              response = _context4.sent;
+              commit('setEnrollments', response.data);
+              console.log(response.data);
+              commit('setLoading', false);
+
+            case 8:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }))();
+  },
+  getUpcomingSections: function getUpcomingSections(_ref5) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              commit = _ref5.commit;
+              commit('setLoading', true);
+              _context5.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/upcoming-section");
+
+            case 4:
+              response = _context5.sent;
+              commit('setUpcoming', response.data);
+              console.log(response.data);
+              commit('setLoading', false);
+
+            case 8:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }))();
+  },
+  search: function search(_ref6, q) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              commit = _ref6.commit;
+              commit('setLoading', true);
+              _context6.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/courses/search/".concat(q));
+
+            case 4:
+              response = _context6.sent;
+              commit('setCourses', response.data);
+              commit('setLoading', false);
+
+            case 7:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6);
+    }))();
+  },
+  demander: function demander(_ref7, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+      var commit;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              commit = _ref7.commit;
+              return _context7.abrupt("return", new Promise(function (resolve, reject) {
                 commit('setLoading', true);
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   url: '/courses/demander',
@@ -116296,22 +116883,21 @@ var actions = {
 
             case 2:
             case "end":
-              return _context4.stop();
+              return _context7.stop();
           }
         }
-      }, _callee4);
+      }, _callee7);
     }))();
   },
-  rateCourse: function rateCourse(_ref5, payload) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+  rateCourse: function rateCourse(_ref8, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
       var commit;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
         while (1) {
-          switch (_context5.prev = _context5.next) {
+          switch (_context8.prev = _context8.next) {
             case 0:
-              commit = _ref5.commit;
-              headers();
-              return _context5.abrupt("return", new Promise(function (resolve, reject) {
+              commit = _ref8.commit;
+              return _context8.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   url: 'https://instantclass.herokuapp.com/api/rate',
                   data: payload,
@@ -116324,25 +116910,24 @@ var actions = {
                 });
               }));
 
-            case 3:
+            case 2:
             case "end":
-              return _context5.stop();
+              return _context8.stop();
           }
         }
-      }, _callee5);
+      }, _callee8);
     }))();
   },
-  enroll: function enroll(_ref6, payload) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+  enroll: function enroll(_ref9, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
       var commit;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
         while (1) {
-          switch (_context6.prev = _context6.next) {
+          switch (_context9.prev = _context9.next) {
             case 0:
-              commit = _ref6.commit;
-              headers();
+              commit = _ref9.commit;
               commit('setLoading', true);
-              return _context6.abrupt("return", new Promise(function (resolve, reject) {
+              return _context9.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   url: '/enroll',
                   data: payload,
@@ -116356,25 +116941,24 @@ var actions = {
                 });
               }));
 
-            case 4:
+            case 3:
             case "end":
-              return _context6.stop();
+              return _context9.stop();
           }
         }
-      }, _callee6);
+      }, _callee9);
     }))();
   },
-  enrollInAllSection: function enrollInAllSection(_ref7, payload) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+  enrollInAllSection: function enrollInAllSection(_ref10, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
       var commit;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
         while (1) {
-          switch (_context7.prev = _context7.next) {
+          switch (_context10.prev = _context10.next) {
             case 0:
-              commit = _ref7.commit;
-              headers();
+              commit = _ref10.commit;
               commit('setLoading', true);
-              return _context7.abrupt("return", new Promise(function (resolve, reject) {
+              return _context10.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   url: '/enroll-in-course',
                   data: payload,
@@ -116388,24 +116972,23 @@ var actions = {
                 });
               }));
 
-            case 4:
+            case 3:
             case "end":
-              return _context7.stop();
+              return _context10.stop();
           }
         }
-      }, _callee7);
+      }, _callee10);
     }))();
   },
-  deleteCourse: function deleteCourse(_ref8, id) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+  deleteCourse: function deleteCourse(_ref11, id) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
       var commit;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
         while (1) {
-          switch (_context8.prev = _context8.next) {
+          switch (_context11.prev = _context11.next) {
             case 0:
-              commit = _ref8.commit;
-              headers();
-              return _context8.abrupt("return", new Promise(function (resolve, reject) {
+              commit = _ref11.commit;
+              return _context11.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('/course/' + id).then(function (resp) {
                   console.log(resp);
                   resolve(resp);
@@ -116414,82 +116997,7 @@ var actions = {
                 });
               }));
 
-            case 3:
-            case "end":
-              return _context8.stop();
-          }
-        }
-      }, _callee8);
-    }))();
-  },
-  fetchDemands: function fetchDemands(_ref9) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
-      var commit, response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
-        while (1) {
-          switch (_context9.prev = _context9.next) {
-            case 0:
-              commit = _ref9.commit;
-              commit('setLoading', true);
-              _context9.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/demands");
-
-            case 4:
-              response = _context9.sent;
-              commit('setDemands', response.data);
-              commit('setLoading', false);
-
-            case 7:
-            case "end":
-              return _context9.stop();
-          }
-        }
-      }, _callee9);
-    }))();
-  },
-  fetchStatistics: function fetchStatistics(_ref10) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
-      var commit, response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
-        while (1) {
-          switch (_context10.prev = _context10.next) {
-            case 0:
-              commit = _ref10.commit;
-              commit('setLoading', true);
-              _context10.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/statistics");
-
-            case 4:
-              response = _context10.sent;
-              commit('setStatistics', response.data);
-              commit('setLoading', false);
-
-            case 7:
-            case "end":
-              return _context10.stop();
-          }
-        }
-      }, _callee10);
-    }))();
-  },
-  getCategoryCourses: function getCategoryCourses(_ref11, id) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
-      var commit, response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
-        while (1) {
-          switch (_context11.prev = _context11.next) {
-            case 0:
-              commit = _ref11.commit;
-              commit('setLoading', true);
-              _context11.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/class/".concat(id));
-
-            case 4:
-              response = _context11.sent;
-              commit('setCategoryCourses', response.data);
-              commit('setLoading', false);
-
-            case 7:
+            case 2:
             case "end":
               return _context11.stop();
           }
@@ -116497,16 +117005,90 @@ var actions = {
       }, _callee11);
     }))();
   },
-  saveSection: function saveSection(_ref12, payload) {
+  fetchDemands: function fetchDemands(_ref12) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
-      var commit;
+      var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context12) {
         while (1) {
           switch (_context12.prev = _context12.next) {
             case 0:
               commit = _ref12.commit;
-              headers();
-              return _context12.abrupt("return", new Promise(function (resolve, reject) {
+              commit('setLoading', true);
+              _context12.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/demands");
+
+            case 4:
+              response = _context12.sent;
+              commit('setDemands', response.data);
+              commit('setLoading', false);
+
+            case 7:
+            case "end":
+              return _context12.stop();
+          }
+        }
+      }, _callee12);
+    }))();
+  },
+  fetchStatistics: function fetchStatistics(_ref13) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context13) {
+        while (1) {
+          switch (_context13.prev = _context13.next) {
+            case 0:
+              commit = _ref13.commit;
+              commit('setLoading', true);
+              _context13.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/statistics");
+
+            case 4:
+              response = _context13.sent;
+              commit('setStatistics', response.data);
+              commit('setLoading', false);
+
+            case 7:
+            case "end":
+              return _context13.stop();
+          }
+        }
+      }, _callee13);
+    }))();
+  },
+  getCategoryCourses: function getCategoryCourses(_ref14, id) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context14) {
+        while (1) {
+          switch (_context14.prev = _context14.next) {
+            case 0:
+              commit = _ref14.commit;
+              commit('setLoading', true);
+              _context14.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/class/".concat(id));
+
+            case 4:
+              response = _context14.sent;
+              commit('setCategoryCourses', response.data);
+              commit('setLoading', false);
+
+            case 7:
+            case "end":
+              return _context14.stop();
+          }
+        }
+      }, _callee14);
+    }))();
+  },
+  saveSection: function saveSection(_ref15, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee15() {
+      var commit;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee15$(_context15) {
+        while (1) {
+          switch (_context15.prev = _context15.next) {
+            case 0:
+              commit = _ref15.commit;
+              return _context15.abrupt("return", new Promise(function (resolve, reject) {
                 axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   url: '/course/sections',
                   data: payload,
@@ -116519,12 +117101,12 @@ var actions = {
                 });
               }));
 
-            case 3:
+            case 2:
             case "end":
-              return _context12.stop();
+              return _context15.stop();
           }
         }
-      }, _callee12);
+      }, _callee15);
     }))();
   }
 };
@@ -116543,6 +117125,12 @@ var mutations = {
   },
   setStatistics: function setStatistics(state, payload) {
     return state.statistics = payload;
+  },
+  setEnrollments: function setEnrollments(state, payload) {
+    return state.enrolledStudents = payload;
+  },
+  setUpcoming: function setUpcoming(state, payload) {
+    return state.upComing = payload;
   },
   setLoading: function setLoading(state, val) {
     return state.loading = val;

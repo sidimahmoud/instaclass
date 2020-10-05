@@ -118,16 +118,22 @@
                                             course
                                         </p>
                                     </li>
-                                    <!--                                    <li class="mt-4" v-for="e in userEnrollments" :key="e.id" v-else>-->
-                                    <!--                                        <div v-if="e.course.type===2">-->
-                                    <!--                                            <router-link :to="{name: 'Live', params: { slug: e.course.slug} }">-->
-                                    <!--                                                <h5 class="mt-0 mb-1">{{e.course.name}},-->
-                                    <!--                                                    {{e.course.created_at.slice(0,10)}},-->
-                                    <!--                                                    {{e.course.user.first_name}}-->
-                                    <!--                                                    {{e.course.user.last_name}}</h5>-->
-                                    <!--                                            </router-link>-->
-                                    <!--                                        </div>-->
-                                    <!--                                    </li>-->
+
+
+                                    <li class=" mt-4" v-else>
+                                        <div v-for="e in userEnrollments" :key="e.id">
+                                            <div v-if="e.course_file.course.type===2">
+                                                <router-link :to="{name: 'Live', params: { slug: e.course_file.id} }">
+                                                    <h5 class="mt-0 mb-1">{{e.course_file.title}},
+                                                        {{e.course_file.created_at.slice(0,10)}},
+                                                        {{e.course_file.created_at.slice(11,16)}},
+                                                        {{e.course_file.course.user.first_name}}
+                                                        {{e.course_file.course.user.last_name}}</h5>
+                                                </router-link>
+                                            </div>
+                                        </div>
+                                    </li>
+
                                 </ul>
                             </div>
                             <div class="tab-pane fade show " id="ratings">

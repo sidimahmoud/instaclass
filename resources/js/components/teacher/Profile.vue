@@ -42,20 +42,19 @@
                     <div class="col-md-6">
                         <h4 class="text-center my-2 text-white">You have one course to start after</h4>
                         <div class="row">
-                            <div class="col mx-auto">
+                            <div class="mx-auto" v-if="upComingSections.length>0">
                                 <Count-down
-                                    :year="2020"
-                                    :month="9"
-                                    :day="1"
-                                    :hour="0"
-                                    :minute="0"
+                                    :year="upComingSections[0].startDate.slice(0,4)"
+                                    :month="upComingSections[0].startDate.slice(5,7)"
+                                    :day="upComingSections[0].startDate.slice(8,9)"
+                                    :hour="upComingSections[0].startDate.slice(11,13)"
+                                    :minute="upComingSections[0].startDate.slice(14,16)"
                                     :second="0"
-                                    :text="false"
                                 />
                             </div>
                         </div>
                         <p class="text-center text-white my-2">
-                            <router-link :to="{name : 'LiveCourse', params:{slug: 'hello'}}" tag="button"
+                            <router-link :to="{name : 'LiveCourse', params:{slug: upComingSections[0].id}}" tag="button"
                                          class="btn btn-danger">
                                 Go to the course page
                             </router-link>
@@ -234,7 +233,7 @@
             CountDown,
         },
         methods: {
-            ...mapActions(["fetchProfile", "fetchUserCourses", "fetchTeacherDetails", "fetchTeacherPayments"]),
+            ...mapActions(["fetchProfile", "fetchUserCourses", "fetchTeacherDetails", "fetchTeacherPayments", "getUpcomingSections"]),
 
             logout() {
                 this.$store.dispatch('logout')
@@ -258,10 +257,11 @@
                 }
             },
         },
-        computed: mapGetters(["profileLoading", "userProfile", "userCourses", "allTeacherDetails"]),
+        computed: mapGetters(["profileLoading", "userProfile", "userCourses", "allTeacherDetails", "upComingSections"]),
         created() {
             this.fetchUserCourses();
             this.fetchTeacherDetails();
+            this.getUpcomingSections();
         }
     }
 

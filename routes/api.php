@@ -9,6 +9,7 @@ Route::get('/subcats/{id}', 'SubCategoryController@subCategories');
 Route::resource('/sub-categories', 'SubCategoryController');
 Route::get('/courses', 'CourseController@index');
 Route::get('/courses/{id}', 'CourseController@show');
+Route::get('/sections/{id}', 'CourseFileController@show');
 Route::get('/courses/search/{q}', 'CourseController@search');
 Route::post('/courses/demander', 'DemandsController@store');
 Route::post('/contacter', 'ContactsController@store');
@@ -40,6 +41,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/teacher/payments', 'Admin\UsersController@teacherPayments');
         Route::resource('/course', 'Teacher\CoursesController');
         Route::post('/course/sections', 'CourseFileController@store');
+        Route::get('/upcoming-section', 'CourseFileController@upcomingSection');
         //Live courses
         Route::post('/create-room/{myRoom}/{user}/{recorded}', 'LiveCoursesController@createRoom');
         Route::post('/endroom/{myRoom}', 'LiveCoursesController@closeRoom');
@@ -54,6 +56,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', 'Admin\UsersController@show');
     Route::resource('/user', 'Admin\UsersController');
     Route::get('/enrollments', 'EnrollmentController@userEnrollments');
+    Route::get('/enrolled-students/{id}', 'EnrollmentController@courseEnrollments');
     Route::post('/enroll', 'EnrollmentController@store');
     Route::post('/enroll-in-course', 'EnrollmentController@EnrollInAllSections');
     Route::post('/pay', 'Admin\PayementController@paymentProcess');

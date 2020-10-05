@@ -51,4 +51,3 @@ let sd = (v, d) => {
 
 window.app_api = sd(process.env.MIX_API_URL, "https://mondemenagement.ca/api");
 window.axios.defaults.baseURL = sd(process.env.MIX_API_URL, "https://mondemenagement.ca/api");
-window.axios.defaults.baseURL = "https://instantaclass.herokuapp.com/api";

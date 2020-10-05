@@ -4,6 +4,7 @@
             <div class="col-md-10">
                 <div class="text-center" v-if="!started">
                     <h1>Course has to start after</h1>
+
                     <div class="row my-3">
                         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                             <Count-down

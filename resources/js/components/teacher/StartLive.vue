@@ -4,6 +4,7 @@
             <div class="col-md-10">
                 <div class="text-center" v-if="!started">
                     <h1>Course has to start after</h1>
+
                     <div class="row my-3">
                         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                             <Count-down
@@ -13,13 +14,20 @@
                                 :hour="0"
                                 :minute="0"
                                 :second="0"
-                                :text="false"
+                                :text=false
                             />
                         </div>
                     </div>
-                    <div class="form-group">
-                        <input type="text" id="user" class="form-control" v-model="user">
+                    <hr>
+                    <div>
+                        <h3>Name of students enrolled in the session</h3>
+                        <ol class="text-left">
+                            <li v-for="s in getEnrolledStudents">
+                                {{s.user.first_name}} {{s.user.last_name}}
+                            </li>
+                        </ol>
                     </div>
+
                     <button class="btn btn-primary" @click="createRoom">Start now</button>
                     <button class="btn btn-primary" @click="getAccessToken">Join Course</button>
 
@@ -53,8 +61,7 @@
 <script>
     import axios from 'axios'
     import CountDown from "../CountDown";
-    import user from "../../store/modules/user";
-
+    import {mapGetters, mapActions} from 'vuex'
     export default {
         name: 'LiveWindowCompo',
         components: {
@@ -192,5 +199,9 @@
                 ).catch(err => console.log(err.response))
             },
         },
+        computed:mapGetters(["getEnrolledStudents"]),
+        created() {
+            this.$store.dispatch("getSectionEnrollments", this.$route.params.slug)
+        }
     }
 </script>

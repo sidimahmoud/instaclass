@@ -1,83 +1,71 @@
 <template>
     <div class="container-fluid mt-4">
         <div class="row">
-            <div class="col-md-9 col-sm-12">
+            <div class="col-md-12">
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
                             allowfullscreen></iframe>
                 </div>
-                <div class="row mt-1">
-                    <div class="col-md-12">
-                        <nav class="nav nav-pills nav-fill">
-                            <a class="nav-item nav-link active" href="#overview" data-toggle="tab">Overview</a>
-                            <a class="nav-item nav-link" href="#FAQ" data-toggle="tab">FAQ</a>
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#exampleModalCenter">
-                                <span class="float-right font-weight-bold"><i class="fa fa-heart text-danger"></i> Rate this course</span>
-                            </button>
-                        </nav>
-                        <hr>
-                        <div class="tab-content my-5">
-                            <div class="tab-pane fade show active" id="overview">
-                                <div class="container">
-                                    <h3 class="font-weight-bolder">{{course.name}}</h3>
-                                    <p>
-                                        {{course.description}}
-                                    </p>
-                                    <div>
-                                        <span class="h5 mr-5 font-weight-bold">{{course.enrollments.length}} Total Students</span>
-                                    </div>
-                                    <div>
-                                        <p class="h5 mt-5 font-weight-bold">What you’ll learn?</p>
-                                        <ul>
-                                            <li>Phasellus enim magna, varius et commodo ut.</li>
-                                            <li>Sed consequat justo non mauris pretium at tempor justo.</li>
-                                            <li>Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel
-                                                justo.
-                                            </li>
-                                            <li>Phasellus enim magna, varius et commodo ut.</li>
-                                            <li>Sed consequat justo non mauris pretium at tempor justo.</li>
-                                            <li>Nulla tellus, eleifend euismod pellentesque vel, sagittis vel justo.
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <p class="h5 mt-5 font-weight-bold">Requirements</p>
-                                        <ul>
-                                            <li>Phasellus enim magna, varius et commodo ut.</li>
-                                            <li>Sed consequat justo non mauris pretium at tempor justo.</li>
-                                            <li>Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel
-                                                justo.
-                                            </li>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#exampleModalCenter">
+                    <i class="fa fa-heart text-danger"></i> Rate this course
+                </button>
+                <!--                    <div class="col-md-12">-->
+                <!--                        <nav class="nav nav-pills nav-fill">-->
+                <!--                            <a class="nav-item nav-link active" href="#overview" data-toggle="tab">Overview</a>-->
+                <!--                            <a class="nav-item nav-link" href="#FAQ" data-toggle="tab">FAQ</a>-->
 
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                <!--                        </nav>-->
+                <!--                        <hr>-->
+                <!--                        <div class="tab-content my-5">-->
+                <!--                            <div class="tab-pane fade show active" id="overview">-->
+                <!--                                <div class="container">-->
+                <!--                                    <h3 class="font-weight-bolder">{{course.name}}</h3>-->
+                <!--                                    <p>-->
+                <!--                                        {{course.description}}-->
+                <!--                                    </p>-->
+                <!--                                    <div>-->
+                <!--                                        <span class="h5 mr-5 font-weight-bold">{{course.enrollments.length}} Total Students</span>-->
+                <!--                                    </div>-->
+                <!--                                    <div>-->
+                <!--                                        <p class="h5 mt-5 font-weight-bold">What you’ll learn?</p>-->
+                <!--                                        <ul>-->
+                <!--                                            <li>Phasellus enim magna, varius et commodo ut.</li>-->
+                <!--                                            <li>Sed consequat justo non mauris pretium at tempor justo.</li>-->
+                <!--                                            <li>Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel-->
+                <!--                                                justo.-->
+                <!--                                            </li>-->
+                <!--                                            <li>Phasellus enim magna, varius et commodo ut.</li>-->
+                <!--                                            <li>Sed consequat justo non mauris pretium at tempor justo.</li>-->
+                <!--                                            <li>Nulla tellus, eleifend euismod pellentesque vel, sagittis vel justo.-->
+                <!--                                            </li>-->
+                <!--                                        </ul>-->
+                <!--                                    </div>-->
+                <!--                                    <div>-->
+                <!--                                        <p class="h5 mt-5 font-weight-bold">Requirements</p>-->
+                <!--                                        <ul>-->
+                <!--                                            <li>Phasellus enim magna, varius et commodo ut.</li>-->
+                <!--                                            <li>Sed consequat justo non mauris pretium at tempor justo.</li>-->
+                <!--                                            <li>Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel-->
+                <!--                                                justo.-->
+                <!--                                            </li>-->
 
-                            <!--FAQ-->
-                            <div class="tab-pane fade show" id="FAQ">
-                                FAQ
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="row shadow-sm ">
-                    <h4 class="text-center">Participants
-                    </h4>
-                </div>
+                <!--                                        </ul>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                            &lt;!&ndash;FAQ&ndash;&gt;-->
+                <!--                            <div class="tab-pane fade show" id="FAQ">-->
+                <!--                                FAQ-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
             </div>
         </div>
         <!-- Modal rating -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalCenterTitle"
-             aria-hidden="true" @click="course_id=course.id">
+             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -87,17 +75,36 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="my-3">
-                            Give it a star
-                            <i class="fa fa-star text-warning mx-4 rateStar" @click="rate=1"></i>
-                            <i class="fa fa-star text-warning mx-4 rateStar" @click="rate=2"></i>
-                            <i class="fa fa-star text-warning mx-4 rateStar" @click="rate=3"></i>
-                            <i class="fa fa-star text-warning mx-4 rateStar" @click="rate=4"></i>
-                            <i class="fa fa-star text-warning mx-4 rateStar" @click="rate=4"></i>
+                        <h3>How was the session with the teacher</h3>
+                        <div class="pl-5">
+                            <p @click="rate=5">
+                                <i class="fa fa-star text-warning mx-2 rateStar" v-for="n in 5"/>
+                                <strong>Excellent</strong>
+                            </p>
+                            <p @click="rate=4">
+                                <i class="fa fa-star text-warning mx-2 rateStar" v-for="n in 4"/>
+                                <i class="fa fa-star text-secondary mx-2 rateStar"/>
+                                <strong>Above Average</strong>
+                            </p>
+                            <p @click="rate=3">
+                                <i class="fa fa-star text-warning mx-2 rateStar" v-for="n in 3"/>
+                                <i class="fa fa-star text-secondary mx-2 rateStar" v-for="n in 2"/>
+                                <strong>Average</strong>
+                            </p>
+                            <p @click="rate=2">
+                                <i class="fa fa-star text-warning mx-2 rateStar" v-for="n in 2"/>
+                                <i class="fa fa-star text-secondary mx-2 rateStar" v-for="n in 3"/>
+                                <strong>Below Average</strong>
+                            </p>
+                            <p @click="rate=1">
+                                <i class="fa fa-star text-warning mx-2 rateStar"/>
+                                <i class="fa fa-star text-secondary mx-2 rateStar" v-for="n in 4"/>
+                                <strong>Poor</strong>
+                            </p>
                         </div>
 
                         <div class="form-group">
-                            <label for="desc">Write a review</label>
+                            <label for="desc">Leave a comment</label>
                             <textarea class="form-control" id="desc" rows="3" required v-model="review"> </textarea>
                         </div>
                     </div>
@@ -105,7 +112,7 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary " @click="rating" :disabled="sending">
                             <span v-if="!sending">
-                                Save changes
+                                Submit review
                             </span>
                             <span v-if="sending">
                                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true">
@@ -131,67 +138,16 @@
             return {
                 rate: 5,
                 review: "",
-                course_id: "",
+                course_id: '',
                 sending: false
             }
         },
         methods: {
-            getAccessToken() {
-                const _this = this;
-                // Request a new token
-                axios.get(`/access_token/${this.myRoom}/${this.user}`)
-                    .then(response => {
-                        _this.accessToken = response.data;
-                        _this.started = true;
-                        _this.connectToRoom()
-                    })
-                    .catch(error => console.log(error))
-            },
-            connectToRoom() {
-                const {connect, createLocalVideoTrack, createLocalTracks} = require('twilio-video');
-                connect(this.accessToken, {name: this.myRoom}).then(room => {
-                    console.log(`Successfully joined a Room: ${room}`);
-                    this.roomSid = room.sid;
-                    this.activeRoom = room;
-                    const videoChatWindow = document.getElementById('video-chat-window');
-                    createLocalTracks({
-                        audio: true,
-                        video: {width: 1280, height: 300},
-                    }).then(track => videoChatWindow.appendChild(track.attach()));
-                    room.on('participantConnected', participant => {
-                        console.log(`Participant "${participant.identity}" connected`);
-                        this.participants.push(participant.identity);
-
-                        participant.tracks.forEach(publication => {
-                            if (publication.isSubscribed) {
-                                const track = publication.track;
-                                videoChatWindow.appendChild(track.attach());
-                            }
-                        });
-
-                        participant.on('trackSubscribed', track => {
-                            videoChatWindow.appendChild(track.attach());
-                        });
-                    });
-                    room.on('participantDisconnected', participant => {
-                        console.log(`Participant ${participant.identity} disconnected`);
-                        this.participants.splice(this.participants.indexOf(participant.identity), 1);
-                        participant.tracks.forEach(function (track) {
-                            track.detach().forEach(function (mediaElement) {
-                                mediaElement.remove();
-                            });
-                        });
-                    });
-
-                }, error => {
-                    console.error(`Unable to connect to Room: ${error.message}`);
-                });
-            },
             findCourse() {
-                this.$store.dispatch('getCourse', this.$route.params.slug)
+                this.$store.dispatch('getSection', this.$route.params.slug)
             },
             rating() {
-                this.$store.dispatch('rateCourse', {rate: this.rate, review: this.review, course_id: this.course_id})
+                this.$store.dispatch('rateCourse', {rate: this.rate, review: this.review, course_id: this.course.id})
                     .then(res => {
                         res.data === "success" ? alert("Success") : alert("error");
                         window.location.reload()
