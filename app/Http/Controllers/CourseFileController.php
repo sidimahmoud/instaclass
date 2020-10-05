@@ -73,7 +73,7 @@ class CourseFileController extends Controller
     {
         $id = $request->user()->id;
         $now=Carbon::now();
-        $s = DB::select("select * from course_files where  id in (select id from courses where user_id = $id) ORDER BY startDate  ");
+        $s = DB::select("select * from course_files where  id in (select id from courses where user_id = $id)");
         $sections = CourseFile::where("startDate", ">", Carbon::now())
 //            ->where("course.user_id", $request->user()->id)
             ->orderBy('startDate', 'ASC')->get();
