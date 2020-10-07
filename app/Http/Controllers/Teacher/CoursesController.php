@@ -103,7 +103,6 @@ class CoursesController extends Controller
         }
 
         return response()->json("course created successfully");
-        return response()->json("error");
     }
 
     /**

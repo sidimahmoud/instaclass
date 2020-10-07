@@ -7,19 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewSubscription extends Notification
+class OneDayBeforeClass extends Notification implements ShouldQueue
 {
     use Queueable;
-    private $section;
+    private $data;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($section)
+    public function __construct($data)
     {
-        $this->section = $section;
+        $this->data = $data;
     }
 
     /**
@@ -43,9 +43,10 @@ class NewSubscription extends Notification
     {
         return (new MailMessage)
             ->from('noreply@instantaclass.ca', 'Instantaclass')
-            ->line('There is a new subscription in your course ' . $this->section)
-            ->action('My dashboard', url('/teacher/profile'))
-            ->line('Thank you for using Instantaclasse!');
+            ->subject('Your class is scheduled tomorrow at '. substr($this->data, 10, 6))
+            ->line('This is a quick reminder to let you know that your class is scheduled for tomorrow '. $this->data)
+//                    ->action('Notification Action', url('/'))
+            ->line('Thank you!');
     }
 
     /**

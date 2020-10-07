@@ -22,9 +22,13 @@ const getters = {
 };
 
 const actions = {
-    async fetchProfile({commit}) {
-        const response = await axios.get('/me');
-        commit('setProfile', response.data[0]);
+    async fetchProfile({commit, dispatch}) {
+         await axios.get('/me').then(response =>{
+             commit('setProfile', response.data[0]);
+         }).catch(err =>{
+             err.response.status===401?dispatch('logout'):"";
+             location.reload()
+         })
     },
     async fetchTeacherCourses({commit}, id) {
         const response = await axios.get(`/teacher/${id}/courses`);

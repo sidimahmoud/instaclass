@@ -152,7 +152,7 @@ class UsersController extends Controller
     public function show(Request $request)
     {
         $id = $request->user()->id;
-        $user = User::with('enrollments')->where('id', $id)->get();
+        $user = User::with('enrollments', "ratings")->where('id', $id)->get();
         return response()->json($user);
     }
 

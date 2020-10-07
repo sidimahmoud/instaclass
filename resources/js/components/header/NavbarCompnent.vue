@@ -7,7 +7,7 @@
             <li class="btn " v-else @click="fr">
                 FR
             </li>
-            <li>
+            <li v-if="isLoggedIn">
                 <strong>
                     {{userProfile.first_name}}
                 </strong>

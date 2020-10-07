@@ -8221,6 +8221,14 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Stripe: _checkout_CardElement__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  data: function data() {
+    return {
+      course_id: this.$route.params.id,
+      course_name: this.$route.params.name,
+      course_price: this.$route.params.price,
+      paymentMethod: 'card'
+    };
+  },
   methods: {
     checkout: function checkout() {
       var _this = this;
@@ -8228,7 +8236,7 @@ __webpack_require__.r(__webpack_exports__);
       var payload = {
         paymentMethod: this.paymentMethod,
         course_id: this.course_id,
-        course_name: this.course_name,
+        course_name: "Course N°" + this.course_id,
         course_price: this.course_price
       };
       this.$store.dispatch('enrollInAllSection', payload).then(function () {
@@ -8241,14 +8249,6 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(err);
       });
     }
-  },
-  data: function data() {
-    return {
-      course_id: this.$route.params.id,
-      course_name: this.$route.params.name,
-      course_price: this.$route.params.price,
-      paymentMethod: 'card'
-    };
   }
 });
 
@@ -9526,7 +9526,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -84248,15 +84247,17 @@ var render = function() {
             _vm._v("\n            FR\n        ")
           ]),
       _vm._v(" "),
-      _c("li", [
-        _c("strong", [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.userProfile.first_name) +
-              "\n            "
-          )
-        ])
-      ])
+      _vm.isLoggedIn
+        ? _c("li", [
+            _c("strong", [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.userProfile.first_name) +
+                  "\n            "
+              )
+            ])
+          ])
+        : _vm._e()
     ]),
     _vm._v(" "),
     _c(
@@ -85253,66 +85254,73 @@ var render = function() {
                               "li",
                               { staticClass: " mt-4" },
                               _vm._l(_vm.userEnrollments, function(e) {
-                                return _c("div", { key: e.id }, [
-                                  e.course_file.course.type === 2
-                                    ? _c(
-                                        "div",
-                                        [
-                                          _c(
-                                            "router-link",
-                                            {
-                                              attrs: {
-                                                to: {
-                                                  name: "Live",
-                                                  params: {
-                                                    slug: e.course_file.id
+                                return _c(
+                                  "div",
+                                  {
+                                    key: e.id,
+                                    staticClass: "shadow-sm rounded my-2"
+                                  },
+                                  [
+                                    e.course_file.course.type === 2
+                                      ? _c(
+                                          "div",
+                                          [
+                                            _c(
+                                              "router-link",
+                                              {
+                                                attrs: {
+                                                  to: {
+                                                    name: "Live",
+                                                    params: {
+                                                      slug: e.course_file.id
+                                                    }
                                                   }
                                                 }
-                                              }
-                                            },
-                                            [
-                                              _c(
-                                                "h5",
-                                                { staticClass: "mt-0 mb-1" },
-                                                [
-                                                  _vm._v(
-                                                    _vm._s(
-                                                      e.course_file.title
-                                                    ) +
-                                                      ",\n                                                    " +
+                                              },
+                                              [
+                                                _c(
+                                                  "h5",
+                                                  { staticClass: "mt-0 mb-1" },
+                                                  [
+                                                    _vm._v(
                                                       _vm._s(
-                                                        e.course_file.created_at.slice(
-                                                          0,
-                                                          10
+                                                        e.course_file.title
+                                                      ) +
+                                                        ",\n                                                    " +
+                                                        _vm._s(
+                                                          e.course_file.created_at.slice(
+                                                            0,
+                                                            10
+                                                          )
+                                                        ) +
+                                                        ",\n                                                    " +
+                                                        _vm._s(
+                                                          e.course_file.created_at.slice(
+                                                            11,
+                                                            16
+                                                          )
+                                                        ) +
+                                                        ",\n                                                    " +
+                                                        _vm._s(
+                                                          e.course_file.course
+                                                            .user.first_name
+                                                        ) +
+                                                        "\n                                                    " +
+                                                        _vm._s(
+                                                          e.course_file.course
+                                                            .user.last_name
                                                         )
-                                                      ) +
-                                                      ",\n                                                    " +
-                                                      _vm._s(
-                                                        e.course_file.created_at.slice(
-                                                          11,
-                                                          16
-                                                        )
-                                                      ) +
-                                                      ",\n                                                    " +
-                                                      _vm._s(
-                                                        e.course_file.course
-                                                          .user.first_name
-                                                      ) +
-                                                      "\n                                                    " +
-                                                      _vm._s(
-                                                        e.course_file.course
-                                                          .user.last_name
-                                                      )
-                                                  )
-                                                ]
-                                              )
-                                            ]
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    : _vm._e()
-                                ])
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
                               }),
                               0
                             )
@@ -85320,7 +85328,40 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tab-pane fade show ",
+                      attrs: { id: "ratings" }
+                    },
+                    [
+                      _vm.userProfile.ratings > 0
+                        ? _c("table", { staticClass: "table" }, [
+                            _vm._m(3),
+                            _vm._v(" "),
+                            _c(
+                              "tbody",
+                              _vm._l(_vm.userProfile.ratings, function(r) {
+                                return _c("tr", [
+                                  _c("th", { attrs: { scope: "row" } }, [
+                                    _vm._v(_vm._s(_vm.e.teacher_id))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(_vm.e.created_at))]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(_vm.e.rate))]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(_vm.e.reverse))])
+                                ])
+                              }),
+                              0
+                            )
+                          ])
+                        : _c("div", { staticClass: "text-center" }, [
+                            _c("h3", [_vm._v("No ratings yet")])
+                          ])
+                    ]
+                  )
                 ])
               ])
             ])
@@ -85416,41 +85457,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "tab-pane fade show ", attrs: { id: "ratings" } },
-      [
-        _c("table", { staticClass: "table" }, [
-          _c("thead", [
-            _c("tr", [
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Teacher Name")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Date")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Rating")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Comment")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("th", { attrs: { scope: "row" } }, [_vm._v("tt")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("20/10/2020")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("5")]),
-              _vm._v(" "),
-              _c("td", [
-                _vm._v(
-                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi,\n                                        tenetur!\n                                    "
-                )
-              ])
-            ])
-          ])
-        ])
-      ]
-    )
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Teacher Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Rating")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Comment")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -88376,7 +88393,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "col-md-6 mb-2" }, [
                 _c(
                   "div",
                   {
@@ -88456,16 +88473,18 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6" }, [
-                _c("h4", { staticClass: "text-center my-2 text-white" }, [
-                  _vm._v("You have one course to start after")
-                ]),
-                _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _vm.upComingSections.length > 0
                     ? _c(
                         "div",
                         { staticClass: "mx-auto" },
                         [
+                          _c(
+                            "h4",
+                            { staticClass: "text-center my-2 text-white" },
+                            [_vm._v("You have one course to start after")]
+                          ),
+                          _vm._v(" "),
                           _c("Count-down", {
                             attrs: {
                               year: _vm.upComingSections[0].startDate.slice(
@@ -88497,31 +88516,33 @@ var render = function() {
                     : _vm._e()
                 ]),
                 _vm._v(" "),
-                _c(
-                  "p",
-                  { staticClass: "text-center text-white my-2" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-danger",
-                        attrs: {
-                          to: {
-                            name: "LiveCourse",
-                            params: { slug: _vm.upComingSections[0].id }
-                          },
-                          tag: "button"
-                        }
-                      },
+                _vm.upComingSections.length > 0
+                  ? _c(
+                      "p",
+                      { staticClass: "text-center text-white my-2" },
                       [
-                        _vm._v(
-                          "\n                            Go to the course page\n                        "
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: {
+                              to: {
+                                name: "LiveCourse",
+                                params: { slug: _vm.upComingSections[0].id }
+                              },
+                              tag: "button"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Go to the course page\n                        "
+                            )
+                          ]
                         )
-                      ]
+                      ],
+                      1
                     )
-                  ],
-                  1
-                )
+                  : _vm._e()
               ])
             ])
           ]),
@@ -111029,9 +111050,8 @@ var sd = function sd(v, d) {
   return v === undefined || v === null ? d : v;
 };
 
-window.app_api = sd("https://instantaclass.herokuapp.com/api", "https://mondemenagement.ca/api");
-window.axios.defaults.baseURL = sd("https://instantaclass.herokuapp.com/api", "https://mondemenagement.ca/api");
-window.axios.defaults.baseURL = "https://instantaclass.herokuapp.com/api";
+window.app_api = sd("http://127.0.0.1:8000/api", "https://mondemenagement.ca/api");
+window.axios.defaults.baseURL = sd("http://127.0.0.1:8000/api", "https://mondemenagement.ca/api");
 
 /***/ }),
 
@@ -116760,8 +116780,8 @@ var actions = {
 
             case 4:
               response = _context3.sent;
-              commit('setCourse', response.data[0]);
-              console.log(response.data);
+              commit('setCourse', response.data[0]); // console.log(response.data)
+
               me = JSON.parse(localStorage.getItem('user')) || null;
               commit('setEnrolled', false); // if (me) {
               //     response.data.enrollments.map(item => {
@@ -116774,7 +116794,7 @@ var actions = {
 
               commit('setLoading', false);
 
-            case 10:
+            case 9:
             case "end":
               return _context3.stop();
           }
@@ -117344,20 +117364,21 @@ var getters = {
 var actions = {
   fetchProfile: function fetchProfile(_ref) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var commit, response;
+      var commit, dispatch;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              commit = _ref.commit;
+              commit = _ref.commit, dispatch = _ref.dispatch;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/me');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/me').then(function (response) {
+                commit('setProfile', response.data[0]);
+              })["catch"](function (err) {
+                err.response.status === 401 ? dispatch('logout') : "";
+                location.reload();
+              });
 
             case 3:
-              response = _context.sent;
-              commit('setProfile', response.data[0]);
-
-            case 5:
             case "end":
               return _context.stop();
           }

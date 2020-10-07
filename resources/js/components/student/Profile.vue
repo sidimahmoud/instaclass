@@ -119,9 +119,8 @@
                                         </p>
                                     </li>
 
-
                                     <li class=" mt-4" v-else>
-                                        <div v-for="e in userEnrollments" :key="e.id">
+                                        <div v-for="e in userEnrollments" :key="e.id" class="shadow-sm rounded my-2">
                                             <div v-if="e.course_file.course.type===2">
                                                 <router-link :to="{name: 'Live', params: { slug: e.course_file.id} }">
                                                     <h5 class="mt-0 mb-1">{{e.course_file.title}},
@@ -133,11 +132,10 @@
                                             </div>
                                         </div>
                                     </li>
-
                                 </ul>
                             </div>
                             <div class="tab-pane fade show " id="ratings">
-                                <table class="table">
+                                <table class="table" v-if="userProfile.ratings>0">
                                     <thead>
                                     <tr>
                                         <th scope="col">Teacher Name</th>
@@ -147,16 +145,17 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">tt</th>
-                                        <td>20/10/2020</td>
-                                        <td>5</td>
-                                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi,
-                                            tenetur!
-                                        </td>
+                                    <tr v-for="r in userProfile.ratings">
+                                        <th scope="row">{{e.teacher_id}}</th>
+                                        <td>{{e.created_at}}</td>
+                                        <td>{{e.rate}}</td>
+                                        <td>{{e.reverse}}</td>
                                     </tr>
                                     </tbody>
                                 </table>
+                                <div class="text-center" v-else>
+                                    <h3>No ratings yet</h3>
+                                </div>
                             </div>
                         </div>
                     </div>

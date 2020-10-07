@@ -6,9 +6,13 @@ use App\Course;
 use App\CourseFile;
 use App\Enrollment;
 use App\Notifications\NewSubscription;
+use App\Notifications\OneDayBeforeClass;
 use App\Payement;
 use App\User;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Date;
 
 class EnrollmentController extends Controller
 {
@@ -60,9 +64,11 @@ class EnrollmentController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function store(Request $request)
     {
+        $sec = CourseFile::find($request['section_id']);
         $enrollment = new Enrollment();
         $enrollment->user_id = $request->user()->id;
         $enrollment->course_file_id = $request['section_id'];
@@ -76,10 +82,14 @@ class EnrollmentController extends Controller
             $payment->object = $request['course_name'];
             $payment->save();
         }
-//        $course = CourseFile::find($request['section_id'])->course->id;
-//        $teacher = $course->user_id;
-//        $user = User::find($teacher);
-//        $user->notify(new NewSubscription());
+        $teacher = $sec->course->user_id;
+        $user = User::find($teacher);
+        $user->notify(new NewSubscription($sec->title));
+
+        $startDate = str_replace("T", " ", $sec->startDate);
+//        $when =  Carbon::parse($startDate)->subDays(1);
+        $when = now()->addMinutes(2);
+        $request->user()->notify((new OneDayBeforeClass($startDate)));
 
         return response()->json("Enrolled successfully");
     }
@@ -104,10 +114,9 @@ class EnrollmentController extends Controller
             $payment->object = $request['course_name'];
             $payment->save();
         }
-        $course = Course::find($request['course_id']);
         $teacher = $course->user_id;
         $user = User::find($teacher);
-        $user->notify(new NewSubscription());
+        $user->notify(new NewSubscription("Number: ".$course->id));
 
         return response()->json("Enrolled successfully");
     }

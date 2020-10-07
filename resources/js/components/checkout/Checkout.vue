@@ -121,12 +121,21 @@
         components: {
             Stripe
         },
+        data() {
+            return {
+                course_id: this.$route.params.id,
+                course_name: this.$route.params.name,
+                course_price: this.$route.params.price,
+                paymentMethod: 'card',
+
+            }
+        },
         methods: {
             checkout() {
                 let payload = {
                     paymentMethod: this.paymentMethod,
                     course_id: this.course_id,
-                    course_name: this.course_name,
+                    course_name: "Course N°"+this.course_id,
                     course_price: this.course_price
                 };
                 this.$store.dispatch('enrollInAllSection', payload)
@@ -137,16 +146,7 @@
                     .catch(err => console.log(err))
             }
         },
-        data() {
-            return {
-                course_id: this.$route.params.id,
-                course_name: this.$route.params.name,
-                course_price: this.$route.params.price,
-                paymentMethod: 'card',
 
-            }
-
-        },
 
     }
 </script>

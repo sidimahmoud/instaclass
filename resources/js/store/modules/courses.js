@@ -19,8 +19,8 @@ const getters = {
     course: (state) => state.course,
     loading: (state) => state.loading,
     enrolled: (state) => state.enrolled,
-    getEnrolledStudents :(state)=>state.enrolledStudents,
-    upComingSections :(state)=>state.upComing,
+    getEnrolledStudents: (state) => state.enrolledStudents,
+    upComingSections: (state) => state.upComing,
 
 };
 
@@ -55,7 +55,7 @@ const actions = {
         commit('setLoading', true);
         const response = await axios.get(`/sections/${slug}`,);
         commit('setCourse', response.data[0]);
-        console.log(response.data)
+        // console.log(response.data)
         const me = JSON.parse(localStorage.getItem('user')) || null;
         commit('setEnrolled', false);
         // if (me) {

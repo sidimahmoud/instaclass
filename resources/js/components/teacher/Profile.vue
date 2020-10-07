@@ -21,7 +21,7 @@
                             <p>{{userProfile.phone}}</p>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-2">
                         <div class="d-flex align-items-center justify-content-center text-white">
                             <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
                                 <span class="btn btn-danger">{{allTeacherDetails.students[0].count>0?allTeacherDetails.students[0].count:"0"}} </span>
@@ -40,9 +40,9 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h4 class="text-center my-2 text-white">You have one course to start after</h4>
                         <div class="row">
                             <div class="mx-auto" v-if="upComingSections.length>0">
+                                <h4 class="text-center my-2 text-white">You have one course to start after</h4>
                                 <Count-down
                                     :year="upComingSections[0].startDate.slice(0,4)"
                                     :month="upComingSections[0].startDate.slice(5,7)"
@@ -53,7 +53,7 @@
                                 />
                             </div>
                         </div>
-                        <p class="text-center text-white my-2">
+                        <p class="text-center text-white my-2" v-if="upComingSections.length>0">
                             <router-link :to="{name : 'LiveCourse', params:{slug: upComingSections[0].id}}" tag="button"
                                          class="btn btn-danger">
                                 Go to the course page
