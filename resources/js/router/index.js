@@ -284,7 +284,7 @@ const routes = [
     },
 
     {
-        path: '/login',
+        path: '/auth/login',
         name: 'Login',
         component: Login,
         meta: {
@@ -314,7 +314,7 @@ const routes = [
         }
     },
     {
-        path: '/register',
+        path: '/auth/register',
         name: 'Register',
         component: Register,
         meta: {

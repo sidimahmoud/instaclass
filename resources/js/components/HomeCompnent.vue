@@ -1,22 +1,68 @@
 <template>
     <div>
-        <div class="jumbotron">
-            <div class="container  align-items-center">
-                <div class="row justify-content-around align-items-center">
-                    <div
-                        class="col-md-6 col-sm-12 text-center text-md-left px-md-5 justify-content-center align-items-center text-white">
-                        <h1 class="display-4">
-                            {{$t('title')}}
-                        </h1>
-                    </div>
+        <div class="hero">
+            <div class="jumbotron jumbotron1 mb-0">
+            <span class="bg-primary px-1 py-3  shareBar">
+                <button class="btn btn-light btn-sm">
+                    <i class="fa fa-facebook text-primary"></i>
+                </button>
+                <br>
+                <br>
+                    <button class="btn btn-light btn-sm">
+                    <i class="fa fa-instagram text-primary"></i>
+                </button>
 
-                    <div class="col-md-6 d-none d-md-block">
-                        <img src="../assets/images/home/home.png" width="450px" class=" float-right"
-                             alt="logo">
+
+            </span>
+                <div class="container  align-items-center mt-5 h-100">
+                    <div class="row justify-content-around align-items-center h-100">
+                        <div class="col-md-6"></div>
+                        <div
+                            class="col-md-6 col-sm-12 text-center px-md-5 justify-content-center align-items-center ">
+                            <h1 class="display-3">
+                                {{$t('title')}}
+                            </h1>
+                        </div>
+
+                        <!--                    <div class="col-md-6 d-none d-md-block">-->
+                        <!--                        <img src="../assets/images/home/home.png" width="450px" class=" float-right"-->
+                        <!--                             alt="logo">-->
+                        <!--                    </div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="jumbotron jumbotron2">
+            <span class="bg-primary px-1 py-3  shareBar">
+                <button class="btn btn-light">
+                    <i class="fa fa-facebook text-primary"></i>
+                </button>
+                <br>
+                <br>
+                    <button class="btn btn-light">
+                    <i class="fa fa-instagram text-primary"></i>
+                </button>
+
+
+            </span>
+                <div class="container  align-items-center mt-5">
+                    <div class="row justify-content-around align-items-center">
+                        <div
+                            class="col-md-6 col-sm-12 text-center text-md-left px-md-5 justify-content-center align-items-center text-white">
+                            <h1 class="display-4">
+                                {{$t('title2')}}
+                            </h1>
+                            <!--                            <img src="../assets/images/home/onlineEd.jpg" width="350px">-->
+                        </div>
+
+                        <div class="col-md-6 d-none d-md-block">
+                            <img src="../assets/images/home/onlineEd.jpg" width="500px">
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class=" text-right pr-5">
             <iframe
                 src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&appId=223985172274465&width=130&height=28"
@@ -29,23 +75,108 @@
                                                                                     alt="insta" class="rounded"
                                                                                     width="130px"></a>
         </div>
-        <div class="container d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
-            <h3 class="text-primary">
-                {{$t('coursesByCateg')}}
-            </h3>
-            <span class="latest_courses_border"> </span>
-        </div>
-        <div class="container">
-            <div class="text-center text-primary" v-if="loadingCategories">
-                <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
+        <section class="classes">
+            <div class="container d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
+                <h3 class="text-primary">
+                    {{$t('coursesByCateg')}}
+                </h3>
+                <span class="latest_courses_border"> </span>
+            </div>
+            <div class="container  ">
+                <div class="text-center text-primary" v-if="loadingCategories">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+
+                <div class="row  categories" v-if="!loadingCategories">
+                    <category-compo v-for="category in allCategories" :categ="category" :key="category.id"/>
+                </div>
+            </div>
+        </section>
+        <section class="whyChoose">
+            <div class="container">
+                <div class="row p-3">
+                    <div class="col-12 text-center text-white">
+                        <h3>Why choosing us</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aliquid
+                            cupiditate
+                            dignissimos earum excepturi exercitationem id ipsa ipsam, molestias pariatur possimus quas
+                            quia
+                            quod repudiandae similique totam voluptatem voluptatibus.</p>
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="shadow-sm pt-5 bg-primary m-3 text-center">
+                            <h3>Live interacting online tutoring classes</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos dolore
+                                esse explicabo impedit ipsum libero odio optio perspiciatis provident, qui rerum!
+                                Accusantium dolore eius illo maiores mollitia, nobis tenetur?
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 ">
+                        <div class="shadow-sm pt-5 bg-info m-3 text-center">
+                            <h3>Live interacting online tutoring classes</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos dolore
+                                esse explicabo impedit ipsum libero odio optio perspiciatis provident, qui rerum!
+                                Accusantium dolore eius illo maiores mollitia, nobis tenetur?
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="shadow-sm pt-5 m-3 bg-warning text-center">
+                            <h3>Live interacting online tutoring classes</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos dolore
+                                esse explicabo impedit ipsum libero odio optio perspiciatis provident, qui rerum!
+                                Accusantium dolore eius illo maiores mollitia, nobis tenetur?
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="shadow-sm pt-5 m-3 bg-danger text-center">
+                            <h3>Live interacting online tutoring classes</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos dolore
+                                esse explicabo impedit ipsum libero odio optio perspiciatis provident, qui rerum!
+                                Accusantium dolore eius illo maiores mollitia, nobis tenetur?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews mt-5 mb-0 p-4">
+            <div class="container">
+                <div class="row justify-content-around align-items-center">
+                    <div class="col-md-6">
+                        <h4 class="text-center">Perfect reviews from our real customers</h4>
+                        <p class="text-justify">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet autem culpa delectus deserunt
+                            dolor ducimus ea eum, exercitationem explicabo facilis hic id iste laboriosam placeat qui
+                            rerum
+                            ullam voluptas voluptatem?
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam aperiam molestias
+                            mollitia
+                            repellat! Ab consequatur facilis magni sint vel.
+                        </p>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <div class="shadow-sm pt-5 m-3 bg-white text-center">
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="row" v-if="!loadingCategories">
-                <category-compo v-for="category in allCategories" :categ="category" :key="category.id"/>
-            </div>
-        </div>
+        </section>
+
+
     </div>
 </template>
 <script>
@@ -71,8 +202,6 @@
 </script>
 
 <style scoped>
-    /* card margin*/
-
     .card:not(:first-child) {
         margin-left: 15px !important;
     }
@@ -88,9 +217,65 @@
     }
 
     .jumbotron {
-        background-image: url('../assets/images/home/bg.png');
-        border-radius: 0;
+        background-repeat: no-repeat;
+        background-size: cover;
         padding: 15px;
     }
+
+    .jumbotron1 {
+        background-image: url('../assets/images/home/bg1.jpg');
+        /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('../assets/images/home/bg1.jpg') no-repeat center center ;*/
+
+        border-radius: 0 0 300px 0;
+        border-bottom: 10px solid #0b40c6;
+        height: 600px;
+    }
+
+    .jumbotron2 {
+        background-image: url('../assets/images/home/bg2.jpg');
+        border-radius: 0 0 0 200px;
+        height: 500px;
+    }
+
+    .shareBar {
+        top: 200px;
+        position: absolute;
+        border-radius: 30px;
+    }
+
+    .categories {
+        margin-bottom: 250px;
+        position: relative;
+    }
+
+    .classes {
+        /*background-image: url('../assets/images/home/bg3.png');*/
+        background: linear-gradient(#f8f9fa, rgba(255, 255, 255, 0.61)), url('../assets/images/home/bg3.png') no-repeat center center;
+        background-size: cover;
+        height: 600px;
+    }
+
+    .hero {
+        background-image: url('../assets/images/home/bg2.jpg');
+        background-size: cover;
+        border-radius: 0 0 0 200px;
+    }
+
+    .whyChoose {
+        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../assets/images/home/bg3.png') no-repeat center center;
+        background-size: cover;
+    }
+
+    .reviews {
+        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../assets/images/home/reviews.jpg') no-repeat center center;
+        background-size: cover;
+        color: white;
+        border-radius: 100px 0 0 0;
+        height: 300px;
+        padding: 20px
+
+
+    }
+
 
 </style>

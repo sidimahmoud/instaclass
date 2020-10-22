@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('email/verify/{id}', 'VerificationController@verify')->name('verification.verify'); // Make sure to keep this as your route name
 Route::post('/login', 'AuthController@login');
 Route::post('/register', 'AuthController@register');
 Route::resource('/categories', 'CategoryController');

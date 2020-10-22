@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('content')
-    <div id="app">
-        <register></register>
-    </div>
-@endsection
+<script type="text/javascript">
+    window.location = "auth/register";
+</script>

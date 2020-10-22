@@ -14,10 +14,10 @@
             </li>
         </ul>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <router-link :to="{name: 'Home'}" tag="a" class="navbar-brand text-primary font-weight-bolder">
-                <img src="../../assets/logo.png" alt="" width="80px">
-            </router-link>
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-0 fixed-top">
+<!--            <router-link :to="{name: 'Home'}" tag="a" class="navbar-brand text-primary font-weight-bolder">-->
+<!--                <img src="../../assets/logo.png" alt="" width="80px">-->
+<!--            </router-link>-->
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -26,18 +26,18 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="form-inline  my-lg-0 mr-lg-2 w-50" @submit.prevent="search">
+<!--                <form class="form-inline  my-lg-0 mr-lg-2 w-50" @submit.prevent="search">-->
 
-                    <div class="form-group w-100">
-                        <input class="form-control  mr-sm-2 w-75" type="text"
-                               :placeholder="$t('search')"
-                               v-model="q" aria-label="Search">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
-                            {{$t("searchBtn")}}
-                        </button>
-                    </div>
-                </form>
-                <ul class="navbar-nav  justify-content-end" style="width:65%">
+<!--                    <div class="form-group w-100">-->
+<!--                        <input class="form-control  mr-sm-2 w-75" type="text"-->
+<!--                               :placeholder="$t('search')"-->
+<!--                               v-model="q" aria-label="Search">-->
+<!--                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">-->
+<!--                            {{$t("searchBtn")}}-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </form>-->
+                <ul class="navbar-nav bg-primary  justify-content-center align-items-center w-100 ">
                     <li class="nav-item " v-if="!$route.matched.some(({ name }) => name === 'Home')">
                         <router-link :to="{ name: 'Home'}" tag="a" class="nav-link ">
                             {{$t('nav.home')}}
@@ -79,13 +79,13 @@
 
                     <li class="nav-item" v-if="!isLoggedIn">
                         <router-link :to="{name: 'TeacherProfile'}" tag="a"
-                                     class="nav-link bg-danger text-white rounded">
+                                     class="nav-link  text-white rounded">
                             {{$t('nav.account')}}
                         </router-link>
                     </li>
                     <li class="nav-item" v-else>
                         <router-link :to="{name: 'TeacherProfile'}" tag="a"
-                                     class="nav-link bg-danger text-white rounded">
+                                     class="nav-link  text-white rounded">
                             Account
                         </router-link>
                     </li>
@@ -140,10 +140,19 @@
 </script>
 
 <style scoped>
+
     .router-link-exact-active {
         font-weight: bolder;
+        background-color: red;
+        border-bottom-right-radius:10px ;
+        border-bottom-left-radius:10px ;
     }
+    a{
+        font-weight: bolder;
+        color: white !important;
+        margin-right: 20px;
 
+    }
     .lang {
         list-style-type: none;
         margin-top: 0;

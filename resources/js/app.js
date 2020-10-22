@@ -1,6 +1,5 @@
 import axios from "axios";
 import i18n from "./src/i18n";
-
 require('./bootstrap');
 
 window.Vue = require('vue');

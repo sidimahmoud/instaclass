@@ -15,6 +15,7 @@
                         <a class="navbar-brand text-primary font-weight-bolder" href="/">
                             <img src="../assets/logo.png" alt="" width="80px">
                         </a>
+                        INSTANTACLASSE
                     </h6>
 
                 </div>
@@ -108,8 +109,8 @@
     }
 
     .page-footer {
-        /*background-color: #0e0938 !important;*/
-        background-image: url('../assets/images/footer.png');
+        background-color: #000 !important;
+        /*background-image: url('../assets/images/footer.png');*/
     }
 
     hr {

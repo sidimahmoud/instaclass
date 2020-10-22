@@ -18,11 +18,9 @@
 </head>
 <body class="bg-light">
 <div id="app">
-    <appnav v-if="!$route.meta.admin"></appnav>
-    <main>
+    <main >
         @yield('content')
     </main>
-    <appfooter v-if="!$route.meta.admin"></appfooter>
 </div>
 
 </body>
