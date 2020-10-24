@@ -5,7 +5,7 @@ const state = {
     students: [],
     admins: [],
     banned: [],
-    counts:'',
+    counts: '',
     fetchingUsers: false
 };
 const getters = {
@@ -19,21 +19,20 @@ const getters = {
 
 const actions = {
     async fetchTeachers({commit}) {
-        headers();
         const response = await axios.get('/teachers');
         commit('setTeachers', response.data);
         commit("setFetchingUsers", false);
     },
     async fetchBanned({commit}) {
         commit("setFetchingUsers", true);
-        headers();
+
         const response = await axios.get('/banned');
         commit('setBanned', response.data);
         commit("setFetchingUsers", false);
     },
     async fetchStudents({commit}) {
         commit("setFetchingUsers", true);
-        headers();
+
         const response = await axios.get('/students');
         commit('setStudents', response.data);
         commit("setFetchingUsers", false);
@@ -41,15 +40,26 @@ const actions = {
     },
     async fetchAdmins({commit}) {
         commit("setFetchingUsers", true);
-        headers();
         const response = await axios.get('/admins');
         commit('setAdmins', response.data);
         commit("setFetchingUsers", false);
 
     },
+    async banish({commit}, id) {
+        commit("setFetchingUsers", true);
+        const response = await axios.get('/banish/'+id);
+        commit("setFetchingUsers", false);
+        location.reload()
+    },
+    async unblock({commit}, id) {
+        commit("setFetchingUsers", true);
+        const response = await axios.get('/unblock/'+id);
+        commit("setFetchingUsers", false);
+        location.reload()
+    },
+
     async loadCounts({commit}) {
         commit("setFetchingUsers", true);
-        headers();
         const response = await axios.get('/counts')
         commit("setCounts", response.data);
         commit("setFetchingUsers", false);
@@ -64,13 +74,6 @@ const mutations = {
     setCounts: (state, payload) => (state.counts = payload),
     setFetchingUsers: (state, val) => (state.fetchingUsers = val),
 };
-
-function headers() {
-    let token = localStorage.getItem('token') || '';
-    if (token) {
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-    }
-}
 
 export default {
     state,

@@ -19,6 +19,7 @@ class UsersController extends Controller
     {
         $this->middleware('auth:sanctum');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +36,8 @@ class UsersController extends Controller
     {
         $teachers = User::whereHas(
             'roles', function ($q) {
-            $q->where('name', 'teacher');
+            $q->where('name', 'teacher')
+                ->where("active", 1);
         }
         )->get();
         return response()->json($teachers);
@@ -45,7 +47,8 @@ class UsersController extends Controller
     {
         $students = User::whereHas(
             'roles', function ($q) {
-            $q->where('name', 'student');
+            $q->where('name', 'student')
+                ->where("active", 1);
         }
         )->get();
         return response()->json($students);
@@ -55,7 +58,8 @@ class UsersController extends Controller
     {
         $admins = User::whereHas(
             'roles', function ($q) {
-            $q->where('name', 'admin');
+            $q->where('name', 'admin')
+                ->where("active", 1);
         }
         )->get();
         return response()->json($admins);
@@ -65,6 +69,21 @@ class UsersController extends Controller
     {
         $banned = User::where('active', 0)->get();
         return response()->json($banned);
+    }
+
+    public function banish($id)
+    {
+        $user = User::find($id);
+        $user->active = false;
+        $user->save();
+        return response()->json("Banned successfully");
+    }
+    public function unblock($id)
+    {
+        $user = User::find($id);
+        $user->active = true;
+        $user->save();
+        return response()->json("Banned successfully");
     }
 
     public function counts()
@@ -95,7 +114,7 @@ class UsersController extends Controller
     public function teacherDetails(Request $request)
     {
         $user = $request->user();
-        $students = DB::select("select distinct count(id) from enrollments e where e.course_id in(select id from courses where user_id=$user->id)");
+        $students = DB::select("select distinct count(id) from enrollments e where e.course_file_id in(select id from course_files where id in(select id from courses where user_id=$user->id) )");
         $ratings = Rating::with('user')->where('teacher_id', $user->id)->get();
         return response()->json(["students" => $students, "ratings" => $ratings]);
     }
@@ -140,7 +159,7 @@ class UsersController extends Controller
     public function show(Request $request)
     {
         $id = $request->user()->id;
-        $user = User::with('enrollments')->where('id', $id)->get();
+        $user = User::with('enrollments', "ratings")->where('id', $id)->get();
         return response()->json($user);
     }
 
@@ -165,13 +184,31 @@ class UsersController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-//        dd($request->types);
-        $user->roles()->sync($request->types);
-        return redirect()->route('users.index');
+//        dd($request->all());
+        $user = User::find($id);
+        $user->first_name = $request["first_name"];
+        $user->last_name = $request["last_name"];
+        $user->phone = $request["phone"];
+        $user->country = $request["country"];
+        $user->city = $request["city"];
+        $user->email = $request["email"];
+//        $user->password = $request["password"];
+        if ($request->hasFile('image')) {
+            $file = $request['image'];
+            $extension = $file->getClientOriginalExtension();
+            $file_name = $request['name'] . "-" . time() . "." . $extension;
+            $file->move('uploads/profiles/', $file_name);
+            $user->image = '/uploads/profiles/' . $file_name;
+        }
+        $user->about = $request["about"];
+        $user->languages = $request["languages"];
+        $user->save();
+        if ($user) return response()->json(["response" => "Updated successfully"]);
+        return response()->json(["response" => "error"]);
     }
 
     /**

@@ -1,11 +1,10 @@
 Modification instantclass:
 
 
-Tableau administrateur:
- - suivre tous les cours en tant qu'admin
- - suprimer/blocker utilisateur/teacher
- - voir les payments --  passer les payments hebdomadaire des teachers. (visa mastercard ...)
+About as in design
+Newsletter
+All courses filter
 
- - CRUD messages contact us
- - CRUD les demandes de cours
- - system notification nouveau cours creer / couriel.
+70% for all heros
+
+social auth

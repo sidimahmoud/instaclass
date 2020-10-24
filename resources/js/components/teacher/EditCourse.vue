@@ -1,8 +1,8 @@
 <template>
-    <div class="border-top border-primary pt-5">
-        <div class="container rounded py-3 bg-white">
-
-            <h3 class="text-center">Edit {{course.name}}</h3>
+    <div>
+        <div class="jumbotron text-right" style="height: 200px"></div>
+        <div class="container rounded py-3 bg font-weight-bold">
+            <h3 class="text-center font-weight-bolder">Edit {{course.name}}</h3>
             <form class="my-3" method="post" @submit.prevent="saveCourse">
                 <div class="row">
                     <div class="col-md-4">
@@ -154,5 +154,11 @@
 </script>
 
 <style scoped>
-
+    .bg {
+        background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);
+    }
+    .jumbotron {
+        background-image: url('../../assets/images/teaprofile/bg.jpg');
+        border-radius: 0;
+    }
 </style>

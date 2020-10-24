@@ -13,6 +13,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Language</th>
+                <th scope="col">Date of creation</th>
 
             </tr>
             </thead>
@@ -21,6 +22,7 @@
                 <th scope="row">{{t.id}}</th>
                 <td>{{t.name}}</td>
                 <td>{{t.language}}</td>
+                <td>{{t.created_at}}</td>
             </tr>
             </tbody>
         </table>

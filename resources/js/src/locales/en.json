@@ -1,14 +1,17 @@
 {
     "title": "The perfect Platform For Online Courses",
+    "title2": "INSTANTACLASS The Future Of Online Learning",
     "nav": {
         "home": "Home",
         "about": "About",
         "courses": "All Courses",
         "become": "Become Instructor",
-        "demande": "Request course",
+        "demande": "Request a course",
         "account": "Account"
     },
     "coursesByCateg": "Courses by category",
     "search": "Search for courses",
-    "searchBtn": "Search"
+    "searchBtn": "Search",
+    "noCourses": "There is no courses in this category yet."
+
 }

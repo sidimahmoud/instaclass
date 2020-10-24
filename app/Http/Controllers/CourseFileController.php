@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\CourseFile;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CourseFileController extends Controller
 {
@@ -67,6 +69,16 @@ class CourseFileController extends Controller
         return response()->json($file);
     }
 
+    public function upcomingSection(Request $request)
+    {
+        $id = $request->user()->id;
+        $now=Carbon::now();
+        $s = DB::select("select * from course_files where  id in (select id from courses where user_id = $id)");
+        $sections = CourseFile::where("startDate", ">", Carbon::now())
+//            ->where("course.user_id", $request->user()->id)
+            ->orderBy('startDate', 'ASC')->get();
+        return response()->json($s);
+    }
     /**
      * Show the form for editing the specified resource.
      *

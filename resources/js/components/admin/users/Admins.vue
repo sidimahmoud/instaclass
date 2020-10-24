@@ -1,5 +1,5 @@
 <template>
-    <big-sppiner v-if="fetchingUsers" />
+    <big-sppiner v-if="fetchingUsers"/>
     <div v-else>
         <h1 class="text-center">List of admins</h1>
 
@@ -12,7 +12,6 @@
                 <th scope="col">Email</th>
                 <th scope="col">Active</th>
                 <th scope="col">Bio</th>
-                <th scope="col">Block</th>
             </tr>
             </thead>
             <tbody>
@@ -23,12 +22,6 @@
                 <td>{{t.email.toLocaleLowerCase()}}</td>
                 <td><input type="checkbox" name="" id="" checked disabled></td>
                 <td>{{t.headline}}</td>
-
-                <td>
-                    <button class="btn btn-danger">
-                        &times
-                    </button>
-                </td>
 
             </tr>
             </tbody>
@@ -44,7 +37,12 @@
         name: "Teachers",
         components: {BigSppiner},
         methods: {
-            ...mapActions(["fetchAdmins"])
+            ...mapActions(["fetchAdmins"]),
+            banish(id) {
+                this.$store.dispatch("banish", id).then(() => {
+                    alert("Banned successfully")
+                })
+            }
         },
         computed: mapGetters(["allAdmins", "fetchingUsers"]),
         created() {

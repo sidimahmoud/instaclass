@@ -20,10 +20,10 @@ class Course extends Model
         return $this->belongsTo('App\CourseStatus');
     }
 
-    public function enrollments()
-    {
-        return $this->hasMany('App\Enrollment');
-    }
+//    public function enrollments()
+//    {
+//        return $this->hasMany('App\Enrollment');
+//    }
 
     public function ratings()
     {

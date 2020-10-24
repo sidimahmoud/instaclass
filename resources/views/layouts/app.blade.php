@@ -19,14 +19,11 @@
 </head>
 
 <body class="bg-light">
-  <div id="app">
-    <appnav v-if="!$route.meta.admin && !$route.meta.startLive && !$route.meta.liveVideo"></appnav>
-
-    <main>
-      @yield('content')
+<div id="app">
+    <main >
+        @yield('content')
     </main>
-    <appfooter v-if="!$route.meta.admin && !$route.meta.startLive && !$route.meta.liveVideo"></appfooter>
-  </div>
+</div>
 
 </body>
 

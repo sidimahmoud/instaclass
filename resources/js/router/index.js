@@ -12,6 +12,7 @@ import Home from "../components/HomeCompnent";
 import About from "../components/About";
 import Contact from "../components/ContactCompo";
 import Checkout from "../components/checkout/Checkout";
+import BuyOneSection from "../components/checkout/BuyOneSection";
 
 import Details from "../components/courses/CourseDetails";
 import Courses from "../components/courses/Courses";
@@ -30,7 +31,6 @@ import EditStudentProfile from "../components/student/EditProfile";
 import Dashboard from "../components/admin/Dashboard";
 import LoginAdmin from "../components/admin/auth/Login";
 
-import Homefr from "../components/fr/Homefr";
 import CategoryCourses from "../components/courses/CategoryCourses";
 import NewCourse from "../components/teacher/NewCourse";
 import EditCourse from "../components/teacher/EditCourse";
@@ -194,6 +194,15 @@ const routes = [
             title: 'Checkout'
         }
     },
+    {
+        path: '/checkout/:slug',
+        name: 'BuyOneSection',
+        component: BuyOneSection,
+        meta: {
+            requiresAuth: true,
+            title: 'Checkout'
+        }
+    },
 
     {
         path: '/teacher/profile',
@@ -215,6 +224,11 @@ const routes = [
         path: '/teacher/login',
         name: 'Signin',
         component: Signin,
+        beforeEnter: (to, from, next) => {
+            let user = JSON.parse(localStorage.getItem('user')) || null;
+            if (user && user.t === "teacher") next({name: 'TeacherProfile'});
+            else next()
+        },
         meta: {
             requiresAuth: false,
             title: 'Login'
@@ -291,7 +305,7 @@ const routes = [
     },
 
     {
-        path: '/login',
+        path: '/auth/login',
         name: 'Login',
         component: Login,
         meta: {
@@ -321,7 +335,7 @@ const routes = [
         }
     },
     {
-        path: '/register',
+        path: '/auth/register',
         name: 'Register',
         component: Register,
         meta: {
@@ -341,15 +355,6 @@ const routes = [
         }
     },
 
-    // fr routes
-    {
-        path: '/fr',
-        name: 'HomeFr',
-        component: Homefr,
-        meta: {
-            requiresAuth: false,
-        }
-    },
 
 
     // Admin routes

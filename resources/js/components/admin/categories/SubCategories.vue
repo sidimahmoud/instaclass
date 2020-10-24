@@ -10,7 +10,7 @@
                         <label for="exampleFormControlSelect1">Select category</label>
                         <select class="form-control" id="exampleFormControlSelect1" @change="loadsubs">
                             <option value="0">Select category</option>
-                            <option v-for="t in allCategories" :value="t.id">{{t.id}}-{{t.name}}
+                            <option v-for="t in allCategories" :value="t.id">{{t.id}}-{{t.name_en}}
                             </option>
                         </select>
                     </div>
@@ -19,30 +19,36 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect2">Sub-categories</label>
                         <select multiple class="form-control" id="exampleFormControlSelect2">
-                            <option v-for="c in subCategories">{{c.name}}</option>
+                            <option v-for="c in subCategories">{{c.name_en}}</option>
                         </select>
                     </div>
                 </div>
             </div>
             <h3 class="text-center">Or create new sub category</h3>
             <div class="row ">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="cats">Select category</label>
                         <select class="form-control" id="cats" v-model="category_id">
                             <option value="0">Select category</option>
-                            <option v-for="t in allCategories" :value="t.id">{{t.id}}-{{t.name}}
+                            <option v-for="t in allCategories" :value="t.id">{{t.id}}-{{t.name_en}}
                             </option>
                         </select>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="title">Category name</label>
                         <input type="text" class="form-control" id="title" v-model="name">
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="nom">Name (French)</label>
+                        <input type="text" class="form-control" id="nom" v-model="nom">
+                    </div>
+                </div>
+                <div class="col-md-3">
                     <label>Click to save</label>
                     <button class="btn btn-primary btn-block" @click="saveSub">Create</button>
                 </div>
@@ -62,6 +68,7 @@
             return {
                 category_id: '0',
                 name: '',
+                nom: '',
             }
         },
         methods: {
@@ -75,11 +82,12 @@
                     alert("Select category");
                     return
                 }
-                axios.post('/sub-categories', {category_id: this.category_id, name: this.name})
+                axios.post('/sub-categories', {category_id: this.category_id, name: this.name, nom: this.nom})
                     .then(res => {
                         alert("Sub-category created successfully");
                         this.category_id = 0;
                         this.name = '';
+                        this.nom = '';
                     })
             }
         },

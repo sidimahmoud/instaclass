@@ -19,15 +19,15 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::with('subCategory.category')->paginate(10);
+        $courses = Course::with('subCategory.category', 'sections')->paginate(10);
         return response()->json($courses);
     }
 
 
     public function show($slug)
     {
-        $course = Course::with('ratings.user', 'sections', 'enrollments', 'user', 'subCategory.category')
-            ->where('slug', $slug)
+        $course = Course::with('ratings.user', 'sections.enrollments', 'user', 'subCategory.category')
+            ->where('id', $slug)
             ->get();
 
         return response()->json($course);
@@ -38,11 +38,12 @@ class CourseController extends Controller
         $course = Course::with('subCategory.category')->where('sub_category_id', $id)->get();
         return response()->json($course);
     }
+
     public function search($search)
     {
-        $courses = Course::with('subCategory.category')->where('name', 'ilike', "%"."$search"."%")
-            ->orWhere('description', 'ilike', "%".$search."%")
-            ->orWhere()
+        $courses = Course::with('subCategory.category')
+            ->where('name', 'ilike', "%" . "$search" . "%")
+            ->orWhere('description', 'ilike', "%" . $search . "%")
             ->get();
         return response()->json($courses);
 
