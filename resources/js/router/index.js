@@ -19,6 +19,7 @@ import Courses from "../components/courses/Courses";
 import CoursePlayer from "../components/courses/CoursePlayer";
 import Demande from "../components/courses/Demande";
 import Live from "../components/student/Live";
+import LiveVideo from "../components/student/LiveVideo";
 import SearchCourses from "../components/courses/SearchCourses";
 
 import Become from "../components/teacher/Become";
@@ -34,7 +35,8 @@ import CategoryCourses from "../components/courses/CategoryCourses";
 import NewCourse from "../components/teacher/NewCourse";
 import EditCourse from "../components/teacher/EditCourse";
 import NewSection from "../components/teacher/NewSection";
-import LiveWindowCompo from "../components/teacher/StartLive";
+import StartLive from "../components/teacher/StartLive";
+import LiveCourse from "../components/teacher/LiveCourse";
 import FAQ from "../components/FAQ";
 
 Vue.use(VueRouter);
@@ -139,7 +141,7 @@ const routes = [
         }
     },
     {
-        path: '/player/live/:slug',
+        path: '/player/live/:slug/:sid',
         name: 'Live',
         component: Live,
         meta: {
@@ -148,20 +150,39 @@ const routes = [
         }
     },
     {
-        path: '/live/:slug',
+        path: '/player/livevideo/:slug/:sid',
+        name: 'LiveVideo',
+        component: LiveVideo,
+        meta: {
+            requiresAuth: true,
+            title: 'Live course',
+            liveVideo: true
+        }
+    },
+    {
+        path: '/livecourse',
         name: 'LiveCourse',
-        component: LiveWindowCompo,
+        component: LiveCourse,
         beforeEnter: (to, from, next) => {
             let user = JSON.parse(localStorage.getItem('user')) || null;
             if (user.t === "teacher") next();
-            else if (user.t === "admin") next({name: 'Admin'});
-            else if (user.t === "student") next({name: 'StudentProfile'});
-            else next({name: 'Home'});
+            else if (user.t === "admin") next({ name: 'Admin' });
+            else if (user.t === "student") next({ name: 'StudentProfile' });
+            else next({ name: 'Home' });
         },
         meta: {
             requiresAuth: true,
             title: 'Live course'
-
+        }
+    },
+    {
+        path: '/startlive',
+        name: 'StartLive',
+        component: StartLive,
+        meta: {
+            requiresAuth: true,
+            title: 'Start Live',
+            startLive: true
         }
     },
     {
@@ -190,9 +211,9 @@ const routes = [
         beforeEnter: (to, from, next) => {
             let user = JSON.parse(localStorage.getItem('user')) || null;
             if (user.t === "teacher") next();
-            else if (user.t === "admin") next({name: 'Admin'});
-            else if (user.t === "student") next({name: 'StudentProfile'});
-            else next({name: 'Home'});
+            else if (user.t === "admin") next({ name: 'Admin' });
+            else if (user.t === "student") next({ name: 'StudentProfile' });
+            else next({ name: 'Home' });
         },
         meta: {
             requiresAuth: true,
@@ -220,7 +241,7 @@ const routes = [
         component: Become,
         beforeEnter: (to, from, next) => {
             let user = JSON.parse(localStorage.getItem('user')) || null;
-            if (user && user.t === "teacher") next({name: 'TeacherProfile'});
+            if (user && user.t === "teacher") next({ name: 'TeacherProfile' });
             else next()
         },
         meta: {
@@ -267,9 +288,9 @@ const routes = [
         beforeEnter: (to, from, next) => {
             let user = JSON.parse(localStorage.getItem('user')) || null;
             if (user.t === "student") next();
-            else if (user.t === "admin") next({name: 'Admin'});
-            else if (user.t === "teacher") next({name: 'TeacherProfile'});
-            else next({name: 'Home'});
+            else if (user.t === "admin") next({ name: 'Admin' });
+            else if (user.t === "teacher") next({ name: 'TeacherProfile' });
+            else next({ name: 'Home' });
         },
     },
 
@@ -356,13 +377,13 @@ const routes = [
         },
         beforeEnter: (to, from, next) => {
             if (!store.getters.isLoggedIn) {
-                next({name: 'LoginAdmin'});
+                next({ name: 'LoginAdmin' });
             } else {
                 let user = JSON.parse(localStorage.getItem('user')) || null;
                 if (user.t === "admin") next();
-                else if (user.t === "teacher") next({name: 'TeacherProfile'});
-                else if (user.t === "student") next({name: 'StudentProfile'});
-                else next({name: 'Home'});
+                else if (user.t === "teacher") next({ name: 'TeacherProfile' });
+                else if (user.t === "student") next({ name: 'StudentProfile' });
+                else next({ name: 'Home' });
             }
 
         },
@@ -381,13 +402,13 @@ router.beforeEach((to, from, next) => {
             next();
             return
         }
-        next({name: 'Login'})
+        next({ name: 'Login' })
     } else if (to.matched.some(record => record.meta.requiresVisitore)) {
         if (!store.getters.isLoggedIn) {
             next();
             return
         }
-        next({name: 'Home'})
+        next({ name: 'Home' })
     } else {
         next()
     }
