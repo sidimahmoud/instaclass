@@ -2,35 +2,33 @@
     <div class="text-center font-weight-bolder">
         <div class="row  justify-content-center">
             <div class="col">
-                <div class="count">
+                <div class="btn btn-primary ">
                     {{displayDays}} <br>
                     Days
                 </div>
             </div>
             <div class="col">
-                <div class="count">
-                        {{displayHours}} <br>
-                        Hours
-
+                <div class="btn btn-primary ">
+                    {{displayHours}} <br>
+                    Hours
                 </div>
             </div>
             <div class="col">
-                <div class="count">
-                        {{displayMinutes}} <br>
-                        Minutes
+                <div class="btn btn-primary ">
+                    {{displayMinutes}} <br>
+                    Minutes
                 </div>
             </div>
             <div class="col">
-                <div class="count">
-                        {{displaySeconds}} <br>
-                        Seconds
-
+                <div class="btn btn-primary ">
+                    {{displaySeconds}} <br>
+                    Seconds
                 </div>
             </div>
 
             <div class="col-12" v-if="text">
                 <h3 v-if="expired">Timer enabled when you have an upcoming course</h3>
-                <h3 v-if="!expired">Before your next course</h3>
+                <h3 v-if="!expired">BE READY</h3>
             </div>
         </div>
     </div>

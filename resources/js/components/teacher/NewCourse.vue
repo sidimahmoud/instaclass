@@ -2,7 +2,7 @@
     <div>
         <div class="jumbotron text-right" style="height: 200px"></div>
 
-        <div class="container rounded py-3 bg font-weight-bold">
+        <div class="container py-3 bg font-weight-bold">
             <h3 class="text-center font-weight-bolder">create a new course</h3>
             <form class="my-3" method="post" @submit.prevent="saveCourse">
                 <div class="row">
@@ -35,7 +35,7 @@
                                     v-model="course.language">
                                 <option value="EN">EN</option>
                                 <option value="FR">FR</option>
-                                <option value="">Create</option>
+                                <option value="">Add New Language</option>
                             </select>
                         </div>
                         <div class="form-group" v-else>
@@ -67,7 +67,7 @@
                                         required>
                                     <option value="cad">CAD</option>
                                     <option value="usd">USD</option>
-                                    <option value="eur">Eur</option>
+                                    <option value="eur">EUR</option>
                                 </select>
                                 <small id="currencyHelp" class="form-text text-muted">
                                     Canadiens users have to select CAD.
@@ -85,14 +85,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="duration">Estimated duration with all sessions</label>
                             <input type="text" class="form-control" id="duration"
                                    placeholder="Duration" v-model="course.estimated_duration" required>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="persons">Number of authorized students per session</label>
                             <input type="number" min="1" max="50" class="form-control" id="persons"
@@ -103,7 +103,7 @@
                         <div class="form-group">
                             <label for="partage">Autorisez vous le partage de votre annonce?</label>
                             <select class="form-control" id="partage" v-model="course.sharable" required>
-                                <option value="1">Instatavite peut le partager</option>
+                                <option value="1">Instantavite peut le partager</option>
                                 <option value="0">Je n'autorise pas</option>
                             </select>
                         </div>
@@ -111,15 +111,14 @@
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="desc">Summerize the course</label>
-                            <input type="text" class="form-control"
-                                   v-model="course.short_description" required>
+                            <label for="desc">Summerize what you will teach in your course</label>
+                            <textarea class="form-control" v-model="course.short_description" required></textarea>
                         </div>
                     </div>
 
                 </div>
                 <div class="row border m-2 " v-for="(section, index) in sections" :key="index">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="section1Title">Session {{index+1}}: Give a title to this session</label>
                             <input type="text" class="form-control" id="section1Title"
@@ -130,9 +129,9 @@
                         <div class="form-group">
                             <label for="short_desc">Session {{index+1}} description: GIve a description of what you will
                                 teach in this session</label>
-                            <input type="text" class="form-control" id="short_desc"
+                            <textarea type="text" class="form-control" id="short_desc"
                                    placeholder="Short description" name="desc[]" required
-                                   v-model="sections[index].description">
+                                      v-model="sections[index].description"></textarea>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -156,7 +155,7 @@
                             <input type="text" class="form-control" name="session[]" aria-describedby="durationHelp"
                                    v-model="sections[index].duration" required>
                             <small id="durationHelp" class="form-text text-muted">
-                                We suggest you arround 1h per session
+                                We suggest 1h per session
                             </small>
 
                         </div>
@@ -170,7 +169,10 @@
                         </select>
                     </div>
                 </div>
-                <button class="btn btn-primary btn-block" type="submit">Publish course</button>
+                <div class="text-center">
+                    <button class="btn btn-primary " type="submit">Publish course</button>
+
+                </div>
             </form>
         </div>
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -411,7 +413,9 @@
 
 <style scoped>
     .bg {
-        background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);
+        /*background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);*/
+        border: 5px solid black;
+        border-radius: 5%;
     }
 
     .jumbotron {

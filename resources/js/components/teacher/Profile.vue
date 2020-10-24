@@ -6,43 +6,107 @@
             </div>
         </div>
         <div v-if="!profileLoading">
-            <div class="jumbotron py-0">
-                <div class="text-right">
-                    <span class="font-weight-bold text-white mr-2">Bonjour {{userProfile.first_name}}</span>
-                    <button class="btn btn-danger" @click="logout">
-                        Logout
-                    </button>
+            <section class="hero pt-5">
+                <div class="container mt-4 h-100">
+                    <div class="text-right">
+                        <button class="btn btn-danger" @click="logout">
+                            Logout
+                        </button>
+                    </div>
+                    <div class="row h-100">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8 text-center pt-md-5">
+                            <h1 class="font-weight-bolder display-2">
+                                THE NEXT <br>
+                                YOU
+                            </h1>
+                            <h1 class="font-weight-bolder text-uppercase">
+                                The best way to predict <br>
+                                the future is to create it
+                            </h1>
+                        </div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="text-white text-center">
-                            <img :src="userProfile.image" width="80px" alt="Avatar" class="rounded-circle">
-                            <h4>{{userProfile.first_name}} {{userProfile.last_name}}</h4>
-                            <p>{{userProfile.phone}}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="d-flex align-items-center justify-content-center text-white">
-                            <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
-                                <span class="btn btn-danger">{{allTeacherDetails.students[0].count>0?allTeacherDetails.students[0].count:"0"}} </span>
-                                <br> Course Enrollments
+            </section>
+            <div class="container">
+                <div class="jumbotron1 p-0 mt-2">
+                    <div class="container details">
+                        <div class="row align-items-center counts">
+                            <div class="col-md-4 pl-0 teacher-image"
+                                 :style="{ backgroundImage: 'url('+userProfile.image+')',  backgroundSize: 'cover', backgroundRepeat : 'no-repeat' }">
+                                <!--<img :src="userProfile.image" alt="Avatar" class="w-100">-->
                             </div>
-                            <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">
-                                <span class="btn btn-danger">{{userCourses.length>0?userCourses.length:"0"}} </span>
-                                <br>
-                                Courses
-                            </div>
+                            <div class="col-md-8 mb-2 stat">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h3 class="text-uppercase">
+                                            <strong>
+                                            Instructor. {{userProfile.first_name}} {{userProfile.last_name}}
 
-                            <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">
-                                <span class="btn btn-danger">{{allTeacherDetails.ratings.length>0?allTeacherDetails.ratings.length:"0"}} </span>
-                                <br> Reviews
+                                            </strong>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-2 text-center">
+                                        <i class="fa fa-star fa-2x text-warning"></i>
+                                    </div>
+                                    <div class="col-8">
+                                        <span>{{allTeacherDetails.ratings.length>0?allTeacherDetails.ratings.length:"0"}}</span>
+                                        Reviews
+
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-2 text-center">
+                                        <i class="fa fa-users fa-2x text-warning"></i>
+                                    </div>
+                                    <div class="col-8">
+                                        <span>{{allTeacherDetails.students[0].count>0?allTeacherDetails.students[0].count:"0"}}</span>
+                                        Students enrolled
+
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-2 text-center">
+                                        <i class="fa fa-play-circle fa-2x text-warning"></i>
+                                    </div>
+                                    <div class="col-8">
+                                        <span>{{userCourses.length>0?userCourses.length:"0"}}</span>
+                                        Courses
+
+                                    </div>
+
+                                </div>
+
+
+                                <!--                            <div class="d-flex align-items-center justify-content-center text-white">-->
+                                <!--                                <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">-->
+                                <!--                                    <span class="btn btn-danger">{{allTeacherDetails.students[0].count>0?allTeacherDetails.students[0].count:"0"}} </span>-->
+                                <!--                                    <br> Course Enrollments-->
+                                <!--                                </div>-->
+                                <!--                                <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">-->
+                                <!--                                    <span class="btn btn-danger">{{userCourses.length>0?userCourses.length:"0"}} </span>-->
+                                <!--                                    <br>-->
+                                <!--                                    Courses-->
+                                <!--                                </div>-->
+                                <!--                                <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">-->
+                                <!--                                    <span class="btn btn-danger">{{allTeacherDetails.ratings.length>0?allTeacherDetails.ratings.length:"0"}} </span>-->
+                                <!--                                    <br> Reviews-->
+                                <!--                                </div>-->
+                                <!--                            </div>-->
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                </div>
+
+                <div class="count-down  py-2 my-2">
+                    <div>
                         <div class="row">
                             <div class="mx-auto" v-if="upComingSections.length>0">
-                                <h4 class="text-center my-2 text-white">You have one course to start after</h4>
+                                <h4 class="text-center my-2 text-white text-uppercase">
+                                    Your course will start in
+                                </h4>
                                 <Count-down
                                     :year="upComingSections[0].startDate.slice(0,4)"
                                     :month="upComingSections[0].startDate.slice(5,7)"
@@ -50,7 +114,10 @@
                                     :hour="upComingSections[0].startDate.slice(11,13)"
                                     :minute="upComingSections[0].startDate.slice(14,16)"
                                     :second="0"
+                                    :text="false"
                                 />
+                                <h4 class="text-center my-2 text-white">BE READY</h4>
+
                             </div>
                         </div>
                         <p class="text-center text-white my-2" v-if="upComingSections.length>0">
@@ -62,12 +129,19 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
+            <div class="container my-3 text-right">
+                <router-link :to="{name: 'NewCourse'}">
+                    <button class="btn btn-primary">
+                        <i class="fa fa-plus"></i> Create a new course
+                    </button>
+                </router-link>
+            </div>
+            <div class="container teacher-area">
                 <div class="accordion" id="accordionExample">
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0" @click="collapsedCourses=!collapsedCourses">
-                                <button class="btn btn-link font-weight-bolder rounded" type="button"
+                                <button class="btn btn-link font-weight-bolder rounded " type="button"
                                         data-toggle="collapse"
                                         data-target="#collapseOne"
                                         aria-expanded="true" aria-controls="collapseOne">
@@ -84,15 +158,8 @@
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
                              data-parent="#accordionExample">
                             <div class="card-body">
-                                <div class="text-right">
-                                    <router-link :to="{name: 'NewCourse'}">
-                                        <button class="btn btn-primary">
-                                            <i class="fa fa-plus"></i> Create a new course
-                                        </button>
-                                    </router-link>
-                                </div>
                                 <ul class="list-unstyled">
-                                    <li class="media border border-light rounded-lg p-2 mt-4"
+                                    <li class="media bg-white  p-2 mt-4"
                                         v-for="course in userCourses"
                                         :key="course.id">
                                         <div class="media-body">
@@ -108,7 +175,7 @@
                                                 <div class="col-md-3 text-right">
                                                     <router-link
                                                         :to="{ name: 'EditCourse', params: { slug: course.id}}">
-                                                        <button class="btn btn-warning">Edit</button>
+                                                        <button class="btn btn-primary">Edit</button>
                                                     </router-link>
                                                     <a href="javascript:;" class="btn btn-danger"
                                                        v-on:click="deleteCourse(course.id)">
@@ -268,15 +335,90 @@
 </script>
 
 <style scoped lang="scss">
-    .jumbotron {
-        background-image: url('../../assets/images/teaprofile/bg.jpg');
+    .hero {
+        /*background-image: url('../../assets/images/demand/online.jpg');*/
+        background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
+        height: 100vh;
+        background-size: cover;
+        border-bottom: 15px solid #3081FB;
+        color: white;
+    }
+
+    .jumbotron1 {
+        background-color: transparent;
         border-radius: 0;
+
+        img {
+            border-radius: 0 10% 10% 0;
+            border: 2px solid black;
+            max-height: 450px;
+            max-width: 450px;
+        }
+    }
+
+    .details {
+        border-radius: 2rem;
+        border: 20px solid black;
+        border-right: 2px solid black;
+
+    }
+
+    .teacher-image {
+        height: 300px;
+        border-radius: 0 70px 70px 0;
+        @media only screen and (max-width: 600px) {
+            border-radius: 0;
+        }
+    }
+
+    .counts {
+        background: linear-gradient(rgb(253, 255, 255, 0.5),
+            rgb(255, 255, 255, 0.5)),
+        url('../../assets/images/teaprofile/down1.png') no-repeat right center;
+        background-size: contain;
+        height: 300px;
+    }
+    .stat{
+        font-weight: 800;
+        span{
+            margin: 15px;
+        }
+    }
+    .count-down {
+        background: linear-gradient(rgba(19, 19, 19, 0.8), rgba(19, 19, 19, 0.8)), url('../../assets/images/teaprofile/down1.png') no-repeat left center, url('../../assets/images/teaprofile/down2.png') no-repeat right center;
+        background-size: contain;
+        border-radius: 20px;
+    }
+
+    .teacher-area {
+        background-color: #ccc;
+        border: 2px solid black;
+        border-radius: 20px;
+        padding: 20px;
+
     }
 
     .card {
-        background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);
+        background: linear-gradient(180deg, rgba(19, 19, 19, 0.4), rgba(19, 19, 19, 1));
         margin-top: 6px;
         margin-bottom: 6px;
+        color: white;
+        border-radius: 20px !important;
+
     }
+
+    .card-header {
+        background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);
+        font-size: 40px;
+        border-radius: 20px !important;
+
+        .btn {
+            font-size: 20px;
+            color: #000 !important;
+            font-weight: 800;
+
+        }
+    }
+
 
 </style>

@@ -46,9 +46,16 @@ const actions = {
 
     },
     async banish({commit}, id) {
-        // commit("setFetchingUsers", true);
+        commit("setFetchingUsers", true);
         const response = await axios.get('/banish/'+id);
-        // commit("setFetchingUsers", false);
+        commit("setFetchingUsers", false);
+        location.reload()
+    },
+    async unblock({commit}, id) {
+        commit("setFetchingUsers", true);
+        const response = await axios.get('/unblock/'+id);
+        commit("setFetchingUsers", false);
+        location.reload()
     },
 
     async loadCounts({commit}) {

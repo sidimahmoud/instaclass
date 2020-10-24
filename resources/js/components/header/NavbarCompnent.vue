@@ -1,25 +1,23 @@
 <template>
     <div>
-        <ul class="lang float-md-right mt-md-0 p-0">
-            <li class="btn" v-if="locale==='fr'" @click="en">
-                EN
-            </li>
-            <li class="btn " v-else @click="fr">
-                FR
-            </li>
-            <li v-if="isLoggedIn">
-                <strong>
-                    {{userProfile.first_name}}
-                </strong>
-            </li>
-        </ul>
-
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-0 fixed-top">
 <!--            <router-link :to="{name: 'Home'}" tag="a" class="navbar-brand text-primary font-weight-bolder">-->
 <!--                <img src="../../assets/logo.png" alt="" width="80px">-->
 <!--            </router-link>-->
 
-
+            <ul class="lang text-center p-0 text-white">
+                <li class="btn" v-if="locale==='fr'" @click="en">
+                    <strong>EN</strong>
+                </li>
+                <li class="btn " v-else @click="fr">
+                     <strong>FR</strong>
+                </li>
+                <li v-if="isLoggedIn">
+                   Welcome <strong>
+                        {{userProfile.first_name}}
+                    </strong>
+                </li>
+            </ul>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -41,7 +39,6 @@
                     <li class="nav-item " v-if="!$route.matched.some(({ name }) => name === 'Home')">
                         <router-link :to="{ name: 'Home'}" tag="a" class="nav-link ">
                             {{$t('nav.home')}}
-
                         </router-link>
                     </li>
                     <li class="nav-item">
@@ -65,7 +62,7 @@
                     </li>
                     <li class="nav-item" v-else>
                         <router-link :to="{name: 'Signin'}" tag="a"
-                                     class="nav-link bg-danger text-white rounded">
+                                     class="nav-link">
                             {{$t('nav.become')}}
                         </router-link>
                     </li>
@@ -79,18 +76,20 @@
 
                     <li class="nav-item" v-if="!isLoggedIn">
                         <router-link :to="{name: 'TeacherProfile'}" tag="a"
-                                     class="nav-link  text-white rounded">
+                                     class="nav-link ">
                             {{$t('nav.account')}}
                         </router-link>
                     </li>
                     <li class="nav-item" v-else>
                         <router-link :to="{name: 'TeacherProfile'}" tag="a"
-                                     class="nav-link  text-white rounded">
-                            Account
+                                     class="nav-link">
+                            {{$t('nav.account')}}
+
                         </router-link>
                     </li>
 
                 </ul>
+
             </div>
         </nav>
     </div>
@@ -156,6 +155,12 @@
     .lang {
         list-style-type: none;
         margin-top: 0;
-        float: right;
+        position: absolute;
+        right: 40px !important;
+        z-index: 1;
     }
+    .nav-link{
+        padding: 20px;
+    }
+
 </style>

@@ -78,6 +78,13 @@ class UsersController extends Controller
         $user->save();
         return response()->json("Banned successfully");
     }
+    public function unblock($id)
+    {
+        $user = User::find($id);
+        $user->active = true;
+        $user->save();
+        return response()->json("Banned successfully");
+    }
 
     public function counts()
     {

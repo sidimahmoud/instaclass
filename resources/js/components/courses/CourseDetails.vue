@@ -6,92 +6,78 @@
             </div>
         </div>
         <div v-if="!loading">
-            <!--            blue band-->
-            <div class="jumbotron"></div>
-            <!--/            blue band-->
-            <!--            Course header-->
-            <div class="container bg-white">
-                <div class="row justify-content-around align-items-center border-bottom border-primary">
-                    <div class="col-md-2 text-center">
-                        <img :src="course.user.image" width="80px" alt="Avatar" class="border rounded-circle">
-                        <br>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
+            <section class="hero pt-5">
+                <div class="container h-100">
+                    <div class="row h-100">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8 text-center pt-md-5">
+                            <h1 class="font-weight-bolder display-2 text-uppercase text-center">
+                                Available Courses
+                            </h1></div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="font-weight-bolder">
-                            {{course.user.first_name}}
+
+                </div>
+
+            </section>
+
+            <div class="container">
+                <div class="course-header">
+                    <div class="row justify-content-around align-items-center pt-2">
+                        <div class="col-md-2 text-center">
+                            <img :src="course.user.image" width="80px" height="80px" alt="Avatar"
+                                 class="border rounded-circle">
                         </div>
+                        <div class="col-md-4">
+                            <div class="font-weight-bolder">
+                                <h3>{{course.user.first_name}} {{course.user.first_name}}</h3>
+                                {{course.user.city}},{{course.user.country}}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <i class="fa fa-star  fa-2x"></i> 0 Instructor rating <br>
+                            <i class="fa fa-user  fa-2x mr-1"></i> 0 Students
+
+                        </div>
+                        <div class="col-md-3">
+                            <router-link
+                                :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
+                                tag="a" class="btn btn-primary my-3" v-if="!enrolled">
+                                S'inscrire à tout les séances
+                            </router-link>
+                            <router-link :to="{name: 'StudentProfile'}" tag="a" class="btn btn-primary my-3"
+                                         v-if="enrolled">
+                                Deja inscrit
+                            </router-link>
+                        </div>
+                    </div>
+                    <hr class="bg-dark mx-3">
+                    <div class="col-md-12 course-info" v-if="course.sub_category">
                         <div>
-                            {{course.user.city}},{{course.user.country}}
+                            Category :
+                            <router-link :to="{ name: 'CategCourses', params: { id: course.sub_category.category.id}}"
+                                         tag="a" class="mr-2">
+                                {{course.sub_category.category.name_en}}
+                            </router-link>
                         </div>
-                        <div v-if="course.user.languages">
-                            Spoken languages: {{course.user.languages}}
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://www.instantclass.herokuapp.com/courses&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!">
-                            <img src="../../assets/images/fb.png" alt="fb" width="150px">
-                            <i class="fa fa-thumbs-up fa-2x text-primary"></i>
-
-                        </a> <br>
-                        <!--                        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=117&layout=button_count&action=like&size=large&share=false&height=21&appId=223985172274465" width="117" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>-->
-                    </div>
-                    <div class="col-md-2">
-                        <a href="#"> <img src="../../assets/images/insta1.png" alt="insta" width="150px"></a>
-
-                        <!--                        <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://www.instantclass.herokuapp.com&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!"-->
-                        <!--                           target="_blank"-->
-                        <!--                           onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false">-->
-                        <!--                            <button type="button"-->
-                        <!--                                    class="btn btn-facebook "><i class="fa fa-facebook fa-2"></i>-->
-                        <!--                                <i class="fa fa-share-alt"></i>-->
-                        <!--                            </button>-->
-                        <!--                        </a>-->
-                        <!--                        <a href="#" target="_blank">-->
-                        <!--                            <button type="button" class="btn btn-instagram ">-->
-                        <!--                                <i class="fa fa-instagram"/>-->
-                        <!--                                <i class="fa fa-share-alt"></i>-->
-                        <!--                            </button>-->
-                        <!--                        </a>-->
-                    </div>
-                    <div class="col-md-2">
-                        <router-link
-                            :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
-                            tag="a" class="btn btn-primary my-3" v-if="!enrolled">
-                            S'inscrire à tout les séances
-                        </router-link>
-                        <router-link :to="{name: 'StudentProfile'}" tag="a" class="btn btn-primary my-3"
-                                     v-if="enrolled">
-                            Deja inscrit
-                        </router-link>
+                        <div>Sub-category : {{course.sub_category.name_en}}</div>
+                        <div>Sessions: {{course.sections.length}}</div>
+                        <div>Language : {{course.language}}</div>
+                        <div>Price: ${{course.price}}/session</div>
                     </div>
                 </div>
-                <div class="row my-3">
-                    <div class="col-md-4" v-if="course.sub_category">
-                        Category:
-                        <router-link :to="{ name: 'CategCourses', params: { id: course.sub_category.category.id}}"
-                                     tag="a" class="mr-2 text-primary">
-                            <strong>{{course.sub_category.category.name}}</strong>
-                        </router-link>
-                        Sub-category : {{course.sub_category.name}}
-                    </div>
-                    <div class="col-md-3">Sessions: {{course.sections.length}}</div>
-                    <div class="col-md-2">Language : {{course.language}}</div>
-                    <div class="col-md-3">Price: ${{course.price}}/session</div>
-                </div>
+
                 <div class="text-center my-3" v-if="course.sections.length===0">
                     <h3>This first course will be available soon...</h3>
                 </div>
                 <div v-else>
-                    <div class="row justify-content-around align-items-center shadow-sm"
-                         v-for="section in course.sections"
+                    <div class="row justify-content-around align-items-center shadow-sm course-det"
+                         v-for="(section, index) in course.sections"
                          :key="section.id">
+                        <div class="col-12 text-center">
+                            <h2><strong>Session : {{index+1}}</strong></h2>
+                        </div>
                         <div class="col-md-9">
-                            <h4>{{section.title}}</h4>
+                            <h2><strong>{{section.title}}</strong></h2>
                             <p>{{section.description}}</p>
                             <p>
                                 Availabilities : {{section.startDate}}
@@ -134,12 +120,12 @@
 </script>
 
 <style scoped lang="scss">
-    .jumbotron {
-        background-image: url('../../assets/images/details/bg.png');
-        border-radius: 0;
-        height: 50px;
-        padding: 0;
-
+    .hero {
+        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details.jpg') no-repeat center center;
+        height: 100vh;
+        background-size: cover;
+        border-bottom: 15px solid #3081FB;
+        color: white;
     }
 
     .rounded-pill {
@@ -181,5 +167,31 @@
         }
 
     }
+
+    .course-header {
+        border-radius: 15px;
+        margin: 10px;
+        background: linear-gradient(90deg,
+            rgb(0, 0, 0, 0.5),
+            rgb(255, 255, 255, 0.5)),
+        url('../../assets/images/teaprofile/down1.png') no-repeat right center;
+        background-size: contain;
+        font-weight: 800 !important;
+
+        .fa {
+            color: yellow;
+        }
+    }
+
+    .course-det {
+        border-radius: 15px;
+        margin: 10px;
+        background: linear-gradient(90deg,
+            rgb(0, 0, 0, 0.5),
+            rgb(255, 255, 255, 1));
+        font-weight: 800 !important;
+        border-right: 2px solid #2b63f3;
+    }
+
 
 </style>

@@ -1,53 +1,90 @@
 <template>
-    <div class="container border-top border-primary">
-        <div class="row mt-5">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                <div class="signup-form bg-white">
-                    <form method="post" @submit.prevent="login">
-                        <h2>Sign in</h2>
-                        <p class="hint-text">Login to access into your teacher space.</p>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="errorMessage">
-                            <strong>Error!</strong> {{errorMessage}}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" name="email" placeholder="Email"
-                                   required="required" v-model="email">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" name="password" placeholder="Password"
-                                   required="required" v-model="password">
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block " :disabled="authLoading">
-                                <span v-if="!authLoading">Sign in </span>
-                                <div class="text-center text-white" v-if="authLoading">
-                                    <span class="spinner-border spinner-border-sm" role="staitus" aria-hidden="true"/>
-                                    Loading...
-                                </div>
-                            </button>
-                        </div>
-                    </form>
-                    <div class="text-center">Don't have an account?
-                        <router-link :to="{name: 'Become'}">Sign up</router-link>
+    <div>
+        <section class="hero pt-5">
+            <div class="container h-100">
+                <div class="row h-100">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8 text-center pt-md-5">
+                        <h1 class="font-weight-bolder display-2">
+                            THE NEXT <br>
+                            YOU
+                        </h1>
+                        <h1 class="font-weight-bolder text-uppercase">
+                            The best way to predict <br>
+                            the future is to create it
+                        </h1>
                     </div>
-                    <h2>Or</h2>
-                    <button class="btn btn-lg btn-google btn-block text-uppercase">
+                </div>
 
-                        <a href="https://instantclass.herokuapp.com/api/authorize/google" @click="loginGoogle">
-                            <i class="fa fa-google mr-2"></i> Continue with Google
-                        </a>
-                    </button>
-                    <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGithub">
-                        <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
-                    </button>
+            </div>
+
+        </section>
+        <div class="container ">
+            <div class="row">
+                <div class="col-sm-9 col-md-10 col-lg-8 mx-auto">
+                    <div class="signup-form bg-white m-5">
+                        <form method="post" @submit.prevent="login">
+                            <h3 class="text-uppercase text-center text-dark">get started with <br> Instantclass.</h3>
+                            <h2>Sign in</h2>
+                            <p class="hint-text">Login to access into your teacher space.
+                            </p>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                                 v-if="errorMessage">
+                                <strong>Error!</strong> {{errorMessage}}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control form-control-lg md-outline" name="email"
+                                       placeholder="Email"
+                                       required="required" v-model="email" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="basic-addon2"><i
+                                        class="fa fa-envelope"/></span>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control form-control-lg" name="password"
+                                       placeholder="Password"
+                                       required="required" v-model="password" aria-describedby="basic-addon">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="basic-addon"><i
+                                        class="fa fa-lock"/></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-dark btn-lg btn-block ">
+                                    <span v-if="!authLoading">Sign in </span>
+                                    <div class="text-center text-white" v-if="authLoading">
+                                        <span class="spinner-border spinner-border-sm" role="staitus"
+                                              aria-hidden="true"/>
+                                        Loading...
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+                        <div>
+                            <div class="text-center">Don't have an account?
+                                <router-link :to="{name: 'Become'}">Sign up</router-link>
+                            </div>
+                            <h2>Or</h2>
+                            <button class="btn btn-lg btn-google btn-block text-uppercase" @click="authLogin('google')">
+                                <i class="fa fa-google mr-2"></i> Continue with Google
+                            </button>
+                            <button class="btn btn-lg btn-github  btn-block text-uppercase"
+                                    @click="authLogin('facebook')">
+                                <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
+
 </template>
 
 <script>
@@ -55,13 +92,13 @@
 
     export default {
 
-        name: "Signin",
+        name: "Login",
 
         data() {
             return {
                 email: '',
                 password: '',
-                errorMessage: ''
+                errorMessage: '',
             }
         },
         methods: {
@@ -70,28 +107,32 @@
                 let password = this.password;
                 this.$store.dispatch('login', {email, password})
                     .then(res => {
-                        (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
+                        (res.data.user.roles[0].name === "teacher") ?
+                            this.$router.push({name: 'TeacherProfile'}) :
+                            (res.data.user.roles[0].name === "student") ?
+                                this.$router.push({name: 'StudentProfile'}) : this.$router.push({name: 'Admin'});
                     })
                     .catch(err => {
-                        console.log(err.response.data)
+                        console.log(err.response.data);
                         this.errorMessage = err.response.data.message
+                        err.response.data.message === "email unverified" ? this.$router.push({name: 'Email'}) :
+                            this.errorMessage = err.response.data.message;
                     })
             },
-            loginGithub() {
-                this.$store.dispatch('loginGithub')
+            // loginGithub() {
+            //     this.$store.dispatch('socialStudentAuth', "google")
+            //         .then((res) => {
+            //             console.log(res);
+            //             if (res.data.url) {
+            //                 console.log(res.data.url);
+            //                 window.location.href = res.data.url
+            //             }
+            //         })
+            //         .catch(err => console.log(err))
+            // },
+            authLogin(provider) {
+                this.$store.dispatch('socialStudentAuth', provider)
                     .then((res) => {
-                        console.log(res);
-                        if (res.data.url) {
-                            console.log(res.data.url);
-                            window.location.href = res.data.url
-                        }
-                    })
-                    .catch(err => console.log(err))
-            },
-            loginGoogle() {
-                this.$store.dispatch('loginGoogle')
-                    .then((res) => {
-                        console.log(res);
                         if (res.data.url) {
                             console.log(res.data.url);
                             window.location.href = res.data.url
@@ -105,12 +146,23 @@
 </script>
 
 <style scoped>
-    #bodyRegister {
+    .hero {
+        /*background-image: url('../../assets/images/demand/online.jpg');*/
+        background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
+        height: 100vh;
+        background-size: cover;
+        border-bottom: 15px solid #3081FB;
+        color: white;
     }
 
     .signup-form {
         margin: 0 auto;
-        padding: 30px 0;
+        margin-bottom: 15px;
+        background: #ffffff;
+        border: 20px solid black;
+        border-bottom: 2px solid black;
+        border-radius: 18%;
+
     }
 
     .signup-form h2 {
@@ -124,7 +176,7 @@
         content: "";
         height: 2px;
         width: 30%;
-        background: #d4d4d4;
+        background: #000;
         position: absolute;
         top: 50%;
         z-index: 2;
@@ -139,14 +191,13 @@
     }
 
     .signup-form .hint-text {
-        color: #999;
+        color: #000;
         margin-bottom: 30px;
         text-align: center;
     }
 
     .signup-form {
         color: #999;
-        border-radius: 3px;
         margin-bottom: 15px;
         background: #ffffff;
         box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
@@ -172,9 +223,6 @@
         padding-right: 10px;
     }
 
-    .signup-form .row div:last-child {
-        padding-left: 10px;
-    }
 
     .signup-form a:hover {
         text-decoration: none;
@@ -201,5 +249,31 @@
 
     .btn-google a {
         color: white;
+    }
+
+    .md-form.md-outline label.active {
+        background: #eeeeef;
+    }
+
+    input {
+        border: 2px solid black !important;
+        background: transparent;
+    }
+
+    .input-group-text {
+        display: flex;
+        align-items: center;
+        padding: 0.375rem 0.75rem;
+        margin-bottom: 0px;
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height: 1.6;
+        text-align: center;
+        white-space: nowrap;
+        background-color: transparent;
+        border: none;
+        border-radius: 0.25rem;
+        margin-left: -40px;
+        z-index: 1;
     }
 </style>

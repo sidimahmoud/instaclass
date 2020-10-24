@@ -19,7 +19,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::with('subCategory.category')->paginate(10);
+        $courses = Course::with('subCategory.category', 'sections')->paginate(10);
         return response()->json($courses);
     }
 

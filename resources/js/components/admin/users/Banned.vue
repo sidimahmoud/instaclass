@@ -30,8 +30,8 @@
                 <td>{{t.headline}}</td>
 
                 <td>
-                    <button class="btn btn-success">
-                        <i class="fa fa-check text-primary"></i>
+                    <button class="btn btn-danger" @click="unblock(t.id)">
+                        <i class="fa fa-check text-white"></i>
                     </button>
                 </td>
 
@@ -49,7 +49,12 @@
         name: "Banned",
         components: {BigSppiner},
         methods: {
-            ...mapActions(["fetchBanned"])
+            ...mapActions(["fetchBanned"]),
+            unblock(id) {
+                this.$store.dispatch("unblock", id).then(() => {
+                    alert("reactivated successfully")
+                })
+            }
         },
         computed: mapGetters(["allBanned", "fetchingUsers"]),
 

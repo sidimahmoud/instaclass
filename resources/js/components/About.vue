@@ -1,14 +1,19 @@
 <template>
     <div>
-        <div class="jumbotron">
-            <!--            <div class="row justify-content-around align-items-center">-->
-            <!--                <div class="container d-flex align-items-center justify-content-center">-->
-            <div class="text-center" style="color: #F1F0F8 !important;">
+        <section class="hero pt-5">
+            <div class="container h-100">
+                <div class="row h-100">
+                    <div class="col-md-8 text-center pt-md-5">
+                        <h1 class="font-weight-bolder display-4">ABOUT <br>
+                            INSTANTACLASSE <br>
+                            WHO WE <br>
+                            ARE
+                        </h1></div>
+                </div>
 
             </div>
-            <!--                </div>-->
-            <!--            </div>-->
-        </div>
+
+        </section>
         <!--        cards-->
         <div class="container">
             <div class="row  ">
@@ -172,8 +177,11 @@
         font-weight: bold;
     }
 
-    .jumbotron {
-        background-image: url('../assets/images/home/bg.png');
-        border-radius: 0;
+    .hero {
+        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../assets/images/about/hero1.jpg') no-repeat center center;
+        height: 100vh;
+        background-size: cover;
+        border-bottom: 15px solid #3081FB;
+        color: white;
     }
 </style>

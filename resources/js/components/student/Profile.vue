@@ -6,156 +6,214 @@
             </div>
         </div>
         <div v-else>
-            <div class="jumbotron text-right">
-                <span class="font-weight-bold text-white mr-2">Bonjour {{userProfile.first_name}}</span>
-                <button class="btn btn-danger" @click="logout">
-                    Logout
-                </button>
-            </div>
+            <section class="hero pt-5">
+                <div class="container mt-4 h-100">
+                    <div class="text-right">
+                        <button class="btn btn-danger" @click="logout">
+                            Logout
+                        </button>
+                    </div>
+                    <div class="row h-100">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8 text-center pt-md-5">
+                            <h1 class="font-weight-bolder display-2">
+                                THE NEXT <br>
+                                YOU
+                            </h1>
+                            <h1 class="font-weight-bolder text-uppercase">
+                                The best way to predict <br>
+                                the future is to create it
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="text-center ">
-                            <div class="card bg-primary">
-                                <div class="card-body text-center text-white">
-                                    <img :src="userProfile.image" alt="Avatar" width="60px" class="rounded-circle">
-                                    <h3 class="card-title font-weight-bolder">{{userProfile.first_name}}
-                                        {{userProfile.last_name}}</h3>
-                                    <p class="card-text">{{userProfile.headline}}</p>
-                                    <router-link :to="{name: 'EditStudentProfile'}" tag="a" class="btn btn-danger">
-                                        Edit Profile
-                                    </router-link>
+                <div class="jumbotron1 p-0">
+                    <div class="container details">
+                        <div class="row align-items-center counts">
+                            <div class="col-md-4 pl-0 teacher-image"
+                                 :style="{ backgroundImage: 'url('+userProfile.image+')',  backgroundSize: 'cover', backgroundRepeat : 'no-repeat' }">
+                                <!--<img :src="userProfile.image" alt="Avatar" class="w-100">-->
+                            </div>
+                            <div class="col-md-8 mb-2 ">
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h3 class="text-uppercase">
+                                            <strong>
+                                                {{userProfile.first_name}} {{userProfile.last_name}}
+                                            </strong>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <i class="fa fa-users fa-2x text-warning"></i>
+                                            Course Enrollments
+                                        </div>
+                                        <div class="col-4 py-2">
+                                            <span class="btn btn-block btn-primary ">{{userEnrollments.length>0?userEnrollments.length:"0"}}</span>
+                                        </div>
+                                        <div class="col-2"></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <i class="fa fa-star fa-2x text-warning"></i>
+                                            Reviews
+                                        </div>
+                                        <div class="col-4 py-2">
+                                            <span class="btn btn-block btn-primary">0</span>
+                                        </div>
+                                        <div class="col-2"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6" v-if="userEnrollments.length>0">
-                        <Count-down
-                            :year="userEnrollments[0].course_file.startDate.slice(0,4)"
-                            :month="userEnrollments[0].course_file.startDate.slice(5,7)"
-                            :day="userEnrollments[0].course_file.startDate.slice(8,9)"
-                            :hour="userEnrollments[0].course_file.startDate.slice(11,13)"
-                            :minute="userEnrollments[0].course_file.startDate.slice(14,16)"
-                            :second="0"
-                        />
-                    </div>
-                    <div class="col-md-6" v-else>
-                        <Count-down
-                            :year="2020"
-                            :month="1"
-                            :day="1"
-                            :hour="0"
-                            :minute="0"
-                            :second="0"
-                        />
+                </div>
+
+                <div class="count-down  py-2 my-2">
+                    <div class="w-50 mx-auto">
+                        <h4 class="text-center my-2 text-white text-uppercase">You have one course to start
+                            after</h4>
+                        <div class="" v-if="userEnrollments.length>0">
+                            <Count-down
+                                :year="userEnrollments[0].course_file.startDate.slice(0,4)"
+                                :month="userEnrollments[0].course_file.startDate.slice(5,7)"
+                                :day="userEnrollments[0].course_file.startDate.slice(8,9)"
+                                :hour="userEnrollments[0].course_file.startDate.slice(11,13)"
+                                :minute="userEnrollments[0].course_file.startDate.slice(14,16)"
+                                :second="0"
+                                :text="false"
+                            />
+                            <h4 class="text-center my-2 text-white">BE READY</h4>
+
+                        </div>
+                        <div v-else>
+                            <Count-down
+                                :year="2020"
+                                :month="1"
+                                :day="1"
+                                :hour="0"
+                                :minute="0"
+                                :second="0"
+                            />
+                        </div>
+
                     </div>
                 </div>
-                <div class="row my-4 ">
-                    <div class="col-md-12  shadow">
-                        <nav class="nav nav-pills nav-fill mt-3">
-                            <a class="nav-item nav-link active" href="#courses" data-toggle="tab">My recorded
-                                courses</a>
-                            <a class="nav-item nav-link " href="#receipts" data-toggle="tab">My receipts</a>
-                            <a class="nav-item nav-link " href="#live" data-toggle="tab">Go live</a>
-                            <a class="nav-item nav-link " href="#ratings" data-toggle="tab">Ratings</a>
-                        </nav>
-                        <hr class="bg-dark">
-                        <div class="tab-content my-1">
-                            <!-- Enrollments-->
-                            <div class="tab-pane fade show active" id="courses">
-                                <ul class="list-unstyled">
-                                    <li class=" mt-4" v-if="userEnrollments.length===0">
-                                        <p class="text-center h3 mt-3">
-                                            You have no recorded courses for the moment
-                                        </p>
-                                    </li>
-                                    <li class=" mt-4" v-else>
-                                        <div v-for="e in userEnrollments" :key="e.id">
-                                            <div v-if="e.course_file.course.type==1">
-                                                <router-link :to="{name: 'Player', params: { slug: e.course_file.id} }">
-                                                    <h5 class="mt-0 mb-1">{{e.course_file.title}},
-                                                        {{e.course_file.created_at.slice(0,10)}},
-                                                        {{e.course_file.created_at.slice(11,16)}},
-                                                        {{e.course_file.course.user.first_name}}
-                                                        {{e.course_file.course.user.last_name}}</h5>
-                                                </router-link>
-                                            </div>
+            </div>
+
+            <div class="container student-area">
+                <div class="shadow-lg">
+                    <nav class="nav nav-pills nav-fill mt-3">
+                        <a class="nav-item nav-link active" href="#courses" data-toggle="tab">My recorded
+                            courses</a>
+                        <a class="nav-item nav-link " href="#receipts" data-toggle="tab">My receipts</a>
+                        <a class="nav-item nav-link " href="#live" data-toggle="tab">Go to my live class</a>
+                        <a class="nav-item nav-link " href="#ratings" data-toggle="tab">Ratings</a>
+                    </nav>
+                    <hr class="bg-dark">
+                    <div class="tab-content my-1">
+                        <!-- Enrollments-->
+                        <div class="tab-pane fade show active" id="courses">
+                            <ul class="list-unstyled">
+                                <li class=" mt-4" v-if="userEnrollments.length===0">
+                                    <p class="text-center h3 mt-3">
+                                        You have no recorded courses for the moment
+                                    </p>
+                                </li>
+                                <li class=" mt-4" v-else>
+                                    <div v-for="e in userEnrollments" :key="e.id">
+                                        <div v-if="e.course_file.course.type==1" class="mb-4">
+                                                <h5 class="mt-0 mb-1">{{e.course_file.title}},
+                                                    {{e.course_file.created_at.slice(0,10)}},
+                                                    {{e.course_file.created_at.slice(11,16)}},
+                                                    {{e.course_file.course.user.first_name}}
+                                                    {{e.course_file.course.user.last_name}}
+
+                                            <router-link :to="{name: 'Player', params: { slug: e.course_file.id} }" tag="button" class="btn btn-primary float-right">View Course
+                                            </router-link>
+                                                </h5>
                                         </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="tab-pane fade show " id="receipts">
-                                <!--                                <h3 class="text-center">Your receipts will appear here. </h3>-->
-                                <div class="accordion" id="accordionExample">
-                                    <div class="card">
-                                        <div class="card-header" id="headingOne">
-                                            <h2 class="mb-0">
-                                                <p class="btn btn-link font-weight-bolder rounded" type="button"
-                                                   data-toggle="collapse"
-                                                   data-target="#collapseOne"
-                                                   aria-expanded="true" aria-controls="collapseOne">
-                                                    Order N°#1, 2020-09-02, 6:10, Teacher Instant
-                                                </p>
-                                            </h2>
-                                        </div>
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                                             data-parent="#accordionExample">
-                                            <div class="card-body">
-                                                <receipt/>
-                                            </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade show " id="receipts">
+                            <!--                                <h3 class="text-center">Your receipts will appear here. </h3>-->
+                            <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <p class="btn btn-link font-weight-bolder rounded" type="button"
+                                               data-toggle="collapse"
+                                               data-target="#collapseOne"
+                                               aria-expanded="true" aria-controls="collapseOne">
+                                                Order N°#1, 2020-09-02, 6:10, Teacher Instant
+                                            </p>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                         data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <receipt/>
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
-                            <div class="tab-pane fade show " id="live">
-                                <ul class="list-unstyled">
-                                    <li class="mt-4 text-center" v-if="userEnrollments.length===0">
-                                        <img src="../../assets/images/cam-icon.png" alt="" width="100">
-                                        <p class="text-center h3 mt-3">
-                                            You will be redirected to your live class when you will subscribe to a
-                                            course
-                                        </p>
-                                    </li>
 
-                                    <li class=" mt-4" v-else>
-                                        <div v-for="e in userEnrollments" :key="e.id" class="shadow-sm rounded my-2">
-                                            <div v-if="e.course_file.course.type===2">
-                                                <router-link :to="{name: 'Live', params: { slug: e.course_file.id} }">
-                                                    <h5 class="mt-0 mb-1">{{e.course_file.title}},
-                                                        {{e.course_file.created_at.slice(0,10)}},
-                                                        {{e.course_file.created_at.slice(11,16)}},
-                                                        {{e.course_file.course.user.first_name}}
-                                                        {{e.course_file.course.user.last_name}}</h5>
-                                                </router-link>
-                                            </div>
+
+                        </div>
+                        <div class="tab-pane fade show " id="live">
+                            <ul class="list-unstyled">
+                                <li class="mt-4 text-center" v-if="userEnrollments.length===0">
+                                    <img src="../../assets/images/cam-icon.png" alt="" width="100">
+                                    <p class="text-center h3 mt-3">
+                                        You will be redirected to your live class when you will subscribe to a
+                                        course
+                                    </p>
+                                </li>
+
+                                <li class=" mt-4" v-else>
+                                    <div v-for="e in userEnrollments" :key="e.id" class="shadow-sm rounded my-2">
+                                        <div v-if="e.course_file.course.type===2">
+                                            <router-link :to="{name: 'Live', params: { slug: e.course_file.id} }">
+                                                <h5 class="mt-0 mb-1">{{e.course_file.title}},
+                                                    {{e.course_file.created_at.slice(0,10)}},
+                                                    {{e.course_file.created_at.slice(11,16)}},
+                                                    {{e.course_file.course.user.first_name}}
+                                                    {{e.course_file.course.user.last_name}}</h5>
+                                            </router-link>
                                         </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="tab-pane fade show " id="ratings">
-                                <table class="table" v-if="userProfile.ratings>0">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Teacher Name</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Rating</th>
-                                        <th scope="col">Comment</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr v-for="r in userProfile.ratings">
-                                        <th scope="row">{{e.teacher_id}}</th>
-                                        <td>{{e.created_at}}</td>
-                                        <td>{{e.rate}}</td>
-                                        <td>{{e.reverse}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div class="text-center" v-else>
-                                    <h3>No ratings yet</h3>
-                                </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade show " id="ratings">
+                            <table class="table" v-if="userProfile.ratings>0">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Teacher Name</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Rating</th>
+                                    <th scope="col">Comment</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="r in userProfile.ratings">
+                                    <th scope="row">{{e.teacher_id}}</th>
+                                    <td>{{e.created_at}}</td>
+                                    <td>{{e.rate}}</td>
+                                    <td>{{e.reverse}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-center" v-else>
+                                <h3>No ratings yet</h3>
                             </div>
                         </div>
                     </div>
@@ -191,14 +249,60 @@
     }
 </script>
 
-<style scoped>
-    .jumbotron {
-        background-image: url('../../assets/images/about/bg.png');
-        border-radius: 0;
-        padding: 0;
+<style scoped lang="scss">
+    .hero {
+        /*background-image: url('../../assets/images/demand/online.jpg');*/
+        background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
+        height: 100vh;
+        background-size: cover;
+        border-bottom: 15px solid #3081FB;
+        color: white;
     }
 
-    .bg {
-        background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);
+    .jumbotron1 {
+        background-color: transparent;
+        border-radius: 0;
+
+        img {
+            border-radius: 0 10% 10% 0;
+            border: 2px solid black;
+            max-height: 450px;
+            max-width: 450px;
+        }
+    }
+
+    .details {
+        border-radius: 2rem;
+        border: 20px solid black;
+        border-right: 2px solid black;
+
+    }
+
+    .teacher-image {
+        height: 300px;
+        border-radius: 0 70px 70px 0;
+
+        @media only screen and (max-width: 600px) {
+            border-radius: 0;
+        }
+
+    }
+
+    .counts {
+        background: linear-gradient(rgba(253, 255, 255, 0.5),
+            rgba(255, 255, 255, 0.5)),
+        url('../../assets/images/teaprofile/down1.png') no-repeat right center;
+        background-size: contain;
+        height: 300px;
+    }
+
+    .count-down {
+        background: linear-gradient(rgba(19, 19, 19, 0.8), rgba(19, 19, 19, 0.8)), url('../../assets/images/teaprofile/down1.png') no-repeat left center, url('../../assets/images/teaprofile/down2.png') no-repeat right center;
+        background-size: contain;
+        border-radius: 20px;
+    }
+    .student-area{
+        border: 3px solid black;
+        border-radius: 10px
     }
 </style>

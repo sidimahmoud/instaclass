@@ -13,6 +13,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Date;
+use Stripe\Stripe;
 
 class EnrollmentController extends Controller
 {
@@ -75,12 +76,14 @@ class EnrollmentController extends Controller
         $enrollment->save();
         if ($enrollment) {
             $payment = new Payement();
-            $payment->enrollment_id = $enrollment->id;
-            $payment->user_id = $request->user()->id;
-            $payment->amount = $request['course_price'];
-            $payment->method = $request['paymentMethod'];
-            $payment->object = $request['course_name'];
-            $payment->save();
+            if ($this->transaction($request->all())) {
+                $payment->enrollment_id = $enrollment->id;
+                $payment->user_id = $request->user()->id;
+                $payment->amount = $request['course_price'];
+                $payment->method = $request['paymentMethod'];
+                $payment->object = $request['course_name'];
+                $payment->save();
+            } else return response()->json("Charge error", 500);
         }
         $teacher = $sec->course->user_id;
         $user = User::find($teacher);
@@ -94,9 +97,23 @@ class EnrollmentController extends Controller
         return response()->json("Enrolled successfully");
     }
 
+    public function transaction(array $data)
+    {
+        Stripe::setApiKey(config("payment.key"));
+        $charge = Stripe::charge([
+            "amount" => $data["course_price"] * 100,
+            "currency" => "CAD",
+            "description" => "Instaclass payment",
+            "source" => $data["token"]
+        ]);
+
+        return $charge;
+
+    }
+
     public function EnrollInAllSections(Request $request)
     {
-        $course = Course::find($request["course_id"]);
+        $course = Course::find($request["course_id"])->with("sections")->first();
         $sections = $course->sections;
         foreach ($sections as $section) {
             $enrollment = new Enrollment();
@@ -105,7 +122,7 @@ class EnrollmentController extends Controller
             $enrollment->save();
         }
 
-        if ($enrollment) {
+
             $payment = new Payement();
             $payment->enrollment_id = $enrollment->id;
             $payment->user_id = $request->user()->id;
@@ -113,10 +130,10 @@ class EnrollmentController extends Controller
             $payment->method = $request['paymentMethod'];
             $payment->object = $request['course_name'];
             $payment->save();
-        }
+
         $teacher = $course->user_id;
         $user = User::find($teacher);
-        $user->notify(new NewSubscription("Number: ".$course->id));
+        $user->notify(new NewSubscription("Number: " . $course->id));
 
         return response()->json("Enrolled successfully");
     }

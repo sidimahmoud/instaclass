@@ -22,6 +22,7 @@
                             <h1 class="display-3">
                                 {{$t('title')}}
                             </h1>
+
                         </div>
 
                         <!--                    <div class="col-md-6 d-none d-md-block">-->
@@ -34,7 +35,7 @@
             <div class="jumbotron jumbotron2">
             <span class="bg-primary px-1 py-3  shareBar">
                 <button class="btn btn-light">
-                    <i class="fa fa-facebook text-primary"></i>
+                    <i class="fa fa-facebook  text-primary"></i>
                 </button>
                 <br>
                 <br>
@@ -47,16 +48,14 @@
                 <div class="container  align-items-center mt-5">
                     <div class="row justify-content-around align-items-center">
                         <div
-                            class="col-md-6 col-sm-12 text-center text-md-left px-md-5 justify-content-center align-items-center text-white">
+                            class="col-md-6 col-sm-12 text-center  justify-content-center align-items-center text-white">
                             <h1 class="display-4">
                                 {{$t('title2')}}
                             </h1>
-                            <!--                            <img src="../assets/images/home/onlineEd.jpg" width="350px">-->
+                            <!--<img src="../assets/images/home/onlineEd.jpg" width="350px">-->
                         </div>
-
-                        <div class="col-md-6 d-none d-md-block">
-                            <img src="../assets/images/home/onlineEd.jpg" width="500px">
-
+                        <div class="col-md-6 col-sm-12">
+                            <img src="../assets/images/home/onlineEd.jpg" width="500px" class="img-fluid rounded">
                         </div>
                     </div>
                 </div>
@@ -106,10 +105,11 @@
                             quod repudiandae similique totam voluptatem voluptatibus.</p>
                     </div>
                     <div class="col-md-3 ">
-                        <div class="shadow-sm pt-5 bg-primary m-3 text-center">
+                        <div class="shadow-sm carte m-3 text-center " style="background: #6098C9;">
                             <h3>Live interacting online tutoring classes</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos dolore
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos
+                                dolore
                                 esse explicabo impedit ipsum libero odio optio perspiciatis provident, qui rerum!
                                 Accusantium dolore eius illo maiores mollitia, nobis tenetur?
                             </p>
@@ -117,30 +117,33 @@
                     </div>
 
                     <div class="col-md-3 ">
-                        <div class="shadow-sm pt-5 bg-info m-3 text-center">
+                        <div class="shadow-sm carte   m-3 text-center " style="background: #53C4B4;">
                             <h3>Live interacting online tutoring classes</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos dolore
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos
+                                dolore
                                 esse explicabo impedit ipsum libero odio optio perspiciatis provident, qui rerum!
                                 Accusantium dolore eius illo maiores mollitia, nobis tenetur?
                             </p>
                         </div>
                     </div>
                     <div class="col-md-3 ">
-                        <div class="shadow-sm pt-5 m-3 bg-warning text-center">
+                        <div class="shadow-sm carte  m-3  text-center " style="background: #B9A253;">
                             <h3>Live interacting online tutoring classes</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos dolore
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos
+                                dolore
                                 esse explicabo impedit ipsum libero odio optio perspiciatis provident, qui rerum!
                                 Accusantium dolore eius illo maiores mollitia, nobis tenetur?
                             </p>
                         </div>
                     </div>
                     <div class="col-md-3 ">
-                        <div class="shadow-sm pt-5 m-3 bg-danger text-center">
+                        <div class="shadow-sm carte  m-3  text-center " style="background: #DC7280;">
                             <h3>Live interacting online tutoring classes</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos dolore
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos
+                                dolore
                                 esse explicabo impedit ipsum libero odio optio perspiciatis provident, qui rerum!
                                 Accusantium dolore eius illo maiores mollitia, nobis tenetur?
                             </p>
@@ -152,9 +155,9 @@
 
         <section class="reviews mt-5 mb-0 p-4">
             <div class="container">
-                <div class="row justify-content-around align-items-center">
+                <div class="row align-items-center">
                     <div class="col-md-6">
-                        <h4 class="text-center">Perfect reviews from our real customers</h4>
+                        <h2 class="text-center">Perfect reviews from our real customers</h2>
                         <p class="text-justify">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet autem culpa delectus deserunt
                             dolor ducimus ea eum, exercitationem explicabo facilis hic id iste laboriosam placeat qui
@@ -165,18 +168,32 @@
                             repellat! Ab consequatur facilis magni sint vel.
                         </p>
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-4">
-                        <div class="shadow-sm pt-5 m-3 bg-white text-center">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3 rounded bg-white text-dark p-0 text-center review">
+                        <div class="card m-0">
+                            <img class="card-img-top" src="../assets/images/home/review.jpg" alt="Card image cap">
+                            <div class="card-body">
 
+                                <p class="card-text">
+                                    <h3>Full Name</h3>
+                                    <div>
+                                        <i class="fa fa-star text-warning" v-for="n in 5" :key="n"></i>
+                                    </div>
+                                    Lorem Ipsum. Proin gravida nibh vel
+                                    velit kolop auctor aliquet.orem Ipsum.
+                                    Proin gravida nibh vel velit kolop auct
+                                    or aliquet.orem Ipsum. orem Ipsum.
+                                    orem Ipsum. Proin gravida nibh vel
+                                    velit kolop auctor aliquet.orem Ipsum.
+                                    Proin gravida nibh vel velit kolop auct
+                                    or aliquet.orem Ipsum. orem Ipsum.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
-
-
     </div>
 </template>
 <script>
@@ -223,18 +240,26 @@
     }
 
     .jumbotron1 {
-        background-image: url('../assets/images/home/bg1.jpg');
-        /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('../assets/images/home/bg1.jpg') no-repeat center center ;*/
-
+        background-image: url('../assets/images/home/heroHome.png');
         border-radius: 0 0 300px 0;
         border-bottom: 10px solid #0b40c6;
-        height: 600px;
+        background-size: cover;
+
+        height: 70vh;
     }
 
     .jumbotron2 {
-        background-image: url('../assets/images/home/bg2.jpg');
+        /*background-image: url('../assets/images/home/bg2.jpg');*/
+        background-color: transparent;
         border-radius: 0 0 0 200px;
         height: 500px;
+    }
+
+    .hero {
+        background-image: url('../assets/images/home/bg2.jpg');
+        border-radius: 0 0 0 200px;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .shareBar {
@@ -255,27 +280,33 @@
         height: 600px;
     }
 
-    .hero {
-        background-image: url('../assets/images/home/bg2.jpg');
-        background-size: cover;
-        border-radius: 0 0 0 200px;
-    }
 
     .whyChoose {
-        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../assets/images/home/bg3.png') no-repeat center center;
-        background-size: cover;
+        background: linear-gradient(rgba(19, 19, 19, 0.67), rgba(19, 19, 19, 0.67)), url('../assets/images/home/bg3.png') no-repeat center center;
     }
 
     .reviews {
-        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../assets/images/home/reviews.jpg') no-repeat center center;
-        background-size: cover;
+        background: linear-gradient(rgba(19, 19, 19, 0.5), rgba(19, 19, 19, 0.7)), url('../assets/images/home/reviews.jpg') no-repeat center center;
         color: white;
         border-radius: 100px 0 0 0;
-        height: 300px;
         padding: 20px
+    }
 
+    .card-icon {
+        height: 50px;
+        width: 50px;
+        margin-top: -70px;
+    }
+
+    .carte {
+        padding-top: 100px;
+        clip-path: polygon(0 0, 180% 50%, 0 180%, 0 50%) !important;
+        border-radius: 0 0 20px 20px
 
     }
 
+    .review {
+        box-shadow: -8px -8px 0px 0px rgba(48, 129, 251, 1);
+    }
 
 </style>
