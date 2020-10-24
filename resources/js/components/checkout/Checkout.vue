@@ -13,128 +13,77 @@
                         <!--Grid row-->
                         <!-- payement info-->
                         <div class="my-3">
-                            <div class="text-center" v-if="course_price==0">
+                            <div class="text-center" v-if="course_price===0">
                                 <h3>This course is free</h3>
                                 <h5>No payment required</h5>
                             </div>
                             <div v-else>
-                                <div class="row" >
-                                    <div class="col-md-6">
-                                        <label for="method">Payement method</label>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <select class="custom-select d-block w-50 mb-2" id="method" required
-                                                v-model="paymentMethod">
-                                            <option value="card">Credit card</option>
-                                            <option value="paypal">PayPal</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            Please select a valid payment method.
-                                        </div>
-                                    </div>
 
-                                </div>
-                                <div class="row border rounded" v-if="paymentMethod==='card'">
-                                    <div class="col-12">
-                                        <div class="p-2">
-                                            <stripe hidePostalCode={true} :price="course_price" />
-
-                                            <div class="custom-control custom-checkbox text-right">
-                                                <input type="checkbox" class="custom-control-input" id="save-info">
-                                                <label class="custom-control-label" for="save-info">Save this information
-                                                    for next
-                                                    time</label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <div class="row " v-if="paymentMethod==='paypal'">
-                                    <div class="col-12 text-center">
-                                        <button class="btn btn-primary">
-                                            <i class="fa fa-paypal"></i>
-                                            Checkout with PayPal</button>
-                                    </div>
-
-
-                                </div>
+                                <stripe-elements
+                                    ref="elementsRef"
+                                    :pk="publishableKey"
+                                    :amount="course_price"
+                                    locale="en"
+                                    @token="tokenCreated"
+                                    @loading="loading = $event"
+                                />
                             </div>
-
                         </div>
-
-                        <button class="btn btn-primary btn-lg btn-block" type="submit" >Enroll</button>
-
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Enroll</button>
                     </form>
-
                 </div>
-                <!--/.Card-->
-
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-md-4 mb-4 ">
-
-                <!-- Heading -->
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Course Details</span>
-                    <span class="badge badge-secondary badge-pill">
-                            1 </span>
-                </h4>
-
-                <!-- Cart -->
-                <ul class="list-group mb-3 z-depth-1">
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">
-                                <span class="font-weight-bold">
-                                        {{course_name}}
-                                    </span>
-                            </h6>
-                        </div>
-                        <span class="text-muted">${{course_price}}</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between font-weight-bold">
-                        <span>Total (USD)</span>
-                        <strong>${{course_price}}</strong>
-                    </li>
-                </ul>
-                <!-- Cart -->
 
 
             </div>
-            <!--Grid column-->
+            <!--/.Card-->
 
         </div>
-        <!--Grid row-->
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4 mb-4 ">
+
+            <!-- Heading -->
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Course Details</span>
+                <span class="badge badge-secondary badge-pill">
+                            1 </span>
+            </h4>
+
+            <!-- Cart -->
+            <ul class="list-group mb-3 z-depth-1">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">
+                                <span class="font-weight-bold">
+                                        {{course_name}}
+                                </span>
+                        </h6>
+                    </div>
+                    <span class="text-muted">${{course_price}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between font-weight-bold">
+                    <span>Total (USD)</span>
+                    <strong>${{course_price}}</strong>
+                </li>
+            </ul>
+            <!-- Cart -->
+
+
+        </div>
+        <!--Grid column-->
+
     </div>
+    <!--Grid row-->
 </template>
 
 <script>
-    import Stripe from "../checkout/CardElement";
+    import {StripeElements} from 'vue-stripe-checkout';
+
     export default {
         name: "Checkout",
-        components:{
-            Stripe
-        },
-        methods: {
-
-            checkout() {
-                let payload = {
-                    paymentMethod: this.paymentMethod,
-                    course_id: this.course_id,
-                    course_name: this.course_name,
-                    course_price: this.course_price
-                };
-                this.$store.dispatch('enroll', payload)
-                    .then(() => {
-                        alert("Enrolled successfully");
-                        this.$router.push({name: 'StudentProfile'})
-                    })
-                    .catch(err => console.log(err))
-            }
+        components: {
+            StripeElements
         },
         data() {
             return {
@@ -142,10 +91,42 @@
                 course_name: this.$route.params.name,
                 course_price: this.$route.params.price,
                 paymentMethod: 'card',
+                loading: false,
+                publishableKey: 'pk_test_51HK26oKzha99bEEwW8zlncEHA6FPsPh7N3R84cJyMN6af5fPs9WMmZwae2CodeHWfPiyAlA6ScX0hbWFb8v1dfWn00oLMytNRI',
+                items: [
+                    {
+                        sku: 'sku_FdQKocNoVzznpJ',
+                        quantity: 1
+                    }
+                ],
+                successUrl: 'your-success-url',
+                cancelUrl: 'your-cancel-url',
 
             }
-
         },
+        methods: {
+            tokenCreated(token) {
+                console.log(token)
+                let payload = {
+                    paymentMethod: this.paymentMethod,
+                    course_id: this.course_id,
+                    course_name: "Course N°" + this.course_id,
+                    course_price: this.course_price,
+                    token: token.id,
+
+                };
+                this.$store.dispatch('enrollInAllSection', payload)
+                    .then(() => {
+                        alert("Enrolled successfully");
+                        this.$router.push({name: 'StudentProfile'})
+                    })
+                    .catch(err => console.log(err))
+            },
+            checkout() {
+                this.$refs.elementsRef.submit();
+            },
+        }
+        ,
 
     }
 </script>

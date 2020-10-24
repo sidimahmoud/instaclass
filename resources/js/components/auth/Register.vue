@@ -1,12 +1,31 @@
 <template>
-    <div id="bodyRegister">
+    <div >
+        <section class="hero pt-5 mb-3">
+            <div class="container h-100">
+                <div class="row h-100">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8 text-center pt-md-5">
+                        <h1 class="font-weight-bolder display-2">
+                            THE NEXT <br>
+                            YOU
+                        </h1>
+                        <h1 class="font-weight-bolder text-uppercase">
+                            The best way to predict <br>
+                            the future is to create it
+                        </h1>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
         <div class="container">
             <div class="row">
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                     <div class="signup-form bg-white">
                         <form @submit.prevent="register">
                             <h2>Register</h2>
-                            <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+                            <p class="hint-text">Create your account. It takes only a few seconds.</p>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert"
                                  v-if="errorMessage">
                                 {{errorMessage}}
@@ -112,7 +131,7 @@
                         // (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
                     })
                     .catch(err => {
-                        console.log(err.response.data.errors[Object.keys(err.response.data.errors)[0][0]]);
+                        // console.log(err.response.data.errors[Object.keys(err.response.data.errors)[0][0]]);
                         this.errorMessage = err.response.data.errors[Object.keys(err.response.data.errors)[0]]
                     })
             },
@@ -149,6 +168,9 @@
     .signup-form {
         margin: 0 auto;
         padding: 30px 0;
+        border: 20px solid black;
+        border-bottom: 2px solid black;
+        border-radius: 20%;
     }
 
     .signup-form h2 {
@@ -184,8 +206,8 @@
 
     .signup-form {
         color: #999;
-        border-radius: 3px;
         margin-bottom: 15px;
+        padding: 20px;
         background: #ffffff;
         box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
         padding: 30px;
@@ -238,6 +260,35 @@
     }
 
     .btn-google a {
+        color: white;
+    }
+    input {
+        border: 2px solid black !important;
+        background: transparent;
+    }
+
+    .input-group-text {
+        display: flex;
+        align-items: center;
+        padding: 0.375rem 0.75rem;
+        margin-bottom: 0px;
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height: 1.6;
+        text-align: center;
+        white-space: nowrap;
+        background-color: transparent;
+        border: none;
+        border-radius: 0.25rem;
+        margin-left: -40px;
+        z-index: 1;
+    }
+    .hero {
+        /*background-image: url('../../assets/images/demand/online.jpg');*/
+        background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
+        height: 100vh;
+        background-size: cover;
+        border-bottom: 15px solid #3081FB;
         color: white;
     }
 </style>

@@ -45,7 +45,8 @@ class SubCategoryController extends Controller
     {
         $subcat = new SubCategory();
         $subcat->category_id = $request["category_id"];
-        $subcat->name = $request["name"];
+        $subcat->name_en = $request["name"];
+        $subcat->name_fr = $request["nom"];
         $subcat->save();
         return response()->json($subcat);
     }
@@ -77,11 +78,16 @@ class SubCategoryController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $subcat = SubCategory::find($id);
+        $subcat->category_id = $request["category_id"];
+        $subcat->name_en = $request["name"];
+        $subcat->name_fr = $request["nom"];
+        $subcat->save();
+        return response()->json($subcat);
     }
 
     /**

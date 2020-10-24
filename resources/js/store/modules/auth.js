@@ -110,16 +110,16 @@ const actions = {
             axios({url: '/register', data: user, method: 'POST'})
                 .then(resp => {
                     console.log(resp);
-                    const token = resp.data.token;
-                    const user = {
-                        'u': resp.data.user.id,
-                        't': resp.data.user.roles[0].name,
-                        'first_name': resp.data.user.first_name
-                    };
-                    localStorage.setItem('token', token);
-                    localStorage.setItem('user', JSON.stringify(user));
-                    axios.defaults.headers.common['Authorization'] = token;
-                    commit('auth_success', token, user);
+                    // const token = resp.data.token;
+                    // const user = {
+                    //     'u': resp.data.user.id,
+                    //     't': resp.data.user.roles[0].name,
+                    //     'first_name': resp.data.user.first_name
+                    // };
+                    // localStorage.setItem('token', token);
+                    // localStorage.setItem('user', JSON.stringify(user));
+                    // axios.defaults.headers.common['Authorization'] = token;
+                    commit('auth_success', '', '');
                     resolve(resp);
                 })
                 .catch(err => {

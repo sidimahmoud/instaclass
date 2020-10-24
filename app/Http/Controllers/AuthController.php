@@ -31,7 +31,8 @@ class AuthController extends Controller
         }
 
         if (empty($user->email_verified_at)) {
-            return response(["response" => "email unverified"], 403);
+//            $user->sendEmailVerificationNotification();
+            return response(["message" => "email unverified"], 403);
         }
         $token = $user->createToken('my-app-token')->plainTextToken;
 
@@ -75,7 +76,7 @@ class AuthController extends Controller
                 $user->roles()->attach($role);
             }
             $user->sendEmailVerificationNotification();
-            return response()->json("success");
+            return response()->json($user);
         }
         return response()->json("error");
     }

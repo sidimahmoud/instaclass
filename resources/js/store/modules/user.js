@@ -8,6 +8,7 @@ const state = {
     teacherDetails: '',
     teacherPayments: '',
     profileLoading: false,
+    loadingEnrollments: false,
 };
 const getters = {
     userProfile: (state) => state.profile,
@@ -17,25 +18,27 @@ const getters = {
     allTeacherDetails: (state) => state.teacherDetails,
     allTeacherPayments: (state) => state.teacherPayments,
     profileLoading: (state) => state.profileLoading,
+    loadingEnrollments: (state) => state.loadingEnrollments,
 };
 
 const actions = {
-    async fetchProfile({commit}) {
-        header();
-        const response = await axios.get('/user');
-        commit('setProfile', response.data[0]);
+    async fetchProfile({commit, dispatch}) {
+         await axios.get('/me').then(response =>{
+             commit('setProfile', response.data[0]);
+         }).catch(err =>{
+             err.response.status===401?dispatch('logout'):"";
+             location.reload()
+         })
     },
     async fetchTeacherCourses({commit}, id) {
         const response = await axios.get(`/teacher/${id}/courses`);
         commit('setTeacherCourses', response.data);
     },
     async fetchTeacherDetails({commit}) {
-        header();
         const response = await axios.get('/teacher/details');
         commit('setTeacherDetails', response.data);
     },
     async fetchTeacherPayments({commit}) {
-        header();
         const response = await axios.get('/teacher/payments');
         console.log(response.data);
         commit('setTeacherPayments', response.data);
@@ -43,15 +46,13 @@ const actions = {
 
     async fetchUserCourses({commit}) {
         commit('setProfileLoading', true);
-        header();
         const response = await axios.get(`/user/courses`);
         commit('setCourses', response.data);
         commit('setProfileLoading', false);
     },
     async fetchUserEnrollments({commit}) {
         commit('setProfileLoading', true);
-        header();
-        const response = await axios.get(`/user/enrollments`);
+        const response = await axios.get(`/enrollments`);
         commit('setEnrollments', response.data);
         commit('setProfileLoading', false);
 
@@ -66,14 +67,8 @@ const mutations = {
     setTeacherDetails: (state, payload) => (state.teacherDetails = payload),
     setTeacherPayments: (state, payload) => (state.teacherPayments = payload),
     setProfileLoading: (state, val) => (state.profileLoading = val),
+    setloadingEnrollments: (state, val) => (state.loadingEnrollments = val),
 };
-
-function header() {
-    let token = localStorage.getItem('token') || '';
-    if (token) {
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-    }
-}
 
 export default {
     state,

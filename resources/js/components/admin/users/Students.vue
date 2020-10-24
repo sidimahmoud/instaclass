@@ -1,5 +1,5 @@
 <template>
-    <big-sppiner v-if="fetchingUsers" />
+    <big-sppiner v-if="fetchingUsers"/>
     <div v-else>
         <div>
             <form class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
@@ -15,9 +15,9 @@
                 <th scope="col">First name</th>
                 <th scope="col">Last name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Date of subscription</th>
                 <th scope="col">Active</th>
-                <th scope="col">Bio</th>
-                <th scope="col">Block</th>
+                <th scope="col">Banish</th>
             </tr>
             </thead>
             <tbody>
@@ -26,12 +26,12 @@
                 <td>{{t.first_name}}</td>
                 <td>{{t.last_name}}</td>
                 <td>{{t.email.toLocaleLowerCase()}}</td>
+                <td>{{t.created_at.slice(0,10)}}</td>
                 <td><input type="checkbox" name="" id="" checked disabled></td>
-                <td>{{t.headline}}</td>
 
                 <td>
-                    <button class="btn btn-danger">
-                        &times
+                    <button class="btn btn-success" @click="banish(t.id)">
+                        X
                     </button>
                 </td>
 
@@ -49,7 +49,12 @@
         name: "Students",
         components: {BigSppiner},
         methods: {
-            ...mapActions(["fetchStudents"])
+            ...mapActions(["fetchStudents"]),
+            banish(id) {
+                this.$store.dispatch("banish", id).then(() => {
+                    alert("Banned successfully")
+                })
+            }
         },
         computed: mapGetters(["allStudents", "fetchingUsers"]),
 

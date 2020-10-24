@@ -10,6 +10,7 @@ class Rating extends Model
         return $this->belongsTo('App\User');
     }
 
+
     public function file()
     {
         return $this->belongsTo('App\CourseFile');

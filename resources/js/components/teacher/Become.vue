@@ -1,11 +1,25 @@
 <template>
-    <div id="bodyRegister">
+    <div >
+        <section class="hero pt-5 mb-3">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-md-6 text-center">
+                        <h1 class="display-3">BECOME INSTRUCTOR</h1>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <h1 class="display-4">JOIN OUR COMMUNITY</h1>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
         <div class="container">
             <div class="row">
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                     <div class="signup-form bg-white">
                         <form @submit.prevent="register">
-                            <h2>Teacher registration</h2>
+                            <h2>Register</h2>
                             <p class="hint-text">Create your account. It takes only a few seconds.</p>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert"
                                  v-if="errorMessage">
@@ -45,26 +59,27 @@
                                 </label>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block " :disabled="authLoading">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">
                                     <span v-if="!authLoading">Sign up </span>
                                     <div class="text-center text-white" v-if="authLoading">
-                                        <span class="spinner-border spinner-border-sm" role="staitus" aria-hidden="true"/>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                          aria-hidden="true">
+
+                                    </span>
                                         Loading...
                                     </div>
                                 </button>
                             </div>
 
-
                         </form>
                         <div class="text-center">Already have an account?
-                            <router-link :to="{name: 'Signin'}">Sign in</router-link>
+                            <router-link :to="{name: 'Login'}">Sign in</router-link>
                         </div>
                         <h2>Or</h2>
                         <button class="btn btn-lg btn-google btn-block text-uppercase" @click="loginGoogle('google')">
                             <i class="fa fa-google mr-2"></i> Continue with Google
                         </button>
-                        <button class="btn btn-lg btn-github  btn-block text-uppercase"
-                                @click="loginGoogle('facebook')">
+                        <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGoogle('facebook')">
                             <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
                         </button>
                     </div>
@@ -80,7 +95,8 @@
     import {mapGetters} from "vuex";
 
     export default {
-        name: "Register",
+        name: "Become",
+
         data() {
             return {
                 first_name: '',
@@ -94,7 +110,7 @@
         methods: {
 
             register() {
-                if (this.password1 != this.password2) {
+                if (this.password1 !== this.password2) {
                     this.errorMessage = "Password confirmation doesn't match Password";
                     return
                 }
@@ -105,10 +121,12 @@
                     password: this.password1,
                 })
                     .then(res => {
-                        (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
+                        console.log(res)
+                        this.$router.push({name: 'Email'})
+                        // (res.data.user.roles[0].name === "teacher") ? this.$router.push({name: 'TeacherProfile'}) : this.$router.push({name: 'StudentProfile'});
                     })
                     .catch(err => {
-                        console.log(err.response.data.errors[Object.keys(err.response.data.errors)[0][0]]);
+                        // console.log(err.response.data.errors[Object.keys(err.response.data.errors)[0][0]]);
                         this.errorMessage = err.response.data.errors[Object.keys(err.response.data.errors)[0]]
                     })
             },
@@ -145,6 +163,9 @@
     .signup-form {
         margin: 0 auto;
         padding: 30px 0;
+        border: 20px solid black;
+        border-bottom: 2px solid black;
+        border-radius: 20%;
     }
 
     .signup-form h2 {
@@ -154,6 +175,23 @@
         text-align: center;
     }
 
+    .signup-form h2:before, .signup-form h2:after {
+        content: "";
+        height: 2px;
+        width: 30%;
+        background: #d4d4d4;
+        position: absolute;
+        top: 50%;
+        z-index: 2;
+    }
+
+    .signup-form h2:before {
+        left: 0;
+    }
+
+    .signup-form h2:after {
+        right: 0;
+    }
 
     .signup-form .hint-text {
         color: #999;
@@ -163,8 +201,8 @@
 
     .signup-form {
         color: #999;
-        border-radius: 3px;
         margin-bottom: 15px;
+        padding: 20px;
         background: #ffffff;
         box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
         padding: 30px;
@@ -217,6 +255,35 @@
     }
 
     .btn-google a {
+        color: white;
+    }
+    input {
+        border: 2px solid black !important;
+        background: transparent;
+    }
+
+    .input-group-text {
+        display: flex;
+        align-items: center;
+        padding: 0.375rem 0.75rem;
+        margin-bottom: 0px;
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height: 1.6;
+        text-align: center;
+        white-space: nowrap;
+        background-color: transparent;
+        border: none;
+        border-radius: 0.25rem;
+        margin-left: -40px;
+        z-index: 1;
+    }
+    .hero {
+        /*background-image: url('../../assets/images/demand/online.jpg');*/
+        background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/become.png') no-repeat center center;
+        height: 100vh;
+        background-size: cover;
+        border-bottom: 15px solid #3081FB;
         color: white;
     }
 </style>
