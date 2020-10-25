@@ -67,7 +67,7 @@ class EnrollmentController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
-    public function store(Request $request)
+    public function store(Request $request) //enroll in one session
     {
         $sec = CourseFile::find($request['section_id']);
         $enrollment = new Enrollment();
@@ -75,8 +75,8 @@ class EnrollmentController extends Controller
         $enrollment->course_file_id = $request['section_id'];
         $enrollment->save();
         if ($enrollment) {
-            $payment = new Payement();
             if ($this->transaction($request->all())) {
+                $payment = new Payement();
                 $payment->enrollment_id = $enrollment->id;
                 $payment->user_id = $request->user()->id;
                 $payment->amount = $request['course_price'];
@@ -90,39 +90,24 @@ class EnrollmentController extends Controller
         $user->notify(new NewSubscription($sec->title));
 
         $startDate = str_replace("T", " ", $sec->startDate);
-//        $when =  Carbon::parse($startDate)->subDays(1);
-        $when = now()->addMinutes(2);
-        $request->user()->notify((new OneDayBeforeClass($startDate)));
+        $when = Carbon::parse($startDate)->subDays(1);
+        $request->user()->notify((new OneDayBeforeClass($startDate))->delay($when));
 
         return response()->json("Enrolled successfully");
     }
 
-    public function transaction(array $data)
-    {
-        Stripe::setApiKey(config("payment.key"));
-        $charge = Stripe::charge([
-            "amount" => $data["course_price"] * 100,
-            "currency" => "CAD",
-            "description" => "Instaclass payment",
-            "source" => $data["token"]
-        ]);
-
-        return $charge;
-
-    }
 
     public function EnrollInAllSections(Request $request)
     {
-        $course = Course::find($request["course_id"])->with("sections")->first();
+        $course = Course::find($request["course_id"])->first();
+
         $sections = $course->sections;
-        foreach ($sections as $section) {
-            $enrollment = new Enrollment();
-            $enrollment->user_id = $request->user()->id;
-            $enrollment->course_file_id = $section->id;
-            $enrollment->save();
-        }
 
-
+        $enrollment = new Enrollment();
+        $enrollment->user_id = $request->user()->id;
+        $enrollment->course_id = $course->id;
+        $enrollment->save();
+        if ($this->transaction($request->all())) {
             $payment = new Payement();
             $payment->enrollment_id = $enrollment->id;
             $payment->user_id = $request->user()->id;
@@ -130,6 +115,13 @@ class EnrollmentController extends Controller
             $payment->method = $request['paymentMethod'];
             $payment->object = $request['course_name'];
             $payment->save();
+
+            foreach ($sections as $section) {
+                $startDate = str_replace("T", " ", $section->startDate);
+                $when = Carbon::parse($startDate)->subDays(1);
+                $request->user()->notify((new OneDayBeforeClass($startDate))->delay($when));
+            }
+        } else return response()->json("Charge error", 500);
 
         $teacher = $course->user_id;
         $user = User::find($teacher);
@@ -193,5 +185,19 @@ class EnrollmentController extends Controller
             return response()->json(["response" => "success"]);
         }
         return response()->json(["response" => "unauthorized"]);
+    }
+
+    public function transaction(array $data)
+    {
+        Stripe::setApiKey(config("payment.key"));
+        $charge = Stripe::charge([
+            "amount" => $data["course_price"] * 100,
+            "currency" => "CAD",
+            "description" => "Instaclass payment",
+            "source" => $data["token"]
+        ]);
+
+        return $charge;
+
     }
 }

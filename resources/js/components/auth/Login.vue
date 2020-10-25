@@ -69,13 +69,28 @@
                                 <router-link :to="{name: 'Register'}">Sign up</router-link>
                             </div>
                             <h2>Or</h2>
-                            <button class="btn btn-lg btn-google btn-block text-uppercase" @click="authLogin('google')">
+<!--                            <button class="btn btn-lg btn-google btn-block text-uppercase" @click="authLogin('google')">-->
+<!--                                <i class="fa fa-google mr-2"></i> Continue with Google-->
+<!--                            </button>-->
+<!--                            <button class="btn btn-lg btn-github  btn-block text-uppercase"-->
+<!--                                    @click="authLogin('facebook')">-->
+<!--                                <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook-->
+<!--                            </button>-->
+                            <g-signin-button
+                                class="btn btn-lg btn-github  btn-block text-uppercase"
+                                :params="googleSignInParams"
+                                @success="ongSignInSuccess"
+                                @error="ongSignInError">
                                 <i class="fa fa-google mr-2"></i> Continue with Google
-                            </button>
-                            <button class="btn btn-lg btn-github  btn-block text-uppercase"
-                                    @click="authLogin('facebook')">
+                            </g-signin-button>
+
+                            <fb-signin-button
+                                class="btn btn-lg btn-github  btn-block text-uppercase"
+                                :params="fbSignInParams"
+                                @success="onSignInSuccess"
+                                @error="onSignInError">
                                 <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
-                            </button>
+                            </fb-signin-button>
                         </div>
                     </div>
                 </div>
@@ -98,6 +113,13 @@
                 email: '',
                 password: '',
                 errorMessage: '',
+                fbSignInParams: {
+                    scope: 'email,user_likes',
+                    return_scopes: true
+                },
+                googleSignInParams: {
+                    client_id: '5466659184-s2qvgg7uq9n94pjstr4duh8dg7ha7lbn.apps.googleusercontent.com'
+                }
             }
         },
         methods: {
@@ -139,6 +161,24 @@
                     })
                     .catch(err => console.log(err))
             },
+            onSignInSuccess (response) {
+                FB.api('/me', dude => {
+                    console.log(`Good to see you, ${dude.name}.`)
+                })
+            },
+            onSignInError (error) {
+                console.log('OH NOES', error)
+            },
+            ongSignInSuccess (googleUser) {
+                // `googleUser` is the GoogleUser object that represents the just-signed-in user.
+                // See https://developers.google.com/identity/sign-in/web/reference#users
+                const profile = googleUser.getBasicProfile() // etc etc
+                console.log(profile)
+            },
+            ongSignInError (error) {
+                // `error` contains any error occurred.
+                console.log('OH NOES', error)
+            }
         },
         computed: mapGetters(["authLoading"])
     }
@@ -205,6 +245,25 @@
 
     .signup-form .form-group {
         margin-bottom: 20px;
+    }
+
+    .fb-signin-button {
+        /* This is where you control how the button looks. Be creative! */
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 3px;
+        background-color: #4267b2;
+        color: #fff;
+    }
+
+    .g-signin-button {
+        /* This is where you control how the button looks. Be creative! */
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 3px;
+        background-color: #3c82f7;
+        color: #fff;
+        box-shadow: 0 3px 0 #0f69ff;
     }
 
     .signup-form input[type="checkbox"] {

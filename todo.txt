@@ -1,10 +1,7 @@
 Modification instantclass:
 
 
-About as in design
-Newsletter
 All courses filter
 
-70% for all heros
-
-social auth
+About as in design
+Newsletter
