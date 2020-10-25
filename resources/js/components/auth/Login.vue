@@ -69,28 +69,28 @@
                                 <router-link :to="{name: 'Register'}">Sign up</router-link>
                             </div>
                             <h2>Or</h2>
-<!--                            <button class="btn btn-lg btn-google btn-block text-uppercase" @click="authLogin('google')">-->
-<!--                                <i class="fa fa-google mr-2"></i> Continue with Google-->
-<!--                            </button>-->
-<!--                            <button class="btn btn-lg btn-github  btn-block text-uppercase"-->
-<!--                                    @click="authLogin('facebook')">-->
-<!--                                <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook-->
-<!--                            </button>-->
-                            <g-signin-button
-                                class="btn btn-lg btn-github  btn-block text-uppercase"
-                                :params="googleSignInParams"
-                                @success="ongSignInSuccess"
-                                @error="ongSignInError">
+                            <button class="btn btn-lg btn-google btn-block text-uppercase" @click="authLogin('google')">
                                 <i class="fa fa-google mr-2"></i> Continue with Google
-                            </g-signin-button>
-
-                            <fb-signin-button
-                                class="btn btn-lg btn-github  btn-block text-uppercase"
-                                :params="fbSignInParams"
-                                @success="onSignInSuccess"
-                                @error="onSignInError">
+                            </button>
+                            <button class="btn btn-lg btn-github  btn-block text-uppercase"
+                                    @click="authLogin('facebook')">
                                 <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
-                            </fb-signin-button>
+                            </button>
+<!--                            <g-signin-button-->
+<!--                                class="btn btn-lg btn-google btn-block text-uppercase"-->
+<!--                                :params="googleSignInParams"-->
+<!--                                @success="ongSignInSuccess"-->
+<!--                                @error="ongSignInError">-->
+<!--                                <i class="fa fa-google mr-2"></i> Continue with Google-->
+<!--                            </g-signin-button>-->
+
+<!--                            <fb-signin-button-->
+<!--                                class="btn btn-lg btn-github  btn-block text-uppercase"-->
+<!--                                :params="fbSignInParams"-->
+<!--                                @success="onSignInSuccess"-->
+<!--                                @error="onSignInError">-->
+<!--                                <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook-->
+<!--                            </fb-signin-button>-->
                         </div>
                     </div>
                 </div>
@@ -140,17 +140,6 @@
                             this.errorMessage = err.response.data.message;
                     })
             },
-            // loginGithub() {
-            //     this.$store.dispatch('socialStudentAuth', "google")
-            //         .then((res) => {
-            //             console.log(res);
-            //             if (res.data.url) {
-            //                 console.log(res.data.url);
-            //                 window.location.href = res.data.url
-            //             }
-            //         })
-            //         .catch(err => console.log(err))
-            // },
             authLogin(provider) {
                 this.$store.dispatch('socialStudentAuth', provider)
                     .then((res) => {

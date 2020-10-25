@@ -45,6 +45,11 @@
                     </div>
                     <hr>
                     <strong>Price</strong>
+                    <div>
+                        <input type="range" id="volume" name="volume"
+                               min="0" max="10">
+                        <label for="volume">Volume</label>
+                    </div>
                 </div>
                 <div class="col-md-10 courses" >
                     <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
