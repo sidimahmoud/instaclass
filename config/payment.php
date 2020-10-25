@@ -1,5 +1,5 @@
 <?php
 return[
-    "key"=>env("STRIPE_KEY", "hello")
+    "key"=>env("STRIPE_SECRET", "hello")
 ];
 
