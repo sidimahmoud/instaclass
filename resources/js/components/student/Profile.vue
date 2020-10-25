@@ -88,7 +88,7 @@
                     <h4 class="text-center my-2 text-white text-uppercase">
                         You have one course to start after
                     </h4>
-                    <div class="" v-if="userEnrollments.length > 0">
+                    <div class="" v-if="userEnrollments.length > 0 && userEnrollments[0].course_file != null">
                         <Count-down
                             :year="userEnrollments[0].course_file.startDate.slice(0, 4)"
                             :month="userEnrollments[0].course_file.startDate.slice(5, 7)"
