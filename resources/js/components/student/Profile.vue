@@ -5,29 +5,30 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <div class="container" v-if="!profileLoading">
-            <section class="hero pt-5">
-                <div class="container mt-4 h-100">
-                    <div class="text-right">
-                        <button class="btn btn-danger" @click="logout">
-                            Logout
-                        </button>
-                    </div>
-                    <div class="row h-100">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-8 text-center pt-md-5">
-                            <h1 class="font-weight-bolder display-2">
-                                THE NEXT <br>
-                                YOU
-                            </h1>
-                            <h1 class="font-weight-bolder text-uppercase">
-                                The best way to predict <br>
-                                the future is to create it
-                            </h1>
-                        </div>
+        <section class="hero pt-5 mb-2">
+            <div class="container mt-4 h-100">
+                <div class="text-right">
+                    <button class="btn btn-danger" @click="logout">
+                        Logout
+                    </button>
+                </div>
+                <div class="row h-100">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8 text-center pt-md-2">
+                        <h1 class="font-weight-bolder display-2">
+                            THE NEXT <br>
+                            YOU
+                        </h1>
+                        <h1 class="font-weight-bolder text-uppercase">
+                            The best way to predict <br>
+                            the future is to create it
+                        </h1>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
+        <div class="container" v-if="!profileLoading">
+
             <div class="jumbotron1 p-0">
                 <div class="container details">
                     <div class="row align-items-center counts">

@@ -1,12 +1,12 @@
 <template>
-    <div class="col-md-3 col-sm-12 p-2 text-center d-flex align-items-stretch mr-2">
+    <div class="col-md-3 col-sm-12 p-2 text-center d-flex align-items-stretch">
         <div>
             <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="a">
                 <img class="card-img-top"
                      :src="categ.image"
                      :alt="categ.name_en">
             </router-link>
-            <div class=" bg-white rounded  text-center cateDetails" >
+            <div class=" bg-white rounded  text-center cateDetails">
                 <h5 class="card-title  font-weight-bolder">{{(lang==="en")? categ.name_en:
                     categ.name_fr}}</h5>
                 <p class="card-text">
@@ -16,14 +16,13 @@
 
                 </p>
                 <div>
-                    <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="button" class="btn btn-primary btn-sm float-right mb-1 mr-1">
+                    <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="button"
+                                 class="btn btn-primary btn-sm mb-2">
                         View Details
                     </router-link>
                 </div>
             </div>
         </div>
-
-
     </div>
 
 </template>
@@ -41,19 +40,23 @@
 <style scoped>
     .card-img-top {
         border-radius: 20px;
-        position: absolute;
-        margin-right: 40px;
+        /*position: absolute;*/
+        /*margin-right: 40px;*/
+        /*z-index: ;*/
     }
 
-    .card-img-top:not(:last-child) {
-        right: 50px;
-    }
+    /*.card-img-top:not(:last-child) {*/
+    /*    right: 50px;*/
+    /*}*/
 
     .cateDetails[data-v-7c127bf0] {
-        position: absolute;
-        top: 140px;
-        left: 16px;
-        box-shadow: 7px 10px 12px 0px rgba(76, 76, 76, 0.56);
-        width: 95%
+        border: 1px solid #ccc;
+        /*margin-top: -5px;*/
+        z-index: 1 !important;
+        /*position: absolute;*/
+        /*    top: 140px;*/
+        /*    left: 16px;*/
+        /*    box-shadow: 7px 10px 12px 0px rgba(76, 76, 76, 0.56);*/
+        /*    width: 95%*/
     }
 </style>

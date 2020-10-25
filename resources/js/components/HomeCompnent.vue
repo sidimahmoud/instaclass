@@ -75,7 +75,7 @@
                                                                                     width="130px"></a>
         </div>
         <section class="classes">
-            <div class="container d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
+            <div class="container d-flex flex-column justify-content-center align-items-center mt-5 ">
                 <h3 class="text-primary">
                     {{$t('coursesByCateg')}}
                 </h3>
@@ -270,7 +270,7 @@
 
     .categories {
         margin-bottom: 250px;
-        position: relative;
+        /*position: relative;*/
     }
 
     .classes {
@@ -278,6 +278,8 @@
         background: linear-gradient(#f8f9fa, rgba(255, 255, 255, 0.61)), url('../assets/images/home/bg3.png') no-repeat center center;
         background-size: cover;
         height: 600px;
+        margin-bottom: 100px !important;
+        padding-bottom: 50px !important;
     }
 
 

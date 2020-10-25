@@ -6,8 +6,14 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="title">Category name</label>
+                        <label for="title">Category name (English)</label>
                         <input type="text" class="form-control" id="title" v-model="name" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="title">Category name (French)</label>
+                        <input type="text" class="form-control" id="nom" v-model="nom" required>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -35,6 +41,7 @@
         data() {
             return {
                 name: '',
+                nom: '',
                 description: '',
             }
         },
@@ -43,6 +50,7 @@
                 const formData = new FormData();
                 const imagefile = document.querySelector('#image');
                 formData.append("name", this.name);
+                formData.append("nom", this.nom);
                 formData.append("description", this.description);
                 formData.append("image", imagefile.files[0]);
                 axios.post('/categories', formData, {
