@@ -148,8 +148,8 @@
                                     </p>
                                 </li>
                                 <li class="mt-4" v-else>
-                                    <div v-for="e in userEnrollments" :key="e.id">
-                                        <div v-if="e.course_file.course.type == 1" class="mb-4">
+                                    <div v-for="e in userEnrollments" :key="e.id" >
+                                        <div v-if="e.course_file != null && e.course_file.course.type == 1" class="mb-4">
                                             <h5 class="mt-0 mb-1">
                                                 {{ e.course_file.title }},
                                                 {{ e.course_file.created_at.slice(0, 10) }},
