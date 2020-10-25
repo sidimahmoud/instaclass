@@ -132,6 +132,7 @@
     .page-footer {
         background-color: #000 !important;
         /*background-image: url('../assets/images/footer.png');*/
+        top: 50vh;
     }
 
     hr {

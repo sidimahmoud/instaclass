@@ -89,27 +89,12 @@
                                         Courses
                                     </div>
                                 </div>
-
-                                <!--                            <div class="d-flex align-items-center justify-content-center text-white">-->
-                                <!--                                <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">-->
-                                <!--                                    <span class="btn btn-danger">{{allTeacherDetails.students[0].count>0?allTeacherDetails.students[0].count:"0"}} </span>-->
-                                <!--                                    <br> Course Enrollments-->
-                                <!--                                </div>-->
-                                <!--                                <div class="p-4 border border-white text-center" style="height: 100px; width: 150px">-->
-                                <!--                                    <span class="btn btn-danger">{{userCourses.length>0?userCourses.length:"0"}} </span>-->
-                                <!--                                    <br>-->
-                                <!--                                    Courses-->
-                                <!--                                </div>-->
-                                <!--                                <div class="p-4 border border-white text-center" style="height: 100px; width: 200px">-->
-                                <!--                                    <span class="btn btn-danger">{{allTeacherDetails.ratings.length>0?allTeacherDetails.ratings.length:"0"}} </span>-->
-                                <!--                                    <br> Reviews-->
-                                <!--                                </div>-->
-                                <!--                            </div>-->
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="count-down py-2 my-2">
+
                     <div>
                         <div class="row">
                             <div class="mx-auto" v-if="upComingSections.length > 0">
@@ -118,8 +103,8 @@
                                 </h4>
                                 <Count-down
                                     :year="upComingSections[0].startDate.slice(0, 4)"
-                                    :month="upComingSections[0].startDate.slice(5, 7)"
-                                    :day="upComingSections[0].startDate.slice(8, 9)"
+                                    :month="upComingSections[0].startDate.slice(5, 7)-1"
+                                    :day="upComingSections[0].startDate.slice(8, 10)"
                                     :hour="upComingSections[0].startDate.slice(11, 13)"
                                     :minute="upComingSections[0].startDate.slice(14, 16)"
                                     :second="0"

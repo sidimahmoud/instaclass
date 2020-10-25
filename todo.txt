@@ -5,3 +5,5 @@ All courses filter
 
 About as in design
 Newsletter
+
+edit course

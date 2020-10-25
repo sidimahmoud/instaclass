@@ -9,7 +9,8 @@
                         <div class="form-group">
                             <label for="selectLang">Select category</label>
                             <select class="form-control" id="selectLang" required>
-                                <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name}}</option>
+                                <option>{{course.sub_category.category.name_en}}</option>
+                                <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name_en}}</option>
                             </select>
                         </div>
                     </div>
@@ -17,6 +18,8 @@
                         <div class="form-group">
                             <label for="subCateg">Sub category</label>
                             <select class="form-control" id="subCateg" v-model="course.category_id" required>
+                                <option selected>{{course.sub_category.name_en}}</option>
+                                <!--                                <option v-for="c in course.sub_category" :key="c.id" :value="c.id">{{c.name_en}}</option>-->
                             </select>
                         </div>
                     </div>
@@ -157,6 +160,7 @@
     .bg {
         background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);
     }
+
     .jumbotron {
         background-image: url('../../assets/images/teaprofile/bg.jpg');
         border-radius: 0;

@@ -88,7 +88,7 @@
                     <h4 class="text-center my-2 text-white text-uppercase">
                         You have one course to start after
                     </h4>
-                    <div class="" v-if="userEnrollments.length > 0 && userEnrollments[0].course_file != null">
+                    <div class="" v-if="userEnrollments.length > 0 ">
                         <Count-down
                             :year="userEnrollments[0].course_file.startDate.slice(0, 4)"
                             :month="userEnrollments[0].course_file.startDate.slice(5, 7)"
@@ -148,8 +148,8 @@
                                     </p>
                                 </li>
                                 <li class="mt-4" v-else>
-                                    <div v-for="e in userEnrollments" :key="e.id" >
-                                        <div v-if="e.course_file != null && e.course_file.course.type == 1" class="mb-4">
+                                    <div v-for="e in userEnrollments" :key="e.id">
+                                        <div v-if="e.course_file.course.type == 1" class="mb-4">
                                             <h5 class="mt-0 mb-1">
                                                 {{ e.course_file.title }},
                                                 {{ e.course_file.created_at.slice(0, 10) }},
