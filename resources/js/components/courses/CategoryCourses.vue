@@ -6,7 +6,7 @@
             </div>
         </div>
         <div  v-if="!loading">
-            <div class="text-center" v-if="allcategCourses.length==0">
+            <div class="text-center" v-if="allcategCourses.length===0">
                 <h3>
                     {{$t('noCourses')}}
                 </h3>

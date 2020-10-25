@@ -115,30 +115,40 @@
 </template>
 
 <script>
-    import Stripe from "../checkout/CardElement";
 
     export default {
         name: "BuyOneSection",
-        components: {
-            Stripe
-        },
+
         data() {
             return {
                 course_id: this.$route.params.id,
                 course_name: this.$route.params.name,
                 course_price: this.$route.params.price,
                 paymentMethod: 'card',
+                loading: false,
+                publishableKey: 'pk_test_51HK26oKzha99bEEwW8zlncEHA6FPsPh7N3R84cJyMN6af5fPs9WMmZwae2CodeHWfPiyAlA6ScX0hbWFb8v1dfWn00oLMytNRI',
+                items: [
+                    {
+                        sku: 'sku_FdQKocNoVzznpJ',
+                        quantity: 1
+                    }
+                ],
+                successUrl: 'your-success-url',
+                cancelUrl: 'your-cancel-url',
 
             }
         },
         methods: {
 
-            checkout() {
+            tokenCreated(token) {
+                console.log(token)
                 let payload = {
                     paymentMethod: this.paymentMethod,
-                    section_id: this.course_id,
-                    course_name: "section "+this.section_id,
-                    course_price: this.course_price
+                    course_id: this.course_id,
+                    course_name: "Course N°" + this.course_id,
+                    course_price: this.course_price,
+                    token: token.id,
+
                 };
                 this.$store.dispatch('enroll', payload)
                     .then(() => {
@@ -146,7 +156,10 @@
                         this.$router.push({name: 'StudentProfile'})
                     })
                     .catch(err => console.log(err))
-            }
+            },
+            checkout() {
+                this.$refs.elementsRef.submit();
+            },
         },
 
 

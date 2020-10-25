@@ -51,7 +51,7 @@
                         <label for="volume">Volume</label>
                     </div>
                 </div>
-                <div class="col-md-10 courses" >
+                <div class="col-md-10 courses">
                     <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
                 </div>
 
@@ -145,14 +145,16 @@
         border-bottom: 15px solid #3081FB;
         color: white;
     }
+
     .filter {
         border-radius: 15px;
         background: linear-gradient(90deg,
-        rgb(0, 0, 0, 0.2),
-        rgb(255, 255, 255, 1));
+            rgb(0, 0, 0, 0.2),
+            rgb(255, 255, 255, 1));
         font-weight: 800 !important;
     }
-    .courses{
+
+    .courses {
         border-radius: 5%;
     }
 </style>

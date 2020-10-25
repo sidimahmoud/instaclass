@@ -88,6 +88,7 @@
         data() {
             return {
                 course_id: this.$route.params.id,
+                course_file_id: this.$route.params.id,
                 course_name: this.$route.params.name,
                 course_price: this.$route.params.price,
                 paymentMethod: 'card',
