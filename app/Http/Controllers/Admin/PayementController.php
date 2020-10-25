@@ -15,6 +15,8 @@ class PayementController extends Controller
         $this->middleware('auth:sanctum');
     }
 
+
+
     /**
      * Display a listing of the resource.
      *
@@ -22,15 +24,16 @@ class PayementController extends Controller
      */
     public function index()
     {
-
         $payements = Payement::all();
         return response()->json($payements);
     }
+
     public function received()
     {
         $received = Payement::where('type', 'received')->get();
         return response()->json($received);
     }
+
     public function sent()
     {
         $sent = Payement::where('type', 'sent')->get();
@@ -109,7 +112,7 @@ class PayementController extends Controller
     public function update(Request $request, $id)
     {
         $payment = Payement::find($id);
-        if (!$payment->user_id=== $request->user()->id) {
+        if (!$payment->user_id === $request->user()->id) {
             return response()->json(["response" => "unauthorized"], 403);
         }
         $payment->enrollment_id = $request['enrollment_id'];

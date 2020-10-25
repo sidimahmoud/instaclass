@@ -14,6 +14,10 @@ Vue.component('Register', require('./components/auth/Register').default);
 import store from './store'
 import router from './router'
 import Home from './components/HomeCompnent'
+import FBSignInButton from 'vue-facebook-signin-button'
+Vue.use(FBSignInButton)
+import GSignInButton from 'vue-google-signin-button'
+Vue.use(GSignInButton)
 
 const app = new Vue({
     el: '#app',

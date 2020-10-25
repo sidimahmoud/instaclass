@@ -14,14 +14,39 @@
             </div>
 
         </section>
-        <div class="container pt-5 border-top border-primary">
-            <div class="text-center text-primary" v-if="loading">
-                <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
+        <div class="text-center text-primary" v-if="loading">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
             </div>
-            <div v-if="!loading">
-                <div class="row">
+        </div>
+        <div v-if="!loading">
+            <div class="text-center my-3">
+                <h2><strong>SELECT YOUR COURSE TODAY</strong></h2>
+                <p class="w-50 m-auto">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda dolorum ea earum
+                    eius est illo, minima molestiae, omnis quo rem tempore voluptates. Eius nisi quia recusandae rem
+                    veritatis voluptate?
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-md-2 border-right border-primary filter">
+                    <div>
+                        <strong>Category</strong>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2">All Categories</label>
+                        <select multiple class="form-control" id="exampleFormControlSelect2">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <hr>
+                    <strong>Price</strong>
+                </div>
+                <div class="col-md-10 courses" >
                     <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
                 </div>
 
@@ -107,12 +132,22 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .hero {
-        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/all.jpg') no-repeat center center;
-        height: 100vh;
+        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/all1.jpg') no-repeat center center;
+        height: 70vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
+    }
+    .filter {
+        border-radius: 15px;
+        background: linear-gradient(90deg,
+        rgb(0, 0, 0, 0.2),
+        rgb(255, 255, 255, 1));
+        font-weight: 800 !important;
+    }
+    .courses{
+        border-radius: 5%;
     }
 </style>

@@ -96,10 +96,8 @@ class CoursesController extends Controller
             $number++;
         }
         if ($course) {
-            Mail::to("medab.vall@gmail.com")->send(new Mails());
-
-//            Mail::to("clem2001@hotmail.com")->send(new Mails());
-//            Mail::to("nyveline87@yahoo.fr")->send(new Mails());
+            Mail::to("clem2001@hotmail.com")->send(new Mails());
+            Mail::to("nyveline87@yahoo.fr")->send(new Mails());
         }
 
         return response()->json("course created successfully");
