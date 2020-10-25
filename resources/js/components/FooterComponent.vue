@@ -104,7 +104,7 @@
               <div class="row">
                   <div class="col-6">
                       © 2020 Copyright:
-                      <a href="https://instantaclasse.ca/">instantaclasse.ca</a>
+                      <a href="https://instantaclasse.ca/" class="text-lowercase">instantaclasse.ca</a>
                   </div>
                   <div class="col-6">
                       <p class="mt-2">

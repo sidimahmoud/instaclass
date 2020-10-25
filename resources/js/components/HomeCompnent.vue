@@ -269,7 +269,7 @@
     }
 
     .categories {
-        margin-bottom: 250px;
+        /*margin-bottom: 250px;*/
         /*position: relative;*/
     }
 
@@ -277,9 +277,6 @@
         /*background-image: url('../assets/images/home/bg3.png');*/
         background: linear-gradient(#f8f9fa, rgba(255, 255, 255, 0.61)), url('../assets/images/home/bg3.png') no-repeat center center;
         background-size: cover;
-        height: 600px;
-        margin-bottom: 100px !important;
-        padding-bottom: 50px !important;
     }
 
 
