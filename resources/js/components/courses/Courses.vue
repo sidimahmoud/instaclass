@@ -43,6 +43,8 @@
                             <option>5</option>
                         </select>
                     </div>
+                    <hr>
+                    <strong>Price</strong>
                 </div>
                 <div class="col-md-10 courses" >
                     <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
