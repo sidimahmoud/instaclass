@@ -13,7 +13,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Date;
-use Stripe\Stripe;
+use Stripe;
 
 class EnrollmentController extends Controller
 {
@@ -189,7 +189,7 @@ class EnrollmentController extends Controller
 
     public function transaction(array $data)
     {
-        Stripe::setApiKey(config("payment.key"));
+        Stripe\Stripe::setApiKey(config("payment.key"));
         $charge = Stripe::charge([
             "amount" => $data["course_price"] * 100,
             "currency" => "CAD",
