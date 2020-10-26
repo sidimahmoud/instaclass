@@ -31,23 +31,55 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-2 border-right border-primary filter">
-                        <div>
-                            <strong>Category</strong>
+                        <div class="border-bottom border-dark">
+                            <p class="filter-title">
+                                <strong>Category</strong>
+                            </p>
+                            <div class="form-group">
+                                <select multiple class="form-control" id="exampleFormControlSelect2">
+                                    <option>All Categories</option>
+                                    <option v-for="c in allCategories">{{c.name_en}}</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect2">All Categories</label>
-                            <select multiple class="form-control" id="exampleFormControlSelect2">
-                                <option v-for="c in allCategories">{{c.name_en}}</option>
-                            </select>
-                        </div>
-                        <hr>
-                        <strong>Price</strong>
-                        <div>
+                        <div class="border-bottom border-dark">
+                            <p class="filter-title">
+                                <strong>Price</strong>
+                            </p>
                             <label for="price">$0</label>
                             <input type="range" id="price" name="price"
                                    min="0" max="10" value="3" style="width: 60%">
                             <label for="price">$1000</label>
                         </div>
+                        <div class="border-bottom border-dark">
+                            <p class="filter-title">
+                                <strong>Course Language</strong>
+                            </p>
+                            <div class="form-group">
+                                <select multiple class="form-control" id="lang">
+                                    <option value="en">ENGLISH (5)</option>
+                                    <option value="fr">FRENCH (1)</option>
+                                    <option value="sp">SPANISH (0)</option>
+                                    <option value="other">OTHER (0)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="filter-title">
+                                <strong>Sessions per course</strong>
+                            </p>
+                            <div class="form-group">
+                                <select multiple class="form-control" id="sessions">
+                                    <option value="1">1 (5)</option>
+                                    <option value="2">2 (1)</option>
+                                    <option value="3">3 (0)</option>
+                                    <option value="4">4 (0)</option>
+                                    <option value="5">5 (0)</option>
+                                    <option value="6">6 (0)</option>
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="col-md-10 courses">
                         <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
