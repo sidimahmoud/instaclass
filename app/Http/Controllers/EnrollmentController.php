@@ -119,11 +119,11 @@ class EnrollmentController extends Controller
         foreach ($sections as $section) {
             $startDate = str_replace("T", " ", $section->startDate);
             $when = Carbon::parse($startDate)->subDays(1);
-//            $request->user()->notify((new OneDayBeforeClass($startDate))->delay($when));
+            $request->user()->notify((new OneDayBeforeClass($startDate))->delay($when));
         }
         $teacher = $course->user_id;
         $user = User::find($teacher);
-//        $user->notify(new NewSubscription("Number: " . $course->id));
+        $user->notify(new NewSubscription("Number: " . $course->id));
         return response()->json("Enrolled successfully");
     }
 

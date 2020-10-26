@@ -46,7 +46,7 @@
                             <label for="price">$0</label>
                             <input type="range" id="price" name="price"
                                    min="0" max="10" value="3" style="width: 60%">
-                            <label for="price">1000$</label>
+                            <label for="price">$1000</label>
                         </div>
                     </div>
                     <div class="col-md-10 courses">

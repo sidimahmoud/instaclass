@@ -160,7 +160,7 @@ const routes = [
         }
     },
     {
-        path: '/livecourse',
+        path: '/livecourse/:title',
         name: 'LiveCourse',
         component: LiveCourse,
         beforeEnter: (to, from, next) => {

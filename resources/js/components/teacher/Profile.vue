@@ -97,7 +97,7 @@
 
                     <div>
                         <div class="row">
-                            <div class="mx-auto" v-if="upComingSections.length > 0">
+                            <div class="w-50 mx-auto" v-if="upComingSections.length > 0">
                                 <h4 class="text-center my-2 text-white text-uppercase">
                                     Your course will start in
                                 </h4>
@@ -118,7 +118,7 @@
                             <router-link
                                 :to="{
                   name: 'LiveCourse',
-                  params: { slug: upComingSections[0].id },
+                  params: { title: upComingSections[0].title },
                 }"
                                 tag="button"
                                 class="btn btn-danger"
