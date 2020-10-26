@@ -13,6 +13,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
 
 class EnrollmentController extends Controller
 {
@@ -74,15 +75,15 @@ class EnrollmentController extends Controller
         $enrollment->course_file_id = $request['section_id'];
         $enrollment->save();
         if ($enrollment) {
-            if ($this->transaction($request->all())) {
-                $payment = new Payement();
-                $payment->enrollment_id = $enrollment->id;
-                $payment->user_id = $request->user()->id;
-                $payment->amount = $request['course_price'];
-                $payment->method = $request['paymentMethod'];
-                $payment->object = $request['course_name'];
-                $payment->save();
-            } else return response()->json("Charge error", 500);
+            if ($request['course_price'] > 0)
+                $this->transaction($request->all());
+            $payment = new Payement();
+            $payment->enrollment_id = $enrollment->id;
+            $payment->user_id = $request->user()->id;
+            $payment->amount = $request['course_price'];
+            $payment->method = $request['paymentMethod'];
+            $payment->object = $request['course_name'];
+            $payment->save();
         }
         $teacher = $sec->course->user_id;
         $user = User::find($teacher);
@@ -106,27 +107,34 @@ class EnrollmentController extends Controller
         $enrollment->user_id = $request->user()->id;
         $enrollment->course_id = $course->id;
         $enrollment->save();
-        if ($this->transaction($request->all())) {
-            $payment = new Payement();
-            $payment->enrollment_id = $enrollment->id;
-            $payment->user_id = $request->user()->id;
-            $payment->amount = $request['course_price'];
-            $payment->method = $request['paymentMethod'];
-            $payment->object = $request['course_name'];
-            $payment->save();
-
-            foreach ($sections as $section) {
-                $startDate = str_replace("T", " ", $section->startDate);
-                $when = Carbon::parse($startDate)->subDays(1);
-                $request->user()->notify((new OneDayBeforeClass($startDate))->delay($when));
-            }
-        } else return response()->json("Charge error", 500);
-
+        if ($request['course_price'] > 0)
+            $this->transaction($request->all());
+        $payment = new Payement();
+        $payment->enrollment_id = $enrollment->id;
+        $payment->user_id = $request->user()->id;
+        $payment->amount = $request['course_price'];
+        $payment->method = $request['paymentMethod'];
+        $payment->object = $request['course_name'];
+        $payment->save();
+        foreach ($sections as $section) {
+            $startDate = str_replace("T", " ", $section->startDate);
+            $when = Carbon::parse($startDate)->subDays(1);
+//            $request->user()->notify((new OneDayBeforeClass($startDate))->delay($when));
+        }
         $teacher = $course->user_id;
         $user = User::find($teacher);
-        $user->notify(new NewSubscription("Number: " . $course->id));
-
+//        $user->notify(new NewSubscription("Number: " . $course->id));
         return response()->json("Enrolled successfully");
+    }
+
+    public function upcomingClasses(Request $request)
+    {
+        $user_id = $request->user()->id;
+        $s = DB::select("select * from course_files where id in (select course_file_id from enrollments where user_id = $user_id) UNION SELECT * FROM course_files where course_id in (select course_id enrollments )");
+        $sections = CourseFile::where("startDate", ">", Carbon::now())
+//            ->where("course.user_id", $request->user()->id)
+            ->orderBy('startDate', 'ASC')->get();
+        return response()->json($s);
     }
 
     /**
@@ -135,7 +143,8 @@ class EnrollmentController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public
+    function show($id)
     {
         $enrollment = Enrollment::findOrFail($id);
         return response()->json($enrollment);
@@ -147,7 +156,8 @@ class EnrollmentController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public
+    function edit($id)
     {
         //
     }
@@ -159,7 +169,8 @@ class EnrollmentController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public
+    function update(Request $request, $id)
     {
         $enrollment = Enrollment::findOrFail($id);
         $enrollment->user_id = $request->user()->id;
@@ -176,7 +187,8 @@ class EnrollmentController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id, Request $request)
+    public
+    function destroy($id, Request $request)
     {
         $enrollment = Enrollment::findOrFail($id);
         if ($enrollment->user_id === $request->user()->id) {
@@ -186,7 +198,8 @@ class EnrollmentController extends Controller
         return response()->json(["response" => "unauthorized"]);
     }
 
-    public function transaction(array $data)
+    public
+    function transaction(array $data)
     {
         \Stripe\Stripe::setApiKey(config("payment.key"));
         $charge = \Stripe\Charge::create([

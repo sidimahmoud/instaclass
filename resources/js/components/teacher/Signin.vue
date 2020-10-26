@@ -116,7 +116,7 @@
                         console.log(err.response.data);
                         this.errorMessage = err.response.data.message
                         err.response.data.message === "email unverified" ? this.$router.push({name: 'Email'}) :
-                            this.errorMessage = err.response.data.message;
+                            this.errorMessage = "Please verify your Email address or password and try again";
                     })
             },
             // loginGithub() {

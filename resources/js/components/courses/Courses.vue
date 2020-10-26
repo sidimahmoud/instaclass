@@ -5,8 +5,8 @@
                 <div class="row h-100">
                     <div class="col-md-4"></div>
                     <div class="col-md-8 text-center pt-md-5">
-                        <h1 class="font-weight-bolder display-2 text-center">
-                            ALL COURSES <br>
+                        <h1 class="font-weight-bolder text-center">
+                            ALL COURSES <br><br>
                             WHAT WE OFFER
                         </h1></div>
                 </div>
@@ -28,64 +28,64 @@
                     veritatis voluptate?
                 </p>
             </div>
-            <div class="row">
-                <div class="col-md-2 border-right border-primary filter">
-                    <div>
-                        <strong>Category</strong>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2 border-right border-primary filter">
+                        <div>
+                            <strong>Category</strong>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect2">All Categories</label>
+                            <select multiple class="form-control" id="exampleFormControlSelect2">
+                                <option v-for="c in allCategories">{{c.name_en}}</option>
+                            </select>
+                        </div>
+                        <hr>
+                        <strong>Price</strong>
+                        <div>
+                            <label for="price">$0</label>
+                            <input type="range" id="price" name="price"
+                                   min="0" max="10" value="3" style="width: 60%">
+                            <label for="price">1000$</label>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">All Categories</label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+                    <div class="col-md-10 courses">
+                        <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
                     </div>
-                    <hr>
-                    <strong>Price</strong>
-                    <div>
-                        <input type="range" id="volume" name="volume"
-                               min="0" max="10">
-                        <label for="volume">Volume</label>
-                    </div>
+
+
+                    <nav aria-label="Page navigation example" v-if="allCourses.data.length>16">
+                        <ul class="pagination justify-content-end">
+                            <li :class="['page-item', {'disabled':!allCourses.prev_page_url}]">
+                                <a class="page-link " href="#" @click="first">
+                                    First
+                                </a>
+                            </li>
+                            <li :class="['page-item', {'disabled':!allCourses.prev_page_url}]">
+                                <a class="page-link " href="#" @click="previous">
+                                    <<
+                                </a>
+                            </li>
+
+                            <li class="page-item"><a class="page-link" href="#">{{allCourses.current_page}} of
+                                {{allCourses.last_page}}</a></li>
+
+                            <li :class="['page-item', {'disabled':!allCourses.next_page_url}]">
+                                <a class="page-link" href="#" @click="next">
+                                    >>
+                                </a>
+                            </li>
+                            <li :class="['page-item', {'disabled':!allCourses.next_page_url}]">
+                                <a class="page-link" href="#" @click="last(allCourses.last_page)">
+                                    last
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
                 </div>
-                <div class="col-md-10 courses">
-                    <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
-                </div>
-
-
-                <nav aria-label="Page navigation example" v-if="allCourses.data.length>16">
-                    <ul class="pagination justify-content-end">
-                        <li :class="['page-item', {'disabled':!allCourses.prev_page_url}]">
-                            <a class="page-link " href="#" @click="first">
-                                First
-                            </a>
-                        </li>
-                        <li :class="['page-item', {'disabled':!allCourses.prev_page_url}]">
-                            <a class="page-link " href="#" @click="previous">
-                                <<
-                            </a>
-                        </li>
-
-                        <li class="page-item"><a class="page-link" href="#">{{allCourses.current_page}} of
-                            {{allCourses.last_page}}</a></li>
-
-                        <li :class="['page-item', {'disabled':!allCourses.next_page_url}]">
-                            <a class="page-link" href="#" @click="next">
-                                >>
-                            </a>
-                        </li>
-                        <li :class="['page-item', {'disabled':!allCourses.next_page_url}]">
-                            <a class="page-link" href="#" @click="last(allCourses.last_page)">
-                                last
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
             </div>
+
 
         </div>
     </div>
@@ -108,6 +108,7 @@
 
         },
         methods: {
+            ...mapActions(["fetchCategories"]),
             fetchCourses() {
                 this.$store.dispatch('fetchCourses', this.curPage)
             },
@@ -130,9 +131,10 @@
             }
 
         },
-        computed: mapGetters(["allCourses", "loading"]),
+        computed: mapGetters(["allCourses", "loading", "allCategories"]),
         created() {
             this.fetchCourses();
+            this.fetchCategories();
         }
     }
 </script>

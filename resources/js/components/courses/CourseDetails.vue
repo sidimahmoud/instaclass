@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="text-center text-primary" v-if="loading">
-            <div class="spinner-border" role="status">
+        <div class="text-center text-primary pt-5 mt-5" v-if="loading">
+            <div class="spinner-border pt-5" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
@@ -38,7 +38,7 @@
                             <i class="fa fa-user  fa-2x mr-1"></i> 0 Students
 
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" v-if="loggedInUser.t!=='teacher' && loggedInUser.t!=='admin'">
                             <router-link
                                 :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
                                 tag="a" class="btn btn-primary my-3" v-if="!enrolled">
@@ -84,9 +84,9 @@
                             </p>
                         </div>
                         <div class="col-md-1 d-none -d-md-flex"></div>
-                        <div class="col-md-2">
+                        <div class="col-md-2" v-if="loggedInUser.t!=='teacher'">
                             <router-link
-                                :to="{ name: 'Checkout', params: {id: section.id, name: section.title, price: course.price}}"
+                                :to="{ name: 'BuyOneSection', params: {id: section.id, name: section.title, price: course.price}}"
                                 tag="a" class="btn btn-primary my-3" v-if="!enrolled">
                                 S'inscrire
                             </router-link>
@@ -110,7 +110,7 @@
                 this.$store.dispatch('getCourse', this.$route.params.slug)
             },
         },
-        computed: mapGetters(["course", "loading", "enrolled", 'isLoggedIn']),
+        computed: mapGetters(["course", "loading", "enrolled", 'isLoggedIn', 'loggedInUser']),
         created() {
             this.findCourse();
         },

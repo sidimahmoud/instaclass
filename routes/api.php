@@ -59,10 +59,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', 'Admin\UsersController@show');
     Route::resource('/user', 'Admin\UsersController');
     Route::get('/enrollments', 'EnrollmentController@userEnrollments');
+    Route::get('/upcoming-classes', 'EnrollmentController@upcomingClasses');
     Route::get('/enrolled-students/{id}', 'EnrollmentController@courseEnrollments');
     Route::post('/enroll', 'EnrollmentController@store');
     Route::post('/enroll-in-course', 'EnrollmentController@EnrollInAllSections');
     Route::post('/pay', 'Admin\PayementController@paymentProcess');
+    Route::get('/my-receipts', 'Admin\PayementController@studentPayments');
     Route::post('/rate', 'RatingController@store');
-
 });

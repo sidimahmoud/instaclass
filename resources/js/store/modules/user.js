@@ -9,6 +9,8 @@ const state = {
     teacherPayments: '',
     profileLoading: false,
     loadingEnrollments: false,
+    studentPayments: '',
+    upcomingClasses: '',
 };
 const getters = {
     userProfile: (state) => state.profile,
@@ -19,6 +21,8 @@ const getters = {
     allTeacherPayments: (state) => state.teacherPayments,
     profileLoading: (state) => state.profileLoading,
     loadingEnrollments: (state) => state.loadingEnrollments,
+    studentPayments: (state) => state.studentPayments,
+    upcomingClasses: (state) => state.upcomingClasses,
 };
 
 const actions = {
@@ -28,6 +32,19 @@ const actions = {
          }).catch(err =>{
              err.response.status===401?dispatch('logout'):"";
              location.reload()
+         })
+    },
+    async fetchUpcomingClasses({commit, dispatch}) {
+         await axios.get('/my-receipts').then(response =>{
+             commit('setReceipts', response.data);
+         }).catch(err =>{
+             err.response.status===401?dispatch('logout'):"";
+             location.reload()
+         })
+    },
+    async fetchReceipts({commit, dispatch}) {
+         await axios.get('/upcoming-classes').then(response =>{
+             commit('setUpcomingClasses', response.data);
          })
     },
     async fetchTeacherCourses({commit}, id) {
@@ -68,6 +85,8 @@ const mutations = {
     setTeacherPayments: (state, payload) => (state.teacherPayments = payload),
     setProfileLoading: (state, val) => (state.profileLoading = val),
     setloadingEnrollments: (state, val) => (state.loadingEnrollments = val),
+    setReceipts: (state, payload) => (state.studentPayments = payload),
+    setUpcomingClasses: (state, payload) => (state.upcomingClasses = payload),
 };
 
 export default {

@@ -12,7 +12,7 @@
                 </div>
                 <div class="row h-100">
                     <div class="col-md-4"></div>
-                    <div class="col-md-8 text-center pt-md-5">
+                    <div class="col-md-8 text-center">
                         <h1 class="font-weight-bolder display-2">
                             THE NEXT <br/>
                             YOU
@@ -108,9 +108,7 @@
                                     :hour="upComingSections[0].startDate.slice(11, 13)"
                                     :minute="upComingSections[0].startDate.slice(14, 16)"
                                     :second="0"
-                                    :text="false"
                                 />
-                                <h4 class="text-center my-2 text-white">BE READY</h4>
                             </div>
                         </div>
                         <p
@@ -367,6 +365,15 @@
             NewSection,
             EditProfile,
             CountDown,
+        },
+        data() {
+            return {
+                collapsedCourses: true,
+                collapsedPayments: true,
+                collapsedReceipts: true,
+                collapsedRatings: true,
+                collapsedPersonal: true,
+            }
         },
         methods: {
             ...mapActions([

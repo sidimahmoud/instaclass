@@ -1,32 +1,37 @@
 <template>
     <div>
-        <div class="text-center text-primary" v-if="profileLoading">
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <section class="hero pt-5 mb-2">
+
+        <section class="hero mb-2 pt-5" v-if="!profileLoading">
             <div class="container mt-4 h-100">
                 <div class="text-right">
-                    <button class="btn btn-danger" @click="logout">
+                    <button class="btn btn-danger mr-2" @click="logout">
                         Logout
                     </button>
+                </div>
+                <div class="text-right mt-1">
+                    <router-link :to="{name: 'EditStudentProfile'}" tag="a" class="btn btn-primary">
+                        Edit Profile
+                    </router-link>
                 </div>
                 <div class="row h-100">
                     <div class="col-md-4"></div>
                     <div class="col-md-8 text-center pt-md-2">
-                        <h1 class="font-weight-bolder display-2">
-                            THE NEXT <br>
-                            YOU
-                        </h1>
+                        <h1 class="font-weight-bolder ">
+                            THE NEXT YOU
+                        </h1> <br>
                         <h1 class="font-weight-bolder text-uppercase">
-                            The best way to predict <br>
+                            The best way to predict <br> <br>
                             the future is to create it
                         </h1>
                     </div>
                 </div>
             </div>
         </section>
+        <div class="text-center text-primary" v-if="profileLoading" style="top: 30vh">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
         <div class="container" v-if="!profileLoading">
 
             <div class="jumbotron1 p-0">
@@ -35,11 +40,10 @@
                         <div
                             class="col-md-4 pl-0 teacher-image"
                             :style="{
-                  backgroundImage: 'url(' + userProfile.image + ')',
-                  backgroundSize: 'cover',
-                  backgroundRepeat: 'no-repeat',
-                }"
-                        >
+                                  backgroundImage: 'url(' + userProfile.image + ')',
+                                  backgroundSize: 'cover',
+                                  backgroundRepeat: 'no-repeat',
+                            }">
                             <!--<img :src="userProfile.image" alt="Avatar" class="w-100">-->
                         </div>
                         <div class="col-md-8 mb-2">
@@ -59,11 +63,11 @@
                                         Course Enrollments
                                     </div>
                                     <div class="col-4 py-2">
-                      <span class="btn btn-block btn-primary">{{
-                        userEnrollments.length > 0
-                          ? userEnrollments.length
-                          : "0"
-                      }}</span>
+                                  <span class="btn btn-block btn-primary">
+                                      {{userEnrollments.length > 0
+                                      ? userEnrollments.length
+                                      : "0"}}
+                                  </span>
                                     </div>
                                     <div class="col-2"></div>
                                 </div>
@@ -88,17 +92,15 @@
                     <h4 class="text-center my-2 text-white text-uppercase">
                         You have one course to start after
                     </h4>
-                    <div class="" v-if="userEnrollments.length > 0 ">
+                    <div class="" v-if="upcomingClasses.length > 0 ">
                         <Count-down
-                            :year="userEnrollments[0].course_file.startDate.slice(0, 4)"
-                            :month="userEnrollments[0].course_file.startDate.slice(5, 7)"
-                            :day="userEnrollments[0].course_file.startDate.slice(8, 9)"
-                            :hour="userEnrollments[0].course_file.startDate.slice(11, 13)"
-                            :minute="userEnrollments[0].course_file.startDate.slice(14, 16)"
+                            :year="upcomingClasses[0].startDate.slice(0, 4)"
+                            :month="upcomingClasses[0].startDate.slice(5, 7)-1"
+                            :day="upcomingClasses[0].startDate.slice(8, 10)"
+                            :hour="upcomingClasses[0].startDate.slice(11, 13)"
+                            :minute="upcomingClasses[0].startDate.slice(14, 16)"
                             :second="0"
-                            :text="false"
                         />
-                        <h4 class="text-center my-2 text-white">BE READY</h4>
                     </div>
                     <div v-else>
                         <Count-down
@@ -142,63 +144,65 @@
                         <!-- Enrollments-->
                         <div class="tab-pane fade show active" id="courses">
                             <ul class="list-unstyled">
-                                <li class="mt-4" v-if="userEnrollments.length === 0">
+                                <li class="mt-4" >
                                     <p class="text-center h3 mt-3">
                                         You have no recorded courses for the moment
                                     </p>
                                 </li>
-                                <li class="mt-4" v-else>
-                                    <div v-for="e in userEnrollments" :key="e.id">
-                                        <div v-if="e.course_file.course.type == 1" class="mb-4">
-                                            <h5 class="mt-0 mb-1">
-                                                {{ e.course_file.title }},
-                                                {{ e.course_file.created_at.slice(0, 10) }},
-                                                {{ e.course_file.created_at.slice(11, 16) }},
-                                                {{ e.course_file.course.user.first_name }}
-                                                {{ e.course_file.course.user.last_name }}
+                                <li class="mt-4">
+<!--                                    <div v-for="e in userEnrollments" :key="e.id">-->
+<!--                                        <div v-if="e.course_file.course.type == 1" class="mb-4">-->
+<!--                                            <h5 class="mt-0 mb-1">-->
+<!--                                                {{ e.course_file.title }},-->
+<!--                                                {{ e.course_file.created_at.slice(0, 10) }},-->
+<!--                                                {{ e.course_file.created_at.slice(11, 16) }},-->
+<!--                                                {{ e.course_file.course.user.first_name }}-->
+<!--                                                {{ e.course_file.course.user.last_name }}-->
 
-                                                <router-link
-                                                    :to="{
-                            name: 'Player',
-                            params: { slug: e.course_file.id },
-                          }"
-                                                    tag="button"
-                                                    class="btn btn-primary float-right"
-                                                >View Course
-                                                </router-link>
-                                            </h5>
-                                        </div>
-                                    </div>
+<!--                                                <router-link-->
+<!--                                                    :to="{-->
+<!--                            name: 'Player',-->
+<!--                            params: { slug: e.course_file.id },-->
+<!--                          }"-->
+<!--                                                    tag="button"-->
+<!--                                                    class="btn btn-primary float-right"-->
+<!--                                                >View Course-->
+<!--                                                </router-link>-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                 </li>
                             </ul>
                         </div>
 
                         <div class="tab-pane fade show" id="receipts">
-                            <!--                                <h3 class="text-center">Your receipts will appear here. </h3>-->
+                            <h3 class="text-center" v-if="studentPayments.length===0">Your receipts will appear
+                                here. </h3>
                             <div class="accordion" id="accordionExample">
-                                <div class="card">
-                                    <div class="card-header" id="headingOne">
+                                <div class="card my-2" v-for="p in studentPayments" :key="p.id">
+                                    <div class="card-header" :id="'payment'+p.id">
                                         <h2 class="mb-0">
                                             <p
                                                 class="btn btn-link font-weight-bolder rounded"
                                                 type="button"
                                                 data-toggle="collapse"
-                                                data-target="#collapseOne"
+                                                :data-target="'#collapse'+p.id"
                                                 aria-expanded="true"
-                                                aria-controls="collapseOne"
+                                                :aria-controls="'collapse'+p.id"
                                             >
-                                                Order N°#1, 2020-09-02, 6:10, Teacher Instant
+                                                Order N°{{p.id}}, {{p.created_at.slice(0,10)}},
+                                                {{p.created_at.slice(11,16)}}, {{p.object}}
                                             </p>
                                         </h2>
                                     </div>
                                     <div
-                                        id="collapseOne"
+                                        :id="'collapse'+p.id"
                                         class="collapse"
-                                        aria-labelledby="headingOne"
+                                        :aria-labelledby="'payment'+p.id"
                                         data-parent="#accordionExample"
                                     >
                                         <div class="card-body">
-                                            <receipt/>
+                                            <receipt :payment="p"/>
                                         </div>
                                     </div>
                                 </div>
@@ -316,7 +320,7 @@
             };
         },
         methods: {
-            ...mapActions(["fetchProfile", "fetchUserEnrollments"]),
+            ...mapActions(["fetchProfile", "fetchUserEnrollments", "fetchReceipts", "fetchUpcomingClasses"]),
             logout() {
                 this.$store.dispatch("logout").then(() => {
                     this.$router.push("/");
@@ -347,10 +351,12 @@
                     .catch((error) => console.log(error));
             },
         },
-        computed: mapGetters(["userProfile", "userEnrollments", "profileLoading"]),
+        computed: mapGetters(["userProfile", "userEnrollments", "profileLoading", "studentPayments", "upcomingClasses"]),
         created() {
             this.fetchProfile();
             this.fetchUserEnrollments();
+            this.fetchReceipts();
+            this.fetchUpcomingClasses();
         },
     };
 </script>

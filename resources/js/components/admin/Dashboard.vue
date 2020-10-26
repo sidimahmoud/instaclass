@@ -143,7 +143,15 @@
             </li>
 
             <hr class="sidebar-divider">
-
+            <div class="sidebar-heading">
+                Live classes
+            </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMessages"
+                   aria-expanded="true" aria-controls="collapseMessages">
+                    <span>Suivre les cours en live</span>
+                </a>
+            </li>
         </ul>
         <!-- End of Sidebar -->
 

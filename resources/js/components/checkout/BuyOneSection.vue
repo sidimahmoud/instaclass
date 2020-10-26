@@ -1,7 +1,7 @@
 <template>
-    <div class="container border-top border-primary pt-5">
+    <div class="container border-top border-primary pt-5 mt-5">
         <!-- Heading -->
-        <h2 class=" h2 text-center">Enroll in this session</h2>
+        <h2 class=" h2 text-center">Checkout form</h2>
         <!--Grid row-->
         <div class="row">
             <!--Grid column-->
@@ -9,73 +9,34 @@
                 <!--Card-->
                 <div class="card">
                     <!--Card content-->
-                    <form class="card-body" @submit.prevent="checkout">
+                    <div class="card-body">
                         <!--Grid row-->
                         <!-- payement info-->
                         <div class="my-3">
-                            <div class="text-center" v-if="course_price==0">
+                            <div class="text-center" v-if="course_price===0">
                                 <h3>This course is free</h3>
                                 <h5>No payment required</h5>
+                                <button class="btn btn-primary btn-lg btn-block" @click="enrollForFree">Enroll</button>
                             </div>
                             <div v-else>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="method">Payement method</label>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <select class="custom-select d-block w-50 mb-2" id="method" required
-                                                v-model="paymentMethod">
-                                            <option value="card">Credit card</option>
-                                            <option value="paypal">PayPal</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            Please select a valid payment method.
-                                        </div>
-                                    </div>
 
-                                </div>
-                                <div class="row border rounded" v-if="paymentMethod==='card'">
-                                    <div class="col-12">
-                                        <div class="p-2">
-                                            <stripe hidePostalCode={true} :price="course_price"/>
-
-                                            <div class="custom-control custom-checkbox text-right">
-                                                <input type="checkbox" class="custom-control-input" id="save-info">
-                                                <label class="custom-control-label" for="save-info">Save this
-                                                    information
-                                                    for next
-                                                    time</label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <div class="row " v-if="paymentMethod==='paypal'">
-                                    <div class="col-12 text-center">
-                                        <button class="btn btn-primary">
-                                            <i class="fa fa-paypal"></i>
-                                            Checkout with PayPal
-                                        </button>
-                                    </div>
-
-
-                                </div>
+                                <stripe-elements
+                                    ref="elementsRef"
+                                    :pk="publishableKey"
+                                    :amount="course_price"
+                                    locale="en"
+                                    @token="tokenCreated"
+                                    @loading="loading = $event"
+                                />
+                                <button class="btn btn-primary btn-lg btn-block" @click="checkout">Pay Now</button>
                             </div>
-
                         </div>
-
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Enroll</button>
-
-                    </form>
-
+                    </div>
                 </div>
-                <!--/.Card-->
+
 
             </div>
-            <!--Grid column-->
-
+            <!--/.Card-->
             <!--Grid column-->
             <div class="col-md-4 mb-4 ">
 
@@ -93,7 +54,7 @@
                             <h6 class="my-0">
                                 <span class="font-weight-bold">
                                         {{course_name}}
-                                    </span>
+                                </span>
                             </h6>
                         </div>
                         <span class="text-muted">${{course_price}}</span>
@@ -108,20 +69,26 @@
 
             </div>
             <!--Grid column-->
-
         </div>
-        <!--Grid row-->
+        <!--Grid column-->
+
+
     </div>
+    <!--Grid row-->
 </template>
 
 <script>
+    import {StripeElements} from 'vue-stripe-checkout';
 
     export default {
-        name: "BuyOneSection",
-
+        name: "Checkout",
+        components: {
+            StripeElements
+        },
         data() {
             return {
                 course_id: this.$route.params.id,
+                course_file_id: this.$route.params.id,
                 course_name: this.$route.params.name,
                 course_price: this.$route.params.price,
                 paymentMethod: 'card',
@@ -139,12 +106,10 @@
             }
         },
         methods: {
-
             tokenCreated(token) {
-                console.log(token)
                 let payload = {
                     paymentMethod: this.paymentMethod,
-                    course_id: this.course_id,
+                    course_file_id: this.course_id,
                     course_name: "Course N°" + this.course_id,
                     course_price: this.course_price,
                     token: token.id,
@@ -160,8 +125,22 @@
             checkout() {
                 this.$refs.elementsRef.submit();
             },
-        },
-
+            enrollForFree() {
+                let payload = {
+                    paymentMethod: this.paymentMethod,
+                    section_id: this.course_id,
+                    course_name: "Course N°" + this.course_id,
+                    course_price: this.course_price,
+                };
+                this.$store.dispatch('enroll', payload)
+                    .then(() => {
+                        alert("Enrolled successfully");
+                        this.$router.push({name: 'StudentProfile'})
+                    })
+                    .catch(err => console.log(err))
+            },
+        }
+        ,
 
     }
 </script>

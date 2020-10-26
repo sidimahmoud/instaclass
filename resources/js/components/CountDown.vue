@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-            <div class="col-12" v-if="text">
+            <div class="col-12 text-white" v-if="text">
                 <h3 v-if="expired">Timer enabled when you have an upcoming course</h3>
                 <h3 v-if="!expired">BE READY</h3>
             </div>

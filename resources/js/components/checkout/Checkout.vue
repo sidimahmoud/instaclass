@@ -1,5 +1,5 @@
 <template>
-    <div class="container border-top border-primary pt-5">
+    <div class="container border-top border-primary pt-5 mt-5">
         <!-- Heading -->
         <h2 class=" h2 text-center">Checkout form</h2>
         <!--Grid row-->
@@ -9,69 +9,66 @@
                 <!--Card-->
                 <div class="card">
                     <!--Card content-->
-                    <form class="card-body" @submit.prevent="checkout">
-                        <!--Grid row-->
-                        <!-- payement info-->
-                        <div class="my-3">
-                            <div class="text-center" v-if="course_price===0">
-                                <h3>This course is free</h3>
-                                <h5>No payment required</h5>
-                            </div>
-                            <div v-else>
-
-                                <stripe-elements
-                                    ref="elementsRef"
-                                    :pk="publishableKey"
-                                    :amount="course_price"
-                                    locale="en"
-                                    @token="tokenCreated"
-                                    @loading="loading = $event"
-                                />
-                            </div>
+                    <div class="my-3">
+                        <div class="text-center" v-if="course_price===0">
+                            <h3>This course is free</h3>
+                            <h5>No payment required</h5>
+                            <button class="btn btn-primary btn-lg btn-block" @click="enrollForFree">Enroll</button>
                         </div>
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Enroll</button>
-                    </form>
+                        <div v-else>
+
+                            <stripe-elements
+                                ref="elementsRef"
+                                :pk="publishableKey"
+                                :amount="course_price"
+                                locale="en"
+                                @token="tokenCreated"
+                                @loading="loading = $event"
+                            />
+                            <button class="btn btn-primary btn-lg btn-block" @click="checkout">Pay Now</button>
+                        </div>
+                    </div>
                 </div>
 
 
             </div>
             <!--/.Card-->
+            <!--Grid column-->
+            <div class="col-md-4 mb-4 ">
 
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-4 mb-4 ">
-
-            <!-- Heading -->
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted">Course Details</span>
-                <span class="badge badge-secondary badge-pill">
+                <!-- Heading -->
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Course Details</span>
+                    <span class="badge badge-secondary badge-pill">
                             1 </span>
-            </h4>
+                </h4>
 
-            <!-- Cart -->
-            <ul class="list-group mb-3 z-depth-1">
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">
+                <!-- Cart -->
+                <ul class="list-group mb-3 z-depth-1">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">
                                 <span class="font-weight-bold">
                                         {{course_name}}
                                 </span>
-                        </h6>
-                    </div>
-                    <span class="text-muted">${{course_price}}</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between font-weight-bold">
-                    <span>Total (USD)</span>
-                    <strong>${{course_price}}</strong>
-                </li>
-            </ul>
-            <!-- Cart -->
+                            </h6>
+                        </div>
+                        <span class="text-muted">${{course_price}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between font-weight-bold">
+                        <span>Total (USD)</span>
+                        <strong>${{course_price}}</strong>
+                    </li>
+                </ul>
+                <!-- Cart -->
 
 
+            </div>
+            <!--Grid column-->
         </div>
         <!--Grid column-->
+
+
 
     </div>
     <!--Grid row-->
@@ -107,7 +104,6 @@
         },
         methods: {
             tokenCreated(token) {
-                console.log(token)
                 let payload = {
                     paymentMethod: this.paymentMethod,
                     course_id: this.course_id,
@@ -125,6 +121,20 @@
             },
             checkout() {
                 this.$refs.elementsRef.submit();
+            },
+            enrollForFree() {
+                let payload = {
+                    paymentMethod: this.paymentMethod,
+                    course_id: this.course_id,
+                    course_name: "Course N°" + this.course_id,
+                    course_price: this.course_price,
+                };
+                this.$store.dispatch('enrollInAllSection', payload)
+                    .then(() => {
+                        alert("Enrolled successfully");
+                        this.$router.push({name: 'StudentProfile'})
+                    })
+                    .catch(err => console.log(err))
             },
         }
         ,

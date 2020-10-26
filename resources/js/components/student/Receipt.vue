@@ -17,14 +17,14 @@
         <div class="row">
             <div class="col-md-6">
                 <p class="font-weight-bold text-dark border-bottom">BILL TO</p>
-                <p>Name</p>
-                <p>Email</p>
-                <p>Phone</p>
+                <p>{{payment.user.first_name + " " + payment.user.last_name}}</p>
+                <p>{{payment.user.email}}</p>
+                <p>{{payment.user.phone}}</p>
             </div>
             <div class="col-1"></div>
             <div class="col-md-5 text-right">
-                <p class="font-weight-bold text-primary border-bottom">ORDER N° #1</p>
-                <p>Payment Date: 25/10/2020</p>
+                <p class="font-weight-bold text-primary border-bottom">ORDER N° #{{payment.id}}</p>
+                <p>Payment Date: {{payment.created_at.slice(0,10)}}, {{payment.created_at.slice(11,16)}}</p>
             </div>
         </div>
         <table class="table">
@@ -38,15 +38,15 @@
             </thead>
             <tbody>
             <tr>
-                <th scope="row" class="border-bottom">Math class</th>
+                <th scope="row" class="border-bottom">{{payment.object}}</th>
                 <td class="border-bottom">1</td>
-                <td class="border-bottom">25.00</td>
-                <td>25.00</td>
+                <td class="border-bottom">${{payment.amount}}</td>
+                <td>${{payment.amount}}</td>
             </tr>
             <tr>
                 <td class="border-0" colspan="2"/>
                 <td class="text-right border-0">SUBTOTAL</td>
-                <td>25.00</td>
+                <td>${{payment.amount}}</td>
             </tr>
             <tr>
                 <td colspan="2" class="border-0"/>
@@ -60,7 +60,7 @@
             </tr>
             <tr class="font-weight-bold">
                 <td colspan="3" class="text-right border-0">Balance paid</td>
-                <td> $25.00</td>
+                <td> ${{payment.amount}}</td>
             </tr>
             </tbody>
         </table>
@@ -70,7 +70,8 @@
 
 <script>
     export default {
-        name: "Receipt"
+        name: "Receipt",
+        props: ["payment"]
     }
 </script>
 

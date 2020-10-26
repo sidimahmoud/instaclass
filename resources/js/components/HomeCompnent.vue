@@ -19,7 +19,7 @@
                         <div class="col-md-6"></div>
                         <div
                             class="col-md-6 col-sm-12 text-center px-md-5 justify-content-center align-items-center ">
-                            <h1 class="display-4">
+                            <h1 >
                                 {{$t('title')}}
                             </h1>
 

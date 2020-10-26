@@ -6,7 +6,7 @@
                      :src="categ.image"
                      :alt="categ.name_en">
             </router-link>
-            <div class=" bg-white rounded  text-center cateDetails">
+            <div class=" bg-white rounded  text-center card-body cateDetails">
                 <h5 class="card-title  font-weight-bolder">{{(lang==="en")? categ.name_en:
                     categ.name_fr}}</h5>
                 <p class="card-text">
@@ -39,7 +39,7 @@
 
 <style scoped>
     .card-img-top {
-        border-radius: 20px;
+        /*border-radius: 20px;*/
         /*position: absolute;*/
         /*margin-right: 40px;*/
         /*z-index: ;*/

@@ -52,7 +52,11 @@ class PayementController extends Controller
         $stripe->save();
     }
 
-
+    public function studentPayments(Request $request)
+    {
+        $payments = Payement::with("user")->where('user_id', $request->user()->id)->get();
+        return response()->json($payments);
+    }
     /**
      * Show the form for creating a new resource.
      *
