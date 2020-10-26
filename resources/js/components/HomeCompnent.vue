@@ -24,7 +24,6 @@
                             </h1>
 
                         </div>
-
                         <!--                    <div class="col-md-6 d-none d-md-block">-->
                         <!--                        <img src="../assets/images/home/home.png" width="450px" class=" float-right"-->
                         <!--                             alt="logo">-->

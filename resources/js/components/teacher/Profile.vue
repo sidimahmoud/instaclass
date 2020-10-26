@@ -6,16 +6,15 @@
             </div>
         </div>
         <section class="hero pt-5">
-            <div class="container mt-4 h-100">
+            <div class="container mt-md-4 h-100">
                 <div class="text-right">
                     <button class="btn btn-danger" @click="logout">Logout</button>
                 </div>
                 <div class="row h-100">
                     <div class="col-md-4"></div>
                     <div class="col-md-8 text-center">
-                        <h1 class="font-weight-bolder display-2">
-                            THE NEXT <br/>
-                            YOU
+                        <h1 class="font-weight-bolder ">
+                            THE NEXT YOU
                         </h1>
                         <h1 class="font-weight-bolder text-uppercase">
                             The best way to predict <br/>

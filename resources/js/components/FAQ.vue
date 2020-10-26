@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container mt-5">
         <div class="text-center border-top border-primary pt-5 mb-3">
             <h3>Réponses aux questions les plus fréquemment posées</h3>
         </div>
@@ -185,5 +185,7 @@
 </script>
 
 <style scoped>
-
+    .font-weight-bolder{
+        font-weight: bolder;
+    }
 </style>

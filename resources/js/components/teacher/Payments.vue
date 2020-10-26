@@ -8,22 +8,22 @@
         <table class="table" v-else>
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Enrollment ID</th>
-                <th scope="col">Student ID</th>
+                <th scope="col">Session Number</th>
+                <th scope="col">Student Name</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Method</th>
+                <th scope="col">Date of session</th>
                 <th scope="col">Course</th>
 
             </tr>
             </thead>
             <tbody>
             <tr v-for="t in allTeacherPayments">
-                <th scope="row">{{t.id}}</th>
                 <td>{{t.enrollment_id}}</td>
                 <td>{{t.user_id}}</td>
                 <td>{{t.amount}}</td>
                 <td>{{t.method}}</td>
+<!--                <td>{{t.session.created_at}}</td>-->
                 <td>{{t.object}}</td>
             </tr>
             </tbody>

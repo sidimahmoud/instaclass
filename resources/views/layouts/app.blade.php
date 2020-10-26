@@ -27,7 +27,8 @@
 </div>
 
 </body>
-
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v8.0&appId=223985172274465&autoLogAppEvents=1" nonce="V06BXP4s"></script>
 </html>
 
 <script>

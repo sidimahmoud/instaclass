@@ -85,7 +85,6 @@
                         <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
                     </div>
 
-
                     <nav aria-label="Page navigation example" v-if="allCourses.data.length>16">
                         <ul class="pagination justify-content-end">
                             <li :class="['page-item', {'disabled':!allCourses.prev_page_url}]">

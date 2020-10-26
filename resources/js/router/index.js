@@ -38,6 +38,7 @@ import NewSection from "../components/teacher/NewSection";
 import StartLive from "../components/teacher/StartLive";
 import LiveCourse from "../components/teacher/LiveCourse";
 import FAQ from "../components/FAQ";
+import last from "../components/last";
 
 Vue.use(VueRouter);
 
@@ -46,6 +47,16 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home,
+        meta: {
+            requiresAuth: false,
+            title: 'Home'
+
+        }
+    },
+    {
+        path: '/last',
+        name: 'Last',
+        component: last,
         meta: {
             requiresAuth: false,
             title: 'Home'

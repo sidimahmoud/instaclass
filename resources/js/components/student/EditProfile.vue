@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container bootstrap snippet rounded pt-3" v-if="!profileLoading">
+    <div class="container bootstrap snippet rounded pt-5 mt-5" v-if="!profileLoading">
         <div class="text-center">
             <h1 class="font-weight-bolder">{{userProfile.first_name}} {{userProfile.last_name}}</h1>
         </div>
@@ -118,11 +118,11 @@
                 formData.append("about", document.querySelector('#about').value);
                 formData.append("languages", document.querySelector('#lang').value);
                 formData.append("_method", "put");
-              //  console.log(formData)
+                //  console.log(formData)
                 axios.post('/user/' + this.userProfile.id, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'accept':'Application/json'
+                        'accept': 'Application/json'
                     }
                 }).then(res => {
                     console.log(res);

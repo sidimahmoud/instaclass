@@ -1,25 +1,27 @@
 <template>
     <div>
         <div class="jumbotron text-right" style="height: 200px"></div>
-        <div class="container rounded py-3 bg font-weight-bold">
-            <h3 class="text-center font-weight-bolder">Edit {{course.name}}</h3>
+        <div class="container rounded py-3 bg font-weight-bold" v-if="!loading">
+            <h3 class="text-center font-weight-bolder">Edit Course</h3>
             <form class="my-3" method="post" @submit.prevent="saveCourse">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="selectLang">Select category</label>
-                            <select class="form-control" id="selectLang" required>
-                                <option>{{course.sub_category.category.name_en}}</option>
-                                <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name_en}}</option>
+                            <select class="form-control" id="selectLang" required @change="loadSubs">
+                                <option v-for="c in allCategories" :key="c.id" :value="c.id"
+                                        :selected="course.sub_category.category.id===c.id">{{c.name_en}}
+                                </option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="subCateg">Sub category</label>
-                            <select class="form-control" id="subCateg" v-model="course.category_id" required>
-                                <option selected>{{course.sub_category.name_en}}</option>
-                                <!--                                <option v-for="c in course.sub_category" :key="c.id" :value="c.id">{{c.name_en}}</option>-->
+                            <select class="form-control" id="subCateg" required>
+                                <option selected="selected">{{course.sub_category.name_en}}</option>
+                                <option v-for="c in subCategories" :key="c.id" :value="c.id">{{c.name_en}}
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -69,31 +71,19 @@
                         <div class="form-group">
                             <label for="persons">Number of authorized students</label>
                             <input type="number" min="1" class="form-control" id="persons"
-                                   placeholder="authorized students" v-model="course.authorized_students" required>
+                                   placeholder="authorized students" :value="course.authorized_students" required>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="partage">Autorisez vous le partage de votre annonce?</label>
-                            <select class="form-control" id="partage" v-model="course.sharable" required>
-                                <option value="true">Instatavite peut le partager</option>
-                                <option value="false">Je n'autorise pas</option>
+                            <select class="form-control" id="partage" required>
+                                <option value="true" :selected="course.sharable">Instatavite peut le partager</option>
+                                <option value="false" :selected="!course.sharable">Je n'autorise pas</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="name">Course name</label>
-                            <input type="text" class="form-control" id="name"
-                                   placeholder="Name" v-model="course.name" required>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="thumbnail">Thumbnail</label>
-                            <input type="file" class="form-control-file" id="thumbnail">
-                        </div>
-                    </div>
+
                 </div>
                 <h3>Sessions: </h3>
                 <div class="row border m-3" v-for="(section, index) in course.sections" :key="index">
@@ -145,8 +135,37 @@
             findCourse() {
                 this.$store.dispatch('getCourse', this.$route.params.slug)
             },
+            loadSubs(event) {
+                const id = event.target.value;
+                this.$store.dispatch('fetchSubCategories', id)
+            },
+            updateCourse() {
+                const formData = new FormData();
+                const imagefile = document.querySelector('#thumbnail');
+                formData.append("sub_category_id", this.course.sub_category_id);
+                formData.append("language", this.course.language);
+                formData.append("price", this.course.price);
+                formData.append("currency", this.course.currency);
+                formData.append("estimated_duration", this.course.estimated_duration);
+                formData.append("authorized_students", this.course.authorized_students);
+                formData.append("sharable", this.course.sharable);
+                formData.append("name", this.course.name);
+                formData.append("short_description", this.course.short_description);
+                formData.append("_method", "put");
+
+                formData.append("sections", JSON.stringify(this.sections));
+                axios.post('/course', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
+                }).then(res => {
+                    console.log(res);
+                    alert("Your course was updated successfully")
+                })
+                    .catch(err => console.log(err.response));
+            },
         },
-        computed: mapGetters(["allCategories", "course", "loading"]),
+        computed: mapGetters(["allCategories", "subCategories", "course", "loading"]),
         created() {
             this.fetchCategories();
             this.findCourse();

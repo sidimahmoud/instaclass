@@ -11,8 +11,8 @@
                   border: '1px solid black',
                   borderRadius: '20px'
                 }">
-<!--                    <img :src="course.sub_category.category.image" :alt="course.sub_category.category.image"-->
-<!--                         class="img-fluid">-->
+                    <!--                    <img :src="course.sub_category.category.image" :alt="course.sub_category.category.image"-->
+                    <!--                         class="img-fluid">-->
                 </div>
                 <div class="col-md-8">
                     <strong>Number of Sessions - </strong> {{course.sections.length}} <br>
@@ -31,8 +31,16 @@
                 <div class="col-12">
                     <div class="row">
                         <div class="col-6">
-                            <img src="../../assets/images/fbShare.png" width="70px" alt="">
-                            <img src="../../assets/images/share.png" width="40px" alt="">
+                            <div class="fb-share-button" :data-href="'https://mondemenagement.ca/courses/'+course.id"
+                                 data-layout="button" data-size="large">
+                                <a target="_blank"
+                                   :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmondemenagement.ca%2Fcourses%2F'+course.id+'&amp;src=sdkpreparse'"
+                                   class="fb-xfbml-parse-ignore">
+                                    <img src="../../assets/images/fbShare.png" width="70px" alt="">
+                                    <img src="../../assets/images/share.png" width="40px" alt="">
+                                </a>
+                            </div>
+
                         </div>
                         <div class="col-6">
                             <router-link :to="{ name: 'Detail', params: { slug: course.id}}" tag="a">
@@ -46,9 +54,9 @@
 
         <!--        <div class="col-md-4 col-sm-12 mb-2 shadow-lg">-->
         <!--            <div class="card">-->
-<!--                        <router-link :to="{ name: 'Detail', params: { slug: course.id}}" tag="a">-->
-<!--                            <img class="card-img-top" :src="course.image">-->
-<!--                        </router-link>-->
+        <!--                        <router-link :to="{ name: 'Detail', params: { slug: course.id}}" tag="a">-->
+        <!--                            <img class="card-img-top" :src="course.image">-->
+        <!--                        </router-link>-->
         <!--                <div class="card-body">-->
         <!--                    &lt;!&ndash;                        <h5 class="card-title">Card title</h5>&ndash;&gt;-->
         <!--                    <p class="card-text">-->
