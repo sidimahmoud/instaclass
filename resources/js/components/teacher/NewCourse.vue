@@ -10,18 +10,18 @@
                         <div class="form-group">
                             <label for="selectLang">Select category</label>
                             <select class="form-control" id="selectLang" @change="loadSubs" required>
-                                <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name_en}}</option>
-                                <option>Create a Category</option>
+                                <option v-for="c in allCategories" :key="c.id" :value="c.id" :selected="c.id===1">{{c.name_en}}</option>
+                                <option value="0" >Create a Category</option>
                             </select>
 
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="subCateg">Sub category</label>
-                            <select class="form-control" id="subCateg" v-model="course.sub_category_id" required>
+                            <label for="subCateg" >Sub category</label>
+                            <select class="form-control" id="subCateg" @change="model" v-model="course.sub_category_id" required>
                                 <option v-for="c in subCategories" :key="c.id" :value="c.id">{{c.name_en}}</option>
-                                <option value="0">Create a Sub-Category</option>
+                                <option value="0" >Create a Sub-Category</option>
                             </select>
 
                         </div>
@@ -128,7 +128,7 @@
                             <label for="short_desc">Session {{index+1}} description: GIve a description of what you will
                                 teach in this session</label>
                             <textarea type="text" class="form-control" id="short_desc"
-                                   placeholder="Short description" name="desc[]" required
+                                      placeholder="Short description" name="desc[]" required
                                       v-model="sections[index].description"></textarea>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
                 </div>
             </form>
         </div>
-        <div class="modal fade show" id="exampleModalCenter" tabindex="-1" role="dialog"
+        <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalCenterTitle"
              aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -237,7 +237,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="selCat">Select category</label>
-                                        <select class="form-control" id="selCat" @change="loadSubs" required v-model="newSub.catId">
+                                        <select class="form-control" id="selCat" @change="loadSubs" required
+                                                v-model="newSub.catId">
                                             <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name_en}}
                                             </option>
                                         </select>
@@ -315,7 +316,7 @@
                     nom: '',
                 },
                 newSub: {
-                    catId:'',
+                    catId: '',
                     name: '',
                     nom: '',
                 }
@@ -340,18 +341,35 @@
                 })
             },
             saveSub() {
+
+
                 if (this.newSub.catId === '0') {
                     alert("Select category");
                     return
                 }
-                axios.post('/sub-categories', {category_id: this.newSub.catId, name: this.newSub.name, nom: this.newSub.nom})
+                axios.post('/sub-categories', {
+                    category_id: this.newSub.catId,
+                    name: this.newSub.name,
+                    nom: this.newSub.nom
+                })
                     .then(res => {
                         alert("Sub-category created successfully");
                         location.reload()
                     })
             },
+            model(event) {
+                const id = event.target.value;
+
+                if(id ==0){
+                    $('#modelSub').modal('show')
+
+                }
+
+            },
             loadSubs(event) {
                 const id = event.target.value;
+                if (id == 0)
+                    $('#exampleModalCenter').modal('show')
                 this.$store.dispatch('fetchSubCategories', id)
             }
             ,
