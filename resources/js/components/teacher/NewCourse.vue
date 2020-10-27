@@ -11,10 +11,9 @@
                             <label for="selectLang">Select category</label>
                             <select class="form-control" id="selectLang" @change="loadSubs" required>
                                 <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name_en}}</option>
+                                <option>Create a Category</option>
                             </select>
-                            <button class="btn  btn-sm" data-toggle="modal"
-                                    data-target="#exampleModalCenter">New
-                            </button>
+
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -22,10 +21,9 @@
                             <label for="subCateg">Sub category</label>
                             <select class="form-control" id="subCateg" v-model="course.sub_category_id" required>
                                 <option v-for="c in subCategories" :key="c.id" :value="c.id">{{c.name_en}}</option>
+                                <option value="0">Create a Sub-Category</option>
                             </select>
-                            <button class="btn  btn-sm" data-toggle="modal"
-                                    data-target="#modelSub">New
-                            </button>
+
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -35,7 +33,7 @@
                                     v-model="course.language">
                                 <option value="EN">EN</option>
                                 <option value="FR">FR</option>
-                                <option value="">Add New Language</option>
+                                <option value="">Add a new language</option>
                             </select>
                         </div>
                         <div class="form-group" v-else>
@@ -175,7 +173,7 @@
                 </div>
             </form>
         </div>
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        <div class="modal fade show" id="exampleModalCenter" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalCenterTitle"
              aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">

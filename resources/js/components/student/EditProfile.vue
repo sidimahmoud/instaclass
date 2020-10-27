@@ -9,7 +9,7 @@
                 <div class="text-center">
                     <img :src="userProfile.image" class="avatar img-circle img-thumbnail"
                          alt="avatar">
-                    <h6>Add a photo</h6>
+                    <h6>Add your profile photo or an image</h6>
                     <input type="file" class="text-center center-block file-upload" id="img">
                 </div>
                 <br>
@@ -45,7 +45,7 @@
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="email">Email</label>
+                                    <label for="email">Email (will be used to communicate with you)</label>
                                     <input type="email" class="form-control" name="email" id="email"
                                            placeholder="you@email.com" title="enter your email."
                                            :value="userProfile.email">
@@ -55,8 +55,7 @@
 
                                 <div class="col-xs-6">
                                     <label for="lang">Spoken languages</label>
-                                    <input type="text" class="form-control" id="lang"
-                                           title="enter your email."
+                                    <input type="text" class="form-control" id="lang" placeholder="Example: English, French"
                                            :value="userProfile.languages">
                                 </div>
                             </div>

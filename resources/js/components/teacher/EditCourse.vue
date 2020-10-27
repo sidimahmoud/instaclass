@@ -7,8 +7,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="selectLang">Select category</label>
-                            <select class="form-control" id="selectLang" required @change="loadSubs">
+                            <label for="cat">Select category</label>
+                            <select class="form-control" id="cat" required @change="loadSubs">
                                 <option v-for="c in allCategories" :key="c.id" :value="c.id"
                                         :selected="course.sub_category.category.id===c.id">{{c.name_en}}
                                 </option>
@@ -17,8 +17,8 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="subCateg">Sub category</label>
-                            <select class="form-control" id="subCateg" required>
+                            <label for="subCat">Sub category</label>
+                            <select class="form-control" id="subCat" required>
                                 <option selected="selected">{{course.sub_category.name_en}}</option>
                                 <option v-for="c in subCategories" :key="c.id" :value="c.id">{{c.name_en}}
                                 </option>
@@ -27,8 +27,8 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">In which language will you teach</label>
-                            <select class="form-control" id="exampleFormControlSelect1" required
+                            <label for="lang">In which language will you teach</label>
+                            <select class="form-control" id="lang" required
                                     v-model="course.language">
                                 <option value="EN">EN</option>
                                 <option value="FR">FR</option>
@@ -43,11 +43,10 @@
                                        placeholder="Price" :value="course.price" required>
                                 <small id="priceHelp" class="form-text text-muted">A reasonable price will give you the
                                     chance to have students enrolled in your course.</small>
-
                             </div>
                             <div class="col">
-                                <label for="price">Currency</label>
-                                <select class="form-control" v-model="course.currency" aria-describedby="currencyHelp"
+                                <label for="currency">Currency</label>
+                                <select class="form-control" id="currency" v-model="course.currency" aria-describedby="currencyHelp"
                                         required>
                                     <option value="cad">CAD</option>
                                     <option value="usd">USD</option>
@@ -72,6 +71,12 @@
                             <label for="persons">Number of authorized students</label>
                             <input type="number" min="1" class="form-control" id="persons"
                                    placeholder="authorized students" :value="course.authorized_students" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="desc">Summerize what you will teach in your course</label>
+                            <textarea class="form-control" id="desc" v-model="course.short_description" required></textarea>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -115,11 +120,8 @@
                         </div>
                     </div>
                 </div>
-
-
                 <button class="btn btn-primary btn-block" type="submit">Save course</button>
             </form>
-
         </div>
     </div>
 
@@ -141,16 +143,14 @@
             },
             updateCourse() {
                 const formData = new FormData();
-                const imagefile = document.querySelector('#thumbnail');
-                formData.append("sub_category_id", this.course.sub_category_id);
-                formData.append("language", this.course.language);
-                formData.append("price", this.course.price);
-                formData.append("currency", this.course.currency);
-                formData.append("estimated_duration", this.course.estimated_duration);
-                formData.append("authorized_students", this.course.authorized_students);
-                formData.append("sharable", this.course.sharable);
-                formData.append("name", this.course.name);
-                formData.append("short_description", this.course.short_description);
+                formData.append("sub_category_id", document.querySelector('#subCat').value);
+                formData.append("language", document.querySelector('#lang').value);
+                formData.append("price", document.querySelector('#price').value);
+                formData.append("currency", document.querySelector('#currency').value);
+                formData.append("estimated_duration", document.querySelector('#duration').value);
+                formData.append("authorized_students", document.querySelector('#persons').value);
+                formData.append("sharable", document.querySelector('#partage').value);
+                formData.append("short_description", document.querySelector('#desc').value);
                 formData.append("_method", "put");
 
                 formData.append("sections", JSON.stringify(this.sections));

@@ -57,8 +57,7 @@
 
                                 <div class="col-xs-6">
                                     <label for="lang">Spoken languages</label>
-                                    <input type="text" class="form-control" name="email" id="lang"
-                                           title="enter your email."
+                                    <input type="text" class="form-control"  id="lang" placeholder="Example: English, French"
                                            :value="userProfile.languages">
                                 </div>
                             </div>
