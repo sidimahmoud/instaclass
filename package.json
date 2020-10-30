@@ -21,7 +21,6 @@
     "vue-router": "^3.3.4",
     "vue-stripe-checkout": "^3.5.7",
     "vue-stripe-elements-plus": "^0.3.2",
-    "vuetify": "^2.3.15",
     "vuex": "^3.5.1"
   },
   "devDependencies": {

@@ -9,12 +9,14 @@ Route::resource('/categories', 'CategoryController');
 Route::get('/subcats/{id}', 'SubCategoryController@subCategories');
 Route::resource('/sub-categories', 'SubCategoryController');
 Route::get('/courses', 'CourseController@index');
+Route::get('/all-courses', 'CourseController@filter');
 Route::get('/courses/{id}', 'CourseController@show');
 Route::get('/sections/{id}', 'CourseFileController@show');
 Route::get('/courses/search/{q}', 'CourseController@search');
 Route::post('/courses/demander', 'DemandsController@store');
 Route::post('/contacter', 'ContactsController@store');
-Route::get('/class/{id}', 'CourseController@subCategoryCourses');
+Route::get('/class/{id}', 'CourseController@categoryCourses');
+Route::get('/test', 'CourseController@courseSectionsCount');
 
 Route::get('authorize/{provider}', 'AuthController@redirectToProvider');
 Route::get('authorize/{provider}/callback', 'AuthController@handleProviderCallback');

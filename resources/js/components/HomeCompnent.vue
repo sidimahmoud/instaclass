@@ -2,24 +2,29 @@
     <div>
         <div class="hero">
             <div class="jumbotron jumbotron1 mb-0">
-            <span class="bg-primary px-1 py-3  shareBar">
-                <button class="btn btn-light btn-sm">
-                    <i class="fa fa-facebook text-primary"></i>
-                </button>
-                <br>
-                <br>
-                    <button class="btn btn-light btn-sm">
-                    <i class="fa fa-instagram text-primary"></i>
-                </button>
+            <span class=" px-1 py-3  shareBar">
+                <iframe
+                    src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&appId=223985172274465&width=93&height=28"
+                    width="93" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                    allowTransparency="true" allow="encrypted-media">
+                </iframe>
+                <p>
+                    <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> <img
+                        src="../assets/images/insta.png"
+                        alt="insta" class="rounded"
+                        width="93px">
+                  </a>
+                </p>
+
 
 
             </span>
-                <div class="container  align-items-center mt-5 h-100">
+                <div class="container  align-items-center mt-md-2 h-100">
                     <div class="row justify-content-around align-items-center h-100">
-                        <div class="col-md-6"></div>
+                        <div class="col-md-6 d-sm-none"></div>
                         <div
                             class="col-md-6 col-sm-12 text-center px-md-5 justify-content-center align-items-center ">
-                            <h1 >
+                            <h1>
                                 {{$t('title')}}
                             </h1>
 
@@ -32,47 +37,38 @@
                 </div>
             </div>
             <div class="jumbotron jumbotron2">
-            <span class="bg-primary px-1 py-3  shareBar">
-                <button class="btn btn-light">
-                    <i class="fa fa-facebook  text-primary"></i>
-                </button>
-                <br>
-                <br>
-                    <button class="btn btn-light">
-                    <i class="fa fa-instagram text-primary"></i>
-                </button>
 
-
-            </span>
-                <div class="container  align-items-center mt-5">
+                <div class="container  align-items-center mt-2">
                     <div class="row justify-content-around align-items-center">
                         <div
-                            class="col-md-6 col-sm-12 text-center  justify-content-center align-items-center text-white">
-                            <h1 class="display-4">
-                                {{$t('title2')}}
-                            </h1>
+                            class="col-md-6 col-sm-12 justify-content-center align-items-center text-white">
+                            <h3>
+                                {{$t('title2.teachers.title')}}:
+                            </h3>
+                            <ul>
+                                <li>{{$t('title2.teachers.1')}}</li>
+                                <li>{{$t('title2.teachers.2')}}</li>
+                                <li>{{$t('title2.teachers.3')}}</li>
+                            </ul>
+                            <h3>
+                                {{$t('title2.students.title')}}:
+                            </h3>
+                            <ul>
+                                <li>{{$t('title2.students.1')}}</li>
+                                <li>{{$t('title2.students.2')}}</li>
+                                <li>{{$t('title2.students.3')}}</li>
+                            </ul>
                             <!--<img src="../assets/images/home/onlineEd.jpg" width="350px">-->
                         </div>
-                        <div class="col-md-6 col-sm-12">
-                            <img src="../assets/images/home/onlineEd.jpg" width="500px" class="img-fluid rounded">
+                        <div class="col-md-6 col-sm-12 text-center d-none d-md-block">
+                            <img src="../assets/images/home/onlineEd.jpg" width="400px" class="img-fluid rounded">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class=" text-right pr-5">
-            <iframe
-                src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&appId=223985172274465&width=130&height=28"
-                width="130" height="28" style="border:none;overflow:hidden; min-width: 130px" scrolling="no"
-                frameborder="0"
-                allowTransparency="true" allow="encrypted-media"></iframe>
-            <br>
-            <!--            <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://www.instantclass.herokuapp.com/courses&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!"> <img src="../assets/images/fb.png" alt="fb" width="150px"></a> <br>-->
-            <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> <img src="../assets/images/insta.png"
-                                                                                    alt="insta" class="rounded"
-                                                                                    width="130px"></a>
-        </div>
+
         <section class="classes">
             <div class="container d-flex flex-column justify-content-center align-items-center mt-5 ">
                 <h3 class="text-primary">
@@ -87,7 +83,7 @@
                     </div>
                 </div>
 
-                <div class="row  categories" v-if="!loadingCategories">
+                <div class="row my-5 categories" v-if="!loadingCategories">
                     <category-compo v-for="category in allCategories" :categ="category" :key="category.id"/>
                 </div>
             </div>
@@ -117,6 +113,9 @@
 
                     <div class="col-md-3 ">
                         <div class="shadow-sm carte   m-3 text-center " style="background: #53C4B4;">
+<!--                            <svg height="100" width="100" class="carte-icon">-->
+<!--                                <circle cx="50" cy="50" r="40" stroke="blue" stroke-width="1" fill="white"/>-->
+<!--                            </svg>-->
                             <h3>Live interacting online tutoring classes</h3>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos
@@ -168,12 +167,14 @@
                         </p>
                     </div>
                     <div class="col-md-3"></div>
-                    <div class="col-md-3 rounded bg-white text-dark p-0 text-center review">
-                        <div class="card m-0">
+                    <div class="col-md-3 rounded  text-dark p-0 text-center review">
+                        <div class="card m-0 border-0">
                             <img class="card-img-top" src="../assets/images/home/review.jpg" alt="Card image cap">
                             <div class="card-body">
-
-                                <p class="card-text">
+                                <svg height="100" width="100" class="review-img">
+                                    <circle cx="50" cy="50" r="40" stroke="#3081FB" stroke-width="1" fill="white"/>
+                                </svg>
+                                <div class="card-text">
                                     <h3>Full Name</h3>
                                     <div>
                                         <i class="fa fa-star text-warning" v-for="n in 5" :key="n"></i>
@@ -186,7 +187,7 @@
                                     velit kolop auctor aliquet.orem Ipsum.
                                     Proin gravida nibh vel velit kolop auct
                                     or aliquet.orem Ipsum. orem Ipsum.
-                                </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -217,7 +218,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .card:not(:first-child) {
         margin-left: 15px !important;
     }
@@ -239,19 +240,22 @@
     }
 
     .jumbotron1 {
-        background-image: url('../assets/images/home/heroHome.png');
+        background-image: url('../assets/images/home/bg1.jpg');
         border-radius: 0 0 300px 0;
         border-bottom: 10px solid #0b40c6;
         background-size: cover;
 
-        height: 70vh;
+        height: 60vh;
     }
 
     .jumbotron2 {
         /*background-image: url('../assets/images/home/bg2.jpg');*/
         background-color: transparent;
+        height: 300px;
         border-radius: 0 0 0 200px;
-        height: 500px;
+        @media only screen and (max-width: 600px) {
+            border-radius: 0;
+        }
     }
 
     .hero {
@@ -259,12 +263,18 @@
         border-radius: 0 0 0 200px;
         background-repeat: no-repeat;
         background-size: cover;
+        @media only screen and (max-width: 600px) {
+            border-radius: 0;
+        }
     }
 
     .shareBar {
         top: 200px;
         position: absolute;
         border-radius: 30px;
+        @media only screen and (max-width: 600px) {
+            top: 40px;
+        }
     }
 
     .categories {
@@ -299,12 +309,19 @@
     .carte {
         padding-top: 100px;
         clip-path: polygon(0 0, 180% 50%, 0 180%, 0 50%) !important;
-        border-radius: 0 0 20px 20px
+        border-radius: 0 0 20px 20px;
 
+        .carte-icon {
+            margin-top: -60px;
+        }
     }
 
     .review {
         box-shadow: -8px -8px 0px 0px rgba(48, 129, 251, 1);
+
+        .review-img {
+            margin-top: -60px;
+        }
     }
 
 </style>

@@ -26,9 +26,10 @@ const getters = {
 
 
 const actions = {
-    async fetchCourses({commit}, page) {
+    async fetchCourses({commit}, payload) {
         commit('setLoading', true);
-        const response = await axios.get(`/courses?page=${page}`);
+
+        const response = await axios.get(`/all-courses/?filter[price_less_than]=${payload.price}&filter[language]=${payload.lang}`);
         commit('setCourses', response.data);
         commit('setLoading', false);
     },

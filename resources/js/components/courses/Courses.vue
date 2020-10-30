@@ -10,16 +10,9 @@
                             WHAT WE OFFER
                         </h1></div>
                 </div>
-
             </div>
-
         </section>
-        <div class="text-center text-primary" v-if="loading">
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <div v-if="!loading">
+        <div>
             <div class="text-center my-3">
                 <h2><strong>SELECT YOUR COURSE TODAY</strong></h2>
                 <p class="w-50 m-auto">
@@ -36,9 +29,9 @@
                                 <strong>Category</strong>
                             </p>
                             <div class="form-group">
-                                <select multiple class="form-control" id="exampleFormControlSelect2">
-                                    <option>All Categories</option>
-                                    <option v-for="c in allCategories">{{c.name_en}}</option>
+                                <select multiple class="form-control" id="exampleFormControlSelect2" @change="categ">
+                                    <option value="">All Categories</option>
+                                    <option v-for="c in allCategories" :value="c.id">{{c.name_en}}</option>
                                 </select>
                             </div>
                         </div>
@@ -48,18 +41,21 @@
                             </p>
                             <label for="price">$0</label>
                             <input type="range" id="price" name="price"
-                                   min="0" max="10" value="3" style="width: 60%">
+                                   min="0" max="10" value="10" style="width: 60%" @change="price">
                             <label for="price">$1000</label>
+                            <!--                            <vue-slider v-model="value" />-->
+
                         </div>
                         <div class="border-bottom border-dark">
                             <p class="filter-title">
                                 <strong>Course Language</strong>
                             </p>
                             <div class="form-group">
-                                <select multiple class="form-control" id="lang">
+                                <select multiple class="form-control" id="lang" @change="lang">
+                                    <option value="">All ({{allCourses.data.length}})</option>
                                     <option value="en">ENGLISH (5)</option>
                                     <option value="fr">FRENCH (1)</option>
-                                    <option value="sp">SPANISH (0)</option>
+                                    <option value="es">SPANISH (0)</option>
                                     <option value="other">OTHER (0)</option>
                                 </select>
                             </div>
@@ -70,18 +66,26 @@
                             </p>
                             <div class="form-group">
                                 <select multiple class="form-control" id="sessions">
+                                    <option value="">Any ({{allCourses.data.length}})</option>
                                     <option value="1">1 (5)</option>
                                     <option value="2">2 (1)</option>
                                     <option value="3">3 (0)</option>
                                     <option value="4">4 (0)</option>
-                                    <option value="5">5 (0)</option>
-                                    <option value="6">6 (0)</option>
+                                    <option value="5">5+ (0)</option>
                                 </select>
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-md-10 courses">
+                    <div class="col-md-10 align-items-center" v-if="loading">
+                        <div class="text-center text-primary">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-10 courses" v-if="!loading">
+
                         <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
                     </div>
 
@@ -130,18 +134,30 @@
     export default {
         name: 'Courses',
         components: {
-            Course
+            Course,
+            // VueSlider
         },
         data() {
             return {
+                value: 0,
                 curPage: 1,
+                filter: {
+                    price: 1000,
+                    categ: '',
+                    lang: 'en',
+                    sections: ''
+                }
             }
 
         },
         methods: {
             ...mapActions(["fetchCategories"]),
             fetchCourses() {
-                this.$store.dispatch('fetchCourses', this.curPage)
+                this.$store.dispatch('fetchCourses', {
+                    page: this.curPage,
+                    price: this.filter.price,
+                    lang: this.filter.lang
+                })
             },
             first() {
                 this.curPage = 1;
@@ -159,10 +175,30 @@
                 console.log(n);
                 this.curPage = n;
                 this.fetchCourses();
-            }
+            },
 
+            // filter methods
+            categ(event) {
+                console.log(event.target.value)
+                this.filter.categ = event.target.value;
+                this.fetchCourses()
+            },
+            price(event) {
+                console.log(event.target.value)
+                this.filter.price = event.target.value;
+                this.fetchCourses()
+
+            },
+            lang(event) {
+                console.log(event.target.value)
+                this.filter.lang = event.target.value;
+                this.fetchCourses()
+
+            },
         },
-        computed: mapGetters(["allCourses", "loading", "allCategories"]),
+        computed: {
+            ...mapGetters(["allCourses", "loading", "allCategories"]),
+        },
         created() {
             this.fetchCourses();
             this.fetchCategories();

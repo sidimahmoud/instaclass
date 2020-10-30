@@ -1,6 +1,19 @@
 {
-    "title": "La plateforme parfaite pour les cours en ligne",
-    "title2": "INSTANTACLASS La Future de L'education En Ligne",
+    "title": "La plateforme par excellence pour enseigner ou apprendre pour les cours en ligne",
+    "title2": {
+        "teachers": {
+            "title": "Enseignants",
+            "1": "Créent et structurent le contenu de leurs cours.",
+            "2": " Fixent eux même les coûts.",
+            "3": "Enseignent des cours en direct sur la plateforme INSTANTACLASSE."
+        },
+        "students": {
+            "title": "Étudiants",
+            "1": "Profitent d'une grande variété de cours disponibles.",
+            "2": "Bénéficient d’une leçon gratuite lorsqu'un cours est cédulé sur 3 sessions ou plus.",
+            "3": "Étudient les cours en direct sur la plateforme INSTANTACLASSE."
+        }
+    },
 
     "nav": {
         "home": "Accueil",

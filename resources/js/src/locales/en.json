@@ -1,6 +1,19 @@
 {
-    "title": "The perfect Platform For Online Courses",
-    "title2": "INSTANTACLASS The Future Of Online Learning",
+    "title": "The perfect platform for teaching or learning online courses",
+    "title2": {
+        "teachers": {
+            "title": "Teachers",
+            "1": "Create and structure content of their courses.",
+            "2": "Set their own costs for courses.",
+            "3": "Teach live on INSTANTACLASSE platform."
+        },
+        "students": {
+            "title": "Students",
+            "1": "Take advantage of a wide variation of available courses.",
+            "2": "Study courses live on INSTANTACLASSE platform.",
+            "3": "Get a free lesson when a course is scheduled for 3 sessions or more."
+        }
+    },
     "nav": {
         "home": "Home",
         "about": "About",
@@ -13,5 +26,4 @@
     "search": "Search for courses",
     "searchBtn": "Search",
     "noCourses": "There is no courses in this category yet."
-
 }

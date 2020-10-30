@@ -1,18 +1,16 @@
 <template>
-    <div >
+    <div>
         <section class="hero pt-5">
             <div class="container h-100">
                 <div class="row h-100">
                     <div class="col-md-4"></div>
                     <div class="col-md-8 text-center pt-md-5">
-                        <h1 class="font-weight-bolder display-2 text-center">
+                        <h1 class="font-weight-bolder text-center mt-5">
                             ALL COURSES <br>
                             WHAT WE OFFER
                         </h1></div>
                 </div>
-
             </div>
-
         </section>
         <div class="container">
             <div class="text-center text-primary" v-if="loading">
@@ -20,7 +18,7 @@
                     <span class="sr-only">Loading...</span>
                 </div>
             </div>
-            <div  v-if="!loading">
+            <div v-if="!loading">
                 <div class="text-center" v-if="allcategCourses.length===0">
                     <h3>
                         {{$t('noCourses')}}
