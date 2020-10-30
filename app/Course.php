@@ -45,7 +45,7 @@ class Course extends Model
 
     public function scopePriceLessThan(Builder $query, $price): Builder
     {
-        return $query->with('subCategory.category', 'sections')->where('price', '<=', $price);
+        return $query->with('subCategory.category', 'sections')->where('price', '<=', $price*100);
     }
 
     public function scopeInCategory(Builder $query, $id): Builder

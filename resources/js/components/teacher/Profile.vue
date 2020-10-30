@@ -25,7 +25,6 @@
             </div>
         </section>
         <div class="container" v-if="!profileLoading">
-
             <div class="container">
                 <div class="jumbotron1 p-0 mt-2">
                     <div class="container details">
@@ -33,10 +32,10 @@
                             <div
                                 class="col-md-4 pl-0 teacher-image"
                                 :style="{
-                  backgroundImage: 'url(' + userProfile.image + ')',
-                  backgroundSize: 'cover',
-                  backgroundRepeat: 'no-repeat',
-                }"
+                                  backgroundImage: 'url(' + userProfile.image + ')',
+                                  backgroundSize: 'cover',
+                                  backgroundRepeat: 'no-repeat',
+                                }"
                             >
                                 <!--<img :src="userProfile.image" alt="Avatar" class="w-100">-->
                             </div>
@@ -92,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="count-down py-2 my-2">
+                <div class="count-down py-2 my-3">
 
                     <div>
                         <div class="row">
@@ -462,7 +461,6 @@
         background: linear-gradient(rgb(253, 255, 255, 0.5), rgb(255, 255, 255, 0.5)),
         url("../../assets/images/teaprofile/down1.png") no-repeat right center;
         background-size: contain;
-        height: 300px;
     }
 
     .stat {
@@ -486,6 +484,7 @@
         border: 2px solid black;
         border-radius: 20px;
         padding: 20px;
+        margin-bottom: 100px;
     }
 
     .card {

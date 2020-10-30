@@ -7,20 +7,17 @@
                     <button class="btn btn-danger mr-2" @click="logout">
                         Logout
                     </button>
-                </div>
-                <div class="text-right mt-1">
                     <router-link :to="{name: 'EditStudentProfile'}" tag="a" class="btn btn-primary">
                         Edit Profile
                     </router-link>
                 </div>
+
                 <div class="row h-100">
-                    <div class="col-md-4"></div>
+                    <div class="col-md-4 d-none d-md-block"></div>
                     <div class="col-md-8 text-center pt-md-2">
-                        <h1 class="font-weight-bolder ">
-                            THE NEXT YOU
-                        </h1> <br>
                         <h1 class="font-weight-bolder text-uppercase">
-                            The best way to predict <br> <br>
+                            THE NEXT YOU<br>
+                            The best way to predict <br>
                             the future is to create it
                         </h1>
                     </div>
@@ -320,7 +317,7 @@
             };
         },
         methods: {
-            ...mapActions(["fetchProfile", "fetchUserEnrollments", "fetchReceipts", "fetchUpcomingClasses"]),
+            ...mapActions([ "fetchUserEnrollments", "fetchReceipts", "fetchUpcomingClasses"]),
             logout() {
                 this.$store.dispatch("logout").then(() => {
                     this.$router.push("/");
@@ -344,7 +341,7 @@
                     .get("/rooms-by-status/in-progress")
                     .then((response) => {
                         _this.activeRooms = response.data;
-                        if (response.data.length == 0) {
+                        if (response.data.length === 0) {
                             _this.liveClassDetail = "You have no Live class for the moment";
                         }
                     })
@@ -353,7 +350,6 @@
         },
         computed: mapGetters(["userProfile", "userEnrollments", "profileLoading", "studentPayments", "upcomingClasses"]),
         created() {
-            this.fetchProfile();
             this.fetchUserEnrollments();
             this.fetchReceipts();
             this.fetchUpcomingClasses();
@@ -371,7 +367,7 @@
     .hero {
         /*background-image: url('../../assets/images/demand/online.jpg');*/
         background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
-        height: 70vh;
+        height: 50vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
@@ -408,7 +404,6 @@
             rgba(255, 255, 255, 0.5)),
         url('../../assets/images/teaprofile/down1.png') no-repeat right center;
         background-size: contain;
-        height: 300px;
     }
 
     .count-down {
@@ -419,6 +414,6 @@
 
     .student-area {
         border: 3px solid black;
-        border-radius: 10px
+        border-radius: 10px;
     }
 </style>

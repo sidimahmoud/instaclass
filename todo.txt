@@ -1,9 +1,4 @@
 Modification instantclass:
 
-
-All courses filter
-
-About as in design
-Newsletter
-
-edit course
+help needed
+    -   update course sections

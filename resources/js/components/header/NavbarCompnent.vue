@@ -8,11 +8,11 @@
                 <li class="btn " v-else @click="fr">
                     <strong>FR</strong>
                 </li>
-                <li v-if="isLoggedIn && !$route.matched.some(({ name }) => name === 'Home')">
-                    Welcome <strong>
-                    {{userProfile.first_name}}
-                </strong>
-                </li>
+<!--                <li v-if="isLoggedIn && !$route.matched.some(({ name }) => name === 'Home')">-->
+<!--                    Welcome <strong>-->
+<!--                    {{userProfile.first_name}}-->
+<!--                </strong>-->
+<!--                </li>-->
             </ul>
             <a href="/" class="navbar-brand">
                 <img src="../../assets/logo.png" alt="" width="40px">
@@ -145,6 +145,10 @@
         background-color: red;
         border-bottom-right-radius: 10px;
         border-bottom-left-radius: 10px;
+        color: white !important;
+    }
+    .router-link-exact-active:hover {
+        color: white !important;
     }
 
     a {

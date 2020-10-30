@@ -10,18 +10,21 @@
                         <div class="form-group">
                             <label for="selectLang">Select category</label>
                             <select class="form-control" id="selectLang" @change="loadSubs" required>
-                                <option v-for="c in allCategories" :key="c.id" :value="c.id" :selected="c.id===1">{{c.name_en}}</option>
-                                <option value="0" >Create a Category</option>
+                                <option v-for="c in allCategories" :key="c.id" :value="c.id" :selected="c.id===1">
+                                    {{c.name_en}}
+                                </option>
+                                <option value="0">Create a Category</option>
                             </select>
 
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="subCateg" >Sub category</label>
-                            <select class="form-control" id="subCateg" @change="model" v-model="course.sub_category_id" required>
+                            <label for="subCateg">Sub category</label>
+                            <select class="form-control" id="subCateg" @change="model" v-model="course.sub_category_id"
+                                    required>
                                 <option v-for="c in subCategories" :key="c.id" :value="c.id">{{c.name_en}}</option>
-                                <option value="0" >Create a Sub-Category</option>
+                                <option value="0">Create a Sub-Category</option>
                             </select>
 
                         </div>
@@ -71,7 +74,7 @@
                                     Canadiens users have to select CAD.
                                 </small>
                             </div>
-                            <div class="col-3">
+                            <div class="col-md-3">
                                 <p class=" font-weight-light">
                                     Your estimated total earnings for the course will depend of your estimated price,
                                     number of sessions and students enrolled.
@@ -106,7 +109,6 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="desc">Summerize what you will teach in your course</label>
@@ -341,8 +343,6 @@
                 })
             },
             saveSub() {
-
-
                 if (this.newSub.catId === '0') {
                     alert("Select category");
                     return
@@ -360,7 +360,7 @@
             model(event) {
                 const id = event.target.value;
 
-                if(id ==0){
+                if (id == 0) {
                     $('#modelSub').modal('show')
 
                 }
@@ -371,8 +371,7 @@
                 if (id == 0)
                     $('#exampleModalCenter').modal('show')
                 this.$store.dispatch('fetchSubCategories', id)
-            }
-            ,
+            },
             saveCourse() {
                 const formData = new FormData();
                 const imagefile = document.querySelector('#thumbnail');
@@ -416,8 +415,7 @@
                 }
 
 
-            }
-            ,
+            },
         },
         computed: mapGetters(["allCategories", "subCategories"]),
         created() {

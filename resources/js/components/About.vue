@@ -1,187 +1,157 @@
 <template>
     <div>
-        <section class="hero pt-5">
-            <div class="container h-100">
-                <div class="row h-100">
-                    <div class="col-md-8 text-center pt-md-5">
-                        <h1 class="font-weight-bolder display-4">ABOUT <br>
-                            INSTANTACLASSE <br>
-                            WHO WE <br>
-                            ARE
-                        </h1></div>
+        <div class="hero">
+            <div class=" jumbotron1 pt-5">
+                <div class="container h-100">
+                    <h1 class="text-center mt-md-5 text-white">
+                        ABOUT INSTANTACLASSE <br>
+                        WHO WE ARE
+                    </h1>
                 </div>
-
             </div>
-
-        </section>
-        <!--        cards-->
-        <div class="container">
-            <div class="row  ">
-                <div class="col-sm-12 card shadow-sm my-2">
-                    <div class="card-body  ">
-                        <div class="row justify-content-around align-items-center">
-                            <div class="col-md-8 justify-content-center align-items-center">
-                                <h5 class="card-title about-headings">How it works</h5>
-                                <p>The platform allows you to teach and learn live or pre-recorded courses. Sessions can
-                                    be free
-                                    or paying.
-                                </p>
-                            </div>
-                            <div class="col-md-4  justify-content-center align-items-center text-center">
-                                <img src="../assets/images/about/1.png" height="100px">
-                            </div>
+            <div class=" jumbotron2">
+                <div class="container  align-items-center mt-2">
+                    <div class="row justify-content-around align-items-center">
+                        <div class="col-md-6 col-sm-12 text-center d-none d-md-block">
+                            <img src="../assets/images/about/left.png" width="400px" class="img-fluid rounded">
                         </div>
-
-                    </div>
-                </div>
-
-                <div class="col-sm-12 card shadow-sm my-2">
-                    <div class="card-body  ">
-                        <div class="row">
-                            <div class="col-md-8 justify-content-center align-items-center">
-                                <h5 class="card-title about-headings">Live courses</h5>
-                                <p class="card-text">The educator schedule the date,hour and number of sessions.
-                                    <br>
-                                    learners will subscribe to class and follow live from their computer,
-                                    laptop,phone or
-                                    tablet
-                                </p>
-                            </div>
-                            <div class="col-md-4  justify-content-center align-items-center text-center">
-                                <img src="../assets/images/about/2.png" height="100px">
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-sm-12 card shadow-sm my-2">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-8 justify-content-center align-items-center">
-                                <h5 class="card-title about-headings">Pre-recorded course</h5>
-                                <p class="card-text">
-                                    when agreed with the learners,the educators can create post a pre-recorded
-                                    course,
-                                    which can be viewed on platform or uploaded
-                                </p>
-                            </div>
-                            <div class="col-md-4  justify-content-center align-items-center text-center">
-                                <img src="../assets/images/about/3.png" height="100px">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 card shadow-sm my-2">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h5 class="card-title about-headings">Quality live stream</h5>
-                                <p class="card-text">
-                                    To ensure a good learners experience,
-                                    we suggest to the educators to have high quality camera
-                                </p>
-                            </div>
-                            <div class="col-md-4  justify-content-center align-items-center text-center">
-                                <img src="../assets/images/about/4.png" height="100px">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 card shadow-sm my-2">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h5 class="card-title about-headings">Free Courses</h5>
-                                <p class="card-text">
-                                    the educator can choose to give a free course.He/she can put it public, so
-                                    anyone can learn
-                                    from
-                                    it or can invite limited people
-                                </p>
-                            </div>
-                            <div class="col-md-4  justify-content-center align-items-center text-center">
-                                <img src="../assets/images/about/5.png" height="100px">
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-sm-12 card shadow-sm my-2">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h5 class="card-title about-headings">Paying courses</h5>
-                                <p class="card-text">
-                                    when a course is payed,it is private and only those enrolled in it can take it.
-                                    A 10% commission to maintain and use the platform is collected by instantclasse.
-                                </p>
-                            </div>
-                            <div class="col-md-4  justify-content-center align-items-center text-center">
-                                <img src="../assets/images/about/6.png" height="100px">
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-sm-12 card shadow-sm my-2">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h5 class="card-title about-headings">Withdrawal of payment</h5>
-                                <p class="card-text">
-                                    Payments are ,ade at the en of each session.At least half the learners must
-                                    approve that the session they attended ,et the expectations for the educator to
-                                    be paid.
-                                    when there is only one learner, an instantclasse administrator wil approve the
-                                    session.
-                                </p>
-                            </div>
-                            <div class="col-md-4  justify-content-center align-items-center text-center">
-                                <img src="../assets/images/about/7.png" height="100px">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 card shadow-sm my-2">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h5 class="card-title about-headings">Prohibited Course</h5>
-                                <p class="card-text">
-                                    courses that encourage are related from near or far to hatred, weapons,
-                                    drugs are strictly prohibited on this platform.An administrator can join private
-                                    classes,remove and block courses
-                                    deemed inappropriate
-                                </p>
-                            </div>
-                            <div class="col-md-4  justify-content-center align-items-center text-center">
-                                <img src="../assets/images/about/8.png" height="100px">
-                            </div>
+                        <div class="col-md-6 col-sm-12">
+                            <h1>About Us</h1>
+                            <p class="text-justify">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam dignissimos
+                                doloremque dolores facilis, harum, ipsa libero necessitatibus odit quia quis vel.
+                                Aspernatur dolorem omnis quas quisquam unde veniam voluptatem? <br>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur corporis
+                                delectus, distinctio enim esse eveniet exercitationem expedita fugit labore, laboriosam,
+                                optio quia quidem ratione sapiente sequi tempore temporibus veniam!
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <section class="bg-white">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-sm-12">
+                        <h1>
+                            Our difference
+                        </h1>
+                        <p class="text-justify">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur aut, autem
+                            delectus dolor dolore dolorum est fugiat illum labore laborum libero magnam nam officiis
+                            praesentium sapiente sequi sit vero? <br>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis consectetur
+                            consequatur culpa cumque deserunt dignissimos dolore facere hic impedit, libero nihil
+                            obcaecati
+                            odio quas qui quo totam voluptatem, voluptatibus.
+                        </p>
+
+                    </div>
+                    <div class="col-md-6 col-sm-12 text-center">
+                        <img src="../assets/images/about/left1.png" width="400px" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-dark text-white mb-0 py-3">
+            <div class="container newsLetter">
+                <h1 class="text-center">
+                    Stay informed
+                </h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum doloribus esse in magni maxime!
+                    Assumenda
+                    consequuntur corporis deleniti facere facilis fugiat hic labore laboriosam libero magnam, molestiae
+                    rem
+                    repellendus velit?
+                </p>
+                <form @submit.prevent="subscribe">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name" v-model="first_name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last Name" v-model="last_name">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control" placeholder="Email"
+                                       aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                       v-model="email">
+                                <div class="input-group-append">
+                                <span class="input-group-text p-0" id="basic-addon2">
+                                    <button class="btn btn-primary">
+                                        SUBSCRIBE
+                                    </button>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+
+        </section>
+
     </div>
 </template>
 
 <script>
     export default {
-        name: "About"
+        name: "About",
+        data() {
+            return {
+                first_name: '',
+                last_name: '',
+                email: '',
+            }
+        },
+        methods: {
+            subscribe() {
+                let payload = {
+                    first_name: this.first_name,
+                    last_name: this.last_name,
+                    email: this.email,
+                };
+                axios.post('/newsletter', payload).then(res => alert("Subscribed successfully")).catch(err => console.log(err))
+            }
+        },
+
     }
 </script>
 
-<style scoped>
-    .about-headings {
-        color: #1a2447 !important;
-        font-weight: bold;
-    }
+<style scoped lang="scss">
 
     .hero {
-        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../assets/images/about/hero1.jpg') no-repeat center center;
-        height: 70vh;
-        background-size: cover;
+        background: #ccc;
+    }
+
+    .jumbotron1 {
+        height: 50vh;
         border-bottom: 15px solid #3081FB;
-        color: white;
+        background: linear-gradient(rgba(19, 19, 19, 0.5), rgba(19, 19, 19, 0.5)), url('../assets/images/about/hero1.jpg') no-repeat center center;
+        background-size: cover;
+        border-radius: 0 0 200px 0;
+        font-family: 'Poppins', sans-serif;
+
+        h1 {
+            line-height: 2;
+        }
+    }
+
+    .newsLetter {
+        input {
+            background: transparent;
+        }
+    }
+
+    h1 {
+        font-weight: bolder
     }
 </style>

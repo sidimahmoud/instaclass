@@ -1,6 +1,6 @@
 <template>
     <!-- Footer -->
-    <footer class="page-footer font-small stiky-top">
+    <footer class="page-footer font-small">
         <!-- Footer Links -->
         <div class="container text-center text-md-left mt-5">
 
@@ -70,7 +70,6 @@
                             FAQ
                         </router-link>
                     </p>
-
                     <p>
                         <a href="#" class="text-uppercase"> Privacy policy</a>
                     </p>
@@ -79,9 +78,7 @@
                             Contact us
                         </router-link>
                     </p>
-
                 </div><!-- Grid column -->
-
                 <!-- Grid column -->
                 <div class="col-md-3 align-content-center text-white mx-auto mb-md-0">
                     <p class="h3">
@@ -135,6 +132,7 @@
 
     .page-footer {
         background-color: #000 !important;
+        margin-top: -50px;
     }
 
     hr {

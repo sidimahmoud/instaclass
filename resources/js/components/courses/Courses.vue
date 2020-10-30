@@ -22,7 +22,7 @@
                 </p>
             </div>
             <div class="container-fluid">
-                <div class="row">
+                <div class="row pb-3">
                     <div class="col-md-2 border-right border-primary filter">
                         <div class="border-bottom border-dark">
                             <p class="filter-title">
@@ -144,7 +144,7 @@
                 filter: {
                     price: 1000,
                     categ: '',
-                    lang: 'en',
+                    lang: '',
                     sections: ''
                 }
             }
@@ -216,7 +216,7 @@
     }
 
     .filter {
-        border-radius: 15px;
+        border-radius: 0 15px 15px 0;
         background: linear-gradient(90deg,
             rgb(0, 0, 0, 0.2),
             rgb(255, 255, 255, 1));

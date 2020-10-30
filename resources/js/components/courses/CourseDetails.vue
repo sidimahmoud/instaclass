@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pb-3" style="background: #ccc;">
         <div class="text-center text-primary pt-5 mt-5" v-if="loading">
             <div class="spinner-border pt-5" role="status">
                 <span class="sr-only">Loading...</span>
@@ -11,7 +11,7 @@
                     <div class="row h-100">
                         <div class="col-md-4"></div>
                         <div class="col-md-8 text-center pt-md-5">
-                            <h1 class="font-weight-bolder display-2 text-uppercase text-center">
+                            <h1 class="font-weight-bolder text-uppercase text-center">
                                 Available Courses
                             </h1></div>
                     </div>
@@ -122,7 +122,7 @@
 <style scoped lang="scss">
     .hero {
         background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details.jpg') no-repeat center center;
-        height: 100vh;
+        height: 60vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
@@ -173,13 +173,16 @@
         margin: 10px;
         background: linear-gradient(90deg,
             rgb(0, 0, 0, 0.5),
-            rgb(255, 255, 255, 0.5)),
-        url('../../assets/images/teaprofile/down1.png') no-repeat right center;
-        background-size: contain;
+            rgb(255, 255, 255, 1));
         font-weight: 800 !important;
 
         .fa {
             color: yellow;
+        }
+
+        .course-info {
+            background: url('../../assets/images/teaprofile/down1.png') no-repeat right center;
+            background-size: contain;
         }
     }
 
@@ -187,8 +190,7 @@
         border-radius: 15px;
         margin: 10px;
         background: linear-gradient(90deg,
-            rgb(0, 0, 0, 0.5),
-            rgb(255, 255, 255, 1));
+            rgb(189, 189, 189), rgb(255, 255, 255, 1));
         font-weight: 800 !important;
         border-right: 2px solid #2b63f3;
     }

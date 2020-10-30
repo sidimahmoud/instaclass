@@ -2,7 +2,7 @@
     <div>
         <div class="hero">
             <div class="jumbotron jumbotron1 mb-0">
-            <span class=" px-1 py-3  shareBar">
+                 <span class=" px-1 py-3  shareBar">
                 <iframe
                     src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&appId=223985172274465&width=93&height=28"
                     width="93" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
@@ -12,7 +12,7 @@
                     <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> <img
                         src="../assets/images/insta.png"
                         alt="insta" class="rounded"
-                        width="93px">
+                        width="93px" height="28">
                   </a>
                 </p>
 
@@ -21,9 +21,9 @@
             </span>
                 <div class="container  align-items-center mt-md-2 h-100">
                     <div class="row justify-content-around align-items-center h-100">
-                        <div class="col-md-6 d-sm-none"></div>
+                        <div class="col-md-4 d-none d-md-block"></div>
                         <div
-                            class="col-md-6 col-sm-12 text-center px-md-5 justify-content-center align-items-center ">
+                            class="col-md-8 col-sm-12 text-center px-md-5 justify-content-center align-items-center text-uppercase">
                             <h1>
                                 {{$t('title')}}
                             </h1>
@@ -113,9 +113,9 @@
 
                     <div class="col-md-3 ">
                         <div class="shadow-sm carte   m-3 text-center " style="background: #53C4B4;">
-<!--                            <svg height="100" width="100" class="carte-icon">-->
-<!--                                <circle cx="50" cy="50" r="40" stroke="blue" stroke-width="1" fill="white"/>-->
-<!--                            </svg>-->
+                            <!--                            <svg height="100" width="100" class="carte-icon">-->
+                            <!--                                <circle cx="50" cy="50" r="40" stroke="blue" stroke-width="1" fill="white"/>-->
+                            <!--                            </svg>-->
                             <h3>Live interacting online tutoring classes</h3>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos
@@ -244,8 +244,22 @@
         border-radius: 0 0 300px 0;
         border-bottom: 10px solid #0b40c6;
         background-size: cover;
-
         height: 60vh;
+        font-family: 'Poppins', sans-serif;
+
+        h1 {
+            line-height: 2;
+        }
+
+        @media only screen and (max-width: 600px) {
+            border-radius: 0 0 100px 0;
+
+            h1 {
+                line-height: normal;
+                font-size: medium;
+            }
+        }
+
     }
 
     .jumbotron2 {
@@ -290,7 +304,8 @@
 
 
     .whyChoose {
-        background: linear-gradient(rgba(19, 19, 19, 0.67), rgba(19, 19, 19, 0.67)), url('../assets/images/home/bg3.png') no-repeat center center;
+        background: linear-gradient(rgba(19, 19, 19, 0.67), rgba(19, 19, 19, 0.67)), url('../assets/images/home/why.jpg') no-repeat center center;
+        background-size: cover;
     }
 
     .reviews {

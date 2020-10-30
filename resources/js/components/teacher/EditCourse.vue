@@ -3,7 +3,7 @@
         <div class="jumbotron text-right" style="height: 200px"></div>
         <div class="container rounded py-3 bg font-weight-bold" v-if="!loading">
             <h3 class="text-center font-weight-bolder">Edit Course</h3>
-            <form class="my-3" method="post" @submit.prevent="saveCourse">
+            <form class="my-3" method="post" @submit.prevent="updateCourse">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -12,13 +12,15 @@
                                 <option v-for="c in allCategories" :key="c.id" :value="c.id"
                                         :selected="course.sub_category.category.id===c.id">{{c.name_en}}
                                 </option>
+                                <option value="0">Create a Sub-Category</option>
+
                             </select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="subCat">Sub category</label>
-                            <select class="form-control" id="subCat" required>
+                            <select class="form-control" id="subCat" @change="model" required>
                                 <option selected="selected">{{course.sub_category.name_en}}</option>
                                 <option v-for="c in subCategories" :key="c.id" :value="c.id">{{c.name_en}}
                                 </option>
@@ -26,66 +28,84 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="lang">In which language will you teach</label>
-                            <select class="form-control" id="lang" required
+                        <div class="form-group" v-if="course.language ==='FR'|| course.language ==='EN'">
+                            <label for="exampleFormControlSelect1">In which language will you teach?</label>
+                            <select class="form-control" id="exampleFormControlSelect1" required
                                     v-model="course.language">
                                 <option value="EN">EN</option>
                                 <option value="FR">FR</option>
+                                <option value="">Add a new language</option>
                             </select>
+                        </div>
+                        <div class="form-group" v-else>
+                            <label for="lang1">In which language will you teach?</label>
+                            <input type="text" class="form-control" id="lang1" required v-model="course.language">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-row mb-3">
-                            <div class="col">
-                                <label for="price">Price per session</label>
+                            <div class="col-md-3">
+                                <label for="price">Estimated price per session</label>
                                 <input type="text" class="form-control" id="price" aria-describedby="priceHelp"
-                                       placeholder="Price" :value="course.price" required>
+                                       placeholder="Price" v-model="course.price" required>
                                 <small id="priceHelp" class="form-text text-muted">A reasonable price will give you the
-                                    chance to have students enrolled in your course.</small>
+                                    chance to have students enrolled in your course.
+                                </small>
+
                             </div>
-                            <div class="col">
-                                <label for="currency">Currency</label>
-                                <select class="form-control" id="currency" v-model="course.currency" aria-describedby="currencyHelp"
+
+                            <div class="col-md-3">
+                                <label for="price">Currency</label>
+                                <select class="form-control" v-model="course.currency" aria-describedby="currencyHelp"
                                         required>
                                     <option value="cad">CAD</option>
                                     <option value="usd">USD</option>
-                                    <option value="eur">Eur</option>
+                                    <option value="eur">EUR</option>
                                 </select>
                                 <small id="currencyHelp" class="form-text text-muted">
                                     Canadiens users have to select CAD.
                                 </small>
-
+                            </div>
+                            <div class="col-md-3">
+                                <p class=" font-weight-light">
+                                    Your estimated total earnings for the course will depend of your estimated price,
+                                    number of sessions and students enrolled.
+                                </p>
+                                <p class="font-weight-bolder">Note:
+                                    When the number of sessions exceed 3, your third course will be free student
+                                    enrolled.
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <label for="duration">Estimated duration</label>
+                            <label for="duration">Estimated duration with all sessions</label>
                             <input type="text" class="form-control" id="duration"
                                    placeholder="Duration" v-model="course.estimated_duration" required>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <label for="persons">Number of authorized students</label>
-                            <input type="number" min="1" class="form-control" id="persons"
-                                   placeholder="authorized students" :value="course.authorized_students" required>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="desc">Summerize what you will teach in your course</label>
-                            <textarea class="form-control" id="desc" v-model="course.short_description" required></textarea>
+                            <label for="persons">Number of authorized students per session</label>
+                            <input type="number" min="1" max="50" class="form-control" id="persons"
+                                   placeholder="authorized students" v-model="course.authorized_students">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="partage">Autorisez vous le partage de votre annonce?</label>
-                            <select class="form-control" id="partage" required>
-                                <option value="true" :selected="course.sharable">Instatavite peut le partager</option>
-                                <option value="false" :selected="!course.sharable">Je n'autorise pas</option>
+                            <select class="form-control" id="partage" v-model="course.sharable" required>
+                                <option value="1">Instantavite peut le partager</option>
+                                <option value="0">Je n'autorise pas</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="desc">Summerize what you will teach in your course</label>
+                            <textarea class="form-control" id="desc" v-model="course.short_description"
+                                      required></textarea>
                         </div>
                     </div>
 
@@ -123,6 +143,98 @@
                 <button class="btn btn-primary btn-block" type="submit">Save course</button>
             </form>
         </div>
+        <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">New Category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="my-3" method="post" @submit.prevent="saveCategory">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="title">Name (English)</label>
+                                        <input type="text" class="form-control" id="title" v-model="newCateg.name"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="desc">Name (french)</label>
+                                        <input type="text" class="form-control"  v-model="newCateg.nom"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="image">Image</label>
+                                        <input type="file" class="form-control-file" id="image" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modelSub" tabindex="-1" role="dialog"
+             aria-labelledby="modelSubTitle"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modelSubTitle">New Sub-category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="my-3" method="post" @submit.prevent="saveSub">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="selCat">Select category</label>
+                                        <select class="form-control" id="selCat" @change="loadSubs" required
+                                                v-model="newSub.catId">
+                                            <option v-for="c in allCategories" :key="c.id" :value="c.id">{{c.name_en}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="nfr">Name (English)</label>
+                                        <input type="text" class="form-control" id="nfr" v-model="newSub.name"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="nen">Name (french)</label>
+                                        <input type="text" class="form-control" id="nen" v-model="newSub.nom"
+                                               required>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                        </form>
+                    </div>
+                    <!--                    <div class="modal-footer">-->
+                    <!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                    <!--                        <button type="button" class="btn btn-primary ">-->
+                    <!--                            Save-->
+                    <!--                        </button>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+        </div>
     </div>
 
 </template>
@@ -132,29 +244,85 @@
 
     export default {
         name: "NewCourse",
+        data() {
+            return {
+                newCateg: {
+                    name: '',
+                    nom: '',
+                },
+                newSub: {
+                    catId: '',
+                    name: '',
+                    nom: '',
+                }
+            }
+        },
         methods: {
             ...mapActions(['fetchCategories']),
             findCourse() {
                 this.$store.dispatch('getCourse', this.$route.params.slug)
             },
+            saveCategory() {
+                const formData = new FormData();
+                const imagefile = document.querySelector('#image');
+                formData.append("name", this.newCateg.name);
+                formData.append("nom", this.newCateg.nom);
+                formData.append("image", imagefile.files[0]);
+                axios.post('/categories', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
+                }).then(res => {
+                    console.log(res);
+                    alert("Category created successfully")
+                    location.reload()
+                })
+            },
+            saveSub() {
+                if (this.newSub.catId === '0') {
+                    alert("Select category");
+                    return
+                }
+                axios.post('/sub-categories', {
+                    category_id: this.newSub.catId,
+                    name: this.newSub.name,
+                    nom: this.newSub.nom
+                })
+                    .then(res => {
+                        alert("Sub-category created successfully");
+                        location.reload()
+                    })
+            },
+            model(event) {
+                const id = event.target.value;
+
+                if (id == 0) {
+                    $('#modelSub').modal('show')
+
+                }
+
+            },
             loadSubs(event) {
                 const id = event.target.value;
+                if (id == 0)
+                    $('#exampleModalCenter').modal('show')
                 this.$store.dispatch('fetchSubCategories', id)
             },
             updateCourse() {
                 const formData = new FormData();
-                formData.append("sub_category_id", document.querySelector('#subCat').value);
-                formData.append("language", document.querySelector('#lang').value);
-                formData.append("price", document.querySelector('#price').value);
-                formData.append("currency", document.querySelector('#currency').value);
-                formData.append("estimated_duration", document.querySelector('#duration').value);
-                formData.append("authorized_students", document.querySelector('#persons').value);
-                formData.append("sharable", document.querySelector('#partage').value);
-                formData.append("short_description", document.querySelector('#desc').value);
+                formData.append("sub_category_id", this.course.sub_category_id);
+                formData.append("language", this.course.language);
+                formData.append("price", this.course.price);
+                formData.append("currency", this.course.currency);
+                formData.append("estimated_duration", this.course.estimated_duration);
+                formData.append("authorized_students", this.course.authorized_students);
+                formData.append("sharable", this.course.sharable);
+                formData.append("name", this.course.name);
+                formData.append("short_description", this.course.short_description);
                 formData.append("_method", "put");
-
                 formData.append("sections", JSON.stringify(this.sections));
-                axios.post('/course', formData, {
+                console.log(formData)
+                axios.post('/course/'+this.course.id, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     }
