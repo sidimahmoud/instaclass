@@ -58,12 +58,9 @@ class CourseController extends Controller
         return response()->json($courses);
     }
 
-    public function courseSectionsCount()
+    public function courseSectionsCount($count)
     {
-        $courses = Course::whereHas('sections', function (Builder $query) {
-            $query->count() > 3;
-        });
-
+        $courses = Course::with('subCategory.category', 'sections')->withCount('sections')->having('sections_count', '>=', $count)->get();
         return response()->json($courses);
     }
 
