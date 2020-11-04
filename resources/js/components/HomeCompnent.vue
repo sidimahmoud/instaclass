@@ -41,7 +41,7 @@
                 <div class="container  align-items-center mt-2">
                     <div class="row justify-content-around align-items-center">
                         <div
-                            class="col-md-6 col-sm-12 justify-content-center align-items-center text-white">
+                            class="col-md-7 col-sm-12 justify-content-center align-items-center text-white">
                             <h3>
                                 {{$t('title2.teachers.title')}}:
                             </h3>
@@ -60,7 +60,7 @@
                             </ul>
                             <!--<img src="../assets/images/home/onlineEd.jpg" width="350px">-->
                         </div>
-                        <div class="col-md-6 col-sm-12 text-center d-none d-md-block">
+                        <div class="col-md-5 col-sm-12 text-center d-none d-md-block">
                             <img src="../assets/images/home/onlineEd.jpg" width="400px" class="img-fluid rounded">
                         </div>
                     </div>

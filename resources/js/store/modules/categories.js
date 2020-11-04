@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const state = {
     categories: [],
-    subCategories:[],
+    subCategories: [],
     course: '',
     loadingCategories: false,
 
@@ -19,15 +19,25 @@ const actions = {
         const response = await axios.get('/categories');
         commit('setCategories', response.data);
         commit('loadingCategories', false);
-
     },
     async fetchSubCategories({commit}, id) {
         commit('loadingCategories', true);
-        const response = await axios.get('/subcats/'+id);
+        const response = await axios.get('/subcats/' + id);
         commit('setSubCategories', response.data);
         commit('loadingCategories', false);
     },
-
+    async deleteCategory({commit}, id) {
+        return new Promise((resolve, reject) => {
+            axios.delete('/categories/' + id)
+                .then(resp => {
+                    console.log(resp);
+                    resolve(resp)
+                })
+                .catch(err => {
+                    reject(err)
+                })
+        })
+    },
 
 };
 const mutations = {

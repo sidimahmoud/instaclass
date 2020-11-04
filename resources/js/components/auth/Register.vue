@@ -5,7 +5,7 @@
                 <div class="row h-100">
                     <div class="col-md-4"></div>
                     <div class="col-md-8 text-center pt-md-5">
-                        <h1 class="font-weight-bolder display-2">
+                        <h1 class="font-weight-bolder">
                             THE NEXT <br>
                             YOU
                         </h1>
@@ -286,7 +286,7 @@
     .hero {
         /*background-image: url('../../assets/images/demand/online.jpg');*/
         background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
-        height: 100vh;
+        height: 50vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;

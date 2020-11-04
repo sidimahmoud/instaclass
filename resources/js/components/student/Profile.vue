@@ -359,7 +359,7 @@
 
 <style scoped lang="scss">
     .jumbotron {
-        background-image: url("../../assets/images/teaprofile/bg.png");
+        background-image: url("../../assets/images/auth/account.jpg");
         border-radius: 0;
         padding: 0;
     }

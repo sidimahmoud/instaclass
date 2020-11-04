@@ -109,7 +109,7 @@
 
     .hero {
         /*background-image: url('../../assets/images/demand/online.jpg');*/
-        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/demand/online.jpg') no-repeat center center;
+        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/Request.jpg') no-repeat center center;
         height: 500px;
         background-size: cover;
         border-bottom: 15px solid #3081FB;

@@ -90,16 +90,15 @@ class CategoryController extends Controller
     {
        // return $request->all();
         $category = Category::find($id);
-        $category->name = $request['name'];
-        $category->description = $request['description'];
+        $category->name_en = $request['name_en'];
+        $category->name_fr = $request['name_fr'];
         if ($request->hasFile('image')) {
             $file = $request['image'];
             $extension = $file->getClientOriginalExtension();
             $file_name = $request['name'] . "-" . time() . "." . $extension;
             $file->move('uploads/categories/', $file_name);
             $category->image = 'uploads/categories/' . $file_name;
-        } else
-            $category->image = $request['image'];
+        }
         $category->save();
         if ($category)
             return response()->json(["response" => "category updated successfully"]);

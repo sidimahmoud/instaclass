@@ -7,7 +7,7 @@
                  :alt="categ.name_en">
         </router-link>
         <div class="card-body cateDetails">
-            <h5 class="card-title  font-weight-bolder">{{(lang==="en")? categ.name_en:
+            <h5 class="card-title  font-weight-bolder text-uppercase">{{(lang==="en")? categ.name_en:
                 categ.name_fr}}</h5>
             <p class="card-text">
                     <span v-for="(sub, index) in categ.sub_categories.slice(0,3)" :key="sub.id">

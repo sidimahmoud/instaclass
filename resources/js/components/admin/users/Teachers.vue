@@ -15,7 +15,6 @@
                 <th scope="col">First name</th>
                 <th scope="col">Last name</th>
                 <th scope="col">Email</th>
-                <th scope="col">Date of account creation</th>
                 <th scope="col">Active</th>
                 <th scope="col">Date of subscription</th>
                 <th scope="col">Banish</th>
@@ -27,9 +26,8 @@
                 <td>{{t.first_name}}</td>
                 <td>{{t.last_name}}</td>
                 <td>{{t.email.toLocaleLowerCase()}}</td>
+                <td><input type="checkbox" name=""  :checked="t.active" disabled></td>
                 <td>{{t.created_at.slice(0,10)}}</td>
-                <td><input type="checkbox" name="" id="" checked disabled></td>
-                <td>{{t.created_at}}</td>
                 <td>
                     <button class="btn btn-success" @click="banish(t.id)">
                         X

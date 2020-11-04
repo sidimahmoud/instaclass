@@ -34,7 +34,7 @@ const actions = {
         commit('setLoading', false);
     },
     async getCourse({commit}, slug) {
-        headers();
+
         commit('setLoading', true);
         const response = await axios.get(`/courses/${slug}`,);
         commit('setCourse', response.data[0]);
@@ -200,12 +200,6 @@ const mutations = {
     setEnrolled: (state, val) => (state.enrolled = val),
 };
 
-function headers() {
-    let token = localStorage.getItem('token') || '';
-    if (token) {
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-    }
-}
 
 export default {
     state,
