@@ -1,7 +1,7 @@
 <template>
     <div class="px-5">
-        <nav class="navbar navbar-expand-lg navbar-light py-0 fixed-top">
-            <div class="container bg-primary rounded-bottom">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light py-0 fixed-top">
+            <div class="container rounded-bottom">
                 <a href="/" class="navbar-brand">
                     <img src="../../assets/logo.png" alt="" width="40px">
                 </a>
@@ -162,7 +162,7 @@
 
     a {
         font-weight: bolder;
-        color: white !important;
+        color: blue !important;
         margin-right: 20px;
     }
 

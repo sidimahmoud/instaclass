@@ -168,9 +168,9 @@
     .signup-form {
         margin: 0 auto;
         padding: 30px 0;
-        border: 20px solid black;
+        border: 2px solid black;
         border-bottom: 2px solid black;
-        border-radius: 20%;
+        border-radius: 10%;
     }
 
     .signup-form h2 {
