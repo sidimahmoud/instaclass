@@ -25,5 +25,43 @@
     "coursesByCateg": "Courses by category",
     "search": "Search for courses",
     "searchBtn": "Search",
-    "noCourses": "There is no courses in this category yet."
+    "noCourses": "There is no courses in this category yet.",
+    "footer": {
+        "quickLinks": "Quick Links",
+        "home": "Home",
+        "about": "About us",
+        "courses": "Our Courses",
+        "become": "Become Instructor",
+        "account": "Account",
+        "termsAndConditions": "Terms & Conditions",
+        "faq": "FAQ",
+        "privacy": "privacy policy",
+        "contact": "Contact us"
+    },
+    "whyChoose": {
+        "title" : "Why choosing Instantaclasse?",
+        "1": "Teachers fix their hourly rate and content for their courses.",
+        "2": "Students benefit of a large variety of courses.",
+        "3": "Students can access recordings of class sessions for further reviews.",
+        "4": "Instructors and students benefit from a multilingual platform."
+    },
+    "howItWorks": {
+        "title": "How it works?",
+        "teachers": {
+            "title": "Teachers",
+            "1": "Step 1: Create an account for free.",
+            "2": "Step 2: Create and structure course sessions, set the cost and the schedure.",
+            "3": "Step 3: Receive alerts when students enroll.",
+            "4": "Step 4: Teach live at Instantaclasse's platform.",
+            "5": "Step 5: Get paid."
+        },
+        "students": {
+            "title": "Students",
+            "1": "Step 1: Create an account for free.",
+            "2": "Step 2: Purchase courses from a large variety.",
+            "3": "Step 3: Receive alerts before enrolled sessions.",
+            "4": "Step 4: Learn courses live at Instantaclasse's platform.",
+            "5": "Step 5: Rate the session."
+        }
+    }
 }

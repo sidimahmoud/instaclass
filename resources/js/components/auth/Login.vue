@@ -57,7 +57,7 @@
                                 <button type="submit" class="btn btn-dark btn-lg btn-block ">
                                     <span v-if="!authLoading">Sign in </span>
                                     <div class="text-center text-white" v-if="authLoading">
-                                        <span class="spinner-border spinner-border-sm" role="staitus"
+                                        <span class="spinner-border spinner-border-sm" role="status"
                                               aria-hidden="true"/>
                                         Loading...
                                     </div>

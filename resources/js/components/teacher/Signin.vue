@@ -1,22 +1,22 @@
 <template>
     <div>
         <section class="hero pt-5">
-            <div class="container h-100">
-                <div class="row h-100">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-8 text-center pt-md-5">
-                        <h1 class="font-weight-bolder ">
-                            THE NEXT <br>
-                            YOU
-                        </h1>
-                        <h1 class="font-weight-bolder text-uppercase">
-                            The best way to predict <br>
-                            the future is to create it
-                        </h1>
-                    </div>
-                </div>
+<!--            <div class="container h-100">-->
+<!--                <div class="row h-100">-->
+<!--                    <div class="col-md-4"></div>-->
+<!--                    <div class="col-md-8 text-center pt-md-5">-->
+<!--                        <h1 class="font-weight-bolder ">-->
+<!--                            THE NEXT <br>-->
+<!--                            YOU-->
+<!--                        </h1>-->
+<!--                        <h1 class="font-weight-bolder text-uppercase">-->
+<!--                            The best way to predict <br>-->
+<!--                            the future is to create it-->
+<!--                        </h1>-->
+<!--                    </div>-->
+<!--                </div>-->
 
-            </div>
+<!--            </div>-->
 
         </section>
         <div class="container ">
@@ -159,9 +159,9 @@
         margin: 0 auto;
         margin-bottom: 15px;
         background: #ffffff;
-        border: 20px solid black;
+        border: 2px solid black;
         border-bottom: 2px solid black;
-        border-radius: 18%;
+        /*border-radius: 5%;*/
 
     }
 

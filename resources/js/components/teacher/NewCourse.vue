@@ -2,7 +2,7 @@
     <div>
         <div class="jumbotron text-right" style="height: 200px"></div>
 
-        <div class="container py-3 bg font-weight-bold">
+        <div class="container py-3 mb-5 bg font-weight-bold">
             <h3 class="text-center font-weight-bolder">create a new course</h3>
             <form class="my-3" method="post" @submit.prevent="saveCourse">
                 <div class="row">
@@ -170,7 +170,16 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary " type="submit">Publish course</button>
+                    <button class="btn btn-primary " type="submit" :disabled="savingCourse">
+                        <span v-if="!savingCourse">
+                            Publish course
+                        </span>
+                        <div class="text-center text-white" v-if="savingCourse">
+                                        <span class="spinner-border spinner-border-sm" role="status"
+                                              aria-hidden="true"/>
+                            Please wait...
+                        </div>
+                    </button>
 
                 </div>
             </form>
@@ -321,7 +330,8 @@
                     catId: '',
                     name: '',
                     nom: '',
-                }
+                },
+                savingCourse: false,
             }
         },
         methods: {
@@ -338,13 +348,15 @@
                     }
                 }).then(res => {
                     console.log(res);
-                    alert("Category created successfully")
+                    this.$alert('Category created successfully', 'New category', 'success')
+
                     location.reload()
                 })
             },
             saveSub() {
                 if (this.newSub.catId === '0') {
-                    alert("Select category");
+                    this.$alert('Please select one category first', 'Select category', 'warning')
+
                     return
                 }
                 axios.post('/sub-categories', {
@@ -353,7 +365,7 @@
                     nom: this.newSub.nom
                 })
                     .then(res => {
-                        alert("Sub-category created successfully");
+                        this.$alert('Sub-category created successfully', 'New sub-category', 'success')
                         location.reload()
                     })
             },
@@ -373,6 +385,7 @@
                 this.$store.dispatch('fetchSubCategories', id)
             },
             saveCourse() {
+                this.savingCourse = true;
                 const formData = new FormData();
                 const imagefile = document.querySelector('#thumbnail');
                 formData.append("sub_category_id", this.course.sub_category_id);
@@ -393,8 +406,10 @@
                         'Content-Type': 'multipart/form-data',
                     }
                 }).then(res => {
-                    console.log(res);
-                    alert("Your course was published successfully")
+                    // console.log(res);
+                    this.savingCourse = false;
+                    this.$alert('Your course was published successfully', 'New Course', 'success')
+
                 })
                     .catch(err => console.log(err.response));
             }

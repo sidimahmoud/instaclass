@@ -73,7 +73,7 @@
 
                         </form>
                         <div class="text-center">Already have an account?
-                            <router-link :to="{name: 'Login'}">Sign in</router-link>
+                            <router-link :to="{name: 'Signin'}">Sign in</router-link>
                         </div>
                         <h2>Or</h2>
                         <button class="btn btn-lg btn-google btn-block text-uppercase" @click="loginGoogle('google')">
@@ -157,15 +157,11 @@
 </script>
 
 <style scoped>
-    #bodyRegister {
-    }
-
     .signup-form {
         margin: 0 auto;
         padding: 30px 0;
-        border: 20px solid black;
-        border-bottom: 2px solid black;
-        border-radius: 20%;
+        border: 2px solid black;
+        /*border-radius: 5%;*/
     }
 
     .signup-form h2 {
@@ -202,7 +198,6 @@
     .signup-form {
         color: #999;
         margin-bottom: 15px;
-        padding: 20px;
         background: #ffffff;
         box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
         padding: 30px;

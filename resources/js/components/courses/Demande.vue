@@ -99,18 +99,18 @@
 
 <style scoped>
     .form {
-        border-radius: 25%;
+        border-radius: 15%;
         margin-bottom: 15px;
         background: #ffffff;
         /*box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);*/
-        border: 20px solid black;
+        border: 2px solid black;
         border-bottom: 2px solid black;
     }
 
     .hero {
         /*background-image: url('../../assets/images/demand/online.jpg');*/
         background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/Request.jpg') no-repeat center center;
-        height: 500px;
+        height: 50vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
