@@ -169,7 +169,7 @@ export default {
                   );
                   videoSection.appendChild(track.attach());
                 }
-              }, 1);
+              }, 500);
             });
           });
 
