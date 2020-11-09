@@ -1,19 +1,19 @@
 <template>
     <div>
         <div class="hero">
-            <div class=" jumbotron1 pt-5">
+            <div class=" jumbotron1 pt-5 ">
                 <div class="container h-100">
                     <h1 class="text-center mt-md-5 text-white">
                         ABOUT INSTANTACLASSE <br>
-                        WHO WE ARE
+                        WHO WE ARE?
                     </h1>
                 </div>
             </div>
-            <div class=" jumbotron2">
+            <div class=" jumbotron2 py-5">
                 <div class="container  align-items-center mt-2">
                     <div class="row justify-content-around align-items-center">
                         <div class="col-md-6 col-sm-12 text-center d-none d-md-block">
-                            <img src="../assets/images/about/left.png" width="400px" class="img-fluid rounded">
+                            <img src="../assets/images/about/bigstock-Young-Asian-Business-Man-Using-364591240.jpg" width="400px" class="img-fluid rounded">
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <h1>About Us</h1>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <section class="bg-white">
+        <section class="bg-white py-5">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-sm-12">
@@ -49,7 +49,7 @@
 
                     </div>
                     <div class="col-md-6 col-sm-12 text-center">
-                        <img src="../assets/images/about/left1.png" width="400px" class="img-fluid rounded">
+                        <img src="../assets/images/about/bigstock-Family-Does-Exercises-Online--372384175.jpg" width="400px" class="img-fluid rounded">
                     </div>
                 </div>
             </div>
@@ -59,24 +59,25 @@
                 <h1 class="text-center">
                     Stay informed
                 </h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum doloribus esse in magni maxime!
-                    Assumenda
-                    consequuntur corporis deleniti facere facilis fugiat hic labore laboriosam libero magnam, molestiae
-                    rem
-                    repellendus velit?
+                <p class="text-center">Subscribe to our mailbox
                 </p>
                 <form @submit.prevent="subscribe">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="First Name" v-model="first_name">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Last Name" v-model="last_name">
-                            </div>
-                        </div>
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <input type="text" class="form-control" placeholder="First Name" v-model="first_name">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <input type="text" class="form-control" placeholder="Last Name" v-model="last_name">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-6">-->
+<!--                            <div class="input-group mb-3">-->
+<!--                                <input type="text" class="form-control" placeholder="Address" v-model="address">-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="col-12">
                             <div class="input-group mb-3">
                                 <input type="email" class="form-control" placeholder="Email"
@@ -85,7 +86,7 @@
                                 <div class="input-group-append">
                                 <span class="input-group-text p-0" id="basic-addon2">
                                     <button class="btn btn-primary">
-                                        SUBSCRIBE
+                                        Subscribe
                                     </button>
                                 </span>
                                 </div>
@@ -109,6 +110,7 @@
             return {
                 first_name: '',
                 last_name: '',
+                address: '',
                 email: '',
             }
         },
@@ -118,8 +120,17 @@
                     first_name: this.first_name,
                     last_name: this.last_name,
                     email: this.email,
+                    address: this.address,
                 };
-                axios.post('/newsletter', payload).then(res => alert("Subscribed successfully")).catch(err => console.log(err))
+                axios.post('/newsletter', payload)
+                    .then(() => {
+                        this.first_name = '';
+                        this.last_name = '';
+                        this.email = '';
+                        this.address = '';
+                        this.$alert('Subscribed successfully','News letter', 'success')
+                    })
+                    .catch(err => console.log(err))
             }
         },
 
@@ -133,9 +144,9 @@
     }
 
     .jumbotron1 {
-        height: 50vh;
+        height: 70vh;
         border-bottom: 15px solid #3081FB;
-        background: linear-gradient(rgba(19, 19, 19, 0.5), rgba(19, 19, 19, 0.5)), url('../assets/images/about/about.jpg') no-repeat center center;
+        background: linear-gradient(rgba(19, 19, 19, 0.5), rgba(19, 19, 19, 0.5)), url('../assets/images/about/about.jpg') no-repeat center top;
         background-size: cover;
         border-radius: 0 0 200px 0;
         font-family: 'Poppins', sans-serif;
@@ -148,6 +159,8 @@
     .newsLetter {
         input {
             background: transparent;
+            color: white !important;
+
         }
     }
 

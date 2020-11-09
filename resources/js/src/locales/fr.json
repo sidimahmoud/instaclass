@@ -23,8 +23,48 @@
         "demande": "Demande de cours",
         "account": "Compte"
     },
+    "footer": {
+        "home": "Accueil",
+        "about": "A propos",
+        "courses": "Tous les cours",
+        "become": "Devenir instructeur",
+        "demande": "Demande de cours",
+        "account": "Compte",
+
+        "quickLinks": "Liens rapides",
+        "termsAndConditions": "Termes et conditions",
+        "faq": "FAQ",
+        "privacy": "politique de confidentialité",
+        "contact": "Nous contacter"
+    },
     "coursesByCateg": "Les cours par categorie",
     "search": "Chercher des cours",
     "searchBtn": "Chercher",
-    "noCourses": "Il n'y a pas de cours dans cette catégorie pour l’instant."
+    "noCourses": "Il n'y a pas de cours dans cette catégorie pour l’instant.",
+    "whyChoose": {
+        "title" : "Pourquoi choisir Instantaclasse?",
+        "1": "Les enseignants fixent leur taux horaire et le contenu de leurs cours.",
+        "2": "Les étudiants bénéficient d'une large variété des cours.",
+        "3": "Les étudiants peuvent accéder aux enregistrements des leurs cours pour des révisions ultérieures.",
+        "4": "Les instructeurs et etudiants profitent d'une plateforme multilingue."
+    },
+    "howItWorks": {
+        "title": "Comment ça fonctionne?",
+        "teachers": {
+            "title": "Instructeurs",
+            "1": "Étape 1: Créent un compte gratuitement.",
+            "2": "Étape 2: Créent et structurent les sessions de cours, définissent les coûts et l'horaire.",
+            "3": "Étape 3: Recoivent des alertes lorsque les étudiants s'inscrivent.",
+            "4": "Étape 4: Enseignent les cours en direct sur la plateforme Instantaclasse.",
+            "5": "Étape 5: Reçoivent les rémunérations."
+        },
+        "students": {
+            "title": "Élèves",
+            "1": "Étape 1: Créez un compte gratuitement.",
+            "2": "Étape 2: Achetent des cours parmi une grande variété.",
+            "3": "Étape 3: Recoivent des alertes avant les sessions inscrites.",
+            "4": "Étape 4: Apprenent les cours en direct sur la plateforme Instantaclasse.",
+            "5": "Étape 5: Évaluent les sessions."
+        }
+    }
 }

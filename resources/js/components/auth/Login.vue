@@ -1,12 +1,12 @@
 <template>
     <div>
-        <section class="hero pt-1 pt-md-5 ">
+        <section class="hero pt-5 mb-3">
             <div class="container h-100">
                 <div class="row h-100">
                     <div class="col-md-4"></div>
-                    <div class="col-md-8 text-center pt-md-1">
-                        <h1 class="font-weight-bolder ">
-                            THE NEXT
+                    <div class="col-md-8 text-center pt-md-5">
+                        <h1 class="font-weight-bolder">
+                            THE NEXT <br>
                             YOU
                         </h1>
                         <h1 class="font-weight-bolder text-uppercase">
@@ -57,7 +57,7 @@
                                 <button type="submit" class="btn btn-dark btn-lg btn-block ">
                                     <span v-if="!authLoading">Sign in </span>
                                     <div class="text-center text-white" v-if="authLoading">
-                                        <span class="spinner-border spinner-border-sm" role="staitus"
+                                        <span class="spinner-border spinner-border-sm" role="status"
                                               aria-hidden="true"/>
                                         Loading...
                                     </div>
@@ -177,7 +177,7 @@
     .hero {
         /*background-image: url('../../assets/images/demand/online.jpg');*/
         background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
-        height: 70vh;
+        height: 50vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
@@ -187,9 +187,9 @@
         margin: 0 auto;
         margin-bottom: 15px;
         background: #ffffff;
-        border: 20px solid black;
+        border: 2px solid black;
         border-bottom: 2px solid black;
-        border-radius: 18%;
+        border-radius: 10%;
 
     }
 

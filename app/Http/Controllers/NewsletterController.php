@@ -41,6 +41,7 @@ class NewsletterController extends Controller
         $subscriber->first_name = $request['first_name'];
         $subscriber->last_name = $request['last_name'];
         $subscriber->email = $request['email'];
+        $subscriber->address = $request['address'];
         $subscriber->save();
         return response()->json("Subscribed successfully");
     }

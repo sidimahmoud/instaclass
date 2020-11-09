@@ -23,6 +23,7 @@ try {
  */
 
 window.axios = require('axios');
+const Swal = require('sweetalert2')
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 let token = localStorage.getItem('token');

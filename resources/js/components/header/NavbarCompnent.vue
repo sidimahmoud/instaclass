@@ -1,96 +1,104 @@
 <template>
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-0 fixed-top">
-            <ul class="lang text-center p-0 text-white">
-                <li class="btn" v-if="locale==='fr'" @click="en">
-                    <strong>EN</strong>
-                </li>
-                <li class="btn " v-else @click="fr">
-                    <strong>FR</strong>
-                </li>
-<!--                <li v-if="isLoggedIn && !$route.matched.some(({ name }) => name === 'Home')">-->
-<!--                    Welcome <strong>-->
-<!--                    {{userProfile.first_name}}-->
-<!--                </strong>-->
-<!--                </li>-->
-            </ul>
-            <a href="/" class="navbar-brand">
-                <img src="../../assets/logo.png" alt="" width="40px">
-            </a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!--                <form class="form-inline  my-lg-0 mr-lg-2 w-50" @submit.prevent="search">-->
-
-                <!--                    <div class="form-group w-100">-->
-                <!--                        <input class="form-control  mr-sm-2 w-75" type="text"-->
-                <!--                               :placeholder="$t('search')"-->
-                <!--                               v-model="q" aria-label="Search">-->
-                <!--                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">-->
-                <!--                            {{$t("searchBtn")}}-->
-                <!--                        </button>-->
-                <!--                    </div>-->
-                <!--                </form>-->
-                <ul class="navbar-nav bg-primary  justify-content-center align-items-center w-100 ">
-                    <li class="nav-item " v-if="!$route.matched.some(({ name }) => name === 'Home')">
-                        <router-link :to="{ name: 'Home'}" tag="a" class="nav-link " data-toggle="collapse" data-target=".navbar-collapse.show">
-                            {{$t('nav.home')}}
-                        </router-link>
+    <div class="px-5">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light py-0 fixed-top">
+            <div class="container rounded-bottom">
+                <a href="/" class="navbar-brand">
+                    <img src="../../assets/logo.png" alt="" width="40px">
+                </a>
+                <ul class="lang text-center p-0 text-primary">
+                    <li class="btn" v-if="locale==='fr'" @click="en">
+                        <strong>EN</strong>
                     </li>
-                    <li class="nav-item">
-                        <router-link :to="{ name: 'About'}" tag="a" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
-                            {{$t('nav.about')}}
-
-                        </router-link>
+                    <li class="btn " v-else @click="fr">
+                        <strong>FR</strong>
                     </li>
-                    <li class="nav-item">
-
-                        <router-link :to="{ name: 'Courses'}" tag="a" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
-                            {{$t('nav.courses')}}
-                        </router-link>
-
-                    </li>
-                    <li class="nav-item" v-if="isLoggedIn">
-                        <router-link :to="{name: 'Signin'}" tag="a"
-                                     class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
-                            {{$t('nav.become')}}
-                        </router-link>
-                    </li>
-                    <li class="nav-item" v-else>
-                        <router-link :to="{name: 'Signin'}" tag="a"
-                                     class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
-                            {{$t('nav.become')}}
-                        </router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link :to="{name: 'Demande'}" tag="a"
-                                     class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
-                            {{$t('nav.demande')}}
-                        </router-link>
-                    </li>
-
-
-                    <li class="nav-item" v-if="!isLoggedIn">
-                        <router-link :to="{name: 'TeacherProfile'}" tag="a"
-                                     class="nav-link " data-toggle="collapse" data-target=".navbar-collapse.show">
-                            {{$t('nav.account')}}
-                        </router-link>
-                    </li>
-                    <li class="nav-item" v-else>
-                        <router-link :to="{name: 'TeacherProfile'}" tag="a"
-                                     class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
-                            {{$t('nav.account')}}
-
-                        </router-link>
-                    </li>
-
+                    <!--                <li v-if="isLoggedIn && !$route.matched.some(({ name }) => name === 'Home')">-->
+                    <!--                    Welcome <strong>-->
+                    <!--                    {{userProfile.first_name}}-->
+                    <!--                </strong>-->
+                    <!--                </li>-->
                 </ul>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!--                <form class="form-inline  my-lg-0 mr-lg-2 w-50" @submit.prevent="search">-->
 
+                    <!--                    <div class="form-group w-100">-->
+                    <!--                        <input class="form-control  mr-sm-2 w-75" type="text"-->
+                    <!--                               :placeholder="$t('search')"-->
+                    <!--                               v-model="q" aria-label="Search">-->
+                    <!--                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">-->
+                    <!--                            {{$t("searchBtn")}}-->
+                    <!--                        </button>-->
+                    <!--                    </div>-->
+                    <!--                </form>-->
+
+
+                    <ul class="navbar-nav  justify-content-center  align-items-center w-100 ">
+
+                        <li class="nav-item " v-if="!$route.matched.some(({ name }) => name === 'Home')">
+                            <router-link :to="{ name: 'Home'}" tag="a" class="nav-link " data-toggle="collapse"
+                                         data-target=".navbar-collapse.show">
+                                {{$t('nav.home')}}
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'About'}" tag="a" class="nav-link" data-toggle="collapse"
+                                         data-target=".navbar-collapse.show">
+                                {{$t('nav.about')}}
+
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+
+                            <router-link :to="{ name: 'Courses'}" tag="a" class="nav-link" data-toggle="collapse"
+                                         data-target=".navbar-collapse.show">
+                                {{$t('nav.courses')}}
+                            </router-link>
+
+                        </li>
+                        <li class="nav-item" v-if="isLoggedIn">
+                            <router-link :to="{name: 'Signin'}" tag="a"
+                                         class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                {{$t('nav.become')}}
+                            </router-link>
+                        </li>
+                        <li class="nav-item" v-else>
+                            <router-link :to="{name: 'Signin'}" tag="a"
+                                         class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                {{$t('nav.become')}}
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{name: 'Demande'}" tag="a"
+                                         class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                {{$t('nav.demande')}}
+                            </router-link>
+                        </li>
+
+
+                        <li class="nav-item" v-if="!isLoggedIn">
+                            <router-link :to="{name: 'TeacherProfile'}" tag="a"
+                                         class="nav-link " data-toggle="collapse" data-target=".navbar-collapse.show">
+                                {{$t('nav.account')}}
+                            </router-link>
+                        </li>
+                        <li class="nav-item" v-else>
+                            <router-link :to="{name: 'TeacherProfile'}" tag="a"
+                                         class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                {{$t('nav.account')}}
+
+                            </router-link>
+                        </li>
+
+                    </ul>
+
+
+                </div>
             </div>
+
         </nav>
     </div>
 
@@ -147,13 +155,14 @@
         border-bottom-left-radius: 10px;
         color: white !important;
     }
+
     .router-link-exact-active:hover {
         color: white !important;
     }
 
     a {
         font-weight: bolder;
-        color: white !important;
+        color: blue !important;
         margin-right: 20px;
     }
 

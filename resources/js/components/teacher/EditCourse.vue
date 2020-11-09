@@ -274,13 +274,13 @@
                     }
                 }).then(res => {
                     console.log(res);
-                    alert("Category created successfully")
+                    this.$alert('Category created successfully','New category', 'success')
                     location.reload()
                 })
             },
             saveSub() {
                 if (this.newSub.catId === '0') {
-                    alert("Select category");
+                    this.$alert('Please select one category first','Select category', 'warning')
                     return
                 }
                 axios.post('/sub-categories', {
@@ -289,7 +289,7 @@
                     nom: this.newSub.nom
                 })
                     .then(res => {
-                        alert("Sub-category created successfully");
+                        this.$alert('Sub-category created successfully','New sub-category', 'success')
                         location.reload()
                     })
             },
@@ -328,7 +328,7 @@
                     }
                 }).then(res => {
                     console.log(res);
-                    alert("Your course was updated successfully")
+                    this.$alert('Your course was updated successfully','Course updated', 'success')
                 })
                     .catch(err => console.log(err.response));
             },

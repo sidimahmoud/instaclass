@@ -26,26 +26,26 @@
                 <!-- Grid column -->
                 <div class="col-md-3">
                     <p class="h3 text-white">
-                        Quick Links
+                       {{$t('footer.quickLinks')}}
                     </p>
                     <p>
                         <router-link :to="{ name: 'Home'}" tag="a" class="text-uppercase">
-                            Home
+                            {{$t('footer.home')}}
                         </router-link>
                     </p>
                     <p>
                         <router-link :to="{ name: 'About'}" tag="a" class="text-uppercase">
-                            About us
+                            {{$t('footer.about')}}
                         </router-link>
                     </p>
                     <p>
                         <router-link :to="{ name: 'Courses'}" tag="a" class="text-uppercase">
-                            our courses
+                            {{$t('footer.courses')}}
                         </router-link>
                     </p>
                     <p>
                         <router-link :to="{ name: 'Become'}" tag="a" class="text-uppercase">
-                            Become Instructor
+                            {{$t('footer.become')}}
                         </router-link>
                     </p>
 
@@ -57,25 +57,25 @@
                     <!-- Links -->
                     <p>
                         <router-link :to="{ name: 'StudentProfile'}" tag="a" class=" text-uppercase">
-                            Account
+                            {{$t('footer.account')}}
                         </router-link>
                     </p>
                     <p>
                         <router-link to="#" tag="a" class=" text-uppercase">
-                            Terms & Conditions
+                            {{$t('footer.termsAndConditions')}}
                         </router-link>
                     </p>
                     <p>
                         <router-link :to="{ name: 'Faq'}" tag="a" class=" text-uppercase">
-                            FAQ
+                            {{$t('footer.faq')}}
                         </router-link>
                     </p>
                     <p>
-                        <a href="#" class="text-uppercase"> Privacy policy</a>
+                        <a href="#" class="text-uppercase"> {{$t('footer.privacy')}}</a>
                     </p>
                     <p>
                         <router-link :to="{ name: 'Contact'}" tag="a" class=" text-uppercase">
-                            Contact us
+                            {{$t('footer.contact')}}
                         </router-link>
                     </p>
                 </div><!-- Grid column -->
@@ -132,7 +132,6 @@
 
     .page-footer {
         background-color: #000 !important;
-        margin-top: -50px;
     }
 
     hr {

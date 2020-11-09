@@ -392,16 +392,41 @@
                 const token = localStorage.getItem("token") || null;
                 if (token) {
                     axios.defaults.headers.common["Authorization"] = "Bearer " + token;
-                    if (confirm("Do you really want to delete?")) {
-                        this.$store
-                            .dispatch("deleteCourse", id)
-                            .then((resp) => {
-                                location.reload();
-                            })
-                            .catch((error) => {
-                                console.log(error);
-                            });
-                    }
+                    this.$swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.$store
+                                .dispatch("deleteCourse", id)
+                                .then((resp) => {
+                                    this.$swal.fire(
+                                        'Deleted!',
+                                        'Your course has been deleted.',
+                                        'success'
+                                    )
+                                })
+                                .catch((error) => {
+                                    console.log(error);
+                                });
+
+                        }
+                    })
+                    // if (this.$confirm("Are you sure want to delete this course?")) {
+                    //     this.$store
+                    //         .dispatch("deleteCourse", id)
+                    //         .then((resp) => {
+                    //             location.reload();
+                    //         })
+                    //         .catch((error) => {
+                    //             console.log(error);
+                    //         });
+                    // }
                 }
             },
         },
