@@ -49,15 +49,25 @@
                         <div>
                             <h6 class="my-0">
                                 <span class="font-weight-bold">
-                                        {{course_name}}
+                                    {{course_name}}
                                 </span>
                             </h6>
                         </div>
                         <span class="text-muted">${{course_price}}</span>
                     </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed" v-if="sections_count >= 3">
+                        <div>
+                            <h6 class="my-0">
+                                <span class="font-weight-bold">
+                                    3eme section gratuit 
+                                </span>
+                            </h6>
+                        </div>
+                        <span class="text-muted">- ${{course_price}}</span>
+                    </li>
                     <li class="list-group-item d-flex justify-content-between font-weight-bold">
-                        <span>Total (USD)</span>
-                        <strong>${{course_price}}</strong>
+                        <span>Total (USA)</span>
+                        <strong>${{totalCourse}}</strong>
                     </li>
                 </ul>
                 <!-- Cart -->
@@ -88,6 +98,7 @@
                 course_file_id: this.$route.params.id,
                 course_name: this.$route.params.name,
                 course_price: this.$route.params.price,
+                sections_count: this.$route.params.sections_count,
                 paymentMethod: 'card',
                 loading: false,
                 publishableKey: 'pk_test_51HK26oKzha99bEEwW8zlncEHA6FPsPh7N3R84cJyMN6af5fPs9WMmZwae2CodeHWfPiyAlA6ScX0hbWFb8v1dfWn00oLMytNRI',
@@ -99,7 +110,20 @@
                 ],
                 successUrl: 'your-success-url',
                 cancelUrl: 'your-cancel-url',
-
+            }
+        },
+        /*
+        |--------------------------------------------------------------------------
+        | component > computed
+        |--------------------------------------------------------------------------
+        */
+        computed: {
+            totalCourse(){
+                if(this.sections_count >= 3){
+                    return (Number(this.course_price) * Number(this.sections_count))  - Number(this.course_price);
+                }else{
+                    return Number(this.course_price) * Number(this.sections_count);
+                }
             }
         },
         methods: {
@@ -108,7 +132,7 @@
                     paymentMethod: this.paymentMethod,
                     course_id: this.course_id,
                     course_name: "Course N°" + this.course_id,
-                    course_price: this.course_price,
+                    course_price: this.totalCourse,
                     token: token.id,
 
                 };
@@ -136,9 +160,10 @@
                     })
                     .catch(err => console.log(err))
             },
+        },
+        mounted() {
+            console.log(this.$route.params)
         }
-        ,
-
     }
 </script>
 

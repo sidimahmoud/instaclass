@@ -5,22 +5,34 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use App\SubCategory;
+use App\User;
+use App\CourseStatus;
+use App\Rating;
+use App\CourseFile;
 
 class Course extends Model
 {
+    protected $fillable = [
+        'user_id',
+        'sub_category_id',
+        'name',
+        'language'
+    ];
+
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     public function subCategory()
     {
-        return $this->belongsTo('App\SubCategory');
+        return $this->belongsTo(SubCategory::class, 'sub_category_id');
     }
 
     public function status()
     {
-        return $this->belongsTo('App\CourseStatus');
+        return $this->belongsTo(CourseStatus::class);
     }
 
 //    public function enrollments()
@@ -30,22 +42,22 @@ class Course extends Model
 
     public function ratings()
     {
-        return $this->hasMany('App\Rating');
+        return $this->hasMany(Rating::class);
     }
 
     public function sections()
     {
-        return $this->hasMany('App\CourseFile');
+        return $this->hasMany(CourseFile::class);
     }
 
     public function sub()
     {
-        return $this->belongsTo(SubCategory::class, 'category_id');
+        return $this->belongsTo(SubCategory::class, 'sub_category_id');
     }
 
     public function scopePriceLessThan(Builder $query, $price): Builder
     {
-        return $query->with('subCategory.category', 'sections')->where('price', '<=', $price * 100);
+        return $query->with('subCategory.category', 'sections')->where('price', '<=', $price);
     }
 
     public function scopeInCategory(Builder $query, $id): Builder
@@ -55,7 +67,8 @@ class Course extends Model
 
     public function scopeSectionCount(Builder $query, $count): Builder
     {
-        return $query->with('subCategory.category', 'sections')->withCount('sections')->having('sections_count', '>=', $count)->get();
+        //info($query->with('subCategory.category', 'sections')->withCount('sections')->having('sections_count', '=', $count)->get());
+        return $query->with('subCategory.category', 'sections')->withCount('sections')->where('sections_count', '=', $count)->get();
     }
 
 }

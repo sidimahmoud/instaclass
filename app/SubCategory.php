@@ -3,14 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Category;
+use App\Course;
 
 class SubCategory extends Model
 {
-
     public function category(){
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo(Category::class);
     }
     public function courses(){
-        return $this->hasMany('App\Course');
+        return $this->hasMany(Course::class);
     }
 }

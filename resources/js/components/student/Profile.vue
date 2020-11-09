@@ -255,12 +255,12 @@
                                 <li v-else class="mt-4" v-for="e in activeRooms" :key="e.sid">
                                     <router-link
                                         :to="{
-                        name: 'Live',
-                        params: {
-                          slug: e.uniqueName,
-                          sid: e.sid,
-                        },
-                      }"
+                                            name: 'Live',
+                                            params: {
+                                            slug: e.uniqueName,
+                                            sid: e.sid,
+                                            },
+                                        }"
                                     >
                                         <h5 class="mt-0 mb-1">
                                             <strong>Room Name: </strong> {{ e.uniqueName }} |

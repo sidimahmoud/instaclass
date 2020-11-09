@@ -212,7 +212,7 @@
         computed: {
             ...mapGetters(["allCategories", "loadingCategories"]),
         },
-        created() {
+        mounted() {
             this.fetchCategories();
         }
     }

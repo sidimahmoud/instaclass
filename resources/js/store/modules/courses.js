@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { isEmpty } from 'lodash';
 
 const state = {
     courses: [],
@@ -27,9 +28,19 @@ const getters = {
 
 const actions = {
     async fetchCourses({commit}, payload) {
+        console.log(payload);
+        let params= {
+            'include': 'subCategory.category,ratings.user,sections.enrollments,user',
+            'per_page': 1,
+        }
+        if(!isEmpty(payload)) {
+            params = Object.assign(params,payload)
+        }
         commit('setLoading', true);
-
-        const response = await axios.get(`/all-courses/?filter[price_less_than]=${payload.price}&filter[language]=${payload.lang}`);
+        //const response = await axios.get(`/all-courses/?filter[price_less_than]=${payload.price}&filter[language]=${payload.lang}`);
+        const response = await axios.get(`/courses`,{
+            params: params
+        });
         commit('setCourses', response.data);
         commit('setLoading', false);
     },

@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-2">
                     <router-link
-                        :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
+                        :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price, sections_count: course.sections_count}}"
                         tag="button" class="btn btn-primary btn-block my-3">
                         S'inscrire à ce cours
                     </router-link>
@@ -82,13 +82,29 @@
 
 </template>
 <script>
+export default {
+    name: "course-components",
+    /*
+    |--------------------------------------------------------------------------
+    | Component > props
+    |--------------------------------------------------------------------------
+    */
+    props: {
+        course: {
+            type: Object,
+            default: null
+        },
+    },
+    /*
+    |--------------------------------------------------------------------------
+    | component > mounted
+    |--------------------------------------------------------------------------
+    */
+    mounted () {
+        console.log(this.course)
+    },
 
-    export default {
-        name: "Course",
-        props: ["course"],
-
-    };
-
+};
 </script>
 <style lang="scss" scoped>
     a {
@@ -103,10 +119,11 @@
     .course-det {
         border-radius: 15px;
         margin: 10px;
-        background: linear-gradient(90deg,
+        /*background: linear-gradient(90deg,
             rgb(0, 0, 0, 0.5),
-            rgb(255, 255, 255, 1));
+            rgb(255, 255, 255, 1));*/
+        background-color: #fff;
         font-weight: 800 !important;
-        border-right: 2px solid #2b63f3;
+        border: 1px solid #2b63f3;
     }
 </style>
