@@ -194,8 +194,10 @@ export default {
                 });
               }
               setTimeout(() => {
-                if (participant.identity == "teacher-identity") {
-                  const teacherChatWindow = document.getElementById("video-main-window");
+                console.log('participant.identity');
+                console.log(participant.identity);
+                if(participant.identity == "teacher-identity") {
+                  var teacherChatWindow = document.getElementById("video-main-window");
                   teacherChatWindow.appendChild(track.attach());
                 }else {
                   var videoSection = document.getElementById(
@@ -203,7 +205,7 @@ export default {
                   );
                   videoSection.appendChild(track.attach());
                 }
-              }, 1);
+              }, 500);
             });
           });
           room.on("participantDisconnected", (participant) => {
