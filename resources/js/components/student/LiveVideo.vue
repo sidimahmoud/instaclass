@@ -158,10 +158,17 @@ export default {
                 });
               }
               setTimeout(() => {
-                var videoSection = document.getElementById(
-                  "video-" + participant.identity
-                );
-                videoSection.appendChild(track.attach());
+                console.log('participant.identity');
+                console.log(participant.identity);
+                if(participant.identity == "teacher-identity") {
+                  var teacherChatWindow = document.getElementById("video-main-window");
+                  teacherChatWindow.appendChild(track.attach());
+                }else {
+                  var videoSection = document.getElementById(
+                    "video-" + participant.identity
+                  );
+                  videoSection.appendChild(track.attach());
+                }
               }, 1);
             });
           });
