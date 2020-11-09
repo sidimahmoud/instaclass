@@ -25,6 +25,7 @@
             </div>
           </div>
           <div class="col-md-4">
+            <div id="video-my-self"></div>
             <div
               class="sub-window m-2 p-1 rounded"
               id="video-sub-window"
@@ -119,7 +120,8 @@ export default {
           console.log(`Successfully joined a Room: ${room}`);
           this.roomSid = room.sid;
           this.activeRoom = room;
-          const videoChatWindow = document.getElementById("video-main-window");
+          //const videoChatWindow = document.getElementById("video-main-window");
+          const videoChatWindow = document.getElementById("video-my-self");
           room.localParticipant.videoTracks.forEach((publication) => {
             videoChatWindow.appendChild(publication.track.attach());
             this.myVideoTrack = publication.track;
@@ -191,10 +193,15 @@ export default {
                 });
               }
               setTimeout(() => {
-                var videoSection = document.getElementById(
-                  "video-" + participant.identity
-                );
-                videoSection.appendChild(track.attach());
+                if (participant.identity == "teacher-identity") {
+                  const teacherChatWindow = document.getElementById("video-main-window");
+                  teacherChatWindow.appendChild(track.attach());
+                }else {
+                  var videoSection = document.getElementById(
+                    "video-" + participant.identity
+                  );
+                  videoSection.appendChild(track.attach());
+                }
               }, 1);
             });
           });

@@ -12,9 +12,16 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Repositories\CourseRepository;
 
 class CourseController extends Controller
 {
+    private $courseRepository;
+  
+    public function __construct(CourseRepository $courseRepository)
+    {
+        $this->courseRepository = $courseRepository;
+    }
 
     /**
      * Display a listing of the resource.
@@ -23,10 +30,15 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::with('subCategory.category', 'sections')->paginate(10);
-        return response()->json($courses);
+        /* $courses = Course::with('subCategory.category', 'sections')->paginate(10);
+        return response()->json($courses); */
+        if (request()->has('all')) {
+            $courses = $this->courseRepository->all();
+        } else {
+            $courses = $this->courseRepository->paginate(1);
+        }
+        return response()->json($courses, 201);
     }
-
 
     public function show($id)
     {
@@ -44,7 +56,7 @@ class CourseController extends Controller
                 AllowedFilter::scope('price_less_than'),
                 AllowedFilter::scope('in_category')
             ])
-            ->allowedIncludes('ratings.user', 'sections.enrollments', 'user', 'subCategory.category')
+            ->allowedIncludes(['ratings.user', 'sections.enrollments', 'user', 'subCategory.category'])
             ->allowedSorts('created_at')
             ->paginate(25);
         return response()->json($courses);
@@ -71,6 +83,5 @@ class CourseController extends Controller
             ->orWhere('description', 'ilike', "%" . $search . "%")
             ->get();
         return response()->json($courses);
-
     }
 }

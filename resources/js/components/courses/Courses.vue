@@ -29,9 +29,9 @@
                                 <strong>Category</strong>
                             </p>
                             <div class="form-group">
-                                <select multiple class="form-control" id="exampleFormControlSelect2" @change="categ">
+                                <select multiple class="form-control" id="exampleFormControlSelect2" @change="handleCategorie">
                                     <option value="">All Categories</option>
-                                    <option v-for="c in allCategories" :value="c.id">{{c.name_en}}</option>
+                                    <option v-for="c in allCategories" :value="c.id" v-bind:key="c.id">{{c.name_en}}</option>
                                 </select>
                             </div>
                         </div>
@@ -41,22 +41,20 @@
                             </p>
                             <label for="price">$0</label>
                             <input type="range" id="price" name="price"
-                                   min="0" max="10" value="10" style="width: 60%" @change="price">
-                            <label for="price">$1000</label>
-                            <!--                            <vue-slider v-model="value" />-->
-
+                                   min="0" max="1000" value="1000" style="width: 60%" @change="price">
+                            <label for="price">${{filter.price}}</label>
                         </div>
                         <div class="border-bottom border-dark">
                             <p class="filter-title">
                                 <strong>Course Language</strong>
                             </p>
                             <div class="form-group">
-                                <select multiple class="form-control" id="lang" @change="lang">
-                                    <option value="">All ({{allCourses.data.length}})</option>
-                                    <option value="en">ENGLISH (5)</option>
-                                    <option value="fr">FRENCH (1)</option>
-                                    <option value="es">SPANISH (0)</option>
-                                    <option value="other">OTHER (0)</option>
+                                <select multiple class="form-control" id="lang" @change="handleLang">
+                                    <option value="">All</option>
+                                    <option value="EN">ENGLISH</option>
+                                    <option value="FR">FRENCH</option>
+                                    <option value="ES">SPANISH</option>
+                                    <option value="">OTHER</option>
                                 </select>
                             </div>
                         </div>
@@ -65,13 +63,14 @@
                                 <strong>Sessions per course</strong>
                             </p>
                             <div class="form-group">
-                                <select multiple class="form-control" id="sessions">
-                                    <option value="">Any ({{allCourses.data.length}})</option>
-                                    <option value="1">1 (5)</option>
-                                    <option value="2">2 (1)</option>
-                                    <option value="3">3 (0)</option>
-                                    <option value="4">4 (0)</option>
-                                    <option value="5">5+ (0)</option>
+                                <select multiple class="form-control" id="sessions" @change="handleSectionCount">
+                                    <option value="">Any</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
                                 </select>
                             </div>
                         </div>
@@ -89,7 +88,7 @@
                         <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
                     </div>
 
-                    <nav aria-label="Page navigation example" v-if="allCourses.data.length>16">
+                    <nav aria-label="Page navigation example" v-if="!isEmpty(allCourses.data) && allCourses.data.length>16">
                         <ul class="pagination justify-content-end">
                             <li :class="['page-item', {'disabled':!allCourses.prev_page_url}]">
                                 <a class="page-link " href="#" @click="first">
@@ -98,7 +97,6 @@
                             </li>
                             <li :class="['page-item', {'disabled':!allCourses.prev_page_url}]">
                                 <a class="page-link " href="#" @click="previous">
-                                    <<
                                 </a>
                             </li>
 
@@ -128,82 +126,118 @@
 </template>
 
 <script>
-    import Course from "./CourseComponent";
-    import {mapGetters, mapActions} from "vuex";
+import Course from "./CourseComponent";
+import {mapGetters, mapActions} from "vuex";
+import {isEmpty} from "../../helpers/common"
 
-    export default {
-        name: 'Courses',
-        components: {
-            Course,
-            // VueSlider
-        },
-        data() {
-            return {
-                value: 0,
-                curPage: 1,
-                filter: {
-                    price: 1000,
-                    categ: '',
-                    lang: '',
-                    sections: ''
-                }
+export default {
+    name: 'Courses',
+    /*
+    |--------------------------------------------------------------------------
+    | Component > components
+    |--------------------------------------------------------------------------
+    */
+    components: {
+        Course,
+        // VueSlider
+    }, // End of Component > components
+    /*
+    |--------------------------------------------------------------------------
+    | Component > data
+    |--------------------------------------------------------------------------
+    */
+    data() {
+        return {
+            value: 0,
+            curPage: 1,
+            filter: {
+                price: 1000,
+                categ: '',
+                lang: '',
+                sections: ''
             }
-
-        },
-        methods: {
-            ...mapActions(["fetchCategories"]),
-            fetchCourses() {
-                this.$store.dispatch('fetchCourses', {
-                    page: this.curPage,
-                    price: this.filter.price,
-                    lang: this.filter.lang
-                })
-            },
-            first() {
-                this.curPage = 1;
-                this.fetchCourses();
-            },
-            next() {
-                this.curPage++;
-                this.fetchCourses();
-            },
-            previous() {
-                this.curPage--;
-                this.fetchCourses();
-            },
-            last(n) {
-                console.log(n);
-                this.curPage = n;
-                this.fetchCourses();
-            },
-
-            // filter methods
-            categ(event) {
-                console.log(event.target.value)
-                this.filter.categ = event.target.value;
-                this.fetchCourses()
-            },
-            price(event) {
-                console.log(event.target.value)
-                this.filter.price = event.target.value;
-                this.fetchCourses()
-
-            },
-            lang(event) {
-                console.log(event.target.value)
-                this.filter.lang = event.target.value;
-                this.fetchCourses()
-
-            },
-        },
-        computed: {
-            ...mapGetters(["allCourses", "loading", "allCategories"]),
-        },
-        created() {
-            this.fetchCourses();
-            this.fetchCategories();
         }
-    }
+
+    },// End of Component > data
+    /*
+    |--------------------------------------------------------------------------
+    | Component > computed
+    |--------------------------------------------------------------------------
+    */
+    computed: {
+        ...mapGetters(["allCourses", "loading", "allCategories"]),
+    },// End of Component > computed
+    /*
+    |--------------------------------------------------------------------------
+    | Component > methods
+    |--------------------------------------------------------------------------
+    */
+    methods: {
+        ...mapActions(["fetchCategories"]),
+        fetchCourses(payload) {
+            this.$store.dispatch('fetchCourses', payload)
+        },
+        first() {
+            this.curPage = 1;
+            this.fetchCourses();
+        },
+        next() {
+            this.curPage++;
+            this.fetchCourses();
+        },
+        previous() {
+            this.curPage--;
+            this.fetchCourses();
+        },
+        last(n) {
+            console.log(n);
+            this.curPage = n;
+            this.fetchCourses();
+        },
+
+        // filter methods
+        handleCategorie(event) {
+            let payload = {
+                'filter[sub_category_id]': event.target.value
+            }
+            this.fetchCourses(payload)
+        },
+        price(event) {
+            /* console.log(event.target.value)
+            this.filter.price = event.target.value;
+            this.fetchCourses() */
+            this.filter.price = event.target.value;
+            let payload = {
+                'filter[price_less_than]': event.target.value
+            }
+            this.fetchCourses(payload)
+        },
+        handleLang(event) {
+            let payload = {
+                'filter[language]': event.target.value
+            }
+            this.fetchCourses(payload)
+        },
+        isEmpty (v) {
+            return isEmpty(v);
+        },
+        handleSectionCount(event){
+            let payload = {
+                'filter[section_count]': event.target.value
+            }
+            this.fetchCourses(payload)
+        }
+    },// End of Component > methods
+    /*
+    |--------------------------------------------------------------------------
+    | Component > created
+    |--------------------------------------------------------------------------
+    */
+    mounted() {
+        this.fetchCourses();
+        this.fetchCategories();
+    }// End of Component > created
+}
 </script>
 
 <style scoped lang="scss">
@@ -216,14 +250,12 @@
     }
 
     .filter {
-        border-radius: 0 15px 15px 0;
-        background: linear-gradient(90deg,
-            rgb(0, 0, 0, 0.2),
-            rgb(255, 255, 255, 1));
+        border-radius: 0 5px 10px 0;
+        background: #eee;
         font-weight: 800 !important;
     }
 
     .courses {
-        border-radius: 5%;
+        border-radius: 1%;
     }
 </style>
