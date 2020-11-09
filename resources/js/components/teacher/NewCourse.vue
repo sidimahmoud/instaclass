@@ -187,7 +187,7 @@
                     <!--                submitbtn-->
                 </div>
 
-                <div class="text-center">
+                <div class="text-center" v-if="step===4">
                     <button class="btn btn-primary " type="submit" :disabled="savingCourse">
                         <span v-if="!savingCourse">
                             Publish course
@@ -202,7 +202,7 @@
             </form>
             <div>
                 <button class="btn btn-dark" @click="step--" :disabled="step===1">Back</button>
-                <button class="btn btn-primary float-right" @click="step++" >Next</button>
+                <button class="btn btn-primary float-right" @click="step++" :disabled="step===4">Next</button>
             </div>
         </div>
         <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog"
