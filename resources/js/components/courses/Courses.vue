@@ -234,6 +234,7 @@ export default {
     |--------------------------------------------------------------------------
     */
     mounted() {
+        console.log('last update')
         this.fetchCourses();
         this.fetchCategories();
     }// End of Component > created

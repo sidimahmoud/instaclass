@@ -25,6 +25,7 @@
             </div>
           </div>
           <div class="col-md-4">
+            <h5>You</h5>
             <div id="video-my-self"></div>
             <div
               class="sub-window m-2 p-1 rounded"
@@ -255,6 +256,7 @@ export default {
     },
   },
   created() {
+    console.log('last update')
     this.onJoinCourse();
   },
 };
