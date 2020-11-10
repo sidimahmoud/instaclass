@@ -39,7 +39,7 @@
         "contact": "Contact us"
     },
     "whyChoose": {
-        "title" : "Why choosing Instantaclasse?",
+        "title": "Why choosing Instantaclasse?",
         "1": "Teachers fix their hourly rate and content for their courses.",
         "2": "Students benefit of a large variety of courses.",
         "3": "Students can access recordings of class sessions for further reviews.",
@@ -63,5 +63,22 @@
             "4": "Step 4: Learn courses live at Instantaclasse's platform.",
             "5": "Step 5: Rate the session."
         }
+    },
+    "about": {
+        "hero": {
+            "1": "ABOUT INSTANTACLASSE",
+            "2": "WHO WE ARE?"
+        },
+        "about": {
+            "title": "About",
+            "body": "Instantaclasse is a platform that allows people with knowledge in various fields to share their knowledge by teaching by live video and get paid. Students benefit from a large choice of available courses and follow live video sessions according to their schedules."
+        },
+        "difference": {
+            "title": "Our difference",
+            "body": "On instantaclasse, the teachers create and structure their courses and set the associated costs (Instantaclasse receives a 10% commission on each registration for each session). Instantaclasse allows instructors to share knowledge from multiple courses associated with different areas of life. See the courses not accepted below."
+        },
+        "prohibited": {
+            "title": "Prohibited",
+            "body":"Classes that encourage or are directly or indirectly related to hatred, weapons, drugs and illegal activities are strictly prohibited on this platform. Instantaclasse administrators will remove and block members and inappropriate courses."}
     }
 }

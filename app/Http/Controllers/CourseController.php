@@ -17,7 +17,7 @@ use App\Repositories\CourseRepository;
 class CourseController extends Controller
 {
     private $courseRepository;
-  
+
     public function __construct(CourseRepository $courseRepository)
     {
         $this->courseRepository = $courseRepository;
@@ -42,7 +42,7 @@ class CourseController extends Controller
 
     public function show($id)
     {
-        $course = Course::with('ratings.user', 'sections.enrollments', 'user', 'subCategory.category')
+        $course = Course::with('sections.enrollments', 'user.ratings', 'subCategory.category')
             ->where('id', $id)
             ->get();
         return response()->json($course);

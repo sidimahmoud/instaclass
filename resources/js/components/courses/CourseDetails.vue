@@ -1,5 +1,5 @@
-<template>
-    <div class="pb-3" style="background: #ccc;">
+<template >
+    <div class="pb-3">
         <div class="text-center text-primary pt-5 mt-5" v-if="loading">
             <div class="spinner-border pt-5" role="status">
                 <span class="sr-only">Loading...</span>
@@ -15,12 +15,10 @@
                                 Available Courses
                             </h1></div>
                     </div>
-
                 </div>
-
             </section>
 
-            <div class="container">
+            <div class="container-fluid">
                 <div class="course-header">
                     <div class="row justify-content-around align-items-center pt-2">
                         <div class="col-md-2 text-center">
@@ -34,8 +32,8 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <i class="fa fa-star  fa-2x"></i> 0 Instructor rating <br>
-                            <i class="fa fa-user  fa-2x mr-1"></i> 0 Students
+                            <i class="fa fa-star  fa-2x"></i> {{course.user.ratings.length}} Instructor rating <br>
+                            <i class="fa fa-user  fa-2x mr-1"></i> 3 Students
 
                         </div>
                         <div class="col-md-3" v-if="loggedInUser.t!=='teacher' && loggedInUser.t!=='admin'">
@@ -62,7 +60,7 @@
                         <div>Sub-category : {{course.sub_category.name_en}}</div>
                         <div>Sessions: {{course.sections.length}}</div>
                         <div>Language : {{course.language}}</div>
-                        <div>Price: ${{course.price}}/session</div>
+                        <div>Price: {{currencyToSymbol(course.currency)}}{{course.price}}/Session</div>
                     </div>
                 </div>
 
@@ -109,6 +107,16 @@
             findCourse() {
                 this.$store.dispatch('getCourse', this.$route.params.slug)
             },
+            currencyToSymbol(currency){
+                switch (currency) {
+                    case 'usd' :
+                        return '$';
+                    case 'eur':
+                        return '€';
+                    default:
+                        return currency
+                }
+            }
         },
         computed: mapGetters(["course", "loading", "enrolled", 'isLoggedIn', 'loggedInUser']),
         created() {
@@ -120,6 +128,9 @@
 </script>
 
 <style scoped lang="scss">
+    body{
+        background-color: #ccc !important;
+    }
     .hero {
         background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details.jpg') no-repeat center center;
         height: 60vh;
@@ -132,47 +143,12 @@
         border-radius: 50rem !important;
     }
 
-    .btn-facebook {
-        text-decoration: none;
-        color: #4C67A1;
-        transition: all .2s ease-in-out;
-
-
-        &:hover {
-            background: linear-gradient(to right, #4C67A1 0%, #0389a1 100%);
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.10);
-
-
-            i {
-                color: #ffffff;
-            }
-        }
-
-
-    }
-
-    .btn-instagram {
-        text-decoration: none;
-        color: #C71E7E;
-        transition: all .2s ease-in-out;
-
-
-        &:hover {
-            background: linear-gradient(to right, #ff3019 0%, #c90477 100%);
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.10);
-
-            i {
-                color: #ffffff;
-            }
-        }
-
-    }
 
     .course-header {
         border-radius: 15px;
         margin: 10px;
         background: linear-gradient(90deg,
-            rgb(0, 0, 0, 0.5),
+            rgba(10, 10, 10, 0.3),
             rgb(255, 255, 255, 1));
         font-weight: 800 !important;
 

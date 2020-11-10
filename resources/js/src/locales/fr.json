@@ -66,5 +66,22 @@
             "4": "Étape 4: Apprenent les cours en direct sur la plateforme Instantaclasse.",
             "5": "Étape 5: Évaluent les sessions."
         }
+    },
+    "about": {
+        "hero": {
+            "1": "A PROPOS D'INSTANTACLASSE",
+            "2": "QUI SOMMES NOUS?"
+        },
+        "about": {
+            "title": "A propos",
+            "body": "Instantaclasse est une plaforme qui permet aux personnes disposants de connaissances dans divers domaines, de pouvoir partager leurs savoirs et ceux en enseignant par vidéo en directe et être rémunéré. Les étudiant(e)s bénéficient d’un grand choix des cours disponibles et suivent les séances vidéo en directe selon leurs horaires."
+        },
+        "difference": {
+            "title": "Notre particularité",
+            "body": "Sur instantaclasse les instructeurs créent et structurent leurs cours et fixent les prix  associés (Instantaclasse perçoit une commission de 10% sur chaque inscription à chaque séance).  Instantaclasse permet aux instructeurs de partager les connaissances de plusieurs cours associés à différentes domaines de la vie. Voir ci-dessous les cours non acceptés."
+        },
+        "prohibited": {
+            "title": "Interdit",
+            "body":"La création des cours encouragent ou liés de près ou de loin à la haine, aux armes, aux drogues et à des activités illégales sont strictement interdits sur cette plateforme. Les administrateur(e)s d'Instantaclasse pourront supprimer et bloquer des membres ainsi que les cours inappropriés."}
     }
 }

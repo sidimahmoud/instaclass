@@ -4,8 +4,8 @@
             <div class=" jumbotron1 pt-5 ">
                 <div class="container h-100">
                     <h1 class="text-center mt-md-5 text-white">
-                        ABOUT INSTANTACLASSE <br>
-                        WHO WE ARE?
+                        {{$t('about.hero.1')}}<br>
+                        {{$t('about.hero.2')}}
                     </h1>
                 </div>
             </div>
@@ -16,14 +16,9 @@
                             <img src="../assets/images/about/bigstock-Young-Asian-Business-Man-Using-364591240.jpg" width="400px" class="img-fluid rounded">
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <h1>About Us</h1>
+                            <h1>{{$t('about.about.title')}}</h1>
                             <p class="text-justify">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam dignissimos
-                                doloremque dolores facilis, harum, ipsa libero necessitatibus odit quia quis vel.
-                                Aspernatur dolorem omnis quas quisquam unde veniam voluptatem? <br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur corporis
-                                delectus, distinctio enim esse eveniet exercitationem expedita fugit labore, laboriosam,
-                                optio quia quidem ratione sapiente sequi tempore temporibus veniam!
+                                {{$t('about.about.body')}}
                             </p>
                         </div>
                     </div>
@@ -35,16 +30,10 @@
                 <div class="row align-items-center">
                     <div class="col-md-6 col-sm-12">
                         <h1>
-                            Our difference
+                            {{$t('about.difference.title')}}
                         </h1>
                         <p class="text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur aut, autem
-                            delectus dolor dolore dolorum est fugiat illum labore laborum libero magnam nam officiis
-                            praesentium sapiente sequi sit vero? <br>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis consectetur
-                            consequatur culpa cumque deserunt dignissimos dolore facere hic impedit, libero nihil
-                            obcaecati
-                            odio quas qui quo totam voluptatem, voluptatibus.
+                            {{$t('about.difference.body')}}
                         </p>
 
                     </div>
@@ -54,6 +43,22 @@
                 </div>
             </div>
         </section>
+
+        <div class=" jumbotron2 py-5">
+            <div class="container  align-items-center mt-2">
+                <div class="row justify-content-around align-items-center">
+                    <div class="col-md-6 col-sm-12 text-center d-none d-md-block">
+                        <img src="../assets/images/about/prohibited.png" width="200px" class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <h1>{{$t('about.prohibited.title')}}</h1>
+                        <p class="text-justify">
+                            {{$t('about.prohibited.body')}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <section class="bg-dark text-white mb-0 py-3">
             <div class="container newsLetter">
                 <h1 class="text-center">

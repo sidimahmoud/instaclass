@@ -5,7 +5,7 @@
         <div class="container text-center text-md-left mt-5">
 
             <!-- Grid row -->
-            <div class="row pt-5">
+            <div class="row pt-3">
 
                 <!-- Grid column -->
                 <div class="text-white col-md-3">
@@ -16,85 +16,84 @@
                         </a>
                         INSTANTACLASSE
                     </h6>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus,
-                        adipisci asperiores
-                        aspernatur autem
-                    </p>
-                </div><!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3">
-                    <p class="h3 text-white">
-                       {{$t('footer.quickLinks')}}
-                    </p>
-                    <p>
-                        <router-link :to="{ name: 'Home'}" tag="a" class="text-uppercase">
-                            {{$t('footer.home')}}
-                        </router-link>
-                    </p>
-                    <p>
-                        <router-link :to="{ name: 'About'}" tag="a" class="text-uppercase">
-                            {{$t('footer.about')}}
-                        </router-link>
-                    </p>
-                    <p>
-                        <router-link :to="{ name: 'Courses'}" tag="a" class="text-uppercase">
-                            {{$t('footer.courses')}}
-                        </router-link>
-                    </p>
-                    <p>
-                        <router-link :to="{ name: 'Become'}" tag="a" class="text-uppercase">
-                            {{$t('footer.become')}}
-                        </router-link>
-                    </p>
 
                 </div><!-- Grid column -->
-
                 <!-- Grid column -->
-                <div class="col-md-3">
+               <div class="col-md-6">
+                   <div class="row">
+                       <div class="col-md-12 mb-2">
+                           <p class="h3 text-white text-center">
+                               {{$t('footer.quickLinks')}}
+                           </p>
+                       </div>
+                       <div class="col-md-6">
+                           <p>
+                               <router-link :to="{ name: 'Home'}" tag="a" class="text-uppercase">
+                                   {{$t('footer.home')}}
+                               </router-link>
+                           </p>
+                           <p>
+                               <router-link :to="{ name: 'About'}" tag="a" class="text-uppercase">
+                                   {{$t('footer.about')}}
+                               </router-link>
+                           </p>
+                           <p>
+                               <router-link :to="{ name: 'Courses'}" tag="a" class="text-uppercase">
+                                   {{$t('footer.courses')}}
+                               </router-link>
+                           </p>
+                           <p>
+                               <router-link :to="{ name: 'Become'}" tag="a" class="text-uppercase">
+                                   {{$t('footer.become')}}
+                               </router-link>
+                           </p>
+                           <p>
+                               <router-link :to="{ name: 'Contact'}" tag="a" class=" text-uppercase">
+                                   {{$t('footer.contact')}}
+                               </router-link>
+                           </p>
+                       </div><!-- Grid column -->
 
-                    <!-- Links -->
-                    <p>
-                        <router-link :to="{ name: 'StudentProfile'}" tag="a" class=" text-uppercase">
-                            {{$t('footer.account')}}
-                        </router-link>
-                    </p>
-                    <p>
-                        <router-link to="#" tag="a" class=" text-uppercase">
-                            {{$t('footer.termsAndConditions')}}
-                        </router-link>
-                    </p>
-                    <p>
-                        <router-link :to="{ name: 'Faq'}" tag="a" class=" text-uppercase">
-                            {{$t('footer.faq')}}
-                        </router-link>
-                    </p>
-                    <p>
-                        <a href="#" class="text-uppercase"> {{$t('footer.privacy')}}</a>
-                    </p>
-                    <p>
-                        <router-link :to="{ name: 'Contact'}" tag="a" class=" text-uppercase">
-                            {{$t('footer.contact')}}
-                        </router-link>
-                    </p>
-                </div><!-- Grid column -->
-                <!-- Grid column -->
+                       <!-- Grid column -->
+                       <div class="col-md-6">
+
+                           <!-- Links -->
+                           <p>
+                               <router-link :to="{ name: 'StudentProfile'}" tag="a" class=" text-uppercase">
+                                   {{$t('footer.account')}}
+                               </router-link>
+                           </p>
+                           <p>
+                               <router-link to="#" tag="a" class=" text-uppercase">
+                                   {{$t('footer.termsAndConditions')}}
+                               </router-link>
+                           </p>
+                           <p>
+                               <router-link :to="{ name: 'Faq'}" tag="a" class=" text-uppercase">
+                                   {{$t('footer.faq')}}
+                               </router-link>
+                           </p>
+                           <p>
+                               <a href="#" class="text-uppercase"> {{$t('footer.privacy')}}</a>
+                           </p>
+
+                       </div><!-- Grid column -->
+                       <!-- Grid column -->
+
+                   </div>
+               </div>
                 <div class="col-md-3 align-content-center text-white mx-auto mb-md-0">
-                    <p class="h3">
-                        Contact Info
+                    <p class="mt-2">
+                        <a href=" https://www.facebook.com/InstantaClasse/?modal=admin_todo_tour " target="_blank">
+                            <i class="fa fa-facebook  mr-3 fa-2x"></i>
+                        </a>
+                        <i class="fa fa-instagram  fa-2x"></i>
                     </p>
                     <p>
-                        <i class="fa fa-home mr-2"></i> No: 100 , Avenue Road,
-                        NewYork, United States
+                        <img src="../assets/images/visa-mastercard.jpg" width="80px" alt="">
                     </p>
-                    <p>
-                        <i class="fa fa-phone mr-2"></i> +22 54455454
-                    </p>
-                    <p>
-                        <i class="fa fa-envelope mr-2"></i> example@gmail.com
-                    </p>
-                </div><!-- Grid column -->
+                </div>
+                <!-- Grid column -->
             </div><!-- Grid row -->
         </div>
         <!-- Footer Links -->
@@ -103,18 +102,11 @@
         <div class="footer-copyright text-center py-3 text-capitalize text-white">
             <div class="container">
                 <div class="row">
-                    <div class="col-6">
-                        © 2020 Copyright:
-                        <a href="https://instantaclasse.ca/" class="text-lowercase">instantaclasse.ca</a>
+                    <div class="col-12">
+                        © 2020 :
+                        <a href="https://instantaclasse.ca/" class="text-lowercase">Société Instantavite inc</a>
                     </div>
-                    <div class="col-6">
-                        <p class="mt-2">
-                            <a href=" https://www.facebook.com/InstantaClasse/?modal=admin_todo_tour " target="_blank">
-                                <i class="fa fa-facebook  mr-3 fa-2x"></i>
-                            </a>
-                            <i class="fa fa-instagram  fa-2x"></i>
-                        </p>
-                    </div>
+
                 </div>
             </div>
         </div><!-- Grid column -->

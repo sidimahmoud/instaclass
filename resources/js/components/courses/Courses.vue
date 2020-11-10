@@ -226,7 +226,8 @@ export default {
                 'filter[section_count]': event.target.value
             }
             this.fetchCourses(payload)
-        }
+        },
+
     },// End of Component > methods
     /*
     |--------------------------------------------------------------------------

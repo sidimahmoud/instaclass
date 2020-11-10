@@ -18,7 +18,7 @@
                     <strong>Number of Sessions - </strong> {{course.sections.length}} <br>
                     <strong>Duration per session - </strong> {{course.estimated_duration}} <br>
                     <strong>Language - </strong> {{course.language}} <br>
-                    <strong>Price per session - </strong> ${{course.price}} <br>
+                    <strong>Price per session - </strong> {{currencyToSymbol(course.currency)}}{{course.price}} <br>
                     <strong>Description - </strong> {{course.description}} <br>
                 </div>
                 <div class="col-md-2">
@@ -84,6 +84,24 @@
 <script>
 export default {
     name: "course-components",
+    /*
+    |--------------------------------------------------------------------------
+    | Component > methods
+    |--------------------------------------------------------------------------
+    */
+
+    methods:{
+        currencyToSymbol(currency){
+            switch (currency) {
+                case 'usd' :
+                    return '$';
+                case 'eur':
+                    return '€';
+                default:
+                    return currency
+            }
+        }
+    },
     /*
     |--------------------------------------------------------------------------
     | Component > props

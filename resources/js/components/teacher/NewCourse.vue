@@ -50,7 +50,6 @@
                 </div>
                 <div class="row" v-if="step===2">
                     <h3>Course details</h3>
-
                     <!--Price-->
                     <div class="col-md-12">
                         <div class="form-row mb-3">
@@ -115,8 +114,8 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <input type="checkbox"  id="records_sharing"  required>
-                            <label for="records_sharing">Autorisez vous le partage desenregistrements?</label>
+                            <input type="checkbox"  v-model="course.allow_share_records"  required>
+                            <label>Autorisez vous le partage desenregistrements?</label>
                         </div>
                     </div>
 
@@ -218,8 +217,8 @@
                 </div>
             </form>
             <div>
-                <button class="btn btn-dark" @click="step--" :disabled="step===1">Back</button>
-                <button class="btn btn-primary float-right" @click="step++" :disabled="step===4">Next</button>
+                <button class="btn btn-dark" @click="step--" :disabled="step===1">Previous step</button>
+                <button class="btn btn-primary float-right" @click="step++" :disabled="step===4">Next step</button>
             </div>
         </div>
         <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -486,7 +485,8 @@
     .bg {
         /*background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);*/
         border: 5px solid black;
-        box-shadow: 10px 10px 23px 0px rgba(130,130,130,1);
+        border-radius: 10px;
+        box-shadow: 10px 10px 23px 0 rgba(130,130,130,1);
     }
 
     .jumbotron {
