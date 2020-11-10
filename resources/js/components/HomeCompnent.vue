@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-light">
         <div class="hero">
             <div class="jumbotron jumbotron1 mb-0">
                  <span class=" px-1 py-3  shareBar">
@@ -15,9 +15,6 @@
                         width="93px" height="28">
                   </a>
                 </p>
-
-
-
             </span>
                 <div class="container  align-items-center mt-md-2 h-100">
                     <div class="row justify-content-around align-items-center h-100">
