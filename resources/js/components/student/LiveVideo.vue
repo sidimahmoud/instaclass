@@ -300,12 +300,21 @@ export default {
 #video-sub-window {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 50vh;
   overflow-y: auto;
 }
 #video-sub-window >>> video {
-  width: 100%;
+  width: 60%;
 }
+
+#video-my-self {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  overflow-y: auto;
+  width: 100px;
+}
+
 .video-item {
   margin-top: 10px;
   width: 100%;
