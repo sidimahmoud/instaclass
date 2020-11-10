@@ -1,5 +1,5 @@
-<template >
-    <div class="pb-3">
+<template>
+    <div class="pb-5 ">
         <div class="text-center text-primary pt-5 mt-5" v-if="loading">
             <div class="spinner-border pt-5" role="status">
                 <span class="sr-only">Loading...</span>
@@ -8,16 +8,16 @@
         <div v-if="!loading">
             <section class="hero pt-5">
                 <div class="container h-100">
-                    <div class="row h-100">
+                    <div class="row h-100 align-content-center">
                         <div class="col-md-4"></div>
                         <div class="col-md-8 text-center pt-md-5">
                             <h1 class="font-weight-bolder text-uppercase text-center">
                                 Available Courses
-                            </h1></div>
+                            </h1>
+                        </div>
                     </div>
                 </div>
             </section>
-
             <div class="container-fluid">
                 <div class="course-header">
                     <div class="row justify-content-around align-items-center pt-2">
@@ -25,15 +25,15 @@
                             <img :src="course.user.image" width="80px" height="80px" alt="Avatar"
                                  class="border rounded-circle">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 ">
                             <div class="font-weight-bolder">
                                 <h3>{{course.user.first_name}} {{course.user.first_name}}</h3>
-                                {{course.user.city}},{{course.user.country}}
+                                {{course.user.city}}, {{course.user.country}}
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-sm-12 pl-3">
                             <i class="fa fa-star  fa-2x"></i> {{course.user.ratings.length}} Instructor rating <br>
-                            <i class="fa fa-user  fa-2x mr-1"></i> 3 Students
+                            <i class="fa fa-user  fa-2x mr-1"></i> 0 Students
 
                         </div>
                         <div class="col-md-3" v-if="loggedInUser.t!=='teacher' && loggedInUser.t!=='admin'">
@@ -64,18 +64,18 @@
                     </div>
                 </div>
 
-                <div class="text-center my-3" v-if="course.sections.length===0">
+                <div class="text-center my-5" v-if="course.sections.length===0">
                     <h3>This first course will be available soon...</h3>
                 </div>
                 <div v-else>
-                    <div class="row justify-content-around align-items-center shadow-sm course-det"
+                    <div class="row justify-content-around align-items-center shadow-sm course-det px-0"
                          v-for="(section, index) in course.sections"
                          :key="section.id">
                         <div class="col-12 text-center">
-                            <h2><strong>Session : {{index+1}}</strong></h2>
+                            <h2 class="text-left"><strong>Session : {{index+1}}</strong></h2>
                         </div>
                         <div class="col-md-9">
-                            <h2><strong>{{section.title}}</strong></h2>
+                            <h3><strong>{{section.title}}</strong></h3>
                             <p>{{section.description}}</p>
                             <p>
                                 Availabilities : {{section.startDate}}
@@ -107,7 +107,7 @@
             findCourse() {
                 this.$store.dispatch('getCourse', this.$route.params.slug)
             },
-            currencyToSymbol(currency){
+            currencyToSymbol(currency) {
                 switch (currency) {
                     case 'usd' :
                         return '$';
@@ -128,9 +128,7 @@
 </script>
 
 <style scoped lang="scss">
-    body{
-        background-color: #ccc !important;
-    }
+
     .hero {
         background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details.jpg') no-repeat center center;
         height: 60vh;
@@ -143,13 +141,13 @@
         border-radius: 50rem !important;
     }
 
-
     .course-header {
-        border-radius: 15px;
+        border-radius: 15px 15px 0 0;
         margin: 10px;
+        margin-bottom: 0;
         background: linear-gradient(90deg,
-            rgba(10, 10, 10, 0.3),
-            rgb(255, 255, 255, 1));
+            rgba(10, 10, 10, 0.2),
+            rgb(255, 255, 255, 0.9));
         font-weight: 800 !important;
 
         .fa {
@@ -157,19 +155,17 @@
         }
 
         .course-info {
-            background: url('../../assets/images/teaprofile/down1.png') no-repeat right center;
+            background: url('../../assets/images/pngtree.png') no-repeat right center;
             background-size: contain;
+            padding: 20px;
         }
     }
 
     .course-det {
-        border-radius: 15px;
         margin: 10px;
         background: linear-gradient(90deg,
-            rgb(189, 189, 189), rgb(255, 255, 255, 1));
+            rgb(189, 189, 189), rgba(255, 255, 255, 0.9));
         font-weight: 800 !important;
         border-right: 2px solid #2b63f3;
     }
-
-
 </style>

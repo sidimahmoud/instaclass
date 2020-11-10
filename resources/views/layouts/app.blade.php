@@ -20,8 +20,8 @@
     <script src="https://apis.google.com/js/api:client.js"></script>
 </head>
 
-<body class="bg-light">
-<div id="app">
+<body>
+<div id="app" style="background-color: #ccc">
     <main>
         @yield('content')
     </main>

@@ -8,5 +8,4 @@
         </div>
         <appfooter v-if="!$route.meta.admin"></appfooter>
     </div>
-
 @endsection
