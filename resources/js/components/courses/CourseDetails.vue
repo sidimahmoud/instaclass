@@ -36,8 +36,14 @@
                             <i class="fa fa-user  fa-2x mr-1"></i> 0 Students
 
                         </div>
-                        <div class="col-md-3" v-if="loggedInUser.t!=='teacher' && loggedInUser.t!=='admin'">
+                        <!-- <div class="col-md-3" v-if="loggedInUser.t!=='teacher' && loggedInUser.t!=='admin'"> -->
+                        <div class="col-md-3">
                             <router-link
+                                :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
+                                tag="a" class="btn btn-primary my-3">
+                                S'inscrire à tout les séances
+                            </router-link>
+                            <!-- <router-link
                                 :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
                                 tag="a" class="btn btn-primary my-3" v-if="!enrolled">
                                 S'inscrire à tout les séances
@@ -45,7 +51,7 @@
                             <router-link :to="{name: 'StudentProfile'}" tag="a" class="btn btn-primary my-3"
                                          v-if="enrolled">
                                 Deja inscrit
-                            </router-link>
+                            </router-link> -->
                         </div>
                     </div>
                     <hr class="bg-dark mx-3">
@@ -82,10 +88,16 @@
                             </p>
                         </div>
                         <div class="col-md-1 d-none -d-md-flex"></div>
-                        <div class="col-md-2" v-if="loggedInUser.t!=='teacher'">
-                            <router-link
+                        <!-- <div class="col-md-2" v-if="loggedInUser.t!=='teacher'"> -->
+                            <!-- <router-link
                                 :to="{ name: 'BuyOneSection', params: {id: section.id, name: section.title, price: course.price}}"
                                 tag="a" class="btn btn-primary my-3" v-if="!enrolled">
+                                S'inscrire
+                            </router-link> -->
+                        <div class="col-md-2">
+                            <router-link
+                                :to="{ name: 'BuyOneSection', params: {id: section.id, name: section.title, price: course.price}}"
+                                tag="a" class="btn btn-primary my-3">
                                 S'inscrire
                             </router-link>
                         </div>
