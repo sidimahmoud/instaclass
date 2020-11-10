@@ -49,6 +49,8 @@
                     </div>
                 </div>
                 <div class="row" v-if="step===2">
+                    <h3>Course details</h3>
+
                     <!--Price-->
                     <div class="col-md-12">
                         <div class="form-row mb-3">
@@ -62,13 +64,6 @@
 
                             </div>
                             <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="sections">Number of sessions</label>
-                                    <input type="number" value="1" min="1" class="form-control" id="sections" required
-                                           @change="addSection">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
                                 <label for="price">Currency</label>
                                 <select class="form-control" v-model="course.currency" aria-describedby="currencyHelp"
                                         required>
@@ -80,7 +75,7 @@
                                     Canadiens users have to select CAD.
                                 </small>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <p class=" font-weight-light">
                                     Your estimated total earnings for the course will depend of your estimated price,
                                     number of sessions and students enrolled.
@@ -118,9 +113,17 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="checkbox"  id="records_sharing"  required>
+                            <label for="records_sharing">Autorisez vous le partage desenregistrements?</label>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="row" v-if="step===3">
+                    <h3>Course summery</h3>
+
                     <!--Summary-->
                     <div class="col-md-12">
                         <div class="form-group">
@@ -130,6 +133,20 @@
                     </div>
                 </div>
                 <div v-if="step===4">
+                    <h3>Course sessions</h3>
+                    <div class="form-row">
+                        <div class="col-md-6 text-center">
+                            <label for="sections">Number of sessions</label>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="number" value="1" min="1" class="form-control" id="sections" required
+                                       @change="addSection">
+                            </div>
+                        </div>
+                    </div>
+
                     <!--sections-->
                     <div class="row border m-2 " v-for="(section, index) in sections" :key="index">
                         <div class="col-md-6">
@@ -324,6 +341,7 @@
                     estimated_duration: '',
                     authorized_students: '',
                     sharable: '1',
+                    allow_share_records: '1',
                     name: '',
                     image: '',
                     short_description: '',
@@ -420,6 +438,7 @@
                 formData.append("sharable", this.course.sharable);
                 formData.append("name", this.course.name);
                 formData.append("short_description", this.course.short_description);
+                formData.append("allow_share_records", this.course.allow_share_records);
                 //this.sections.map(item=>)
 
                 formData.append("sections", JSON.stringify(this.sections));

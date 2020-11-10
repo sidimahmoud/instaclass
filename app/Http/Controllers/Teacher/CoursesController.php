@@ -8,6 +8,7 @@ use App\CourseFile;
 use App\Enrollment;
 use App\Http\Controllers\Controller;
 use App\Mail\Mails;
+use App\Notifications\CourseCreatedSuccessfully;
 use App\Payement;
 use App\Rating;
 use Illuminate\Http\Request;
@@ -147,12 +148,13 @@ class CoursesController extends Controller
 //        $course->type = $request["type"];
         $course->estimated_duration = $request["estimated_duration"];
         $course->authorized_students = $request["authorized_students"];
-//        $course->join_after = $request["join_after"];
+//      $course->join_after = $request["join_after"];
         $course->price = $request["price"];
         $course->available_from = $request["available_from"];
         $course->available_to = $request["available_to"];
         $course->sharable = $request["sharable"];
-//        $course->published = $request["published"];
+//      $course->published = $request["published"];
+        $course->allow_share_records = $request["allow_share_records"];
 
         if ($request->hasFile('image')) {
             $file = $request['image'];
@@ -165,6 +167,7 @@ class CoursesController extends Controller
         $course->save();
 
         if ($course)
+            $request->user()->notify(new CourseCreatedSuccessfully());
             return response()->json("course created successfully");
         return response()->json("error");
     }
