@@ -24,11 +24,12 @@
               </div>
             </div>
           </div>
-          <div class="col-md-2" id="video-sub-window">
+          <div class="col-md-2">
             <h5>You</h5>
             <div id="video-my-self"></div>
             <div
               class="sub-window m-2 p-1 rounded"
+              id="video-sub-window"
               v-if="videoItems.length"
             >
               <div
@@ -182,13 +183,13 @@ export default {
             participant.tracks.forEach((publication) => {
               if (publication.isSubscribed) {
                 console.log("isSubscribid");
-                // const track = publication.track;
-                // videoChatWindow.appendChild(track.attach());
+                const track = publication.track;
+                videoChatWindow.appendChild(track.attach());
               }
             });
 
             participant.on("trackSubscribed", (track) => {
-              //   videoChatWindow.appendChild(track.attach());
+                 videoChatWindow.appendChild(track.attach());
               if (
                 _vue.videoItems.findIndex(
                   (item) => item.id == participant.identity
@@ -274,7 +275,7 @@ export default {
 <style  scoped>
 .video-call-screen {
   height: 100vh;
-  background: #fff;
+  background: #F0F8FF;
   padding-top: 5vh;
 }
 
@@ -312,7 +313,7 @@ export default {
   flex-direction: column;
   height: 80vh;
   overflow-y: auto;
-  width: 100px;
+  width: 90%;
 }
 
 .video-item {
