@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-10">
             <div class="m-2 bg-black text-center">
               <div class="main-window-dark m-2 p-1 rounded position-relative">
                 <div id="video-main-window"></div>
@@ -24,12 +24,11 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-2" id="video-sub-window">
             <h5>You</h5>
             <div id="video-my-self"></div>
             <div
               class="sub-window m-2 p-1 rounded"
-              id="video-sub-window"
               v-if="videoItems.length"
             >
               <div
@@ -275,7 +274,7 @@ export default {
 <style  scoped>
 .video-call-screen {
   height: 100vh;
-  background: #565656;
+  background: #fff;
   padding-top: 5vh;
 }
 
@@ -291,6 +290,7 @@ export default {
 #video-main-window {
   height: 80vh;
 }
+
 #video-main-window >>> video {
   width: 100%;
   height: 100%;
@@ -300,11 +300,11 @@ export default {
 #video-sub-window {
   display: flex;
   flex-direction: column;
-  height: 50vh;
+  height: 20vh;
   overflow-y: auto;
 }
 #video-sub-window >>> video {
-  width: 60%;
+  width: 90%;
 }
 
 #video-my-self {
