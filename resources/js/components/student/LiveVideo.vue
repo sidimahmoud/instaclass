@@ -183,13 +183,13 @@ export default {
             participant.tracks.forEach((publication) => {
               if (publication.isSubscribed) {
                 console.log("isSubscribid");
-                const track = publication.track;
-                videoChatWindow.appendChild(track.attach());
+                /* const track = publication.track;
+                videoChatWindow.appendChild(track.attach()); */
               }
             });
 
             participant.on("trackSubscribed", (track) => {
-                 videoChatWindow.appendChild(track.attach());
+                 //videoChatWindow.appendChild(track.attach());
               if (
                 _vue.videoItems.findIndex(
                   (item) => item.id == participant.identity
@@ -301,7 +301,7 @@ export default {
 #video-sub-window {
   display: flex;
   flex-direction: column;
-  height: 20vh;
+  height: 80vh;
   overflow-y: auto;
 }
 #video-sub-window >>> video {
@@ -309,15 +309,11 @@ export default {
 }
 
 #video-my-self {
-  display: flex;
-  flex-direction: column;
-  height: 20vh;
-  overflow-y: auto;
+  height: 10vh;
   width: 90%;
 }
 
 .video-item {
-  margin-top: 10px;
   width: 100%;
   padding: 10px;
 }

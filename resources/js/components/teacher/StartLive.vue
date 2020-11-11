@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid border-top border-primary video-call-screen">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-10">
         <div class="m-2 bg-black text-center">
           <div class="main-window m-2 p-1 rounded position-relative">
             <div id="video-main-window"></div>
@@ -47,7 +47,7 @@
           </button>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-2">
         <div
           class="sub-window m-2 p-1 rounded"
           id="video-sub-window"
@@ -316,22 +316,22 @@ export default {
 <style scoped>
 .video-call-screen {
   height: 100vh;
-  background: #565656;
+  background: #F0F8FF;
   padding-top: 5vh;
 }
 
 .main-window {
-  background: #565656;
-  border: 1px solid #565656;
+  background: #fff;
+  border: 1px solid #eee;
 }
 
 .sub-window {
-  border: 1px solid #565656;
+  border: 1px solid #eee;
 }
 
 #video-main-window {
   /* height: 500px; */
-  height: 80vh;
+  height: 90vh;
 }
 #video-main-window >>> video {
   width: 100%;
