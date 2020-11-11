@@ -280,16 +280,16 @@ export default {
 }
 
 .main-window {
-  background: #565656;
-  border: 1px solid #565656;
+  background: #fff;
+  border: 1px solid #eee;
 }
 
 .sub-window {
-  border: 1px solid #565656;
+  border: 1px solid #eee;
 }
 
 #video-main-window {
-  height: 80vh;
+  height: 90vh;
 }
 
 #video-main-window >>> video {
@@ -311,7 +311,7 @@ export default {
 #video-my-self {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 20vh;
   overflow-y: auto;
   width: 90%;
 }
