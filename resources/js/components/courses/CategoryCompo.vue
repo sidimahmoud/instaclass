@@ -1,28 +1,29 @@
 <template>
     <div class="col-md-3 col-sm-12 p-2  text-center d-flex align-items-stretch">
         <div class="card">
-        <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="a">
-            <img class="card-img-top"
-                 :src="categ.image"
-                 :alt="categ.name_en">
-        </router-link>
-        <div class="card-body cateDetails">
-            <h5 class="card-title  font-weight-bolder text-uppercase">{{(lang==="en")? categ.name_en:
-                categ.name_fr}}</h5>
-            <p class="card-text">
+            <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="a">
+                <img class="card-img-top"
+                     :src="categ.image"
+                     :alt="categ.name_en">
+            </router-link>
+            <div class="card-body cateDetails">
+                <h5 class="card-title  font-weight-bolder text-uppercase">{{(lang==="en")? categ.name_en:
+                    categ.name_fr}}</h5>
+                <p class="card-text">
                     <span v-for="(sub, index) in categ.sub_categories.slice(0,3)" :key="sub.id">
                         {{index>0? ", ":""}} {{(lang==="en")? sub.name_en:sub.name_fr}}
                     </span>...
 
-            </p>
-            <div>
-                <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="button"
-                             class="btn btn-primary btn-sm mb-2">
-                    View Details
-                </router-link>
+                </p>
+                <div>
+                    <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="button"
+                                 class="btn btn-primary btn-sm mb-2">
+                        {{$t('veiwDet')}}
+
+                    </router-link>
+                </div>
             </div>
         </div>
-    </div>
 
     </div>
 

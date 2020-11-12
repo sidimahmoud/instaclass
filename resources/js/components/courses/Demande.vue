@@ -28,37 +28,35 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <h2 class="text-center">Demande de cours</h2>
+                        <h2 class="text-center">{{$t('demande.title')}}</h2>
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1"> Dites nous le cours que vous aimeriez suivre en
-                                direct
-                                sur la plateforme</label>
+                            <label for="exampleFormControlTextarea1"> {{$t('demande.desc')}}</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" required v-model="details">
 
                         </textarea>
                         </div>
                         <div class="form-group" v-if="lang ==='fr'|| lang ==='en'||lang === 'es'">
-                            <label for="lang">Langue du cours desiré</label>
+                            <label for="lang">{{$t('demande.lang')}}</label>
                             <select class="form-control" id="lang" v-model="lang">
-                                <option value="fr">Français</option>
-                                <option value="en">Anglais</option>
-                                <option value="es">Espagnol</option>
-                                <option value="">Autre (Précisez)</option>
+                                <option value="fr">{{$t('demande.languages.fr')}}</option>
+                                <option value="en">{{$t('demande.languages.en')}}</option>
+                                <option value="es">{{$t('demande.languages.es')}}</option>
+                                <option value="">{{$t('demande.languages.other')}}</option>
                             </select>
                         </div>
                         <div class="form-group" v-else>
-                            <label for="lang1">Langue du cours</label>
+                            <label for="lang1">{{$t('demande.lang')}}</label>
                             <input type="text" class="form-control" id="lang1" required v-model="lang">
                         </div>
                         <div class="form-group mb-1">
-                            <label for="email">Email address (optionnel)</label>
+                            <label for="email">{{$t('demande.email')}}</label>
                             <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                                   placeholder="Enter email" v-model="email">
+                                   :placeholder="$t('demande.emailPlaceholder')" v-model="email">
                             <small id="emailHelp" class="form-text text-muted">
-                                Vous serez averti quand le cours sera disponible.
+                                {{$t('demande.emailHelp')}}
                             </small>
                         </div>
-                        <button class="btn btn-primary btn-block mb-2">Envoyer</button>
+                        <button class="btn btn-primary btn-block mb-2">{{$t('demande.btn')}}</button>
                     </form>
                 </div>
             </div>

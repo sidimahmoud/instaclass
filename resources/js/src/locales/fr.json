@@ -39,6 +39,7 @@
         "contact": "Nous contacter"
     },
     "coursesByCateg": "Les cours par categorie",
+    "veiwDet": "Voir détails",
     "search": "Chercher des cours",
     "searchBtn": "Chercher",
     "noCourses": "Il n'y a pas de cours dans cette catégorie pour l’instant.",
@@ -125,13 +126,22 @@
         "signup": "Inscrire",
         "continueWith":"Continuer avec",
         "new": "Vous n'avez pas de compte?",
+        "user": "Vous avez déjà un compte?",
+        "createYourAccount": "Créez votre compte. Cela ne prend que quelques secondes.",
+        "fName": "Prénom",
+        "lName": "Nom",
+        "password": "Mot de passe",
+        "passwordConfirm": "Confirmation de mot de passe",
+        "accept": "J'accepte",
         "become": {
             "1": "Connectez-vous ou inscrivez-vous pour accéder à votre compte d’enseignant",
             "2": "Créez et structurez votre cours",
             "3":"Enseignez par vidéo en direct",
             "4": "Soyez payé",
             "getStarted": "COMMENCEZ EN TANT QU'ENSEIGNANT AUJOURD’HUI",
-            "login": "Connecter pour acceder votre espace d'instructeur."
+            "login": "Connecter pour acceder votre espace d'instructeur.",
+            "become": "DEVENIR INSTRUCTEUR",
+            "join": "REJOIGNEZ NOTRE COMMUNAUTÉ"
         },
         "student": {
             "1": "Connectez-vous ou inscrivez-vous pour accéder à votre compte d’étudiant",
@@ -140,6 +150,27 @@
             "getStarted": "COMMENCEZ EN TANT QU'ÉTUDIANT"
         }
     },
+    "demande": {
+        "title": "Demande de cours",
+        "desc": "Dites nous le cours que vous aimeriez suivre en direct sur la plateforme",
+        "lang": "Langue du cours desiré",
+        "languages":{
+            "fr": "Français",
+            "en": "Anglais",
+            "es": "Espagnol",
+            "other": "Autre (Précisez)"
+        },
+        "email": "Aderesse mail (optionnel)",
+        "emailPlaceholder": "Saisir votre mail",
+        "emailHelp": "Vous serez averti quand le cours sera disponible.",
+        "btn": "Envoyer"
+    },
+
+
+
+
+
+
     "profile": {
         "go_live": "Go to live",
         "no_video_yet": "No video link added yet"
