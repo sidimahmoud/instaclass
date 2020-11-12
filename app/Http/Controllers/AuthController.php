@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\VerifyEmail;
 use App\Role;
 use App\SocialAccount;
 use App\User;
@@ -67,15 +68,15 @@ class AuthController extends Controller
         $user->about = $request['about'];
         $user->save();
         if ($user) {
-            if ($request["type"]==="teacher"){
+            if ($request["type"] === "teacher") {
                 $role = Role::where('name', 'teacher')->first();
                 $user->roles()->attach($role);
-            }
-            else{
+            } else {
                 $role = Role::where('name', 'student')->first();
                 $user->roles()->attach($role);
             }
-            $user->sendEmailVerificationNotification();
+            $user->notify(new VerifyEmail($user->id));
+
             return response()->json($user);
         }
         return response()->json("error");

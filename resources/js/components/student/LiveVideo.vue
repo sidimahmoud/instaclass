@@ -25,13 +25,13 @@
             </div>
           </div>
           <div class="col-md-2">
+            <h5 style="color:#000">You</h5>
+            <div id="video-my-self"></div>
             <div
               class="sub-window m-2 p-1 rounded"
               id="video-sub-window"
               v-if="videoItems.length"
             >
-              <h5 style="color:#000">You</h5>
-              <div id="video-my-self"></div>
               <div
                 v-for="(item, index) in videoItems"
                 :key="`index-${index}`"

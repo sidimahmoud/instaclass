@@ -120,6 +120,10 @@ export default {
           this.accessToken = res.data.token;
           this.myRoom = res.data.name;
           this.connectToRoom();
+          this.joinCourseFile({
+            name: res.data.name,
+            sid: res.data.sid,
+          });
         })
         .catch((err) => console.log(err.response));
     },
@@ -308,6 +312,14 @@ export default {
         this.myVideoTrack.enable();
       }
     },
+    joinCourseFile(payload){
+      let params = {
+        id: this.course_id,
+        link: `/player/livevideo/${payload.name}/${payload.sid}`,
+      }
+
+      this.$store.dispatch('editCourseSection', params)
+    }
   },
   created() {
     this.createRoom();

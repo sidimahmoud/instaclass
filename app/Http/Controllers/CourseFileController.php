@@ -6,9 +6,16 @@ use App\CourseFile;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Repositories\CourseFileRepository;
 
 class CourseFileController extends Controller
 {
+    private $courseRepository;
+
+    public function __construct(CourseFileRepository $courseRepository)
+    {
+        $this->courseRepository = $courseRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -118,5 +125,11 @@ class CourseFileController extends Controller
         $file->delete();
         return response()->json(["response"=>"section deleted"]);
 
+    }
+
+    public function updateLinks(Request $request, $id)
+    {
+        $cour = $this->courseRepository->update($request->all());
+        return response()->json($cour);
     }
 }

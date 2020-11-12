@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Builder;
 
 class CourseRepository extends BaseRepository
 {
-
     /**
      * @var array
      */
@@ -32,19 +31,19 @@ class CourseRepository extends BaseRepository
      */
     protected $allowedFilters = [];
 
-   /**
-    * OrderRepository constructor.
-    *
-    * @param Order $model
-    */
-   public function __construct(Course $model)
-   {
+    /**
+        * OrderRepository constructor.
+        *
+        * @param Order $model
+        */
+    public function __construct(Course $model)
+    {
         parent::__construct($model);
         //$this->allowedFilters[] = AllowedFilter::exact('language');
         $this->allowedFilters[] = AllowedFilter::scope('price_less_than');
         $this->allowedFilters[] = AllowedFilter::scope('in_category');
         $this->allowedFilters[] = AllowedFilter::scope('section_count');
-   }
+    }
 
     /**
      * Override new query

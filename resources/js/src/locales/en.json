@@ -1,5 +1,16 @@
 {
-    "title": "The perfect platform for teaching or learning online courses",
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "courses": "All Courses",
+        "become": "Become Instructor",
+        "demande": "Request a course",
+        "account": "Account"
+    },
+    "title": {
+        "1": "The perfect platform for teaching",
+        "2": "or learning online courses"
+    },
     "title2": {
         "teachers": {
             "title": "Teachers",
@@ -13,14 +24,6 @@
             "2": "Study courses live on INSTANTACLASSE platform.",
             "3": "Get a free lesson when a course is scheduled for 3 sessions or more."
         }
-    },
-    "nav": {
-        "home": "Home",
-        "about": "About",
-        "courses": "All Courses",
-        "become": "Become Instructor",
-        "demande": "Request a course",
-        "account": "Account"
     },
     "coursesByCateg": "Courses by category",
     "search": "Search for courses",
@@ -79,6 +82,65 @@
         },
         "prohibited": {
             "title": "Prohibited",
-            "body":"Classes that encourage or are directly or indirectly related to hatred, weapons, drugs and illegal activities are strictly prohibited on this platform. Instantaclasse administrators will remove and block members and inappropriate courses."}
-    }
+            "body": "Classes that encourage or are directly or indirectly related to hatred, weapons, drugs and illegal activities are strictly prohibited on this platform. Instantaclasse administrators will remove and block members and inappropriate courses."
+        },
+        "newsletter": {
+            "stay": "Stay informed",
+            "subscribe": "Subscribe to our mailbox",
+            "subscribeBtn": "Subscribe"
+        }
+    },
+    "courses": {
+        "hero": "ALL COURSES WHAT WE OFFER",
+        "title": "SELECT YOUR COURSE TODAY",
+        "category": "Category",
+        "price": "Price",
+        "courseLang": "Course language",
+        "sessionsPer": "Sessions per course",
+        "all": "All"
+    },
+    "course": {
+        "session": "Séance",
+        "sessions": "Number of Sessions",
+        "duration": "Number of Sessions",
+        "lang": "Language",
+        "price": "Price per session",
+        "description": "Description",
+        "enroll": "Enroll in this Course",
+        "enrollInSession": "Enroll in this session",
+        "learnMore": "Learn more about this course",
+        "subCat": "Sub-category",
+        "instructorRate": "Instructor rating",
+        "students": "Students enrolled",
+        "scheduledAt": "Scheduled at"
+    },
+    "courseDetails": {
+        "hero": "AVAILABLE COURSES",
+        "firstCourse": "This first course will be available soon..."
+    },
+    "auth": {
+        "signIn": "Sign in",
+        "signup": "Sign up",
+        "continueWith": "Continue with",
+        "new": "Don't have an account?",
+        "become": {
+            "1": "Login or sign up to access to your teacher account",
+            "2": "Create and structure your course",
+            "3": "Teach by video live course",
+            "4": "Get paid",
+            "getStarted": "GET STARTED AS A TEACHER",
+            "login": "Login to access into your teacher space."
+        },
+        "student": {
+            "1": "Login or sign up to access to your student account",
+            "2": "Register to your favorite course",
+            "3": "Learn with live video at the scheduled time",
+            "getStarted": "GET STARTED AS A STUDENT"
+        }
+    },
+    "profile": {
+        "go_live": "Go to live",
+        "no_video_yet": "No video link added yet"
+    },
+    "start_at": "Start at"
 }

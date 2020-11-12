@@ -21,12 +21,25 @@
         </section>
         <div class="container ">
             <div class="row">
-                <div class="col-sm-9 col-md-10 col-lg-8 mx-auto">
-                    <div class="signup-form bg-white m-5">
+                <div class="col-sm-9 col-md-10 col-lg-8 mx-auto mt-0">
+
+                    <div class="signup-form bg-white m-5 pt-0">
+                        <div class="row text-dark font-weight-bold d-none d-md-block">
+                            <div class="col-md-12 mx-auto d-flex align-items-center">
+                                <div class="col-md-3 col-sm-6">{{$t('auth.become.1')}}</div>
+                                <div class="col-md-1 col-sm-6"><i class="fa fa-angle-double-right fa-5x"></i> </div>
+                                <div class="col-md-3 col-sm-6">{{$t('auth.become.2')}}</div>
+                                <div class="col-md-1 col-sm-6"><i class="fa fa-angle-double-right fa-5x"></i> </div>
+                                <div class="col-md-2 col-sm-6">{{$t('auth.become.3')}}</div>
+                                <div class="col-md-1 col-sm-6"><i class="fa fa-angle-double-right fa-5x"></i> </div>
+                                <div class="col-md-1 col-sm-6">{{$t('auth.become.4')}}</div>
+                            </div>
+
+                        </div>
                         <form method="post" @submit.prevent="login">
-                            <h3 class="text-uppercase text-center text-dark">get started with <br> Instantclass.</h3>
-                            <h2>Sign in</h2>
-                            <p class="hint-text">Login to access into your teacher space.
+                            <h4 class="text-uppercase text-center text-dark mt-3">{{$t('auth.become.getStarted')}}</h4>
+                            <h2>{{$t('auth.signIn')}}</h2>
+                            <p class="hint-text">{{$t('auth.become.login')}}
                             </p>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert"
                                  v-if="errorMessage">
@@ -56,7 +69,7 @@
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-dark btn-lg btn-block ">
-                                    <span v-if="!authLoading">Sign in </span>
+                                    <span v-if="!authLoading">{{$t('auth.signIn')}}</span>
                                     <div class="text-center text-white" v-if="authLoading">
                                         <span class="spinner-border spinner-border-sm" role="staitus"
                                               aria-hidden="true"/>
@@ -66,16 +79,16 @@
                             </div>
                         </form>
                         <div>
-                            <div class="text-center">Don't have an account?
-                                <router-link :to="{name: 'Become'}">Sign up</router-link>
+                            <div class="text-center">{{$t('auth.new')}}
+                                <router-link :to="{name: 'Become'}">{{$t('auth.signup')}}</router-link>
                             </div>
                             <h2>Or</h2>
                             <button class="btn btn-lg btn-google btn-block text-uppercase" @click="authLogin('google')">
-                                <i class="fa fa-google mr-2"></i> Continue with Google
+                                <i class="fa fa-google mr-2"></i> {{$t('auth.continueWith')}} Google
                             </button>
                             <button class="btn btn-lg btn-github  btn-block text-uppercase"
                                     @click="authLogin('facebook')">
-                                <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
+                                <i class="fa fa-facebook-f text-white mr-2"></i> {{$t('auth.continueWith')}} Facebook
                             </button>
                         </div>
                     </div>
@@ -164,8 +177,6 @@
         margin-bottom: 15px;
         background: #ffffff;
         border: 2px solid black;
-        border-bottom: 2px solid black;
-        /*border-radius: 5%;*/
 
     }
 

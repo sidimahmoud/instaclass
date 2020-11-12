@@ -2,32 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\VerifyEmail;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class VerificationController extends Controller
 {
     public function verify($user_id, Request $request) {
-//        if (!$request->hasValidSignature()) {
-//            return response()->json(["msg" => "Invalid/Expired url provided."], 401);
-//        }
-
-        $user = User::findOrFail($user_id);
-
-        if (!$user->hasVerifiedEmail()) {
-            $user->markEmailAsVerified();
-        }
-
-        return redirect()->to('/');
+        $user = User::find($user_id);
+        $user->email_verified_at = Carbon::now();
+        $user->save();
+//        if ($user->role-)
+        return redirect("/auth/login");
     }
 
-    public function resend() {
+    public function resend($user_id, Request $request) {
         if (auth()->user()->hasVerifiedEmail()) {
             return response()->json(["msg" => "Email already verified."], 400);
         }
-
-        auth()->user()->sendEmailVerificationNotification();
-
+        $request->user()->notify(new VerifyEmail());
         return response()->json(["msg" => "Email verification link sent on your email id"]);
     }
 }

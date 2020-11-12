@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <div class="row justify-content-around align-items-center shadow-sm course-det p-1">
+            <div class="row justify-content-around align-items-center shadow-sm course-det p-1 py-3">
                 <div class="col-md-2" :style="{
                   backgroundImage: 'url(' + course.sub_category.category.image + ')',
                   backgroundSize: 'cover',
@@ -15,21 +15,22 @@
                     <!--                         class="img-fluid">-->
                 </div>
                 <div class="col-md-8">
-                    <strong>Number of Sessions - </strong> {{course.sections.length}} <br>
-                    <strong>Duration per session - </strong> {{course.estimated_duration}} <br>
-                    <strong>Language - </strong> {{course.language}} <br>
-                    <strong>Price per session - </strong> {{currencyToSymbol(course.currency)}}{{course.price}} <br>
-                    <strong>Description - </strong> {{course.description}} <br>
+                    <strong>{{$t('course.sessions')}} - </strong> {{course.sections.length}} <br>
+                    <strong>{{$t('course.duration')}} - </strong> {{course.estimated_duration}} <br>
+                    <strong>{{$t('course.lang')}} - </strong> {{course.language}} <br>
+                    <strong>{{$t('course.price')}} - </strong> <span v-if="course.price===0">Free</span> <span
+                    v-if="course.price!=0">{{currencyToSymbol(course.currency)}}{{course.price}}</span> <br>
+                    <strong>{{$t('course.description')}} - </strong> {{course.description}} <br>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2" :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '']">
                     <router-link
-                        :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price, sections_count: course.sections_count}}"
+                        :to="{ path: `/checkout/${course.id}`, params: {id: course.id, name: course.name, price: course.price, sections_count: course.sections_count}}"
                         tag="button" class="btn btn-primary btn-block my-3">
                         S'inscrire à ce cours
                     </router-link>
                 </div>
                 <div class="col-12">
-                    <div class="row">
+                    <div class="row align-items-center">
                         <div class="col-6">
                             <div class="fb-share-button" :data-href="'https://mondemenagement.ca/courses/'+course.id"
                                  data-layout="button" data-size="large">
@@ -37,14 +38,15 @@
                                    :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmondemenagement.ca%2Fcourses%2F'+course.id+'&amp;src=sdkpreparse'"
                                    class="fb-xfbml-parse-ignore">
                                     <img src="../../assets/images/fbShare.png" width="70px" alt="">
-                                    <img src="../../assets/images/share.png" width="40px" alt="">
+                                    <!--                                    <img src="../../assets/images/share.png" width="40px" alt="">-->
                                 </a>
                             </div>
 
                         </div>
                         <div class="col-6">
-                            <router-link :to="{ name: 'Detail', params: { slug: course.id}}" tag="a">
-                                <button class="btn btn-primary mb-1">Learn more</button>
+                            <router-link :to="{ name: 'Detail', params: { slug: course.id}}" tag="a"
+                                         class="btn btn-primary mb-1 text-white">
+                                {{$t('course.learnMore')}}
                             </router-link>
                         </div>
                     </div>
@@ -82,47 +84,56 @@
 
 </template>
 <script>
-export default {
-    name: "course-components",
-    /*
-    |--------------------------------------------------------------------------
-    | Component > methods
-    |--------------------------------------------------------------------------
-    */
+    import {mapGetters} from 'vuex'
+    export default {
+        name: "course-components",
+        /*
+        |--------------------------------------------------------------------------
+        | Component > methods
+        |--------------------------------------------------------------------------
+        */
 
-    methods:{
-        currencyToSymbol(currency){
-            switch (currency) {
-                case 'usd' :
-                    return '$';
-                case 'eur':
-                    return '€';
-                default:
-                    return currency
+        methods: {
+            currencyToSymbol(currency) {
+                switch (currency) {
+                    case 'usd' :
+                        return '$';
+                    case 'eur':
+                        return '€';
+                    default:
+                        return currency
+                }
             }
-        }
-    },
-    /*
-    |--------------------------------------------------------------------------
-    | Component > props
-    |--------------------------------------------------------------------------
-    */
-    props: {
-        course: {
-            type: Object,
-            default: null
         },
-    },
-    /*
-    |--------------------------------------------------------------------------
-    | component > mounted
-    |--------------------------------------------------------------------------
-    */
-    mounted () {
-        console.log(this.course)
-    },
+        /*
+        |--------------------------------------------------------------------------
+        | Component > props
+        |--------------------------------------------------------------------------
+        */
+        props: {
+            course: {
+                type: Object,
+                default: null
+            },
+        },
+        /*
+        |--------------------------------------------------------------------------
+        | component > mounted
+        |--------------------------------------------------------------------------
+        */
+        mounted() {
+            console.log(this.course)
+        },
+        /*
+        |--------------------------------------------------------------------------
+        | component > computed
+        |--------------------------------------------------------------------------
+        */
+        computed: {
+            ...mapGetters(["isLoggedIn" , "loggedInUser"])
+        },
 
-};
+    };
 </script>
 <style lang="scss" scoped>
     a {

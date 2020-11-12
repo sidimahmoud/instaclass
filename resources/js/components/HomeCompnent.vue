@@ -21,9 +21,10 @@
                         <div class="col-md-2 d-none d-md-block"></div>
                         <div
                             class="col-md-10 col-sm-12 text-center px-md-5 justify-content-center align-items-center text-uppercase">
-                            <h1>
-                                {{$t('title')}}
-                            </h1>
+                            <h2 class=" text-center">
+                                {{$t('title.1')}} <br>
+                                {{$t('title.2')}}
+                            </h2>
 
                         </div>
                         <!--                    <div class="col-md-6 d-none d-md-block">-->
