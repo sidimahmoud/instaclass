@@ -80,5 +80,10 @@
         "prohibited": {
             "title": "Prohibited",
             "body":"Classes that encourage or are directly or indirectly related to hatred, weapons, drugs and illegal activities are strictly prohibited on this platform. Instantaclasse administrators will remove and block members and inappropriate courses."}
-    }
+    },
+    "profile": {
+        "go_live": "Go to live",
+        "no_video_yet": "No video link added yet"
+    },
+    "start_at": "Start at"
 }

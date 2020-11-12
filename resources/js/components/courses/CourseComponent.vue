@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-2">
                     <router-link
-                        :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price, sections_count: course.sections_count}}"
+                        :to="{ path: `/checkout/${course.id}`, params: {id: course.id, name: course.name, price: course.price, sections_count: course.sections_count}}"
                         tag="button" class="btn btn-primary btn-block my-3">
                         S'inscrire à ce cours
                     </router-link>

@@ -83,5 +83,10 @@
         "prohibited": {
             "title": "Interdit",
             "body":"La création des cours encouragent ou liés de près ou de loin à la haine, aux armes, aux drogues et à des activités illégales sont strictement interdits sur cette plateforme. Les administrateur(e)s d'Instantaclasse pourront supprimer et bloquer des membres ainsi que les cours inappropriés."}
-    }
+    },
+    "profile": {
+        "go_live": "Aller en live",
+        "no_video_yet": "Aucun lien vidéo ajouté pour le moment"
+    },
+    "start_at": "Commence à"
 }

@@ -35,7 +35,9 @@ class EnrollmentController extends Controller
      */
     public function userEnrollments(Request $request)
     {
-        $enrollments = Enrollment::with('CourseFile.course.user')->where('user_id', $request->user()->id)->get();
+        info('info',[$request->user()->id]);
+        $enrollments = Enrollment::where('user_id', $request->user()->id)->with('CourseFile.course.user')->get();
+        info('enrollments',[$enrollments]);
         return response()->json($enrollments);
     }
 
