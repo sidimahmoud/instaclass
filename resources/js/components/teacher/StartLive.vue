@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid border-top border-primary video-call-screen">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-8">
         <div class="m-2 bg-black text-center">
           <div class="main-window m-2 p-1 rounded position-relative">
             <div id="video-main-window"></div>
@@ -47,7 +47,7 @@
           </button>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-2">
         <div
           class="sub-window m-2 p-1 rounded"
           id="video-sub-window"
@@ -109,6 +109,7 @@ export default {
   },
   methods: {
     createRoom() {
+      console.log(this.$route.params.course_id);
       this.myRoom = this.create_link();
       axios
         .post(`/create-room/${this.myRoom}/${this.user}/${this.recorded}`)
@@ -119,6 +120,10 @@ export default {
           this.accessToken = res.data.token;
           this.myRoom = res.data.name;
           this.connectToRoom();
+          this.joinCourseFile({
+            name: res.data.name,
+            sid: res.data.sid,
+          });
         })
         .catch((err) => console.log(err.response));
     },
@@ -307,6 +312,14 @@ export default {
         this.myVideoTrack.enable();
       }
     },
+    joinCourseFile(payload){
+      let params = {
+        id: this.course_id,
+        link: `/player/livevideo/${payload.name}/${payload.sid}`,
+      }
+
+      this.$store.dispatch('editCourseSection', params)
+    }
   },
   created() {
     this.createRoom();
@@ -316,17 +329,17 @@ export default {
 <style scoped>
 .video-call-screen {
   height: 100vh;
-  background: #565656;
+  background: #F0F8FF;
   padding-top: 5vh;
 }
 
 .main-window {
-  background: #565656;
-  border: 1px solid #565656;
+  background: #eee;
+  border: 1px solid #eee;
 }
 
 .sub-window {
-  border: 1px solid #565656;
+  border: 1px solid #eee;
 }
 
 #video-main-window {
@@ -342,7 +355,7 @@ export default {
 #video-sub-window {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 90vh;
   overflow-y: auto;
 }
 #video-sub-window >>> video {

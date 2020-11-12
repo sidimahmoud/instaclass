@@ -44,13 +44,18 @@
                         <div :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '', 'col-md-3']">
                             <router-link
                                 :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
+                                tag="a" class="btn btn-primary my-3">
+                                S'inscrire à tout les séances
+                            </router-link>
+                            <!-- <router-link
+                                :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
                                 tag="a" class="btn btn-primary my-3" v-if="!enrolled">
                                 {{$t('course.enroll')}}
                             </router-link>
                             <router-link :to="{name: 'StudentProfile'}" tag="a" class="btn btn-primary my-3"
                                          v-if="enrolled">
                                 Deja inscrit
-                            </router-link>
+                            </router-link> -->
                         </div>
                     </div>
                     <hr class="bg-dark mx-3">

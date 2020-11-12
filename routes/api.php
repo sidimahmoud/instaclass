@@ -17,7 +17,7 @@ Route::post('/courses/demander', 'DemandsController@store');
 Route::post('/contacter', 'ContactsController@store');
 Route::get('/class/{id}', 'CourseController@categoryCourses');
 Route::post('/newsletter', 'NewsletterController@store');
-
+Route::put('/sections/{id}', 'CourseFileController@updateLinks');
 Route::get('authorize/{provider}', 'AuthController@redirectToProvider');
 Route::get('authorize/{provider}/callback', 'AuthController@handleProviderCallback');
 

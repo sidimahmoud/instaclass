@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-10">
             <div class="m-2 bg-black text-center">
               <div class="main-window-dark m-2 p-1 rounded position-relative">
                 <div id="video-main-window"></div>
@@ -24,8 +24,8 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <h5>You</h5>
+          <div class="col-md-2">
+            <h5 style="color:#000">You</h5>
             <div id="video-my-self"></div>
             <div
               class="sub-window m-2 p-1 rounded"
@@ -183,13 +183,13 @@ export default {
             participant.tracks.forEach((publication) => {
               if (publication.isSubscribed) {
                 console.log("isSubscribid");
-                // const track = publication.track;
-                // videoChatWindow.appendChild(track.attach());
+                /* const track = publication.track;
+                videoChatWindow.appendChild(track.attach()); */
               }
             });
 
             participant.on("trackSubscribed", (track) => {
-              //   videoChatWindow.appendChild(track.attach());
+                 //videoChatWindow.appendChild(track.attach());
               if (
                 _vue.videoItems.findIndex(
                   (item) => item.id == participant.identity
@@ -275,22 +275,23 @@ export default {
 <style  scoped>
 .video-call-screen {
   height: 100vh;
-  background: #565656;
+  background: #F0F8FF;
   padding-top: 5vh;
 }
 
 .main-window {
-  background: #565656;
-  border: 1px solid #565656;
+  background: #fff;
+  border: 1px solid #eee;
 }
 
 .sub-window {
-  border: 1px solid #565656;
+  border: 1px solid #eee;
 }
 
 #video-main-window {
-  height: 80vh;
+  height: 90vh;
 }
+
 #video-main-window >>> video {
   width: 100%;
   height: 100%;
@@ -300,16 +301,21 @@ export default {
 #video-sub-window {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 90vh;
   overflow-y: auto;
 }
 #video-sub-window >>> video {
-  width: 100%;
+  width: 90%;
 }
-.video-item {
-  margin-top: 10px;
+
+#video-my-self {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
+}
+
+.video-item {
+  width: 100%;
+  padding: 5px;
 }
 .control-panel {
   bottom: 0;

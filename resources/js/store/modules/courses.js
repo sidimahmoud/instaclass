@@ -198,6 +198,18 @@ const actions = {
                 })
         })
     },
+    async editCourseSection({commit}, payload) {
+        return new Promise((resolve, reject) => {
+            axios({url: `/sections/${payload.id}`, data: payload, method: 'PUT'})
+                .then(resp => {
+                    console.log(resp);
+                    resolve(resp)
+                })
+                .catch(err => {
+                    reject(err)
+                })
+        })
+    },
 };
 const mutations = {
     setCourses: (state, courses) => (state.courses = courses),

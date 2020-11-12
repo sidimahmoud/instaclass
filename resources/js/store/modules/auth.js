@@ -133,7 +133,6 @@ const actions = {
 
     async logout({commit}) {
         return new Promise((resolve, reject) => {
-            commit('logout');
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             delete axios.defaults.headers.common['Authorization'];

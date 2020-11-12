@@ -137,5 +137,10 @@
             "3": "Apprenez avec la vidéo en direct à l'heure cédulé",
             "getStarted": "COMMENCEZ EN TANT QU'ÉTUDIANT"
         }
-    }
+    },
+    "profile": {
+        "go_live": "Go to live",
+        "no_video_yet": "No video link added yet"
+    },
+    "start_at": "Start at"
 }

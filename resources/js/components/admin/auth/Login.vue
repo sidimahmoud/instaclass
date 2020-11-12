@@ -58,7 +58,8 @@
                 let password = this.password;
                 this.$store.dispatch('login', {email, password})
                     .then(res=>{
-                        (res.data.user.roles[0].name==="teacher")?this.$router.push({name: 'TeacherProfile'}):this.$router.push({name: 'StudentProfile'});
+                        //(res.data.user.roles[0].name==="teacher")?this.$router.push({name: 'TeacherProfile'}):this.$router.push({name: 'StudentProfile'});
+                        return true
                     })
                     .catch(err => this.errorMessage = err.response.data.message)
             },

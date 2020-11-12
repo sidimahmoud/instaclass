@@ -114,62 +114,38 @@
             <div class="row my-4 student-area">
                 <div class="col-md-12 bg-white shadow">
                     <nav class="nav nav-pills nav-fill mt-3">
-                        <a
-                            class="nav-item nav-link active"
-                            href="#courses"
-                            data-toggle="tab"
-                        >
-                            My recorded courses
+                        <a class="nav-item nav-link active" href="#courses" data-toggle="tab">
+                            My courses
                         </a>
                         <a class="nav-item nav-link" href="#receipts" data-toggle="tab">
                             My receipts
                         </a>
-                        <a
-                            class="nav-item nav-link"
-                            href="#live"
-                            data-toggle="tab"
-                            @click="retrieveActiveRooms"
-                        >
-                            Go to my live class</a
-                        >
-                        <a class="nav-item nav-link" href="#ratings" data-toggle="tab"
-                        >Ratings</a
-                        >
+                        <a class="nav-item nav-link" href="#ratings" data-toggle="tab">
+                            Ratings
+                        </a>
                     </nav>
                     <hr/>
                     <div class="tab-content my-1">
                         <!-- Enrollments-->
                         <div class="tab-pane fade show active" id="courses">
-                            <ul class="list-unstyled">
-                                <li class="mt-4" >
-                                    <p class="text-center h3 mt-3">
-                                        You have no recorded courses for the moment
-                                    </p>
-                                </li>
-                                <li class="mt-4">
-<!--                                    <div v-for="e in userEnrollments" :key="e.id">-->
-<!--                                        <div v-if="e.course_file.course.type == 1" class="mb-4">-->
-<!--                                            <h5 class="mt-0 mb-1">-->
-<!--                                                {{ e.course_file.title }},-->
-<!--                                                {{ e.course_file.created_at.slice(0, 10) }},-->
-<!--                                                {{ e.course_file.created_at.slice(11, 16) }},-->
-<!--                                                {{ e.course_file.course.user.first_name }}-->
-<!--                                                {{ e.course_file.course.user.last_name }}-->
-
-<!--                                                <router-link-->
-<!--                                                    :to="{-->
-<!--                            name: 'Player',-->
-<!--                            params: { slug: e.course_file.id },-->
-<!--                          }"-->
-<!--                                                    tag="button"-->
-<!--                                                    class="btn btn-primary float-right"-->
-<!--                                                >View Course-->
-<!--                                                </router-link>-->
-<!--                                            </h5>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-                                </li>
-                            </ul>
+                            <div class="grid" >
+                                <div v-if="isEmpty(userEnrollments)">
+                                    You have no course yet.
+                                </div>
+                                <div class="item-product" v-for="e in userEnrollments" v-bind:key="e.id">
+                                    <div class="product-grid__img-wrapper">
+                                        <img :src="e.course_file.course.image" alt="Img" class="product-grid__img"/>
+                                    </div>
+                                    				
+                                    <span><strong>{{ e.course_file.course.name }}</strong></span><br/>
+                                    <span>{{$t('start_at')}}: {{ e.course_file.startDate }}</span><br/>
+                                    <span>{{ e.course_file.course.user.first_name }}</span>
+                                    <span>{{ e.course_file.course.user.last_name }}</span><br/>
+                                    <button v-if="!isEmpty(e.course_file.video_link)" class="btn btn-danger" @click="handleGoLive(e.course_file.video_link)"><i class="fa fa-play"></i> {{$t('profile.go_live')}}</button>
+                                    <span class="empty-link" v-else>{{$t('profile.no_video_yet')}}</span>
+                                </div>
+                                
+                            </div>
                         </div>
 
                         <div class="tab-pane fade show" id="receipts">
@@ -205,71 +181,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade show" id="live">
-                            <ul class="list-unstyled">
-                                <!-- <li class="mt-4 text-center" v-if="lives.length === 0">
-                                  <img
-                                    src="../../assets/images/cam-icon.png"
-                                    alt=""
-                                    width="100"
-                                  />
-                                  <p class="text-center h3 mt-3">
-                                    You will be redirected to your live class when you will
-                                    subscribe to a course
-                                  </p>
-                                </li>
-                                <li
-                                  v-else
-                                  class="mt-4"
-                                  v-for="e in userEnrollments"
-                                  :key="e.id"
-                                >
-                                  <div v-if="e.course.type == 2">
-                                    <router-link
-                                      :to="{
-                                        name: 'Live',
-                                        params: {
-                                          slug: e.course.slug,
-                                        },
-                                      }"
-                                    >
-                                      <h5 class="mt-0 mb-1">
-                                        {{ e.course.name }},
-                                        {{ e.course.created_at.slice(0, 10) }},
-                                        {{ e.course.user.first_name }}
-                                        {{ e.course.user.last_name }}
-                                      </h5>
-                                    </router-link>
-                                  </div>
-                                </li> -->
-                                <li class="mt-4 text-center" v-if="activeRooms.length === 0">
-                                    <img
-                                        src="../../assets/images/cam-icon.png"
-                                        alt=""
-                                        width="100"
-                                    />
-                                    <p class="text-center h3 mt-3">
-                                        {{ liveClassDetail }}
-                                    </p>
-                                </li>
-                                <li v-else class="mt-4" v-for="e in activeRooms" :key="e.sid">
-                                    <router-link
-                                        :to="{
-                                            name: 'Live',
-                                            params: {
-                                            slug: e.uniqueName,
-                                            sid: e.sid,
-                                            },
-                                        }"
-                                    >
-                                        <h5 class="mt-0 mb-1">
-                                            <strong>Room Name: </strong> {{ e.uniqueName }} |
-                                            <strong>Room Created: </strong>{{ e.dateCreated }}
-                                        </h5>
-                                    </router-link>
-                                </li>
-                            </ul>
-                        </div>
+                       
                         <div class="tab-pane fade show" id="ratings">
                             <table class="table" v-if="userProfile.ratings > 0">
                                 <thead>
@@ -281,7 +193,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="r in userProfile.ratings">
+                                <tr v-for="r in userProfile.ratings" v-bind:key="r.id">
                                     <th scope="row">{{ e.teacher_id }}</th>
                                     <td>{{ e.created_at }}</td>
                                     <td>{{ e.rate }}</td>
@@ -306,16 +218,32 @@
     import {mapActions, mapGetters} from "vuex";
     import CountDown from "../CountDown";
     import Receipt from "./Receipt";
+    import {isEmpty} from "../../helpers/common";
 
     export default {
         name: "StudentProfile",
+        /*
+        |--------------------------------------------------------------------------
+        | Component > components
+        |--------------------------------------------------------------------------
+        */
         components: {CountDown, Receipt},
+        /*
+        |--------------------------------------------------------------------------
+        | Component > data
+        |--------------------------------------------------------------------------
+        */
         data() {
             return {
                 liveClassDetail: "Loading...",
                 activeRooms: [],
             };
         },
+        /*
+        |--------------------------------------------------------------------------
+        | Component > methods
+        |--------------------------------------------------------------------------
+        */
         methods: {
             ...mapActions([ "fetchUserEnrollments", "fetchReceipts", "fetchUpcomingClasses"]),
             logout() {
@@ -347,9 +275,27 @@
                     })
                     .catch((error) => console.log(error));
             },
+            isEmpty (v) {
+                return isEmpty(v);
+            },
+            handleGoLive(link){
+                this.$router.push({path: link});
+            }
         },
-        computed: mapGetters(["userProfile", "userEnrollments", "profileLoading", "studentPayments", "upcomingClasses"]),
-        created() {
+        /*
+        |--------------------------------------------------------------------------
+        | Component > computed
+        |--------------------------------------------------------------------------
+        */
+        computed: {
+            ...mapGetters(["userProfile", "userEnrollments", "profileLoading", "studentPayments", "upcomingClasses"]),
+        },
+        /*
+        |--------------------------------------------------------------------------
+        | Component > mounted
+        |--------------------------------------------------------------------------
+        */
+        mounted() {
             this.fetchUserEnrollments();
             this.fetchReceipts();
             this.fetchUpcomingClasses();
@@ -415,5 +361,33 @@
     .student-area {
         border: 3px solid black;
         border-radius: 10px;
+    }
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 10px;
+        padding: 1rem;
+        text-align: center;
+    }
+    .item-product {
+        border:1px solid rgb(241, 241, 241);
+        padding: 1rem;
+        text-align: center;
+
+        .product-grid__img {
+            height: 80px !important;
+            transition: transform .2s;
+            -ms-transform: scale(1); /* IE 9 */
+            -webkit-transform: scale(1); /* Safari 3-8 */
+            transform: scale(1); 
+        }
+        .product-grid__img:hover {
+            -ms-transform: scale(2.5); /* IE 9 */
+            -webkit-transform: scale(2.5); /* Safari 3-8 */
+            transform: scale(2.5); 
+        }
+    }
+    .empty-link {
+        color: red;
     }
 </style>

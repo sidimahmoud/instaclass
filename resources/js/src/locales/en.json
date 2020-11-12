@@ -137,5 +137,10 @@
             "3": "Learn with live video at the scheduled time",
             "getStarted": "GET STARTED AS A STUDENT"
         }
-    }
+    },
+    "profile": {
+        "go_live": "Go to live",
+        "no_video_yet": "No video link added yet"
+    },
+    "start_at": "Start at"
 }

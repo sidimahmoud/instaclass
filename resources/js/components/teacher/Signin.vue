@@ -120,10 +120,14 @@
                 let password = this.password;
                 this.$store.dispatch('login', {email, password})
                     .then(res => {
-                        (res.data.user.roles[0].name === "teacher") ?
-                            this.$router.push({name: 'TeacherProfile'}) :
+                        if(res.data.user.roles[0].name === "teacher") {
+                            this.$router.push({name: 'TeacherProfile'})
+                        }else {
+                            this.errorMessage = "No teacher account with this email please verify.";
+                        }
+                            /* this.$router.push({name: 'TeacherProfile'}) :
                             (res.data.user.roles[0].name === "student") ?
-                                this.$router.push({name: 'StudentProfile'}) : this.$router.push({name: 'Admin'});
+                                this.$router.push({name: 'StudentProfile'}) : this.$router.push({name: 'Admin'}); */
                     })
                     .catch(err => {
                         console.log(err.response.data);
