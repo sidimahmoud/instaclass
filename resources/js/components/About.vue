@@ -2,12 +2,12 @@
     <div>
         <div class="hero">
             <div class=" jumbotron1 pt-5 ">
-                <div class="container h-100">
-                    <h1 class="text-center mt-md-5 text-white">
-                        {{$t('about.hero.1')}}<br>
-                        {{$t('about.hero.2')}}
-                    </h1>
-                </div>
+<!--                <div class="container h-100">-->
+<!--                    <h1 class="text-center mt-md-5 text-white">-->
+<!--                        {{$t('about.hero.1')}}<br>-->
+<!--                        {{$t('about.hero.2')}}-->
+<!--                    </h1>-->
+<!--                </div>-->
             </div>
             <div class=" jumbotron2 py-5">
                 <div class="container  align-items-center mt-2">
@@ -62,27 +62,12 @@
         <section class="bg-dark text-white mb-0 py-3">
             <div class="container newsLetter">
                 <h1 class="text-center">
-                    Stay informed
+                    {{$t('about.newsletter.stay')}}
                 </h1>
-                <p class="text-center">Subscribe to our mailbox
+                <p class="text-center">{{$t('about.newsletter.subscribe')}}
                 </p>
                 <form @submit.prevent="subscribe">
                     <div class="row">
-<!--                        <div class="col-md-6">-->
-<!--                            <div class="form-group">-->
-<!--                                <input type="text" class="form-control" placeholder="First Name" v-model="first_name">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-6">-->
-<!--                            <div class="form-group">-->
-<!--                                <input type="text" class="form-control" placeholder="Last Name" v-model="last_name">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-6">-->
-<!--                            <div class="input-group mb-3">-->
-<!--                                <input type="text" class="form-control" placeholder="Address" v-model="address">-->
-<!--                            </div>-->
-<!--                        </div>-->
                         <div class="col-12">
                             <div class="input-group mb-3">
                                 <input type="email" class="form-control" placeholder="Email"
@@ -91,7 +76,7 @@
                                 <div class="input-group-append">
                                 <span class="input-group-text p-0" id="basic-addon2">
                                     <button class="btn btn-primary">
-                                        Subscribe
+                                        {{$t('about.newsletter.subscribeBtn')}}
                                     </button>
                                 </span>
                                 </div>
@@ -166,6 +151,11 @@
             background: transparent;
             color: white !important;
 
+        };
+
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: white;
+            opacity: 1; /* Firefox */
         }
     }
 

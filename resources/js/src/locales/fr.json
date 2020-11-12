@@ -1,5 +1,16 @@
 {
-    "title": "La plateforme par excellence pour enseigner ou apprendre pour les cours en ligne",
+    "nav": {
+        "home": "Accueil",
+        "about": "A propos",
+        "courses": "Tous les cours",
+        "become": "Devenir instructeur",
+        "demande": "Demande de cours",
+        "account": "Compte"
+    },
+    "title": {
+        "1": "La plateforme par excellence pour enseigner",
+        "2": "ou apprendre pour les cours en ligne"
+    },
     "title2": {
         "teachers": {
             "title": "Enseignants",
@@ -14,15 +25,6 @@
             "3": "Étudient les cours en direct sur la plateforme INSTANTACLASSE."
         }
     },
-
-    "nav": {
-        "home": "Accueil",
-        "about": "A propos",
-        "courses": "Tous les cours",
-        "become": "Devenir instructeur",
-        "demande": "Demande de cours",
-        "account": "Compte"
-    },
     "footer": {
         "home": "Accueil",
         "about": "A propos",
@@ -30,7 +32,6 @@
         "become": "Devenir instructeur",
         "demande": "Demande de cours",
         "account": "Compte",
-
         "quickLinks": "Liens rapides",
         "termsAndConditions": "Termes et conditions",
         "faq": "FAQ",
@@ -42,7 +43,7 @@
     "searchBtn": "Chercher",
     "noCourses": "Il n'y a pas de cours dans cette catégorie pour l’instant.",
     "whyChoose": {
-        "title" : "Pourquoi choisir Instantaclasse?",
+        "title": "Pourquoi choisir Instantaclasse?",
         "1": "Les enseignants fixent leur taux horaire et le contenu de leurs cours.",
         "2": "Les étudiants bénéficient d'une large variété des cours.",
         "3": "Les étudiants peuvent accéder aux enregistrements des leurs cours pour des révisions ultérieures.",
@@ -82,6 +83,59 @@
         },
         "prohibited": {
             "title": "Interdit",
-            "body":"La création des cours encouragent ou liés de près ou de loin à la haine, aux armes, aux drogues et à des activités illégales sont strictement interdits sur cette plateforme. Les administrateur(e)s d'Instantaclasse pourront supprimer et bloquer des membres ainsi que les cours inappropriés."}
+            "body": "La création des cours encouragent ou liés de près ou de loin à la haine, aux armes, aux drogues et à des activités illégales sont strictement interdits sur cette plateforme. Les administrateur(e)s d'Instantaclasse pourront supprimer et bloquer des membres ainsi que les cours inappropriés."
+        },
+        "newsletter": {
+            "stay": "Restez informé",
+            "subscribe": "Abonnez-vous à notre boîte aux lettres",
+            "subscribeBtn": "S’inscrire"
+        }
+    },
+    "courses": {
+        "hero": "TOUS LES COURS QUE NOUS OFFRONS",
+        "title": "SÉLECTIONNEZ VOTRE COURS AUJOURD'HUI",
+        "category": "Categorie",
+        "price": "Prix",
+        "courseLang": "Language du cours",
+        "sessionsPer": "Sessions par cours",
+        "all": "Tous"
+    },
+    "course": {
+        "sessions": "Nombre de séances",
+        "duration": "Durée par session",
+        "lang": "Language",
+        "price": "Prix par séance",
+        "description": "Description",
+        "enroll": "Inscrire à ce cours",
+        "enrollInSession": "Inscrire à cette séance uniquement",
+        "learnMore": "En savoir plus sur ce cours",
+        "subCat": "Sous-catégorie",
+        "instructorRate": "Evaluation de l'instituteur",
+        "students": "Etudiants inscrits",
+        "scheduledAt": "Prévu à"
+    },
+    "courseDetails": {
+        "hero": "COURS DISPONIBLES",
+        "firstCourse": "Ce premier cours sera bientôt disponible ..."
+    },
+    "auth":{
+        "signIn": "Connexion",
+        "signup": "Inscrire",
+        "continueWith":"Continuer avec",
+        "new": "Vous n'avez pas de compte?",
+        "become": {
+            "1": "Connectez-vous ou inscrivez-vous pour accéder à votre compte d’enseignant",
+            "2": "Créez et structurez votre cours",
+            "3":"Enseignez par vidéo en direct",
+            "4": "Soyez payé",
+            "getStarted": "COMMENCEZ EN TANT QU'ENSEIGNANT AUJOURD’HUI",
+            "login": "Connecter pour acceder votre espace d'instructeur."
+        },
+        "student": {
+            "1": "Connectez-vous ou inscrivez-vous pour accéder à votre compte d’étudiant",
+            "2": "Inscrivez-vous à votre cours préféré",
+            "3": "Apprenez avec la vidéo en direct à l'heure cédulé",
+            "getStarted": "COMMENCEZ EN TANT QU'ÉTUDIANT"
+        }
     }
 }

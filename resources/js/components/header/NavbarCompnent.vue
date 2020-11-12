@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light py-0 fixed-top">
             <div class="container rounded-bottom">
                 <a href="/" class="navbar-brand">
-                    <img src="../../assets/logo.png" alt="" width="40px">
+                    <img src="../../assets/logo.png" alt="" width="60px">
                 </a>
                 <ul class="lang text-center p-0 text-primary">
                     <li class="btn" v-if="locale==='fr'" @click="en">

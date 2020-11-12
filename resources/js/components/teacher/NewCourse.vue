@@ -114,7 +114,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <input type="checkbox"  v-model="course.allow_share_records"  required>
+                            <input type="checkbox" v-model="course.allow_share_records" required>
                             <label>Autorisez vous le partage desenregistrements?</label>
                         </div>
                     </div>
@@ -174,7 +174,8 @@
                         </div>
                         <div class="col-md-3">
                             <label>Time Zone</label>
-                            <select class="form-control" v-model="sections[index].timeZone" required>
+                            <select class="form-control" v-model="sections[index].timezone" required>
+                                <option value="GMT">Greenwich Mean Time</option>
                                 <option value="ET">Eastern Time ET</option>
                                 <option value="PT">Pacific Time PT</option>
                                 <option value="AT">Atlantic Time ET</option>
@@ -358,7 +359,7 @@
                         stratDate: '',
                         duration: '',
                         description: '',
-                        timeZone: 'ET',
+                        timezone: 'GMT',
                         frequency: '0',
                     },
                 ],
@@ -486,7 +487,7 @@
         /*background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);*/
         border: 5px solid black;
         border-radius: 10px;
-        box-shadow: 10px 10px 23px 0 rgba(130,130,130,1);
+        box-shadow: 10px 10px 23px 0 rgba(130, 130, 130, 1);
     }
 
     .jumbotron {

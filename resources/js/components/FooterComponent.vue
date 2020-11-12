@@ -19,69 +19,69 @@
 
                 </div><!-- Grid column -->
                 <!-- Grid column -->
-               <div class="col-md-6">
-                   <div class="row">
-                       <div class="col-md-12 mb-2">
-                           <p class="h3 text-white text-center">
-                               {{$t('footer.quickLinks')}}
-                           </p>
-                       </div>
-                       <div class="col-md-6">
-                           <p>
-                               <router-link :to="{ name: 'Home'}" tag="a" class="text-uppercase">
-                                   {{$t('footer.home')}}
-                               </router-link>
-                           </p>
-                           <p>
-                               <router-link :to="{ name: 'About'}" tag="a" class="text-uppercase">
-                                   {{$t('footer.about')}}
-                               </router-link>
-                           </p>
-                           <p>
-                               <router-link :to="{ name: 'Courses'}" tag="a" class="text-uppercase">
-                                   {{$t('footer.courses')}}
-                               </router-link>
-                           </p>
-                           <p>
-                               <router-link :to="{ name: 'Become'}" tag="a" class="text-uppercase">
-                                   {{$t('footer.become')}}
-                               </router-link>
-                           </p>
-                           <p>
-                               <router-link :to="{ name: 'Contact'}" tag="a" class=" text-uppercase">
-                                   {{$t('footer.contact')}}
-                               </router-link>
-                           </p>
-                       </div><!-- Grid column -->
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12 mb-2">
+                            <p class="h3 text-white text-center">
+                                {{$t('footer.quickLinks')}}
+                            </p>
+                        </div>
+                        <div class="col-md-8">
+                            <p>
+                                <router-link :to="{ name: 'Home'}" tag="a" class="text-uppercase">
+                                    {{$t('footer.home')}}
+                                </router-link>
+                            </p>
+                            <p>
+                                <router-link :to="{ name: 'About'}" tag="a" class="text-uppercase">
+                                    {{$t('footer.about')}}
+                                </router-link>
+                            </p>
+                            <p>
+                                <router-link :to="{ name: 'Courses'}" tag="a" class="text-uppercase">
+                                    {{$t('footer.courses')}}
+                                </router-link>
+                            </p>
+                            <p>
+                                <router-link :to="{ name: 'Become'}" tag="a" class="text-uppercase">
+                                    {{$t('footer.become')}}
+                                </router-link>
+                            </p>
+                            <p>
+                                <router-link :to="{ name: 'Contact'}" tag="a" class=" text-uppercase">
+                                    {{$t('footer.contact')}}
+                                </router-link>
+                            </p>
+                        </div><!-- Grid column -->
 
-                       <!-- Grid column -->
-                       <div class="col-md-6">
+                        <!-- Grid column -->
+                        <div class="col-md-4">
 
-                           <!-- Links -->
-                           <p>
-                               <router-link :to="{ name: 'StudentProfile'}" tag="a" class=" text-uppercase">
-                                   {{$t('footer.account')}}
-                               </router-link>
-                           </p>
-                           <p>
-                               <router-link to="#" tag="a" class=" text-uppercase">
-                                   {{$t('footer.termsAndConditions')}}
-                               </router-link>
-                           </p>
-                           <p>
-                               <router-link :to="{ name: 'Faq'}" tag="a" class=" text-uppercase">
-                                   {{$t('footer.faq')}}
-                               </router-link>
-                           </p>
-                           <p>
-                               <a href="#" class="text-uppercase"> {{$t('footer.privacy')}}</a>
-                           </p>
+                            <!-- Links -->
+                            <p>
+                                <router-link :to="{ name: 'StudentProfile'}" tag="a" class=" text-uppercase">
+                                    {{$t('footer.account')}}
+                                </router-link>
+                            </p>
+                            <p>
+                                <router-link to="#" tag="a" class=" text-uppercase">
+                                    {{$t('footer.termsAndConditions')}}
+                                </router-link>
+                            </p>
+                            <p>
+                                <router-link :to="{ name: 'Faq'}" tag="a" class=" text-uppercase">
+                                    {{$t('footer.faq')}}
+                                </router-link>
+                            </p>
+                            <p>
+                                <a href="#" class="text-uppercase"> {{$t('footer.privacy')}}</a>
+                            </p>
 
-                       </div><!-- Grid column -->
-                       <!-- Grid column -->
+                        </div><!-- Grid column -->
+                        <!-- Grid column -->
 
-                   </div>
-               </div>
+                    </div>
+                </div>
                 <div class="col-md-3 align-content-center text-white mx-auto mb-md-0">
                     <p class="mt-2">
                         <a href=" https://www.facebook.com/InstantaClasse/?modal=admin_todo_tour " target="_blank">
@@ -97,18 +97,9 @@
             </div><!-- Grid row -->
         </div>
         <!-- Footer Links -->
-        <hr>
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3 text-capitalize text-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        © 2020 :
-                        <a href="https://instantaclasse.ca/" class="text-lowercase">Société Instantavite inc</a>
-                    </div>
-
-                </div>
-            </div>
+        <div class="footer-copyright text-center text-capitalize text-white">
+            ©2020, Société Instantavite inc
         </div><!-- Grid column -->
     </footer><!-- Footer -->
 </template>
@@ -128,5 +119,9 @@
 
     hr {
         background: #e2e2e2;
+    }
+
+    p {
+        margin-bottom: 5px;
     }
 </style>

@@ -177,9 +177,9 @@ const routes = [
         beforeEnter: (to, from, next) => {
             let user = JSON.parse(localStorage.getItem('user')) || null;
             if (user.t === "teacher") next();
-            else if (user.t === "admin") next({ name: 'Admin' });
-            else if (user.t === "student") next({ name: 'StudentProfile' });
-            else next({ name: 'Home' });
+            else if (user.t === "admin") next({name: 'Admin'});
+            else if (user.t === "student") next({name: 'StudentProfile'});
+            else next({name: 'Home'});
         },
         meta: {
             requiresAuth: true,
@@ -222,9 +222,9 @@ const routes = [
         beforeEnter: (to, from, next) => {
             let user = JSON.parse(localStorage.getItem('user')) || null;
             if (user.t === "teacher") next();
-            else if (user.t === "admin") next({ name: 'Admin' });
-            else if (user.t === "student") next({ name: 'StudentProfile' });
-            else next({ name: 'Home' });
+            else if (user.t === "admin") next({name: 'Admin'});
+            else if (user.t === "student") next({name: 'StudentProfile'});
+            else next({name: 'Home'});
         },
         meta: {
             requiresAuth: true,
@@ -252,7 +252,7 @@ const routes = [
         component: Become,
         beforeEnter: (to, from, next) => {
             let user = JSON.parse(localStorage.getItem('user')) || null;
-            if (user && user.t === "teacher") next({ name: 'TeacherProfile' });
+            if (user && user.t === "teacher") next({name: 'TeacherProfile'});
             else next()
         },
         meta: {
@@ -299,9 +299,9 @@ const routes = [
         beforeEnter: (to, from, next) => {
             let user = JSON.parse(localStorage.getItem('user')) || null;
             if (user.t === "student") next();
-            else if (user.t === "admin") next({ name: 'Admin' });
-            else if (user.t === "teacher") next({ name: 'TeacherProfile' });
-            else next({ name: 'Home' });
+            else if (user.t === "admin") next({name: 'Admin'});
+            else if (user.t === "teacher") next({name: 'TeacherProfile'});
+            else next({name: 'Home'});
         },
     },
 
@@ -367,7 +367,6 @@ const routes = [
     },
 
 
-
     // Admin routes
     {
         path: '/admin/login',
@@ -388,13 +387,13 @@ const routes = [
         },
         beforeEnter: (to, from, next) => {
             if (!store.getters.isLoggedIn) {
-                next({ name: 'LoginAdmin' });
+                next({name: 'LoginAdmin'});
             } else {
                 let user = JSON.parse(localStorage.getItem('user')) || null;
                 if (user.t === "admin") next();
-                else if (user.t === "teacher") next({ name: 'TeacherProfile' });
-                else if (user.t === "student") next({ name: 'StudentProfile' });
-                else next({ name: 'Home' });
+                else if (user.t === "teacher") next({name: 'TeacherProfile'});
+                else if (user.t === "student") next({name: 'StudentProfile'});
+                else next({name: 'Home'});
             }
 
         },
@@ -413,13 +412,16 @@ router.beforeEach((to, from, next) => {
             next();
             return
         }
-        next({ name: 'Login' })
+        next({
+            name: 'Login',
+            query: {redirect: to.fullPath}
+        })
     } else if (to.matched.some(record => record.meta.requiresVisitore)) {
         if (!store.getters.isLoggedIn) {
             next();
             return
         }
-        next({ name: 'Home' })
+        next({name: 'Home'})
     } else {
         next()
     }

@@ -92,6 +92,7 @@ class CoursesController extends Controller
             $courseSection->title = $section->title;
             $courseSection->description = $section->description;
             $courseSection->startDate = $section->stratDate;
+            $courseSection->timezone = $section->timezone;
             $courseSection->duration = $section->duration;
             $courseSection->save();
             $number++;
@@ -100,6 +101,8 @@ class CoursesController extends Controller
             Mail::to("clem2001@hotmail.com")->send(new Mails());
             Mail::to("nyveline87@yahoo.fr")->send(new Mails());
             Mail::to("sidmah10@gmail.com")->send(new Mails());
+            $request->user()->notify(new CourseCreatedSuccessfully());
+
         }
 
         return response()->json("course created successfully");
@@ -167,7 +170,6 @@ class CoursesController extends Controller
         $course->save();
 
         if ($course)
-            $request->user()->notify(new CourseCreatedSuccessfully());
             return response()->json("course created successfully");
         return response()->json("error");
     }

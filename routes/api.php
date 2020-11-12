@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('email/verify/{id}', 'VerificationController@verify')->name('verification.verify'); // Make sure to keep this as your route name
+Route::get('email/verify/{id}', 'VerificationController@verify');
 Route::post('/login', 'AuthController@login');
 Route::post('/register', 'AuthController@register');
 Route::resource('/categories', 'CategoryController');
@@ -16,7 +16,7 @@ Route::get('/courses/search/{q}', 'CourseController@search');
 Route::post('/courses/demander', 'DemandsController@store');
 Route::post('/contacter', 'ContactsController@store');
 Route::get('/class/{id}', 'CourseController@categoryCourses');
-Route::resource('/newsletter', 'NewsletterController');
+Route::post('/newsletter', 'NewsletterController@store');
 
 Route::get('authorize/{provider}', 'AuthController@redirectToProvider');
 Route::get('authorize/{provider}/callback', 'AuthController@handleProviderCallback');
@@ -36,6 +36,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/demands', 'DemandsController@index');
         Route::get('/contacts', 'ContactsController@index');
         Route::get('/statistics', 'Teacher\CoursesController@statistics');
+        Route::resource('/newsletter', 'NewsletterController');
+
     });
 
     Route::middleware('can:teacher-or-admin')->group(function () {
