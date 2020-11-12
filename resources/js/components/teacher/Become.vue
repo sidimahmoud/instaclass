@@ -4,10 +4,10 @@
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-md-6 text-center">
-                        <h1 class="display-3">BECOME INSTRUCTOR</h1>
+                        <h1 class="display-3">{{$t('auth.become.become')}}</h1>
                     </div>
                     <div class="col-md-6 text-center">
-                        <h1 class="display-4">JOIN OUR COMMUNITY</h1>
+                        <h1 class="display-4">{{$t('auth.become.join')}}</h1>
                     </div>
                 </div>
 
@@ -19,8 +19,8 @@
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                     <div class="signup-form bg-white">
                         <form @submit.prevent="register">
-                            <h2>Register</h2>
-                            <p class="hint-text">Create your account. It takes only a few seconds.</p>
+                            <h2>{{$t('auth.signup')}}</h2>
+                            <p class="hint-text">{{$t('auth.createYourAccount')}}</p>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert"
                                  v-if="errorMessage">
                                 {{errorMessage}}
@@ -32,10 +32,10 @@
                                 <div class="row">
                                     <div class="col">
                                         <input type="text" class="form-control" name="first_name"
-                                               placeholder="First Name" required="required" v-model="first_name">
+                                               :placeholder="$t('auth.fName')" required="required" v-model="first_name">
                                     </div>
                                     <div class="col">
-                                        <input type="text" class="form-control" name="last_name" placeholder="Last Name"
+                                        <input type="text" class="form-control" name="last_name" :placeholder="$t('auth.lName')"
                                                required="required" v-model="last_name">
                                     </div>
                                 </div>
@@ -45,26 +45,25 @@
                                        required="required" v-model="email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" name="password" placeholder="Password"
+                                <input type="password" class="form-control" name="password" :placeholder="$t('auth.password')"
                                        required="required" v-model="password1">
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" name="confirm_password"
-                                       placeholder="Confirm Password" required="required" v-model="password2">
+                                       :placeholder="$t('auth.passwordConfirm')" required="required" v-model="password2">
                             </div>
                             <div class="form-group">
                                 <label class="form-check-label">
                                     <input type="checkbox" required="required">
-                                    I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>
+                                    {{$t('auth.accept')}} <a href="#"> {{$t('footer.termsAndConditions')}}</a> &amp; <a href="#">{{$t('footer.privacy')}}</a>
                                 </label>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                    <span v-if="!authLoading">Sign up </span>
+                                    <span v-if="!authLoading">{{$t('auth.signup')}}</span>
                                     <div class="text-center text-white" v-if="authLoading">
                                     <span class="spinner-border spinner-border-sm" role="status"
                                           aria-hidden="true">
-
                                     </span>
                                         Loading...
                                     </div>
@@ -72,15 +71,15 @@
                             </div>
 
                         </form>
-                        <div class="text-center">Already have an account?
-                            <router-link :to="{name: 'Signin'}">Sign in</router-link>
+                        <div class="text-center">{{$t('auth.user')}}
+                            <router-link :to="{name: 'Signin'}">{{$t('auth.signIn')}}</router-link>
                         </div>
                         <h2>Or</h2>
                         <button class="btn btn-lg btn-google btn-block text-uppercase" @click="loginGoogle('google')">
-                            <i class="fa fa-google mr-2"></i> Continue with Google
+                            <i class="fa fa-google mr-2"></i> {{$t('auth.continueWith')}} Google
                         </button>
                         <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGoogle('facebook')">
-                            <i class="fa fa-facebook-f text-white mr-2"></i> Continue with Facebook
+                            <i class="fa fa-facebook-f text-white mr-2"></i> {{$t('auth.continueWith')}} Facebook
                         </button>
                     </div>
                 </div>

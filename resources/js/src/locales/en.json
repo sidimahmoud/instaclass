@@ -26,6 +26,7 @@
         }
     },
     "coursesByCateg": "Courses by category",
+    "veiwDet": "View Details",
     "search": "Search for courses",
     "searchBtn": "Search",
     "noCourses": "There is no courses in this category yet.",
@@ -123,13 +124,23 @@
         "signup": "Sign up",
         "continueWith": "Continue with",
         "new": "Don't have an account?",
+        "user": "Already have an account?",
+
+        "createYourAccount": "Create your account. It takes only a few seconds.",
+        "fName": "First Name",
+        "lName": "Last Name",
+        "password": "Password",
+        "passwordConfirm": "Confirm Password",
+        "accept": "I accept the",
         "become": {
             "1": "Login or sign up to access to your teacher account",
             "2": "Create and structure your course",
             "3": "Teach by video live course",
             "4": "Get paid",
             "getStarted": "GET STARTED AS A TEACHER",
-            "login": "Login to access into your teacher space."
+            "login": "Login to access into your teacher space.",
+            "become": "BECOME INSTRUCTOR",
+            "join": "JOIN OUR COMMUNITY"
         },
         "student": {
             "1": "Login or sign up to access to your student account",
@@ -138,6 +149,25 @@
             "getStarted": "GET STARTED AS A STUDENT"
         }
     },
+    "demande": {
+        "title": "Ask for course",
+        "desc": "Tell us about the course you would like to follow live on the platform",
+        "lang": "Course language",
+        "languages":{
+            "fr": "French",
+            "en": "English",
+            "es": "Spanish",
+            "other": "Other (Specify)"
+
+        },
+        "email": "Email address (optional)",
+        "emailPlaceholder": "Enter your email",
+        "emailHelp": "You will be notified when the course is available.",
+        "btn": "Send"
+    },
+
+
+
     "profile": {
         "go_live": "Go to live",
         "no_video_yet": "No video link added yet"
