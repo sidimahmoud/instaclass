@@ -24,10 +24,10 @@
                 </div>
             </div>
         </section>
-        <div class="container" v-if="!profileLoading">
-            <div class="container">
+        <div v-if="!profileLoading">
+            <div>
                 <div class="jumbotron1 p-0 mt-2">
-                    <div class="container details">
+                    <div class="container-fluid details">
                         <div class="row align-items-center counts">
                             <div
                                 class="col-md-4 pl-0 teacher-image"
@@ -114,8 +114,8 @@
                             v-if="upComingSections.length > 0"
                         >
                             <button @click="handleLive"
-                            tag="button"
-                            class="btn btn-danger">
+                                    tag="button"
+                                    class="btn btn-danger">
                                 Go to the course page
                                 <div v-if="upComingSections.length > 0">Title: {{upComingSections[0].title}}</div>
                             </button>
@@ -129,7 +129,7 @@
                         </button>
                     </router-link>
                 </div>
-                <div class="container teacher-area">
+                <div class="container-fluid teacher-area">
                     <div class="accordion" id="accordionExample">
                         <div class="card">
                             <div class="card-header" id="headingOne">
@@ -444,7 +444,7 @@
                 this.$router.push({
                     name: "StartLive",
                     params: {
-                        course_id: this.upComingSections[0].id 
+                        course_id: this.upComingSections[0].id
                     }
                 });
             }
