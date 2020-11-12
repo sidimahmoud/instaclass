@@ -113,16 +113,12 @@
                             class="text-center text-white my-2"
                             v-if="upComingSections.length > 0"
                         >
-                            <router-link
-                                :to="{
-                  name: 'LiveCourse',
-                  params: { title: upComingSections[0].title },
-                }"
-                                tag="button"
-                                class="btn btn-danger"
-                            >
+                            <button @click="handleLive"
+                            tag="button"
+                            class="btn btn-danger">
                                 Go to the course page
-                            </router-link>
+                                <div v-if="upComingSections.length > 0">Title: {{upComingSections[0].title}}</div>
+                            </button>
                         </p>
                     </div>
                 </div>
@@ -356,6 +352,11 @@
 
     export default {
         name: "TeacherProfile",
+        /*
+        |--------------------------------------------------------------------------
+        | Component > components
+        |--------------------------------------------------------------------------
+        */
         components: {
             NewCourse,
             Payments,
@@ -364,6 +365,11 @@
             EditProfile,
             CountDown,
         },
+        /*
+        |--------------------------------------------------------------------------
+        | Component > data
+        |--------------------------------------------------------------------------
+        */
         data() {
             return {
                 collapsedCourses: true,
@@ -373,6 +379,11 @@
                 collapsedPersonal: true,
             }
         },
+        /*
+        |--------------------------------------------------------------------------
+        | Component > methods
+        |--------------------------------------------------------------------------
+        */
         methods: {
             ...mapActions([
                 "fetchProfile",
@@ -429,15 +440,35 @@
                     // }
                 }
             },
+            handleLive() {
+                this.$router.push({
+                    name: "StartLive",
+                    params: {
+                        course_id: this.upComingSections[0].id 
+                    }
+                });
+            }
         },
-        computed: mapGetters([
-            "profileLoading",
-            "userProfile",
-            "userCourses",
-            "allTeacherDetails",
-            "upComingSections",
-        ]),
-        created() {
+        /*
+        |--------------------------------------------------------------------------
+        | Component > mounted
+        |--------------------------------------------------------------------------
+        */
+        computed: {
+            ...mapGetters([
+                "profileLoading",
+                "userProfile",
+                "userCourses",
+                "allTeacherDetails",
+                "upComingSections",
+            ]),
+        },
+        /*
+        |--------------------------------------------------------------------------
+        | Component > mounted
+        |--------------------------------------------------------------------------
+        */
+        mounted() {
             this.fetchUserCourses();
             this.fetchTeacherDetails();
             this.getUpcomingSections();
@@ -469,8 +500,8 @@
     }
 
     .details {
-        border-radius: 2rem;
-        border: 20px solid black;
+        border-radius: 1rem;
+        border: 5px solid black;
         border-right: 2px solid black;
     }
 

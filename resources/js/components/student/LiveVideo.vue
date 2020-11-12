@@ -25,13 +25,13 @@
             </div>
           </div>
           <div class="col-md-2">
-            <h5>You</h5>
-            <div id="video-my-self"></div>
             <div
               class="sub-window m-2 p-1 rounded"
               id="video-sub-window"
               v-if="videoItems.length"
             >
+              <h5 style="color:#000">You</h5>
+              <div id="video-my-self"></div>
               <div
                 v-for="(item, index) in videoItems"
                 :key="`index-${index}`"
@@ -301,7 +301,7 @@ export default {
 #video-sub-window {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 90vh;
   overflow-y: auto;
 }
 #video-sub-window >>> video {
@@ -309,13 +309,13 @@ export default {
 }
 
 #video-my-self {
-  height: 10vh;
-  width: 90%;
+  width: 100%;
+  padding: 5px;
 }
 
 .video-item {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
 }
 .control-panel {
   bottom: 0;

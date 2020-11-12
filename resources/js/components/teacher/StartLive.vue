@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid border-top border-primary video-call-screen">
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-8">
         <div class="m-2 bg-black text-center">
           <div class="main-window m-2 p-1 rounded position-relative">
             <div id="video-main-window"></div>
@@ -109,6 +109,7 @@ export default {
   },
   methods: {
     createRoom() {
+      console.log(this.$route.params.course_id);
       this.myRoom = this.create_link();
       axios
         .post(`/create-room/${this.myRoom}/${this.user}/${this.recorded}`)
@@ -321,7 +322,7 @@ export default {
 }
 
 .main-window {
-  background: #fff;
+  background: #eee;
   border: 1px solid #eee;
 }
 
@@ -331,7 +332,7 @@ export default {
 
 #video-main-window {
   /* height: 500px; */
-  height: 90vh;
+  height: 80vh;
 }
 #video-main-window >>> video {
   width: 100%;
@@ -342,7 +343,7 @@ export default {
 #video-sub-window {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 90vh;
   overflow-y: auto;
 }
 #video-sub-window >>> video {
