@@ -102,7 +102,7 @@
     "course": {
         "session": "Séance",
         "sessions": "Number of Sessions",
-        "duration": "Number of Sessions",
+        "duration": "Duration per Session",
         "lang": "Language",
         "price": "Price per session",
         "description": "Description",
@@ -112,7 +112,9 @@
         "subCat": "Sub-category",
         "instructorRate": "Instructor rating",
         "students": "Students enrolled",
-        "scheduledAt": "Scheduled at"
+        "scheduledAt": "Scheduled at",
+        "enroll_to_all": "Enroll for all sessions",
+        "enroll_to_course": "Enroll for this course"
     },
     "courseDetails": {
         "hero": "AVAILABLE COURSES",
@@ -142,5 +144,8 @@
         "go_live": "Go to live",
         "no_video_yet": "No video link added yet"
     },
-    "start_at": "Start at"
+    "start_at": "Start at",
+    "payment_option": "Payment option",
+    "gst": "GST",
+    "tvq": "QST"
 }

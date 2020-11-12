@@ -24,9 +24,9 @@
                 </div>
                 <div class="col-md-2" :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '']">
                     <router-link
-                        :to="{ path: `/checkout/${course.id}`, params: {id: course.id, name: course.name, price: course.price, sections_count: course.sections_count}}"
+                        :to="{ path: `/checkout/${course.id}`}"
                         tag="button" class="btn btn-primary btn-block my-3">
-                        S'inscrire à ce cours
+                        {{$t('course.enroll_to_course')}}
                     </router-link>
                 </div>
                 <div class="col-12">

@@ -49,7 +49,7 @@ const actions = {
         commit('setLoading', true);
         const response = await axios.get(`/courses/${slug}`,);
         commit('setCourse', response.data[0]);
-        console.log(response.data)
+
         const me = JSON.parse(localStorage.getItem('user')) || null;
         commit('setEnrolled', false);
         // if (me) {
@@ -62,6 +62,7 @@ const actions = {
         // }
 
         commit('setLoading', false);
+        return response.data[0];
     },
     async getSection({commit}, slug) {
         commit('setLoading', true);

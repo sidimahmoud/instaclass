@@ -206,7 +206,7 @@ const routes = [
         }
     },
     {
-        path: '/checkout/:slug',
+        path: '/checkout/:id/:slug',
         name: 'BuyOneSection',
         component: BuyOneSection,
         meta: {

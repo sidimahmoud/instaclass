@@ -43,9 +43,9 @@
                         </div>
                         <div :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '', 'col-md-3']">
                             <router-link
-                                :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
+                                :to="{ path:`/checkout/${course.id}`}"
                                 tag="a" class="btn btn-primary my-3">
-                                S'inscrire à tout les séances
+                                {{$t('course.enroll_to_all')}}
                             </router-link>
                             <!-- <router-link
                                 :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
@@ -93,7 +93,7 @@
                         </div>
                         <div :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '', 'col-md-3']">
                             <router-link
-                                :to="{ name: 'BuyOneSection', params: {id: section.id, name: section.title, price: course.price}}"
+                                :to="{ name: 'BuyOneSection', params: {id: course.id, slug: section.id,name: section.title, price: course.price}}"
                                 tag="a" class="btn btn-primary my-3" v-if="!enrolled">
                                 {{$t('course.enrollInSession')}}
                             </router-link>

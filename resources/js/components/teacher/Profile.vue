@@ -174,11 +174,10 @@
                                                 <div class="row">
                                                     <div class="col-md-9">
                                                         <router-link
-                                                            :to="{
-                              name: 'Detail',
-                              params: { slug: course.id },
-                            }"
-                                                        >
+                                                        :to="{
+                                                            name: 'Detail',
+                                                            params: { slug: course.id },
+                                                        }">
                                                             <h5
                                                                 class="mt-0 mb-1 text-primary font-weight-bolder rounded"
                                                             >

@@ -102,17 +102,19 @@
     },
     "course": {
         "sessions": "Nombre de séances",
-        "duration": "Durée par session",
+        "duration": "Durrée par session",
         "lang": "Language",
         "price": "Prix par séance",
         "description": "Description",
         "enroll": "Inscrire à ce cours",
-        "enrollInSession": "Inscrire à cette séance uniquement",
+        "enrollInSession": "S'inscrire à cette séance uniquement",
         "learnMore": "En savoir plus sur ce cours",
         "subCat": "Sous-catégorie",
         "instructorRate": "Evaluation de l'instituteur",
         "students": "Etudiants inscrits",
-        "scheduledAt": "Prévu à"
+        "scheduledAt": "Prévu à",
+        "enroll_to_all": "S'inscrire à tout les séances",
+        "enroll_to_course": "S'inscrire à ce cours"
     },
     "courseDetails": {
         "hero": "COURS DISPONIBLES",
@@ -142,5 +144,8 @@
         "go_live": "Go to live",
         "no_video_yet": "No video link added yet"
     },
-    "start_at": "Start at"
+    "start_at": "Start at",
+    "payment_option": "Option de payments",
+    "gst": "TPS",
+    "tvq": "TVQ"
 }
