@@ -117,12 +117,13 @@ class EnrollmentController extends Controller
         $payment->amount = $request['course_price'];
         $payment->method = $request['paymentMethod'];
         $payment->object = $request['course_name'];
+        $payment->course_file_id = $course->sections[0]->id;
         $payment->save();
-        foreach ($sections as $section) {
+        /* foreach ($sections as $section) {
             $startDate = str_replace("T", " ", $section->startDate);
             $when = Carbon::parse($startDate)->subDays(1);
-            $request->user()->notify((new OneDayBeforeClass($startDate))->delay($when));
-        }
+            //$request->user()->notify((new OneDayBeforeClass($startDate))->delay($when)); what is this ??????
+        } */
         $teacher = $course->user_id;
         $user = User::find($teacher);
         $user->notify(new NewSubscription("Number: " . $course->id));
