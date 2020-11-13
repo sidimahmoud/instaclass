@@ -145,8 +145,7 @@ class EnrollmentController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public
-    function show($id)
+    public function show($id)
     {
         $enrollment = Enrollment::findOrFail($id);
         return response()->json($enrollment);
@@ -158,8 +157,7 @@ class EnrollmentController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public
-    function edit($id)
+    public function edit($id)
     {
         //
     }
@@ -171,8 +169,7 @@ class EnrollmentController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public
-    function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $enrollment = Enrollment::findOrFail($id);
         $enrollment->user_id = $request->user()->id;
@@ -189,8 +186,7 @@ class EnrollmentController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public
-    function destroy($id, Request $request)
+    public function destroy($id, Request $request)
     {
         $enrollment = Enrollment::findOrFail($id);
         if ($enrollment->user_id === $request->user()->id) {
@@ -200,8 +196,7 @@ class EnrollmentController extends Controller
         return response()->json(["response" => "unauthorized"]);
     }
 
-    public
-    function transaction(array $data)
+    public function transaction(array $data)
     {
         \Stripe\Stripe::setApiKey(config("payment.key"));
         $charge = \Stripe\Charge::create([
@@ -213,5 +208,11 @@ class EnrollmentController extends Controller
 
         return $charge;
 
+    }
+
+    public function deleteAllEnrollement() {
+        $data = Enrollment::truncate();
+
+        return response()->json([]);
     }
 }
