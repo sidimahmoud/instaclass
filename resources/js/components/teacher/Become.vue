@@ -4,15 +4,13 @@
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-md-6 text-center">
-                        <h1 class="display-3">{{$t('auth.become.become')}}</h1>
+                        <h1 >{{$t('auth.become.become')}}</h1>
                     </div>
                     <div class="col-md-6 text-center">
-                        <h1 class="display-4">{{$t('auth.become.join')}}</h1>
+                        <h1 >{{$t('auth.become.join')}}</h1>
                     </div>
                 </div>
-
             </div>
-
         </section>
         <div class="container">
             <div class="row">
@@ -74,7 +72,7 @@
                         <div class="text-center">{{$t('auth.user')}}
                             <router-link :to="{name: 'Signin'}">{{$t('auth.signIn')}}</router-link>
                         </div>
-                        <h2>Or</h2>
+                        <h2>{{$t("auth.or")}}</h2>
                         <button class="btn btn-lg btn-google btn-block text-uppercase" @click="loginGoogle('google')">
                             <i class="fa fa-google mr-2"></i> {{$t('auth.continueWith')}} Google
                         </button>
@@ -160,7 +158,7 @@
         margin: 0 auto;
         padding: 30px 0;
         border: 2px solid black;
-        /*border-radius: 5%;*/
+        border-radius: 5%;
     }
 
     .signup-form h2 {

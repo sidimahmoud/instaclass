@@ -80,9 +80,9 @@
                             </div>
                         </form>
                         <div class="text-center">{{$t('auth.user')}}
-                            <router-link :to="{name: 'Register'}">{{$t('auth.signIn')}}</router-link>
+                            <router-link :to="{name: 'Login'}">{{$t('auth.signIn')}}</router-link>
                         </div>
-                        <h2>Or</h2>
+                        <h2>{{$t("auth.or")}}</h2>
                         <button class="btn btn-lg btn-google btn-block text-uppercase" @click="loginGoogle('google')">
                             <i class="fa fa-google mr-2"></i> {{$t('auth.continueWith')}} Google
                         </button>
@@ -173,7 +173,7 @@
         padding: 30px 0;
         border: 2px solid black;
         border-bottom: 2px solid black;
-        border-radius: 10%;
+        border-radius: 5%;
     }
 
     .signup-form h2 {
@@ -213,7 +213,6 @@
         padding: 20px;
         background: #ffffff;
         box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-        padding: 30px;
     }
 
     .signup-form .form-group {

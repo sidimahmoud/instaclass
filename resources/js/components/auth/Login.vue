@@ -6,8 +6,7 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-8 text-center pt-md-5">
                         <h1 class="font-weight-bolder">
-                            THE NEXT <br>
-                            YOU
+                            THE NEXT YOU
                         </h1>
                         <h1 class="font-weight-bolder text-uppercase">
                             The best way to predict <br>
@@ -19,8 +18,8 @@
         </section>
         <div class="container ">
             <div class="row">
-                <div class="col-sm-9 col-md-10 col-lg-8 mx-auto">
-                    <div class="signup-form bg-white m-5">
+                <div class="col-sm-9 col-md-10 col-lg-7 mx-auto">
+                    <div class="signup-form bg-white">
                         <div class="row text-dark font-weight-bold d-none d-md-block">
                             <div class="col-md-12 mx-auto d-flex align-items-center">
                                 <div class="col-md-4 col-sm-6">{{$t('auth.student.1')}}</div>
@@ -75,15 +74,18 @@
                         <div>
                             <div class="text-center">{{$t('auth.new')}}
                                 <router-link :to="{name: 'Register'}">{{$t('auth.signup')}}</router-link>
+
+                                <h2>{{$t("auth.or")}}</h2>
+                                <button class="btn btn-lg btn-google btn-block text-uppercase"
+                                        @click="loginGoogle('google')">
+                                    <i class="fa fa-google mr-2"></i> {{$t('auth.continueWith')}} Google
+                                </button>
+                                <button class="btn btn-lg btn-github  btn-block text-uppercase"
+                                        @click="loginGoogle('facebook')">
+                                    <i class="fa fa-facebook-f text-white mr-2"></i> {{$t('auth.continueWith')}}
+                                    Facebook
+                                </button>
                             </div>
-                            <h2>Or</h2>
-                            <button class="btn btn-lg btn-google btn-block text-uppercase" @click="authLogin('google')">
-                                <i class="fa fa-google mr-2"></i> {{$t('auth.continueWith')}} Google
-                            </button>
-                            <button class="btn btn-lg btn-github  btn-block text-uppercase"
-                                    @click="authLogin('facebook')">
-                                <i class="fa fa-facebook-f text-white mr-2"></i> {{$t('auth.continueWith')}} Facebook
-                            </button>
                             <!--                            <g-signin-button-->
                             <!--                                class="btn btn-lg btn-google btn-block text-uppercase"-->
                             <!--                                :params="googleSignInParams"-->
@@ -136,10 +138,10 @@
                 let password = this.password;
                 this.$store.dispatch('login', {email, password})
                     .then(res => {
-                        if(res.data.user.roles[0].name === "student") {
+                        if (res.data.user.roles[0].name === "student") {
                             let r = this.$router.resolve({name: 'StudentProfile'});
                             window.location.assign(r.href)
-                        }else {
+                        } else {
                             this.errorMessage = "Please verify your Email address or password and try again"
                         }
                     })
@@ -199,7 +201,8 @@
         background: #ffffff;
         border: 2px solid black;
         border-bottom: 2px solid black;
-        border-radius: 10%;
+        border-radius: 5%;
+        padding: 20px;
 
     }
 

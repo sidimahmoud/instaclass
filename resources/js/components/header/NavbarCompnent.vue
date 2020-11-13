@@ -19,7 +19,8 @@
                     <!--                </strong>-->
                     <!--                </li>-->
                 </ul>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -93,11 +94,17 @@
 
                             </router-link> -->
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{$t('nav.account')}}
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/teacher/profile">Profile</a>
+                                    <router-link :to="{name: 'TeacherProfile'}" tag="a"
+                                                 class="dropdown-item" data-toggle="collapse"
+                                                 data-target=".navbar-collapse.show">
+                                        <!--                                        {{$t('nav.account')}}-->
+                                        Profile
+                                    </router-link>
                                     <a class="dropdown-item" @click="logout">Logout</a>
                                 </div>
                             </div>

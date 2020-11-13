@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-12">
                     <div class="row align-items-center">
-                        <div class="col-6">
+                        <div class="col-md-6 text-sm-center">
                             <div class="fb-share-button" :data-href="'https://mondemenagement.ca/courses/'+course.id"
                                  data-layout="button" data-size="large">
                                 <a target="_blank"
@@ -43,9 +43,9 @@
                             </div>
 
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6">
                             <router-link :to="{ name: 'Detail', params: { slug: course.id}}" tag="a"
-                                         class="btn btn-primary mb-1 text-white">
+                                         class="btn btn-primary btn-block mb-1 text-white">
                                 {{$t('course.learnMore')}}
                             </router-link>
                         </div>

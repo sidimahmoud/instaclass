@@ -124,7 +124,8 @@
     },
     "auth":{
         "signIn": "Connexion",
-        "signup": "Inscrire",
+        "signup": "S'nscrire",
+        "or": "Ou",
         "continueWith":"Continuer avec",
         "new": "Vous n'avez pas de compte?",
         "user": "Vous avez déjà un compte?",

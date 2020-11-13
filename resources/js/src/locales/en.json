@@ -125,6 +125,8 @@
     "auth": {
         "signIn": "Sign in",
         "signup": "Sign up",
+        "or": "Or",
+
         "continueWith": "Continue with",
         "new": "Don't have an account?",
         "user": "Already have an account?",

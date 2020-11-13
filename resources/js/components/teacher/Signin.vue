@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="hero pt-5">
+        <section class="hero pt-5 mb-3">
 <!--            <div class="container h-100">-->
 <!--                <div class="row h-100">-->
 <!--                    <div class="col-md-4"></div>-->
@@ -21,9 +21,8 @@
         </section>
         <div class="container ">
             <div class="row">
-                <div class="col-sm-9 col-md-10 col-lg-8 mx-auto mt-0">
-
-                    <div class="signup-form bg-white m-5 pt-0">
+                <div class="col-sm-9 col-md-10 col-lg-7 mx-auto">
+                    <div class="signup-form bg-white">
                         <div class="row text-dark font-weight-bold d-none d-md-block">
                             <div class="col-md-12 mx-auto d-flex align-items-center">
                                 <div class="col-md-3 col-sm-6">{{$t('auth.become.1')}}</div>
@@ -82,7 +81,7 @@
                             <div class="text-center">{{$t('auth.new')}}
                                 <router-link :to="{name: 'Become'}">{{$t('auth.signup')}}</router-link>
                             </div>
-                            <h2>Or</h2>
+                            <h2>{{$t("auth.or")}}</h2>
                             <button class="btn btn-lg btn-google btn-block text-uppercase" @click="authLogin('google')">
                                 <i class="fa fa-google mr-2"></i> {{$t('auth.continueWith')}} Google
                             </button>
@@ -178,6 +177,9 @@
         margin-bottom: 15px;
         background: #ffffff;
         border: 2px solid black;
+        border-bottom: 2px solid black;
+        border-radius: 5%;
+        padding: 20px;
 
     }
 
