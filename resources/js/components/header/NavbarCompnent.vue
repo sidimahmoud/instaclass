@@ -139,7 +139,7 @@
             logout() {
                 this.$store.dispatch('logout')
                     .then(() => {
-                        window.location.reload
+                        this.$router.go();
                     })
             },
             search() {

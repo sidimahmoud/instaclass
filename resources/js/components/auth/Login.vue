@@ -137,7 +137,8 @@
                 this.$store.dispatch('login', {email, password})
                     .then(res => {
                         if(res.data.user.roles[0].name === "student") {
-                            this.$router.push({name: 'StudentProfile'});
+                            let r = this.$router.resolve({name: 'StudentProfile'});
+                            window.location.assign(r.href)
                         }else {
                             this.errorMessage = "Please verify your Email address or password and try again"
                         }

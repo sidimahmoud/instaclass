@@ -247,7 +247,7 @@
             ...mapActions([ "fetchUserEnrollments", "fetchReceipts", "fetchUpcomingClasses"]),
             logout() {
                 this.$store.dispatch("logout").then(() => {
-                    this.$router.push("/");
+                    this.$router.go();
                 });
             },
             lives() {
