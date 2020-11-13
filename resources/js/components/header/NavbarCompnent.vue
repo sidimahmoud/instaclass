@@ -6,6 +6,7 @@
                     <img src="../../assets/logo.png" alt="" width="60px">
                 </a>
                 <ul class="lang text-center p-0 text-primary">
+                    <span class="nav-item" v-if="isLoggedIn">{{$t('hello')}}, {{loggedInUser.first_name}}</span>
                     <li class="btn" v-if="locale==='fr'" @click="en">
                         <strong>EN</strong>
                     </li>
@@ -86,11 +87,20 @@
                             </router-link>
                         </li>
                         <li class="nav-item" v-else>
-                            <router-link :to="{name: 'TeacherProfile'}" tag="a"
+                            <!-- <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                          class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
                                 {{$t('nav.account')}}
 
-                            </router-link>
+                            </router-link> -->
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{$t('nav.account')}}
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/teacher/profile">Profile</a>
+                                    <a class="dropdown-item" @click="logout">Logout</a>
+                                </div>
+                            </div>
                         </li>
 
                     </ul>
@@ -109,7 +119,7 @@
 
     export default {
         name: 'AppNav',
-        computed: mapGetters(["isLoggedIn", "userProfile"]),
+        computed: mapGetters(["isLoggedIn", "loggedInUser"]),
         data() {
             return {
                 q: '',
@@ -129,7 +139,7 @@
             logout() {
                 this.$store.dispatch('logout')
                     .then(() => {
-                        this.$router.push('/')
+                        window.location.reload
                     })
             },
             search() {
@@ -139,6 +149,7 @@
             ...mapActions(["fetchProfile"])
         },
         created() {
+            console.log(this.loggedInUser);
             if (this.isLoggedIn)
                 this.fetchProfile()
         }

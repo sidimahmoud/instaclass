@@ -99,14 +99,26 @@
                                 <h4 class="text-center my-2 text-white text-uppercase">
                                     Your course will start in
                                 </h4>
-                                <Count-down
-                                    :year="upComingSections[0].startDate.slice(0, 4)"
-                                    :month="upComingSections[0].startDate.slice(5, 7)-1"
-                                    :day="upComingSections[0].startDate.slice(8, 10)"
-                                    :hour="upComingSections[0].startDate.slice(11, 13)"
-                                    :minute="upComingSections[0].startDate.slice(14, 16)"
-                                    :second="0"
-                                />
+                                <div class="" v-if="upComingSections.length > 0 ">
+                                    <Count-down
+                                        :year="upComingSections[0].startDate.slice(0, 4)"
+                                        :month="upComingSections[0].startDate.slice(5, 7)-1"
+                                        :day="upComingSections[0].startDate.slice(8, 10)"
+                                        :hour="upComingSections[0].startDate.slice(11, 13)"
+                                        :minute="upComingSections[0].startDate.slice(14, 16)"
+                                        :second="0"
+                                    />
+                                </div>
+                                <div v-else>
+                                    <Count-down
+                                        :year="2020"
+                                        :month="1"
+                                        :day="1"
+                                        :hour="0"
+                                        :minute="0"
+                                        :second="0"
+                                    />
+                                </div>
                             </div>
                         </div>
                         <p

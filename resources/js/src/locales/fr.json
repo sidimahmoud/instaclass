@@ -94,12 +94,13 @@
     },
     "courses": {
         "hero": "TOUS LES COURS QUE NOUS OFFRONS",
-        "title": "SÉLECTIONNEZ VOTRE COURS AUJOURD'HUI",
+        "title": "INSCRIVEZ-VOUS À UN NOUVEAU COURS AUJOURD'HUI",
         "category": "Categorie",
         "price": "Prix",
         "courseLang": "Language du cours",
         "sessionsPer": "Sessions par cours",
-        "all": "Tous"
+        "all": "Tous",
+        "slug": "Visitez les détails des cours disponibles."
     },
     "course": {
         "sessions": "Nombre de séances",
@@ -165,12 +166,6 @@
         "emailHelp": "Vous serez averti quand le cours sera disponible.",
         "btn": "Envoyer"
     },
-
-
-
-
-
-
     "profile": {
         "go_live": "Go to live",
         "no_video_yet": "No video link added yet"
@@ -178,5 +173,6 @@
     "start_at": "Start at",
     "payment_option": "Option de payments",
     "gst": "TPS",
-    "tvq": "TVQ"
+    "tvq": "TVQ",
+    "hello": "Bonjour"
 }

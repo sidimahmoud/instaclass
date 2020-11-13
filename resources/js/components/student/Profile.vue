@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <section class="hero mb-2 pt-5" v-if="!profileLoading">
             <div class="container mt-4 h-100">
                 <div class="text-right">
@@ -31,8 +30,8 @@
         </div>
         <div class="container" v-if="!profileLoading">
 
-            <div class="jumbotron1 p-0">
-                <div class="container details">
+            <div class="jumbotron1  p-0 mt-2">
+                <div class="container-fluid details">
                     <div class="row align-items-center counts">
                         <div
                             class="col-md-4 pl-0 teacher-image"
@@ -322,6 +321,7 @@
     .jumbotron1 {
         background-color: transparent;
         border-radius: 0;
+        width: 100%;
 
         img {
             border-radius: 0 10% 10% 0;

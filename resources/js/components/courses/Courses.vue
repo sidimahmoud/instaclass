@@ -15,9 +15,7 @@
             <div class="text-center my-3">
                 <h2><strong>{{$t('courses.title')}}</strong></h2>
                 <p class="w-50 m-auto">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda dolorum ea earum
-                    eius est illo, minima molestiae, omnis quo rem tempore voluptates. Eius nisi quia recusandae rem
-                    veritatis voluptate?
+                    {{$t('courses.slug')}}
                 </p>
             </div>
             <div class="container-fluid">

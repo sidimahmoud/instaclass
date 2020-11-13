@@ -93,12 +93,13 @@
     },
     "courses": {
         "hero": "ALL COURSES WHAT WE OFFER",
-        "title": "SELECT YOUR COURSE TODAY",
+        "title": "SUBSCRIBE TO A NEW COURSE TODAY",
         "category": "Category",
         "price": "Price",
         "courseLang": "Course language",
         "sessionsPer": "Sessions per course",
-        "all": "All"
+        "all": "All",
+        "slug": "Visit the details of available courses."
     },
     "course": {
         "session": "Séance",
@@ -177,5 +178,6 @@
     "start_at": "Start at",
     "payment_option": "Payment option",
     "gst": "GST",
-    "tvq": "QST"
+    "tvq": "QST",
+    "hello": "Hello"
 }
