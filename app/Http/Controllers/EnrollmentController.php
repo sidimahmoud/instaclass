@@ -108,6 +108,7 @@ class EnrollmentController extends Controller
         $enrollment = new Enrollment();
         $enrollment->user_id = $request->user()->id;
         $enrollment->course_id = $course->id;
+        $enrollment->course_file_id = $course->sections[0]->id;
         $enrollment->save();
         if ($request['course_price'] > 0)
             $this->transaction($request->all());
@@ -117,7 +118,6 @@ class EnrollmentController extends Controller
         $payment->amount = $request['course_price'];
         $payment->method = $request['paymentMethod'];
         $payment->object = $request['course_name'];
-        $payment->course_file_id = $course->sections[0]->id;
         $payment->save();
         /* foreach ($sections as $section) {
             $startDate = str_replace("T", " ", $section->startDate);
