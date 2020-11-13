@@ -166,7 +166,7 @@
             tokenCreated(token) {
                 let payload = {
                     paymentMethod: this.paymentMethod,
-                    course_id: this.course.course_id,
+                    course_id: this.course.id,
                     course_name: "Course N°" + this.course.course_id,
                     course_price: this.allPrice,
                     token: token.id,
@@ -184,7 +184,7 @@
             enrollForFree() {
                 let payload = {
                     paymentMethod: this.paymentMethod,
-                    course_id: this.course.course_id,
+                    course_id: this.course.id,
                     course_name: "Course N°" + this.course.course_id,
                     course_price: this.course_price,
                 };
