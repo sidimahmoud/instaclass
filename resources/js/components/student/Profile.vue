@@ -131,7 +131,7 @@
                                 <div v-if="isEmpty(userEnrollments)">
                                     You have no course yet.
                                 </div>
-                                <div class="item-product" v-for="e in userEnrollments" v-bind:key="e.id">
+                                <div class="item-product" v-for="e in userEnrollments" v-bind:key="e.id" v-else>
                                     <div class="product-grid__img-wrapper">
                                         <img :src="e.course_file.course.image" alt="Img" class="product-grid__img"/>
                                     </div>
