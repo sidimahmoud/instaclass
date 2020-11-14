@@ -140,6 +140,7 @@
 
 <style scoped>
     .container {
-        background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);
+        /*background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);*/
+        background: #fff
     }
 </style>

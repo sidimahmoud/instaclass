@@ -2,18 +2,18 @@
     <div>
         <section class="hero pt-5 mb-3">
             <div class="container h-100">
-                <div class="row h-100">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-8 text-center pt-md-5">
-                        <h1 class="font-weight-bolder">
-                            THE NEXT YOU
-                        </h1>
-                        <h1 class="font-weight-bolder text-uppercase">
-                            The best way to predict <br>
-                            the future is to create it
-                        </h1>
-                    </div>
-                </div>
+<!--                <div class="row h-100">-->
+<!--                    <div class="col-md-4"></div>-->
+<!--                    <div class="col-md-8 text-center pt-md-5">-->
+<!--                        <h1 class="font-weight-bolder">-->
+<!--                            THE NEXT YOU-->
+<!--                        </h1>-->
+<!--                        <h1 class="font-weight-bolder text-uppercase">-->
+<!--                            The best way to predict <br>-->
+<!--                            the future is to create it-->
+<!--                        </h1>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </section>
         <div class="container ">
@@ -52,7 +52,7 @@
                             </div>
                             <div class="input-group mb-3">
                                 <input type="password" class="form-control form-control-lg" name="password"
-                                       placeholder="Password"
+                                       :placeholder="$t('auth.password')"
                                        required="required" v-model="password" aria-describedby="basic-addon">
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="basic-addon"><i

@@ -1,12 +1,12 @@
 <template>
-    <div class="container bootstrap snippet ">
+    <div class="container mt-5 pt-5 bootstrap snippet ">
         <div class="text-center"><h1>{{userProfile.first_name}} {{userProfile.last_name}}</h1></div>
         <div class="row">
             <div class="col-sm-3"><!--left col-->
                 <div class="text-center">
                     <img :src="userProfile.image" class="avatar img-circle img-thumbnail"
                          alt="avatar">
-                    <h6>Add your profile or an image</h6>
+                    <h6>{{$t('profile.addImg')}}</h6>
                     <input type="file" class="text-center center-block file-upload" id="img">
                 </div>
                 <br>
@@ -18,7 +18,7 @@
                         <form class="form" id="registrationForm" @submit.prevent="updateProfile">
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    <label for="first_name">First name</label>
+                                    <label for="first_name">{{$t('auth.fName')}}</label>
                                     <input type="text" class="form-control" name="first_name" id="first_name"
                                            placeholder="first name" title="enter your first name if any."
                                            :value="userProfile.first_name">
@@ -27,7 +27,7 @@
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="last_name">Last name</label>
+                                    <label for="last_name">{{$t('auth.lName')}}</label>
                                     <input type="text" class="form-control" name="last_name" id="last_name"
                                            placeholder="last name" title="enter your last name if any."
                                            :value="userProfile.last_name">
@@ -37,7 +37,7 @@
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="phone">Phone (Optional)</label>
+                                    <label for="phone">{{$t('profile.phone')}}</label>
                                     <input type="text" class="form-control" name="phone" id="phone"
                                            placeholder="Phone" title="enter your phone number if any."
                                            :value="userProfile.phone">
@@ -47,7 +47,7 @@
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="email">Email (will be used to communicate with you)</label>
+                                    <label for="email">{{$t('profile.mail')}}</label>
                                     <input type="email" class="form-control" name="email" id="email"
                                            placeholder="you@email.com" title="enter your email."
                                            :value="userProfile.email">
@@ -56,14 +56,14 @@
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="lang">Spoken languages</label>
+                                    <label for="lang">{{$t('profile.languages')}}</label>
                                     <input type="text" class="form-control"  id="lang" placeholder="Example: English, French"
                                            :value="userProfile.languages">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    <label for="about">About Me</label>
+                                    <label for="about">{{$t('profile.about')}}</label>
                                     <textarea name="" id="about" class="form-control">{{userProfile.about}}
                                     </textarea>
                                 </div>
@@ -72,12 +72,12 @@
                             <div class="row mb-5">
                                 <div class="col-6">
                                     <button class="btn btn-success btn-block" type="submit">
-                                        Save
+                                        {{$t('profile.save')}}
                                     </button>
                                 </div>
                                 <div class="col-6">
                                     <button class="btn btn-danger btn-block" type="reset">
-                                        Reset
+                                        {{$t('profile.reset')}}
                                     </button>
                                 </div>
                             </div>

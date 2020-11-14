@@ -26,7 +26,7 @@ import Become from "../components/teacher/Become";
 import Signin from "../components/teacher/Signin";
 import TeacherProfile from "../components/teacher/Profile";
 import StudentProfile from "../components/student/Profile";
-import EditStudentProfile from "../components/student/EditProfile";
+import EditStudentProfile from "../components/teacher/EditProfile";
 
 import Dashboard from "../components/admin/Dashboard";
 import LoginAdmin from "../components/admin/auth/Login";
@@ -39,7 +39,7 @@ import StartLive from "../components/teacher/StartLive";
 import LiveCourse from "../components/teacher/LiveCourse";
 import FAQ from "../components/FAQ";
 import last from "../components/last";
-
+import Terms from "../components/Terms";
 Vue.use(VueRouter);
 
 const routes = [
@@ -54,12 +54,12 @@ const routes = [
         }
     },
     {
-        path: '/last',
-        name: 'Last',
-        component: last,
+        path: '/terms',
+        name: 'Terms',
+        component: Terms,
         meta: {
             requiresAuth: false,
-            title: 'Home'
+            title: 'Terms of use'
 
         }
     },

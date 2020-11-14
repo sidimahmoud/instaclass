@@ -2,7 +2,7 @@
     <div>
         <div>
             <div class="row justify-content-around align-items-center shadow-sm course-det p-1 py-3">
-                <div class="col-md-2" :style="{
+                <div class="col-md-2 categ-img" :style="{
                   backgroundImage: 'url(' + course.sub_category.category.image + ')',
                   backgroundSize: 'cover',
                   backgroundRepeat: 'no-repeat',
@@ -14,7 +14,7 @@
                     <!--                    <img :src="course.sub_category.category.image" :alt="course.sub_category.category.image"-->
                     <!--                         class="img-fluid">-->
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <strong>{{$t('course.sessions')}} - </strong> {{course.sections.length}} <br>
                     <strong>{{$t('course.duration')}} - </strong> {{course.estimated_duration}} <br>
                     <strong>{{$t('course.lang')}} - </strong> {{course.language}} <br>
@@ -22,16 +22,17 @@
                     v-if="course.price!=0">{{currencyToSymbol(course.currency)}}{{course.price}}</span> <br>
                     <strong>{{$t('course.description')}} - </strong> {{course.description}} <br>
                 </div>
-                <div class="col-md-2" :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '']">
+                <div class="col-md-4 text-right"
+                     :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '']">
                     <router-link
                         :to="{ path: `/checkout/${course.id}`}"
-                        tag="button" class="btn btn-primary btn-block my-3">
+                        tag="button" class="btn btn-primary custom-class my-2">
                         {{$t('course.enroll_to_course')}}
                     </router-link>
                 </div>
                 <div class="col-12">
-                    <div class="row align-items-center">
-                        <div class="col-md-6 text-sm-center">
+                    <div class="row align-items-center text-center">
+                        <div class="col-md-6 order-2 order-md-1">
                             <div class="fb-share-button" :data-href="'https://mondemenagement.ca/courses/'+course.id"
                                  data-layout="button" data-size="large">
                                 <a target="_blank"
@@ -43,9 +44,9 @@
                             </div>
 
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-sm-2  order-1 order-md-2 text-right">
                             <router-link :to="{ name: 'Detail', params: { slug: course.id}}" tag="a"
-                                         class="btn btn-primary btn-block mb-1 text-white">
+                                         class="btn btn-primary custom-class  my-2 text-white">
                                 {{$t('course.learnMore')}}
                             </router-link>
                         </div>
@@ -85,6 +86,7 @@
 </template>
 <script>
     import {mapGetters} from 'vuex'
+
     export default {
         name: "course-components",
         /*
@@ -130,7 +132,7 @@
         |--------------------------------------------------------------------------
         */
         computed: {
-            ...mapGetters(["isLoggedIn" , "loggedInUser"])
+            ...mapGetters(["isLoggedIn", "loggedInUser"])
         },
 
     };
@@ -154,5 +156,16 @@
         background-color: #fff;
         font-weight: 800 !important;
         border: 1px solid #2b63f3;
+    }
+
+    @media all and (max-width: 720px) {
+        .custom-class {
+            width: 100%;
+            display: block;
+        }
+        .categ-img{
+            height: 320px !important;
+            background-position: center !important;
+        }
     }
 </style>

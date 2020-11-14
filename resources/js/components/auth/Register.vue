@@ -2,19 +2,19 @@
     <div>
         <section class="hero pt-5 mb-3">
             <div class="container h-100">
-                <div class="row h-100">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-8 text-center pt-md-5">
-                        <h1 class="font-weight-bold">
-                            THE NEXT <br>
-                            YOU
-                        </h1>
-                        <h1 class="font-weight-bold text-uppercase">
-                            The best way to predict <br>
-                            the future is to create it
-                        </h1>
-                    </div>
-                </div>
+                <!--                <div class="row h-100">-->
+                <!--                    <div class="col-md-4"></div>-->
+                <!--                    <div class="col-md-8 text-center pt-md-5">-->
+                <!--                        <h1 class="font-weight-bold">-->
+                <!--                            THE NEXT <br>-->
+                <!--                            YOU-->
+                <!--                        </h1>-->
+                <!--                        <h1 class="font-weight-bold text-uppercase">-->
+                <!--                            The best way to predict <br>-->
+                <!--                            the future is to create it-->
+                <!--                        </h1>-->
+                <!--                    </div>-->
+                <!--                </div>-->
 
             </div>
 
@@ -63,7 +63,9 @@
                             <div class="form-group">
                                 <label class="form-check-label">
                                     <input type="checkbox" required="required">
-                                    {{$t('auth.accept')}} <a href="#"> {{$t('footer.termsAndConditions')}}</a> &amp; <a
+                                    {{$t('auth.accept')}} <a href="#" data-toggle="modal"
+                                                             data-target="#exampleModalLong">
+                                    {{$t('footer.termsAndConditions')}} </a> &amp; <a
                                     href="#">{{$t('footer.privacy')}}</a>
                                 </label>
                             </div>
@@ -94,6 +96,31 @@
                 </div>
             </div>
         </div>
+        <!--        Modal Terms of use-->
+        <!-- Button trigger modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">
+                            <span v-if="lang==='en'">TERMS AND CONDITIONS FOR THE INSTANTACLASSE WEBSITE </span>
+                            <span v-if="lang==='fr'">Termes et conditions pour l’utilisation du site web d’INSTANTACLASSE</span>
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <terms :title="false"></terms>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Understood</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -101,10 +128,11 @@
 
 <script>
     import {mapGetters} from "vuex";
+    import Terms from "../Terms";
 
     export default {
         name: "Register",
-
+        components: {Terms},
         data() {
             return {
                 first_name: '',
@@ -160,7 +188,7 @@
                     .catch(err => console.log(err))
             },
         },
-        computed: mapGetters(["authLoading"])
+        computed: mapGetters(["authLoading", "lang"])
     }
 </script>
 

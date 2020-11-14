@@ -488,6 +488,7 @@
         border: 5px solid black;
         border-radius: 10px;
         box-shadow: 10px 10px 23px 0 rgba(130, 130, 130, 1);
+        background: #fff;
     }
 
     .jumbotron {

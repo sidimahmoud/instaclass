@@ -214,17 +214,16 @@
         background-size: cover;
         height: 60vh;
         font-family: 'Poppins', sans-serif;
-
-        h1 {
-            line-height: 2;
+        h2 {
+            line-height: 2 !important;
         }
 
-        @media only screen and (max-width: 600px) {
-            border-radius: 0 0 100px 0;
+        @media only screen and (max-width: 720px) {
+            border-radius: 0 0 100px 0 !important;
 
-            h1 {
-                line-height: normal;
-                font-size: medium;
+            h2 {
+                line-height: normal !important;
+                font-size: medium !important;
             }
         }
 

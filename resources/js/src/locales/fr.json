@@ -103,6 +103,7 @@
         "slug": "Visitez les détails des cours disponibles."
     },
     "course": {
+        "session": "Séance",
         "sessions": "Nombre de séances",
         "duration": "Durrée par session",
         "lang": "Language",
@@ -111,6 +112,7 @@
         "enroll": "Inscrire à ce cours",
         "enrollInSession": "S'inscrire à cette séance uniquement",
         "learnMore": "En savoir plus sur ce cours",
+        "category": "Catégorie",
         "subCat": "Sous-catégorie",
         "instructorRate": "Evaluation de l'instituteur",
         "students": "Etudiants inscrits",
@@ -140,10 +142,10 @@
             "2": "Créez et structurez votre cours",
             "3":"Enseignez par vidéo en direct",
             "4": "Soyez payé",
-            "getStarted": "COMMENCEZ EN TANT QU'ENSEIGNANT AUJOURD’HUI",
+            "getStarted": "COMMENCEZ EN TANT QU'ENSEIGNANT(E) AUJOURD’HUI",
             "login": "Connecter pour acceder votre espace d'instructeur.",
-            "become": "DEVENIR INSTRUCTEUR",
-            "join": "REJOIGNEZ NOTRE COMMUNAUTÉ"
+            "become": "DEVENEZ INSTRUCTEUR",
+            "join": "EN INSTRUISANT DANS VOTRE COMMUNAUTÉ"
         },
         "student": {
             "1": "Connectez-vous ou inscrivez-vous pour accéder à votre compte d’étudiant",
@@ -162,14 +164,31 @@
             "es": "Espagnol",
             "other": "Autre (Précisez)"
         },
-        "email": "Aderesse mail (optionnel)",
-        "emailPlaceholder": "Saisir votre mail",
-        "emailHelp": "Vous serez averti quand le cours sera disponible.",
+        "email": "Adresse email (optionnel)",
+        "emailPlaceholder": "Saisir votre email",
+        "emailHelp": "Si vous laisser votre email, vous serez informé quand lorsque le cours suggéré sera disponible.",
         "btn": "Envoyer"
     },
     "profile": {
         "go_live": "Go to live",
-        "no_video_yet": "No video link added yet"
+        "no_video_yet": "No video link added yet",
+        "addImg": "Ajouter votre profile ou une image",
+        "phone": "Telephone (Optionnel)",
+        "mail": "Email (Sera utilisé pour communiquer avec vous)",
+        "languages": "langues parlées",
+        "about": "A propos de moi",
+        "save": "Enregistrer",
+        "reset": "Annuler",
+        "edit": "Modifier le profile",
+        "courses": "Mes cours",
+        "receipts": "Mes reçus",
+        "ratings": "Evaluations",
+        "receiptsWill":"Vos reçus seront affichés ici",
+        "teacherName": "Instructeur",
+        "rating": "Evaluation",
+        "comment": "Commentaire",
+        "enrollments":"Inscriptions",
+        "noRatings": "Pas encore d'evaluations"
     },
     "start_at": "Start at",
     "payment_option": "Option de payments",

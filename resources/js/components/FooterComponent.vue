@@ -64,7 +64,7 @@
                                 </router-link>
                             </p>
                             <p>
-                                <router-link to="#" tag="a" class=" text-uppercase">
+                                <router-link :to="{name:'Terms'}" tag="a" class=" text-uppercase">
                                     {{$t('footer.termsAndConditions')}}
                                 </router-link>
                             </p>

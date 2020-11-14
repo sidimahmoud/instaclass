@@ -18,8 +18,8 @@
                     </div>
                 </div>
             </section>
-            <div class="container-fluid">
-                <div class="course-header">
+            <div class="container-fluid bg-light mt-0 pt-3 pb-3">
+                <div class="course-header mt-3">
                     <div class="row justify-content-around align-items-center pt-2">
                         <div class="col-md-2 text-center">
                             <img :src="course.user.image" width="80px" height="80px" alt="Avatar"
@@ -70,7 +70,8 @@
                         <div>{{$t('course.subCat')}} : {{course.sub_category.name_en}}</div>
                         <div>{{$t('course.sessions')}}: {{course.sections.length}}</div>
                         <div>{{$t('course.lang')}} : {{course.language}}</div>
-                        <div>{{$t('course.price')}}: {{currencyToSymbol(course.currency)}}{{course.price}}/{{$t('course.session')}}</div>
+                        <div>{{$t('course.price')}}: <span v-if="course.price===0">Free</span> <span
+                            v-if="course.price!=0">{{currencyToSymbol(course.currency)}}{{course.price}}</span></div>
                     </div>
                 </div>
 

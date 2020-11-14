@@ -58,7 +58,7 @@
                             </div>
                             <div class="input-group mb-3">
                                 <input type="password" class="form-control form-control-lg" name="password"
-                                       placeholder="Password"
+                                       :placeholder="$t('auth.password')"
                                        required="required" v-model="password" aria-describedby="basic-addon">
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="basic-addon"><i

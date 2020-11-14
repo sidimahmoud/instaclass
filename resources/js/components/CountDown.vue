@@ -1,32 +1,31 @@
 <template>
-    <div class="text-center font-weight-bolder">
+    <div class="font-weight-bold">
         <div class="row  justify-content-center">
-            <div class="col">
+            <span >
                 <div class="btn btn-primary ">
                     {{displayDays}} <br>
-                    Days
+                    Day
                 </div>
-            </div>
-            <div class="col">
+            </span>
+            <span >
                 <div class="btn btn-primary ">
                     {{displayHours}} <br>
-                    Hours
+                    Hour
                 </div>
-            </div>
-            <div class="col">
+            </span>
+            <span >
                 <div class="btn btn-primary ">
                     {{displayMinutes}} <br>
-                    Minutes
+                    Min
                 </div>
-            </div>
-            <div class="col">
+            </span>
+            <span >
                 <div class="btn btn-primary ">
                     {{displaySeconds}} <br>
-                    Seconds
+                    Sec
                 </div>
-            </div>
-
-            <div class="col-12 text-white" v-if="text">
+            </span>
+            <div class="col-12 text-white text-center" v-if="text">
                 <h3 v-if="expired">Timer enabled when you have an upcoming course</h3>
                 <h3 v-if="!expired">BE READY</h3>
             </div>

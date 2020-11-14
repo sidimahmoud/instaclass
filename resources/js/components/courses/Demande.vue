@@ -2,16 +2,15 @@
     <div>
         <section class="hero pt-5">
             <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-md-6"><h1 class="font-weight-bolder">REQUEST YOUR COURSE</h1></div>
-                    <div class="col-md-6"></div>
-                    <div class="col-md-6"></div>
-                    <div class="col-md-6 text-center">
-                        <h1 class="font-weight-bolder">CHOOSE YOUR DIRECTION</h1>
-                        <h1 class="font-weight-bolder">CREATE YOUR FUTURE</h1>
-                    </div>
-                </div>
-
+                <!--                <div class="row h-100 align-items-center">-->
+                <!--                    <div class="col-md-6"><h1 class="font-weight-bolder">REQUEST YOUR COURSE</h1></div>-->
+                <!--                    <div class="col-md-6"></div>-->
+                <!--                    <div class="col-md-6"></div>-->
+                <!--                    <div class="col-md-6 text-center">-->
+                <!--                        <h1 class="font-weight-bolder">CHOOSE YOUR DIRECTION</h1>-->
+                <!--                        <h1 class="font-weight-bolder">CREATE YOUR FUTURE</h1>-->
+                <!--                    </div>-->
+                <!--                </div>-->
             </div>
 
         </section>

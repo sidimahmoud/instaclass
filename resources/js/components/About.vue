@@ -2,18 +2,19 @@
     <div>
         <div class="hero">
             <div class=" jumbotron1 pt-5 ">
-<!--                <div class="container h-100">-->
-<!--                    <h1 class="text-center mt-md-5 text-white">-->
-<!--                        {{$t('about.hero.1')}}<br>-->
-<!--                        {{$t('about.hero.2')}}-->
-<!--                    </h1>-->
-<!--                </div>-->
+                <!--                <div class="container h-100">-->
+                <!--                    <h1 class="text-center mt-md-5 text-white">-->
+                <!--                        {{$t('about.hero.1')}}<br>-->
+                <!--                        {{$t('about.hero.2')}}-->
+                <!--                    </h1>-->
+                <!--                </div>-->
             </div>
             <div class=" jumbotron2 py-5">
                 <div class="container  align-items-center mt-2">
                     <div class="row justify-content-around align-items-center">
                         <div class="col-md-6 col-sm-12 text-center d-none d-md-block">
-                            <img src="../assets/images/about/bigstock-Young-Asian-Business-Man-Using-364591240.jpg" width="400px" class="img-fluid rounded">
+                            <img src="../assets/images/about/bigstock-Young-Asian-Business-Man-Using-364591240.jpg"
+                                 width="400px" class="img-fluid rounded">
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <h1>{{$t('about.about.title')}}</h1>
@@ -38,7 +39,8 @@
 
                     </div>
                     <div class="col-md-6 col-sm-12 text-center">
-                        <img src="../assets/images/about/bigstock-Family-Does-Exercises-Online--372384175.jpg" width="400px" class="img-fluid rounded">
+                        <img src="../assets/images/about/bigstock-Family-Does-Exercises-Online--372384175.jpg"
+                             width="400px" class="img-fluid rounded">
                     </div>
                 </div>
             </div>
@@ -47,7 +49,7 @@
         <div class=" jumbotron2 py-5">
             <div class="container  align-items-center mt-2">
                 <div class="row justify-content-around align-items-center">
-                    <div class="col-md-6 col-sm-12 text-center d-none d-md-block">
+                    <div class="col-md-6 col-sm-12 text-center">
                         <img src="../assets/images/about/prohibited.png" width="200px" class="img-fluid rounded">
                     </div>
                     <div class="col-md-6 col-sm-12">
@@ -118,7 +120,7 @@
                         this.last_name = '';
                         this.email = '';
                         this.address = '';
-                        this.$alert('Subscribed successfully','News letter', 'success')
+                        this.$alert('Subscribed successfully', 'News letter', 'success')
                     })
                     .catch(err => console.log(err))
             }
@@ -151,7 +153,8 @@
             background: transparent;
             color: white !important;
 
-        };
+        }
+    ;
 
         ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
             color: white;

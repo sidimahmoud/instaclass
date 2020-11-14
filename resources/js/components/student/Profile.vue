@@ -3,24 +3,21 @@
         <section class="hero mb-2 pt-5" v-if="!profileLoading">
             <div class="container mt-4 h-100">
                 <div class="text-right">
-                    <button class="btn btn-danger mr-2" @click="logout">
-                        Logout
-                    </button>
                     <router-link :to="{name: 'EditStudentProfile'}" tag="a" class="btn btn-primary">
-                        Edit Profile
+                        {{$t('profile.edit')}}
                     </router-link>
                 </div>
 
-                <div class="row h-100">
-                    <div class="col-md-4 d-none d-md-block"></div>
-                    <div class="col-md-8 text-center pt-md-2">
-                        <h1 class="font-weight-bolder text-uppercase">
-                            THE NEXT YOU<br>
-                            The best way to predict <br>
-                            the future is to create it
-                        </h1>
-                    </div>
-                </div>
+                <!--                <div class="row h-100">-->
+                <!--                    <div class="col-md-4 d-none d-md-block"></div>-->
+                <!--                    <div class="col-md-8 text-center pt-md-2">-->
+                <!--                        <h1 class="font-weight-bolder text-uppercase">-->
+                <!--                            THE NEXT YOU<br>-->
+                <!--                            The best way to predict <br>-->
+                <!--                            the future is to create it-->
+                <!--                        </h1>-->
+                <!--                    </div>-->
+                <!--                </div>-->
             </div>
         </section>
         <div class="text-center text-primary" v-if="profileLoading" style="top: 30vh">
@@ -28,19 +25,22 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <div class="container" v-if="!profileLoading">
+        <div class="container-fluid" v-if="!profileLoading">
 
             <div class="jumbotron1  p-0 mt-2">
                 <div class="container-fluid details">
                     <div class="row align-items-center counts">
-                        <div
-                            class="col-md-4 pl-0 teacher-image"
-                            :style="{
-                                  backgroundImage: 'url(' + userProfile.image + ')',
-                                  backgroundSize: 'cover',
-                                  backgroundRepeat: 'no-repeat',
-                            }">
-                            <!--<img :src="userProfile.image" alt="Avatar" class="w-100">-->
+                        <!--                        <div-->
+                        <!--                            class="col-md-4 pl-0 teacher-image"-->
+                        <!--                            :style="{-->
+                        <!--                                  backgroundImage: 'url(' + userProfile.image + ')',-->
+                        <!--                                  backgroundSize: 'cover',-->
+                        <!--                                  backgroundRepeat: 'no-repeat',-->
+                        <!--                            }">-->
+                        <!--                            &lt;!&ndash;<img :src="userProfile.image" alt="Avatar" class="w-100">&ndash;&gt;-->
+                        <!--                        </div>-->
+                        <div class="col-md-4 text-center">
+                            <img :src="userProfile.image" alt="" style=";qx-height: 100px">
                         </div>
                         <div class="col-md-8 mb-2">
                             <div class="row">
@@ -54,29 +54,27 @@
                             </div>
                             <div>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col">
                                         <i class="fa fa-users fa-2x text-warning"></i>
-                                        Course Enrollments
+                                        {{$t('profile.enrollments')}}
                                     </div>
-                                    <div class="col-4 py-2">
-                                  <span class="btn btn-block btn-primary">
+                                    <div class="col py-2">
+                                  <span class="btn btn-primary">
                                       {{userEnrollments.length > 0
                                       ? userEnrollments.length
                                       : "0"}}
                                   </span>
                                     </div>
-                                    <div class="col-2"></div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col">
                                         <i class="fa fa-star fa-2x text-warning"></i>
-                                        Reviews
+                                        {{$t('profile.ratings')}}
                                     </div>
-                                    <div class="col-4 py-2">
-                                        <span class="btn btn-block btn-primary">0</span>
+                                    <div class="col py-2">
+                                        <span class="btn  btn-primary">0</span>
                                     </div>
-                                    <div class="col-2"></div>
                                 </div>
                             </div>
                         </div>
@@ -114,37 +112,37 @@
                 <div class="col-md-12 bg-white shadow">
                     <nav class="nav nav-pills nav-fill mt-3">
                         <a class="nav-item nav-link active" href="#courses" data-toggle="tab">
-                            My courses
+                            {{$t('profile.courses')}}
                         </a>
                         <a class="nav-item nav-link" href="#receipts" data-toggle="tab">
-                            My receipts
+                            {{$t('profile.receipts')}}
                         </a>
                         <a class="nav-item nav-link" href="#ratings" data-toggle="tab">
-                            Ratings
+                            {{$t('profile.ratings')}}
                         </a>
                     </nav>
                     <hr/>
                     <div class="tab-content my-1">
                         <!-- Enrollments-->
                         <div class="tab-pane fade show active" id="courses">
-                            <div class="grid" >
-                                <div v-if="isEmpty(userEnrollments)">
-                                    You have no course yet.
-                                </div>
-                                <div class="item-product" v-for="e in userEnrollments" v-bind:key="e.id" v-else>
-                                    <div class="product-grid__img-wrapper">
-                                        <img :src="e.course_file.course.image" alt="Img" class="product-grid__img"/>
-                                    </div>
-                                    				
-                                    <span><strong>{{ e.course_file.course.name }}</strong></span><br/>
-                                    <span>{{$t('start_at')}}: {{ e.course_file.startDate }}</span><br/>
-                                    <span>{{ e.course_file.course.user.first_name }}</span>
-                                    <span>{{ e.course_file.course.user.last_name }}</span><br/>
-                                    <button v-if="!isEmpty(e.course_file.video_link)" class="btn btn-danger" @click="handleGoLive(e.course_file.video_link)"><i class="fa fa-play"></i> {{$t('profile.go_live')}}</button>
-                                    <span class="empty-link" v-else>{{$t('profile.no_video_yet')}}</span>
-                                </div>
-                                
-                            </div>
+                            <!--                            <div class="grid" >-->
+                            <!--                                <div v-if="isEmpty(userEnrollments)">-->
+                            <!--                                    You have no course yet.-->
+                            <!--                                </div>-->
+                            <!--                                <div class="item-product" v-for="e in userEnrollments" v-bind:key="e.id" v-else>-->
+                            <!--                                    <div class="product-grid__img-wrapper">-->
+                            <!--                                        <img :src="e.course_file.course.image" alt="Img" class="product-grid__img"/>-->
+                            <!--                                    </div>-->
+                            <!--                                    				-->
+                            <!--                                    <span><strong>{{ e.course_file.course.name }}</strong></span><br/>-->
+                            <!--                                    <span>{{$t('start_at')}}: {{ e.course_file.startDate }}</span><br/>-->
+                            <!--                                    <span>{{ e.course_file.course.user.first_name }}</span>-->
+                            <!--                                    <span>{{ e.course_file.course.user.last_name }}</span><br/>-->
+                            <!--                                    <button v-if="!isEmpty(e.course_file.video_link)" class="btn btn-danger" @click="handleGoLive(e.course_file.video_link)"><i class="fa fa-play"></i> {{$t('profile.go_live')}}</button>-->
+                            <!--                                    <span class="empty-link" v-else>{{$t('profile.no_video_yet')}}</span>-->
+                            <!--                                </div>-->
+                            <!--                                -->
+                            <!--                            </div>-->
                         </div>
 
                         <div class="tab-pane fade show" id="receipts">
@@ -180,15 +178,15 @@
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div class="tab-pane fade show" id="ratings">
                             <table class="table" v-if="userProfile.ratings > 0">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Teacher Name</th>
+                                    <th scope="col">{{$t('profile.teacherName')}}</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Rating</th>
-                                    <th scope="col">Comment</th>
+                                    <th scope="col">{{$t('profile.ratings')}}</th>
+                                    <th scope="col">{{$t('profile.comment')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -201,7 +199,7 @@
                                 </tbody>
                             </table>
                             <div class="text-center" v-else>
-                                <h3>No ratings yet</h3>
+                                <h3>{{$t('profile.noRatings')}}</h3>
                             </div>
                         </div>
                     </div>
@@ -244,7 +242,7 @@
         |--------------------------------------------------------------------------
         */
         methods: {
-            ...mapActions([ "fetchUserEnrollments", "fetchReceipts", "fetchUpcomingClasses"]),
+            ...mapActions(["fetchUserEnrollments", "fetchReceipts", "fetchUpcomingClasses"]),
             logout() {
                 this.$store.dispatch("logout").then(() => {
                     this.$router.go();
@@ -274,10 +272,10 @@
                     })
                     .catch((error) => console.log(error));
             },
-            isEmpty (v) {
+            isEmpty(v) {
                 return isEmpty(v);
             },
-            handleGoLive(link){
+            handleGoLive(link) {
                 this.$router.push({path: link});
             }
         },
@@ -324,10 +322,10 @@
         width: 100%;
 
         img {
-            border-radius: 0 10% 10% 0;
-            border: 2px solid black;
-            max-height: 450px;
-            max-width: 450px;
+            /*border-radius: 0 10% 10% 0;*/
+            /*border: 2px solid black;*/
+            max-height: 250px;
+            /*max-width: 450px;*/
         }
     }
 
@@ -362,15 +360,17 @@
         border: 3px solid black;
         border-radius: 10px;
     }
-    .grid{
+
+    .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         grid-gap: 10px;
         padding: 1rem;
         text-align: center;
     }
+
     .item-product {
-        border:1px solid rgb(241, 241, 241);
+        border: 1px solid rgb(241, 241, 241);
         padding: 1rem;
         text-align: center;
 
@@ -379,14 +379,16 @@
             transition: transform .2s;
             -ms-transform: scale(1); /* IE 9 */
             -webkit-transform: scale(1); /* Safari 3-8 */
-            transform: scale(1); 
+            transform: scale(1);
         }
+
         .product-grid__img:hover {
             -ms-transform: scale(2.5); /* IE 9 */
             -webkit-transform: scale(2.5); /* Safari 3-8 */
-            transform: scale(2.5); 
+            transform: scale(2.5);
         }
     }
+
     .empty-link {
         color: red;
     }

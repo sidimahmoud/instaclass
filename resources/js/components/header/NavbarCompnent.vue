@@ -5,20 +5,20 @@
                 <a href="/" class="navbar-brand">
                     <img src="../../assets/logo.png" alt="" width="60px">
                 </a>
-                <ul class="lang text-center p-0 text-primary">
-                    <span class="nav-item" v-if="isLoggedIn">{{$t('hello')}}, {{loggedInUser.first_name}}</span>
-                    <li class="btn" v-if="locale==='fr'" @click="en">
-                        <strong>EN</strong>
-                    </li>
-                    <li class="btn " v-else @click="fr">
-                        <strong>FR</strong>
-                    </li>
-                    <!--                <li v-if="isLoggedIn && !$route.matched.some(({ name }) => name === 'Home')">-->
-                    <!--                    Welcome <strong>-->
-                    <!--                    {{userProfile.first_name}}-->
-                    <!--                </strong>-->
-                    <!--                </li>-->
-                </ul>
+                <!--                <ul class="lang text-center p-0 text-primary">-->
+                <!--                    <span class="nav-item" v-if="isLoggedIn">{{$t('hello')}}, {{loggedInUser.first_name}}</span>-->
+                <!--                    <li class="btn" v-if="locale==='fr'" @click="en">-->
+                <!--                        <strong>EN</strong>-->
+                <!--                    </li>-->
+                <!--                    <li class="btn " v-else @click="fr">-->
+                <!--                        <strong>FR</strong>-->
+                <!--                    </li>-->
+                <!--                    &lt;!&ndash;                <li v-if="isLoggedIn && !$route.matched.some(({ name }) => name === 'Home')">&ndash;&gt;-->
+                <!--                    &lt;!&ndash;                    Welcome <strong>&ndash;&gt;-->
+                <!--                    &lt;!&ndash;                    {{userProfile.first_name}}&ndash;&gt;-->
+                <!--                    &lt;!&ndash;                </strong>&ndash;&gt;-->
+                <!--                    &lt;!&ndash;                </li>&ndash;&gt;-->
+                <!--                </ul>-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,15 +79,13 @@
                                 {{$t('nav.demande')}}
                             </router-link>
                         </li>
-
-
                         <li class="nav-item" v-if="!isLoggedIn">
                             <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                          class="nav-link " data-toggle="collapse" data-target=".navbar-collapse.show">
                                 {{$t('nav.account')}}
                             </router-link>
                         </li>
-                        <li class="nav-item" v-else>
+                        <li class="nav-item mr-md-5" v-else>
                             <!-- <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                          class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
                                 {{$t('nav.account')}}
@@ -109,7 +107,19 @@
                                 </div>
                             </div>
                         </li>
+                        <!--                        Lang-->
 
+
+                        <span class="nav-item d-none font-weight-bold d-sm-flex" v-if="isLoggedIn">{{$t('hello')}} {{loggedInUser.first_name}}</span>
+<!--                        <span class="nav-item d-none d-sm-flex " >{{$t('hello')}}</span>-->
+                        <li class="btn ml-md-5 text-primary" data-toggle="collapse"
+                            data-target=".navbar-collapse.show" v-if="locale==='fr'" @click="en">
+                            <strong>EN</strong>
+                        </li>
+                        <li class="btn ml-md-5 text-primary" data-toggle="collapse"
+                            data-target=".navbar-collapse.show" v-else @click="fr">
+                            <strong>FR</strong>
+                        </li>
                     </ul>
 
 

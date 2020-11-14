@@ -1,28 +1,28 @@
 <template>
-    <div>
-        <div class="text-center text-primary" v-if="profileLoading">
+    <div class="container-fluid">
+        <div class="text-center text-primary mt-5 pt-5" v-if="profileLoading">
             <div class="spinner-border" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
         <section class="hero pt-5">
-            <div class="container mt-md-4 h-100">
-                <div class="text-right">
-                    <button class="btn btn-danger" @click="logout">Logout</button>
-                </div>
-                <div class="row h-100">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-8 text-center">
-                        <h1 class="font-weight-bolder ">
-                            THE NEXT YOU
-                        </h1>
-                        <h1 class="font-weight-bolder text-uppercase">
-                            The best way to predict <br/>
-                            the future is to create it
-                        </h1>
-                    </div>
-                </div>
-            </div>
+            <!--            <div class="container mt-md-4 h-100">-->
+            <!--                <div class="text-right">-->
+            <!--                    <button class="btn btn-danger" @click="logout">Logout</button>-->
+            <!--                </div>-->
+            <!--                <div class="row h-100">-->
+            <!--                    <div class="col-md-4"></div>-->
+            <!--                    <div class="col-md-8 text-center">-->
+            <!--                        <h1 class="font-weight-bolder ">-->
+            <!--                            THE NEXT YOU-->
+            <!--                        </h1>-->
+            <!--                        <h1 class="font-weight-bolder text-uppercase">-->
+            <!--                            The best way to predict <br/>-->
+            <!--                            the future is to create it-->
+            <!--                        </h1>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
         </section>
         <div v-if="!profileLoading">
             <div>
@@ -92,14 +92,13 @@
                     </div>
                 </div>
                 <div class="count-down py-2 my-3">
-
                     <div>
                         <div class="row">
-                            <div class="w-50 mx-auto" v-if="upComingSections.length > 0">
+                            <div class="col-md-6 w-50 mx-auto" v-if="upComingSections.length > 0">
                                 <h4 class="text-center my-2 text-white text-uppercase">
                                     Your course will start in
                                 </h4>
-                                <div class="" v-if="upComingSections.length > 0 ">
+                                <div>
                                     <Count-down
                                         :year="upComingSections[0].startDate.slice(0, 4)"
                                         :month="upComingSections[0].startDate.slice(5, 7)-1"
@@ -109,7 +108,9 @@
                                         :second="0"
                                     />
                                 </div>
-                                <div v-else>
+                            </div>
+                            <div class="col-md-6 w-50 mx-auto" v-if="upComingSections.length === 0">
+                                <div>
                                     <Count-down
                                         :year="2020"
                                         :month="1"
@@ -186,7 +187,7 @@
                                                 <div class="row">
                                                     <div class="col-md-9">
                                                         <router-link
-                                                        :to="{
+                                                            :to="{
                                                             name: 'Detail',
                                                             params: { slug: course.id },
                                                         }">

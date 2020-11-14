@@ -34,12 +34,12 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="border-bottom border-dark">
+                        <div class="border-bottom border-dark ">
                             <p class="filter-title">
                                 <strong>{{$t('courses.price')}}</strong>
                             </p>
                             <label for="price">$0</label>
-                            <input type="range" id="price" name="price"
+                            <input type="range" id="price" name="price" class="mx-auto"
                                    min="0" max="1000" value="1000" style="width: 60%" @change="price">
                             <label for="price">${{filter.price}}</label>
                         </div>
