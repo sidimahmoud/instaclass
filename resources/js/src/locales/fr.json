@@ -118,7 +118,9 @@
         "students": "Etudiants inscrits",
         "scheduledAt": "Prévu à",
         "enroll_to_all": "S'inscrire à tout les séances",
-        "enroll_to_course": "S'inscrire à ce cours"
+        "enroll_to_course": "S'inscrire à ce cours",
+        "course_free": "Ce cours est gratuit",
+        "no_payment": "Aucun paiement requis"
     },
     "courseDetails": {
         "hero": "COURS DISPONIBLES",
@@ -194,5 +196,9 @@
     "payment_option": "Option de payments",
     "gst": "TPS",
     "tvq": "TVQ",
-    "hello": "Bonjour"
+    "hello": "Bonjour",
+    "complete_purchase": "Complèter l'achat",
+    "selected_session": "Sections sélectionné du cours",
+    "card_information": "Informations de la carte bancaire",
+    "checkout": "Check-out"
 }

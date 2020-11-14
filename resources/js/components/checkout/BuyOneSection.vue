@@ -1,7 +1,7 @@
 <template>
     <div class="container border-top border-primary pt-5 mt-5">
         <!-- Heading -->
-        <h2 class=" h2 text-center">Checkout form</h2>
+        <h2 class=" h2 text-center">{{$t('checkout')}}</h2>
         <!--Grid row-->
         <div class="row">
             <!--Grid column-->
@@ -23,19 +23,21 @@
                     <!--Card content-->
                     <div class="my-3">
                         <div>
-                            <h4>Selected sections of the course each section cost ${{course_price}}</h4>
-                            <select class="form-control" multiple v-model="selected" @change="changedSelection">
-                                <!-- <option value="">Choose your sections</option> -->
+                            <h4>{{$t('selected_session')}}</h4>
+                            <!-- <select class="form-control" multiple v-model="selected" @change="changedSelection">
+                                <option v-for="e in course.sections" v-bind:key="e.id" :value="e.id">{{e.title}}</option>
+                            </select> -->
+                            <select class="selectpicker" v-model="selected" data-style="btn-primary" multiple>
                                 <option v-for="e in course.sections" v-bind:key="e.id" :value="e.id">{{e.title}}</option>
                             </select>
                         </div><br/><br/>
                         <div class="text-center" v-if="course_price===0">
-                            <h3>This course is free</h3>
-                            <h5>No payment required</h5>
-                            <button class="btn btn-primary btn-lg btn-block" @click="enrollForFree">Enroll</button>
+                            <h3>{{$t('course.course_free')}}</h3>
+                            <h5>{{$t('no_payment')}}</h5>
+                            <button class="btn btn-primary" @click="enrollForFree">{{$t('complete_purchase')}}</button>
                         </div>
                         <div v-else>
-                            <h4>Payment informations</h4>
+                            <h4 class="card-info-text">{{$t('card_information')}}</h4>
                             <stripe-elements
                                 ref="elementsRef"
                                 :pk="publishableKey"
@@ -44,7 +46,10 @@
                                 @token="tokenCreated"
                                 @loading="loading = $event"
                             />
-                            <button class="btn btn-primary btn-lg btn-block" @click="checkout">Pay Now</button>
+                            <br/><br/>
+                            <div class="text-center">
+                                <button class="btn btn-primary" @click="checkout">{{$t('complete_purchase')}}</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -83,11 +88,11 @@
                         <span class="text-muted">- ${{course_price}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between font-weight-bold">
-                        <span>{{$t('gst')}}</span>
+                        <span>{{$t('gst')}} (9.975%)</span>
                         <strong>${{gst}}</strong>
                     </li>
                     <li class="list-group-item d-flex justify-content-between font-weight-bold">
-                        <span>{{$t('tvq')}}</span>
+                        <span>{{$t('tvq')}} (5%)</span>
                         <strong>${{tvq}}</strong>
                     </li>
                     

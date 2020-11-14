@@ -118,7 +118,9 @@
         "students": "Students enrolled",
         "scheduledAt": "Scheduled at",
         "enroll_to_all": "Enroll for all sessions",
-        "enroll_to_course": "Enroll for this course"
+        "enroll_to_course": "Enroll for this course",
+        "course_free": "This course is free",
+        "no_payment": "No payment required"
     },
     "courseDetails": {
         "hero": "AVAILABLE COURSES",
@@ -172,9 +174,6 @@
         "emailHelp": "If you choose to leave your email address, you will be notified when the suggested course will become available.",
         "btn": "Send"
     },
-
-
-
     "profile": {
         "go_live": "Go to live",
         "no_video_yet": "No video link added yet",
@@ -195,12 +194,14 @@
         "comment": "Commentaire",
         "enrollments":"Course Enrollments",
         "noRatings": "No ratings yet"
-
-
     },
     "start_at": "Start at",
     "payment_option": "Payment option",
     "gst": "GST",
     "tvq": "QST",
-    "hello": "Hello"
+    "hello": "Hello",
+    "complete_purchase": "Complete the purchase",
+    "selected_session": "Selected sections of the course",
+    "card_information": "Credit card information",
+    "checkout": "Checkout"
 }
