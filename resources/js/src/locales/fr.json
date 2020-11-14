@@ -190,7 +190,8 @@
         "rating": "Evaluation",
         "comment": "Commentaire",
         "enrollments":"Inscriptions",
-        "noRatings": "Pas encore d'evaluations"
+        "noRatings": "Pas encore d'evaluations",
+        "live_courses": "Mes cours"
     },
     "start_at": "Start at",
     "payment_option": "Option de payments",

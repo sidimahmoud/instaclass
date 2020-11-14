@@ -9,10 +9,11 @@
                     allowTransparency="true" allow="encrypted-media">
                 </iframe>
                 <p>
-                    <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> <img
-                        src="../assets/images/insta.png"
-                        alt="insta" class="rounded"
-                        width="93px" height="28">
+                    <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> 
+                        <img
+                            src="../assets/images/insta.png"
+                            alt="insta" class="rounded"
+                            width="93px" height="28">
                   </a>
                 </p>
             </span>
@@ -20,8 +21,8 @@
                     <div class="row justify-content-around align-items-center h-100">
                         <div class="col-md-2 d-none d-md-block"></div>
                         <div
-                            class="col-md-10 col-sm-12 text-center px-md-5 justify-content-center align-items-center text-uppercase">
-                            <h2 class=" text-center">
+                            class="col-md-10 col-sm-12 text-center px-md-5 justify-content-center align-items-center text-uppercase text-header">
+                            <h2 class="text-center">
                                 {{$t('title.1')}} <br>
                                 {{$t('title.2')}}
                             </h2>
@@ -48,6 +49,9 @@
                                 <li>{{$t('title2.teachers.2')}}</li>
                                 <li>{{$t('title2.teachers.3')}}</li>
                             </ul>
+                            <!--<img src="../assets/images/home/onlineEd.jpg" width="350px">-->
+                        </div>
+                        <div class="col-md-5 col-sm-12 justify-content-center align-items-center d-none d-md-block text-white">
                             <h3>
                                 {{$t('title2.students.title')}}:
                             </h3>
@@ -56,10 +60,6 @@
                                 <li>{{$t('title2.students.2')}}</li>
                                 <li>{{$t('title2.students.3')}}</li>
                             </ul>
-                            <!--<img src="../assets/images/home/onlineEd.jpg" width="350px">-->
-                        </div>
-                        <div class="col-md-5 col-sm-12 text-center d-none d-md-block">
-                            <img src="../assets/images/home/onlineEd.jpg" width="400px" class="img-fluid rounded">
                         </div>
                     </div>
                 </div>
@@ -300,6 +300,10 @@
             margin-top: -60px;
         }
     }
-
+    @media (max-width: 500px) {
+        .text-header{
+            display: none;
+        }
+    }
 
 </style>

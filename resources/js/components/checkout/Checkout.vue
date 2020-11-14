@@ -27,13 +27,13 @@
                             <!-- <select class="form-control" multiple v-model="selected" @change="changedSelection">
                                 <option v-for="e in course.sections" v-bind:key="e.id" :value="e.id">{{e.title}}</option>
                             </select> -->
-                            <select class="selectpicker" v-model="selected" data-style="btn-primary" multiple>
+                            <select v-model="selected">
                                 <option v-for="e in course.sections" v-bind:key="e.id" :value="e.id">{{e.title}}</option>
                             </select>
                         </div><br/><br/>
                         <div class="text-center" v-if="course_price===0">
                             <h3>{{$t('course.course_free')}}</h3>
-                            <h5>{{$t('no_payment')}}</h5>
+                            <h5>{{$t('course.no_payment')}}</h5>
                             <button class="btn btn-primary" @click="enrollForFree">{{$t('complete_purchase')}}</button>
                         </div>
                         <div v-else>

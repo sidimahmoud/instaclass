@@ -9,7 +9,7 @@
     },
     "title": {
         "1": "The perfect platform for teaching",
-        "2": "or learning online courses"
+        "2": "or learning by online video live courses"
     },
     "title2": {
         "teachers": {
@@ -193,7 +193,8 @@
         "rating": "Evaluation",
         "comment": "Commentaire",
         "enrollments":"Course Enrollments",
-        "noRatings": "No ratings yet"
+        "noRatings": "No ratings yet",
+        "live_courses": "My Live course"
     },
     "start_at": "Start at",
     "payment_option": "Payment option",

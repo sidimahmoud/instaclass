@@ -30,10 +30,18 @@
                             <select class="selectpicker" v-model="selected" data-style="btn-primary" multiple>
                                 <option v-for="e in course.sections" v-bind:key="e.id" :value="e.id">{{e.title}}</option>
                             </select>
+                            <select class="mdb-select md-form" multiple>
+                                <option value="" disabled selected>Choose your country</option>
+                                <option value="1">USA</option>
+                                <option value="2">Germany</option>
+                                <option value="3">France</option>
+                                <option value="4">Poland</option>
+                                <option value="5">Japan</option>
+                            </select>
                         </div><br/><br/>
                         <div class="text-center" v-if="course_price===0">
                             <h3>{{$t('course.course_free')}}</h3>
-                            <h5>{{$t('no_payment')}}</h5>
+                            <h5>{{$t('course.no_payment')}}</h5>
                             <button class="btn btn-primary" @click="enrollForFree">{{$t('complete_purchase')}}</button>
                         </div>
                         <div v-else>
