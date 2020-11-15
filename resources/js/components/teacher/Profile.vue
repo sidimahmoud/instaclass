@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div>
         <div class="text-center text-primary mt-5 pt-5" v-if="profileLoading">
             <div class="spinner-border" role="status">
                 <span class="sr-only">Loading...</span>
@@ -487,7 +487,6 @@
         background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/account.jpg') no-repeat center center;
         height: 70vh;
         background-size: cover;
-        border-bottom: 15px solid #3081FB;
         color: white;
     }
 
@@ -496,21 +495,19 @@
         border-radius: 0;
 
         img {
-            border-radius: 0 10% 10% 0;
-            border: 2px solid black;
+            border: 1px solid black;
             max-height: 450px;
             max-width: 450px;
         }
     }
 
     .details {
-        border-radius: 1rem;
-        border: 5px solid black;
-        border-right: 2px solid black;
+        border: 1px solid black;
+        border-right: 1px solid black;
     }
 
     .teacher-image {
-        height: 300px;
+        height: 200px;
         border-radius: 0 70px 70px 0;
         @media only screen and (max-width: 600px) {
             border-radius: 0;
@@ -536,13 +533,11 @@
         url("../../assets/images/teaprofile/down1.png") no-repeat left center,
         url("../../assets/images/teaprofile/down2.png") no-repeat right center;
         background-size: contain;
-        border-radius: 20px;
     }
 
     .teacher-area {
         background-color: #ccc;
         border: 2px solid black;
-        border-radius: 20px;
         padding: 20px;
         margin-bottom: 100px;
     }
