@@ -1,33 +1,33 @@
 <template>
     <div class="font-weight-bold">
         <div class="row  justify-content-center">
-            <span >
+            <span>
                 <div class="btn btn-primary ">
                     {{displayDays}} <br>
                     Day
                 </div>
             </span>
-            <span >
+            <span>
                 <div class="btn btn-primary ">
                     {{displayHours}} <br>
                     Hour
                 </div>
             </span>
-            <span >
+            <span>
                 <div class="btn btn-primary ">
                     {{displayMinutes}} <br>
                     Min
                 </div>
             </span>
-            <span >
+            <span>
                 <div class="btn btn-primary ">
                     {{displaySeconds}} <br>
                     Sec
                 </div>
             </span>
             <div class="col-12 text-white text-center" v-if="text">
-                <h3 v-if="expired">Timer enabled when you have an upcoming course</h3>
-                <h3 v-if="!expired">BE READY</h3>
+                <h3 v-if="expired">{{$t('countDown.enabled')}}</h3>
+                <h3 v-if="!expired">{{$t('countDown.beReady')}}</h3>
             </div>
         </div>
     </div>

@@ -124,11 +124,11 @@
         "hero": "COURS DISPONIBLES",
         "firstCourse": "Ce premier cours sera bientôt disponible ..."
     },
-    "auth":{
+    "auth": {
         "signIn": "Connexion",
         "signup": "S'nscrire",
         "or": "Ou",
-        "continueWith":"Continuer avec",
+        "continueWith": "Continuer avec",
         "new": "Vous n'avez pas de compte?",
         "user": "Vous avez déjà un compte?",
         "createYourAccount": "Créez votre compte. Cela ne prend que quelques secondes.",
@@ -140,7 +140,7 @@
         "become": {
             "1": "Connectez-vous ou inscrivez-vous pour accéder à votre compte d’enseignant",
             "2": "Créez et structurez votre cours",
-            "3":"Enseignez par vidéo en direct",
+            "3": "Enseignez par vidéo en direct",
             "4": "Soyez payé",
             "getStarted": "COMMENCEZ EN TANT QU'ENSEIGNANT(E) AUJOURD’HUI",
             "login": "Connecter pour acceder votre espace d'instructeur.",
@@ -158,7 +158,7 @@
         "title": "Demande de cours",
         "desc": "Dites nous le cours que vous aimeriez suivre en direct sur la plateforme",
         "lang": "Langue du cours desiré",
-        "languages":{
+        "languages": {
             "fr": "Français",
             "en": "Anglais",
             "es": "Espagnol",
@@ -183,12 +183,19 @@
         "courses": "Mes cours",
         "receipts": "Mes reçus",
         "ratings": "Evaluations",
-        "receiptsWill":"Vos reçus seront affichés ici",
+        "receiptsWill": "Vos reçus seront affichés ici",
         "teacherName": "Instructeur",
         "rating": "Evaluation",
         "comment": "Commentaire",
-        "enrollments":"Inscriptions",
-        "noRatings": "Pas encore d'evaluations"
+        "enrollments": "Inscriptions",
+        "noRatings": "Pas encore d'evaluations",
+        "instructor": "Instructeur",
+        "coursesNumber": "Cours",
+        "createCourse": "Créer un nouveau cours"
+    },
+    "countDown": {
+        "enabled": "Le compteur sera active lorsque vous avez un cours à venir",
+        "beReady": "Soyez prêts"
     },
     "start_at": "Start at",
     "payment_option": "Option de payments",

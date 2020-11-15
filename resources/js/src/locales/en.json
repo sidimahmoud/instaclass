@@ -194,9 +194,15 @@
         "rating": "Evaluation",
         "comment": "Commentaire",
         "enrollments":"Course Enrollments",
-        "noRatings": "No ratings yet"
+        "noRatings": "No ratings yet",
 
-
+        "instructor": "Instructor",
+        "coursesNumber": "Courses",
+        "createCourse": "Create a New Course"
+    },
+    "countDown": {
+        "enabled": "Timer enabled when you have an upcoming course",
+        "beReady": "Be ready"
     },
     "start_at": "Start at",
     "payment_option": "Payment option",

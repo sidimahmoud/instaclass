@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
-
+use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Foundation\Auth\ResetsPasswords;
 class AuthController extends Controller
 {
     function login(Request $request)
@@ -167,5 +168,21 @@ class AuthController extends Controller
         $user->roles()->attach($studentR);
 
         return $user;
+    }
+
+    public function sendPasswordResetLink(Request $request)
+    {
+        return $this->sendResetLinkEmail($request);
+    }
+    protected function sendResetLinkEmail(Request $request, $response)
+    {
+        return response()->json([
+            'message' => 'Password reset email sent.',
+            'data' => $response
+        ]);
+    }
+    protected function sendResetLinkFailedResponse(Request $request, $response)
+    {
+        return response()->json(['message' => 'Email could not be sent to this email address.']);
     }
 }

@@ -29,22 +29,25 @@
                 <div class="jumbotron1 p-0 mt-2">
                     <div class="container-fluid details">
                         <div class="row align-items-center counts">
-                            <div
-                                class="col-md-4 pl-0 teacher-image"
-                                :style="{
-                                  backgroundImage: 'url(' + userProfile.image + ')',
-                                  backgroundSize: 'cover',
-                                  backgroundRepeat: 'no-repeat',
-                                }"
-                            >
-                                <!--<img :src="userProfile.image" alt="Avatar" class="w-100">-->
+                            <!--                            <div-->
+                            <!--                                class="col-md-4 pl-0 teacher-image"-->
+                            <!--                                :style="{-->
+                            <!--                                  backgroundImage: 'url(' + userProfile.image + ')',-->
+                            <!--                                  backgroundSize: 'cover',-->
+                            <!--                                  backgroundRepeat: 'no-repeat',-->
+                            <!--                                }"-->
+                            <!--                            >-->
+                            <!--                            </div>-->
+                            <div class="col-md-4 text-center">
+                                <img :src="userProfile.image" alt="Avatar">
                             </div>
+
                             <div class="col-md-8 mb-2 stat">
                                 <div class="row">
                                     <div class="col-12">
                                         <h3 class="text-uppercase">
                                             <strong>
-                                                Instructor. {{ userProfile.first_name }}
+                                                {{$t('profile.instructor')}}. {{ userProfile.first_name }}
                                                 {{ userProfile.last_name }}
                                             </strong>
                                         </h3>
@@ -60,7 +63,7 @@
                         ? allTeacherDetails.ratings.length
                         : "0"
                     }}</span>
-                                        Reviews
+                                        {{$t('profile.ratings')}}
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -73,7 +76,7 @@
                         ? allTeacherDetails.students[0].count
                         : "0"
                     }}</span>
-                                        Students enrolled
+                                        {{$t('course.students')}}
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -84,17 +87,19 @@
                     <span>{{
                       userCourses.length > 0 ? userCourses.length : "0"
                     }}</span>
-                                        Courses
+                                        {{$t('profile.coursesNumber')}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {{upComingSections.length}}
+
                 </div>
                 <div class="count-down py-2 my-3">
                     <div>
                         <div class="row">
-                            <div class="col-md-6 w-50 mx-auto" v-if="upComingSections.length > 0">
+                            <div class="col-md-6 w-md-50 mx-auto" v-if="upComingSections.length > 0">
                                 <h4 class="text-center my-2 text-white text-uppercase">
                                     Your course will start in
                                 </h4>
@@ -109,7 +114,7 @@
                                     />
                                 </div>
                             </div>
-                            <div class="col-md-6 w-50 mx-auto" v-if="upComingSections.length === 0">
+                            <div class="col-md-6 w-md-50 mx-auto" v-if="upComingSections.length === 0">
                                 <div>
                                     <Count-down
                                         :year="2020"
@@ -127,7 +132,6 @@
                             v-if="upComingSections.length > 0"
                         >
                             <button @click="handleLive"
-                                    tag="button"
                                     class="btn btn-danger">
                                 Go to the course page
                                 <div v-if="upComingSections.length > 0">Title: {{upComingSections[0].title}}</div>
@@ -138,7 +142,7 @@
                 <div class="container my-3 text-right">
                     <router-link :to="{ name: 'NewCourse' }">
                         <button class="btn btn-primary">
-                            <i class="fa fa-plus"></i> Create a new course
+                            <i class="fa fa-plus"></i> {{$t('profile.createCourse')}}
                         </button>
                     </router-link>
                 </div>
@@ -504,10 +508,12 @@
         border-radius: 0;
 
         img {
-            border-radius: 0 10% 10% 0;
-            border: 2px solid black;
-            max-height: 450px;
-            max-width: 450px;
+            /*border-radius: 0 10% 10% 0;*/
+            /*border: 2px solid black;*/
+            /*max-height: 450px;*/
+            /*max-width: 450px;*/
+            max-height: 250px;
+
         }
     }
 

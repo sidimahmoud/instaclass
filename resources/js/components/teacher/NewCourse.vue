@@ -114,7 +114,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <input type="checkbox" v-model="course.allow_share_records" required>
+                            <input type="checkbox" v-model="course.allow_share_records">
                             <label>Autorisez vous le partage desenregistrements?</label>
                         </div>
                     </div>
@@ -415,7 +415,6 @@
 
                 if (id == 0) {
                     $('#modelSub').modal('show')
-
                 }
 
             },

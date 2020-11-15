@@ -16,6 +16,7 @@ class CourseFileController extends Controller
     {
         $this->courseRepository = $courseRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,7 +41,7 @@ class CourseFileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
@@ -56,8 +57,7 @@ class CourseFileController extends Controller
             $sectionFile_name = $request['title'] . "-" . time() . "." . $extension;
             $sectionFile->move('uploads/sections/', $sectionFile_name);
             $file->file = 'uploads/courses/sections' . $sectionFile_name;
-        }
-        else
+        } else
             $file->file = $request['file'];
         $file->save();
         if ($file) return response()->json("Section created successfully");
@@ -67,7 +67,7 @@ class CourseFileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
@@ -79,17 +79,17 @@ class CourseFileController extends Controller
     public function upcomingSection(Request $request)
     {
         $id = $request->user()->id;
-        $now=Carbon::now();
         $s = DB::select("select * from course_files where  id in (select id from courses where user_id = $id)");
         $sections = CourseFile::where("startDate", ">", Carbon::now())
 //            ->where("course.user_id", $request->user()->id)
             ->orderBy('startDate', 'ASC')->get();
         return response()->json($s);
     }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -100,8 +100,8 @@ class CourseFileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
@@ -116,14 +116,14 @@ class CourseFileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
         $file = CourseFile::find($id);
         $file->delete();
-        return response()->json(["response"=>"section deleted"]);
+        return response()->json(["response" => "section deleted"]);
 
     }
 
