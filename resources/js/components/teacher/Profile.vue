@@ -225,7 +225,7 @@
                         <div class="card">
                             <div class="card-header" id="payments">
                                 <h2 class="mb-0" @click="collapsedPayments = !collapsedPayments">
-                                    <button
+                                    <!-- <button
                                         class="btn btn-link font-weight-bolder rounded collapsed"
                                         type="button"
                                         data-toggle="collapse"
@@ -234,7 +234,7 @@
                                         aria-controls="collapsePayment"
                                     >
                                         Payments and receipts
-                                    </button>
+                                    </button> -->
                                     <button
                                         class="btn btn-link collapsed float-right"
                                         type="button"
@@ -248,7 +248,7 @@
                                     </button>
                                 </h2>
                             </div>
-                            <div
+                            <!-- <div
                                 id="collapsePayment"
                                 class="collapse"
                                 aria-labelledby="payments"
@@ -257,7 +257,7 @@
                                 <div class="card-body">
                                     <payments/>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="card">
                             <div class="card-header" id="evaluation">
