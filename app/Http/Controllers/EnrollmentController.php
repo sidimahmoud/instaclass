@@ -104,12 +104,14 @@ class EnrollmentController extends Controller
         $course = Course::find($request["course_id"])->first();
 
         $sections = $course->sections;
-
-        $enrollment = new Enrollment();
-        $enrollment->user_id = $request->user()->id;
-        $enrollment->course_id = $course->id;
-        $enrollment->course_file_id = $course->sections[0]->id;
-        $enrollment->save();
+        $requestedSections = $request["sections"];
+        foreach($requestedSections as $id) {
+            $enrollment = new Enrollment();
+            $enrollment->user_id = $request->user()->id;
+            $enrollment->course_id = $course->id;
+            $enrollment->course_file_id = $id;
+            $enrollment->save();
+        }
         if ($request['course_price'] > 0)
             $this->transaction($request->all());
         $payment = new Payement();

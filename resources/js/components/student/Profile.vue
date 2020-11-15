@@ -23,11 +23,6 @@
 
             <div class="jumbotron1  p-0 mt-2">
                 <div class="container-fluid details">
-                    <div class="text-right">
-                        <router-link :to="{name: 'EditStudentProfile'}" tag="a" class="btn btn-primary">
-                            {{$t('profile.edit')}}
-                        </router-link>
-                    </div>
                     <div class="row align-items-center counts">
                         <!--                        <div-->
                         <!--                            class="col-md-4 pl-0 teacher-image"-->
@@ -39,7 +34,13 @@
                         <!--                            &lt;!&ndash;<img :src="userProfile.image" alt="Avatar" class="w-100">&ndash;&gt;-->
                         <!--                        </div>-->
                         <div class="col-md-4 text-center">
-                            <img :src="userProfile.image" alt="" style="max-height: 100px">
+                            <img :src="userProfile.image" alt="" style="max-height: 100px"><br/>
+                            <span>{{userProfile.first_name}}</span><br/><br/>
+                            <div>
+                                <router-link :to="{name: 'EditStudentProfile'}" tag="a" class="btn btn-primary btn-small">
+                                    {{$t('profile.edit')}}
+                                </router-link>
+                            </div>
                         </div>
                         <div class="col-md-8 mb-2">
                             <div class="row">
@@ -111,26 +112,24 @@
             <div class="row my-4 student-area">
                 <div class="col-md-12 bg-white shadow">
                     <nav class="nav nav-pills nav-fill mt-3">
-                        <a class="nav-item nav-link active" href="#recording-courses" data-toggle="tab">
-                            {{$t('profile.recordings')}}
-                        </a>
-                        <a class="nav-item nav-link" href="#courses" data-toggle="tab">
+                        <a class="nav-item nav-link active" href="#courses" data-toggle="tab">
                             {{$t('profile.live_courses')}}
                         </a>
-                        <a class="nav-item nav-link" href="#receipts" data-toggle="tab">
+                        <a class="nav-item nav-link" href="#recording-courses" data-toggle="tab">
+                            {{$t('profile.recordings')}}
+                        </a>
+                        
+                        <!-- <a class="nav-item nav-link" href="#receipts" data-toggle="tab">
                             {{$t('profile.receipts')}}
                         </a>
                         <a class="nav-item nav-link" href="#ratings" data-toggle="tab">
                             {{$t('profile.ratings')}}
-                        </a>
+                        </a> -->
                     </nav>
                     <hr/>
                     <div class="tab-content my-1">
-                        <div class="tab-pane fade show active" id="recording-courses">
-                            No recordings added yet
-                        </div>
                         <!-- Enrollments-->
-                        <div class="tab-pane fade show" id="courses">
+                        <div class="tab-pane fade show active" id="courses">
                             <div class="grid" >
                                 <div v-if="isEmpty(userEnrollments)">
                                     You have no course yet.
@@ -148,8 +147,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="tab-pane fade show" id="recording-courses">
+                            No recordings added yet
+                        </div>
 
-                        <div class="tab-pane fade show" id="receipts">
+                        <!-- <div class="tab-pane fade show" id="receipts">
                             <h3 class="text-center" v-if="studentPayments.length===0">Your receipts will appear here.</h3>
                             <div class="accordion" id="accordionExample">
                                 <div class="card my-2" v-for="p in studentPayments" :key="p.id">
@@ -204,7 +206,7 @@
                             <div class="text-center" v-else>
                                 <h3>{{$t('profile.noRatings')}}</h3>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

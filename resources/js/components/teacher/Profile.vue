@@ -44,7 +44,7 @@
                                     <div class="col-12">
                                         <h3 class="text-uppercase">
                                             <strong>
-                                                Instructor. {{ userProfile.first_name }}
+                                                {{$t('profile.instructor')}}. {{ userProfile.first_name }}
                                                 {{ userProfile.last_name }}
                                             </strong>
                                         </h3>
@@ -56,11 +56,11 @@
                                     </div>
                                     <div class="col-8">
                     <span>{{
-                      allTeacherDetails.ratings.length > 0
+                      !isEmpty(allTeacherDetails.ratings)
                         ? allTeacherDetails.ratings.length
                         : "0"
                     }}</span>
-                                        Reviews
+                                        {{$t('profile.reviews')}}
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -69,11 +69,11 @@
                                     </div>
                                     <div class="col-8">
                     <span>{{
-                      allTeacherDetails.students[0].count > 0
+                      !isEmpty(allTeacherDetails.students)
                         ? allTeacherDetails.students[0].count
                         : "0"
                     }}</span>
-                                        Students enrolled
+                                        {{$t('course.students')}}
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -84,7 +84,7 @@
                     <span>{{
                       userCourses.length > 0 ? userCourses.length : "0"
                     }}</span>
-                                        Courses
+                                        {{$t('profile.courses')}}
                                     </div>
                                 </div>
                             </div>
@@ -294,7 +294,7 @@
                                 <div class="card-body">
                                     <div
                                         class="text-center"
-                                        v-if="allTeacherDetails.ratings.length === 0"
+                                        v-if="isEmpty(allTeacherDetails.ratings)"
                                     >
                                         <h3>No ratings yet</h3>
                                     </div>
@@ -361,6 +361,7 @@
     import EditProfile from "./EditProfile";
     import CountDown from "../CountDown";
     import axios from "axios";
+    import {isEmpty} from "../../helpers/common";
 
     export default {
         name: "TeacherProfile",
@@ -459,7 +460,10 @@
                         course_id: this.upComingSections[0].id
                     }
                 });
-            }
+            },
+            isEmpty(v) {
+                return isEmpty(v);
+            },
         },
         /*
         |--------------------------------------------------------------------------
@@ -490,12 +494,10 @@
 
 <style scoped lang="scss">
     .hero {
-        /*background-image: url('../../assets/images/demand/online.jpg');*/
-        background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)),
-        url("../../assets/images/auth/account.jpg") no-repeat center center;
+        background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/account.jpg') no-repeat center center;
         height: 70vh;
         background-size: cover;
-        border-bottom: 15px solid #3081fb;
+        border-bottom: 15px solid #3081FB;
         color: white;
     }
 
@@ -556,19 +558,15 @@
     }
 
     .card {
-        background: linear-gradient(
-                180deg,
-                rgba(19, 19, 19, 0.4),
-                rgba(19, 19, 19, 1)
-        );
+        background-color: #eee;
         margin-top: 6px;
         margin-bottom: 6px;
-        color: white;
+        color: #000;
         border-radius: 20px !important;
     }
 
     .card-header {
-        background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);
+        background: #fff;
         font-size: 40px;
         border-radius: 20px !important;
 

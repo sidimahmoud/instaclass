@@ -20,16 +20,19 @@
                 </div>
                 <!--Card-->
                 <div class="card payment-form">
+                    <pulse-loader :loading="pageLoader" class="text-center"></pulse-loader>
                     <!--Card content-->
                     <div class="my-3">
                         <div>
                             <h4>{{$t('selected_session')}}</h4>
-                            <!-- <select class="form-control" multiple v-model="selected" @change="changedSelection">
-                                <option v-for="e in course.sections" v-bind:key="e.id" :value="e.id">{{e.title}}</option>
-                            </select> -->
-                            <select v-model="selected">
-                                <option v-for="e in course.sections" v-bind:key="e.id" :value="e.id">{{e.title}}</option>
-                            </select>
+                            <el-select v-model="selected" placeholder="Select" multiple @change="changedSelection">
+                                <el-option
+                                    v-for="e in course.sections"
+                                    :key="e.id"
+                                    :label="e.title"
+                                    :value="e.id">{{e.title}}
+                                </el-option>
+                            </el-select>
                         </div><br/><br/>
                         <div class="text-center" v-if="course_price===0">
                             <h3>{{$t('course.course_free')}}</h3>
@@ -114,11 +117,13 @@
 
 <script>
     import {StripeElements} from 'vue-stripe-checkout';
+    import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
     export default {
         name: "Checkout",
         components: {
-            StripeElements
+            StripeElements,
+            PulseLoader
         },
         data() {
             return {
@@ -141,7 +146,8 @@
                 successUrl: 'your-success-url',
                 cancelUrl: 'your-cancel-url',
                 course: {},
-                selected: []
+                selected: [],
+                pageLoader: false,
             }
         },
         /*
@@ -169,17 +175,30 @@
         },
         methods: {
             tokenCreated(token) {
+                const _this = this
+                this.pageLoader = true
                 let payload = {
                     paymentMethod: this.paymentMethod,
                     course_id: this.course.id,
                     course_name: "Course N°" + this.course.course_id,
                     course_price: this.allPrice,
                     token: token.id,
+                    sections: this.selected
                 };
                 this.$store.dispatch('enrollInAllSection', payload)
                     .then(() => {
-                        alert("Enrolled successfully");
-                        this.$router.push({name: 'StudentProfile'})
+                        this.pageLoader = false
+                        this.$swal.fire({
+                            title: '',
+                            text: _this.$t('thnk_txt'),//"Thank you for your purchase, Happy learning",
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'ok'
+                        }).then((result) => {
+                            this.$router.push({name: 'StudentProfile'})
+                        })
                     })
                     .catch(err => console.log(err))
             },
@@ -187,16 +206,30 @@
                 this.$refs.elementsRef.submit();
             },
             enrollForFree() {
+                const _this = this;
+                this.pageLoader = true
                 let payload = {
                     paymentMethod: this.paymentMethod,
                     course_id: this.course.id,
                     course_name: "Course N°" + this.course.course_id,
                     course_price: this.course_price,
+                    sections: this.selected
                 };
                 this.$store.dispatch('enrollInAllSection', payload)
                     .then(() => {
-                        alert("Enrolled successfully");
-                        this.$router.push({name: 'StudentProfile'})
+                        //alert("Enrolled successfully");
+                        this.pageLoader = false
+                        this.$swal.fire({
+                            title: '',
+                            text: _this.$t('thnk_txt'),//"Thank you for your purchase, Happy learning",
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'ok'
+                        }).then((result) => {
+                            this.$router.push({name: 'StudentProfile'})
+                        })
                     })
                     .catch(err => console.log(err))
             },
@@ -210,7 +243,7 @@
                     .catch(err => console.log(err))
             },
             changedSelection(event){
-                console.log(event.target.value);
+                console.log(event);
             },
             initData(){
                 this.sections_count = this.course.sections.length
@@ -220,6 +253,9 @@
                     this.selected.push(v.id);
                 });
                 
+            },
+            customLabel (option) {
+                return `${option.title}`
             }
         },
         mounted() {
@@ -234,5 +270,10 @@
 }
 .card-info-text{
     color: red
+}
+.text-center-screen {
+    position: relative; 
+    left: 50%;
+    transform: translateX(-50%);
 }
 </style>

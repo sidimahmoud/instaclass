@@ -24,6 +24,29 @@ Vue.use(VueSweetalert2);
 Vue.use(VueSimpleAlert);
 Vue.use(FBSignInButton)
 import GSignInButton from 'vue-google-signin-button'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import locale from 'element-ui/lib/locale/lang/en'
+import { Button, Select } from 'element-ui';
+
+Vue.use(ElementUI, { locale })
+Vue.component(Button.name, Button);
+Vue.component(Select.name, Select);
+
+import firebase from "firebase";
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyDQKWF5BYza7riL0uOf3ZZc4sGNu585r5k",
+    authDomain: "instaclass-9f27f.firebaseapp.com",
+    databaseURL: "https://instaclass-9f27f.firebaseio.com",
+    projectId: "instaclass-9f27f",
+    storageBucket: "instaclass-9f27f.appspot.com",
+    messagingSenderId: "65860975297",
+    appId: "1:65860975297:web:514d38a733c6fc3410f240",
+    measurementId: "G-DC3QX6XYTR"
+};
+firebase.initializeApp(firebaseConfig);
 
 Vue.use(GSignInButton)
 

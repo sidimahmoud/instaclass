@@ -3,20 +3,20 @@
         <div class="hero">
             <div class="jumbotron jumbotron1 mb-0">
                  <span class=" px-1 py-3  shareBar">
-                <iframe
-                    src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&appId=223985172274465&width=93&height=28"
-                    width="93" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-                    allowTransparency="true" allow="encrypted-media">
-                </iframe>
-                <p>
-                    <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> 
-                        <img
-                            src="../assets/images/insta.png"
-                            alt="insta" class="rounded"
-                            width="93px" height="28">
-                  </a>
-                </p>
-            </span>
+                    <iframe
+                        src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&appId=223985172274465&width=93&height=28"
+                        width="93" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                        allowTransparency="true" allow="encrypted-media">
+                    </iframe>
+                    <p>
+                        <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> 
+                            <img
+                                src="../assets/images/insta.png"
+                                alt="insta" class="rounded"
+                                width="93px" height="28">
+                        </a>
+                    </p>
+                </span>
                 <div class="container  align-items-center mt-md-2 h-100">
                     <div class="row justify-content-around align-items-center h-100">
                         <div class="col-md-2 d-none d-md-block"></div>
@@ -35,7 +35,34 @@
                     </div>
                 </div>
             </div>
-            <div class="jumbotron jumbotron2">
+            <div class="mb-0 p-4">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 text-white">
+                            <h3>
+                                {{$t('title2.teachers.title')}}:
+                            </h3>
+                            <ul>
+                                <li>{{$t('title2.teachers.1')}}</li>
+                                <li>{{$t('title2.teachers.2')}}</li>
+                                <li>{{$t('title2.teachers.3')}}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 text-white">
+                            <h3>
+                                {{$t('title2.students.title')}}:
+                            </h3>
+                            <ul>
+                                <li>{{$t('title2.students.1')}}</li>
+                                <li>{{$t('title2.students.2')}}</li>
+                                <li>{{$t('title2.students.3')}}</li>
+                                <li>{{$t('title2.students.4')}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <!--  <div class="jumbotron jumbotron2">
 
                 <div class="container  align-items-center mt-2">
                     <div class="row justify-content-around align-items-center">
@@ -49,7 +76,6 @@
                                 <li>{{$t('title2.teachers.2')}}</li>
                                 <li>{{$t('title2.teachers.3')}}</li>
                             </ul>
-                            <!--<img src="../assets/images/home/onlineEd.jpg" width="350px">-->
                         </div>
                         <div class="col-md-5 col-sm-12 justify-content-center align-items-center d-none d-md-block text-white">
                             <h3>
@@ -63,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
 
@@ -140,7 +166,7 @@
                 <h2 class="text-center mb-5"> {{$t('howItWorks.title')}}</h2>
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <h3>{{$t('howItWorks.teachers.title')}}</h3>
+                        <h3>{{$t('howItWorks.teachers.title')}}:</h3>
                         <ul style="list-style-type: none;">
                             <li>{{$t('howItWorks.teachers.1')}}</li>
                             <li>{{$t('howItWorks.teachers.2')}}</li>
@@ -150,7 +176,7 @@
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h3>{{$t('howItWorks.students.title')}}</h3>
+                        <h3>{{$t('howItWorks.students.title')}}:</h3>
                         <ul style="list-style-type: none;">
                             <li>{{$t('howItWorks.students.1')}}</li>
                             <li>{{$t('howItWorks.students.2')}}</li>
@@ -241,7 +267,7 @@
 
     .hero {
         background-image: url('../assets/images/home/bg2.jpg');
-        border-radius: 0 0 0 200px;
+        border-radius: 0 0 0 0px;
         background-repeat: no-repeat;
         background-size: cover;
         @media only screen and (max-width: 600px) {

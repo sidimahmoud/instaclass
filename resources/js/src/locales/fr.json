@@ -22,7 +22,8 @@
             "title": "Étudiants",
             "1": "Profitent d'une grande variété de cours disponibles.",
             "2": "Bénéficient d’une leçon gratuite lorsqu'un cours est cédulé sur 3 sessions ou plus.",
-            "3": "Étudient les cours en direct sur la plateforme INSTANTACLASSE."
+            "3": "Étudient les cours en direct sur la plateforme INSTANTACLASSE.",
+            "4": "Reçoivent les enregistrements à la fin des cours."
         }
     },
     "footer": {
@@ -105,7 +106,7 @@
     "course": {
         "session": "Séance",
         "sessions": "Nombre de séances",
-        "duration": "Durrée par session",
+        "duration": "Durée par session",
         "lang": "Language",
         "price": "Prix par séance",
         "description": "Description",
@@ -159,7 +160,7 @@
     "demande": {
         "title": "Demande de cours",
         "desc": "Dites nous le cours que vous aimeriez suivre en direct sur la plateforme",
-        "lang": "Langue du cours desiré",
+        "lang": "Langue d'enseignement du cours proposé",
         "languages":{
             "fr": "Français",
             "en": "Anglais",
@@ -191,7 +192,12 @@
         "comment": "Commentaire",
         "enrollments":"Inscriptions",
         "noRatings": "Pas encore d'evaluations",
-        "live_courses": "Mes cours"
+        "live_courses": "Mes cours",
+        "recordings": "Mes Enregistrements",
+        "payments":"Paiements",
+        "instructor": "Instructeur",
+        "reviews": "Commentaires",
+        "my_recits": "Mes reçus"
     },
     "start_at": "Start at",
     "payment_option": "Option de payments",
@@ -201,5 +207,8 @@
     "complete_purchase": "Complèter l'achat",
     "selected_session": "Sections sélectionné du cours",
     "card_information": "Informations de la carte bancaire",
-    "checkout": "Check-out"
+    "checkout": "Check-out",
+    "thnk_txt":"Merci pour votre achat, bon apprentissage",
+    "no_payment": "Pas de paiement",
+    "speciment": "Spécimen"
 }

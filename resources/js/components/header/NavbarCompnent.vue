@@ -103,11 +103,11 @@
                                         <!--                                        {{$t('nav.account')}}-->
                                         Profile
                                     </router-link>
-                                    <router-link :to="{name: 'TeacherProfile'}" tag="a"
+                                    <router-link :to="{name: 'Studentpayments'}" tag="a"
                                                  class="dropdown-item" data-toggle="collapse"
                                                  data-target=".navbar-collapse.show">
                                         <!--                                        {{$t('nav.account')}}-->
-                                       {{$t('profile.receipts')}}
+                                       {{$t('profile.payments')}}
                                     </router-link>
                                     <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                                  class="dropdown-item" data-toggle="collapse"
