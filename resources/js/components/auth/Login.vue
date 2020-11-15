@@ -2,18 +2,18 @@
     <div>
         <section class="hero pt-5 mb-3">
             <div class="container h-100">
-<!--                <div class="row h-100">-->
-<!--                    <div class="col-md-4"></div>-->
-<!--                    <div class="col-md-8 text-center pt-md-5">-->
-<!--                        <h1 class="font-weight-bolder">-->
-<!--                            THE NEXT YOU-->
-<!--                        </h1>-->
-<!--                        <h1 class="font-weight-bolder text-uppercase">-->
-<!--                            The best way to predict <br>-->
-<!--                            the future is to create it-->
-<!--                        </h1>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <!--                <div class="row h-100">-->
+                <!--                    <div class="col-md-4"></div>-->
+                <!--                    <div class="col-md-8 text-center pt-md-5">-->
+                <!--                        <h1 class="font-weight-bolder">-->
+                <!--                            THE NEXT YOU-->
+                <!--                        </h1>-->
+                <!--                        <h1 class="font-weight-bolder text-uppercase">-->
+                <!--                            The best way to predict <br>-->
+                <!--                            the future is to create it-->
+                <!--                        </h1>-->
+                <!--                    </div>-->
+                <!--                </div>-->
             </div>
         </section>
         <div class="container ">
@@ -138,6 +138,8 @@
                 let password = this.password;
                 this.$store.dispatch('login', {email, password})
                     .then(res => {
+                        if (this.$route.query.redirect) this.$router.push(this.$route.query.redirect)
+                        return
                         if (res.data.user.roles[0].name === "student") {
                             let r = this.$router.resolve({name: 'StudentProfile'});
                             window.location.assign(r.href)
