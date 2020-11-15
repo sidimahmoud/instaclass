@@ -222,19 +222,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-header" id="payments">
+                        <!-- <div class="card"> -->
+                            <!-- <div class="card-header" id="payments">
                                 <h2 class="mb-0" @click="collapsedPayments = !collapsedPayments">
-                                    <!-- <button
-                                        class="btn btn-link font-weight-bolder rounded collapsed"
-                                        type="button"
-                                        data-toggle="collapse"
-                                        data-target="#collapsePayment"
-                                        aria-expanded="false"
-                                        aria-controls="collapsePayment"
-                                    >
-                                        Payments and receipts
-                                    </button> -->
                                     <button
                                         class="btn btn-link collapsed float-right"
                                         type="button"
@@ -247,7 +237,7 @@
                                         <i class="fa fa-minus" v-else></i>
                                     </button>
                                 </h2>
-                            </div>
+                            </div> -->
                             <!-- <div
                                 id="collapsePayment"
                                 class="collapse"
@@ -258,7 +248,7 @@
                                     <payments/>
                                 </div>
                             </div> -->
-                        </div>
+                        <!-- </div> -->
                         <div class="card">
                             <div class="card-header" id="evaluation">
                                 <h2 class="mb-0" @click="collapsedRatings = !collapsedRatings">
