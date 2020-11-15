@@ -120,7 +120,7 @@
                 this.$store.dispatch('login', {email, password})
                     .then(res => {
                         if(res.data.user.roles[0].name === "teacher") {
-                            let r = this.$router.resolve({name: 'TeacherProfile'});
+                            let r = this.$router.resolve({name: 'StudentProfile'});
                             window.location.assign(r.href)
                         }else {
                             this.errorMessage = "No teacher account with this email please verify.";
