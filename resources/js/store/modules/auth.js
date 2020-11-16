@@ -45,7 +45,7 @@ const actions = {
     async socialStudentAuth({commit}, provider) {
         commit('auth_request');
         return new Promise((resolve, reject) => {
-            axios.get(`/authorize/${provider}`)
+            axios.get(`/authorize/${provider}`, { params: { type: 'teacher' } })
                 .then(resp => {
                     resolve(resp)
                 })
