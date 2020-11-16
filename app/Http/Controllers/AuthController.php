@@ -99,13 +99,13 @@ class AuthController extends Controller
     public function redirectToProvider(Request $request,$provider)
     {
         info($request);
-        $url = Socialite::driver($provider)->stateless()->with(['type' => $request['type']])->redirect()->getTargetUrl();
+        session(['social_type' => $request['type']]);
+        $url = Socialite::driver($provider)->stateless()->redirect()->getTargetUrl();
         return response()->json(['url' => $url]);
     }
 
     public function handleProviderCallback($provider)
     {
-        info('callback', [request()->type]);
         // Get providers user data
         // @todo validate provider
         $provider_user = Socialite::driver($provider)->stateless()->user();
@@ -127,7 +127,7 @@ class AuthController extends Controller
 
             // If no user exists with provider user email, create new user
             if (!$user) {
-                $user = $this->createUser(request()->type,$provider_user);
+                $user = $this->createUser($provider_user);
             }
             // Add provider social account for user
             $this->createSocialAccount($provider, $provider_user, $user);
@@ -160,7 +160,7 @@ class AuthController extends Controller
      *
      * @return User $user
      */
-    private function createUser($type,$provider_user)
+    private function createUser($provider_user)
     {
         $user = new User();
         $name = explode(" ", $provider_user->name);
@@ -173,9 +173,13 @@ class AuthController extends Controller
         $user->password = Hash::make(Str::random(12));
         $user->email_verified_at = now();
         $user->save();
-        $studentR = Role::where('name', $type)->first();
+        $valueType = session('social_type');
+        info($valueType);
+        $studentR = Role::where('name', $valueType)->first();
         $user->roles()->attach($studentR);
-
+        //delete session type
+        session()->forget('social_type');
+        session()->flush();
         return $user;
     }
 
