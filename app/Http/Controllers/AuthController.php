@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -99,7 +100,7 @@ class AuthController extends Controller
     public function redirectToProvider(Request $request,$provider)
     {
         info('type',[$request['type']]);
-        session(['social_type' => $request['type']]);
+        Session::put(['social_type' => $request['type']]);
         $url = Socialite::driver($provider)->stateless()->redirect()->getTargetUrl();
         return response()->json(['url' => $url]);
     }
@@ -110,7 +111,7 @@ class AuthController extends Controller
         // @todo validate provider
         $provider_user = Socialite::driver($provider)->stateless()->user();
         $user = null;
-        info('callback soci', [session('social_type', 'student')]);
+        info('callback soci', [Session::get('social_type', 'student')]);
 //        dd($provider_user);
 
         // If no provider user, fail
