@@ -108,10 +108,11 @@ class AuthController extends Controller
         return response()->json(['url' => $url]);
     }
 
-    public function handleProviderCallback($provider)
+    public function handleProviderCallback(Request $request, $provider)
     {
         // Get providers user data
         // @todo validate provider
+        info('request', [$request]);
         $provider_user = Socialite::driver($provider)->stateless()->user();
         $user = null;
         $url = Session::get('url.intended', 'student');
