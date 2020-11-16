@@ -15,14 +15,14 @@
                     <!--                         class="img-fluid">-->
                 </div>
                 <div class="col-md-6">
-                    <strong>{{$t('course.sessions')}} - </strong> {{course.sections.length}} <br>
-                    <strong>{{$t('course.duration')}} - </strong> {{course.estimated_duration}} <br>
-                    <strong>{{$t('course.lang')}} - </strong> {{course.language}} <br>
-                    <strong>{{$t('course.description')}} - </strong> {{course.description}} <br>
+                    <strong>{{$t('course.sessions')}}: </strong> {{course.sections.length}} <br>
+                    <strong>{{$t('course.duration')}}: </strong> {{course.estimated_duration}} <br>
+                    <strong>{{$t('course.lang')}}: </strong> {{course.language}} <br>
+                    <strong>{{$t('course.description')}}: </strong> {{course.description}} <br>
                 </div>
                 <div class="col-md-4 text-right"
                      :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '']">
-                    <strong>{{$t('course.price')}} - </strong> 
+                    <strong>{{$t('course.price')}}: </strong> 
                     <span class="text-green" v-if="course.price==0">Free</span> 
                     <span class="text-green" v-else>{{currencyToSymbol(course.currency)}}{{course.price}}</span> <br/>
 
