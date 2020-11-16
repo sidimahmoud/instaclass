@@ -46,7 +46,13 @@
                 if (this.password!==this.password_confirmation){
                     this.$alert('Password and password confirmation dont match', 'Password', 'error')
                     return
+                }else{
+                    if (this.password.length<8){
+                        this.$alert('The password must be at least 8 characters.', 'Password', 'error')
+                        return
+                    }
                 }
+
                 axios.post("/reset/password/", {
                     token: this.$route.params.token,
                     email: this.email,
@@ -55,7 +61,7 @@
                 })
                     .then(result => {
                         // console.log(result.data);
-                        this.$router.push({name: 'login'})
+                        this.$router.push({name: 'Login'})
                     }, error => {
                         console.error(error);
                     });

@@ -168,8 +168,8 @@
             "en": "English",
             "es": "Spanish",
             "other": "Other (Specify)"
-
         },
+        "msg": "Thank you, the message has been sent.",
         "email": "Email address (optional)",
         "emailPlaceholder": "Enter your email",
         "emailHelp": "If you choose to leave your email address, you will be notified when the suggested course will become available.",

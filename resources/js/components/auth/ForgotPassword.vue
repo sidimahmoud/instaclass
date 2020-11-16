@@ -31,7 +31,8 @@
             requestResetPassword() {
                 axios.post("/reset-password", {email: this.email}).then(result => {
                     this.response = result.data;
-                    console.log(result.data);
+                    this.$alert('A reset link has been sent to your email address.', 'Password', 'error')
+                    this.$router.push({name:"Home"})
                 }, error => {
                     console.error(error);
                 });
