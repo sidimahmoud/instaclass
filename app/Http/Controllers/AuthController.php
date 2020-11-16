@@ -110,7 +110,7 @@ class AuthController extends Controller
         // @todo validate provider
         $provider_user = Socialite::driver($provider)->stateless()->user();
         $user = null;
-        info('callback soci', [session('social_type')]);
+        info('callback soci', [session('social_type', 'student')]);
 //        dd($provider_user);
 
         // If no provider user, fail
@@ -162,7 +162,7 @@ class AuthController extends Controller
      */
     private function createUser($provider_user)
     {
-        /* $user = new User();
+        $user = new User();
         $name = explode(" ", $provider_user->name);
         $fname = $name[0];
         $lname = $name[1];
@@ -172,13 +172,13 @@ class AuthController extends Controller
         $user->image = $provider_user->avatar;
         $user->password = Hash::make(Str::random(12));
         $user->email_verified_at = now();
-        $user->save();*/
-        $valueType = session('social_type');
+        $user->save();
+        $valueType = session('social_type', 'student');
         info('$request->session()->get()', [$valueType]);
-        /* $studentR = Role::where('name', $valueType)->first();
+         $studentR = Role::where('name', $valueType)->first();
         $user->roles()->attach($studentR);
         //delete session type
-        return $user; */
+        return $user;
     }
 
     /**
