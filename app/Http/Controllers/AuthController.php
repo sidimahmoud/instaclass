@@ -103,7 +103,7 @@ class AuthController extends Controller
         info('type',[$request['type']]);
         Session::put('social_type',$request['type']);
         Session::put('url.intended', $request['type']);
-        Cache::put('social_type',$request['type'], $seconds);
+        Cache::put('social_type',$request['type'], 600);
         //Session::flash('social_type',$request['type']);
         info('after add', [Session::get('social_type', 'student')]);
         $url = Socialite::driver($provider)->stateless()->with(['type' => $request['type']])->redirect()->getTargetUrl();
