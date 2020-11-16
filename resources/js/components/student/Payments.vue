@@ -46,30 +46,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- <div class="tab-pane fade show" id="ratings">
-                            <table class="table" v-if="userProfile.ratings > 0">
-                                <thead>
-                                <tr>
-                                    <th scope="col">{{$t('profile.teacherName')}}</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">{{$t('profile.ratings')}}</th>
-                                    <th scope="col">{{$t('profile.comment')}}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr v-for="r in userProfile.ratings" v-bind:key="r.id">
-                                    <th scope="row">{{ e.teacher_id }}</th>
-                                    <td>{{ e.created_at }}</td>
-                                    <td>{{ e.rate }}</td>
-                                    <td>{{ e.reverse }}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <div class="text-center" v-else>
-                                <h3>{{$t('profile.noRatings')}}</h3>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>

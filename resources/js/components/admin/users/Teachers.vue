@@ -17,6 +17,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">Active</th>
                 <th scope="col">Date of subscription</th>
+                <th scope="col">Speciment</th>
                 <th scope="col">Banish</th>
             </tr>
             </thead>
@@ -28,6 +29,7 @@
                 <td>{{t.email.toLocaleLowerCase()}}</td>
                 <td><input type="checkbox" name=""  :checked="t.active" disabled></td>
                 <td>{{t.created_at.slice(0,10)}}</td>
+                <td><a class="navbar-brand text-primary font-weight-bolder" :href="t.speciment" target="_blank"><i class="fa fa-eye"></i>{{ $t('view') }}</a></td>
                 <td>
                     <button class="btn btn-success" @click="banish(t.id)">
                         X

@@ -144,7 +144,7 @@
                 this.$store.dispatch('login', {email, password})
                     .then(res => {
                         if (this.$route.query.redirect) this.$router.push(this.$route.query.redirect)
-                        return
+                            return
                         if (res.data.user.roles[0].name === "student") {
                             let r = this.$router.resolve({name: 'StudentProfile'});
                             window.location.assign(r.href)

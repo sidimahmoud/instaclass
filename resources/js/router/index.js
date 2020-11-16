@@ -28,6 +28,9 @@ import StudentProfile from "../components/student/Profile";
 import EditStudentProfile from "../components/teacher/EditProfile";
 import Teacherpayments from "../components/teacher/Payments";
 import Studentpayments from "../components/student/Payments";
+import TeacherRatings from "../components/teacher/Ratings";
+import StudentRatings from "../components/student/Ratings";
+import TeacherInfo from "../components/teacher/EditProfile";
 
 
 import Dashboard from "../components/admin/Dashboard";
@@ -442,6 +445,51 @@ const routes = [
             let user = JSON.parse(localStorage.getItem('user')) || null;
             if (user.t === "teacher") next();
             else if (user.t === "student") next({name: 'Studentpayments'});
+            else next({name: 'Home'});
+        },
+        meta: {
+            requiresAuth: true,
+            title: 'Profile'
+        }
+    },
+    {
+        path: '/students/ratings',
+        name: 'StudentRatings',
+        component: StudentRatings,
+        beforeEnter: (to, from, next) => {
+            let user = JSON.parse(localStorage.getItem('user')) || null;
+            if (user.t === "student") next();
+            else if (user.t === "teacher") next({name: 'TeacherRatings'});
+            else next({name: 'Home'});
+        },
+        meta: {
+            requiresAuth: true,
+            title: 'Profile'
+        }
+    },
+    {
+        path: '/teacher/ratings',
+        name: 'TeacherRatings',
+        component: TeacherRatings,
+        beforeEnter: (to, from, next) => {
+            let user = JSON.parse(localStorage.getItem('user')) || null;
+            if (user.t === "teacher") next();
+            else if (user.t === "student") next({name: 'StudentRatings'});
+            else next({name: 'Home'});
+        },
+        meta: {
+            requiresAuth: true,
+            title: 'Profile'
+        }
+    },
+    {
+        path: '/teacher/edit-profile',
+        name: 'TeacherInfo',
+        component: TeacherInfo,
+        beforeEnter: (to, from, next) => {
+            let user = JSON.parse(localStorage.getItem('user')) || null;
+            if (user.t === "teacher") next();
+            else if (user.t === "student") next({name: 'EditStudentProfile'});
             else next({name: 'Home'});
         },
         meta: {

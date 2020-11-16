@@ -92,7 +92,18 @@
 
                             </router-link> -->
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                <el-dropdown>
+                                    <el-button type="info" @click="handleProfile">
+                                        {{$t('nav.account')}}<i class="el-icon-arrow-down el-icon--right"></i>
+                                    </el-button>
+                                    <el-dropdown-menu slot="dropdown">
+                                        <el-dropdown-item @click.native="handlePayments">{{$t('profile.payments')}}</el-dropdown-item>
+                                        <el-dropdown-item @click.native="handleRatings">{{$t('profile.ratings')}}</el-dropdown-item>
+                                        <el-dropdown-item @click.native="PersonalInfo">{{$t('profile.pers_info')}}</el-dropdown-item>
+                                        <el-dropdown-item @click.native="logout">Logout</el-dropdown-item>
+                                    </el-dropdown-menu>
+                                </el-dropdown>
+                                <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{$t('nav.account')}}
                                 </button>
@@ -100,23 +111,20 @@
                                     <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                                  class="dropdown-item" data-toggle="collapse"
                                                  data-target=".navbar-collapse.show">
-                                        <!--                                        {{$t('nav.account')}}-->
                                         Profile
                                     </router-link>
                                     <router-link :to="{name: 'Studentpayments'}" tag="a"
                                                  class="dropdown-item" data-toggle="collapse"
                                                  data-target=".navbar-collapse.show">
-                                        <!--                                        {{$t('nav.account')}}-->
                                        {{$t('profile.payments')}}
                                     </router-link>
                                     <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                                  class="dropdown-item" data-toggle="collapse"
                                                  data-target=".navbar-collapse.show">
-                                        <!--                                        {{$t('nav.account')}}-->
                                         {{$t('profile.ratings')}}
                                     </router-link>
                                     <a class="dropdown-item" @click="logout">Logout</a>
-                                </div>
+                                </div> -->
                             </div>
                         </li>
                         <!--                        Lang-->
@@ -168,14 +176,27 @@
             logout() {
                 this.$store.dispatch('logout')
                     .then(() => {
-                        this.$router.go();
+                        let r = this.$router.resolve({name: 'Home'});
+                        window.location.assign(r.href)
                     })
             },
             search() {
                 this.$store.dispatch('search', this.q)
                     .then(res => this.$router.push({name: 'Search'}))
             },
-            ...mapActions(["fetchProfile"])
+            ...mapActions(["fetchProfile"]),
+            handleRatings() {
+                this.$router.push({name: 'TeacherRatings'})
+            },
+            handlePayments () {
+                this.$router.push({name: 'Studentpayments'})
+            },
+            handleProfile() {
+                this.$router.push({name: 'TeacherProfile'})
+            },
+            PersonalInfo() {
+                this.$router.push({name: 'TeacherInfo'})
+            }
         },
         created() {
             console.log(this.loggedInUser);

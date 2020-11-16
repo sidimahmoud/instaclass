@@ -170,8 +170,13 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Session {{index+1}} availabilities:</label>
-                                <input type="datetime-local" name="date[]" class="form-control" required
-                                       v-model="sections[index].stratDate">
+                                <!-- <input type="datetime-local" name="date[]" class="form-control" required
+                                       v-model="sections[index].stratDate"> -->
+                                       <el-date-picker
+                                            v-model="sections[index].stratDate"
+                                            type="datetime"
+                                            placeholder="Select date and time">
+                                        </el-date-picker>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -439,7 +444,7 @@
                 formData.append("language", this.course.language);
                 formData.append("price", this.course.price);
                 formData.append("currency", this.course.currency);
-                formData.append("estimated_duration", this.course.estimated_duration);
+                formData.append("estimated_duration", 10);
                 formData.append("authorized_students", this.course.authorized_students);
                 formData.append("sharable", this.course.sharable);
                 formData.append("name", this.course.name);

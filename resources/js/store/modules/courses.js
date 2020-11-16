@@ -32,6 +32,7 @@ const actions = {
         let params= {
             'include': 'subCategory.category,ratings.user,sections.enrollments,user',
             'per_page': 1,
+            'sort': '-created_at'
         }
         if(!isEmpty(payload)) {
             params = Object.assign(params,payload)

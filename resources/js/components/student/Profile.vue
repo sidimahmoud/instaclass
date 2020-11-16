@@ -113,10 +113,10 @@
                 <div class="col-md-12 bg-white shadow">
                     <nav class="nav nav-pills nav-fill mt-3">
                         <a class="nav-item nav-link active" href="#courses" data-toggle="tab">
-                            {{$t('profile.live_courses')}}
+                            {{$t('countDown.live_courses')}}
                         </a>
                         <a class="nav-item nav-link" href="#recording-courses" data-toggle="tab">
-                            {{$t('profile.recordings')}}
+                            {{$t('countDown.recordings')}}
                         </a>
                         
                         <!-- <a class="nav-item nav-link" href="#receipts" data-toggle="tab">
@@ -132,16 +132,16 @@
                         <div class="tab-pane fade show active" id="courses">
                             <div class="grid" >
                                 <div v-if="isEmpty(userEnrollments)">
-                                    You have no course yet.
+                                    {{$t('course.empty_course')}}
                                 </div>
                                 <div class="item-product" v-for="e in userEnrollments" v-bind:key="e.id" v-else>
                                     <div class="product-grid__img-wrapper">
                                         <img :src="e.course_file.course.image" alt="Img" class="product-grid__img"/>
                                     </div>
                                     <span><strong>{{ e.course_file.course.name }}</strong></span><br/>
-                                    <span>{{$t('start_at')}}: {{ e.course_file.startDate }}</span><br/>
-                                    <span>{{ e.course_file.course.user.first_name }}</span>
-                                    <span>{{ e.course_file.course.user.last_name }}</span><br/>
+                                    <span>{{$t('start_at')}}: <strong class="blue-text">{{e.course_file.startDate.slice(0,10)}} {{e.course_file.startDate.slice(11,16)}}</strong></span><br/>
+                                    <span>{{$t('teacher_course')}}:<strong class="blue-text">{{ e.course_file.course.user.first_name }}</strong></span>
+                                    <span><strong class="blue-text">{{ e.course_file.course.user.last_name }}</strong></span><br/>
                                     <button v-if="!isEmpty(e.course_file.video_link)" class="btn btn-danger" @click="handleGoLive(e.course_file.video_link)"><i class="fa fa-play"></i> {{$t('profile.go_live')}}</button>
                                     <span class="empty-link" v-else>{{$t('profile.no_video_yet')}}</span>
                                 </div>
@@ -322,7 +322,7 @@
     }
 
     .jumbotron1 {
-        background-color: transparent;
+        background-color: #fff;
         border-radius: 0;
         width: 100%;
 
@@ -367,7 +367,7 @@
 
     .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         grid-gap: 10px;
         padding: 1rem;
         text-align: center;
@@ -396,4 +396,5 @@
     .empty-link {
         color: red;
     }
+    
 </style>

@@ -101,7 +101,8 @@
         "courseLang": "Language du cours",
         "sessionsPer": "Sessions par cours",
         "all": "Tous",
-        "slug": "Visitez les détails des cours disponibles."
+        "slug": "Visitez les détails des cours disponibles.",
+        "empty_course":"Vous n'avez pas encore de cours"
     },
     "course": {
         "session": "Séance",
@@ -175,7 +176,7 @@
     },
     "profile": {
         "go_live": "Go to live",
-        "no_video_yet": "No video link added yet",
+        "no_video_yet": "Un lien sera disponible 15 min avant le début du cours",
         "addImg": "Ajouter votre profile ou une image",
         "phone": "Telephone (Optionnel)",
         "mail": "Email (Sera utilisé pour communiquer avec vous)",
@@ -195,7 +196,9 @@
         "noRatings": "Pas encore d'evaluations",
         "instructor": "Instructeur",
         "coursesNumber": "Cours",
-        "createCourse": "Créer un nouveau cours"
+        "createCourse": "Créer un nouveau cours",
+        "payments": "Paiements",
+        "pers_info": "Informations personnelles"
     },
     "countDown": {
         "enabled": "Le compteur sera active lorsque vous avez un cours à venir",
@@ -209,7 +212,7 @@
         "reviews": "Commentaires",
         "my_recits": "Mes reçus"
     },
-    "start_at": "Start at",
+    "start_at": "Votre cours commencera à",
     "payment_option": "Option de payments",
     "gst": "TPS",
     "tvq": "TVQ",
@@ -220,5 +223,6 @@
     "checkout": "Check-out",
     "thnk_txt":"Merci pour votre achat, bon apprentissage",
     "no_payment": "Pas de paiement",
-    "speciment": "Spécimen"
+    "speciment": "Spécimen de chèque",
+    "teacher_course": "Nom de l'enseignant"
 }

@@ -93,7 +93,7 @@
                             </div>
                         </div>
                     </div>
-                    {{upComingSections.length}}
+                    <!-- {{upComingSections.length}} -->
 
                 </div>
                 <div class="count-down py-2 my-3">
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p
+                        <!-- <p
                             class="text-center text-white my-2"
                             v-if="upComingSections.length > 0"
                         >
@@ -136,18 +136,18 @@
                                 Go to the course page
                                 <div v-if="upComingSections.length > 0">Title: {{upComingSections[0].title}}</div>
                             </button>
-                        </p>
+                        </p> -->
                     </div>
-                </div>
-                <div class="container my-3 text-right">
-                    <router-link :to="{ name: 'NewCourse' }">
-                        <button class="btn btn-primary">
-                            <i class="fa fa-plus"></i> {{$t('profile.createCourse')}}
-                        </button>
-                    </router-link>
                 </div>
                 <div class="container-fluid teacher-area">
                     <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <router-link :to="{ name: 'NewCourse' }">
+                                <button class="btn btn-primary">
+                                    <i class="fa fa-plus"></i> {{$t('profile.createCourse')}}
+                                </button>
+                            </router-link>
+                        </div>
                         <div class="card">
                             <div class="card-header" id="headingOne">
                                 <h2 class="mb-0" @click="collapsedCourses = !collapsedCourses">
@@ -209,14 +209,14 @@
                               params: { slug: course.id },
                             }"
                                                         >
-                                                            <button class="btn btn-primary">Edit</button>
+                                                            <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
                                                         </router-link>
                                                         <a
                                                             href="javascript:;"
                                                             class="btn btn-danger"
                                                             v-on:click="deleteCourse(course.id)"
                                                         >
-                                                            Delete
+                                                            <i class="fa fa-trash"></i>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -226,6 +226,16 @@
                                 </div>
                             </div>
                         </div>
+                        <p
+                            class="text-center text-white my-2"
+                            v-if="upComingSections.length > 0"
+                        >
+                            <button @click="handleLive"
+                                    class="btn btn-danger">
+                                Go to the course page
+                                <div v-if="upComingSections.length > 0">Title: {{upComingSections[0].title}}</div>
+                            </button>
+                        </p>
                         <!-- <div class="card"> -->
                             <!-- <div class="card-header" id="payments">
                                 <h2 class="mb-0" @click="collapsedPayments = !collapsedPayments">
@@ -253,7 +263,7 @@
                                 </div>
                             </div> -->
                         <!-- </div> -->
-                        <div class="card">
+                        <!-- <div class="card">
                             <div class="card-header" id="evaluation">
                                 <h2 class="mb-0" @click="collapsedRatings = !collapsedRatings">
                                     <button
@@ -301,8 +311,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
+                        </div> -->
+                        <!-- <div class="card">
                             <div class="card-header" id="headingThree">
                                 <h2 class="mb-0" @click="collapsedPersonal = !collapsedPersonal">
                                     <button
@@ -338,7 +348,7 @@
                                     <edit-profile :userProfile="userProfile"/>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -398,7 +408,6 @@
                 "fetchTeacherDetails",
                 "fetchTeacherPayments",
                 "getUpcomingSections",
-
             ]),
 
             logout() {
@@ -495,7 +504,7 @@
     }
 
     .jumbotron1 {
-        background-color: transparent;
+        background-color: #fff;
         border-radius: 0;
 
         img {

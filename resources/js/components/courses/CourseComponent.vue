@@ -20,17 +20,17 @@
                     <strong>{{$t('course.lang')}}: </strong> {{course.language}} <br>
                     <strong>{{$t('course.description')}}: </strong> {{course.description}} <br>
                 </div>
-                <div class="col-md-4 text-right"
-                     :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '']">
+                <div class="col-md-4 text-right">
                     <strong>{{$t('course.price')}}: </strong> 
                     <span class="text-green" v-if="course.price==0">Free</span> 
                     <span class="text-green" v-else>{{currencyToSymbol(course.currency)}}{{course.price}}</span> <br/>
-
-                    <router-link
-                        :to="{ path: `/checkout/${course.id}`}"
-                        tag="button" class="btn btn-primary custom-class my-2">
-                        {{$t('course.enroll_to_course')}}
-                    </router-link>
+                    <div v-if="!isLoggedIn || isLoggedIn && loggedInUser.t==='student'">
+                        <router-link
+                            :to="{ path: `/checkout/${course.id}`}"
+                            tag="button" class="btn btn-primary custom-class my-2">
+                            {{$t('course.enroll_to_course')}}
+                        </router-link>
+                    </div>
                 </div>
                 <div class="col-12">
                     <div class="row align-items-center text-center">

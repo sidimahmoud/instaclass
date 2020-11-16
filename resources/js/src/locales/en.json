@@ -100,7 +100,8 @@
         "courseLang": "Course language",
         "sessionsPer": "Sessions per course",
         "all": "All",
-        "slug": "Visit the details of available courses."
+        "slug": "Visit the details of available courses.",
+        "empty_course":"You have no course yet"
     },
     "course": {
         "session": "Session",
@@ -177,7 +178,7 @@
     },
     "profile": {
         "go_live": "Go to live",
-        "no_video_yet": "No video link added yet",
+        "no_video_yet": "A link will be available 15 min before the course begin.",
         "addImg": "Add your profile or an image",
         "phone": "Phone (optional)",
         "mail": "Email (will be used to communicate with you)",
@@ -197,7 +198,9 @@
         "noRatings": "No ratings yet",
         "instructor": "Instructor",
         "coursesNumber": "Courses",
-        "createCourse": "Create a New Course"
+        "createCourse": "Create a New Course",
+        "payments": "Payments",
+        "pers_info": "Personal information"
     },
     "countDown": {
         "enabled": "Timer enabled when you have an upcoming course",
@@ -209,7 +212,7 @@
         "reviews": "Reviews",
         "my_recits": "My receipts"
     },
-    "start_at": "Start at",
+    "start_at": "Your course will start at",
     "payment_option": "Payment option",
     "gst": "GST",
     "tvq": "QST",
@@ -220,5 +223,6 @@
     "checkout": "Checkout",
     "thnk_txt":"Thank you for your purchase, Happy learning",
     "no_payment": "No payment",
-    "speciment": "Speciment"
+    "speciment": "Speciment",
+    "teacher_course": "Name of the teacher"
 }
