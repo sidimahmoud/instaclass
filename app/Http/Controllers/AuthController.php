@@ -98,7 +98,7 @@ class AuthController extends Controller
      */
     public function redirectToProvider(Request $request,$provider)
     {
-        info($request);
+        info('type',[$request['type']]);
         session(['social_type' => $request['type']]);
         $url = Socialite::driver($provider)->stateless()->redirect()->getTargetUrl();
         return response()->json(['url' => $url]);
