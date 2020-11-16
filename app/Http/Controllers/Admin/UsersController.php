@@ -122,7 +122,7 @@ class UsersController extends Controller
     public function teacherPayments(Request $request)
     {
         $payments = Payement::where([
-            ['teacher_id', $request->user()->id],
+            ['enrollment.course.user_id', $request->user()->id],
             ['type', 'received'],
         ])->get();
         return response()->json($payments);

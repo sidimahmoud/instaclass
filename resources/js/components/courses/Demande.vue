@@ -22,7 +22,7 @@
                         <span class="btn btn-light rounded-circle">
                              <i class="fa fa-check text-success fa-2x"></i>
                         </span>
-                            {{msg}}
+                            {{$t('demande.msg')}}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -72,7 +72,7 @@
                 details: '',
                 lang: 'fr',
                 email: '',
-                msg: ''
+                msg: false
             }
         },
         methods: {
@@ -84,7 +84,7 @@
                 };
                 this.$store.dispatch('demander', payload)
                     .then(res => {
-                        this.msg = res.data;
+                        this.msg = true;
                         this.details = '';
                         this.lang = 'fr';
                         this.email = '';

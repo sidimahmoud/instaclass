@@ -12,7 +12,7 @@
                             <label for="selectLang">Select category</label>
                             <select class="form-control" id="selectLang" @change="loadSubs" required>
                                 <option v-for="c in allCategories" :key="c.id" :value="c.id" :selected="c.id===1">
-                                    {{c.name_en}}
+                                    {{(lang==="en")? c.name_en:c.name_fr}}
                                 </option>
                                 <option value="0">Create a Category</option>
                             </select>
@@ -25,7 +25,9 @@
                             <label for="subCateg">Sub category</label>
                             <select class="form-control" id="subCateg" @change="model" v-model="course.sub_category_id"
                                     required>
-                                <option v-for="c in subCategories" :key="c.id" :value="c.id">{{c.name_en}}</option>
+                                <option v-for="c in subCategories" :key="c.id" :value="c.id">
+                                    {{(lang==="en")? c.name_en:c.name_fr}}
+                                </option>
                                 <option value="0">Create a Sub-Category</option>
                             </select>
 
@@ -67,12 +69,12 @@
                                 <select class="form-control" v-model="course.currency" aria-describedby="currencyHelp"
                                         required>
                                     <option value="cad">CAD</option>
-                                    <option value="usd">USD</option>
-                                    <option value="eur">EUR</option>
+<!--                                    <option value="usd">USD</option>-->
+<!--                                    <option value="eur">EUR</option>-->
                                 </select>
-                                <small id="currencyHelp" class="form-text text-muted">
-                                    Canadiens users have to select CAD.
-                                </small>
+<!--                                <small id="currencyHelp" class="form-text text-muted">-->
+<!--                                    Canadiens users have to select CAD.-->
+<!--                                </small>-->
                             </div>
                             <div class="col-md-6">
                                 <p class=" font-weight-light">
@@ -87,17 +89,17 @@
                         </div>
                     </div>
                     <!--duration-->
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="duration">Estimated duration with all sessions</label>
-                            <input type="text" class="form-control" id="duration"
-                                   placeholder="Duration" v-model="course.estimated_duration" required>
-                        </div>
-                    </div>
+<!--                    <div class="col-md-4">-->
+<!--                        <div class="form-group">-->
+<!--                            <label for="duration">Estimated duration with all sessions</label>-->
+<!--                            <input type="text" class="form-control" id="duration"-->
+<!--                                   placeholder="Duration" v-model="course.estimated_duration" required>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <!--Students-->
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="persons">Number of authorized students per session</label>
+                            <label for="persons">Number of authorized students per session (max 50)</label>
                             <input type="number" min="1" max="50" class="form-control" id="persons"
                                    placeholder="authorized students" v-model="course.authorized_students" required>
                         </div>
@@ -107,7 +109,7 @@
                         <div class="form-group">
                             <label for="partage">Autorisez vous le partage de votre annonce?</label>
                             <select class="form-control" id="partage" v-model="course.sharable" required>
-                                <option value="1">Instantavite peut le partager</option>
+                                <option value="1">Instantavite ou la communauté peuvent partager</option>
                                 <option value="0">Je n'autorise pas</option>
                             </select>
                         </div>
@@ -121,7 +123,7 @@
 
                 </div>
                 <div class="row" v-if="step===3">
-                    <h3>Course summery</h3>
+                    <h3>Course summary</h3>
 
                     <!--Summary-->
                     <div class="col-md-12">
@@ -134,11 +136,11 @@
                 <div v-if="step===4">
                     <h3>Course sessions</h3>
                     <div class="form-row">
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-6 text-right">
                             <label for="sections">Number of sessions</label>
 
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-1">
                             <div class="form-group">
                                 <input type="number" value="1" min="1" class="form-control" id="sections" required
                                        @change="addSection">
@@ -184,22 +186,27 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Session {{index+1}} estimated duration:</label>
-                                <input type="text" class="form-control" name="session[]" aria-describedby="durationHelp"
-                                       v-model="sections[index].duration" required>
+                                <select class="mr-2 " name="session[]" aria-describedby="durationHelp"
+                                        v-model="sections[index].duration" required>
+                                    <option value="1">1</option>
+                                    <option value="1.5">1.5</option>
+                                    <option value="2">2</option>
+                                </select>H
+
                                 <small id="durationHelp" class="form-text text-muted">
                                     We suggest 1h per session
                                 </small>
 
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <label>I can teach this session every</label>
-                            <select class="form-control" v-model="sections[index].frequency" required>
-                                <option value="0">None</option>
-                                <option value="weekly">Week</option>
-                                <option value="monthly">Month</option>
-                            </select>
-                        </div>
+<!--                        <div class="col-md-3">-->
+<!--                            <label>I can teach this session every</label>-->
+<!--                            <select class="form-control" v-model="sections[index].frequency" required>-->
+<!--                                <option value="0">None</option>-->
+<!--                                <option value="weekly">Week</option>-->
+<!--                                <option value="monthly">Month</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
                     </div>
                     <!--                submitbtn-->
                 </div>
@@ -219,7 +226,7 @@
             </form>
             <div>
                 <button class="btn btn-dark" @click="step--" :disabled="step===1">Previous step</button>
-                <button class="btn btn-primary float-right" @click="step++" :disabled="step===4">Next step</button>
+                <button class="btn btn-primary float-right" @click="step++" :disabled="step===4" v-if="step!==4">Next step</button>
             </div>
         </div>
         <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -337,7 +344,7 @@
                     sub_category_id: 1,
                     language: 'EN',
                     price: '0',
-                    currency: 'usd',
+                    currency: 'cad',
                     estimated_duration: '',
                     authorized_students: '',
                     sharable: '1',
@@ -357,10 +364,10 @@
                     {
                         title: '',
                         stratDate: '',
-                        duration: '',
+                        duration: '1',
                         description: '',
                         timezone: 'GMT',
-                        frequency: '0',
+                        frequency: '',
                     },
                 ],
                 newCateg: {
@@ -463,7 +470,7 @@
                     this.sections.push({
                         title: '',
                         stratDate: '',
-                        duration: '',
+                        duration: '1',
                         description: '',
                         timeZone: '',
                         frequency: '',
@@ -473,7 +480,7 @@
 
             },
         },
-        computed: mapGetters(["allCategories", "subCategories"]),
+        computed: mapGetters(["allCategories", "subCategories", "lang"]),
         created() {
             this.fetchCategories();
             this.$store.dispatch('fetchSubCategories', 1)

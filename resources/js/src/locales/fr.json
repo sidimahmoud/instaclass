@@ -164,6 +164,7 @@
             "es": "Espagnol",
             "other": "Autre (Précisez)"
         },
+        "msg": "Merci, votre message de suggestion de cours a été envoyé",
         "email": "Adresse email (optionnel)",
         "emailPlaceholder": "Saisir votre email",
         "emailHelp": "Si vous laisser votre email, vous serez informé quand lorsque le cours suggéré sera disponible.",
