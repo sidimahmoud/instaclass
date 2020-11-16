@@ -101,6 +101,7 @@ class AuthController extends Controller
     {
         info('type',[$request['type']]);
         Session::put('social_type',$request['type']);
+        info('after add', [Session::get('social_type', 'student')]);
         $url = Socialite::driver($provider)->stateless()->redirect()->getTargetUrl();
         return response()->json(['url' => $url]);
     }
