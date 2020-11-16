@@ -206,7 +206,8 @@ class AuthController extends Controller
         $user = User::where('email', $tokenData->email)->first();
         $user->password = Hash::make($request->password);
         $user->save();
-        return redirect("/auth/login");
+        DB::table('password_resets')->where('token', $request->token)->delete();
+        return Response()->json(["message" => "Password reset succeeded"]);
     }
 
 }
