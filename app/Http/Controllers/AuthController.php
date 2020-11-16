@@ -100,7 +100,7 @@ class AuthController extends Controller
     public function redirectToProvider(Request $request,$provider)
     {
         info('type',[$request['type']]);
-        Session::put(['social_type' => $request['type']]);
+        Session::put('social_type',$request['type']);
         $url = Socialite::driver($provider)->stateless()->redirect()->getTargetUrl();
         return response()->json(['url' => $url]);
     }
@@ -174,7 +174,7 @@ class AuthController extends Controller
         $user->password = Hash::make(Str::random(12));
         $user->email_verified_at = now();
         $user->save();
-        $valueType = session('social_type', 'student');
+        $valueType = Session::get('social_type', 'student');
         info('$request->session()->get()', [$valueType]);
          $studentR = Role::where('name', $valueType)->first();
         $user->roles()->attach($studentR);
