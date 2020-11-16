@@ -55,6 +55,19 @@ const actions = {
                 })
         })
     },
+    async socialTeacherAuth({commit}, provider) {
+        commit('auth_request');
+        return new Promise((resolve, reject) => {
+            axios.get(`/authorize/${provider}`, { params: { type: 'teacher' } })
+                .then(resp => {
+                    resolve(resp)
+                })
+                .catch(err => {
+                    commit('auth_error');
+                    reject(err)
+                })
+        })
+    },
     async googleCallback({commit}, payload) {
         return new Promise((resolve, reject) => {
             axios.get(`/authorize/google/callback`, {

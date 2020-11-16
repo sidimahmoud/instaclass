@@ -148,7 +148,7 @@
             //         .catch(err => console.log(err))
             // },
             authLogin(provider) {
-                this.$store.dispatch('socialStudentAuth', provider)
+                this.$store.dispatch('socialTeacherAuth', provider)
                     .then((res) => {
                         if (res.data.url) {
                             console.log(res.data.url);

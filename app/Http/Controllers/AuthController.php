@@ -100,12 +100,7 @@ class AuthController extends Controller
      */
     public function redirectToProvider(Request $request,$provider)
     {
-        info('type',[$request['type']]);
-        Session::put('social_type',$request['type']);
-        Session::put('url.intended', $request['type']);
         Cache::put('social_type',$request['type'], 600);
-        //Session::flash('social_type',$request['type']);
-        info('after add', [Session::get('social_type', 'student')]);
         $url = Socialite::driver($provider)->stateless()->with(['type' => $request['type']])->redirect()->getTargetUrl();
         return response()->json(['url' => $url]);
     }
@@ -114,13 +109,9 @@ class AuthController extends Controller
     {
         // Get providers user data
         // @todo validate provider
-        info('request', [$request['type']]);
         $provider_user = Socialite::driver($provider)->stateless()->user();
         $user = null;
-        $url = Session::get('url.intended', 'student');
-        $valueCache = Cache::get('social_type', 'default');
-        info('callback soci', [Session::get('social_type', 'student'), request()->type]);
-        info('cache value', [$valueCache]);
+
 //        dd($provider_user);
 
         // If no provider user, fail
@@ -183,9 +174,9 @@ class AuthController extends Controller
         $user->password = Hash::make(Str::random(12));
         $user->email_verified_at = now();
         $user->save();
-        $valueType = Session::get('social_type', 'student');
-        info('$request->session()->get()', [$valueType]);
-         $studentR = Role::where('name', $valueType)->first();
+        $valueType = Cache::get('social_type', 'student');
+        
+        $studentR = Role::where('name', $valueType)->first();
         $user->roles()->attach($studentR);
         //delete session type
         return $user;
