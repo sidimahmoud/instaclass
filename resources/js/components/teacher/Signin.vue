@@ -38,8 +38,8 @@
                         <form method="post" @submit.prevent="login">
                             <h4 class="text-uppercase text-center text-dark mt-3">{{$t('auth.become.getStarted')}}</h4>
                             <h2>{{$t('auth.signIn')}}</h2>
-                            <p class="hint-text">{{$t('auth.become.login')}}
-                            </p>
+                            <!-- <p class="hint-text">{{$t('auth.become.login')}}
+                            </p> -->
                             <div class="alert alert-danger alert-dismissible fade show" role="alert"
                                  v-if="errorMessage">
                                 <strong>Error!</strong> {{errorMessage}}
@@ -120,7 +120,7 @@
                 this.$store.dispatch('login', {email, password})
                     .then(res => {
                         if(res.data.user.roles[0].name === "teacher") {
-                            let r = this.$router.resolve({name: 'TeacherProfile'});
+                            let r = this.$router.resolve({name: 'StudentProfile'});
                             window.location.assign(r.href)
                         }else {
                             this.errorMessage = "No teacher account with this email please verify.";

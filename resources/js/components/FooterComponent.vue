@@ -88,7 +88,7 @@
                             <i class="fa fa-facebook  mr-3 fa-2x"></i>
                         </a>
                         <i class="fa fa-instagram  fa-2x"></i>
-                    </p>
+                    </p><br/>
                     <p>
                         <img src="../assets/images/visa-mastercard.jpg" width="80px" alt="">
                     </p>
@@ -99,7 +99,7 @@
         <!-- Footer Links -->
         <!-- Copyright -->
         <div class="footer-copyright text-center text-capitalize text-white">
-            ©2020, Société Instantavite inc
+            ©2020, Société Instantavite inc.
         </div><!-- Grid column -->
     </footer><!-- Footer -->
 </template>

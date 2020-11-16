@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div>
         <div class="text-center text-primary mt-5 pt-5" v-if="profileLoading">
             <div class="spinner-border" role="status">
                 <span class="sr-only">Loading...</span>
@@ -59,11 +59,11 @@
                                     </div>
                                     <div class="col-8">
                     <span>{{
-                      allTeacherDetails.ratings.length > 0
+                      !isEmpty(allTeacherDetails.ratings)
                         ? allTeacherDetails.ratings.length
                         : "0"
                     }}</span>
-                                        {{$t('profile.ratings')}}
+                                        {{$t('profile.reviews')}}
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="col-8">
                     <span>{{
-                      allTeacherDetails.students[0].count > 0
+                      !isEmpty(allTeacherDetails.students)
                         ? allTeacherDetails.students[0].count
                         : "0"
                     }}</span>
@@ -226,19 +226,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-header" id="payments">
+                        <!-- <div class="card"> -->
+                            <!-- <div class="card-header" id="payments">
                                 <h2 class="mb-0" @click="collapsedPayments = !collapsedPayments">
-                                    <button
-                                        class="btn btn-link font-weight-bolder rounded collapsed"
-                                        type="button"
-                                        data-toggle="collapse"
-                                        data-target="#collapsePayment"
-                                        aria-expanded="false"
-                                        aria-controls="collapsePayment"
-                                    >
-                                        Payments and receipts
-                                    </button>
                                     <button
                                         class="btn btn-link collapsed float-right"
                                         type="button"
@@ -251,8 +241,8 @@
                                         <i class="fa fa-minus" v-else></i>
                                     </button>
                                 </h2>
-                            </div>
-                            <div
+                            </div> -->
+                            <!-- <div
                                 id="collapsePayment"
                                 class="collapse"
                                 aria-labelledby="payments"
@@ -261,8 +251,8 @@
                                 <div class="card-body">
                                     <payments/>
                                 </div>
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
                         <div class="card">
                             <div class="card-header" id="evaluation">
                                 <h2 class="mb-0" @click="collapsedRatings = !collapsedRatings">
@@ -298,7 +288,7 @@
                                 <div class="card-body">
                                     <div
                                         class="text-center"
-                                        v-if="allTeacherDetails.ratings.length === 0"
+                                        v-if="isEmpty(allTeacherDetails.ratings)"
                                     >
                                         <h3>No ratings yet</h3>
                                     </div>
@@ -365,6 +355,7 @@
     import EditProfile from "./EditProfile";
     import CountDown from "../CountDown";
     import axios from "axios";
+    import {isEmpty} from "../../helpers/common";
 
     export default {
         name: "TeacherProfile",
@@ -463,7 +454,10 @@
                         course_id: this.upComingSections[0].id
                     }
                 });
-            }
+            },
+            isEmpty(v) {
+                return isEmpty(v);
+            },
         },
         /*
         |--------------------------------------------------------------------------
@@ -494,12 +488,9 @@
 
 <style scoped lang="scss">
     .hero {
-        /*background-image: url('../../assets/images/demand/online.jpg');*/
-        background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)),
-        url("../../assets/images/auth/account.jpg") no-repeat center center;
+        background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/account.jpg') no-repeat center center;
         height: 70vh;
         background-size: cover;
-        border-bottom: 15px solid #3081fb;
         color: white;
     }
 
@@ -518,13 +509,12 @@
     }
 
     .details {
-        border-radius: 1rem;
-        border: 5px solid black;
-        border-right: 2px solid black;
+        border: 1px solid black;
+        border-right: 1px solid black;
     }
 
     .teacher-image {
-        height: 300px;
+        height: 200px;
         border-radius: 0 70px 70px 0;
         @media only screen and (max-width: 600px) {
             border-radius: 0;
@@ -550,31 +540,25 @@
         url("../../assets/images/teaprofile/down1.png") no-repeat left center,
         url("../../assets/images/teaprofile/down2.png") no-repeat right center;
         background-size: contain;
-        border-radius: 20px;
     }
 
     .teacher-area {
         background-color: #ccc;
         border: 2px solid black;
-        border-radius: 20px;
         padding: 20px;
         margin-bottom: 100px;
     }
 
     .card {
-        background: linear-gradient(
-                180deg,
-                rgba(19, 19, 19, 0.4),
-                rgba(19, 19, 19, 1)
-        );
+        background-color: #eee;
         margin-top: 6px;
         margin-bottom: 6px;
-        color: white;
+        color: #000;
         border-radius: 20px !important;
     }
 
     .card-header {
-        background: linear-gradient(180deg, rgba(75, 189, 254, 0.83), #fbf3f3);
+        background: #fff;
         font-size: 40px;
         border-radius: 20px !important;
 

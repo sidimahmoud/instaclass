@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -96,20 +97,21 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function redirectToProvider($provider)
+    public function redirectToProvider(Request $request,$provider)
     {
+        info('type',[$request['type']]);
+        Session::put(['social_type' => $request['type']]);
         $url = Socialite::driver($provider)->stateless()->redirect()->getTargetUrl();
         return response()->json(['url' => $url]);
     }
 
     public function handleProviderCallback($provider)
     {
-
         // Get providers user data
         // @todo validate provider
         $provider_user = Socialite::driver($provider)->stateless()->user();
         $user = null;
-
+        info('callback soci', [Session::get('social_type', 'student')]);
 //        dd($provider_user);
 
         // If no provider user, fail
@@ -172,9 +174,11 @@ class AuthController extends Controller
         $user->password = Hash::make(Str::random(12));
         $user->email_verified_at = now();
         $user->save();
-        $studentR = Role::where('name', 'student')->first();
+        $valueType = session('social_type', 'student');
+        info('$request->session()->get()', [$valueType]);
+         $studentR = Role::where('name', $valueType)->first();
         $user->roles()->attach($studentR);
-
+        //delete session type
         return $user;
     }
 

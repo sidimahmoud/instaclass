@@ -64,14 +64,13 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="about">{{$t('profile.about')}}</label>
-                                    <textarea name="" id="about" class="form-control">{{userProfile.about}}
-                                    </textarea>
+                                    <textarea name="" id="about" class="form-control" v-model="userProfile.about"></textarea>
                                 </div>
                             </div>
 
                             <div class="row mb-5">
                                 <div class="col-6">
-                                    <button class="btn btn-success btn-block" type="submit">
+                                    <button class="btn btn-primary btn-block" type="submit">
                                         {{$t('profile.save')}}
                                     </button>
                                 </div>

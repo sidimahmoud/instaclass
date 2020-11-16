@@ -9,7 +9,7 @@
     },
     "title": {
         "1": "The perfect platform for teaching",
-        "2": "or learning online courses"
+        "2": "or learning by online video live courses"
     },
     "title2": {
         "teachers": {
@@ -22,7 +22,8 @@
             "title": "Students",
             "1": "Take advantage of a wide variation of available courses.",
             "2": "Study courses live on INSTANTACLASSE platform.",
-            "3": "Get a free lesson when a course is scheduled for 3 sessions or more."
+            "3": "Get a free lesson when a course is scheduled for 3 sessions or more.",
+            "4": "Receive the recordings at the end courses."
         }
     },
     "coursesByCateg": "Courses by category",
@@ -118,7 +119,9 @@
         "students": "Students enrolled",
         "scheduledAt": "Scheduled at",
         "enroll_to_all": "Enroll for all sessions",
-        "enroll_to_course": "Enroll for this course"
+        "enroll_to_course": "Enroll for this course",
+        "course_free": "This course is free",
+        "no_payment": "No payment required"
     },
     "courseDetails": {
         "hero": "AVAILABLE COURSES",
@@ -159,7 +162,7 @@
     "demande": {
         "title": "Course request",
         "desc": "Tell us about the course you would like to follow live on the platform",
-        "lang": "Course language",
+        "lang": "Teaching language of the suggested course",
         "languages":{
             "fr": "French",
             "en": "English",
@@ -172,9 +175,6 @@
         "emailHelp": "If you choose to leave your email address, you will be notified when the suggested course will become available.",
         "btn": "Send"
     },
-
-
-
     "profile": {
         "go_live": "Go to live",
         "no_video_yet": "No video link added yet",
@@ -195,18 +195,30 @@
         "comment": "Commentaire",
         "enrollments":"Course Enrollments",
         "noRatings": "No ratings yet",
-
         "instructor": "Instructor",
         "coursesNumber": "Courses",
         "createCourse": "Create a New Course"
     },
     "countDown": {
         "enabled": "Timer enabled when you have an upcoming course",
-        "beReady": "Be ready"
+        "beReady": "Be ready",
+        "live_courses": "My Live course",
+        "recordings": "My Recordings",
+        "payments":"Payments",
+        "instructor": "Instructor",
+        "reviews": "Reviews",
+        "my_recits": "My receipts"
     },
     "start_at": "Start at",
     "payment_option": "Payment option",
     "gst": "GST",
     "tvq": "QST",
-    "hello": "Hello"
+    "hello": "Hello",
+    "complete_purchase": "Complete the purchase",
+    "selected_session": "Selected sections of the course",
+    "card_information": "Credit card information",
+    "checkout": "Checkout",
+    "thnk_txt":"Thank you for your purchase, Happy learning",
+    "no_payment": "No payment",
+    "speciment": "Speciment"
 }

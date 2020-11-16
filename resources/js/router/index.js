@@ -26,6 +26,9 @@ import Signin from "../components/teacher/Signin";
 import TeacherProfile from "../components/teacher/Profile";
 import StudentProfile from "../components/student/Profile";
 import EditStudentProfile from "../components/teacher/EditProfile";
+import Teacherpayments from "../components/teacher/Payments";
+import Studentpayments from "../components/student/Payments";
+
 
 import Dashboard from "../components/admin/Dashboard";
 import LoginAdmin from "../components/admin/auth/Login";
@@ -415,6 +418,36 @@ const routes = [
             }
 
         },
+    },
+    {
+        path: '/students/payments',
+        name: 'Studentpayments',
+        component: Studentpayments,
+        beforeEnter: (to, from, next) => {
+            let user = JSON.parse(localStorage.getItem('user')) || null;
+            if (user.t === "student") next();
+            else if (user.t === "teacher") next({name: 'Teacherpayments'});
+            else next({name: 'Home'});
+        },
+        meta: {
+            requiresAuth: true,
+            title: 'Profile'
+        }
+    },
+    {
+        path: '/teacher/payments',
+        name: 'Teacherpayments',
+        component: Teacherpayments,
+        beforeEnter: (to, from, next) => {
+            let user = JSON.parse(localStorage.getItem('user')) || null;
+            if (user.t === "teacher") next();
+            else if (user.t === "student") next({name: 'Studentpayments'});
+            else next({name: 'Home'});
+        },
+        meta: {
+            requiresAuth: true,
+            title: 'Profile'
+        }
     },
 ];
 
