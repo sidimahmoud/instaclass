@@ -112,7 +112,7 @@ class AuthController extends Controller
     {
         // Get providers user data
         // @todo validate provider
-        info('request', [$request]);
+        info('request', [$request['type']]);
         $provider_user = Socialite::driver($provider)->stateless()->user();
         $user = null;
         $url = Session::get('url.intended', 'student');
