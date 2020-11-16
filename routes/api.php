@@ -21,6 +21,10 @@ Route::put('/sections/{id}', 'CourseFileController@updateLinks');
 Route::get('authorize/{provider}', 'AuthController@redirectToProvider');
 Route::get('authorize/{provider}/callback', 'AuthController@handleProviderCallback');
 Route::get('/troncate-all-enrollments', 'EnrollmentController@deleteAllEnrollement');
+// Send reset password mail
+Route::post('reset-password', 'AuthController@sendPasswordResetLink');
+// handle reset password form process
+Route::post('reset/password', 'AuthController@resetPassword');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::middleware('can:only-admin')->group(function () {

@@ -7,7 +7,6 @@ import LoginGoogle from "../components/auth/GoogleCallback";
 import LoginFacebook from "../components/auth/FacebookCallback";
 import Register from "../components/auth/Register";
 import EmailConfirmation from "../components/auth/EmailConfirmation";
-
 import Home from "../components/HomeCompnent";
 import About from "../components/About";
 import Contact from "../components/ContactCompo";
@@ -38,8 +37,10 @@ import NewSection from "../components/teacher/NewSection";
 import StartLive from "../components/teacher/StartLive";
 import LiveCourse from "../components/teacher/LiveCourse";
 import FAQ from "../components/FAQ";
-import last from "../components/last";
 import Terms from "../components/Terms";
+import ForgotPassword from "../components/auth/ForgotPassword";
+import ResetPasswordForm from "../components/auth/ResetPasswordForm";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -343,6 +344,23 @@ const routes = [
             requiresAuth: false,
             requiresVisitore: true,
             title: 'Authorizing'
+        }
+    },
+    {
+        path: '/reset-password',
+        name: 'ResetPassword',
+        component: ForgotPassword,
+        meta: {
+
+            title: 'Reset password'
+        }
+    },
+    {
+        path: '/reset-password/:token',
+        name: 'reset-password-form',
+        component: ResetPasswordForm,
+        meta: {
+            auth: false
         }
     },
     {

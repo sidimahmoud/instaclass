@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\MailResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -79,4 +80,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\SocialAccount');
     }
+    /**
+     * Override the mail body for reset password notification mail.
+     */
+
 }

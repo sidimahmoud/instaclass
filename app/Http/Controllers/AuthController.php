@@ -2,18 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\MailResetPasswordNotification;
 use App\Notifications\VerifyEmail;
 use App\Role;
 use App\SocialAccount;
 use App\User;
+use http\Env\Response;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+
 class AuthController extends Controller
 {
+//    use ResetsPasswords;
+    use SendsPasswordResetEmails;
+
     function login(Request $request)
     {
         $this->validate($request, [
@@ -170,19 +178,35 @@ class AuthController extends Controller
         return $user;
     }
 
+    /**
+     * Send password reset link.
+     */
     public function sendPasswordResetLink(Request $request)
     {
-        return $this->sendResetLinkEmail($request);
+        $user = User::where('email', $request->email)->first();
+        if ($user) {
+            $token = Str::random(60);
+            DB::table('password_resets')->insert([
+                'email' => $request->email,
+                'token' => $token,
+            ]);
+            $user->notify(new MailResetPasswordNotification($token));
+        }
+        return Response()->json(["message" => "Password reset email sent."]);
     }
-    protected function sendResetLinkEmail(Request $request, $response)
+
+
+    /*
+     * Reset the given user's password.
+     */
+    protected function resetPassword(Request $request)
     {
-        return response()->json([
-            'message' => 'Password reset email sent.',
-            'data' => $response
-        ]);
+        $tokenData = DB::table('password_resets')
+            ->where('token', $request->token)->first();
+        $user = User::where('email', $tokenData->email)->first();
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect("/auth/login");
     }
-    protected function sendResetLinkFailedResponse(Request $request, $response)
-    {
-        return response()->json(['message' => 'Email could not be sent to this email address.']);
-    }
+
 }
