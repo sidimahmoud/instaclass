@@ -24,7 +24,8 @@ const actions = {
                     const user = {
                         'u': resp.data.user.id,
                         't': resp.data.user.roles[0].name, //name of user role
-                        'first_name': resp.data.user.first_name
+                        'first_name': resp.data.user.first_name,
+                        'speciment': resp.data.user.speciment
                     };
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
@@ -65,7 +66,8 @@ const actions = {
                     const user = {
                         'u': resp.data.user.id,
                         't': "student",
-                        'first_name': resp.data.user.first_name
+                        'first_name': resp.data.user.first_name,
+                        'speciment': resp.data.user.speciment
                     };
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
@@ -89,7 +91,8 @@ const actions = {
                     const user = {
                         'u': resp.data.user.id,
                         't': "student",
-                        'first_name': resp.data.user.first_name
+                        'first_name': resp.data.user.first_name,
+                        'speciment': resp.data.user.speciment
                     };
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));

@@ -75,6 +75,20 @@ const actions = {
         commit('setProfileLoading', false);
 
     },
+    async addSpeciment({commit}, payload) {
+        return new Promise((resolve, reject) => {
+            commit('setLoading', true);
+            axios({url: '/add-speciment', data: payload, method: 'POST'})
+                .then(resp => {
+                    console.log(resp);
+                    commit('setLoading', false);
+                    resolve(resp)
+                })
+                .catch(err => {
+                    reject(err)
+                })
+        })
+    },
 };
 
 const mutations = {

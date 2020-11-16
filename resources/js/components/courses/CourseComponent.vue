@@ -18,12 +18,14 @@
                     <strong>{{$t('course.sessions')}} - </strong> {{course.sections.length}} <br>
                     <strong>{{$t('course.duration')}} - </strong> {{course.estimated_duration}} <br>
                     <strong>{{$t('course.lang')}} - </strong> {{course.language}} <br>
-                    <strong>{{$t('course.price')}} - </strong> <span v-if="course.price===0">Free</span> <span
-                    v-if="course.price!=0">{{currencyToSymbol(course.currency)}}{{course.price}}</span> <br>
                     <strong>{{$t('course.description')}} - </strong> {{course.description}} <br>
                 </div>
                 <div class="col-md-4 text-right"
                      :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '']">
+                    <strong>{{$t('course.price')}} - </strong> 
+                    <span class="text-green" v-if="course.price==0">Free</span> 
+                    <span class="text-green" v-else>{{currencyToSymbol(course.currency)}}{{course.price}}</span> <br/>
+
                     <router-link
                         :to="{ path: `/checkout/${course.id}`}"
                         tag="button" class="btn btn-primary custom-class my-2">
@@ -39,14 +41,21 @@
                                    :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmondemenagement.ca%2Fcourses%2F'+course.id+'&amp;src=sdkpreparse'"
                                    class="fb-xfbml-parse-ignore">
                                     <img src="../../assets/images/fbShare.png" width="70px" alt="">
+                                    
                                     <!--                                    <img src="../../assets/images/share.png" width="40px" alt="">-->
+                                </a>
+                                <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> 
+                                    <img
+                                        src="../../assets/images/insta.png"
+                                        alt="insta" class="rounded"
+                                        width="73px" height="28">
                                 </a>
                             </div>
 
                         </div>
                         <div class="col-md-6 mb-sm-2  order-1 order-md-2 text-right">
                             <router-link :to="{ name: 'Detail', params: { slug: course.id}}" tag="a"
-                                         class="btn btn-primary custom-class  my-2 text-white">
+                                         class="btn btn-warning custom-class  my-2">
                                 {{$t('course.learnMore')}}
                             </router-link>
                         </div>
@@ -156,6 +165,10 @@
         background-color: #fff;
         font-weight: 800 !important;
         border: 1px solid #2b63f3;
+    }
+    .text-green {
+        color: rgb(2, 128, 13);
+        font-weight: 800;
     }
 
     @media all and (max-width: 720px) {

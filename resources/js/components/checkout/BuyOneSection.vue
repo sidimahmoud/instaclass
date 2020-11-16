@@ -1,7 +1,7 @@
 <template>
     <div class="container border-top border-primary pt-5 mt-5">
         <!-- Heading -->
-        <h2 class=" h2 text-center">Checkout form</h2>
+        <h2 class="h2 text-center">{{$t('checkout')}}</h2>
         <!--Grid row-->
         <div class="row">
             <!--Grid column-->
@@ -20,22 +20,27 @@
                 </div>
                 <!--Card-->
                 <div class="card payment-form">
+                    <pulse-loader :loading="pageLoader" class="text-center"></pulse-loader>
                     <!--Card content-->
                     <div class="my-3">
                         <div>
-                            <h4>Selected sections of the course each section cost ${{course_price}}</h4>
-                            <select class="form-control" multiple v-model="selected" @change="changedSelection">
-                                <!-- <option value="">Choose your sections</option> -->
-                                <option v-for="e in course.sections" v-bind:key="e.id" :value="e.id">{{e.title}}</option>
-                            </select>
+                            <h4>{{$t('selected_session')}}</h4>
+                            <el-select v-model="selected" placeholder="Select" multiple @change="changedSelection">
+                                <el-option
+                                    v-for="e in course.sections"
+                                    :key="e.id"
+                                    :label="e.title"
+                                    :value="e.id">{{e.title}}
+                                </el-option>
+                            </el-select>
                         </div><br/><br/>
                         <div class="text-center" v-if="course_price===0">
-                            <h3>This course is free</h3>
-                            <h5>No payment required</h5>
-                            <button class="btn btn-primary btn-lg btn-block" @click="enrollForFree">Enroll</button>
+                            <h3>{{$t('course.course_free')}}</h3>
+                            <h5>{{$t('course.no_payment')}}</h5>
+                            <button class="btn btn-primary" @click="enrollForFree">{{$t('complete_purchase')}}</button>
                         </div>
                         <div v-else>
-                            <h4>Payment informations</h4>
+                            <h4 class="card-info-text">{{$t('card_information')}}</h4>
                             <stripe-elements
                                 ref="elementsRef"
                                 :pk="publishableKey"
@@ -44,7 +49,10 @@
                                 @token="tokenCreated"
                                 @loading="loading = $event"
                             />
-                            <button class="btn btn-primary btn-lg btn-block" @click="checkout">Pay Now</button>
+                            <br/><br/>
+                            <div class="text-center">
+                                <button class="btn btn-primary" @click="checkout">{{$t('complete_purchase')}}</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -83,11 +91,11 @@
                         <span class="text-muted">- ${{course_price}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between font-weight-bold">
-                        <span>{{$t('gst')}}</span>
+                        <span>{{$t('gst')}} (9.975%)</span>
                         <strong>${{gst}}</strong>
                     </li>
                     <li class="list-group-item d-flex justify-content-between font-weight-bold">
-                        <span>{{$t('tvq')}}</span>
+                        <span>{{$t('tvq')}} (5%)</span>
                         <strong>${{tvq}}</strong>
                     </li>
                     
@@ -109,11 +117,13 @@
 
 <script>
     import {StripeElements} from 'vue-stripe-checkout';
+    import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
     export default {
         name: "Checkout",
         components: {
-            StripeElements
+            StripeElements,
+            PulseLoader
         },
         data() {
             return {
@@ -136,7 +146,8 @@
                 successUrl: 'your-success-url',
                 cancelUrl: 'your-cancel-url',
                 course: {},
-                selected: []
+                selected: [],
+                pageLoader: false,
             }
         },
         /*
@@ -146,11 +157,7 @@
         */
         computed: {
             totalCourse(){
-                if(this.sections_count >= 3){
-                    return (Number(this.course_price) * Number(this.sections_count))  - Number(this.course_price);
-                }else{
-                    return Number(this.course_price) * Number(this.sections_count);
-                }
+                return Number(this.course_price);
             },
             gst() {
                 return Number(this.totalCourse) * 9.75 /100;
@@ -164,17 +171,28 @@
         },
         methods: {
             tokenCreated(token) {
+                const _this = this
                 let payload = {
                     paymentMethod: this.paymentMethod,
                     course_id: this.course.id,
                     course_name: "Course N°" + this.course.id,
                     course_price: this.allPrice,
                     token: token.id,
+                    sections: this.selected
                 };
                 this.$store.dispatch('enrollInAllSection', payload)
                     .then(() => {
-                        alert("Enrolled successfully");
-                        this.$router.push({name: 'StudentProfile'})
+                        this.$swal.fire({
+                            title: '',
+                            text: _this.$t('thnk_txt'),//"Thank you for your purchase, Happy learning",
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'ok'
+                        }).then((result) => {
+                            this.$router.push({name: 'StudentProfile'})
+                        })
                     })
                     .catch(err => console.log(err))
             },
@@ -182,16 +200,29 @@
                 this.$refs.elementsRef.submit();
             },
             enrollForFree() {
+                const _this = this
+                this.pageLoader = true
                 let payload = {
                     paymentMethod: this.paymentMethod,
                     course_id: this.course.id,
                     course_name: "Course N°" + this.course.id,
                     course_price: this.course_price,
+                    sections: this.selected
                 };
                 this.$store.dispatch('enrollInAllSection', payload)
                     .then(() => {
-                        alert("Enrolled successfully");
-                        this.$router.push({name: 'StudentProfile'})
+                        this.pageLoader = false
+                        this.$swal.fire({
+                            title: '',
+                            text: _this.$t('thnk_txt'),//"Thank you for your purchase, Happy learning",
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'ok'
+                        }).then((result) => {
+                            this.$router.push({name: 'StudentProfile'})
+                        })
                     })
                     .catch(err => console.log(err))
             },
@@ -205,7 +236,7 @@
                     .catch(err => console.log(err))
             },
             changedSelection(event){
-                console.log(event.target.value);
+                console.log(event);
             },
             initData(){
                 this.course_price = this.course.price
@@ -221,5 +252,13 @@
 <style scoped>
 .payment-form{
     padding: 10px;
+}
+.card-info-text{
+    color: red
+}
+.text-center-screen {
+    position: relative; 
+    left: 50%;
+    transform: translateX(-50%);
 }
 </style>

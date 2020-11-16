@@ -86,6 +86,14 @@ class UsersController extends Controller
         return response()->json("Banned successfully");
     }
 
+    public function addSpeciment(Request $request)
+    {
+        $user = $request->user();
+        $user->speciment = $request['speciment'];
+        $user->save();
+        return response()->json("Speciment added successfully");
+    }
+
     public function counts()
     {
         $categories = Category::count();
@@ -114,7 +122,7 @@ class UsersController extends Controller
     public function teacherDetails(Request $request)
     {
         $user = $request->user();
-        $students = DB::select("select distinct count(id) from enrollments e where e.course_file_id in(select id from course_files where id in(select id from courses where user_id=$user->id) )");
+        $students = DB::select("select distinct count(id) as count from enrollments e where e.course_file_id in(select id from course_files where id in(select id from courses where user_id=$user->id) )");
         $ratings = Rating::with('user')->where('teacher_id', $user->id)->get();
         return response()->json(["students" => $students, "ratings" => $ratings]);
     }
@@ -122,7 +130,7 @@ class UsersController extends Controller
     public function teacherPayments(Request $request)
     {
         $payments = Payement::where([
-            ['teacher_id', $request->user()->id],
+            ['user_id', $request->user()->id],
             ['type', 'received'],
         ])->get();
         return response()->json($payments);

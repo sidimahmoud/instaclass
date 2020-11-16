@@ -2,12 +2,6 @@
     <div>
         <section class="hero mb-2 pt-5" v-if="!profileLoading">
             <div class="container mt-4 h-100">
-                <div class="text-right">
-                    <router-link :to="{name: 'EditStudentProfile'}" tag="a" class="btn btn-primary">
-                        {{$t('profile.edit')}}
-                    </router-link>
-                </div>
-
                 <!--                <div class="row h-100">-->
                 <!--                    <div class="col-md-4 d-none d-md-block"></div>-->
                 <!--                    <div class="col-md-8 text-center pt-md-2">-->
@@ -40,7 +34,13 @@
                         <!--                            &lt;!&ndash;<img :src="userProfile.image" alt="Avatar" class="w-100">&ndash;&gt;-->
                         <!--                        </div>-->
                         <div class="col-md-4 text-center">
-                            <img :src="userProfile.image" alt="" style=";qx-height: 100px">
+                            <img :src="userProfile.image" alt="" style="max-height: 100px"><br/>
+                            <span>{{userProfile.first_name}}</span><br/><br/>
+                            <div>
+                                <router-link :to="{name: 'EditStudentProfile'}" tag="a" class="btn btn-primary btn-small">
+                                    {{$t('profile.edit')}}
+                                </router-link>
+                            </div>
                         </div>
                         <div class="col-md-8 mb-2">
                             <div class="row">
@@ -79,6 +79,7 @@
                             </div>
                         </div>
                     </div>
+                   
                 </div>
             </div>
             <div class="count-down py-2 my-2">
@@ -112,42 +113,46 @@
                 <div class="col-md-12 bg-white shadow">
                     <nav class="nav nav-pills nav-fill mt-3">
                         <a class="nav-item nav-link active" href="#courses" data-toggle="tab">
-                            {{$t('profile.courses')}}
+                            {{$t('profile.live_courses')}}
                         </a>
-                        <a class="nav-item nav-link" href="#receipts" data-toggle="tab">
+                        <a class="nav-item nav-link" href="#recording-courses" data-toggle="tab">
+                            {{$t('profile.recordings')}}
+                        </a>
+                        
+                        <!-- <a class="nav-item nav-link" href="#receipts" data-toggle="tab">
                             {{$t('profile.receipts')}}
                         </a>
                         <a class="nav-item nav-link" href="#ratings" data-toggle="tab">
                             {{$t('profile.ratings')}}
-                        </a>
+                        </a> -->
                     </nav>
                     <hr/>
                     <div class="tab-content my-1">
                         <!-- Enrollments-->
                         <div class="tab-pane fade show active" id="courses">
-                            <!--                            <div class="grid" >-->
-                            <!--                                <div v-if="isEmpty(userEnrollments)">-->
-                            <!--                                    You have no course yet.-->
-                            <!--                                </div>-->
-                            <!--                                <div class="item-product" v-for="e in userEnrollments" v-bind:key="e.id" v-else>-->
-                            <!--                                    <div class="product-grid__img-wrapper">-->
-                            <!--                                        <img :src="e.course_file.course.image" alt="Img" class="product-grid__img"/>-->
-                            <!--                                    </div>-->
-                            <!--                                    				-->
-                            <!--                                    <span><strong>{{ e.course_file.course.name }}</strong></span><br/>-->
-                            <!--                                    <span>{{$t('start_at')}}: {{ e.course_file.startDate }}</span><br/>-->
-                            <!--                                    <span>{{ e.course_file.course.user.first_name }}</span>-->
-                            <!--                                    <span>{{ e.course_file.course.user.last_name }}</span><br/>-->
-                            <!--                                    <button v-if="!isEmpty(e.course_file.video_link)" class="btn btn-danger" @click="handleGoLive(e.course_file.video_link)"><i class="fa fa-play"></i> {{$t('profile.go_live')}}</button>-->
-                            <!--                                    <span class="empty-link" v-else>{{$t('profile.no_video_yet')}}</span>-->
-                            <!--                                </div>-->
-                            <!--                                -->
-                            <!--                            </div>-->
+                            <div class="grid" >
+                                <div v-if="isEmpty(userEnrollments)">
+                                    You have no course yet.
+                                </div>
+                                <div class="item-product" v-for="e in userEnrollments" v-bind:key="e.id" v-else>
+                                    <div class="product-grid__img-wrapper">
+                                        <img :src="e.course_file.course.image" alt="Img" class="product-grid__img"/>
+                                    </div>
+                                    <span><strong>{{ e.course_file.course.name }}</strong></span><br/>
+                                    <span>{{$t('start_at')}}: {{ e.course_file.startDate }}</span><br/>
+                                    <span>{{ e.course_file.course.user.first_name }}</span>
+                                    <span>{{ e.course_file.course.user.last_name }}</span><br/>
+                                    <button v-if="!isEmpty(e.course_file.video_link)" class="btn btn-danger" @click="handleGoLive(e.course_file.video_link)"><i class="fa fa-play"></i> {{$t('profile.go_live')}}</button>
+                                    <span class="empty-link" v-else>{{$t('profile.no_video_yet')}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show" id="recording-courses">
+                            No recordings added yet
                         </div>
 
-                        <div class="tab-pane fade show" id="receipts">
-                            <h3 class="text-center" v-if="studentPayments.length===0">Your receipts will appear
-                                here. </h3>
+                        <!-- <div class="tab-pane fade show" id="receipts">
+                            <h3 class="text-center" v-if="studentPayments.length===0">Your receipts will appear here.</h3>
                             <div class="accordion" id="accordionExample">
                                 <div class="card my-2" v-for="p in studentPayments" :key="p.id">
                                     <div class="card-header" :id="'payment'+p.id">
@@ -201,7 +206,7 @@
                             <div class="text-center" v-else>
                                 <h3>{{$t('profile.noRatings')}}</h3>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -330,9 +335,8 @@
     }
 
     .details {
-        border-radius: 2rem;
-        border: 20px solid black;
-        border-right: 2px solid black;
+        border: 1px solid black;
+        border-right: 1px solid black;
     }
 
     .teacher-image {

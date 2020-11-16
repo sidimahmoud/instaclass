@@ -103,6 +103,18 @@
                                         <!--                                        {{$t('nav.account')}}-->
                                         Profile
                                     </router-link>
+                                    <router-link :to="{name: 'Studentpayments'}" tag="a"
+                                                 class="dropdown-item" data-toggle="collapse"
+                                                 data-target=".navbar-collapse.show">
+                                        <!--                                        {{$t('nav.account')}}-->
+                                       {{$t('profile.payments')}}
+                                    </router-link>
+                                    <router-link :to="{name: 'TeacherProfile'}" tag="a"
+                                                 class="dropdown-item" data-toggle="collapse"
+                                                 data-target=".navbar-collapse.show">
+                                        <!--                                        {{$t('nav.account')}}-->
+                                        {{$t('profile.ratings')}}
+                                    </router-link>
                                     <a class="dropdown-item" @click="logout">Logout</a>
                                 </div>
                             </div>
