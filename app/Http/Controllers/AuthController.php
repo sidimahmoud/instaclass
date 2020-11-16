@@ -101,6 +101,7 @@ class AuthController extends Controller
     {
         info('type',[$request['type']]);
         Session::put('social_type',$request['type']);
+        Session::flash('social_type',$request['type']);
         info('after add', [Session::get('social_type', 'student')]);
         $url = Socialite::driver($provider)->stateless()->redirect()->getTargetUrl();
         return response()->json(['url' => $url]);
@@ -112,7 +113,8 @@ class AuthController extends Controller
         // @todo validate provider
         $provider_user = Socialite::driver($provider)->stateless()->user();
         $user = null;
-        info('callback soci', [Session::get('social_type', 'student')]);
+        $data = Session::all();
+        info('callback soci', [Session::get('social_type', 'student'), $data]);
 //        dd($provider_user);
 
         // If no provider user, fail
