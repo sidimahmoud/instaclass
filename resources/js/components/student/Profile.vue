@@ -37,7 +37,8 @@
                             <img :src="userProfile.image" alt="" style="max-height: 100px"><br/>
                             <span>{{userProfile.first_name}}</span><br/><br/>
                             <div>
-                                <router-link :to="{name: 'EditStudentProfile'}" tag="a" class="btn btn-primary btn-small">
+                                <router-link :to="{name: 'EditStudentProfile'}" tag="a"
+                                             class="btn btn-primary btn-small">
                                     {{$t('profile.edit')}}
                                 </router-link>
                             </div>
@@ -79,7 +80,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                 </div>
             </div>
             <div class="count-down py-2 my-2">
@@ -118,7 +119,7 @@
                         <a class="nav-item nav-link" href="#recording-courses" data-toggle="tab">
                             {{$t('countDown.recordings')}}
                         </a>
-                        
+
                         <!-- <a class="nav-item nav-link" href="#receipts" data-toggle="tab">
                             {{$t('profile.receipts')}}
                         </a>
@@ -130,7 +131,7 @@
                     <div class="tab-content my-1">
                         <!-- Enrollments-->
                         <div class="tab-pane fade show active" id="courses">
-                            <div class="grid" >
+                            <div class="grid">
                                 <div v-if="isEmpty(userEnrollments)">
                                     {{$t('course.empty_course')}}
                                 </div>
@@ -141,8 +142,12 @@
                                     <span><strong>{{ e.course_file.course.name }}</strong></span><br/>
                                     <span>{{$t('start_at')}}: <strong class="blue-text">{{e.course_file.startDate.slice(0,10)}} {{e.course_file.startDate.slice(11,16)}}</strong></span><br/>
                                     <span>{{$t('teacher_course')}}:<strong class="blue-text">{{ e.course_file.course.user.first_name }}</strong></span>
-                                    <span><strong class="blue-text">{{ e.course_file.course.user.last_name }}</strong></span><br/>
-                                    <button v-if="!isEmpty(e.course_file.video_link)" class="btn btn-danger" @click="handleGoLive(e.course_file.video_link)"><i class="fa fa-play"></i> {{$t('profile.go_live')}}</button>
+                                    <span><strong
+                                        class="blue-text">{{ e.course_file.course.user.last_name }}</strong></span><br/>
+                                    <button v-if="!isEmpty(e.course_file.video_link)" class="btn btn-danger"
+                                            @click="handleGoLive(e.course_file.video_link)"><i class="fa fa-play"></i>
+                                        {{$t('profile.go_live')}}
+                                    </button>
                                     <span class="empty-link" v-else>{{$t('profile.no_video_yet')}}</span>
                                 </div>
                             </div>
@@ -396,5 +401,5 @@
     .empty-link {
         color: red;
     }
-    
+
 </style>

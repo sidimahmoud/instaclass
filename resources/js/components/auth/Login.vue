@@ -74,7 +74,7 @@
                         <div>
                             <p class="font weight-bold text-center text-primary">
                                 <router-link :to="{name: 'ResetPassword'}">
-                                    Forget password
+                                    {{$t('auth.forget')}}
                                 </router-link>
                             </p>
                             <div class="text-center">{{$t('auth.new')}}

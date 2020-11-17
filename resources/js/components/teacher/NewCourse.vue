@@ -3,18 +3,18 @@
         <div class="jumbotron text-right" style="height: 200px"></div>
 
         <div class="container py-3 mb-5 bg font-weight-bold">
-            <h3 class="text-center font-weight-bolder">New course creation</h3>
+            <h3 class="text-center font-weight-bolder">{{$t('newCourse.title')}}</h3>
             <form class="my-3" @submit.prevent="saveCourse">
                 <div class="row" v-if="step===1">
                     <!--categ-->
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="selectLang">Select category</label>
+                            <label for="selectLang">{{$t('newCourse.categ')}}</label>
                             <select class="form-control" id="selectLang" @change="loadSubs" required>
                                 <option v-for="c in allCategories" :key="c.id" :value="c.id" :selected="c.id===1">
                                     {{(lang==="en")? c.name_en:c.name_fr}}
                                 </option>
-                                <option value="0">Create a Category</option>
+                                <option value="0">{{$t('newCourse.createCateg')}}</option>
                             </select>
 
                         </div>
@@ -22,84 +22,82 @@
                     <!--subcateg-->
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="subCateg">Sub category</label>
+                            <label for="subCateg">{{$t('newCourse.sub')}}</label>
                             <select class="form-control" id="subCateg" @change="model" v-model="course.sub_category_id"
                                     required>
                                 <option v-for="c in subCategories" :key="c.id" :value="c.id">
                                     {{(lang==="en")? c.name_en:c.name_fr}}
                                 </option>
-                                <option value="0">Create a Sub-Category</option>
+                                <option class="border-top border-primary" value="0">{{$t('newCourse.createSub')}}
+                                </option>
                             </select>
-
                         </div>
                     </div>
                     <!--Lang-->
                     <div class="col-md-4">
                         <div class="form-group" v-if="course.language ==='FR'|| course.language ==='EN'">
-                            <label for="exampleFormControlSelect1">In which language will you teach?</label>
+                            <label for="exampleFormControlSelect1">{{$t('newCourse.lang')}}</label>
                             <select class="form-control" id="exampleFormControlSelect1" required
                                     v-model="course.language">
-                                <option value="EN">EN</option>
-                                <option value="FR">FR</option>
-                                <option value="">Add a new language</option>
+                                <option value="fr">{{$t('demande.languages.fr')}}</option>
+                                <option value="en">{{$t('demande.languages.en')}}</option>
+                                <option value="es">{{$t('demande.languages.es')}}</option>
+                                <option value="">{{$t('demande.languages.other')}}</option>
                             </select>
                         </div>
                         <div class="form-group" v-else>
-                            <label for="lang1">In which language will you teach?</label>
+                            <label for="lang1">{{$t('newCourse.lang')}}</label>
                             <input type="text" class="form-control" id="lang1" required v-model="course.language">
                         </div>
                     </div>
                 </div>
                 <div class="row" v-if="step===2">
-                    <h3>Course details</h3>
                     <!--Price-->
                     <div class="col-md-12">
                         <div class="form-row mb-3">
                             <div class="col-md-3">
-                                <label for="price">Estimated price per session</label>
+                                <label for="price">{{$t('newCourse.price')}}</label>
                                 <input type="text" class="form-control" id="price" aria-describedby="priceHelp"
                                        placeholder="Price" v-model="course.price" required>
-                                <small id="priceHelp" class="form-text text-muted">A reasonable price will give you the
-                                    chance to have students enrolled in your course.
+                                <small id="priceHelp" class="form-text text-muted">
+                                    {{$t('newCourse.priceHelp')}}
                                 </small>
 
                             </div>
                             <div class="col-md-3">
-                                <label for="price">Currency</label>
+                                <label for="price">{{$t('newCourse.currency')}}</label>
                                 <select class="form-control" v-model="course.currency" aria-describedby="currencyHelp"
                                         required>
                                     <option value="cad">CAD</option>
-<!--                                    <option value="usd">USD</option>-->
-<!--                                    <option value="eur">EUR</option>-->
+                                    <!--                                    <option value="usd">USD</option>-->
+                                    <!--                                    <option value="eur">EUR</option>-->
                                 </select>
-<!--                                <small id="currencyHelp" class="form-text text-muted">-->
-<!--                                    Canadiens users have to select CAD.-->
-<!--                                </small>-->
+                                <!--                                <small id="currencyHelp" class="form-text text-muted">-->
+                                <!--                                    Canadiens users have to select CAD.-->
+                                <!--                                </small>-->
                             </div>
                             <div class="col-md-6">
                                 <p class=" font-weight-light">
-                                    Your estimated total earnings for the course will depend of your estimated price,
-                                    number of sessions and students enrolled.
+                                    {{$t('newCourse.priceHelp')}}
                                 </p>
-                                <p class="font-weight-bolder">Note:
-                                    When the number of sessions exceed 3, your third course will be free student
-                                    enrolled.
+                                <p class="font-weight-bolder">
+                                    {{$t('newCourse.note')}}
                                 </p>
                             </div>
                         </div>
                     </div>
                     <!--duration-->
-<!--                    <div class="col-md-4">-->
-<!--                        <div class="form-group">-->
-<!--                            <label for="duration">Estimated duration with all sessions</label>-->
-<!--                            <input type="text" class="form-control" id="duration"-->
-<!--                                   placeholder="Duration" v-model="course.estimated_duration" required>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <!--                    <div class="col-md-4">-->
+                    <!--                        <div class="form-group">-->
+                    <!--                            <label for="duration">Estimated duration with all sessions</label>-->
+                    <!--                            <input type="text" class="form-control" id="duration"-->
+                    <!--                                   placeholder="Duration" v-model="course.estimated_duration" required>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                     <!--Students-->
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="persons">Number of authorized students per session (max 50)</label>
+                            <label for="persons">{{$t('newCourse.students')}}</label>
                             <input type="number" min="1" max="50" class="form-control" id="persons"
                                    placeholder="authorized students" v-model="course.authorized_students" required>
                         </div>
@@ -107,40 +105,41 @@
                     <!--partage-->
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="partage">Autorisez vous le partage de votre annonce?</label>
+                            <label for="partage">{{$t('newCourse.sharing')}}</label>
                             <select class="form-control" id="partage" v-model="course.sharable" required>
-                                <option value="1">Instantavite ou la communauté peuvent partager</option>
-                                <option value="0">Je n'autorise pas</option>
+                                <option value="1">{{$t('newCourse.authorised')}}</option>
+                                <option value="0">{{$t('newCourse.unauthorised')}}</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
+                            <br>
+                            <label>{{$t('newCourse.recordings')}}</label>
                             <input type="checkbox" v-model="course.allow_share_records">
-                            <label>Autorisez vous le partage desenregistrements?</label>
                         </div>
                     </div>
 
                 </div>
                 <div class="row" v-if="step===3">
-                    <h3>Course summary</h3>
+                    <h3>{{$t('newCourse.summary')}}</h3>
 
                     <!--Summary-->
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="desc">Summerize what you will teach in your course</label>
+                            <label for="desc">{{$t('newCourse.summaryHelp')}}</label>
                             <textarea class="form-control" v-model="course.short_description" required></textarea>
                         </div>
                     </div>
                 </div>
                 <div v-if="step===4">
-                    <h3>Course sessions</h3>
+                    <h3>{{$t('newCourse.sessions')}}</h3>
                     <div class="form-row">
-                        <div class="col-md-6 text-right">
-                            <label for="sections">Number of sessions</label>
+                        <div class="col-10 text-right">
+                            <label for="sections">{{$t('newCourse.number')}}</label>
 
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-2">
                             <div class="form-group">
                                 <input type="number" value="1" min="1" class="form-control" id="sections" required
                                        @change="addSection">
@@ -152,35 +151,36 @@
                     <div class="row border m-2 " v-for="(section, index) in sections" :key="index">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="section1Title">Session {{index+1}}: Give a title to this session</label>
+                                <label for="section1Title">Session {{index+1}} title: Give a title to this
+                                    session</label>
                                 <input type="text" class="form-control" id="section1Title"
                                        placeholder="Title" name="title[]" required v-model="sections[index].title">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="short_desc">Session {{index+1}} description: GIve a description of what you
-                                    will
-                                    teach in this session</label>
+                                <label for="short_desc">{{$t('newCourse.session')}} {{index+1}}
+                                    {{$t('newCourse.give')}}
+                                </label>
                                 <textarea type="text" class="form-control" id="short_desc"
-                                          placeholder="Short description" name="desc[]" required
+                                          placeholder="description" name="desc[]" required
                                           v-model="sections[index].description"></textarea>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>Session {{index+1}} availabilities:</label>
+                                <label>{{$t('newCourse.session')}} {{index+1}} {{$t('newCourse.available')}}:</label>
                                 <!-- <input type="datetime-local" name="date[]" class="form-control" required
                                        v-model="sections[index].stratDate"> -->
-                                       <el-date-picker
-                                            v-model="sections[index].stratDate"
-                                            type="datetime"
-                                            placeholder="Select date and time">
-                                        </el-date-picker>
+                                <el-date-picker
+                                    v-model="sections[index].stratDate"
+                                    type="datetime"
+                                    placeholder="Select date and time">
+                                </el-date-picker>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <label>Time Zone</label>
+                            <label>{{$t('newCourse.timezone')}}</label>
                             <select class="form-control" v-model="sections[index].timezone" required>
                                 <option value="GMT">Greenwich Mean Time</option>
                                 <option value="ET">Eastern Time ET</option>
@@ -190,7 +190,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>Session {{index+1}} estimated duration:</label>
+                                <label>{{$t('newCourse.session')}} {{index+1}} {{$t('newCourse.duration')}}:</label>
                                 <select class="mr-2 " name="session[]" aria-describedby="durationHelp"
                                         v-model="sections[index].duration" required>
                                     <option value="1">1</option>
@@ -199,19 +199,19 @@
                                 </select>H
 
                                 <small id="durationHelp" class="form-text text-muted">
-                                    We suggest 1h per session
+                                    {{$t('newCourse.durationHelp')}}
                                 </small>
 
                             </div>
                         </div>
-<!--                        <div class="col-md-3">-->
-<!--                            <label>I can teach this session every</label>-->
-<!--                            <select class="form-control" v-model="sections[index].frequency" required>-->
-<!--                                <option value="0">None</option>-->
-<!--                                <option value="weekly">Week</option>-->
-<!--                                <option value="monthly">Month</option>-->
-<!--                            </select>-->
-<!--                        </div>-->
+                        <!--                        <div class="col-md-3">-->
+                        <!--                            <label>I can teach this session every</label>-->
+                        <!--                            <select class="form-control" v-model="sections[index].frequency" required>-->
+                        <!--                                <option value="0">None</option>-->
+                        <!--                                <option value="weekly">Week</option>-->
+                        <!--                                <option value="monthly">Month</option>-->
+                        <!--                            </select>-->
+                        <!--                        </div>-->
                     </div>
                     <!--                submitbtn-->
                 </div>
@@ -219,7 +219,8 @@
                 <div class="text-center" v-if="step===4">
                     <button class="btn btn-primary " type="submit" :disabled="savingCourse">
                         <span v-if="!savingCourse">
-                            Publish course
+                            {{$t('newCourse.publish')}}
+
                         </span>
                         <div class="text-center text-white" v-if="savingCourse">
                                         <span class="spinner-border spinner-border-sm" role="status"
@@ -230,8 +231,13 @@
                 </div>
             </form>
             <div>
-                <button class="btn btn-dark" @click="step--" :disabled="step===1">Previous step</button>
-                <button class="btn btn-primary float-right" @click="step++" :disabled="step===4" v-if="step!==4">Next step</button>
+                <button class="btn btn-dark" @click="step--" :disabled="step===1">
+                    {{$t('newCourse.prev')}}
+                </button>
+                <button class="btn btn-primary float-right" @click="step++" :disabled="step===4" v-if="step!==4">
+                    {{$t('newCourse.next')}}
+
+                </button>
             </div>
         </div>
         <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -432,7 +438,7 @@
             },
             loadSubs(event) {
                 const id = event.target.value;
-                if (id === 0)
+                if (id == 0)
                     $('#exampleModalCenter').modal('show')
                 this.$store.dispatch('fetchSubCategories', id)
             },

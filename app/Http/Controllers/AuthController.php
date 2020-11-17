@@ -98,9 +98,9 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function redirectToProvider(Request $request,$provider)
+    public function redirectToProvider(Request $request, $provider)
     {
-        Cache::put('social_type',$request['type'], 600);
+        Cache::put('social_type', $request['type'], 600);
         $url = Socialite::driver($provider)->stateless()->with(['type' => $request['type']])->redirect()->getTargetUrl();
         return response()->json(['url' => $url]);
     }
@@ -196,8 +196,9 @@ class AuthController extends Controller
                 'token' => $token,
             ]);
             $user->notify(new MailResetPasswordNotification($token));
+            return Response()->json(["message" => "Password reset email sent."]);
         }
-        return Response()->json(["message" => "Password reset email sent."]);
+        return Response()->json(["messageFR" => "E-mail ne correspond pas à nos enregistrements", "messageEN"=>"Email don't match our records"],404);
     }
 
 

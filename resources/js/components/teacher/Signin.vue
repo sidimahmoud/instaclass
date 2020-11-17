@@ -78,6 +78,11 @@
                             </div>
                         </form>
                         <div>
+                            <p class="font weight-bold text-center text-primary">
+                                <router-link :to="{name: 'ResetPassword'}">
+                                    {{$t('auth.forget')}}
+                                </router-link>
+                            </p>
                             <div class="text-center">{{$t('auth.new')}}
                                 <router-link :to="{name: 'Become'}">{{$t('auth.signup')}}</router-link>
                             </div>

@@ -63,7 +63,7 @@
                         ? allTeacherDetails.ratings.length
                         : "0"
                     }}</span>
-                                        {{$t('profile.reviews')}}
+                                        {{$t('profile.ratings')}}
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -420,21 +420,22 @@
                 if (token) {
                     axios.defaults.headers.common["Authorization"] = "Bearer " + token;
                     this.$swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
+                        title: this.$t('profile.areYou'),
+                        text: this.$t('profile.irreversible'),
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
+                        confirmButtonText: this.$t('profile.confirm'),
+                        cancelButtonText:this.$t('profile.cancel'),
                     }).then((result) => {
                         if (result.isConfirmed) {
                             this.$store
                                 .dispatch("deleteCourse", id)
                                 .then((resp) => {
                                     this.$swal.fire(
-                                        'Deleted!',
-                                        'Your course has been deleted.',
+                                        'Ok!',
+                                        this.$t('profile.deleted'),
                                         'success'
                                     )
                                 })
