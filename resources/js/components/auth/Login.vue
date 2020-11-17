@@ -82,11 +82,11 @@
 
                                 <h2>{{$t("auth.or")}}</h2>
                                 <button class="btn btn-lg btn-google btn-block text-uppercase"
-                                        @click="loginGoogle('google')">
+                                        @click="authLogin('google')">
                                     <i class="fa fa-google mr-2"></i> {{$t('auth.continueWith')}} Google
                                 </button>
                                 <button class="btn btn-lg btn-github  btn-block text-uppercase"
-                                        @click="loginGoogle('facebook')">
+                                        @click="authLogin('facebook')">
                                     <i class="fa fa-facebook-f text-white mr-2"></i> {{$t('auth.continueWith')}}
                                     Facebook
                                 </button>
