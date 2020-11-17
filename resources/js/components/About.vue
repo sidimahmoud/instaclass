@@ -136,7 +136,7 @@
     }
 
     .jumbotron1 {
-        height: 70vh;
+        height: 80vh;
         border-bottom: 15px solid #3081FB;
         background: linear-gradient(rgba(19, 19, 19, 0.5), rgba(19, 19, 19, 0.5)), url('../assets/images/about/about.jpg') no-repeat center top;
         background-size: cover;
