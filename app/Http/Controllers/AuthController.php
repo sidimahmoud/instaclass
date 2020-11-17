@@ -7,6 +7,7 @@ use App\Notifications\VerifyEmail;
 use App\Role;
 use App\SocialAccount;
 use App\User;
+use Carbon\Carbon;
 use http\Env\Response;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
@@ -190,15 +191,16 @@ class AuthController extends Controller
     {
         $user = User::where('email', $request->email)->first();
         if ($user) {
-            $token = Str::random(60);
+            $token = Str::random(30);
             DB::table('password_resets')->insert([
                 'email' => $request->email,
                 'token' => $token,
+                'created_at' => Carbon::now()
             ]);
             $user->notify(new MailResetPasswordNotification($token));
             return Response()->json(["message" => "Password reset email sent."]);
         }
-        return Response()->json(["messageFR" => "E-mail ne correspond pas à nos enregistrements", "messageEN"=>"Email don't match our records"],404);
+        return Response()->json(["messageFR" => "E-mail ne correspond pas à nos enregistrements", "messageEN" => "Email don't match our records"], 404);
     }
 
 
@@ -210,10 +212,15 @@ class AuthController extends Controller
         $tokenData = DB::table('password_resets')
             ->where('token', $request->token)->first();
         $user = User::where('email', $tokenData->email)->first();
-        $user->password = Hash::make($request->password);
-        $user->save();
-        DB::table('password_resets')->where('token', $request->token)->delete();
-        return Response()->json(["message" => "Password reset succeeded"]);
+        if ($user) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+            DB::table('password_resets')->where('token', $request->token)->delete();
+            return Response()->json(["message" => "Password reset succeeded"]);
+        }
+        return Response()->json(["message" => "user not found"], 404);
+
+
     }
 
 }
