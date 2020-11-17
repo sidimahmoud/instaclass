@@ -69,6 +69,7 @@ const actions = {
         })
     },
     async googleCallback({commit}, payload) {
+        console.log('callback google');
         return new Promise((resolve, reject) => {
             axios.get(`/authorize/google/callback`, {
                 params: payload
@@ -78,7 +79,7 @@ const actions = {
                     const token = resp.data.token;
                     const user = {
                         'u': resp.data.user.id,
-                        't': "student",
+                        't': resp.data.user.roles[0].name,
                         'first_name': resp.data.user.first_name,
                         'speciment': resp.data.user.speciment
                     };
@@ -94,6 +95,7 @@ const actions = {
         })
     },
     async facebookCallback({commit}, payload) {
+        console.log('callback facebook');
         return new Promise((resolve, reject) => {
             axios.get(`/authorize/facebook/callback`, {
                 params: payload
@@ -103,7 +105,7 @@ const actions = {
                     const token = resp.data.token;
                     const user = {
                         'u': resp.data.user.id,
-                        't': "student",
+                        't': resp.data.user.roles[0].name,
                         'first_name': resp.data.user.first_name,
                         'speciment': resp.data.user.speciment
                     };
