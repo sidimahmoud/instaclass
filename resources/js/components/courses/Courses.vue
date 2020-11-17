@@ -5,9 +5,6 @@
                 <div class="row h-100 align-items-center">
                     <div class="col-md-4"></div>
                     <div class="col-md-8 text-center pt-md-5">
-                        <h1 class="font-weight-bolder text-center">
-                            {{$t('courses.hero')}}
-                        </h1></div>
                 </div>
             </div>
         </section>
