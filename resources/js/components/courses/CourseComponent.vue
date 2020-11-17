@@ -18,7 +18,7 @@
                     <strong>{{$t('course.sessions')}}: </strong> {{course.sections.length}} <br>
                     <strong>{{$t('course.duration')}}: </strong> {{course.estimated_duration}} <br>
                     <strong>{{$t('course.lang')}}: </strong> {{course.language}} <br>
-                    <strong>{{$t('course.description')}}: </strong> {{course.short_description}} <br>
+                    <strong>{{$t('course.description')}}: </strong> <br/>{{course.short_description}} <br>
                 </div>
                 <div class="col-md-4 text-right">
                     <strong>{{$t('course.price')}}: </strong> 
