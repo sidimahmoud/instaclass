@@ -100,7 +100,7 @@
                                         <el-dropdown-item @click.native="handlePayments">{{$t('profile.payments')}}</el-dropdown-item>
                                         <el-dropdown-item @click.native="handleRatings">{{$t('profile.ratings')}}</el-dropdown-item>
                                         <el-dropdown-item @click.native="PersonalInfo">{{$t('profile.pers_info')}}</el-dropdown-item>
-                                        <el-dropdown-item @click.native="logout">Logout</el-dropdown-item>
+                                        <el-dropdown-item @click.native="logout">{{$t('profile.logout')}}</el-dropdown-item>
                                     </el-dropdown-menu>
                                 </el-dropdown>
                                 <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"

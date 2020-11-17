@@ -121,8 +121,12 @@
                     }
                 }).then(res => {
                     console.log(res);
-                    alert("Your profile was updated successfully");
-                    location.reload()
+                    this.$swal.fire(
+                        'Ok!',
+                        this.$t('profile.updated'),
+                        'success'
+                    )
+                    this.$store.dispatch("fetcheProfile")
                 })
                     .catch(err => console.log(err.response));
             },

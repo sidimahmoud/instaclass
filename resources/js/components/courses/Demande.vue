@@ -22,7 +22,7 @@
                         <span class="btn btn-light rounded-circle">
                              <i class="fa fa-check text-success fa-2x"></i>
                         </span>
-                            {{$t('demande.msg')}}
+                            {{msg}}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -72,7 +72,7 @@
                 details: '',
                 lang: 'fr',
                 email: '',
-                msg: false
+                msg: ''
             }
         },
         methods: {
@@ -84,7 +84,7 @@
                 };
                 this.$store.dispatch('demander', payload)
                     .then(res => {
-                        this.msg = true;
+                        this.msg = res.data;
                         this.details = '';
                         this.lang = 'fr';
                         this.email = '';
@@ -106,8 +106,8 @@
 
     .hero {
         /*background-image: url('../../assets/images/demand/online.jpg');*/
-        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/Request.jpg') no-repeat center center;
-        height: 70vh;
+        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/Request1.jpg') no-repeat center center;
+        height: 50vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
