@@ -134,7 +134,7 @@ class AuthController extends Controller
             $this->createSocialAccount($provider, $provider_user, $user);
         } // If there is a social account get it's user
         else {
-            $user = User::findOrfail($social_account->user->id)->with('roles');
+            $user = User::with('roles')->findOrfail($social_account->user->id);
         }
 
         $token = $user->createToken('login token')->plainTextToken;
