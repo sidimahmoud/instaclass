@@ -175,8 +175,9 @@ class AuthController extends Controller
         $user->email_verified_at = now();
         $user->save();
         $valueType = Cache::get('social_type', 'student');
-        
+        info('user', [$valueType]);
         $studentR = Role::where('name', $valueType)->first();
+        info('role', [$studentR]);
         $user->roles()->attach($studentR);
         //delete session type
         return $user;
