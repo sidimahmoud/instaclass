@@ -136,9 +136,8 @@
 <style scoped lang="scss">
 
     .hero {
-        //background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details.jpg') no-repeat center center;
+        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details.jpg') no-repeat center center;
         height: 60vh;
-        background-color: #fff;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
@@ -152,9 +151,10 @@
         border-radius: 15px 15px 0 0;
         margin: 10px;
         margin-bottom: 0;
-        background: linear-gradient(90deg,
+       /*  background: linear-gradient(90deg,
             rgba(10, 10, 10, 0.2),
-            rgb(255, 255, 255, 0.9));
+            rgb(255, 255, 255, 0.9)); */
+        background-color: #fff;
         font-weight: 800 !important;
 
         .fa {
@@ -172,8 +172,9 @@
     .course-det {
         margin: 10px;
         margin-top: 0;
-        background: linear-gradient(90deg,
-            rgb(189, 189, 189), rgba(255, 255, 255, 0.9));
+        background-color: #fff;
+        /* background: linear-gradient(90deg,
+            rgb(189, 189, 189), rgba(255, 255, 255, 0.9)); */
         font-weight: 800 !important;
         border-right: 2px solid #2b63f3;
         /*box-shadow: 2px 2px 7px 5px rgba(0,0,0,0.39);*/
