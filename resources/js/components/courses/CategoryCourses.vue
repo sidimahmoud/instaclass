@@ -4,8 +4,7 @@
             <div class="container h-100">
                 <div class="row h-100">
                     <div class="col-md-4"></div>
-                    <div class="col-md-8 text-center pt-md-5">
-
+                    <div class="col-md-8 text-center pt-md-5"></div>
                 </div>
             </div>
         </section>
@@ -24,7 +23,6 @@
                 <course :course="c" v-for="c in allcategCourses" :key="c.id" v-else/>
             </div>
         </div>
-
     </div>
 </template>
 <script>
