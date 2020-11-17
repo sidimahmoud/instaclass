@@ -136,8 +136,9 @@
 <style scoped lang="scss">
 
     .hero {
-        background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details.jpg') no-repeat center center;
+        //background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details.jpg') no-repeat center center;
         height: 60vh;
+        background-color: #fff;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
@@ -161,8 +162,9 @@
         }
 
         .course-info {
-            background: url('../../assets/images/pngtree.png') no-repeat right center;
+            //background: url('../../assets/images/pngtree.png') no-repeat right center;
             background-size: contain;
+            background-color: #fff;
             padding: 20px;
         }
     }
