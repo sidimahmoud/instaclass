@@ -4,7 +4,7 @@
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-md-4"></div>
-                    <div class="col-md-8 text-center pt-md-5">
+                    <div class="col-md-8 text-center pt-md-5"></div>
                 </div>
             </div>
         </section>
