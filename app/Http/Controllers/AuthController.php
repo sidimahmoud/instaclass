@@ -124,7 +124,7 @@ class AuthController extends Controller
 
         // If there is no social account, we need to check if a user exists with provider user email
         if (!$social_account) {
-            $user = User::where('email', $provider_user->email)->first();
+            $user = User::where('email', $provider_user->email)->with('roles')->first();
 
             // If no user exists with provider user email, create new user
             if (!$user) {
@@ -180,7 +180,7 @@ class AuthController extends Controller
         info('role', [$studentR]);
         $user->roles()->attach($studentR);
         //delete session type
-        return $user;
+        return $user::with('roles');
     }
 
     /**
