@@ -137,7 +137,7 @@
 
     .hero {
         background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details1.jpg') no-repeat center center;
-        height: 60vh;
+        height: 70vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
