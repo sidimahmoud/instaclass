@@ -180,7 +180,7 @@ class AuthController extends Controller
         info('role', [$studentR]);
         $user->roles()->attach($studentR);
         //delete session type
-        return $user::with('roles');
+        return $user::with('roles')->get();
     }
 
     /**
