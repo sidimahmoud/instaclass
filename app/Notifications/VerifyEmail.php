@@ -17,9 +17,9 @@ class VerifyEmail extends Notification
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user_id)
     {
-        $this->user_id = $user;
+        $this->user_id = $user_id;
 
     }
 
