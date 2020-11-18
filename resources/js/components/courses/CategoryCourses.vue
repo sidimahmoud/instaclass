@@ -4,11 +4,7 @@
             <div class="container h-100">
                 <div class="row h-100">
                     <div class="col-md-4"></div>
-                    <div class="col-md-8 text-center pt-md-5">
-                        <h1 class="font-weight-bolder text-center mt-5">
-                            ALL COURSES <br>
-                            WHAT WE OFFER
-                        </h1></div>
+                    <div class="col-md-8 text-center pt-md-5"></div>
                 </div>
             </div>
         </section>
@@ -27,7 +23,6 @@
                 <course :course="c" v-for="c in allcategCourses" :key="c.id" v-else/>
             </div>
         </div>
-
     </div>
 </template>
 <script>
@@ -54,7 +49,7 @@
 <style scoped>
     .hero {
         background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/all1.jpg') no-repeat center center;
-        height: 50vh;
+        height: 70vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;

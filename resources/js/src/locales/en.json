@@ -119,7 +119,7 @@
         "instructorRate": "Instructor rating",
         "students": "Students enrolled",
         "scheduledAt": "Scheduled at",
-        "enroll_to_all": "Enroll for all sessions",
+        "enroll_to_all": "Enroll to all sessions",
         "enroll_to_course": "Enroll for this course",
         "course_free": "This course is free",
         "no_payment": "No payment required"

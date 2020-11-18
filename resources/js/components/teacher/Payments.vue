@@ -19,7 +19,7 @@
                 <h4>{{$t('speciment')}}:</h4> <input type="file" @change="previewImage" accept="image/*" >
                 <a class="navbar-brand text-primary font-weight-bolder" :href="loggedInUser.speciment" target="_blank"><i class="fa fa-eye"></i>{{ $t('view') }}</a>
             </div>
-            <h1 class="mt-4">{{$t('profile.my_recits')}}</h1>
+            <h1 class="mt-4">{{$t('countDown.my_recits')}}</h1>
             <div class="text-center mt-4" v-if="allTeacherPayments.length===0">
                 {{$t('no_payment')}}
             </div>
