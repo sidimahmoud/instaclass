@@ -18,11 +18,11 @@
                     <strong>{{$t('course.sessions')}}: </strong> {{course.sections.length}} <br>
                     <strong>{{$t('course.duration')}}: </strong> {{course.estimated_duration}} <br>
                     <strong>{{$t('course.lang')}}: </strong> {{course.language}} <br>
-                    <strong>{{$t('course.description')}}: </strong>  {{course.short_description}} <br>
+                    <strong>{{$t('course.description')}}: </strong> {{course.short_description}} <br>
                 </div>
                 <div class="col-md-4 text-right">
-                    <strong>{{$t('course.price')}}: </strong> 
-                    <span class="text-green" v-if="course.price==0">Free</span> 
+                    <strong>{{$t('course.price')}}: </strong>
+                    <span class="text-green" v-if="course.price==0">Free</span>
                     <span class="text-green" v-else>{{currencyToSymbol(course.currency)}}{{course.price}}</span> <br/>
                     <div v-if="!isLoggedIn || isLoggedIn && loggedInUser.t==='student'">
                         <router-link
@@ -34,24 +34,22 @@
                 </div>
                 <div class="col-12">
                     <div class="row align-items-center text-center">
-                        <div class="col-md-6 order-2 order-md-1">
+                        <div class="col-md-6 order-2 order-md-1" v-if="course.sharable">
                             <div class="fb-share-button" :data-href="'https://mondemenagement.ca/courses/'+course.id"
                                  data-layout="button" data-size="large">
                                 <a target="_blank"
                                    :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmondemenagement.ca%2Fcourses%2F'+course.id+'&amp;src=sdkpreparse'"
                                    class="fb-xfbml-parse-ignore">
                                     <img src="../../assets/images/fbShare.png" width="70px" alt="">
-                                    
-                                    <!--                                    <img src="../../assets/images/share.png" width="40px" alt="">-->
+                                    <!--<img src="../../assets/images/share.png" width="40px" alt="">-->
                                 </a>
-                                <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> 
+                                <a href="https://www.instagram.com/canada/?hl=en" target="_blank">
                                     <img
                                         src="../../assets/images/insta.png"
                                         alt="insta" class="rounded"
                                         width="73px" height="28">
                                 </a>
                             </div>
-
                         </div>
                         <div class="col-md-6 mb-sm-2  order-1 order-md-2 text-right">
                             <router-link :to="{ name: 'Detail', params: { slug: course.id}}" tag="a"
@@ -166,6 +164,7 @@
         font-weight: 800 !important;
         border: 1px solid #2b63f3;
     }
+
     .text-green {
         color: rgb(2, 128, 13);
         font-weight: 800;
@@ -176,7 +175,7 @@
             width: 100%;
             display: block;
         }
-        .categ-img{
+        .categ-img {
             height: 320px !important;
             background-position: center !important;
         }

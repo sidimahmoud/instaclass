@@ -31,12 +31,11 @@
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1"> {{$t('demande.desc')}}</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" required v-model="details">
-
                         </textarea>
                         </div>
                         <div class="form-group" v-if="lang ==='fr'|| lang ==='en'||lang === 'es'">
                             <label for="lang">{{$t('demande.lang')}}</label>
-                            <select class="form-control" id="lang" v-model="lang">
+                            <select class="form-control" id="lang" v-model="language">
                                 <option value="fr">{{$t('demande.languages.fr')}}</option>
                                 <option value="en">{{$t('demande.languages.en')}}</option>
                                 <option value="es">{{$t('demande.languages.es')}}</option>
@@ -45,7 +44,7 @@
                         </div>
                         <div class="form-group" v-else>
                             <label for="lang1">{{$t('demande.lang')}}</label>
-                            <input type="text" class="form-control" id="lang1" required v-model="lang">
+                            <input type="text" class="form-control" id="lang1" required v-model="language">
                         </div>
                         <div class="form-group mb-1">
                             <label for="email">{{$t('demande.email')}}</label>
@@ -65,12 +64,14 @@
 </template>
 
 <script>
+    import {mapGetters} from "vuex";
+
     export default {
         name: "Demande",
         data() {
             return {
                 details: '',
-                lang: 'fr',
+                language: 'fr',
                 email: '',
                 msg: ''
             }
@@ -79,18 +80,22 @@
             demander() {
                 let payload = {
                     details: this.details,
-                    lang: this.lang,
+                    lang: this.language,
                     email: this.email,
                 };
                 this.$store.dispatch('demander', payload)
                     .then(res => {
-                        this.msg = res.data;
+                        this.lang === "fr" ? this.msg = res.data.messageFR : this.msg = res.data.messageEN;
                         this.details = '';
                         this.lang = 'fr';
                         this.email = '';
                     })
             }
+        },
+        computed: {
+            ...mapGetters(["lang"])
         }
+
     }
 </script>
 

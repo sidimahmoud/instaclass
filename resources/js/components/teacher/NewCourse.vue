@@ -39,9 +39,9 @@
                             <label for="exampleFormControlSelect1">{{$t('newCourse.lang')}}</label>
                             <select class="form-control" id="exampleFormControlSelect1" required
                                     v-model="course.language">
-                                <option value="fr">{{$t('demande.languages.fr')}}</option>
-                                <option value="en">{{$t('demande.languages.en')}}</option>
-                                <option value="es">{{$t('demande.languages.es')}}</option>
+                                <option value="FR">{{$t('demande.languages.fr')}}</option>
+                                <option value="EN">{{$t('demande.languages.en')}}</option>
+                                <option value="ES">{{$t('demande.languages.es')}}</option>
                                 <option value="">{{$t('demande.languages.other')}}</option>
                             </select>
                         </div>
@@ -60,7 +60,6 @@
                                 <input type="text" class="form-control" id="price" aria-describedby="priceHelp"
                                        placeholder="Price" v-model="course.price" required>
                                 <small id="priceHelp" class="form-text text-muted">
-                                    {{$t('newCourse.priceHelp')}}
                                 </small>
 
                             </div>
@@ -78,11 +77,10 @@
                             </div>
                             <div class="col-md-6">
                                 <p class=" font-weight-light">
+                                    <br>
                                     {{$t('newCourse.priceHelp')}}
                                 </p>
-                                <p class="font-weight-bolder">
-                                    {{$t('newCourse.note')}}
-                                </p>
+
                             </div>
                         </div>
                     </div>
@@ -123,7 +121,6 @@
                 </div>
                 <div class="row" v-if="step===3">
                     <h3>{{$t('newCourse.summary')}}</h3>
-
                     <!--Summary-->
                     <div class="col-md-12">
                         <div class="form-group">
@@ -133,17 +130,20 @@
                     </div>
                 </div>
                 <div v-if="step===4">
-                    <h3>{{$t('newCourse.sessions')}}</h3>
                     <div class="form-row">
-                        <div class="col-10 text-right">
+                        <div class="col-3">
                             <label for="sections">{{$t('newCourse.number')}}</label>
-
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 text-left">
                             <div class="form-group">
                                 <input type="number" value="1" min="1" class="form-control" id="sections" required
                                        @change="addSection">
                             </div>
+                        </div>
+                        <div class="col-12">
+                            <p class="font-weight-bolder">
+                                {{$t('newCourse.note')}}
+                            </p>
                         </div>
                     </div>
 
@@ -151,8 +151,7 @@
                     <div class="row border m-2 " v-for="(section, index) in sections" :key="index">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="section1Title">Session {{index+1}} title: Give a title to this
-                                    session</label>
+                                <label for="section1Title">Session {{index+1}} {{$t('newCourse.give')}}</label>
                                 <input type="text" class="form-control" id="section1Title"
                                        placeholder="Title" name="title[]" required v-model="sections[index].title">
                             </div>
@@ -160,7 +159,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="short_desc">{{$t('newCourse.session')}} {{index+1}}
-                                    {{$t('newCourse.give')}}
+                                    {{$t('newCourse.desc')}}
                                 </label>
                                 <textarea type="text" class="form-control" id="short_desc"
                                           placeholder="description" name="desc[]" required
@@ -196,7 +195,7 @@
                                     <option value="1">1</option>
                                     <option value="1.5">1.5</option>
                                     <option value="2">2</option>
-                                </select>H
+                                </select>h
 
                                 <small id="durationHelp" class="form-text text-muted">
                                     {{$t('newCourse.durationHelp')}}
@@ -234,9 +233,8 @@
                 <button class="btn btn-dark" @click="step--" :disabled="step===1">
                     {{$t('newCourse.prev')}}
                 </button>
-                <button class="btn btn-primary float-right" @click="step++" :disabled="step===4" v-if="step!==4">
+                <button class="btn btn-primary float-right" @click="next" :disabled="step===4" v-if="step!==4">
                     {{$t('newCourse.next')}}
-
                 </button>
             </div>
         </div>
@@ -345,6 +343,7 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
+    import {isEmpty} from "../../helpers/common";
 
     export default {
         name: "NewCourse",
@@ -467,7 +466,9 @@
                 }).then(res => {
                     // console.log(res);
                     this.savingCourse = false;
-                    this.$alert('Your course was published successfully', 'New Course', 'success')
+                    this.$alert('Your course was published successfully', 'New Course', 'success').then(
+                        () => this.$router.push({name: 'Courses'})
+                    )
 
                 })
                     .catch(err => console.log(err.response));
@@ -490,6 +491,13 @@
 
 
             },
+            next() {
+                if (this.step ==3) {
+                    if (isEmpty(this.course.short_description)) {
+                        return
+                    } else this.step++
+                }else this.step++
+            }
         },
         computed: mapGetters(["allCategories", "subCategories", "lang"]),
         created() {

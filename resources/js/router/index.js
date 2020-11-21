@@ -97,7 +97,6 @@ const routes = [
         meta: {
             requiresAuth: false,
             title: 'Contact'
-
         }
     },
     {
@@ -107,7 +106,6 @@ const routes = [
         meta: {
             requiresAuth: false,
             title: 'Course'
-
         }
     },
     {
@@ -135,7 +133,6 @@ const routes = [
         meta: {
             requiresAuth: false,
             title: 'Search'
-
         }
     },
     {

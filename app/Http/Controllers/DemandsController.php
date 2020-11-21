@@ -44,7 +44,8 @@ class DemandsController extends Controller
 
         $demand->save();
         if ($demand)
-            return response()->json("Merci, votre message de demande de cours a été envoyé.");
+            return response()->json(["messageFR" => "Merci, votre message de demande de cours a été envoyé.",
+                "messageEN" => "Thank you, your course request has been sent."]);
         return response()->json("Erreur, Ressayer.");
     }
 

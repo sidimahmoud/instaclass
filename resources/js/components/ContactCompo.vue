@@ -18,8 +18,8 @@
                         </div>
                     </div>
 
-                    <h2>Contact</h2>
-                    <p>Contactez nous pour toutes questions ou commentaires</p>
+                    <h2>{{$t('contact.title')}}</h2>
+                    <p>{{$t('contact.subtitle')}}</p>
                 </div>
 
                 <div class="row">
@@ -27,13 +27,13 @@
                         <form class="php-email-form" @submit.prevent="send">
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="name">Votre nom</label>
+                                    <label for="name">{{$t('contact.name')}}</label>
                                     <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4"
                                            data-msg="Please enter at least 4 chars" required v-model="name"/>
                                     <div class="validate"></div>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <label for="name">Votre Email</label>
+                                    <label for="name">{{$t('contact.email')}}</label>
                                     <input type="email" class="form-control" name="email" id="email" data-rule="email"
                                            data-msg="Please enter a valid email" required v-model="email"/>
                                     <div class="validate"></div>
@@ -49,7 +49,7 @@
                             </div>
 
                             <div class="text-center">
-                                <button type="submit">Envoyer</button>
+                                <button type="submit">{{$t('contact.send')}}</button>
                             </div>
                         </form>
                     </div>
@@ -63,6 +63,8 @@
 </template>
 
 <script>
+    import {mapGetters} from "vuex";
+
     export default {
         name: "ContactCompo",
         data() {
@@ -82,12 +84,16 @@
                 };
                 this.$store.dispatch('contacter', payload)
                     .then(res => {
-                        this.alert = res.data;
+                        this.lang === "fr" ? this.alert = res.data.messageFR : this.alert = res.data.messageEN;
+
                         this.name = '';
                         this.email = '';
                         this.msg = '';
                     })
             }
+        },
+        computed: {
+            ...mapGetters(["lang"])
         }
     }
 </script>
@@ -97,6 +103,7 @@
         background-image: url('../assets/images/teaprofile/bg.jpg');
         border-radius: 0;
     }
+
     .contact .info {
         border-top: 3px solid #2b63f3;
         border-bottom: 3px solid #2b63f3;

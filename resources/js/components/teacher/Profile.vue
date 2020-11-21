@@ -498,7 +498,7 @@
 
 <style scoped lang="scss">
     .hero {
-        background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/account.jpg') no-repeat center center;
+        background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/account1.jpg') no-repeat center center;
         height: 70vh;
         background-size: cover;
         color: white;

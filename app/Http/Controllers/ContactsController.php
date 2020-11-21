@@ -42,7 +42,7 @@ class ContactsController extends Controller
         $contact->message = $request["message"];
         $contact->save();
         if ($contact)
-            return response()->json("Votre message a étè transmis avec succée!");
+            return response()->json(["messageFR"=>"Votre message a étè transmis avec succée!", "messageEN"=>"Your message has been sent successfully!"]);
         return response()->json("Erreur");
     }
 

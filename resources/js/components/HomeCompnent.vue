@@ -9,7 +9,7 @@
                         allowTransparency="true" allow="encrypted-media">
                     </iframe>
                     <p>
-                        <a href="https://www.instagram.com/canada/?hl=en" target="_blank"> 
+                        <a href="https://www.instagram.com/instantaclasse/" target="_blank">
                             <img
                                 src="../assets/images/insta.png"
                                 alt="insta" class="rounded"
@@ -62,34 +62,34 @@
                     </div>
                 </div>
             </div>
-           <!--  <div class="jumbotron jumbotron2">
+            <!--  <div class="jumbotron jumbotron2">
 
-                <div class="container  align-items-center mt-2">
-                    <div class="row justify-content-around align-items-center">
-                        <div
-                            class="col-md-7 col-sm-12 justify-content-center align-items-center text-white">
-                            <h3>
-                                {{$t('title2.teachers.title')}}:
-                            </h3>
-                            <ul>
-                                <li>{{$t('title2.teachers.1')}}</li>
-                                <li>{{$t('title2.teachers.2')}}</li>
-                                <li>{{$t('title2.teachers.3')}}</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-5 col-sm-12 justify-content-center align-items-center d-none d-md-block text-white">
-                            <h3>
-                                {{$t('title2.students.title')}}:
-                            </h3>
-                            <ul>
-                                <li>{{$t('title2.students.1')}}</li>
-                                <li>{{$t('title2.students.2')}}</li>
-                                <li>{{$t('title2.students.3')}}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+                 <div class="container  align-items-center mt-2">
+                     <div class="row justify-content-around align-items-center">
+                         <div
+                             class="col-md-7 col-sm-12 justify-content-center align-items-center text-white">
+                             <h3>
+                                 {{$t('title2.teachers.title')}}:
+                             </h3>
+                             <ul>
+                                 <li>{{$t('title2.teachers.1')}}</li>
+                                 <li>{{$t('title2.teachers.2')}}</li>
+                                 <li>{{$t('title2.teachers.3')}}</li>
+                             </ul>
+                         </div>
+                         <div class="col-md-5 col-sm-12 justify-content-center align-items-center d-none d-md-block text-white">
+                             <h3>
+                                 {{$t('title2.students.title')}}:
+                             </h3>
+                             <ul>
+                                 <li>{{$t('title2.students.1')}}</li>
+                                 <li>{{$t('title2.students.2')}}</li>
+                                 <li>{{$t('title2.students.3')}}</li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+             </div> -->
         </div>
 
 
@@ -240,6 +240,7 @@
         background-size: cover;
         height: 60vh;
         font-family: 'Poppins', sans-serif;
+
         h2 {
             line-height: 2 !important;
         }
@@ -302,10 +303,11 @@
     }
 
     .reviews {
-        background: linear-gradient(rgba(19, 19, 19, 0.7), rgba(19, 19, 19, 0.7)), url('../assets/images/home/how.jpg') no-repeat center center;
+        background: linear-gradient(rgba(19, 19, 19, 0.7), rgba(19, 19, 19, 0.7)), url('../assets/images/home/how1.jpg') no-repeat center center;
         background-size: cover;
         color: white;
         padding: 20px;
+
         li:not(:last-child) {
             margin-bottom: 10px;
         }
@@ -326,8 +328,9 @@
             margin-top: -60px;
         }
     }
+
     @media (max-width: 500px) {
-        .text-header{
+        .text-header {
             display: none;
         }
     }
