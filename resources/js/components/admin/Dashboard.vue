@@ -1,5 +1,5 @@
 <template>
-    <div id="wrapper" >
+    <div id="wrapper">
         <!-- Sidebar -->
         <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -137,10 +137,21 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Choisir:</h6>
                         <a class="collapse-item" href="#messages" @click="component='Messages'">Messages</a>
-                        <a class="collapse-item" href="#infoletters" @click="component='NewsletterEmails'">Infoletters</a>
+                        <a class="collapse-item" href="#infoletters"
+                           @click="component='NewsletterEmails'">Infoletters</a>
 
                     </div>
                 </div>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Ratings
+            </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLives"
+                   aria-expanded="true" aria-controls="collapseLives">
+                    <span @click="component='Ratings'">Ratings</span>
+                </a>
             </li>
 
             <hr class="sidebar-divider">
@@ -220,6 +231,8 @@
     import NewCategory from "./categories/NewCategory";
     import SubCategories from "./categories/SubCategories";
     import NewsletterEmails from "./users/NewsletterEmails";
+    import Ratings from "./ratings/Ratings";
+
     export default {
         name: "Dashboard",
         components: {
@@ -239,6 +252,7 @@
             Home,
             Banned,
             NewsletterEmails,
+            Ratings
         },
         data() {
             return {

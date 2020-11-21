@@ -11,6 +11,7 @@ const state = {
     loadingEnrollments: false,
     studentPayments: '',
     upcomingClasses: '',
+    teachersRatings:[]
 };
 const getters = {
     userProfile: (state) => state.profile,
@@ -23,6 +24,7 @@ const getters = {
     loadingEnrollments: (state) => state.loadingEnrollments,
     studentPayments: (state) => state.studentPayments,
     upcomingClasses: (state) => state.upcomingClasses,
+    allTeachersRatings: (state) => state.teachersRatings,
 };
 
 const actions = {
@@ -59,6 +61,12 @@ const actions = {
         const response = await axios.get('/teacher/payments');
         console.log(response.data);
         commit('setTeacherPayments', response.data);
+    },
+
+    async fetchRatings({commit}) {
+        const response = await axios.get('/ratings');
+        console.log(response.data);
+        commit('setTeacherRatings', response.data);
     },
 
     async fetchUserCourses({commit}) {
@@ -102,6 +110,7 @@ const mutations = {
     setloadingEnrollments: (state, val) => (state.loadingEnrollments = val),
     setReceipts: (state, payload) => (state.studentPayments = payload),
     setUpcomingClasses: (state, payload) => (state.upcomingClasses = payload),
+    setTeacherRatings: (state, payload) => (state.teachersRatings = payload),
 };
 
 export default {

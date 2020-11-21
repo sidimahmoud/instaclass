@@ -42,10 +42,11 @@ class CourseController extends Controller
 
     public function show($id)
     {
-        $course = Course::with('sections.enrollments', 'user.ratings', 'subCategory.category')
+        $course = Course::with('sections.enrollments', 'user', 'subCategory.category')
             ->where('id', $id)
-            ->get();
-        return response()->json($course);
+            ->first();
+        $ratings = Rating::where('teacher_id', $course->user_id)->get();
+        return response()->json(["course" => $course, "ratings" => $ratings]);
     }
 
     public function filter()

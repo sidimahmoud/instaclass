@@ -42,6 +42,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/contacts', 'ContactsController@index');
         Route::get('/statistics', 'Teacher\CoursesController@statistics');
         Route::resource('/newsletter', 'NewsletterController');
+        Route::resource('/ratings', 'RatingController');
 
     });
 

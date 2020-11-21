@@ -18,28 +18,28 @@
                 <div class="course-header mt-3">
                     <div class="row justify-content-around align-items-center pt-2">
                         <div class="col-md-2 text-center">
-                            <img :src="course.user.image" width="80px" height="80px" alt="Avatar"
+                            <img :src="course.course.user.image" width="80px" height="80px" alt="Avatar"
                                  class="border rounded-circle">
                         </div>
                         <div class="col-md-4 ">
                             <div class="font-weight-bolder">
-                                <h3>{{course.user.first_name}} {{course.user.first_name}}</h3>
+                                <h3>{{course.course.user.first_name}} {{course.course.user.last_name}}</h3>
                                 <div>
-                                    {{course.user.city}}, {{course.user.country}}
+                                    {{course.course.user.city}}, {{course.course.user.country}}
                                 </div>
                                 <div>
-                                    {{course.user.languages}}
+                                    {{course.course.user.languages}}
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-12 pl-3">
-                            <i class="fa fa-star  fa-2x"></i> {{course.user.ratings.length}} {{$t('course.instructorRate')}} <br>
+                            {{$t('course.instructorRate')}} {{courseRate()}}  <i class="fa fa-star"></i><br>
                             <i class="fa fa-user  fa-2x mr-1"></i> 0 {{$t('course.students')}}
 
                         </div>
                         <div :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '', 'col-md-3']">
                             <router-link
-                                :to="{ path:`/checkout/${course.id}`}"
+                                :to="{ path:`/checkout/${course.course.id}`}"
                                 tag="a" class="btn btn-primary my-3">
                                 {{$t('course.enroll_to_all')}}
                             </router-link>
@@ -55,28 +55,28 @@
                         </div>
                     </div>
                     <hr class="bg-dark mx-3">
-                    <div class="col-md-12 course-info" v-if="course.sub_category">
+                    <div class="col-md-12 course-info" v-if="course.course.sub_category">
                         <div>
                             {{$t('course.category')}} :
-                            <router-link :to="{ name: 'CategCourses', params: { id: course.sub_category.category.id}}"
+                            <router-link :to="{ name: 'CategCourses', params: { id: course.course.sub_category.category.id}}"
                                          tag="span" class="mr-2">
-                                {{course.sub_category.category.name_en}}
+                                {{course.course.sub_category.category.name_en}}
                             </router-link>
                         </div>
-                        <div>{{$t('course.subCat')}} : {{course.sub_category.name_en}}</div>
-                        <div>{{$t('course.sessions')}}: {{course.sections.length}}</div>
-                        <div>{{$t('course.lang')}} : {{course.language}}</div>
-                        <div>{{$t('course.price')}}: <span v-if="course.price===0">Free</span> <span
-                            v-if="course.price!=0">{{currencyToSymbol(course.currency)}}{{course.price}}</span></div>
+                        <div>{{$t('course.subCat')}} : {{course.course.sub_category.name_en}}</div>
+                        <div>{{$t('course.sessions')}}: {{course.course.sections.length}}</div>
+                        <div>{{$t('course.lang')}} : {{course.course.language}}</div>
+                        <div>{{$t('course.price')}}: <span v-if="course.course.price===0">Free</span> <span
+                            v-if="course.course.price!=0">{{currencyToSymbol(course.course.currency)}}{{course.course.price}}</span></div>
                     </div>
                 </div>
 
-                <div class="text-center my-5" v-if="course.sections.length===0">
+                <div class="text-center my-5" v-if="course.course.sections.length===0">
                     <h3>{{$t('courseDetails.title')}}</h3>
                 </div>
                 <div v-else>
                     <div class="row justify-content-around align-items-center shadow-sm course-det px-0 my-2"
-                         v-for="(section, index) in course.sections"
+                         v-for="(section, index) in course.course.sections"
                          :key="section.id">
                         <div class="col-12 text-center">
                             <h2 class="text-left"><strong>{{$t('course.session')}} N°:{{index+1}}</strong></h2>
@@ -90,7 +90,7 @@
                         </div>
                         <div :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '', 'col-md-3']">
                             <router-link
-                                :to="{ name: 'BuyOneSection', params: {id: course.id, slug: section.id,name: section.title, price: course.price}}"
+                                :to="{ name: 'BuyOneSection', params: {id: course.course.id, slug: section.id,name: section.title, price: course.course.price}}"
                                 tag="a" class="btn btn-primary my-3" v-if="!enrolled">
                                 {{$t('course.enrollInSession')}}
                             </router-link>
@@ -122,6 +122,13 @@
                     default:
                         return currency
                 }
+            },
+            courseRate(){
+                let sum = 0;
+                 this.course.ratings.map(rating=>{
+                    sum += rating.rate
+                })
+                return parseInt(sum/this.course.ratings.length, 10)
             }
         },
         computed: mapGetters(["course", "loading", "enrolled", 'isLoggedIn', 'loggedInUser']),
@@ -158,7 +165,7 @@
         font-weight: 800 !important;
 
         .fa {
-            color: yellow;
+            color: orange;
         }
 
         .course-info {

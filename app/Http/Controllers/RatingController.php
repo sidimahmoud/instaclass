@@ -12,11 +12,18 @@ class RatingController extends Controller
     {
         $this->middleware('auth:sanctum');
     }
+
     /**
      * Display a listing of specific course ratings.
      *
      * @return \Illuminate\Http\JsonResponse
      */
+    public function index()
+    {
+        $rates = Rating::all();
+
+    }
+
     public function courseRates($id)
     {
         $rates = Rating::where('course_id', $id);
@@ -36,7 +43,7 @@ class RatingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
@@ -47,15 +54,15 @@ class RatingController extends Controller
         $rate->review = $request["review"];
         $rate->user_id = $request->user()->id;
         $rate->save();
-        if($rate)
-        return response()->json("success");
+        if ($rate)
+            return response()->json("success");
         return response()->json("error", 500);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
@@ -68,7 +75,7 @@ class RatingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -79,13 +86,13 @@ class RatingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $rate =Rating::findOrFail($id);
+        $rate = Rating::findOrFail($id);
         $rate->course_id = $request["course_id"];
         $rate->rate = $request["rate"];
         $rate->user_id = $request->user()->id;
@@ -95,16 +102,16 @@ class RatingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id, Request $request)
     {
-        $rate =Rating::findOrFail($id);
-        if($rate->user_id === $request->user()->id){
+        $rate = Rating::findOrFail($id);
+        if ($rate->user_id === $request->user()->id) {
             $rate->delete();
-            return response()->json(["response"=>"success"]);
+            return response()->json(["response" => "success"]);
         }
-        return response()->json(["response"=>"unauthorized"]);
+        return response()->json(["response" => "unauthorized"]);
     }
 }

@@ -49,7 +49,8 @@ const actions = {
 
         commit('setLoading', true);
         const response = await axios.get(`/courses/${slug}`,);
-        commit('setCourse', response.data[0]);
+        commit('setCourse', response.data);
+        console.log(response.data)
 
         const me = JSON.parse(localStorage.getItem('user')) || null;
         commit('setEnrolled', false);
