@@ -6,10 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
 
+    public function teacher()
+    {
+        return $this->belongsTo('App\User');
+    }
 
     public function file()
     {

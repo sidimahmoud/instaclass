@@ -11,7 +11,7 @@ const state = {
     loadingEnrollments: false,
     studentPayments: '',
     upcomingClasses: '',
-    teachersRatings:[]
+    teachersRatings: []
 };
 const getters = {
     userProfile: (state) => state.profile,
@@ -24,30 +24,30 @@ const getters = {
     loadingEnrollments: (state) => state.loadingEnrollments,
     studentPayments: (state) => state.studentPayments,
     upcomingClasses: (state) => state.upcomingClasses,
-    allTeachersRatings: (state) => state.teachersRatings,
+    allRatings: (state) => state.teachersRatings,
 };
 
 const actions = {
     async fetchProfile({commit, dispatch}) {
-         await axios.get('/me').then(response =>{
-             commit('setProfile', response.data[0]);
-         }).catch(err =>{
-             err.response.status===401?dispatch('logout'):"";
-             location.reload()
-         })
+        await axios.get('/me').then(response => {
+            commit('setProfile', response.data[0]);
+        }).catch(err => {
+            err.response.status === 401 ? dispatch('logout') : "";
+            location.reload()
+        })
     },
     async fetchUpcomingClasses({commit, dispatch}) {
-         await axios.get('/my-receipts').then(response =>{
-             commit('setReceipts', response.data);
-         }).catch(err =>{
-             err.response.status===401?dispatch('logout'):"";
-             location.reload()
-         })
+        await axios.get('/my-receipts').then(response => {
+            commit('setReceipts', response.data);
+        }).catch(err => {
+            err.response.status === 401 ? dispatch('logout') : "";
+            location.reload()
+        })
     },
     async fetchReceipts({commit, dispatch}) {
-         await axios.get('/upcoming-classes').then(response =>{
-             commit('setUpcomingClasses', response.data);
-         })
+        await axios.get('/upcoming-classes').then(response => {
+            commit('setUpcomingClasses', response.data);
+        })
     },
     async fetchTeacherCourses({commit}, id) {
         const response = await axios.get(`/teacher/${id}/courses`);

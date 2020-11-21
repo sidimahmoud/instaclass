@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Rating;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 class RatingController extends Controller
@@ -20,13 +21,15 @@ class RatingController extends Controller
      */
     public function index()
     {
-        $rates = Rating::all();
+        $rates = Rating::with('user','teacher')->get();
+        return Response()->json($rates);
 
     }
 
     public function courseRates($id)
     {
         $rates = Rating::where('course_id', $id);
+        return Response()->json($rates);
 
     }
 
