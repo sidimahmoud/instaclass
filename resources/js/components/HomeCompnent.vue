@@ -238,7 +238,7 @@
         /*border-radius: 0 0 300px 0;*/
         border-bottom: 10px solid #0b40c6;
         background-size: cover;
-        height: 60vh;
+        height: 70vh;
         font-family: 'Poppins', sans-serif;
 
         h2 {
