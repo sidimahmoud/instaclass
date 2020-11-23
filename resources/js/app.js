@@ -68,7 +68,7 @@ const app = new Vue({
     },
     watch: {
         '$route'(to, from) {
-            document.title = "Instantaclass | " + to.meta.title
+            document.title = "Instantaclasse | " + to.meta.title
         }
     },
 });
