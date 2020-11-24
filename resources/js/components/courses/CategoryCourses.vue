@@ -20,7 +20,9 @@
                         {{$t('noCourses')}}
                     </h3>
                 </div>
-                <course :course="c" v-for="c in allcategCourses" :key="c.id" v-else/>
+                <template v-else>
+                    <course  v-for="c in allcategCourses" :key="c.id" :course="c"/>
+                </template>
             </div>
         </div>
     </div>

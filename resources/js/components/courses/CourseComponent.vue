@@ -11,8 +11,8 @@
                   border: '1px solid black',
                   borderRadius: '20px'
                 }">
-                    <!--                    <img :src="course.sub_category.category.image" :alt="course.sub_category.category.image"-->
-                    <!--                         class="img-fluid">-->
+                    <!-- <img :src="course.sub_category.category.image" :alt="course.sub_category.category.image"
+                     class="img-fluid"> -->
                 </div>
                 <div class="col-md-6">
                     <strong>{{$t('course.sessions')}}: </strong> {{course.sections.length}} <br>
@@ -131,6 +131,7 @@
         |--------------------------------------------------------------------------
         */
         mounted() {
+            console.log('this.course')
             console.log(this.course)
         },
         /*

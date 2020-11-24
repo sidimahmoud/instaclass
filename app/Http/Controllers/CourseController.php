@@ -65,9 +65,8 @@ class CourseController extends Controller
 
     public function categoryCourses($id)
     {
-
-        $courses = Course::with('subCategory.category', 'sections')
-            ->whereIn('sub_category_id', Category::find($id)->subCategories()->get('id'))->get();
+        $cat = Category::find($id)->subCategories()->get('id');
+        $courses = Course::whereIn('sub_category_id', $cat)->with('subCategory.category', 'sections')->get();
         return response()->json($courses);
     }
 
