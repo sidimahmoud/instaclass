@@ -208,12 +208,12 @@
         "msg": "Merci, votre message de suggestion de cours a été envoyé",
         "email": "Adresse email (optionnel)",
         "emailPlaceholder": "Saisir votre email",
-        "emailHelp": "Si vous laisser votre email, vous serez informé quand lorsque le cours suggéré sera disponible.",
+        "emailHelp": "Si vous laissez votre email, vous serez informé quand lorsque le cours suggéré sera disponible.",
         "btn": "Envoyer"
     },
     "profile": {
         "go_live": "Go to live",
-        "no_video_yet": "Un lien sera disponible 15 min avant le début du cours",
+        "no_video_yet": "Un lien vers le cours sera disponible 15 minutes avant le début du cours",
         "addImg": "Ajouter votre profile ou une image",
         "phone": "Telephone (Optionnel)",
         "mail": "Email (Sera utilisé pour communiquer avec vous)",
@@ -275,5 +275,14 @@
     "thnk_txt": "Merci pour votre achat, bon apprentissage",
     "no_payment": "Pas de paiement",
     "speciment": "Spécimen de chèque",
-    "teacher_course": "Nom de l'enseignant"
+    "teacher_course": "Nom de l'enseignant",
+    "manage_course": "Gérer mes cours",
+    "verify": {
+        "1": "Confirmez votre adresse email",
+        "2": "Nous avons envoyé un courriel contenant un lien de confirmation dans votre adresse e-mail. Afin de terminer le processus d'inscription, veuillez cliquer sur le lien de confirmation. Si vous ne recevez pas d'e-mail de confirmation, veuillez vérifier votre dossier spam(les indésirables). Veuillez également vérifier que vous avez saisi une adresse e-mail valide dans le formulaire d'inscription.",
+        "3": "Si vous avez besoin d'assistance, veuillez  compléter le formulaire sous "
+    },
+    "please_add_speciment": "Veuillez ajouter votre spécimen de chèque ici.",
+    "view_spec": "Visualiser le spécimen de chèque attaché",
+    "no_recipt": "Aucun reçu disponible pour l’instant"
 }

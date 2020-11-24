@@ -150,83 +150,57 @@
                         </div>
                         <div class="card">
                             <div class="card-header" id="headingOne">
-                                <h2 class="mb-0" @click="collapsedCourses = !collapsedCourses">
-                                    <button
-                                        class="btn btn-link font-weight-bolder rounded"
-                                        type="button"
-                                        data-toggle="collapse"
-                                        data-target="#collapseOne"
-                                        aria-expanded="true"
-                                        aria-controls="collapseOne"
-                                    >
-                                        Manage my courses
-                                    </button>
-                                    <button
-                                        class="btn btn-link float-right"
-                                        type="button"
-                                        data-toggle="collapse"
-                                        data-target="#collapseOne"
-                                        aria-expanded="true"
-                                        aria-controls="collapseOne"
-                                    >
-                                        <i class="fa fa-plus" v-if="collapsedCourses"></i>
-                                        <i class="fa fa-minus" v-else></i>
-                                    </button>
-                                </h2>
+                                {{$t('manage_course')}}
                             </div>
-                            <div
-                                id="collapseOne"
-                                class="collapse"
-                                aria-labelledby="headingOne"
-                                data-parent="#accordionExample"
-                            >
-                                <div class="card-body">
-                                    <ul class="list-unstyled">
-                                        <li
-                                            class="media bg-white p-2 mt-4"
-                                            v-for="course in userCourses"
-                                            :key="course.id"
-                                        >
-                                            <div class="media-body">
-                                                <div class="row">
-                                                    <div class="col-md-9">
-                                                        <router-link
-                                                            :to="{
-                                                            name: 'Detail',
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li
+                                        class="media bg-white p-2 mt-4"
+                                        v-for="course in userCourses"
+                                        :key="course.id"
+                                    >
+                                        <div class="media-body">
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <router-link
+                                                        :to="{
+                                                        name: 'Detail',
+                                                        params: { slug: course.id },
+                                                    }">
+                                                        <h5
+                                                            class="mt-0 mb-1 text-primary font-weight-bolder rounded"
+                                                        >
+                                                            {{ course.short_description }}
+                                                        </h5>
+                                                    </router-link>
+                                                </div>
+                                                <div class="col-md-3 text-right">
+                                                    <button @click="handleLive(course.id)"
+                                                        class="btn btn-warning">
+                                                        <i class="fa fa-play fa-2x"></i>
+                                                    </button>
+                                                    <router-link
+                                                        :to="{
+                                                            name: 'EditCourse',
                                                             params: { slug: course.id },
                                                         }">
-                                                            <h5
-                                                                class="mt-0 mb-1 text-primary font-weight-bolder rounded"
-                                                            >
-                                                                {{ course.short_description }}
-                                                            </h5>
-                                                        </router-link>
-                                                    </div>
-                                                    <div class="col-md-3 text-right">
-                                                        <router-link
-                                                            :to="{
-                              name: 'EditCourse',
-                              params: { slug: course.id },
-                            }"
-                                                        >
-                                                            <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                                                        </router-link>
-                                                        <a
-                                                            href="javascript:;"
-                                                            class="btn btn-danger"
-                                                            v-on:click="deleteCourse(course.id)"
-                                                        >
-                                                            <i class="fa fa-trash"></i>
-                                                        </a>
-                                                    </div>
+                                                        <button class="btn btn-primary"><i class="fa fa-pencil fa-2x"></i></button>
+                                                    </router-link>
+                                                    <a
+                                                        href="javascript:;"
+                                                        class="btn btn-danger"
+                                                        v-on:click="deleteCourse(course.id)"
+                                                    >
+                                                        <i class="fa fa-trash fa-2x"></i>
+                                                    </a>
                                                 </div>
                                             </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <p
+                        <!-- <p
                             class="text-center text-white my-2"
                             v-if="upComingSections.length > 0"
                         >
@@ -235,7 +209,7 @@
                                 Go to the course page
                                 <div v-if="upComingSections.length > 0">Title: {{upComingSections[0].title}}</div>
                             </button>
-                        </p>
+                        </p> -->
                         <!-- <div class="card"> -->
                             <!-- <div class="card-header" id="payments">
                                 <h2 class="mb-0" @click="collapsedPayments = !collapsedPayments">
@@ -457,13 +431,13 @@
                     // }
                 }
             },
-            handleLive() {
-                this.$router.push({
+            handleLive(id) {
+                /* this.$router.push({
                     name: "StartLive",
                     params: {
                         course_id: this.upComingSections[0].id
                     }
-                });
+                }); */
             },
             isEmpty(v) {
                 return isEmpty(v);

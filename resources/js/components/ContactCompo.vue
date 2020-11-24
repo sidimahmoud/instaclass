@@ -29,7 +29,7 @@
                                 <div class="form-group col-md-12">
                                     <label for="name">{{$t('contact.name')}}</label>
                                     <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4"
-                                           data-msg="Please enter at least 4 chars" required v-model="name"/>
+                                           data-msg="Please enter at least 4 chars" required v-model="name" oninvalid="this.setCustomValidity($t('msg')"/>
                                     <div class="validate"></div>
                                 </div>
                                 <div class="form-group col-md-12">

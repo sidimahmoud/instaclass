@@ -84,10 +84,12 @@
                 </div>
                 <div class="col-md-3 align-content-center text-white mx-auto mb-md-0">
                     <p class="mt-2">
-                        <a href=" https://www.facebook.com/InstantaClasse/?modal=admin_todo_tour " target="_blank">
+                        <a href="https://www.facebook.com/InstantaClasse/?modal=admin_todo_tour" target="_blank">
                             <i class="fa fa-facebook  mr-3 fa-2x"></i>
                         </a>
-                        <i class="fa fa-instagram  fa-2x"></i>
+                        <a href="https://www.instagram.com/instantaclasse/" target="_blank">
+                            <i class="fa fa-instagram  fa-2x"></i>
+                        </a>
                     </p><br/>
                     <p>
                         <img src="../assets/images/visa-mastercard.jpg" width="80px" alt="">

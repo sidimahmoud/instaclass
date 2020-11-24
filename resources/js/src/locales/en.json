@@ -111,7 +111,7 @@
         "price": "Price per session",
         "description": "Description",
         "enroll": "Enroll in this Course",
-        "enrollInSession": "Enroll in this session",
+        "enrollInSession": "Enroll in this session only",
         "learnMore": "Learn more about this course",
         "category": "Category",
         "subCat": "Sub-category",
@@ -212,7 +212,7 @@
     },
     "profile": {
         "go_live": "Go to live",
-        "no_video_yet": "A link will be available 15 min before the course begin.",
+        "no_video_yet": "A link to the course will be available 15 minutes before the begenning of the course.",
         "addImg": "Add your profile or an image",
         "phone": "Phone (optional)",
         "mail": "Email (will be used to communicate with you)",
@@ -272,5 +272,14 @@
     "thnk_txt": "Thank you for your purchase, Happy learning",
     "no_payment": "No payment",
     "speciment": "Speciment",
-    "teacher_course": "Name of the teacher"
+    "teacher_course": "Name of the teacher",
+    "manage_course": "Gerer mes cours",
+    "verify": {
+        "1": "Confirm your email address",
+        "2": "We have sent an email with a confirmation link to your email address. In order to complete the sign-up process, please click the confirmation link. If you do not receive a confirmation email, please check your spam folder. Also, please verify that you entered a valid email address in our sign-up form.",
+        "3": "If you need assistance, please "
+    },
+    "please_add_speciment": "Please add your void here.",
+    "view_spec": "View the attached void",
+    "no_recipt": "No receipts yet"
 }

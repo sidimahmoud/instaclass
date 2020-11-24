@@ -16,12 +16,12 @@
         </section>
         <div class="payment-page">
             <div class="mt-4">
-                <h4>{{$t('speciment')}}:</h4> <input type="file" @change="previewImage" accept="image/*" >
-                <a class="navbar-brand text-primary font-weight-bolder" :href="loggedInUser.speciment" target="_blank"><i class="fa fa-eye"></i>{{ $t('view') }}</a>
+                <h4>{{$t('please_add_speciment')}}:</h4> <input type="file" @change="previewImage" accept="image/*" >
+                <a class="navbar-brand text-primary font-weight-bolder" :href="loggedInUser.speciment" target="_blank"><i class="fa fa-eye"></i>{{ $t('view_spec') }}</a>
             </div>
             <h1 class="mt-4">{{$t('countDown.my_recits')}}</h1>
-            <div class="text-center mt-4" v-if="allTeacherPayments.length===0">
-                {{$t('no_payment')}}
+            <div class="mt-4" v-if="allTeacherPayments.length===0" style="color:red">
+                {{$t('no_recipt')}}
             </div>
             <table class="table" v-else>
                 <thead>
@@ -98,6 +98,7 @@
                                     showConfirmButton: false,
                                     timer: 1500
                                 })
+                                window.location.reload()
                             })
                             .catch(function (error) {
                                 this.$swal.fire({

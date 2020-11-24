@@ -23,7 +23,7 @@
                 <div class="col-md-4 text-right">
                     <strong>{{$t('course.price')}}: </strong>
                     <span class="text-green" v-if="course.price==0">Free</span>
-                    <span class="text-green" v-else>{{currencyToSymbol(course.currency)}}{{course.price}}</span> <br/>
+                    <span class="text-green" v-else>{{course.price}}$</span> <br/>
                     <div v-if="!isLoggedIn || isLoggedIn && loggedInUser.t==='student'">
                         <router-link
                             :to="{ path: `/checkout/${course.id}`}"

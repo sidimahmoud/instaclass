@@ -1,15 +1,11 @@
 <template>
-    <div class="container text-center border-top border-primary pt-4">
-        <h1>Confirm your email address</h1>
+    <div class="verify">
+        <h1>{{$t('verify.1')}}</h1>
         <p>
-            We have sent an email with a confirmation link to your email address. In order to complete the sign-up process, please click the confirmation link.
-            If you do not receive a confirmation email, please check your spam folder. Also, please verify that you entered a valid email address in our sign-up form.
+            {{$t('verify.2')}}
         </p>
 
-        If you need assistance, please <router-link class="text-primary" :to="{name: 'Contact'}">
-        contact us.
-
-    </router-link>
+        {{$t('verify.3')}} <router-link class="text-primary" :to="{name: 'Contact'}">{{$t('footer.contact')}}.</router-link>
     </div>
 </template>
 
@@ -21,5 +17,8 @@
 </script>
 
 <style scoped>
-
+.verify {
+    margin-top: 80px;
+    padding: 40px;
+}
 </style>

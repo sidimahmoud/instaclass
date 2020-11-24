@@ -38,20 +38,13 @@
 
                         </div>
                         <div :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '', 'col-md-3']">
-                            <router-link
+                            <template v-if="!isEmpty(course.course.sections) && course.course.sections.length > 2">
+                                <router-link
                                 :to="{ path:`/checkout/${course.course.id}`}"
                                 tag="a" class="btn btn-primary my-3">
-                                {{$t('course.enroll_to_all')}}
-                            </router-link>
-                            <!-- <router-link
-                                :to="{ name: 'Checkout', params: {id: course.id, name: course.name, price: course.price}}"
-                                tag="a" class="btn btn-primary my-3" v-if="!enrolled">
-                                {{$t('course.enroll')}}
-                            </router-link>
-                            <router-link :to="{name: 'StudentProfile'}" tag="a" class="btn btn-primary my-3"
-                                         v-if="enrolled">
-                                Deja inscrit
-                            </router-link> -->
+                                    {{$t('course.enroll_to_all')}}
+                                </router-link>
+                            </template>
                         </div>
                     </div>
                     <hr class="bg-dark mx-3">
@@ -105,6 +98,7 @@
 
     import {mapGetters} from "vuex";
     import Review from "./Review";
+    import {isEmpty} from "../../helpers/common"
 
     export default {
         name: 'Detail',
@@ -129,6 +123,9 @@
                     sum += rating.rate
                 })
                 return parseInt(sum/this.course.ratings.length, 10)
+            },
+            isEmpty(v) {
+                return isEmpty(v);
             }
         },
         computed: mapGetters(["course", "loading", "enrolled", 'isLoggedIn', 'loggedInUser']),
