@@ -28,6 +28,6 @@ class Mails extends Mailable
      */
     public function build()
     {
-        return $this->from("noreply@instantaclass.ca", "Instantaclass")->subject("Alerte nouveau d’un cours crée dans INSTANTACLASSE")->view('mails.alert-admins');
+        return $this->from("noreply@instantaclass.ca", "Instantaclasse")->subject("Alerte nouveau d’un cours crée dans INSTANTACLASSE")->view('mails.alert-admins');
     }
 }
