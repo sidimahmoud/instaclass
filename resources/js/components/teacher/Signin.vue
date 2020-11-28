@@ -156,8 +156,8 @@
                 this.$store.dispatch('socialTeacherAuth', provider)
                     .then((res) => {
                         if (res.data.url) {
-                            console.log(res.data.url);
-                            window.location.href = res.data.url
+                            let r = this.$router.resolve({name: 'TeacherProfile'});
+                            window.location.assign(r.href)
                         }
                     })
                     .catch(err => console.log(err))

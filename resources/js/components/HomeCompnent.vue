@@ -8,14 +8,14 @@
                         width="93" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
                         allowTransparency="true" allow="encrypted-media">
                     </iframe>
-                    <p>
+                    <!-- <p>
                         <a href="https://www.instagram.com/instantaclasse/" target="_blank">
                             <img
                                 src="../assets/images/insta.png"
                                 alt="insta" class="rounded"
                                 width="93px" height="28">
                         </a>
-                    </p>
+                    </p> -->
                 </span>
                 <div class="container  align-items-center mt-md-2 h-100">
                     <div class="row justify-content-around align-items-center h-100">

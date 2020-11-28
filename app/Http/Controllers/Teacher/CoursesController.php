@@ -158,6 +158,7 @@ class CoursesController extends Controller
         $course->sharable = $request["sharable"];
 //      $course->published = $request["published"];
         $course->allow_share_records = $request["allow_share_records"];
+        $course->is_free = $request["is_free"];
 
         if ($request->hasFile('image')) {
             $file = $request['image'];

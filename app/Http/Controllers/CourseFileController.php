@@ -81,9 +81,24 @@ class CourseFileController extends Controller
         $id = $request->user()->id;
         $s = DB::select("select * from course_files where  id in (select id from courses where user_id = $id)");
         $sections = CourseFile::where("startDate", ">", Carbon::now())
-//            ->where("course.user_id", $request->user()->id)
+            ->whereHas('course', function ($query) use ($id) {
+                $query->where('id', $id);
+            })
             ->orderBy('startDate', 'ASC')->get();
-        return response()->json($s);
+        return response()->json($sections);
+    }
+
+    public function teacherNextSection(Request $request)
+    {
+        $id = $request->user()->id;
+        $s = DB::select("select * from course_files where  id in (select id from courses where user_id = $id)");
+        $sections = CourseFile::where("startDate", ">", Carbon::now())
+            ->whereHas('course', function ($query) use ($id) {
+                $query->where('user_id', $id);
+            })
+            ->has('enrollments', '>=', 1)
+            ->orderBy('startDate', 'ASC')->get();
+        return response()->json($sections);
     }
 
     /**

@@ -50,6 +50,7 @@ const actions = {
         commit('setLoading', true);
         const response = await axios.get(`/courses/${slug}`,);
         commit('setCourse', response.data);
+        console.log('response.data')
         console.log(response.data)
 
         const me = JSON.parse(localStorage.getItem('user')) || null;
@@ -213,10 +214,17 @@ const actions = {
                 })
         })
     },
+    async getTeacherNextSections({commit}) {
+        commit('setLoading', true);
+        const response = await axios.get(`/teacher-next-section`,);
+        commit('setUpcoming', response.data);
+        console.log(response.data)
+        commit('setLoading', false);
+    },
 };
 const mutations = {
     setCourses: (state, courses) => (state.courses = courses),
-    setCourse: (state, course) => (state.course = course),
+    //setCourse: (state, course) => (state.course = course),
     setDemands: (state, payload) => (state.demands = payload),
     setCategoryCourses: (state, payload) => (state.categCourses = payload),
     setStatistics: (state, payload) => (state.statistics = payload),
@@ -224,6 +232,17 @@ const mutations = {
     setUpcoming: (state, payload) => (state.upComing = payload),
     setLoading: (state, val) => (state.loading = val),
     setEnrolled: (state, val) => (state.enrolled = val),
+    /**
+     * Method to fill course from the payload
+     *
+     * @param  {object} state
+     *   : the state property the current Vuex Object.
+     *
+     * @return {void}
+     */
+    setCourse(state, payload) {
+        state.course = payload;
+    },
 };
 
 

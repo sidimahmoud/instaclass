@@ -25,10 +25,7 @@
                             <div class="font-weight-bolder">
                                 <h3>{{course.course.user.first_name}} {{course.course.user.last_name}}</h3>
                                 <div>
-                                    {{course.course.user.city}}, {{course.course.user.country}}
-                                </div>
-                                <div>
-                                    {{course.course.user.languages}}
+                                    {{course.course.user.about}}
                                 </div>
                             </div>
                         </div>
@@ -60,7 +57,7 @@
                         <div>{{$t('course.sessions')}}: {{course.course.sections.length}}</div>
                         <div>{{$t('course.lang')}} : {{course.course.language}}</div>
                         <div>{{$t('course.price')}}: <span v-if="course.course.price===0">Free</span> <span
-                            v-if="course.course.price!=0">{{currencyToSymbol(course.course.currency)}}{{course.course.price}}</span></div>
+                            v-if="course.course.price!=0">{{course.course.price}}$</span></div>
                     </div>
                 </div>
 
@@ -83,7 +80,7 @@
                         </div>
                         <div :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '', 'col-md-3']">
                             <router-link
-                                :to="{ name: 'BuyOneSection', params: {id: course.course.id, slug: section.id,name: section.title, price: course.course.price}}"
+                                :to="{ path:`/checkout/${course.course.id}`, query: {s: section.id,}}"
                                 tag="a" class="btn btn-primary my-3" v-if="!enrolled">
                                 {{$t('course.enrollInSession')}}
                             </router-link>
@@ -119,10 +116,11 @@
             },
             courseRate(){
                 let sum = 0;
-                 this.course.ratings.map(rating=>{
+                this.course.ratings.map(rating=>{
                     sum += rating.rate
                 })
-                return parseInt(sum/this.course.ratings.length, 10)
+                //return parseInt(sum/this.course.ratings.length, 10)
+                return 0;
             },
             isEmpty(v) {
                 return isEmpty(v);

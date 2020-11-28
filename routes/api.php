@@ -54,6 +54,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::resource('/course', 'Teacher\CoursesController');
         Route::post('/course/sections', 'CourseFileController@store');
         Route::get('/upcoming-section', 'CourseFileController@upcomingSection');
+        Route::get('/teacher-next-section', 'CourseFileController@teacherNextSection');
         //Live courses
         Route::post('/create-room/{myRoom}/{user}/{recorded}', 'LiveCoursesController@createRoom');
         Route::post('/endroom/{myRoom}', 'LiveCoursesController@closeRoom');

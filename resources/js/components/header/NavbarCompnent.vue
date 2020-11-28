@@ -2,6 +2,7 @@
     <div class="px-5">
         <nav class="navbar navbar-expand-lg navbar-light bg-light py-0 fixed-top">
             <div class="container rounded-bottom">
+                <!-- <div class="annonce"></div><br/> -->
                 <a href="/" class="navbar-brand">
                     <img src="../../assets/logo.png" alt="" width="60px">
                 </a>
@@ -245,6 +246,22 @@
 
     .nav-link {
         padding: 20px;
+    }
+
+    .annonce {
+        width: 100%;
+        height: 70px;
+        background-image: url('../../assets/images/banniere.jpg');
+        border-radius: 0 0 0 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        @media only screen and (max-width: 600px) {
+            border-radius: 0;
+        }
+    }
+
+    .menu-marign {
+        margin-top: 70px;
     }
 
 </style>

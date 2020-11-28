@@ -17,9 +17,14 @@ class Course extends Model
         'user_id',
         'sub_category_id',
         'name',
-        'language'
+        'language',
+        'is_free'
     ];
 
+    protected $casts = [
+        'is_free' => 'boolean',
+    ];
+    
     public function user()
     {
         return $this->belongsTo(User::class);

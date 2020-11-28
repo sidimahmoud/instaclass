@@ -133,7 +133,7 @@
                         <div class="tab-pane fade show active" id="courses">
                             <div class="grid">
                                 <div v-if="isEmpty(userEnrollments)">
-                                    {{$t('course.empty_course')}}
+                                    {{$t('courses.empty_course')}}
                                 </div>
                                 <div class="item-product" v-for="e in userEnrollments" v-bind:key="e.id" v-else>
                                     <div class="product-grid__img-wrapper">

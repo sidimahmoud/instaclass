@@ -101,7 +101,7 @@
                         <div class="row">
                             <div class="col-md-6 w-md-50 mx-auto" v-if="upComingSections.length > 0">
                                 <h4 class="text-center my-2 text-white text-uppercase">
-                                    Your course will start in
+                                    {{$t('profile.timer_course_start')}}
                                 </h4>
                                 <div>
                                     <Count-down
@@ -153,7 +153,7 @@
                                 {{$t('manage_course')}}
                             </div>
                             <div class="card-body">
-                                <ul class="list-unstyled">
+                                <ul class="list-unstyled" v-if="!isEmpty(userCourses)">
                                     <li
                                         class="media bg-white p-2 mt-4"
                                         v-for="course in userCourses"
@@ -198,6 +198,7 @@
                                         </div>
                                     </li>
                                 </ul>
+                                <p v-else>{{$t('countDown.empty_course')}}</p>
                             </div>
                         </div>
                         <!-- <p
@@ -381,7 +382,7 @@
                 "fetchUserCourses",
                 "fetchTeacherDetails",
                 "fetchTeacherPayments",
-                "getUpcomingSections",
+                "getTeacherNextSections",
             ]),
 
             logout() {
@@ -465,7 +466,7 @@
         mounted() {
             this.fetchUserCourses();
             this.fetchTeacherDetails();
-            this.getUpcomingSections();
+            this.getTeacherNextSections();
         },
     };
 </script>
@@ -543,7 +544,7 @@
 
     .card-header {
         background: #fff;
-        font-size: 40px;
+        font-size: 20px;
         border-radius: 20px !important;
 
         .btn {

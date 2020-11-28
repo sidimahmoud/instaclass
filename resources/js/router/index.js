@@ -207,7 +207,8 @@ const routes = [
         meta: {
             requiresAuth: true,
             title: 'Checkout'
-        }
+        },
+        props: true 
     },
     {
         path: '/checkout/:id/:slug',

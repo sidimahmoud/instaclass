@@ -63,7 +63,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    <label for="about">{{$t('profile.about')}}</label>
+                                    <label for="about">{{$t('profile.about')}} <small style="color:red">{{$t('profile.about_help')}}</small></label>
                                     <textarea name="" id="about" class="form-control" v-model="userProfile.about"></textarea>
                                 </div>
                             </div>

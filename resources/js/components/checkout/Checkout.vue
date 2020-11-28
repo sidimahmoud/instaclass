@@ -23,28 +23,28 @@
                     <pulse-loader :loading="pageLoader" class="text-center"></pulse-loader>
                     <!--Card content-->
                     <div class="my-3">
-                        <div>
-                            <h4>{{$t('selected_session')}}</h4>
-                            <el-select v-model="selected" placeholder="Select" multiple @change="changedSelection">
-                                <el-option
-                                    v-for="e in course.sections"
-                                    :key="e.id"
-                                    :label="e.title"
-                                    :value="e.id">{{e.title}}
-                                </el-option>
-                            </el-select>
-                        </div><br/><br/>
                         <div class="text-center" v-if="course_price===0">
-                            <h3>{{$t('course.course_free')}}</h3>
-                            <h5>{{$t('course.no_payment')}}</h5>
+                            <h3><strong>{{$t('course.course_free')}}</strong> <small>{{$t('course.no_payment')}}</small></h3>
+                            <!-- <p>{{$t('course.no_payment')}}</p> -->
                             <button class="btn btn-primary" @click="enrollForFree">{{$t('complete_purchase')}}</button>
                         </div>
                         <div v-else>
+                            <div v-if="!isEmpty(course.course.sections)">
+                                <h4>{{$t('selected_session')}}</h4>
+                                <el-select v-model="selected" placeholder="Select" multiple @change="changedSelection" style="width:100%">
+                                    <el-option
+                                        v-for="e in course.course.sections"
+                                        :key="e.id"
+                                        :label="e.title"
+                                        :value="e.id">{{e.title}}
+                                    </el-option>
+                                </el-select>
+                            </div><br/><br/>
                             <h4 class="card-info-text">{{$t('card_information')}}</h4>
                             <stripe-elements
                                 ref="elementsRef"
                                 :pk="publishableKey"
-                                :amount="totalCourse"
+                                :amount="allPrice"
                                 locale="en"
                                 @token="tokenCreated"
                                 @loading="loading = $event"
@@ -65,7 +65,7 @@
 
                 <!-- Heading -->
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Course Details</span>
+                    <span class="text-muted">{{$t('course.course_details')}}</span>
                 </h4>
 
                 <!-- Cart -->
@@ -74,7 +74,7 @@
                         <div>
                             <h6 class="my-0">
                                 <span class="font-weight-bold">
-                                    {{$t('course.price')}}
+                                    {{$t('course.price')}} * {{sections_count}}
                                 </span>
                             </h6>
                         </div>
@@ -84,7 +84,7 @@
                         <div>
                             <h6 class="my-0">
                                 <span class="font-weight-bold">
-                                    3eme section gratuit 
+                                    {{$t('course.section_three_free')}}
                                 </span>
                             </h6>
                         </div>
@@ -118,6 +118,8 @@
 <script>
     import {StripeElements} from 'vue-stripe-checkout';
     import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+    import {isEmpty} from "../../helpers/common";
+    import { mapGetters } from 'vuex';
 
     export default {
         name: "Checkout",
@@ -127,11 +129,6 @@
         },
         data() {
             return {
-                /* course_id: this.$route.query.id,
-                course_file_id: this.$route.query.id,
-                course_name: this.$route.query.name,
-                course_price: this.$route.query.price,
-                sections_count: this.$route.query.sections_count, */
                 course_price: 0,
                 sections_count: '',
                 paymentMethod: 'card',
@@ -145,29 +142,31 @@
                 ],
                 successUrl: 'your-success-url',
                 cancelUrl: 'your-cancel-url',
-                course: {},
+                //course: {},
                 selected: [],
                 pageLoader: false,
             }
         },
+        props: ['section'],
         /*
         |--------------------------------------------------------------------------
         | component > computed
         |--------------------------------------------------------------------------
         */
         computed: {
+            ...mapGetters(["course"]),
             totalCourse(){
                 if(this.sections_count >= 3){
-                    return (Number(this.course_price) * Number(this.sections_count))  - Number(this.course_price);
+                    return parseFloat((Number(this.course_price) * Number(this.sections_count))  - Number(this.course_price)).toFixed(2);
                 }else{
-                    return Number(this.course_price) * Number(this.sections_count);
+                    return parseFloat(Number(this.course_price) * Number(this.sections_count)).toFixed(2);
                 }
             },
             gst() {
-                return Number(this.totalCourse) * 9.75 /100;
+                return parseFloat(Number(this.totalCourse) * 9.75 /100).toFixed(2);
             },
             tvq() {
-                return Number(this.totalCourse) * 5 /100;
+                return parseFloat(Number(this.totalCourse) * 5 /100).toFixed(2);
             },
             allPrice() {
                 return Number(this.totalCourse) + Number(this.tvq) + Number(this.gst);
@@ -179,8 +178,8 @@
                 this.pageLoader = true
                 let payload = {
                     paymentMethod: this.paymentMethod,
-                    course_id: this.course.id,
-                    course_name: "Course N°" + this.course.course_id,
+                    course_id: this.course.course.id,
+                    course_name: "Course N°" + this.course.course.course_id,
                     course_price: this.allPrice,
                     token: token.id,
                     sections: this.selected
@@ -190,7 +189,7 @@
                         this.pageLoader = false
                         this.$swal.fire({
                             title: '',
-                            text: _this.$t('thnk_txt'),//"Thank you for your purchase, Happy learning",
+                            text: _this.$t('thnk_txt'),
                             icon: 'success',
                             showCancelButton: false,
                             confirmButtonColor: '#3085d6',
@@ -210,8 +209,8 @@
                 this.pageLoader = true
                 let payload = {
                     paymentMethod: this.paymentMethod,
-                    course_id: this.course.id,
-                    course_name: "Course N°" + this.course.course_id,
+                    course_id: this.course.course.id,
+                    course_name: "Course N°" + this.course.course.course_id,
                     course_price: this.course_price,
                     sections: this.selected
                 };
@@ -235,28 +234,42 @@
             },
             fetchCourseFiles() {
                 const _this = this;
+                
                 this.$store.dispatch('getCourse',this.$route.params.slug)
                     .then((r) => {
-                        _this.course = r
                         _this.initData()
                     })
                     .catch(err => console.log(err))
             },
             changedSelection(event){
-                console.log(event);
+                this.sections_count = event.length
+                this.selected = []
+                _.each(event, (v) => {
+                    this.selected.push(v);
+                });
+                //this.selected.push(event);
             },
             initData(){
-                this.sections_count = this.course.sections.length
-                this.course_price = this.course.price
-
-                _.each(this.course.sections, (v) => {
-                    this.selected.push(v.id);
-                });
                 
+                if(isEmpty(this.$route.query.s)) {
+                    this.sections_count = this.course.course.sections.length
+                    this.course_price = this.course.course.price
+
+                    _.each(this.course.course.sections, (v) => {
+                        this.selected.push(v.id);
+                    });
+                }else {
+                    this.sections_count = 1
+                    this.course_price = this.course.course.price
+                    this.selected.push(this.$route.query.s);
+                }
             },
             customLabel (option) {
                 return `${option.title}`
-            }
+            },
+            isEmpty(v) {
+                return isEmpty(v);
+            },
         },
         mounted() {
             this.fetchCourseFiles();

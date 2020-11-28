@@ -122,7 +122,12 @@
         "enroll_to_all": "S'inscrire à tout les séances",
         "enroll_to_course": "S'inscrire à ce cours",
         "course_free": "Ce cours est gratuit",
-        "no_payment": "Aucun paiement requis"
+        "no_payment": "Aucun paiement requis",
+        "save_course": "Enregistrer le cours",
+        "edit_course": "Modifier le cours",
+        "select_cat": "Choisir une catégorie",
+        "course_details": "Détails du cours",
+        "section_three_free": "3eme section gratuit"
     },
     "courseDetails": {
         "hero": "COURS DISPONIBLES",
@@ -158,7 +163,11 @@
         "durationHelp": "Nous suggérons 1h par séance",
         "publish": "Publier",
         "prev": "Précédent",
-        "next": "Suivant"
+        "next": "Suivant",
+        "is_free": "Cours gratuit",
+        "teaching_note": "Les séances d'enseignements débutent Lundi le 4 janvier 2021.",
+        "thank_msg": "Votre cours a été publié avec succès",
+        "update_msg": "Votre cours a été mis à jour avec succès"
     },
     "auth": {
         "signIn": "Connexion",
@@ -214,7 +223,7 @@
     "profile": {
         "go_live": "Go to live",
         "no_video_yet": "Un lien vers le cours sera disponible 15 minutes avant le début du cours",
-        "addImg": "Ajouter votre profile ou une image",
+        "addImg": "Ajouter votre photo ou une image",
         "phone": "Telephone (Optionnel)",
         "mail": "Email (Sera utilisé pour communiquer avec vous)",
         "languages": "langues parlées",
@@ -242,10 +251,14 @@
         "irreversible": "Vous ne pourrez pas revenir en arrière!",
         "confirm": "Oui, Supprimer",
         "cancel": "No, Annuler",
-        "deleted": "Votre cours a été supprimé."
+        "deleted": "Votre cours a été supprimé.",
+        "timer_course_start": "VOTRE COURS COMMENCERA DANS",
+        "about_help": "sera publié sous vos cours",
+        "empty_ratings": "Vos évaluations apparaitront ici."
     },
     "countDown": {
-        "enabled": "Le compteur sera active lorsque vous avez un cours à venir",
+        "enabled": "Minuterie activée lorsque des étudiants sont inscrits à votre cours",
+        "empty_course": "Vos cours crées apparaîtront ici.",
         "beReady": "Soyez prêts",
         "enrollments": "Inscriptions",
         "noRatings": "Pas encore d'evaluations",
@@ -273,7 +286,7 @@
     "card_information": "Informations de la carte bancaire",
     "checkout": "Check-out",
     "thnk_txt": "Merci pour votre achat, bon apprentissage",
-    "no_payment": "Pas de paiement",
+    "no_payment": "pas de paiement",
     "speciment": "Spécimen de chèque",
     "teacher_course": "Nom de l'enseignant",
     "manage_course": "Gérer mes cours",
@@ -282,7 +295,19 @@
         "2": "Nous avons envoyé un courriel contenant un lien de confirmation dans votre adresse e-mail. Afin de terminer le processus d'inscription, veuillez cliquer sur le lien de confirmation. Si vous ne recevez pas d'e-mail de confirmation, veuillez vérifier votre dossier spam(les indésirables). Veuillez également vérifier que vous avez saisi une adresse e-mail valide dans le formulaire d'inscription.",
         "3": "Si vous avez besoin d'assistance, veuillez  compléter le formulaire sous "
     },
-    "please_add_speciment": "Veuillez ajouter votre spécimen de chèque ici.",
+    "please_add_speciment": "Veuillez ajouter votre spécimen de chèque ici pour votre paiement",
     "view_spec": "Visualiser le spécimen de chèque attaché",
-    "no_recipt": "Aucun reçu disponible pour l’instant"
+    "no_recipt": "Aucun reçu disponible pour l’instant",
+    "title_name": "Titre",
+    "avai": "Disponibilités",
+    "video": "Vidéo",
+    "hour": "Heure",
+    "wait_msg": "Veuillez patienter...",
+    "session": "Séance",
+    "sessions": "Séances",
+    "new_course": "Nouveau cours",
+    "payment" :{
+        "note": "Note: Chaque paiement est effectué 1 semaine après l'enseignement d'une session.",
+        "void_recived": "Merci! Nous avons reçu votre spécimen de chèque. Vous pouvez le changer à tout moment."
+    }
 }

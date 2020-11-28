@@ -16,11 +16,12 @@
         </section>
         <div class="payment-page">
             <div class="mt-4">
+                <h6 style="color:red">{{$t('payment.note')}}</h6>
                 <h4>{{$t('please_add_speciment')}}:</h4> <input type="file" @change="previewImage" accept="image/*" >
-                <a class="navbar-brand text-primary font-weight-bolder" :href="loggedInUser.speciment" target="_blank"><i class="fa fa-eye"></i>{{ $t('view_spec') }}</a>
+                <a :href="loggedInUser.speciment" target="_blank"><i class="fa fa-eye"></i>{{$t('view_spec')}}</a>
             </div>
-            <h1 class="mt-4">{{$t('countDown.my_recits')}}</h1>
-            <div class="mt-4" v-if="allTeacherPayments.length===0" style="color:red">
+            <h4 class="mt-4">{{$t('countDown.my_recits')}}</h4>
+            <div class="mt-4" v-if="allTeacherPayments.length===0">
                 {{$t('no_recipt')}}
             </div>
             <table class="table" v-else>
@@ -81,6 +82,7 @@
         methods: {
             ...mapActions(["fetchTeacherPayments"]),
             handelAdd () {
+                const _this = this
                 this.picture=null;
                 const storageRef=firebase.storage().ref(`teachers/${this.imageData.name}`).put(this.imageData);
                 storageRef.on(`state_changed`,snapshot=>{
@@ -91,20 +93,21 @@
                             this.form.speciment = url;
                             this.$store.dispatch('addSpeciment', this.form)
                             .then( (result) => {
-                                this.$swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'Your work has been saved',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
-                                window.location.reload()
+                                _this.$swal.fire(
+                                    'Ok!',
+                                    this.$t('payment.void_recived'),
+                                    'success'
+                                )
+                                setTimeout(() => {
+                                    window.location.reload()
+                                },1000)
+                                
                             })
                             .catch(function (error) {
-                                this.$swal.fire({
+                                _this.$swal.fire({
                                     position: 'top-end',
                                     icon: 'error',
-                                    title: 'Something get wrong',
+                                    title: `${error} Something get wrong`,
                                     showConfirmButton: false,
                                     timer: 1500
                                 })
@@ -144,7 +147,7 @@
 .hero {
     /*background-image: url('../../assets/images/demand/online.jpg');*/
     background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
-    height: 50vh;
+    height: 70vh;
     background-size: cover;
     border-bottom: 15px solid #3081FB;
     color: white;

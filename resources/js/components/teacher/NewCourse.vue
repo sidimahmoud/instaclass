@@ -14,7 +14,7 @@
                                 <option v-for="c in allCategories" :key="c.id" :value="c.id" :selected="c.id===1">
                                     {{(lang==="en")? c.name_en:c.name_fr}}
                                 </option>
-                                <option value="0">{{$t('newCourse.createCateg')}}</option>
+                                <!-- <option value="0">{{$t('newCourse.createCateg')}}</option> -->
                             </select>
 
                         </div>
@@ -28,8 +28,8 @@
                                 <option v-for="c in subCategories" :key="c.id" :value="c.id">
                                     {{(lang==="en")? c.name_en:c.name_fr}}
                                 </option>
-                                <option class="border-top border-primary" value="0">{{$t('newCourse.createSub')}}
-                                </option>
+                                <!-- <option class="border-top border-primary" value="0">{{$t('newCourse.createSub')}}
+                                </option> -->
                             </select>
                         </div>
                     </div>
@@ -58,10 +58,17 @@
                             <div class="col-md-3">
                                 <label for="price">{{$t('newCourse.price')}}</label>
                                 <input type="text" class="form-control" id="price" aria-describedby="priceHelp"
-                                       placeholder="Price" v-model="course.price" required>
+                                       placeholder="Price" v-model="course.price" required :disabled="course.is_free">
                                 <small id="priceHelp" class="form-text text-muted">
                                 </small>
 
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group text-center">
+                                    <br/>
+                                    <label>{{$t('newCourse.is_free')}}</label>
+                                    <input type="checkbox" v-model="course.is_free">
+                                </div>
                             </div>
                             <div class="col-md-3">
                                 <label for="price">{{$t('newCourse.currency')}}</label>
@@ -96,8 +103,10 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="persons">{{$t('newCourse.students')}}</label>
-                            <input type="number" min="1" max="50" class="form-control" id="persons"
-                                   placeholder="authorized students" v-model="course.authorized_students" required>
+                            <el-input-number placeholder="authorized students" v-model="course.authorized_students" controls-position="right" :min="1" :max="50" style="width:100%">
+                            </el-input-number>
+                            <!-- <input type="number" min="1" max="50" class="form-control" id="persons"
+                                   placeholder="authorized students" v-model="course.authorized_students" required> -->
                         </div>
                     </div>
                     <!--partage-->
@@ -114,7 +123,7 @@
                         <div class="form-group">
                             <br>
                             <label>{{$t('newCourse.recordings')}}</label>
-                            <input type="checkbox" v-model="course.allow_share_records">
+                            <input type="checkbox" v-model="course.allow_share_records" disabled>
                         </div>
                     </div>
 
@@ -174,8 +183,10 @@
                                 <el-date-picker
                                     v-model="sections[index].stratDate"
                                     type="datetime"
-                                    placeholder="Select date and time">
+                                    placeholder="Select date and time"
+                                    :picker-options="datePickerOptions1">
                                 </el-date-picker>
+                                <small>{{$t('newCourse.teaching_note')}}</small>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -224,7 +235,7 @@
                         <div class="text-center text-white" v-if="savingCourse">
                                         <span class="spinner-border spinner-border-sm" role="status"
                                               aria-hidden="true"/>
-                            Please wait...
+                            {{$t('wait_msg')}}
                         </div>
                     </button>
                 </div>
@@ -362,6 +373,7 @@
                     name: '',
                     image: '',
                     short_description: '',
+                    is_free: false
                     // description: '',
                     // duration: '',
                     // status: '',
@@ -390,6 +402,11 @@
                     nom: '',
                 },
                 savingCourse: false,
+                datePickerOptions1: {
+                    disabledDate (date) {
+                        return date < new Date('2021-1-4');
+                    }
+                },
             }
         },
         methods: {
@@ -442,6 +459,9 @@
                 this.$store.dispatch('fetchSubCategories', id)
             },
             saveCourse() {
+                console.log('this.course.is_free')
+                console.log(this.course)
+                console.log(this.course.is_free ? '1' : '0')
                 this.savingCourse = true;
                 const formData = new FormData();
                 const imagefile = document.querySelector('#thumbnail');
@@ -455,6 +475,7 @@
                 formData.append("name", this.course.name);
                 formData.append("short_description", this.course.short_description);
                 formData.append("allow_share_records", this.course.allow_share_records);
+                formData.append("is_free", this.course.is_free ? '1' : '0');
                 //this.sections.map(item=>)
 
                 formData.append("sections", JSON.stringify(this.sections));
@@ -466,12 +487,23 @@
                 }).then(res => {
                     // console.log(res);
                     this.savingCourse = false;
-                    this.$alert('Your course was published successfully', 'New Course', 'success').then(
+                   /*  this.$alert('', 'New Course', 'success').then(
                         () => this.$router.push({name: 'Courses'})
-                    )
+                    ) */
+                    this.$swal.fire({
+                        title: '',
+                        text: this.$t('newCourse.thank_msg'),
+                        icon: 'success',
+                        showCancelButton: false,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'ok'
+                    }).then((result) => {
+                        this.$router.push({name: 'Courses'})
+                    })
 
                 })
-                    .catch(err => console.log(err.response));
+                .catch(err => console.log(err));
             }
             ,
 

@@ -121,7 +121,12 @@
         "enroll_to_all": "Enroll to all sessions",
         "enroll_to_course": "Enroll for this course",
         "course_free": "This course is free",
-        "no_payment": "No payment required"
+        "no_payment": "no payment required",
+        "save_course": "Save course",
+        "edit_course": "Edit Course",
+        "select_cat": "Select category",
+        "course_details": "Course Details",
+        "section_three_free": "3rd section free"
     },
     "courseDetails": {
         "hero": "AVAILABLE COURSES",
@@ -157,7 +162,11 @@
         "durationHelp": "We suggest 1h per session",
         "publish": "Publish Course",
         "prev": "Previous step",
-        "next": "Next step"
+        "next": "Next step",
+        "is_free": "Free course",
+        "teaching_note": "Teaching sessions start on Monday January 4, 2021.",
+        "thank_msg": "Your course was published successfully",
+        "update_msg": "Your course was updated successfully"
     },
     "auth": {
         "signIn": "Sign in",
@@ -213,7 +222,7 @@
     "profile": {
         "go_live": "Go to live",
         "no_video_yet": "A link to the course will be available 15 minutes before the begenning of the course.",
-        "addImg": "Add your profile or an image",
+        "addImg": "Add your picture or an image",
         "phone": "Phone (optional)",
         "mail": "Email (will be used to communicate with you)",
         "languages": "Spoken languages",
@@ -241,10 +250,14 @@
         "irreversible": "You won't be able to revert this!",
         "confirm": "Yes, delete it!",
         "cancel": "No, cancel",
-        "deleted": "Your course has been deleted."
+        "deleted": "Your course has been deleted.",
+        "timer_course_start": "Your course will start in",
+        "about_help": "will be published under your courses",
+        "empty_ratings": "Your ratings will appears here."
     },
     "countDown": {
-        "enabled": "Timer enabled when you have an upcoming course",
+        "enabled": "Timer enabled when you have students enrolled to your course",
+        "empty_course": "Your created courses will appear here.",
         "beReady": "Be ready",
         "live_courses": "My Live course",
         "recordings": "My Recordings",
@@ -273,13 +286,25 @@
     "no_payment": "No payment",
     "speciment": "Speciment",
     "teacher_course": "Name of the teacher",
-    "manage_course": "Gerer mes cours",
+    "manage_course": "Manage my courses",
     "verify": {
         "1": "Confirm your email address",
         "2": "We have sent an email with a confirmation link to your email address. In order to complete the sign-up process, please click the confirmation link. If you do not receive a confirmation email, please check your spam folder. Also, please verify that you entered a valid email address in our sign-up form.",
         "3": "If you need assistance, please "
     },
-    "please_add_speciment": "Please add your void here.",
+    "please_add_speciment": "Please add your void here for your payment",
     "view_spec": "View the attached void",
-    "no_recipt": "No receipts yet"
+    "no_recipt": "No receipts yet",
+    "title_name": "Title",
+    "avai": "Availabilities",
+    "video": "Video",
+    "hour": "Hour",
+    "wait_msg": "Please wait...",
+    "session": "Session",
+    "sessions": "Sessions",
+    "new_course": "New Course",
+    "payment" :{
+        "note": "Note: Each payment is made 1 week after the teaching of a session.",
+        "void_recived": "Thank you! We received your void. You can change it anytime."
+    }
 }

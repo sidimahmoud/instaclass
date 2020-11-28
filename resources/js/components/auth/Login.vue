@@ -143,9 +143,13 @@
                 let password = this.password;
                 this.$store.dispatch('login', {email, password})
                     .then(res => {
-                        if (this.$route.query.redirect) this.$router.push(this.$route.query.redirect)
-                            return
+                        console.log(this.$route.query.redirect);
+                        if (this.$route.query.redirect) {
+                            let r = this.$router.resolve({path: this.$route.query.redirect});
+                            window.location.assign(r.href)
+                        }
                         if (res.data.user.roles[0].name === "student") {
+                            console.log('student profile no redirect')
                             let r = this.$router.resolve({name: 'StudentProfile'});
                             window.location.assign(r.href)
                         } else {
@@ -163,8 +167,8 @@
                 this.$store.dispatch('socialStudentAuth', provider)
                     .then((res) => {
                         if (res.data.url) {
-                            console.log(res.data.url);
-                            window.location.href = res.data.url
+                            let r = this.$router.resolve({name: 'StudentProfile'});
+                            window.location.assign(r.href)
                         }
                     })
                     .catch(err => console.log(err))

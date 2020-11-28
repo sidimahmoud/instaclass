@@ -90,13 +90,22 @@ const actions = {
                 .then(resp => {
                     console.log(resp);
                     commit('setLoading', false);
+                    const temps = JSON.parse(localStorage.getItem('user'));
+                    const user = {
+                        'u': temps.u,
+                        't': temps.t,
+                        'first_name': temps.first_name,
+                        'speciment': payload.speciment
+                    };
+
+                    localStorage.setItem('user', JSON.stringify(user));
                     resolve(resp)
                 })
                 .catch(err => {
                     reject(err)
                 })
         })
-    },
+    }
 };
 
 const mutations = {
