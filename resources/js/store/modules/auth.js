@@ -47,7 +47,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             axios.get(`/authorize/${provider}`, { params: { type: 'teacher' } })
                 .then(resp => {
-                    await resolve(resp)
+                    resolve(resp)
                 })
                 .catch(err => {
                     commit('auth_error');
@@ -60,7 +60,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             axios.get(`/authorize/${provider}`, { params: { type: 'teacher' } })
                 .then(resp => {
-                    await resolve(resp)
+                    resolve(resp)
                 })
                 .catch(err => {
                     commit('auth_error');
