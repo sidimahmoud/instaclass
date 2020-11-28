@@ -133,7 +133,7 @@ class AuthController extends Controller
                 $user = $this->createUser($provider_user);
                 info('created user');
             }
-            info('user', $user);
+            info('user', [$user]);
             // Add provider social account for user
             if(!empty($user) && !is_null($user)){
                 $this->createSocialAccount($provider, $provider_user, $user);
