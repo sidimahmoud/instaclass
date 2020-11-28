@@ -116,6 +116,7 @@
                     last_name: this.last_name,
                     email: this.email,
                     password: this.password1,
+                    type: "teacher"
                 })
                     .then(res => {
                         console.log(res)
