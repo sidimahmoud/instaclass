@@ -135,16 +135,19 @@ class AuthController extends Controller
             }
             info('user', [$user]);
             // Add provider social account for user
-            if(!empty($user) && !is_null($user)){
-                $this->createSocialAccount($provider, $provider_user, $user);
+            $found = User::where('id', $user->id)->with('roles')->first();
+            if(!empty($found) && !is_null($found)){
+                $this->createSocialAccount($provider, $provider_user, $found);
             }
+            
+            $token = $found->createToken('login token')->plainTextToken;
+            return response()->json(['user' => $found, 'token' => $token], 200);
         } // If there is a social account get it's user
         else {
             $user = User::with('roles')->findOrfail($social_account->user->id);
+            $token = $user->createToken('login token')->plainTextToken;
+            return response()->json(['user' => $user, 'token' => $token], 200);
         }
-
-        $token = $user->createToken('login token')->plainTextToken;
-        return response()->json(['user' => $user, 'token' => $token], 200);
     }
 
     /**
@@ -186,7 +189,7 @@ class AuthController extends Controller
         info('role', [$studentR]);
         $user->roles()->attach($studentR);
         //delete session type
-        return $user::with('roles');
+        return $user;
     }
 
     /**
