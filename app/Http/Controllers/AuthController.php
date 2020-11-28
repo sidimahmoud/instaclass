@@ -132,7 +132,9 @@ class AuthController extends Controller
                 $user = $this->createUser($provider_user);
             }
             // Add provider social account for user
-            $this->createSocialAccount($provider, $provider_user, $user);
+            if(!empty($user) && !is_null($user)){
+                $this->createSocialAccount($provider, $provider_user, $user);
+            }
         } // If there is a social account get it's user
         else {
             $user = User::with('roles')->findOrfail($social_account->user->id);
