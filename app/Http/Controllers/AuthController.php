@@ -129,8 +129,11 @@ class AuthController extends Controller
 
             // If no user exists with provider user email, create new user
             if (!$user) {
+                info('created user');
                 $user = $this->createUser($provider_user);
+                info('created user');
             }
+            info('user', $user);
             // Add provider social account for user
             if(!empty($user) && !is_null($user)){
                 $this->createSocialAccount($provider, $provider_user, $user);
@@ -183,7 +186,7 @@ class AuthController extends Controller
         info('role', [$studentR]);
         $user->roles()->attach($studentR);
         //delete session type
-        return $user::with('roles')->get();
+        return $user;
     }
 
     /**
