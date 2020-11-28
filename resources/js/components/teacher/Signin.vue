@@ -124,6 +124,10 @@
                 let password = this.password;
                 this.$store.dispatch('login', {email, password})
                     .then(res => {
+                        if (this.$route.query.redirect) {
+                            let r = this.$router.resolve({path: this.$route.query.redirect});
+                            window.location.assign(r.href)
+                        }
                         if(res.data.user.roles[0].name === "teacher") {
                             let r = this.$router.resolve({name: 'StudentProfile'});
                             window.location.assign(r.href)
@@ -137,8 +141,9 @@
                     .catch(err => {
                         console.log(err.response.data);
                         this.errorMessage = err.response.data.message
+                        /* this.errorMessage = err.response.data.message
                         err.response.data.message === "email unverified" ? this.$router.push({name: 'Email'}) :
-                            this.errorMessage = "Please verify your Email address or password and try again";
+                            this.errorMessage = "Please verify your Email address or password and try again"; */
                     })
             },
             // loginGithub() {
