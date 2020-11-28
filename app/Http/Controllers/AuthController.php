@@ -147,7 +147,7 @@ class AuthController extends Controller
      *
      * @return SocialAccount $social_account
      */
-    private function createSocialAccount($provider, $provider_user, User $user)
+    private function createSocialAccount($provider, $provider_user, $user)
     {
         $social_account = new SocialAccount();
         $social_account->provider = $provider;
