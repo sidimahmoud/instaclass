@@ -148,7 +148,7 @@
                             let r = this.$router.resolve({path: this.$route.query.redirect});
                             window.location.assign(r.href)
                         }
-                        if (res.data.user.roles[0].name === "student") {
+                        if (res.data.user.roles[0].name === "student" || res.data.user.roles[0].name === "teacher") {
                             console.log('student profile no redirect')
                             let r = this.$router.resolve({name: 'StudentProfile'});
                             window.location.assign(r.href)
