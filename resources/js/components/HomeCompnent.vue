@@ -281,7 +281,7 @@
         position: absolute;
         border-radius: 30px;
         @media only screen and (max-width: 600px) {
-            top: 50px;
+            top: 150px;
         }
     }
 

@@ -101,6 +101,7 @@ class AuthController extends Controller
      */
     public function redirectToProvider(Request $request, $provider)
     {
+        info('redirectToProvider');
         Cache::put('social_type', $request['type'], 600);
         $url = Socialite::driver($provider)->stateless()->with(['type' => $request['type']])->redirect()->getTargetUrl();
         return response()->json(['url' => $url]);
@@ -108,6 +109,7 @@ class AuthController extends Controller
 
     public function handleProviderCallback(Request $request, $provider)
     {
+        info('handleProviderCallback');
         // Get providers user data
         // @todo validate provider
         $provider_user = Socialite::driver($provider)->stateless()->user();
@@ -139,11 +141,12 @@ class AuthController extends Controller
             if(!empty($found) && !is_null($found)){
                 $this->createSocialAccount($provider, $provider_user, $found);
             }
-            
+            info('!$social_account');
             $token = $found->createToken('login token')->plainTextToken;
             return response()->json(['user' => $found, 'token' => $token], 200);
         } // If there is a social account get it's user
         else {
+            info('$social_account');
             $user = User::with('roles')->findOrfail($social_account->user->id);
             $token = $user->createToken('login token')->plainTextToken;
             return response()->json(['user' => $user, 'token' => $token], 200);

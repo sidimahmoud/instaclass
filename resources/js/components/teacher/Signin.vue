@@ -142,6 +142,7 @@
             authLogin(provider) {
                 this.$store.dispatch('socialTeacherAuth', provider)
                     .then(res => {
+                        console.log('ok doki');
                         /* if (res.data.url) {
                             let r = this.$router.resolve({name: 'StudentProfile'});
                             window.location.assign(r.href)

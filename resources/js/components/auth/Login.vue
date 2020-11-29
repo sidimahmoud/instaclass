@@ -166,10 +166,10 @@
             authLogin(provider) {
                 this.$store.dispatch('socialStudentAuth', provider)
                     .then((res) => {
-                        /* if (res.data.url) {
+                        if (res.data.url) {
                             let r = this.$router.resolve({name: 'StudentProfile'});
-                            window.location.assign(r.href)
-                        } */
+                            window.location.assign(res.data.url)
+                        }
                     })
                     .catch(err => console.log(err))
             },
