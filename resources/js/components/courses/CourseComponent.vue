@@ -43,12 +43,12 @@
                                     <img src="../../assets/images/fbShare.png" width="70px" alt="">
                                     <!--<img src="../../assets/images/share.png" width="40px" alt="">-->
                                 </a>
-                                <a href="https://www.instagram.com/canada/?hl=en" target="_blank">
+                                <!-- <a href="https://www.instagram.com/canada/?hl=en" target="_blank">
                                     <img
                                         src="../../assets/images/insta.png"
                                         alt="insta" class="rounded"
                                         width="73px" height="28">
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                         <div class="col-md-6 mb-sm-2  order-1 order-md-2 text-right">

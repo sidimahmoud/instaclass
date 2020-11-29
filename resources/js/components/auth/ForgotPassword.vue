@@ -1,7 +1,7 @@
 <template>
     <div class="container pt-5 mt-5">
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="content">
                 <div class="card card-default">
                     <div class="card-header">{{$t('auth.resetPass')}}</div>
                     <div class="card-body">
@@ -60,3 +60,14 @@
         }
     }
 </script>
+<style scoped>
+.content {
+    width: 50%;
+}
+
+@media (max-width: 600px) {
+    .content {
+        width: 90%;
+    }
+}    
+</style>

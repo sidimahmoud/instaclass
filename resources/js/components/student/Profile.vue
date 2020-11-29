@@ -139,6 +139,7 @@
                                     <div class="product-grid__img-wrapper">
                                         <img :src="e.course_file.course.image" alt="Img" class="product-grid__img"/>
                                     </div>
+                                    <span><strong>{{ e.course_file.title }}</strong></span><br/>
                                     <span><strong>{{ e.course_file.course.name }}</strong></span><br/>
                                     <span>{{$t('start_at')}}: <strong class="blue-text">{{e.course_file.startDate.slice(0,10)}} {{e.course_file.startDate.slice(11,16)}}</strong></span><br/>
                                     <span>{{$t('teacher_course')}}:<strong class="blue-text">{{ e.course_file.course.user.first_name }}</strong></span>

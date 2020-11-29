@@ -1,5 +1,110 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+.v-dropdown-menu {
+  width: 100%;
+}
+
+.v-dropdown-menu.custom-style .v-dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.v-dropdown-menu.custom-style .v-dropdown-menu__container {
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+  transform: translateY(-50px);
+}
+
+.v-dropdown-menu.custom-style .v-dropdown-menu__container .v-dropdown-menu__header {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background-color: #eee;
+}
+
+.v-dropdown-menu.custom-style .v-dropdown-menu__container .v-dropdown-menu__body {
+  padding: 10px;
+}
+
+.v-dropdown-menu.custom-style .v-dropdown-menu__container .v-dropdown-menu__body ul {
+  margin: 0;
+  padding: 0;
+}
+
+.v-dropdown-menu.custom-style .v-dropdown-menu__container .v-dropdown-menu__body ul li {
+  list-style: none;
+}
+
+.v-dropdown-menu.custom-style .v-dropdown-menu__container .v-dropdown-menu__body ul li a {
+  display: flex;
+  padding: 1rem;
+  color: #666;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.v-dropdown-menu.custom-style .v-dropdown-menu__container .v-dropdown-menu__body ul li a:hover {
+  background-color: #f2f2f2;
+}
+
+.v-dropdown-menu.custom-style .zoom-enter-active {
+  transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.v-dropdown-menu.custom-style .zoom-enter,
+.v-dropdown-menu.custom-style .zoom-leave-to {
+  transform: translateY(50px) scale(0.5);
+  transform-origin: center top;
+  opacity: 0;
+}
+
+.v-dropdown-menu.custom-style.v-dropdown-menu--mode-hover .zoom-enter,
+.v-dropdown-menu.custom-style.v-dropdown-menu--mode-hover .zoom-leave-to {
+  transition-delay: 0.4s;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Button Default
+|--------------------------------------------------------------------------
+*/
+
+.el-button {
+  border-radius: 5px;
+  min-width: 140px;
+  margin: 5px 2px;
+  vertical-align: middle;
+  font-weight: 600;
+  font-size: 12;
+  box-sizing: border-box;
+  border-width: 2px;
+}
+
+.el-button.el-button--default {
+  background-color: transparent;
+  border-color: #000;
+  color: #000;
+}
+
+.el-button.el-button--default.is-disabled {
+  color: #b4bccc !important;
+  cursor: not-allowed !important;
+  background-image: none !important;
+  background-color: #fff !important;
+  border-color: #e6ebf5 !important;
+}
+
+.el-button.el-button--primary {
+  background-color: #eef1f7;
+  border-color: #eef1f7;
+  color: #fff;
+}
+
+.profile-image {
+  width: 250px;
+  height: 120px;
+}
+
 /*!
  * Bootstrap v4.0.0 (https://getbootstrap.com)
  * Copyright 2011-2018 The Bootstrap Authors

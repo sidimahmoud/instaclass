@@ -18,12 +18,13 @@
                 <div class="course-header mt-3">
                     <div class="row justify-content-around align-items-center pt-2">
                         <div class="col-md-2 text-center">
-                            <img :src="course.course.user.image" width="80px" height="80px" alt="Avatar"
-                                 class="border rounded-circle">
+                            <img :src="course.course.user.image" alt="Avatar"
+                                 class="border profile-image avatar img-circle img-thumbnail">
                         </div>
                         <div class="col-md-4 ">
                             <div class="font-weight-bolder">
                                 <h3>{{course.course.user.first_name}} {{course.course.user.last_name}}</h3>
+                                <h4>{{course.course.user.languages}}</h4>
                                 <div>
                                     {{course.course.user.about}}
                                 </div>

@@ -205,12 +205,16 @@ class UsersController extends Controller
         $user->city = $request["city"];
         $user->email = $request["email"];
 //        $user->password = $request["password"];
-        if ($request->hasFile('image')) {
+        /* if ($request->hasFile('image')) {
             $file = $request['image'];
             $extension = $file->getClientOriginalExtension();
             $file_name = $request['name'] . "-" . time() . "." . $extension;
             $file->move('uploads/profiles/', $file_name);
             $user->image = '/uploads/profiles/' . $file_name;
+        } */
+        if(!empty($request["image"])) {
+            info($request["image"]);
+            $user->image = $request["image"];
         }
         $user->about = $request["about"];
         $user->languages = $request["languages"];

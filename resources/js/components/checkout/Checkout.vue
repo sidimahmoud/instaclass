@@ -31,28 +31,43 @@
                         <div v-else>
                             <div v-if="!isEmpty(course.course.sections)">
                                 <h4>{{$t('selected_session')}}</h4>
-                                <el-select v-model="selected" placeholder="Select" multiple @change="changedSelection" style="width:100%">
+                                <!-- <el-select v-model="selected" placeholder="Select" multiple @change="changedSelection" style="width:100%">
                                     <el-option
                                         v-for="e in course.course.sections"
                                         :key="e.id"
                                         :label="e.title"
                                         :value="e.id">{{e.title}}
                                     </el-option>
-                                </el-select>
+                                </el-select> -->
+                                <dropdown-menu class="custom-style" :overlay="false">
+                                    <el-button slot="trigger" style="width: 47%">{{$t('select_sessions')}} <i class="fa fa-arrow-down"></i></el-button>
+                                    <div slot="header">{{$t('select_sessions')}}</div><br/>
+                                    <ul slot="body">
+                                        <!-- <li v-for="(e ,index) in course.course.sections" :key="e.id"> -->
+                                            <el-checkbox-group 
+                                                v-model="selected">
+                                                <el-checkbox v-for="(e ,index) in course.course.sections" :label="e.id" :value="e.id" :key="index" @change="changedSelection" style="width:100%">Session {{index + 1}}: {{e.title}}</el-checkbox>
+                                            </el-checkbox-group>
+                                            <!-- <el-checkbox v-model="checked[index]" fill="#000000" text-color="#000000" @change="changedSelection">Session {{index}}: {{e.title}}</el-checkbox>
+                                        </li> -->
+                                    </ul>
+                                </dropdown-menu>
                             </div><br/><br/>
-                            <h4 class="card-info-text">{{$t('card_information')}}</h4>
-                            <stripe-elements
-                                ref="elementsRef"
-                                :pk="publishableKey"
-                                :amount="allPrice"
-                                locale="en"
-                                @token="tokenCreated"
-                                @loading="loading = $event"
-                            />
-                            <br/><br/>
-                            <div class="text-center">
-                                <button class="btn btn-primary" @click="checkout">{{$t('complete_purchase')}}</button>
-                            </div>
+                            <template v-if="allPrice != 0">
+                                <h4 class="card-info-text">{{$t('card_information')}}</h4>
+                                <stripe-elements
+                                    ref="elementsRef"
+                                    :pk="publishableKey"
+                                    :amount="allPrice"
+                                    locale="en"
+                                    @token="tokenCreated"
+                                    @loading="loading = $event"
+                                />
+                                <br/><br/>
+                                <div class="text-center">
+                                    <button class="btn btn-primary" @click="checkout">{{$t('complete_purchase')}}</button>
+                                </div>
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -145,6 +160,7 @@
                 //course: {},
                 selected: [],
                 pageLoader: false,
+                checked: []
             }
         },
         props: ['section'],
@@ -242,12 +258,7 @@
                     .catch(err => console.log(err))
             },
             changedSelection(event){
-                this.sections_count = event.length
-                this.selected = []
-                _.each(event, (v) => {
-                    this.selected.push(v);
-                });
-                //this.selected.push(event);
+                this.sections_count = this.selected.length
             },
             initData(){
                 
@@ -256,12 +267,13 @@
                     this.course_price = this.course.course.price
 
                     _.each(this.course.course.sections, (v) => {
-                        this.selected.push(v.id);
+                        this.selected.push(Number(v.id));
                     });
                 }else {
+                    const _this = this
                     this.sections_count = 1
                     this.course_price = this.course.course.price
-                    this.selected.push(this.$route.query.s);
+                    this.selected.push(Number(this.$route.query.s));
                 }
             },
             customLabel (option) {

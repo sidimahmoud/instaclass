@@ -117,4 +117,16 @@
         border-bottom: 15px solid #3081FB;
         color: white;
     }
+
+    @media (max-width: 600px) {
+        .hero {
+            /*background-image: url('../../assets/images/demand/online.jpg');*/
+            background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/Request.jpg') no-repeat center center;
+            height: 60vh;
+            width: 100%;
+            background-size: cover;
+            border-bottom: 15px solid #3081FB;
+            color: white;
+        }
+    }
 </style>

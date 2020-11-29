@@ -39,18 +39,18 @@
                             <!--                            >-->
                             <!--                            </div>-->
                             <div class="col-md-4 text-center">
-                                <img :src="userProfile.image" alt="Avatar">
+                                <img :src="userProfile.image" class="profile-image avatar img-circle img-thumbnail" alt="Avatar">
                             </div>
 
                             <div class="col-md-8 mb-2 stat">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h3 class="text-uppercase">
+                                        <h4 class="text-uppercase">
                                             <strong>
                                                 {{$t('profile.instructor')}}. {{ userProfile.first_name }}
                                                 {{ userProfile.last_name }}
                                             </strong>
-                                        </h3>
+                                        </h4>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -149,7 +149,7 @@
                             </router-link>
                         </div>
                         <div class="card">
-                            <div class="card-header" id="headingOne">
+                            <div class="card-header">
                                 {{$t('manage_course')}}
                             </div>
                             <div class="card-body">
@@ -433,6 +433,7 @@
                 }
             },
             handleLive(id) {
+                this.$swal.fire(this.$t('profile.notify_video'));
                 /* this.$router.push({
                     name: "StartLive",
                     params: {

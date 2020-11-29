@@ -1,24 +1,6 @@
 <template>
     <div>
-        <section class="hero pt-5 mb-3">
-<!--            <div class="container h-100">-->
-<!--                <div class="row h-100">-->
-<!--                    <div class="col-md-4"></div>-->
-<!--                    <div class="col-md-8 text-center pt-md-5">-->
-<!--                        <h1 class="font-weight-bolder ">-->
-<!--                            THE NEXT <br>-->
-<!--                            YOU-->
-<!--                        </h1>-->
-<!--                        <h1 class="font-weight-bolder text-uppercase">-->
-<!--                            The best way to predict <br>-->
-<!--                            the future is to create it-->
-<!--                        </h1>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--            </div>-->
-
-        </section>
+        <section class="hero pt-5 mb-3"></section>
         <div class="container ">
             <div class="row">
                 <div class="col-sm-9 col-md-10 col-lg-7 mx-auto">
@@ -159,14 +141,13 @@
             // },
             authLogin(provider) {
                 this.$store.dispatch('socialTeacherAuth', provider)
-                    .then((res) => {
-                        console.log('res')
-                        console.log(res)
-                        console.log('response returned just now')
-                        if (res.data.url) {
-                            let r = this.$router.resolve({name: 'StudentProfile'});
-                            window.location.assign(r.href)
-                        }
+                    .then(res => {
+                        setTimeout(() => {
+                            if (res.data.url) {
+                                let r = this.$router.resolve({name: 'StudentProfile'});
+                                window.location.assign(r.href)
+                            }
+                        },5000)
                     })
                     .catch(err => console.log(err))
             },

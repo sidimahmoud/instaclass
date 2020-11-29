@@ -180,10 +180,12 @@
             loginGoogle(provider) {
                 this.$store.dispatch('socialStudentAuth', provider)
                     .then((res) => {
-                        if (res.data.url) {
-                            console.log(res.data.url);
-                            window.location.href = res.data.url
-                        }
+                        setTimeout(() => {
+                            if (res.data.url) {
+                                let r = this.$router.resolve({name: 'StudentProfile'});
+                                window.location.assign(r.href)
+                            }
+                        },5000)
                     })
                     .catch(err => console.log(err))
             },

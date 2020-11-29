@@ -253,7 +253,8 @@
         "deleted": "Your course has been deleted.",
         "timer_course_start": "Your course will start in",
         "about_help": "will be published under your courses",
-        "empty_ratings": "Your ratings will appears here."
+        "empty_ratings": "Your ratings will appears here.",
+        "notify_video": "Video will be available 20 minutes before class"
     },
     "countDown": {
         "enabled": "Timer enabled when you have students enrolled to your course",
@@ -306,5 +307,6 @@
     "payment" :{
         "note": "Note: Each payment is made 1 week after the teaching of a session.",
         "void_recived": "Thank you! We received your void. You can change it anytime."
-    }
+    },
+    "select_sessions": "Select Sessions"
 }

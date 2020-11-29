@@ -32,6 +32,10 @@ import { Button, Select } from 'element-ui';
 Vue.use(ElementUI, { locale })
 Vue.component(Button.name, Button);
 Vue.component(Select.name, Select);
+import DropdownMenu from 'v-dropdown-menu'
+import 'v-dropdown-menu/dist/v-dropdown-menu.css' // Base style, required.
+
+Vue.use(DropdownMenu)  
 
 import firebase from "firebase";
 

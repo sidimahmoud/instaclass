@@ -254,7 +254,8 @@
         "deleted": "Votre cours a été supprimé.",
         "timer_course_start": "VOTRE COURS COMMENCERA DANS",
         "about_help": "sera publié sous vos cours",
-        "empty_ratings": "Vos évaluations apparaitront ici."
+        "empty_ratings": "Vos évaluations apparaitront ici.",
+        "notify_video": "Vidéo sera disponible 20 minutes avant le cours"
     },
     "countDown": {
         "enabled": "Minuterie activée lorsque des étudiants sont inscrits à votre cours",
@@ -309,5 +310,6 @@
     "payment" :{
         "note": "Note: Chaque paiement est effectué 1 semaine après l'enseignement d'une session.",
         "void_recived": "Merci! Nous avons reçu votre spécimen de chèque. Vous pouvez le changer à tout moment."
-    }
+    },
+    "select_sessions": "Sélectionnez des sessions"
 }

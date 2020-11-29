@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="form-page">
         <section class="hero">
             <div class="container mt-4 h-100">
                 <!--                <div class="row h-100">-->
@@ -16,10 +16,14 @@
         </section>
         <div class="payment-page">
             <div class="mt-4">
-                <h6 style="color:red">{{$t('payment.note')}}</h6>
+                <h6>{{$t('payment.note')}}</h6>
                 <h4>{{$t('please_add_speciment')}}:</h4> <input type="file" @change="previewImage" accept="image/*" >
                 <a :href="loggedInUser.speciment" target="_blank"><i class="fa fa-eye"></i>{{$t('view_spec')}}</a>
             </div>
+            <div class="mt-4" v-if="loggedInUser.speciment">
+                <h6>{{$t('payment.void_recived')}}</h6>
+            </div>
+            
             <h4 class="mt-4">{{$t('countDown.my_recits')}}</h4>
             <div class="mt-4" v-if="allTeacherPayments.length===0">
                 {{$t('no_recipt')}}
@@ -97,11 +101,9 @@
                                     'Ok!',
                                     this.$t('payment.void_recived'),
                                     'success'
-                                )
-                                setTimeout(() => {
+                                ).then((result) => {
                                     window.location.reload()
-                                },1000)
-                                
+                                })
                             })
                             .catch(function (error) {
                                 _this.$swal.fire({
@@ -154,5 +156,9 @@
 }
 .payment-page {
     padding: 10px;
+    background-color: #fff;
+}
+.form-page{
+    background-color: #fff;
 }
 </style>

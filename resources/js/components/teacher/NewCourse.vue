@@ -35,7 +35,7 @@
                     </div>
                     <!--Lang-->
                     <div class="col-md-4">
-                        <div class="form-group" v-if="course.language ==='FR'|| course.language ==='EN'">
+                        <div class="form-group" v-if="course.language ==='FR' || course.language ==='EN'">
                             <label for="exampleFormControlSelect1">{{$t('newCourse.lang')}}</label>
                             <select class="form-control" id="exampleFormControlSelect1" required
                                     v-model="course.language">
@@ -134,7 +134,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="desc">{{$t('newCourse.summaryHelp')}}</label>
-                            <textarea class="form-control" v-model="course.short_description" required></textarea>
+                            <textarea class="form-control" v-model="course.short_description" maxlength="150" required></textarea>
                         </div>
                     </div>
                 </div>
@@ -200,6 +200,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
+                                <br/>
                                 <label>{{$t('newCourse.session')}} {{index+1}} {{$t('newCourse.duration')}}:</label>
                                 <select class="mr-2 " name="session[]" aria-describedby="durationHelp"
                                         v-model="sections[index].duration" required>

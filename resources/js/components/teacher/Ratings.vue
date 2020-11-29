@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="form-page">
         <section class="hero">
             <div class="container mt-4 h-100">
             </div>
@@ -98,8 +98,12 @@
 }
 .payment-page {
     padding: 10px;
+    background-color: #fff;
 }
 .text-margin-long {
     margin-bottom: 200px;
+}
+.form-page{
+    background-color: #fff;
 }
 </style>
