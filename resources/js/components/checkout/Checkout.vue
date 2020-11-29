@@ -40,7 +40,7 @@
                                     </el-option>
                                 </el-select> -->
                                 <dropdown-menu class="custom-style" :overlay="false">
-                                    <el-button slot="trigger" style="width: 47%">{{$t('select_sessions')}} <i class="fa fa-arrow-down"></i></el-button>
+                                    <el-button slot="trigger" style="width: 47%">{{$t('select_sessions')}} <i class="el-icon-arrow-down el-icon--right"></i></el-button>
                                     <div slot="header">{{$t('select_sessions')}}</div><br/>
                                     <ul slot="body">
                                         <!-- <li v-for="(e ,index) in course.course.sections" :key="e.id"> -->

@@ -268,7 +268,8 @@
         "payments": "Paiements",
         "instructor": "Instructeur",
         "reviews": "Commentaires",
-        "my_recits": "Mes reçus"
+        "my_recits": "Mes reçus",
+        "user_course_count": "Vous avez un cours pour commencer après"
     },
     "contact": {
         "title": "Contact",

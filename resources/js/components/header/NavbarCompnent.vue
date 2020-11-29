@@ -86,13 +86,27 @@
                                 {{$t('nav.account')}}
                             </router-link>
                         </li>
-                        <li class="nav-item mr-md-5" v-else>
+                        <!-- <li class="nav-item mr-md-5" v-else> -->
                             <!-- <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                          class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
                                 {{$t('nav.account')}}
 
                             </router-link> -->
-                            <div class="dropdown">
+                            <li class="nav-item dropdown mr-md-5" v-else>
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <el-button type="info" @click="handleProfile">
+                                        {{$t('nav.account')}}
+                                    </el-button>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <span class="dropdown-item" @click="handlePayments">{{$t('profile.payments')}}</span>
+                                    <span class="dropdown-item" @click="handlePayments">{{$t('profile.ratings')}}</span>
+                                    <span class="dropdown-item" @click="handlePayments">{{$t('profile.pers_info')}}</span>
+                                    <div class="dropdown-divider"></div>
+                                    <span class="dropdown-item" @click="handlePayments">{{$t('profile.logout')}}</span>
+                                </div>
+                            </li>
+                            <!-- <div class="dropdown">
                                 <el-dropdown>
                                     <el-button type="info" @click="handleProfile">
                                         {{$t('nav.account')}}<i class="el-icon-arrow-down el-icon--right"></i>
@@ -104,29 +118,7 @@
                                         <el-dropdown-item @click.native="logout">{{$t('profile.logout')}}</el-dropdown-item>
                                     </el-dropdown-menu>
                                 </el-dropdown>
-                                <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{$t('nav.account')}}
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <router-link :to="{name: 'TeacherProfile'}" tag="a"
-                                                 class="dropdown-item" data-toggle="collapse"
-                                                 data-target=".navbar-collapse.show">
-                                        Profile
-                                    </router-link>
-                                    <router-link :to="{name: 'Studentpayments'}" tag="a"
-                                                 class="dropdown-item" data-toggle="collapse"
-                                                 data-target=".navbar-collapse.show">
-                                       {{$t('profile.payments')}}
-                                    </router-link>
-                                    <router-link :to="{name: 'TeacherProfile'}" tag="a"
-                                                 class="dropdown-item" data-toggle="collapse"
-                                                 data-target=".navbar-collapse.show">
-                                        {{$t('profile.ratings')}}
-                                    </router-link>
-                                    <a class="dropdown-item" @click="logout">Logout</a>
-                                </div> -->
-                            </div>
+                            </div> -->
                         </li>
                         <!--                        Lang-->
 

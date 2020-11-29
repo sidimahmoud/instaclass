@@ -14,9 +14,9 @@
                     </div>
                 </div>
             </section>
-            <div class="container-fluid bg-light mt-0 pt-3 pb-3">
+            <div class="container-fluid bg-light mt-0 pt-3 pb-3 course-details-mobile">
                 <div class="course-header mt-3">
-                    <div class="row justify-content-around align-items-center pt-2">
+                    <div class="row justify-content-around align-items-center pt-2 course-details-profile">
                         <div class="col-md-2 text-center">
                             <img :src="course.course.user.image" alt="Avatar"
                                  class="border profile-image avatar img-circle img-thumbnail">
@@ -36,7 +36,7 @@
 
                         </div>
                         <div :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '', 'col-md-3']">
-                            <template v-if="!isEmpty(course.course.sections) && course.course.sections.length > 2">
+                            <template v-if="!isEmpty(course.course.sections) && course.course.sections.length >= 2">
                                 <router-link
                                 :to="{ path:`/checkout/${course.course.id}`}"
                                 tag="a" class="btn btn-primary my-3">
@@ -182,5 +182,22 @@
         border-right: 2px solid #2b63f3;
         /*box-shadow: 2px 2px 7px 5px rgba(0,0,0,0.39);*/
 
+    }
+
+    @media (max-width: 600px) {
+        .hero {
+            background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details1.jpg') no-repeat center center;
+            height: 80vh;
+            background-size: contain;
+            border-bottom: 15px solid #3081FB;
+            color: white;
+        }
+        .course-details-mobile {
+            width: 100%;
+            padding: 5px;
+        }
+        .course-details-profile {
+            padding: 10px;
+        }
     }
 </style>

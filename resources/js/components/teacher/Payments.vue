@@ -161,4 +161,13 @@
 .form-page{
     background-color: #fff;
 }
+@media (max-width: 600px) {
+    .hero {
+        background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
+        height: 70vh;
+        background-size: cover;
+        border-bottom: 15px solid #3081FB;
+        color: white;
+    }
+}
 </style>

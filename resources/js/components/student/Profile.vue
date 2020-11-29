@@ -84,9 +84,9 @@
                 </div>
             </div>
             <div class="count-down py-2 my-2">
-                <div class="w-50 mx-auto">
+                <div class="col-md-6 w-md-50 mx-auto">
                     <h4 class="text-center my-2 text-white text-uppercase">
-                        You have one course to start after
+                        {{$t('countDown.user_course_count')}}
                     </h4>
                     <div class="" v-if="upcomingClasses.length > 0 ">
                         <Count-down
@@ -401,6 +401,24 @@
 
     .empty-link {
         color: red;
+    }
+
+    @media (max-width: 600px) {
+        .hero {
+            background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
+            height: 70vh;
+            background-size: cover;
+            border-bottom: 15px solid #3081FB;
+            color: white;
+        }
+
+        .counts {
+            background: linear-gradient(rgb(253, 255, 255, 0.5), rgb(255, 255, 255, 0.5));
+        }
+
+        .count-down {
+            background: linear-gradient(rgba(19, 19, 19, 0.8), rgba(19, 19, 19, 0.8));
+        }
     }
 
 </style>

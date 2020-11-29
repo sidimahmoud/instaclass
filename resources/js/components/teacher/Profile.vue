@@ -58,11 +58,11 @@
                                         <i class="fa fa-star fa-2x text-warning"></i>
                                     </div>
                                     <div class="col-8">
-                    <span>{{
-                      !isEmpty(allTeacherDetails.ratings)
-                        ? allTeacherDetails.ratings.length
-                        : "0"
-                    }}</span>
+                                        <span>{{
+                                        !isEmpty(allTeacherDetails.ratings)
+                                            ? allTeacherDetails.ratings.length
+                                            : "0"
+                                        }}</span>
                                         {{$t('profile.ratings')}}
                                     </div>
                                 </div>
@@ -71,11 +71,11 @@
                                         <i class="fa fa-users fa-2x text-warning"></i>
                                     </div>
                                     <div class="col-8">
-                    <span>{{
-                      !isEmpty(allTeacherDetails.students)
-                        ? allTeacherDetails.students[0].count
-                        : "0"
-                    }}</span>
+                                        <span>{{
+                                        !isEmpty(allTeacherDetails.students)
+                                            ? allTeacherDetails.students[0].count
+                                            : "0"
+                                        }}</span>
                                         {{$t('course.students')}}
                                     </div>
                                 </div>
@@ -84,9 +84,9 @@
                                         <i class="fa fa-play-circle fa-2x text-warning"></i>
                                     </div>
                                     <div class="col-8">
-                    <span>{{
-                      userCourses.length > 0 ? userCourses.length : "0"
-                    }}</span>
+                                        <span>{{
+                                        userCourses.length > 0 ? userCourses.length : "0"
+                                        }}</span>
                                         {{$t('profile.coursesNumber')}}
                                     </div>
                                 </div>
@@ -552,6 +552,23 @@
             font-size: 20px;
             color: #000 !important;
             font-weight: 800;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .hero {
+            background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/account.jpg') no-repeat center center;
+            height: 70vh;
+            background-size: cover;
+            color: white;
+        }
+
+        .counts {
+            background: linear-gradient(rgb(253, 255, 255, 0.5), rgb(255, 255, 255, 0.5));
+        }
+
+        .count-down {
+            background: linear-gradient(rgba(19, 19, 19, 0.8), rgba(19, 19, 19, 0.8));
         }
     }
 </style>
