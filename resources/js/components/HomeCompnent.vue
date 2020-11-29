@@ -2,10 +2,10 @@
     <div class="bg-light">
         <div class="hero">
             <div class="jumbotron jumbotron1 mb-0">
-                 <span class=" px-1 py-3  shareBar">
+                 <span class=" px-1 py-3 shareBar">
                     <iframe
-                        src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&appId=223985172274465&width=93&height=28"
-                        width="93" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                        src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&appId=223985172274465&width=150&height=120"
+                        width="150" height="120" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
                         allowTransparency="true" allow="encrypted-media">
                     </iframe>
                     <!-- <p>
