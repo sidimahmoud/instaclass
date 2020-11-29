@@ -142,12 +142,10 @@
             authLogin(provider) {
                 this.$store.dispatch('socialTeacherAuth', provider)
                     .then(res => {
-                        /* setTimeout(() => {
-                            if (res.data.url) {
-                                let r = this.$router.resolve({name: 'StudentProfile'});
-                                window.location.assign(r.href)
-                            }
-                        },5000) */
+                        if (res.data.url) {
+                            let r = this.$router.resolve({name: 'StudentProfile'});
+                            window.location.assign(r.href)
+                        }
                     })
                     .catch(err => console.log(err))
             },
