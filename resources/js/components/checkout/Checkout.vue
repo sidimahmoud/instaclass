@@ -24,7 +24,7 @@
                     <!--Card content-->
                     <div class="my-3">
                         <div class="text-center" v-if="course_price===0">
-                            <h3><strong>{{$t('course.course_free')}}</strong> <small>{{$t('course.no_payment')}}</small></h3>
+                            <h5><strong>{{$t('course.course_free')}}</strong> <small>{{$t('course.no_payment')}}</small></h5>
                             <!-- <p>{{$t('course.no_payment')}}</p> -->
                             <button class="btn btn-primary" @click="enrollForFree">{{$t('complete_purchase')}}</button>
                         </div>
@@ -40,7 +40,7 @@
                                     </el-option>
                                 </el-select> -->
                                 <dropdown-menu class="custom-style" :overlay="false">
-                                    <el-button slot="trigger" style="width: 47%">{{$t('select_sessions')}} <i class="el-icon-arrow-down el-icon--right"></i></el-button>
+                                    <el-button slot="trigger" class="select-session">{{$t('select_sessions')}} <i class="el-icon-arrow-down el-icon--right"></i></el-button>
                                     <div slot="header">{{$t('select_sessions')}}</div><br/>
                                     <ul slot="body">
                                         <!-- <li v-for="(e ,index) in course.course.sections" :key="e.id"> -->
@@ -89,13 +89,13 @@
                         <div>
                             <h6 class="my-0">
                                 <span class="font-weight-bold">
-                                    {{$t('course.price')}} * {{sections_count}}
+                                    {{$t('course.price')}} X {{sections_count}}
                                 </span>
                             </h6>
                         </div>
                         <span class="text-muted">${{course_price}}</span>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed" v-if="sections_count >= 3">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed" v-if="sections_count >= 6">
                         <div>
                             <h6 class="my-0">
                                 <span class="font-weight-bold">
@@ -115,7 +115,7 @@
                     </li>
                     
                     <li class="list-group-item d-flex justify-content-between font-weight-bold">
-                        <span>Total (USD)</span>
+                        <span>Total ( CAD )</span>
                         <strong>${{allPrice}}</strong>
                     </li>
                 </ul>
@@ -172,7 +172,7 @@
         computed: {
             ...mapGetters(["course"]),
             totalCourse(){
-                if(this.sections_count >= 3){
+                if(this.sections_count >= 6){
                     return parseFloat((Number(this.course_price) * Number(this.sections_count))  - Number(this.course_price)).toFixed(2);
                 }else{
                     return parseFloat(Number(this.course_price) * Number(this.sections_count)).toFixed(2);
@@ -300,5 +300,13 @@
     position: relative; 
     left: 50%;
     transform: translateX(-50%);
+}
+.select-session {
+    width: 47%
+}
+@media (max-width: 600px) {
+    .select-session {
+        width: 90%
+    }
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
     <!-- Footer -->
     <footer class="page-footer font-small">
+        <mail-box></mail-box>
         <!-- Footer Links -->
         <div class="container text-center text-md-left mt-5">
 
@@ -107,6 +108,15 @@
 </template>
 
 <script>
+import MailBox from "./MailBox";
+
+    export default {
+        name: 'Home',
+
+        components: {
+            MailBox
+        },
+    }
 </script>
 
 <style scoped>

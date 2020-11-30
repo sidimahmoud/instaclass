@@ -14,15 +14,15 @@
     "title2": {
         "teachers": {
             "title": "Teachers",
-            "1": "Create and structure content of their courses.",
+            "1": "Create and structure paying or free courses.",
             "2": "Set their own costs for courses.",
             "3": "Teach live on INSTANTACLASSE platform."
         },
         "students": {
             "title": "Students",
-            "1": "Take advantage of a wide variation of available courses.",
+            "1": "Take advantage of a wide variation of paying or free courses.",
             "2": "Study courses live on INSTANTACLASSE platform.",
-            "3": "Get a free lesson when a course is scheduled for 3 sessions or more.",
+            "3": "Get a free lesson when a course is scheduled for 6 sessions or more.",
             "4": "Receive the recordings at the end courses."
         }
     },
@@ -142,7 +142,7 @@
         "price": "Estimated price per session",
         "currency": "Currency",
         "priceHelp": "Your estimated total earnings for the course will depend on your estimated price, number of sessions and students enrolled.",
-        "note": "Note: When the number of sessions exceed 3, your third course will be free student enrolled.",
+        "note": "Note: When the number of sessions exceed 6, your sixth session will be free student enrolled.",
         "students": "Number of authorized students per session (max 50)",
         "sharing": "Do you allow the sharing of your course?",
         "authorised": "Instantavite or the community can share",
@@ -152,7 +152,7 @@
         "summaryHelp": "Summarize what you will teach in your course",
         "sessions": "Course sessions",
         "number": "Number of sessions for the course",
-        "third": "When the number of sessions of a course exceed 3, the third session will be free for student enrolled to all courses.",
+        "third": "When the number of sessions of a course exceed 6, the sixth  session will be free for student enrolled to all courses.",
         "session": "Session",
         "give": "Give a title to this session",
         "desc": "Give a description to this session",
@@ -309,5 +309,7 @@
         "note": "Note: Each payment is made 1 week after the teaching of a session.",
         "void_recived": "Thank you! We received your void. You can change it anytime."
     },
-    "select_sessions": "Select Sessions"
+    "select_sessions": "Select Sessions",
+    "subscribed_successfully": "Subscribed successfully",
+    "already_subscriped": "Already subscribed"
 }

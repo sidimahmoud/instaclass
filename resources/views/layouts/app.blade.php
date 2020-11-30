@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div id="app" style="background-color: #ccc">
+    <div id="app" style="background-color: #fff">
         <main>
             @yield('content')
         </main>

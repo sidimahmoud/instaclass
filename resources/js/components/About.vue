@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-        <section class="bg-dark text-white mb-0 py-3">
+        <!-- <section class="bg-dark text-white mb-0 py-3">
             <div class="container newsLetter">
                 <h1 class="text-center">
                     {{$t('about.newsletter.stay')}}
@@ -90,7 +90,7 @@
 
             </div>
 
-        </section>
+        </section> -->
 
     </div>
 </template>

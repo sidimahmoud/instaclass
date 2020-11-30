@@ -17,6 +17,7 @@ Route::post('/courses/demander', 'DemandsController@store');
 Route::post('/contacter', 'ContactsController@store');
 Route::get('/class/{id}', 'CourseController@categoryCourses');
 Route::post('/newsletter', 'NewsletterController@store');
+Route::post('/newsletter-store', 'NewsletterController@store');
 Route::put('/sections/{id}', 'CourseFileController@updateLinks');
 Route::get('authorize/{provider}', 'AuthController@redirectToProvider');
 Route::get('social-auth', 'AuthController@handleSocialAuth');
@@ -44,7 +45,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/statistics', 'Teacher\CoursesController@statistics');
         Route::resource('/newsletter', 'NewsletterController');
         Route::resource('/ratings', 'RatingController');
-
     });
 
     Route::middleware('can:teacher-or-admin')->group(function () {

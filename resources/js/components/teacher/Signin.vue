@@ -204,7 +204,7 @@
                 this.$store.dispatch('handleTeacherSocial', payload)
                 .then(res => {
                     if (res.data != null) {
-                        let r = this.$router.resolve({name: 'StudentProfile'});
+                        let r = this.$router.resolve({name: 'TeacherProfile'});
                         window.location.assign(r.href)
                     }
                 })

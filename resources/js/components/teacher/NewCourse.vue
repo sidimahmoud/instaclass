@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="jumbotron text-right" style="height: 200px"></div>
-
+        <beat-loader :loading="pageLoader" color="#004d4d" class="center-screen"></beat-loader>
         <div class="container py-3 mb-5 bg font-weight-bold">
             <h3 class="text-center font-weight-bolder">{{$t('newCourse.title')}}</h3>
             <form class="my-3" @submit.prevent="saveCourse">
@@ -39,9 +39,9 @@
                             <label for="exampleFormControlSelect1">{{$t('newCourse.lang')}}</label>
                             <select class="form-control" id="exampleFormControlSelect1" required
                                     v-model="course.language">
-                                <option value="FR">{{$t('demande.languages.fr')}}</option>
-                                <option value="EN">{{$t('demande.languages.en')}}</option>
-                                <option value="ES">{{$t('demande.languages.es')}}</option>
+                                <option :value="$t('demande.languages.fr')">{{$t('demande.languages.fr')}}</option>
+                                <option :value="$t('demande.languages.en')">{{$t('demande.languages.en')}}</option>
+                                <option :value="$t('demande.languages.es')">{{$t('demande.languages.es')}}</option>
                                 <option value="">{{$t('demande.languages.other')}}</option>
                             </select>
                         </div>
@@ -63,13 +63,7 @@
                                 </small>
 
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group text-center">
-                                    <br/>
-                                    <label>{{$t('newCourse.is_free')}}</label>
-                                    <input type="checkbox" v-model="course.is_free">
-                                </div>
-                            </div>
+                            
                             <div class="col-md-3">
                                 <label for="price">{{$t('newCourse.currency')}}</label>
                                 <select class="form-control" v-model="course.currency" aria-describedby="currencyHelp"
@@ -82,13 +76,21 @@
                                 <!--                                    Canadiens users have to select CAD.-->
                                 <!--                                </small>-->
                             </div>
-                            <div class="col-md-6">
-                                <p class=" font-weight-light">
-                                    <br>
-                                    {{$t('newCourse.priceHelp')}}
-                                </p>
-
+                            <div class="col-md-3">
+                                <div class="form-group text-center">
+                                    <br/>
+                                    <label>{{$t('newCourse.is_free')}}</label>
+                                    <input type="checkbox" v-model="course.is_free">
+                                </div>
                             </div>
+                            
+                        </div>
+                        <div>
+                            <p class=" font-weight-light">
+                                <br>
+                                {{$t('newCourse.priceHelp')}}
+                            </p>
+
                         </div>
                     </div>
                     <!--duration-->
@@ -297,6 +299,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="modal fade" id="modelSub" tabindex="-1" role="dialog"
              aria-labelledby="modelSubTitle"
              aria-hidden="true">
@@ -356,9 +359,13 @@
 <script>
     import {mapGetters, mapActions} from 'vuex'
     import {isEmpty} from "../../helpers/common";
+    import BeatLoader from 'vue-spinner/src/BeatLoader.vue';
 
     export default {
         name: "NewCourse",
+        components: {
+            BeatLoader
+        },
         data() {
             return {
                 step: 1,
@@ -408,6 +415,7 @@
                         return date < new Date('2021-1-4');
                     }
                 },
+                pageLoader: false
             }
         },
         methods: {
@@ -460,6 +468,7 @@
                 this.$store.dispatch('fetchSubCategories', id)
             },
             saveCourse() {
+                this.pageLoader = true
                 console.log('this.course.is_free')
                 console.log(this.course)
                 console.log(this.course.is_free ? '1' : '0')
@@ -491,6 +500,7 @@
                    /*  this.$alert('', 'New Course', 'success').then(
                         () => this.$router.push({name: 'Courses'})
                     ) */
+                    this.pageLoader = false
                     this.$swal.fire({
                         title: '',
                         text: this.$t('newCourse.thank_msg'),
@@ -504,10 +514,12 @@
                     })
 
                 })
-                .catch(err => console.log(err));
-            }
-            ,
-
+                .catch(err => {
+                    console.log(err)
+                    this.pageLoader = false
+                    this.savingCourse = false
+                });
+            },
             addSection(event) {
                 const sections = event.target.value;
                 this.sections = [];
@@ -552,5 +564,16 @@
     .jumbotron {
         background-image: url('../../assets/images/teaprofile/bg.jpg');
         border-radius: 0;
+    }
+
+    .center-screen {
+        position:fixed; /* change this to fixed */
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+        width: 100px;
+        height: 100px;
+        z-index: 1000px;
     }
 </style>

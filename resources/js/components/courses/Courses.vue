@@ -10,8 +10,8 @@
         </section>
         <div>
             <div class="text-center my-3">
-                <h2><strong>{{$t('courses.title')}}</strong></h2>
-                <p class="w-50 m-auto">
+                <h5><strong>{{$t('courses.title')}}</strong></h5>
+                <p>
                     {{$t('courses.slug')}}
                 </p>
             </div>

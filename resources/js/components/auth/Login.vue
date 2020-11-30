@@ -193,7 +193,7 @@
                 let payload = {
                     'name': profile.getName(),
                     'email': profile.getEmail(),
-                    'role': 'teacher'
+                    'role': 'student'
                 };
                 this.handleSocial(payload);
             },
@@ -208,7 +208,7 @@
                     let payload = {
                         'name': dude.name,
                         'email': dude.email,
-                        'role': 'teacher'
+                        'role': 'student'
                     };
                     _this.handleSocial(payload);
                 })

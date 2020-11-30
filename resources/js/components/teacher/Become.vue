@@ -73,12 +73,26 @@
                             <router-link :to="{name: 'Signin'}">{{$t('auth.signIn')}}</router-link>
                         </div>
                         <h2>{{$t("auth.or")}}</h2>
-                        <button class="btn btn-lg btn-google btn-block text-uppercase" @click="loginGoogle('google')">
+                        <g-signin-button
+                            class="btn btn-lg btn-google btn-block text-uppercase"
+                            :params="googleSignInParams"
+                            @success="ongSignInSuccess"
+                            @error="ongSignInError">
+                            <i class="fa fa-google mr-2"></i> {{$t('auth.continueWith')}} Google
+                        </g-signin-button>
+                        <fb-signin-button
+                            class="btn btn-lg btn-github btn-block text-uppercase"
+                            :params="fbSignInParams"
+                            @success="onSignInSuccess"
+                            @error="onSignInError">
+                            <i class="fa fa-facebook-f text-white mr-2"></i> {{$t('auth.continueWith')}} Facebook
+                        </fb-signin-button>
+                        <!-- <button class="btn btn-lg btn-google btn-block text-uppercase" @click="loginGoogle('google')">
                             <i class="fa fa-google mr-2"></i> {{$t('auth.continueWith')}} Google
                         </button>
                         <button class="btn btn-lg btn-github  btn-block text-uppercase" @click="loginGoogle('facebook')">
                             <i class="fa fa-facebook-f text-white mr-2"></i> {{$t('auth.continueWith')}} Facebook
-                        </button>
+                        </button> -->
                     </div>
                 </div>
             </div>
@@ -102,6 +116,13 @@
                 password1: '',
                 password2: '',
                 errorMessage: '',
+                googleSignInParams: {
+                    client_id: '5466659184-s2qvgg7uq9n94pjstr4duh8dg7ha7lbn.apps.googleusercontent.com'  
+                },
+                fbSignInParams: {
+                    scope: 'email',
+                    return_scopes: true
+                },
             }
         },
         methods: {
@@ -149,6 +170,46 @@
                     })
                     .catch(err => console.log(err))
             },
+            ongSignInSuccess (googleUser) {
+                const profile = googleUser.getBasicProfile() // etc etc
+                console.log(profile.getEmail());
+                let payload = {
+                    'name': profile.getName(),
+                    'email': profile.getEmail(),
+                    'role': 'teacher'
+                };
+                this.handleSocial(payload);
+            },
+            ongSignInError (error) {
+                this.loginErrors = "Error occured durring facebook login."
+                console.log('OH NOES', error)
+            },
+            onSignInSuccess (response) {
+                const _this = this;
+
+                FB.api('/me?fields=email,name', dude => {
+                    let payload = {
+                        'name': dude.name,
+                        'email': dude.email,
+                        'role': 'teacher'
+                    };
+                    _this.handleSocial(payload);
+                })
+            },
+            onSignInError (error) {
+                this.loginErrors = "Error occured durring facebook login."
+                console.log('OH NOES', error)
+            },
+            handleSocial(payload) {
+                this.$store.dispatch('handleTeacherSocial', payload)
+                .then(res => {
+                    if (res.data != null) {
+                        let r = this.$router.resolve({name: 'TeacherProfile'});
+                        window.location.assign(r.href)
+                    }
+                })
+                .catch(err => console.log(err))
+            }
         },
         computed: mapGetters(["authLoading"])
     }

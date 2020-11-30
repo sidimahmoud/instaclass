@@ -55,25 +55,25 @@
                             </div>
                             <div>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-8">
                                         <i class="fa fa-users fa-2x text-warning"></i>
                                         {{$t('profile.enrollments')}}
                                     </div>
-                                    <div class="col py-2">
-                                  <span class="btn btn-primary">
-                                      {{userEnrollments.length > 0
-                                      ? userEnrollments.length
-                                      : "0"}}
-                                  </span>
+                                    <div class="col-1 py-2">
+                                        <span class="btn btn-primary">
+                                            {{userEnrollments.length > 0
+                                            ? userEnrollments.length
+                                            : "0"}}
+                                        </span>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-8">
                                         <i class="fa fa-star fa-2x text-warning"></i>
                                         {{$t('profile.ratings')}}
                                     </div>
-                                    <div class="col py-2">
+                                    <div class="col-1 py-2">
                                         <span class="btn  btn-primary">0</span>
                                     </div>
                                 </div>

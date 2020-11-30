@@ -9,6 +9,7 @@ window.Vue = require('vue');
 
 Vue.component('appnav', require('./components/header/NavbarCompnent.vue').default);
 Vue.component('appfooter', require('./components/FooterComponent.vue').default);
+Vue.component('appmail', require('./components/MailBox.vue').default);
 Vue.component('Login', require('./components/auth/Login').default);
 Vue.component('Register', require('./components/auth/Register').default);
 

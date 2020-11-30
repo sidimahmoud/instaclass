@@ -193,12 +193,14 @@
 <script>
     import {mapGetters, mapActions} from "vuex";
     import CategoryCompo from "./courses/CategoryCompo";
+    import MailBox from "./MailBox";
 
     export default {
         name: 'Home',
 
         components: {
             CategoryCompo,
+            MailBox
         },
         methods: {
             ...mapActions(["fetchCategories"])

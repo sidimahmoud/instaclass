@@ -1,6 +1,6 @@
 <template>
     <div class="px-5">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light py-0 fixed-top">
+        <nav id= "nav-main" class="navbar navbar-expand-lg navbar-light bg-light py-0 fixed-top">
             <div class="container rounded-bottom">
                 <!-- <div class="annonce"></div><br/> -->
                 <a href="/" class="navbar-brand">
@@ -86,13 +86,13 @@
                                 {{$t('nav.account')}}
                             </router-link>
                         </li>
-                        <!-- <li class="nav-item mr-md-5" v-else> -->
+                         <li class="nav-item mr-md-5" v-else>
                             <!-- <router-link :to="{name: 'TeacherProfile'}" tag="a"
                                          class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
                                 {{$t('nav.account')}}
 
                             </router-link> -->
-                            <li class="nav-item dropdown mr-md-5" v-else>
+                            <!-- <li class="nav-item dropdown mr-md-5" v-else>
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <el-button type="info" @click="handleProfile">
                                         {{$t('nav.account')}}<i class="el-icon-arrow-down el-icon--right"></i>
@@ -105,8 +105,8 @@
                                     <div class="dropdown-divider"></div>
                                     <span class="dropdown-item" @click="logout">{{$t('profile.logout')}}</span>
                                 </div>
-                            </li>
-                            <!-- <div class="dropdown">
+                            </li> -->
+                            <div class="dropdown">
                                 <el-dropdown>
                                     <el-button type="info" @click="handleProfile">
                                         {{$t('nav.account')}}<i class="el-icon-arrow-down el-icon--right"></i>
@@ -118,8 +118,8 @@
                                         <el-dropdown-item @click.native="logout">{{$t('profile.logout')}}</el-dropdown-item>
                                     </el-dropdown-menu>
                                 </el-dropdown>
-                            </div> -->
-                        <!-- </li> -->
+                            </div>
+                        </li>
                         <!--                        Lang-->
 
 
@@ -154,6 +154,7 @@
             return {
                 q: '',
                 locale: 'en',
+                show: false
             }
         },
         methods: {
@@ -182,6 +183,7 @@
                 this.$router.push({name: 'TeacherRatings'})
             },
             handlePayments () {
+                this.$root.$emit('bv::toggle::collapse', 'nav-collapse')
                 this.$router.push({name: 'Studentpayments'})
             },
             handleProfile() {
