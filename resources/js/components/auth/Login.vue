@@ -218,7 +218,7 @@
                 console.log('OH NOES', error)
             },
             handleSocial(payload) {
-                this.$store.dispatch('handleTeacherSocial', provider)
+                this.$store.dispatch('handleTeacherSocial', payload)
                 .then(res => {
                     if (resp.data != null) {
                         let r = this.$router.resolve({name: 'StudentProfile'});
