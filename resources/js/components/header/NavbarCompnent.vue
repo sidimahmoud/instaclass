@@ -95,15 +95,15 @@
                             <li class="nav-item dropdown mr-md-5" v-else>
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <el-button type="info" @click="handleProfile">
-                                        {{$t('nav.account')}}
+                                        {{$t('nav.account')}}<i class="el-icon-arrow-down el-icon--right"></i>
                                     </el-button>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <span class="dropdown-item" @click="handlePayments">{{$t('profile.payments')}}</span>
-                                    <span class="dropdown-item" @click="handlePayments">{{$t('profile.ratings')}}</span>
-                                    <span class="dropdown-item" @click="handlePayments">{{$t('profile.pers_info')}}</span>
+                                    <span class="dropdown-item" @click="handleRatings">{{$t('profile.ratings')}}</span>
+                                    <span class="dropdown-item" @click="PersonalInfo">{{$t('profile.pers_info')}}</span>
                                     <div class="dropdown-divider"></div>
-                                    <span class="dropdown-item" @click="handlePayments">{{$t('profile.logout')}}</span>
+                                    <span class="dropdown-item" @click="logout">{{$t('profile.logout')}}</span>
                                 </div>
                             </li>
                             <!-- <div class="dropdown">
@@ -119,7 +119,7 @@
                                     </el-dropdown-menu>
                                 </el-dropdown>
                             </div> -->
-                        </li>
+                        <!-- </li> -->
                         <!--                        Lang-->
 
 

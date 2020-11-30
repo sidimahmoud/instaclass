@@ -15,15 +15,16 @@ Vue.component('Register', require('./components/auth/Register').default);
 import store from './store'
 import router from './router'
 import Home from './components/HomeCompnent'
-import FBSignInButton from 'vue-facebook-signin-button'
 import VueSimpleAlert from "vue-simple-alert";
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 Vue.use(VueSweetalert2);
 Vue.use(VueSimpleAlert);
+import FBSignInButton from 'vue-facebook-signin-button'
 Vue.use(FBSignInButton)
 import GSignInButton from 'vue-google-signin-button'
+Vue.use(GSignInButton)
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import locale from 'element-ui/lib/locale/lang/en'
@@ -52,7 +53,6 @@ var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-Vue.use(GSignInButton)
 
 const app = new Vue({
     el: '#app',

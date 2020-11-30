@@ -153,6 +153,44 @@ class AuthController extends Controller
         }
     }
 
+    public function handleSocialAuth(Request $request)
+    {
+        $user = User::where('email', $request['email'])->with('roles')->first();
+
+        // If no user exists with provider user email, create new user
+        if (!$user) {
+            $user = $this->createSocialUser($request->all());
+            info('created user');
+        }
+       
+        $found = User::where('id', $user->id)->with('roles')->first();
+        $token = $found->createToken('login token')->plainTextToken;
+        return response()->json(['user' => $found, 'token' => $token], 200);
+    }
+
+    /**
+     * Create user
+     *
+     * @return User $user
+     */
+    private function createSocialUser(array $data)
+    {
+        $user = new User();
+        $name = $data['name'];
+        $fname = $data['name'];
+        $lname = $data['name'];
+        $user->first_name = $fname;
+        $user->last_name = $lname;
+        $user->email = $data['email'];
+        $user->password = Hash::make(Str::random(12));
+        $user->email_verified_at = now();
+        $user->save();
+        
+        $studentR = Role::where('name', $data['role'])->first();
+        $user->roles()->attach($studentR);
+        return $user;
+    }
+
     /**
      * Create social account for user
      *

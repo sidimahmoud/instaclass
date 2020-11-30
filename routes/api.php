@@ -19,6 +19,7 @@ Route::get('/class/{id}', 'CourseController@categoryCourses');
 Route::post('/newsletter', 'NewsletterController@store');
 Route::put('/sections/{id}', 'CourseFileController@updateLinks');
 Route::get('authorize/{provider}', 'AuthController@redirectToProvider');
+Route::get('social-auth', 'AuthController@handleSocialAuth');
 Route::get('authorize/{provider}/callback', 'AuthController@handleProviderCallback');
 Route::get('/troncate-all-enrollments', 'EnrollmentController@deleteAllEnrollement');
 // Send reset password mail

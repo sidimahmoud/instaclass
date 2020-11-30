@@ -156,7 +156,33 @@ const actions = {
             delete axios.defaults.headers.common['Authorization'];
             resolve()
         })
-    }
+    },
+    async handleTeacherSocial({commit}, payload) {
+        
+        return new Promise((resolve, reject) => {
+            axios.get(`/social-auth`, {
+                params: payload
+            })
+                .then(resp => {
+                    console.log(resp);
+                    const token = resp.data.token;
+                    const user = {
+                        'u': resp.data.user.id,
+                        't': resp.data.user.roles[0].name,
+                        'first_name': resp.data.user.first_name,
+                        'speciment': resp.data.user.speciment
+                    };
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('user', JSON.stringify(user));
+                    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                    resolve(resp)
+                })
+                .catch(err => {
+                    commit('auth_error');
+                    reject(err)
+                })
+        })
+    },
 };
 
 const mutations = {
