@@ -255,7 +255,8 @@
         "about_help": "will be published under your courses",
         "empty_ratings": "Your ratings will appears here.",
         "notify_video": "The video will be available 20 minutes before class",
-        "no_recording": "No recordings added yet"
+        "no_recording": "No recordings added yet",
+        "language_hints": "Example: English, French"
     },
     "countDown": {
         "enabled": "Timer enabled when you have students enrolled to your course",

@@ -256,7 +256,8 @@
         "about_help": "sera publié sous vos cours",
         "empty_ratings": "Vos évaluations apparaitront ici.",
         "notify_video": "La vidéo sera disponible 20 minutes avant le cours",
-        "no_recording": "Aucun enregistrement ajouté pour le moment"
+        "no_recording": "Aucun enregistrement ajouté pour le moment",
+        "language_hints": "Exemple: anglais, français"
     },
     "countDown": {
         "enabled": "Minuterie activée lorsque des étudiants sont inscrits à votre cours",

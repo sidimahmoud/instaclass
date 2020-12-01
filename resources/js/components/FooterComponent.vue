@@ -44,7 +44,8 @@
                                 </router-link>
                             </p>
                             <p>
-                                <router-link :to="{ name: 'Become'}" tag="a" class="text-uppercase">
+                                <router-link :to="{name: 'Signin'}" tag="a"
+                                         class="text-uppercase" data-toggle="collapse" data-target=".navbar-collapse.show">
                                     {{$t('footer.become')}}
                                 </router-link>
                             </p>

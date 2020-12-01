@@ -48,7 +48,7 @@
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="email">Email <small>{{$t('profile.mail')}}</small></label>
+                                    <label for="email">Email {{$t('profile.mail')}}</label>
                                     <input type="email" class="form-control" name="email" id="email"
                                         placeholder="you@email.com" title="enter your email."
                                         v-model="form.email" disabled>
@@ -58,7 +58,7 @@
 
                                 <div class="col-xs-6">
                                     <label for="lang">{{$t('profile.languages')}}</label>
-                                    <input type="text" class="form-control"  id="lang" placeholder="Example: English, French"
+                                    <input type="text" class="form-control"  id="lang" :placeholder="$t('profile.language_hints')"
                                            v-model="form.languages">
                                 </div>
                             </div>
@@ -144,7 +144,9 @@
                 const _this = this
                 this.pageLoader = true
                 this.picture=null;
-                if(!isEmpty(this.imageData) && !isEmpty(this.imageData.name)) {
+                
+                if(this.imageData != null && !isEmpty(this.imageData.name)) {
+                    console.log('ici')
                     const storageRef=firebase.storage().ref(`profiles/${this.imageData.name}`).put(this.imageData);
                     storageRef.on(`state_changed`,snapshot=>{
                             this.uploadValue = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
@@ -175,6 +177,7 @@
                         }
                     );
                 }else{
+                    console.log('labase')
                     this.update()
                 }
             },
