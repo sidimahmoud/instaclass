@@ -160,7 +160,7 @@
                 curPage: 1,
                 filter: {
                     price: 1000,
-                    categ: '',
+                    categ: [],
                     lang: '',
                     section: ''
                 },
