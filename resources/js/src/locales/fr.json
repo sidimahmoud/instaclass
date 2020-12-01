@@ -143,7 +143,7 @@
         "price": "Prix estimé par session",
         "currency": "Devise",
         "priceHelp": "Vos revenus de ce cours dépendront de votre prix, du nombre de sessions et des étudiants inscrits.",
-        "note": "Remarque: lorsque le nombre de séance dépasse 6, votre sixième séance sera gratuit pour les étudiants inscrits.",
+        "note": "Remarque: lorsque le nombre de séance dépasse 5, votre sixième séance sera gratuit pour les étudiants inscrits.",
         "students": "Nombre d'étudiants autorisés par session (max 50)",
         "sharing": "Autorisez vous le partage de votre annonce?",
         "authorised": "Instantavite ou la communauté peuvent partager",
@@ -167,7 +167,9 @@
         "is_free": "Cours gratuit",
         "teaching_note": "Les séances d'enseignements débutent Lundi le 4 janvier 2021.",
         "thank_msg": "Votre cours a été publié avec succès",
-        "update_msg": "Votre cours a été mis à jour avec succès"
+        "update_msg": "Votre cours a été mis à jour avec succès",
+        "description": "Déscription",
+        "select_time": "Sélectionnez la date et l'heure"
     },
     "auth": {
         "signIn": "Connexion",

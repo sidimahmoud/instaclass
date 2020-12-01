@@ -159,72 +159,76 @@
                     </div>
 
                     <!--sections-->
-                    <div class="row border m-2 " v-for="(section, index) in sections" :key="index">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="section1Title">Session {{index+1}} {{$t('newCourse.give')}}</label>
-                                <input type="text" class="form-control" id="section1Title"
-                                       placeholder="Title" name="title[]" required v-model="sections[index].title">
+                    <div v-for="(section, index) in sections" :key="index">
+                        <el-divider content-position="left"><span style="color: blue">Session: {{index + 1}}</span></el-divider>
+                        <div class="row border m-2 ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="section1Title">Session {{index+1}} {{$t('newCourse.give')}}</label>
+                                    <input type="text" class="form-control" id="section1Title"
+                                        placeholder="Title" name="title[]" required v-model="sections[index].title">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="short_desc">{{$t('newCourse.session')}} {{index+1}}
-                                    {{$t('newCourse.desc')}}
-                                </label>
-                                <textarea type="text" class="form-control" id="short_desc"
-                                          placeholder="description" name="desc[]" required
-                                          v-model="sections[index].description"></textarea>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="short_desc">{{$t('newCourse.session')}} {{index+1}}
+                                        {{$t('newCourse.desc')}}
+                                    </label>
+                                    <textarea type="text" class="form-control" id="short_desc"
+                                            :placeholder="$t('newCourse.description')" name="desc[]" required
+                                            v-model="sections[index].description"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{{$t('newCourse.session')}} {{index+1}} {{$t('newCourse.available')}}:</label>
-                                <!-- <input type="datetime-local" name="date[]" class="form-control" required
-                                       v-model="sections[index].stratDate"> -->
-                                <el-date-picker
-                                    v-model="sections[index].stratDate"
-                                    type="datetime"
-                                    placeholder="Select date and time"
-                                    :picker-options="datePickerOptions1">
-                                </el-date-picker>
-                                <small>{{$t('newCourse.teaching_note')}}</small>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>{{$t('newCourse.session')}} {{index+1}} {{$t('newCourse.available')}}:</label>
+                                    <!-- <input type="datetime-local" name="date[]" class="form-control" required
+                                        v-model="sections[index].stratDate"> -->
+                                    <el-date-picker
+                                        v-model="sections[index].stratDate"
+                                        type="datetime"
+                                        :placeholder="$t('newCourse.select_time')"
+                                        :picker-options="datePickerOptions1">
+                                    </el-date-picker>
+                                    <small>{{$t('newCourse.teaching_note')}}</small>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <label>{{$t('newCourse.timezone')}}</label>
-                            <select class="form-control" v-model="sections[index].timezone" required>
-                                <option value="GMT">Greenwich Mean Time</option>
-                                <option value="ET">Eastern Time ET</option>
-                                <option value="PT">Pacific Time PT</option>
-                                <option value="AT">Atlantic Time ET</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <br/>
-                                <label>{{$t('newCourse.session')}} {{index+1}} {{$t('newCourse.duration')}}:</label>
-                                <select class="mr-2 " name="session[]" aria-describedby="durationHelp"
-                                        v-model="sections[index].duration" required>
-                                    <option value="1">1</option>
-                                    <option value="1.5">1.5</option>
-                                    <option value="2">2</option>
-                                </select>h
+                            <div class="col-md-3">
+                                <label>{{$t('newCourse.timezone')}}</label>
+                                <select class="form-control" v-model="sections[index].timezone" required>
+                                    <option value="GMT">Greenwich Mean Time</option>
+                                    <option value="ET">Eastern Time ET</option>
+                                    <option value="PT">Pacific Time PT</option>
+                                    <option value="AT">Atlantic Time ET</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <br/>
+                                    <label>{{$t('newCourse.session')}} {{index+1}} {{$t('newCourse.duration')}}:</label>
+                                    <select class="mr-2 " name="session[]" aria-describedby="durationHelp"
+                                            v-model="sections[index].duration" required>
+                                        <option value="1">1</option>
+                                        <option value="1.5">1.5</option>
+                                        <option value="2">2</option>
+                                    </select>h
 
-                                <small id="durationHelp" class="form-text text-muted">
-                                    {{$t('newCourse.durationHelp')}}
-                                </small>
+                                    <small id="durationHelp" class="form-text text-muted">
+                                        {{$t('newCourse.durationHelp')}}
+                                    </small>
 
+                                </div>
                             </div>
+                            <!--                        <div class="col-md-3">-->
+                            <!--                            <label>I can teach this session every</label>-->
+                            <!--                            <select class="form-control" v-model="sections[index].frequency" required>-->
+                            <!--                                <option value="0">None</option>-->
+                            <!--                                <option value="weekly">Week</option>-->
+                            <!--                                <option value="monthly">Month</option>-->
+                            <!--                            </select>-->
+                            <!--                        </div>-->
+                            
                         </div>
-                        <!--                        <div class="col-md-3">-->
-                        <!--                            <label>I can teach this session every</label>-->
-                        <!--                            <select class="form-control" v-model="sections[index].frequency" required>-->
-                        <!--                                <option value="0">None</option>-->
-                        <!--                                <option value="weekly">Week</option>-->
-                        <!--                                <option value="monthly">Month</option>-->
-                        <!--                            </select>-->
-                        <!--                        </div>-->
                     </div>
                     <!--                submitbtn-->
                 </div>

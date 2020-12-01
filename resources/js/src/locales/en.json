@@ -142,7 +142,7 @@
         "price": "Estimated price per session",
         "currency": "Currency",
         "priceHelp": "Your estimated total earnings for the course will depend on your estimated price, number of sessions and students enrolled.",
-        "note": "Note: When the number of sessions exceed 6, your sixth session will be free student enrolled.",
+        "note": "Note: When the number of sessions exceed 5, your sixth session will be free student enrolled.",
         "students": "Number of authorized students per session (max 50)",
         "sharing": "Do you allow the sharing of your course?",
         "authorised": "Instantavite or the community can share",
@@ -166,7 +166,9 @@
         "is_free": "Free course",
         "teaching_note": "Teaching sessions start on Monday January 4, 2021.",
         "thank_msg": "Your course was published successfully",
-        "update_msg": "Your course was updated successfully"
+        "update_msg": "Your course was updated successfully",
+        "description": "Description",
+        "select_time": "Select date and time"
     },
     "auth": {
         "signIn": "Sign in",
