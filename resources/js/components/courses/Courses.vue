@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-md-10 courses" v-if="!loading">
                         <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
-                        <div class="text-center list-pagination">
+                        <div class="text-center list-pagination" v-if="!isEmpty(allCourses.data)">
                             <el-pagination
                                 :page-size="5"
                                 :page-count="allCourses.total_pages"
