@@ -12,8 +12,8 @@
                   borderRadius: '20px'
                 }"></div>
                 <div class="col-md-6">
+                    <strong>{{$t('courses.categorie')}}: </strong> {{lang == "en" ? course.sub_category.category.name_en : course.sub_category.category.name_fr}} <br>
                     <strong>{{$t('course.sessions')}}: </strong> {{course.sections.length}} <br>
-                    <strong>{{$t('course.duration')}}: </strong> {{course.estimated_duration}} <br>
                     <strong>{{$t('course.lang')}}: </strong> {{course.language}} <br>
                     <strong>{{$t('course.description')}}: </strong> {{course.short_description}} <br>
                 </div>
@@ -135,7 +135,7 @@
         |--------------------------------------------------------------------------
         */
         computed: {
-            ...mapGetters(["isLoggedIn", "loggedInUser"])
+            ...mapGetters(["isLoggedIn", "loggedInUser", "lang"])
         },
 
     };

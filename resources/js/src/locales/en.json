@@ -101,13 +101,14 @@
         "sessionsPer": "Sessions per course",
         "all": "All",
         "slug": "Visit the details of available courses.",
-        "empty_course": "You have no course yet"
+        "empty_course": "You have no course yet",
+        "categorie": "Category"
     },
     "course": {
         "session": "Session",
         "sessions": "Number of Sessions",
-        "duration": "Duration per Session",
-        "lang": "Language",
+        "duration": "Session estimated duration",
+        "lang": "Language of teaching",
         "price": "Price per session",
         "description": "Description",
         "enroll": "Enroll to this Course",

@@ -96,19 +96,20 @@
     "courses": {
         "hero": "TOUS LES COURS QUE NOUS OFFRONS",
         "title": "INSCRIVEZ-VOUS À UN NOUVEAU COURS AUJOURD'HUI",
-        "category": "Categorie",
+        "category": "Category",
         "price": "Prix",
         "courseLang": "Language du cours",
         "sessionsPer": "Sessions par cours",
         "all": "Tous",
         "slug": "Visitez les détails des cours disponibles.",
-        "empty_course": "Vous n'avez pas encore de cours"
+        "empty_course": "Vous n'avez pas encore de cours",
+        "categorie": "Catégorie"
     },
     "course": {
         "session": "Séance",
         "sessions": "Nombre de séances",
-        "duration": "Durée par session",
-        "lang": "Language",
+        "duration": "Durée de la séance",
+        "lang": "Langue d'enseignement",
         "price": "Prix par séance",
         "description": "Description",
         "enroll": "Inscrire à ce cours",

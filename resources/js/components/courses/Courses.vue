@@ -161,8 +161,8 @@
                 filter: {
                     price: 1000,
                     categ: [],
-                    lang: '',
-                    section: ''
+                    lang: [],
+                    section: []
                 },
                 pageLoading: false
             }
