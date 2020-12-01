@@ -67,13 +67,13 @@ class Course extends Model
 
     public function scopeInCategory(Builder $query, $id): Builder
     {
-        return $query->with('subCategory.category', 'sections')->whereIn('sub_category_id', Category::find($id)->subCategories()->get('id'))->get();
+        return $query->with('subCategory.category', 'sections')->whereIn('sub_category_id', Category::find($id)->subCategories()->get('id'));
     }
 
     public function scopeSectionCount(Builder $query, $count): Builder
     {
         //info($query->with('subCategory.category', 'sections')->withCount('sections')->having('sections_count', '=', $count)->get());
-        return $query->with('subCategory.category', 'sections')->withCount('sections')->where('sections_count', '=', $count)->get();
+        return $query->with('subCategory.category', 'sections')->having('sections_count', '=', $count);
     }
 
 }

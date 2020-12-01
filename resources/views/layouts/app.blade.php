@@ -21,6 +21,9 @@
 </head>
 
 <body>
+    <noscript>
+      <strong>We're sorry but Instantaclasse doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
     <div id="app" style="background-color: #fff">
         <main>
             @yield('content')

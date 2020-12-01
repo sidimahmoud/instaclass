@@ -88,13 +88,13 @@
                     <h4 class="text-center my-2 text-white text-uppercase">
                         {{$t('countDown.user_course_count')}}
                     </h4>
-                    <div class="" v-if="upcomingClasses.length > 0 ">
+                    <div class="" v-if="upcomingClasses.length > 0 && !isEmpty(upcomingClasses[0].course_file)">
                         <Count-down
-                            :year="upcomingClasses[0].startDate.slice(0, 4)"
-                            :month="upcomingClasses[0].startDate.slice(5, 7)-1"
-                            :day="upcomingClasses[0].startDate.slice(8, 10)"
-                            :hour="upcomingClasses[0].startDate.slice(11, 13)"
-                            :minute="upcomingClasses[0].startDate.slice(14, 16)"
+                            :year="upcomingClasses[0].course_file.startDate.slice(0, 4)"
+                            :month="upcomingClasses[0].course_file.startDate.slice(5, 7)-1"
+                            :day="upcomingClasses[0].course_file.startDate.slice(8, 10)"
+                            :hour="upcomingClasses[0].course_file.startDate.slice(11, 13)"
+                            :minute="upcomingClasses[0].course_file.startDate.slice(14, 16)"
                             :second="0"
                         />
                     </div>
@@ -154,7 +154,7 @@
                             </div>
                         </div>
                         <div class="tab-pane fade show" id="recording-courses">
-                            No recordings added yet
+                            {{$t('profile.no_recording')}}
                         </div>
 
                         <!-- <div class="tab-pane fade show" id="receipts">

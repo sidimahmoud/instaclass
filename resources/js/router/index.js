@@ -114,7 +114,7 @@ const routes = [
         component: CategoryCourses,
         meta: {
             requiresAuth: false,
-            title: 'Courses'
+            title: 'Categorie Courses'
         }
     },
     {

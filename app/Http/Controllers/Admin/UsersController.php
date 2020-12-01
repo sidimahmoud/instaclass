@@ -213,7 +213,6 @@ class UsersController extends Controller
             $user->image = '/uploads/profiles/' . $file_name;
         } */
         if(!empty($request["image"])) {
-            info($request["image"]);
             $user->image = $request["image"];
         }
         $user->about = $request["about"];

@@ -225,7 +225,7 @@
         "no_video_yet": "Un lien vers le cours sera disponible 15 minutes avant le début du cours",
         "addImg": "Ajouter votre photo ou une image",
         "phone": "Telephone (Optionnel)",
-        "mail": "Email (Sera utilisé pour communiquer avec vous)",
+        "mail": "(Sera utilisé pour communiquer avec vous)",
         "languages": "langues parlées",
         "about": "A propos de moi",
         "save": "Enregistrer",
@@ -255,11 +255,12 @@
         "timer_course_start": "VOTRE COURS COMMENCERA DANS",
         "about_help": "sera publié sous vos cours",
         "empty_ratings": "Vos évaluations apparaitront ici.",
-        "notify_video": "Vidéo sera disponible 20 minutes avant le cours"
+        "notify_video": "La vidéo sera disponible 20 minutes avant le cours",
+        "no_recording": "Aucun enregistrement ajouté pour le moment"
     },
     "countDown": {
         "enabled": "Minuterie activée lorsque des étudiants sont inscrits à votre cours",
-        "empty_course": "Vos cours crées apparaîtront ici.",
+        "empty_course": "Lorsque vous créerez des cours, les informations qui y sont associées apparaîtront ici.",
         "beReady": "Soyez prêts",
         "enrollments": "Inscriptions",
         "noRatings": "Pas encore d'evaluations",
@@ -283,7 +284,7 @@
     "gst": "TPS",
     "tvq": "TVQ",
     "hello": "Bonjour",
-    "complete_purchase": "Complèter l'achat",
+    "complete_purchase": "Compléter l'achat",
     "selected_session": "Sections sélectionné du cours",
     "card_information": "Informations de la carte bancaire",
     "checkout": "Check-out",
@@ -310,9 +311,11 @@
     "new_course": "Nouveau cours",
     "payment" :{
         "note": "Note: Chaque paiement est effectué 1 semaine après l'enseignement d'une session.",
-        "void_recived": "Merci! Nous avons reçu votre spécimen de chèque. Vous pouvez le changer à tout moment."
+        "void_recived": "Merci! Nous avons reçu votre spécimen de chèque. Vous pouvez le changer à tout moment.",
+        "no_payment_msg":"Vos reçus apparaîtront ici."
     },
-    "select_sessions": "Sélectionnez les sessions",
+    "select_sessions": "Veiller sélectionnez les sessions",
     "subscribed_successfully": "Abonné avec succès",
-    "already_subscriped": "Déjà abonné"
+    "already_subscriped": "Déjà abonné",
+    "carachtar": "caractère"
 }

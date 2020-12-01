@@ -35,13 +35,13 @@
                     </div>
                     <!--Lang-->
                     <div class="col-md-4">
-                        <div class="form-group" v-if="course.language ==='FR' || course.language ==='EN'">
+                        <div class="form-group" v-if="course.language ==='French' || course.language ==='English' || course.language ==='Spanish'">
                             <label for="exampleFormControlSelect1">{{$t('newCourse.lang')}}</label>
                             <select class="form-control" id="exampleFormControlSelect1" required
                                     v-model="course.language">
-                                <option :value="$t('demande.languages.fr')">{{$t('demande.languages.fr')}}</option>
-                                <option :value="$t('demande.languages.en')">{{$t('demande.languages.en')}}</option>
-                                <option :value="$t('demande.languages.es')">{{$t('demande.languages.es')}}</option>
+                                <option value="French">{{$t('demande.languages.fr')}}</option>
+                                <option value="English">{{$t('demande.languages.en')}}</option>
+                                <option value="Spanish">{{$t('demande.languages.es')}}</option>
                                 <option value="">{{$t('demande.languages.other')}}</option>
                             </select>
                         </div>
@@ -135,7 +135,7 @@
                     <!--Summary-->
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="desc">{{$t('newCourse.summaryHelp')}}</label>
+                            <label for="desc">{{$t('newCourse.summaryHelp')}} (maximum: 150 {{$t('carachtar')}})</label>
                             <textarea class="form-control" v-model="course.short_description" maxlength="150" required></textarea>
                         </div>
                     </div>
@@ -371,7 +371,7 @@
                 step: 1,
                 course: {
                     sub_category_id: 1,
-                    language: 'EN',
+                    language: 'English',
                     price: '0',
                     currency: 'cad',
                     estimated_duration: '',

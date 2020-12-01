@@ -76,7 +76,7 @@ class AuthController extends Controller
         $user->last_name = $request['last_name'];
         $user->email = $request['email'];
         $user->password = Hash::make($request['password']);
-        $user->image = $request['image'];
+        $user->image = "https://firebasestorage.googleapis.com/v0/b/instaclass-9f27f.appspot.com/o/profiles%2Fuserprofiile.jpg?alt=media&token=f5bb81d3-ffbf-4cc5-8817-1d38e69ad2ce";
         $user->about = $request['about'];
         $user->save();
         if ($user) {
@@ -176,12 +176,13 @@ class AuthController extends Controller
     private function createSocialUser(array $data)
     {
         $user = new User();
-        $name = $data['name'];
-        $fname = $data['name'];
-        $lname = $data['name'];
+        $name = explode(" ", $data['name']);
+        $fname = $name[0];
+        $lname = $name[1];
         $user->first_name = $fname;
         $user->last_name = $lname;
         $user->email = $data['email'];
+        $user->image = "https://firebasestorage.googleapis.com/v0/b/instaclass-9f27f.appspot.com/o/profiles%2Fuserprofiile.jpg?alt=media&token=f5bb81d3-ffbf-4cc5-8817-1d38e69ad2ce";
         $user->password = Hash::make(Str::random(12));
         $user->email_verified_at = now();
         $user->save();

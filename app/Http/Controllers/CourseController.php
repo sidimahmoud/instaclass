@@ -35,7 +35,7 @@ class CourseController extends Controller
         if (request()->has('all')) {
             $courses = $this->courseRepository->all();
         } else {
-            $courses = $this->courseRepository->paginate(1);
+            $courses = $this->courseRepository->paginate();
         }
         return response()->json($courses, 201);
     }

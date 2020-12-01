@@ -1,5 +1,8 @@
 <template>
-    <div>
+    <div 
+        v-loading="pageLoading"
+        element-loading-text="Loading..."
+        element-loading-spinner="el-icon-loading">
         <section class="hero pt-5">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
@@ -24,7 +27,7 @@
                             </p>
                             <div class="form-group">
                                 <select multiple class="form-control" id="exampleFormControlSelect2"
-                                        @change="handleCategorie">
+                                        @change="handleCategorie" v-model="filter.categ">
                                     <option value="">{{$t('courses.all')}}</option>
                                     <option v-for="c in allCategories" :value="c.id" v-bind:key="c.id">{{c.name_en}}
                                     </option>
@@ -36,7 +39,7 @@
                                 <strong>{{$t('courses.price')}}</strong>
                             </p>
                             <label for="price">$0</label>
-                            <input type="range" id="price" name="price" class="mx-auto"
+                            <input type="range" id="price" v-model="filter.price" name="price" class="mx-auto"
                                    min="0" max="1000" value="1000" style="width: 60%" @change="price">
                             <label for="price">${{filter.price}}</label>
                         </div>
@@ -45,11 +48,11 @@
                                 <strong>{{$t('courses.courseLang')}}</strong>
                             </p>
                             <div class="form-group">
-                                <select multiple class="form-control" id="lang" @change="handleLang">
+                                <select multiple class="form-control" v-model="filter.lang" id="lang" @change="handleLang">
                                     <option value="">{{$t('courses.all')}}</option>
-                                    <option value="EN">ENGLISH</option>
-                                    <option value="FR">FRENCH</option>
-                                    <option value="ES">SPANISH</option>
+                                    <option value="French">{{$t('demande.languages.fr')}}</option>
+                                    <option value="English">{{$t('demande.languages.en')}}</option>
+                                    <option value="Spanish">{{$t('demande.languages.es')}}</option>
                                     <option value="">OTHER</option>
                                 </select>
                             </div>
@@ -59,7 +62,7 @@
                                 <strong>{{$t('courses.sessionsPer')}}</strong>
                             </p>
                             <div class="form-group">
-                                <select multiple class="form-control" id="sessions" @change="handleSectionCount">
+                                <select multiple class="form-control" v-model="filter.section" id="sessions" @change="handleSectionCount">
                                     <option value="">{{$t('courses.all')}}</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -81,9 +84,19 @@
                     </div>
                     <div class="col-md-10 courses" v-if="!loading">
                         <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
+                        <div class="text-center list-pagination">
+                            <el-pagination
+                                :page-size="5"
+                                :page-count="allCourses.total_pages"
+                                layout="prev, pager, next"
+                                :total="allCourses.total"
+                                :current-page="allCourses.current_page"
+                                @current-change="reloadList">
+                            </el-pagination>
+                        </div>
                     </div>
-                    <nav aria-label="Page navigation example"
-                         v-if="!isEmpty(allCourses.data) && allCourses.data.length>16">
+                    <!-- <nav aria-label="Page navigation example"
+                         v-if="!isEmpty(allCourses.data) && allCourses.data.length>5">
                         <ul class="pagination justify-content-end">
                             <li :class="['page-item', {'disabled':!allCourses.prev_page_url}]">
                                 <a class="page-link " href="#" @click="first">
@@ -110,7 +123,7 @@
                             </li>
                         </ul>
                     </nav>
-
+ -->
                 </div>
             </div>
 
@@ -149,8 +162,9 @@
                     price: 1000,
                     categ: '',
                     lang: '',
-                    sections: ''
-                }
+                    section: ''
+                },
+                pageLoading: false
             }
 
         },// End of Component > data
@@ -188,6 +202,20 @@
                 console.log(n);
                 this.curPage = n;
                 this.fetchCourses();
+            },
+            reloadList(n){
+                this.pageLoading = true
+                let payload = {
+                    'page': n,
+                    'filter[section_count]': this.filter.section,
+                    'filter[price_less_than]': this.filter.price,
+                    'filter[sub_category_id]': this.filter.categ,
+                    'filter[language]': this.filter.lang
+                }
+                this.fetchCourses(payload);
+                setTimeout(() => {
+                    this.pageLoading = false
+                },500)  
             },
 
             // filter methods

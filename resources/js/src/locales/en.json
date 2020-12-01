@@ -110,8 +110,8 @@
         "lang": "Language",
         "price": "Price per session",
         "description": "Description",
-        "enroll": "Enroll in this Course",
-        "enrollInSession": "Enroll in this session only",
+        "enroll": "Enroll to this Course",
+        "enrollInSession": "Enroll to this session only",
         "learnMore": "Learn more about this course",
         "category": "Category",
         "subCat": "Sub-category",
@@ -119,7 +119,7 @@
         "students": "Students enrolled",
         "scheduledAt": "Scheduled at",
         "enroll_to_all": "Enroll to all sessions",
-        "enroll_to_course": "Enroll for this course",
+        "enroll_to_course": "Enroll to this course",
         "course_free": "This course is free",
         "no_payment": "no payment required",
         "save_course": "Save course",
@@ -224,7 +224,7 @@
         "no_video_yet": "A link to the course will be available 15 minutes before the begenning of the course.",
         "addImg": "Add your picture or an image",
         "phone": "Phone (optional)",
-        "mail": "Email (will be used to communicate with you)",
+        "mail": "(will be used to communicate with you)",
         "languages": "Spoken languages",
         "about": "About Me",
         "save": "Save",
@@ -254,11 +254,12 @@
         "timer_course_start": "Your course will start in",
         "about_help": "will be published under your courses",
         "empty_ratings": "Your ratings will appears here.",
-        "notify_video": "Video will be available 20 minutes before class"
+        "notify_video": "The video will be available 20 minutes before class",
+        "no_recording": "No recordings added yet"
     },
     "countDown": {
         "enabled": "Timer enabled when you have students enrolled to your course",
-        "empty_course": "Your created courses will appear here.",
+        "empty_course": "When you will create courses, the information associated with them will appear here.",
         "beReady": "Be ready",
         "live_courses": "My Live course",
         "recordings": "My Recordings",
@@ -307,9 +308,11 @@
     "new_course": "New Course",
     "payment" :{
         "note": "Note: Each payment is made 1 week after the teaching of a session.",
-        "void_recived": "Thank you! We received your void. You can change it anytime."
+        "void_recived": "Thank you! We received your void. You can change it anytime.",
+        "no_payment_msg":"Your receipts will appear here."
     },
-    "select_sessions": "Select Sessions",
+    "select_sessions": "Please select Sessions",
     "subscribed_successfully": "Subscribed successfully",
-    "already_subscriped": "Already subscribed"
+    "already_subscriped": "Already subscribed",
+    "carachtar": "carachtar"
 }

@@ -16,17 +16,19 @@
         </section>
         <div class="payment-page">
             <div class="mt-4">
-                <h6>{{$t('payment.note')}}</h6>
                 <h4>{{$t('please_add_speciment')}}:</h4> <input type="file" @change="previewImage" accept="image/*" >
                 <a :href="loggedInUser.speciment" target="_blank"><i class="fa fa-eye"></i>{{$t('view_spec')}}</a>
+            </div>
+            <div class="mt-4">
+                <h6>{{$t('payment.note')}}</h6>
             </div>
             <div class="mt-4" v-if="loggedInUser.speciment">
                 <h6>{{$t('payment.void_recived')}}</h6>
             </div>
             
-            <h4 class="mt-4">{{$t('countDown.my_recits')}}</h4>
+            <h4 class="mt-4">{{$t('countDown.my_recits')}}:</h4>
             <div class="mt-4" v-if="allTeacherPayments.length===0">
-                {{$t('no_recipt')}}
+                <h6>{{$t('no_recipt')}}</h6>
             </div>
             <table class="table" v-else>
                 <thead>

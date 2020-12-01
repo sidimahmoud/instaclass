@@ -199,7 +199,7 @@ class BaseRepository implements EloquentRepositoryInterface
     {
         return $this->getQueryBuilderFor(
             $this->getBasicQuery()
-        )->paginate();
+        )->paginate(5);
     }
 
     /**

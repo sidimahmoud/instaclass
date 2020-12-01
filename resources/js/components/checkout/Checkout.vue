@@ -24,13 +24,13 @@
                     <!--Card content-->
                     <div class="my-3">
                         <div class="text-center" v-if="course_price===0">
-                            <h5><strong>{{$t('course.course_free')}}</strong> <small>{{$t('course.no_payment')}}</small></h5>
+                            <h5>{{$t('course.course_free')}} {{$t('course.no_payment')}}</h5>
                             <!-- <p>{{$t('course.no_payment')}}</p> -->
                             <button class="btn btn-primary" @click="enrollForFree">{{$t('complete_purchase')}}</button>
                         </div>
                         <div v-else>
                             <div v-if="!isEmpty(course.course.sections)">
-                                <h4>{{$t('selected_session')}}</h4>
+                                <!-- <h4>{{$t('selected_session')}}</h4> -->
                                 <!-- <el-select v-model="selected" placeholder="Select" multiple @change="changedSelection" style="width:100%">
                                     <el-option
                                         v-for="e in course.course.sections"
@@ -93,7 +93,7 @@
                                 </span>
                             </h6>
                         </div>
-                        <span class="text-muted">${{course_price}}</span>
+                        <span class="text-muted">${{Number(course_price) * sections_count}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between lh-condensed" v-if="sections_count >= 6">
                         <div>

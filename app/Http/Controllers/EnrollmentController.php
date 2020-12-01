@@ -128,7 +128,9 @@ class EnrollmentController extends Controller
         } */
         $teacher = $course->user_id;
         $user = User::find($teacher);
-        $user->notify(new NewSubscription("Number: " . $course->id));
+        if(!is_null($user)){
+            $user->notify(new NewSubscription("Number: " . $course->id));
+        }
         return response()->json("Enrolled successfully");
     }
 
@@ -136,10 +138,15 @@ class EnrollmentController extends Controller
     {
         $user_id = $request->user()->id;
         $s = DB::select("select * from course_files where id in (select course_file_id from enrollments where user_id = $user_id) UNION SELECT * FROM course_files where course_id in (select course_id enrollments )");
-        $sections = CourseFile::where("startDate", ">", Carbon::now())
-//            ->where("course.user_id", $request->user()->id)
-            ->orderBy('startDate', 'ASC')->get();
-        return response()->json($s);
+        $sections = Enrollment::whereHas('user', function ($query) use ($user_id) {
+                $query->where('id', $user_id);
+            })
+            ->whereHas('CourseFile', function ($query) {
+                $query->orderBy('startDate', 'ASC');
+            })
+            ->with('CourseFile')
+            ->get();
+        return response()->json($sections);
     }
 
     /**

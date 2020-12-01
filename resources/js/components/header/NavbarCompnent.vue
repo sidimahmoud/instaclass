@@ -123,7 +123,7 @@
                         <!--                        Lang-->
 
 
-                        <span class="nav-item d-none font-weight-bold d-sm-flex" v-if="isLoggedIn">{{$t('hello')}} {{loggedInUser.first_name}}</span>
+                        <span class="nav-item d-sm-flex" v-if="isLoggedIn">{{$t('hello')}} {{getFistName(loggedInUser.first_name)}}</span>
 <!--                        <span class="nav-item d-none d-sm-flex " >{{$t('hello')}}</span>-->
                         <li class="btn ml-md-5 text-primary" data-toggle="collapse"
                             data-target=".navbar-collapse.show" v-if="locale==='fr'" @click="en">
@@ -146,6 +146,11 @@
 <script>
     import {mapGetters, mapActions} from 'vuex'
     import i18n from "../../src/i18n";
+    import $ from 'jquery';
+
+    $('.navbar-nav a').on('click', function(){
+        $('.navbar-collapse').click(); //bootstrap 4.x
+    });
 
     export default {
         name: 'AppNav',
@@ -191,6 +196,9 @@
             },
             PersonalInfo() {
                 this.$router.push({name: 'TeacherInfo'})
+            },
+            getFistName(str) {
+             return str.split(" ")[0];
             }
         },
         created() {

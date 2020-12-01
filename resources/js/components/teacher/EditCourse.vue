@@ -29,13 +29,13 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group" v-if="course.course.language ==='FR'|| course.course.language ==='EN'">
+                            <div class="form-group" v-if="course.course.language ==='French' || course.course.language ==='English' || course.course.language ==='Spanish'">
                                 <label for="exampleFormControlSelect1">{{$t('newCourse.lang')}}?</label>
                                 <select class="form-control" id="exampleFormControlSelect1" required
-                                        v-model="course.language">
-                                    <option value="FR">{{$t('demande.languages.fr')}}</option>
-                                    <option value="EN">{{$t('demande.languages.en')}}</option>
-                                    <option value="ES">{{$t('demande.languages.es')}}</option>
+                                        v-model="course.course.language">
+                                    <option value="French">{{$t('demande.languages.fr')}}</option>
+                                    <option value="English">{{$t('demande.languages.en')}}</option>
+                                    <option value="Spanish">{{$t('demande.languages.es')}}</option>
                                     <option value="">{{$t('demande.languages.other')}}</option>
                                 </select>
                             </div>
@@ -103,8 +103,8 @@
                                 <!--Summary-->
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="desc">{{$t('newCourse.summaryHelp')}}</label>
-                                        <textarea class="form-control" v-model="course.course.short_description" required></textarea>
+                                        <label for="desc">{{$t('newCourse.summaryHelp')}} (maximum: 150 {{$t('carachtar')}})</label>
+                                        <textarea class="form-control" v-model="course.course.short_description" maxlength="150" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +153,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary btn-block" type="submit">{{$t('course.save_course')}}</button>
+                    <button class="btn btn-primary btn-block" type="submit">{{$t('course.edit_course')}}</button>
                 </form>
             </div>
         </div>

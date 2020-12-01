@@ -1,5 +1,6 @@
 <template>
     <div class="container mt-5 pt-5 bootstrap snippet ">
+        <beat-loader :loading="pageLoader" color="#004d4d" class="center-screen"></beat-loader>
         <div class="text-center"><h1>{{userProfile.first_name}} {{userProfile.last_name}}</h1></div>
         <div class="row">
             <div class="col-sm-3"><!--left col-->
@@ -47,10 +48,10 @@
                             <div class="form-group">
 
                                 <div class="col-xs-6">
-                                    <label for="email">{{$t('profile.mail')}}</label>
+                                    <label for="email">Email <small>{{$t('profile.mail')}}</small></label>
                                     <input type="email" class="form-control" name="email" id="email"
-                                           placeholder="you@email.com" title="enter your email."
-                                           v-model="form.email">
+                                        placeholder="you@email.com" title="enter your email."
+                                        v-model="form.email" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -63,8 +64,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    <label for="about">{{$t('profile.about')}} <small>({{$t('profile.about_help')}})</small></label>
-                                    <textarea name="" id="about" class="form-control" v-model="form.about" maxlength="100"></textarea>
+                                    <label for="about">{{$t('profile.about')}} (maximum: 150 {{$t('carachtar')}})</label>
+                                    <textarea name="" id="about" class="form-control" v-model="form.about" maxlength="150" :placeholder="$t('profile.about_help')"></textarea>
                                 </div>
                             </div>
 
@@ -99,9 +100,18 @@
     import storage from 'firebase/storage';
     import firebase from "firebase";
     import {isEmpty} from "../../helpers/common";
+    import BeatLoader from 'vue-spinner/src/BeatLoader.vue';
 
     export default {
         name: "EditProfile",
+        /*
+        |--------------------------------------------------------------------------
+        | Component > components
+        |--------------------------------------------------------------------------
+        */
+        components: {
+            BeatLoader
+        },
         /*
         |--------------------------------------------------------------------------
         | Component > data
@@ -121,6 +131,7 @@
                 imageData: null,
                 picture: null,
                 uploadValue: 0,
+                pageLoader: false
             };
         },
         /*
@@ -131,8 +142,9 @@
         methods: {
             updateProfile() {
                 const _this = this
+                this.pageLoader = true
                 this.picture=null;
-                if(!isEmpty(this.imageData.name)) {
+                if(!isEmpty(this.imageData) && !isEmpty(this.imageData.name)) {
                     const storageRef=firebase.storage().ref(`profiles/${this.imageData.name}`).put(this.imageData);
                     storageRef.on(`state_changed`,snapshot=>{
                             this.uploadValue = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
@@ -155,6 +167,7 @@
                                         this.$t('profile.updated'),
                                         'success'
                                     )
+                                    this.pageLoader = false
                                     this.$store.dispatch("fetchProfile")
                                 })
                                 .catch(err => console.log(err.response));
@@ -174,21 +187,14 @@
                     "about" : this.form.about,
                     "languages" : this.form.languages
                 }
-                //const imagefile = document.querySelector('#img');
-                /* formData.append("first_name", document.querySelector('#first_name').value);
-                formData.append("last_name", document.querySelector('#last_name').value);
-                formData.append("phone", document.querySelector('#phone').value);
-                formData.append("email", document.querySelector('#email').value);
-                formData.append("about", document.querySelector('#about').value);
-                formData.append("languages", document.querySelector('#lang').value);
-                formData.append("_method", "put"); */
-                console.log(payload)
+
                 axios.put('/user/' + this.userProfile.id, payload).then(res => {
                     this.$swal.fire(
                         'Ok!',
                         this.$t('profile.updated'),
                         'success'
                     )
+                    this.pageLoader = false
                     this.$store.dispatch("fetchProfile")
                 })
                 .catch(err => console.log(err.response));
@@ -220,3 +226,16 @@
         }
     }
 </script>
+
+<style scoped>
+.center-screen {
+    position:fixed; /* change this to fixed */
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+    z-index: 1000px;
+}
+</style>

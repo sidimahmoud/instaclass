@@ -37,16 +37,16 @@ const actions = {
         })
     },
     async fetchUpcomingClasses({commit, dispatch}) {
+        await axios.get('/upcoming-classes').then(response => {
+            commit('setUpcomingClasses', response.data);
+        })
+    },
+    async fetchReceipts({commit, dispatch}) {
         await axios.get('/my-receipts').then(response => {
             commit('setReceipts', response.data);
         }).catch(err => {
             err.response.status === 401 ? dispatch('logout') : "";
             location.reload()
-        })
-    },
-    async fetchReceipts({commit, dispatch}) {
-        await axios.get('/upcoming-classes').then(response => {
-            commit('setUpcomingClasses', response.data);
         })
     },
     async fetchTeacherCourses({commit}, id) {

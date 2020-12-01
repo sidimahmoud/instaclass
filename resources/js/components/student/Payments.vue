@@ -15,10 +15,10 @@
                     <div class="tab-content my-1">
                         <h4>{{$t('profile.payments')}}</h4>
                         <div id="receipts">
-                            <h3 class="text-center" v-if="studentPayments.length===0">Your receipts will appear here.</h3>
+                            <h3 class="text-center" v-if="studentPayments.length===0">{{$t('payment.no_payment_msg')}}</h3>
                             <div class="accordion" id="accordionExample">
                                 <div class="card my-2" v-for="p in studentPayments" :key="p.id">
-                                    <div class="card-header" :id="'payment'+p.id">
+                                    <!-- <div class="card-header" :id="'payment'+p.id">
                                         <h2 class="mb-0">
                                             <p
                                                 class="btn btn-link font-weight-bolder rounded"
@@ -32,7 +32,7 @@
                                                 {{p.created_at.slice(11,16)}}, {{p.object}}
                                             </p>
                                         </h2>
-                                    </div>
+                                    </div> -->
                                     <div
                                         :id="'collapse'+p.id"
                                         class="collapse"
