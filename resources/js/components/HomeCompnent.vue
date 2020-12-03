@@ -354,7 +354,7 @@
             display: block;
             color: #fff;
             background-color: blue;
-            width: 60px;
+            width: 65px;
             height: 25px;
             text-align: center;
             border-radius: 5px;
