@@ -101,6 +101,16 @@ class EnrollmentController extends Controller
 
     public function EnrollInAllSections(Request $request)
     {
+        \Stripe\Stripe::setApiKey(config('payment.key'));
+
+        $token = $request['token'];
+        $charge = \Stripe\Charge::create([
+            'amount' => $request['course_price'] * 100,
+            'currency' => 'cad',
+            'description' => 'Payment instaclass',
+            'source' => $token,
+        ]);
+
         $course = Course::find($request["course_id"])->first();
 
         $sections = $course->sections;
@@ -121,11 +131,7 @@ class EnrollmentController extends Controller
         $payment->method = $request['paymentMethod'];
         $payment->object = $request['course_name'];
         $payment->save();
-        /* foreach ($sections as $section) {
-            $startDate = str_replace("T", " ", $section->startDate);
-            $when = Carbon::parse($startDate)->subDays(1);
-            //$request->user()->notify((new OneDayBeforeClass($startDate))->delay($when)); what is this ??????
-        } */
+        
         $teacher = $course->user_id;
         $user = User::find($teacher);
         if(!is_null($user)){

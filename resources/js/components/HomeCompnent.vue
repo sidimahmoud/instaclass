@@ -42,7 +42,7 @@
             </div>
             <div class="mb-0 p-4">
                 <div class="container">
-                    <div class="row align-items-center">
+                    <div class="row">
                         <div class="col-md-6 text-white">
                             <h3>
                                 {{$t('title2.teachers.title')}}:
