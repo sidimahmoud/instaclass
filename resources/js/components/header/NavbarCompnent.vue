@@ -1,8 +1,12 @@
 <template>
-    <div class="px-5">
-        <nav id= "nav-main" class="navbar navbar-expand-lg navbar-light bg-light py-0 fixed-top">
+    <div>
+        <div class="image-banner">
+            <div class="image-banner-image">
+                <span class="image-banner-image-content"><strong>{{$t('banne_txt')}}</strong></span>
+            </div>
+        </div>
+        <nav id= "nav-main" class="navbar navbar-expand-lg navbar-light bg-light py-0"><!-- fixed-top -->
             <div class="container rounded-bottom">
-                <!-- <div class="annonce"></div><br/> -->
                 <a href="/" class="navbar-brand">
                     <img src="../../assets/logo.png" alt="" width="60px">
                 </a>
@@ -250,20 +254,54 @@
         padding: 20px;
     }
 
-    .annonce {
-        width: 100%;
+    .menu-marign {
+        margin-top: 70px;
+    }
+
+    .image-banner {
+       // margin-top: 50px;
+        background-color: #fff;
         height: 70px;
-        background-image: url('../../assets/images/banniere.jpg');
-        border-radius: 0 0 0 0;
-        background-repeat: no-repeat;
-        background-size: cover;
-        @media only screen and (max-width: 600px) {
-            border-radius: 0;
+
+        &-image {
+            width: 100%;
+            height: 70px;
+            background-repeat: no-repeat;
+            background-image: url('../../assets/images/modele1.png');
+            background-size: cover;
+
+            &-content {
+                float: right;
+                padding-top: 20px;
+                padding-right: 50px;
+                width: 50%;
+            }
         }
     }
 
-    .menu-marign {
-        margin-top: 70px;
+    @media only screen and (max-width: 700px) {
+        .image-banner {
+       // margin-top: 50px;
+        background-color: #fff;
+        height: 100px;
+
+        &-image {
+            width: 100%;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-image: url('../../assets/images/modele1.png');
+            background-size: cover;
+
+            &-content {
+                float: right;
+                width: 60%;
+                padding-top: 2px;
+                font-size: 12px;
+                padding-right: 2px;
+                color: #fff;
+            }
+        }
+    }
     }
 
 </style>

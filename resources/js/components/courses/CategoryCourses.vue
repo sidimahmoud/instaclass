@@ -15,14 +15,14 @@
                 </div>
             </div>
             <div v-if="!loading">
-                <div class="text-center" v-if="allcategCourses.length===0">
+                <div class="no-course" v-if="allcategCourses.length!=0">
                     <h3>
                         {{$t('noCourses')}}
                     </h3>
                 </div>
-                <template v-else>
+                <!-- <template v-else>
                     <course  v-for="c in allcategCourses" :key="c.id" :course="c"/>
-                </template>
+                </template> -->
             </div>
         </div>
     </div>
@@ -56,6 +56,13 @@
         border-bottom: 15px solid #3081FB;
         color: white;
     }
+
+    .no-course {
+        padding: 50px;
+        margin-bottom: 100px;
+        text-align: center;
+    }
+
     @media (max-width: 600px) {
         .hero {
             background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/all1.jpg') no-repeat center center;
@@ -63,6 +70,13 @@
             background-size: cover;
             border-bottom: 15px solid #3081FB;
             color: white;
+        }
+
+        .no-course {
+            padding: 5px;
+            margin-bottom: 70px;
+            text-align: left;
+            font-size: 12px;
         }
     }
 </style>

@@ -103,7 +103,8 @@
         "all": "Tous",
         "slug": "Visitez les détails des cours disponibles.",
         "empty_course": "Vous n'avez pas encore de cours",
-        "categorie": "Catégorie"
+        "categorie": "Catégorie",
+        "no_courses": "Il n’y a aucun cours pour crée pour l’instant."
     },
     "course": {
         "session": "Séance",
@@ -144,7 +145,7 @@
         "price": "Prix estimé par session",
         "currency": "Devise",
         "priceHelp": "Vos revenus de ce cours dépendront de votre prix, du nombre de sessions et des étudiants inscrits.",
-        "note": "Remarque: lorsque le nombre de séance dépasse 5, votre sixième séance sera gratuit pour les étudiants inscrits.",
+        "note": "Remarque: Si le nombre des séances dépasse 5, la sixième séance sera gratuite pour les étudiants inscrits, à toutes les séances.",
         "students": "Nombre d'étudiants autorisés par session (max 50)",
         "sharing": "Autorisez vous le partage de votre annonce?",
         "authorised": "Instantavite ou la communauté peuvent partager",
@@ -321,5 +322,6 @@
     "select_sessions": "Veiller sélectionnez les sessions",
     "subscribed_successfully": "Abonné avec succès",
     "already_subscriped": "Déjà abonné",
-    "carachtar": "caractère"
+    "carachtar": "caractère",
+    "banne_txt": "BIENVENUE AUX INSTRUCTEURS ET ÉTUDIANTS Créez un cours en tant qu'enseignant(e) ou inscrivez-vous comme étudiant(e), c'est simple et rapide."
 }

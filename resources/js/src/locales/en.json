@@ -102,7 +102,8 @@
         "all": "All",
         "slug": "Visit the details of available courses.",
         "empty_course": "You have no course yet",
-        "categorie": "Category"
+        "categorie": "Category",
+        "no_courses": "There is no course posted yet."
     },
     "course": {
         "session": "Session",
@@ -143,7 +144,7 @@
         "price": "Estimated price per session",
         "currency": "Currency",
         "priceHelp": "Your estimated total earnings for the course will depend on your estimated price, number of sessions and students enrolled.",
-        "note": "Note: When the number of sessions exceed 5, your sixth session will be free student enrolled.",
+        "note": "Note: If the number of sessions exceed 5, the sixth session will be free for student enrolled to all courses.",
         "students": "Number of authorized students per session (max 50)",
         "sharing": "Do you allow the sharing of your course?",
         "authorised": "Instantavite or the community can share",
@@ -318,5 +319,6 @@
     "select_sessions": "Please select Sessions",
     "subscribed_successfully": "Subscribed successfully",
     "already_subscriped": "Already subscribed",
-    "carachtar": "carachtar"
+    "carachtar": "carachtar",
+    "banne_txt": "WELCOME TO INSTRUCTORS AND STUDENTS Create a course as an instructor or enroll as a student, it is quick and easy."
 }

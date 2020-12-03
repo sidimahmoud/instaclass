@@ -1,22 +1,27 @@
 <template>
     <div class="bg-light">
         <div class="hero">
+            <span class="shareBar">
+                <!-- <iframe
+                    src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&appId=223985172274465&width=150&height=150"
+                    width="150" height="150" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                    allowTransparency="true" allow="encrypted-media">
+                </iframe> -->
+                <a 
+                    target="_blank"
+                    :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmondemenagement.ca'"
+                    class="button-web fb-xfbml-parse-ignore">
+                    <img src="../assets/images/fbShare.png" width="120px" height="40px" alt="">
+                </a>
+                <a 
+                    target="_blank"
+                    :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmondemenagement.ca'"
+                    class="button-mobile fb-xfbml-parse-ignore">
+                    <i class="fa fa-facebook-f"></i>
+                </a>
+            </span>
             <div class="jumbotron jumbotron1 mb-0">
-                 <span class=" px-1 py-3 shareBar">
-                    <iframe
-                        src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&appId=223985172274465&width=150&height=120"
-                        width="150" height="120" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-                        allowTransparency="true" allow="encrypted-media">
-                    </iframe>
-                    <!-- <p>
-                        <a href="https://www.instagram.com/instantaclasse/" target="_blank">
-                            <img
-                                src="../assets/images/insta.png"
-                                alt="insta" class="rounded"
-                                width="93px" height="28">
-                        </a>
-                    </p> -->
-                </span>
+                
                 <div class="container  align-items-center mt-md-2 h-100">
                     <div class="row justify-content-around align-items-center h-100">
                         <div class="col-md-2 d-none d-md-block"></div>
@@ -279,11 +284,13 @@
     }
 
     .shareBar {
-        top: 200px;
+        top: 300px;
+        height: 150px;
         position: absolute;
         border-radius: 30px;
         @media only screen and (max-width: 600px) {
-            top: 150px;
+            top: 250px;
+            width: 80px;
         }
     }
 
@@ -331,10 +338,31 @@
         }
     }
 
+    .button-mobile  {
+        display: none;
+    }
+    .button-web {
+        display: block;
+    }
+
     @media (max-width: 500px) {
         .text-header {
             display: none;
         }
+
+        .button-mobile { 
+            display: block;
+            color: #fff;
+            background-color: blue;
+            width: 30px;
+            height: 25px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .button-web {
+            display: none;
+        }
+
     }
 
 </style>

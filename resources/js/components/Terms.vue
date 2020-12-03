@@ -1,7 +1,7 @@
 <template>
-    <div class=" container mt-5 pt-3">
+    <div class="container mt-5 pt-3">
         <div v-if="lang==='en'">
-            <h3 class="text-center font-weight-bold" v-if="title">
+            <h3 class="terms-header" v-if="title">
                 TERMS AND CONDITIONS FOR THE INSTANTACLASSE WEBSITE
             </h3>
             <p>
@@ -537,7 +537,7 @@
         </div>
 
         <div v-if="lang==='fr'">
-            <h3 class="text-center font-weight-bold" v-if="title">
+            <h3 class="terms-header" v-if="title">
                 Termes et conditions pour l’utilisation du site web d’INSTANTACLASSE
             </h3>
             <p>
@@ -1073,5 +1073,19 @@
 </script>
 
 <style scoped>
-
+.terms-header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 600;
+}
+@media (max-width: 600px) {
+    .terms-header {
+        text-align: left;
+        width: 100%;
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: 800;
+    }
+}
 </style>

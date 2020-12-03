@@ -164,16 +164,14 @@
                         <div class="row border m-2 ">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="section1Title">Session {{index+1}} {{$t('newCourse.give')}}</label>
+                                    <label for="section1Title">{{$t('newCourse.give')}}:</label>
                                     <input type="text" class="form-control" id="section1Title"
                                         placeholder="Title" name="title[]" required v-model="sections[index].title">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="short_desc">{{$t('newCourse.session')}} {{index+1}}
-                                        {{$t('newCourse.desc')}}
-                                    </label>
+                                    <label for="short_desc">{{$t('newCourse.desc')}}:</label>
                                     <textarea type="text" class="form-control" id="short_desc"
                                             :placeholder="$t('newCourse.description')" name="desc[]" required
                                             v-model="sections[index].description"></textarea>
@@ -181,7 +179,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label>{{$t('newCourse.session')}} {{index+1}} {{$t('newCourse.available')}}:</label>
+                                    <label>{{$t('newCourse.available')}}:</label>
                                     <!-- <input type="datetime-local" name="date[]" class="form-control" required
                                         v-model="sections[index].stratDate"> -->
                                     <el-date-picker

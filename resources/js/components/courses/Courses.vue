@@ -14,7 +14,7 @@
         <div>
             <div class="text-center my-3">
                 <h5><strong>{{$t('courses.title')}}</strong></h5>
-                <p>
+                <p v-if="!isEmpty(allCourses.data)">
                     {{$t('courses.slug')}}
                 </p>
             </div>
@@ -83,54 +83,29 @@
                         </div>
                     </div>
                     <div class="col-md-10 courses" v-if="!loading">
-                        <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
-                        <div class="text-center list-pagination" v-if="!isEmpty(allCourses.data)">
-                            <el-pagination
-                                :page-size="5"
-                                :page-count="allCourses.total_pages"
-                                layout="prev, pager, next"
-                                :total="allCourses.total"
-                                :current-page="allCourses.current_page"
-                                @current-change="reloadList">
-                            </el-pagination>
-                        </div>
+                        <template v-if="!isEmpty(allCourses.data)">
+                            <course v-for="c in allCourses.data" :key="c.id" :course="c"/>
+                            <div class="text-center list-pagination" v-if="!isEmpty(allCourses.data)">
+                                <el-pagination
+                                    :page-size="5"
+                                    :page-count="allCourses.total_pages"
+                                    layout="prev, pager, next"
+                                    :total="allCourses.total"
+                                    :current-page="allCourses.current_page"
+                                    @current-change="reloadList">
+                                </el-pagination>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="text-center">
+                                {{$t('courses.no_courses')}}
+                            </div>
+                        </template>
                     </div>
-                    <!-- <nav aria-label="Page navigation example"
-                         v-if="!isEmpty(allCourses.data) && allCourses.data.length>5">
-                        <ul class="pagination justify-content-end">
-                            <li :class="['page-item', {'disabled':!allCourses.prev_page_url}]">
-                                <a class="page-link " href="#" @click="first">
-                                    First
-                                </a>
-                            </li>
-                            <li :class="['page-item', {'disabled':!allCourses.prev_page_url}]">
-                                <a class="page-link " href="#" @click="previous">
-                                </a>
-                            </li>
-
-                            <li class="page-item"><a class="page-link" href="#">{{allCourses.current_page}} of
-                                {{allCourses.last_page}}</a></li>
-
-                            <li :class="['page-item', {'disabled':!allCourses.next_page_url}]">
-                                <a class="page-link" href="#" @click="next">
-                                    >>
-                                </a>
-                            </li>
-                            <li :class="['page-item', {'disabled':!allCourses.next_page_url}]">
-                                <a class="page-link" href="#" @click="last(allCourses.last_page)">
-                                    last
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
- -->
                 </div>
             </div>
-
-
         </div>
     </div>
-
 </template>
 
 <script>
