@@ -42,7 +42,7 @@ class PayementController extends Controller
 
     public function paymentProcess(Request $request)
     {
-        Stripe::setApiKey("sk_test_51HK26oKzha99bEEwidCkOypQiusOz5G7GlCkDPgKxSToGBkTPuPombk4fN8VYD4oi9KwUifCZmvK21yPnfNs2HYn00xVaLs59p");
+        Stripe::setApiKey(config('payment.key'));
         $token = $request['stripeToken'];
         $stripe = new Stripe();
         $stripe->amount = $request['amount'];
