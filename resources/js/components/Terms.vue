@@ -208,6 +208,9 @@
                             Offer and publish goods and services belonging to another no one;
                         </li>
                         <li>
+                            To make monetary transactions related to the Instantaclasse courses, outside of its secure platform.
+                        </li>
+                        <li>
                             Ask for any payment or compensation for the good or the service offered on the
                             INSTANTACLASSE website. All
                             of the linked transactions the INSTANTACLASSE
@@ -758,6 +761,10 @@
                             Utiliser les cours vidéo en tant qu’instructeur ou étudiant pour des fins illégaux ou
                             immoraux comme la pornographie, encourager la haine, la violence, l’utilisation des armes de
                             tous genre, la drogue;
+                        </li>
+                        <li>
+                            De conclure des transactions monétaires en lien avec les cours d’instantaclasse, en dehors de sa plateforme sécurisée.
+                        </li>
                         <li>
                             Offrir et publier des biens et des services appartenant à une autre personne;
                         </li>
