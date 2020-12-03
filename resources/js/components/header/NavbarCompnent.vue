@@ -275,9 +275,10 @@
 
             &-content {
                 float: right;
+                text-align: center;
                 padding-top: 20px;
                 padding-right: 50px;
-                width: 50%;
+                width: 70%;
                 color: #fff;
             }
         }
