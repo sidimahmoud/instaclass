@@ -15,14 +15,14 @@
                 </div>
             </div>
             <div v-if="!loading">
-                <div class="no-course" v-if="allcategCourses.length!=0">
+                <div class="no-course" v-if="allcategCourses.length===0">
                     <h3>
                         {{$t('noCourses')}}
                     </h3>
                 </div>
-                <!-- <template v-else>
+                <template v-else>
                     <course  v-for="c in allcategCourses" :key="c.id" :course="c"/>
-                </template> -->
+                </template>
             </div>
         </div>
     </div>
