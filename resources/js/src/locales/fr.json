@@ -85,7 +85,7 @@
         },
         "prohibited": {
             "title": "Interdit",
-            "body": "La création des cours encouragent ou liés de près ou de loin à la haine, aux armes, aux drogues et à des activités illégales sont strictement interdits sur cette plateforme. Les administrateur(e)s d'Instantaclasse pourront supprimer et bloquer des membres ainsi que les cours inappropriés."
+            "body": "La création des cours encouragent ou liés de près ou de loin à la haine, aux armes, aux drogues, à caractères pornographiques, et à des activités illégales sont strictement interdits sur cette plateforme. Les administrateur(e)s d'Instantaclasse pourront supprimer et bannir des membres ainsi que les cours inappropriés. Il est également interdit de conclure des transactions monétaires en lien avec les cours d’instantaclasse, en dehors de sa plateforme sécurisée."
         },
         "newsletter": {
             "stay": "Restez informé",
@@ -323,6 +323,7 @@
     "subscribed_successfully": "Abonné avec succès",
     "already_subscriped": "Déjà abonné",
     "carachtar": "caractère",
+    "share": "Partager",
     "banne_txt": "BIENVENUE AUX INSTRUCTEURS ET ÉTUDIANTS",
     "banne_txt_1": "Créez un cours en tant qu'enseignant(e) ou inscrivez-vous comme étudiant(e), c'est simple et rapide.",
     "banne_student": "Inscrivez-vous à un cours dès aujourd'hui, commencez à apprendre à partir du 4 janvier 2021.",

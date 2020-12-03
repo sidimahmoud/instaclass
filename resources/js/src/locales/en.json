@@ -84,7 +84,7 @@
         },
         "prohibited": {
             "title": "Prohibited",
-            "body": "Classes that encourage or are directly or indirectly related to hatred, weapons, drugs and illegal activities are strictly prohibited on this platform. Instantaclasse administrators will remove and block members and inappropriate courses."
+            "body": "Classes that encourage directly or indirectly to hatred, weapons, drugs pornographic content and illegal activities are strictly prohibited on this platform. Instantaclasse administrators will remove and banish members and inappropriate courses. It is also prohibited make monetary transactions related to the Instantaclasse courses, outside of its secure platform."
         },
         "newsletter": {
             "stay": "Stay informed",
@@ -320,6 +320,7 @@
     "subscribed_successfully": "Subscribed successfully",
     "already_subscriped": "Already subscribed",
     "carachtar": "carachtar",
+    "share": "Share",
     "banne_txt": "WELCOME TO INSTRUCTORS AND STUDENTS",
     "banne_txt_1": "Create a course as an instructor or enroll as a student, it is quick and easy.",
     "banne_student": "Enroll to a course today, start learning from January 4, 2021.",

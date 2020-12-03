@@ -299,7 +299,7 @@
 
                 &-content {
                     float: right;
-                    width: 75%;
+                    width: 60%;
                     padding-top: 5px;
                     font-size: 11px;
                     padding-right: 1px;

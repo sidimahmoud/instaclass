@@ -17,7 +17,7 @@
                     target="_blank"
                     :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmondemenagement.ca'"
                     class="button-mobile fb-xfbml-parse-ignore">
-                    <i class="fa fa-facebook-f"></i>
+                    <i class="fa fa-facebook-f"> {{$t('share')}}</i>
                 </a>
             </span>
             <div class="jumbotron jumbotron1 mb-0">
@@ -354,7 +354,7 @@
             display: block;
             color: #fff;
             background-color: blue;
-            width: 30px;
+            width: 60px;
             height: 25px;
             text-align: center;
             border-radius: 5px;
