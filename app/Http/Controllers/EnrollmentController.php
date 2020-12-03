@@ -101,17 +101,6 @@ class EnrollmentController extends Controller
 
     public function EnrollInAllSections(Request $request)
     {
-        \Stripe\Stripe::setApiKey(config('payment.key'));
-
-        $token = $request['token'];
-    
-        $charge = \Stripe\Charge::create([
-            'amount' => $request['course_price'] * 100,
-            'currency' => 'cad',
-            'description' => 'Payment instantaclasse.ca',
-            'source' => $token,
-        ]);
-
         $course = Course::find($request["course_id"])->first();
 
         $sections = $course->sections;
@@ -123,8 +112,19 @@ class EnrollmentController extends Controller
             $enrollment->course_file_id = $id;
             $enrollment->save();
         }
-        if ($request['course_price'] > 0)
-            $this->transaction($request->all());
+        if (!empty($request['course_price'])) {
+            \Stripe\Stripe::setApiKey(config('payment.key'));
+
+            $token = $request['token'];
+        
+            $charge = \Stripe\Charge::create([
+                'amount' => $request['course_price'] * 100,
+                'currency' => 'cad',
+                'description' => 'Payment instantaclasse.ca',
+                'source' => $token,
+            ]);
+        }
+
         $payment = new Payement();
         $payment->enrollment_id = $enrollment->id;
         $payment->user_id = $request->user()->id;
