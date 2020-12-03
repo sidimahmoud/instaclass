@@ -185,7 +185,7 @@
                 return parseFloat(Number(this.totalCourse) * 5 /100).toFixed(2);
             },
             allPrice() {
-                return Number(this.totalCourse) + Number(this.tvq) + Number(this.gst);
+                return parseFloat(Number(this.totalCourse) + Number(this.tvq) + Number(this.gst)).toFixed(2);
             }
         },
         methods: {
