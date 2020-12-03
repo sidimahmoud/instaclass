@@ -112,7 +112,7 @@ class EnrollmentController extends Controller
             $enrollment->course_file_id = $id;
             $enrollment->save();
         }
-        if (!empty($request['course_price'])) {
+        if (!empty($request['course_price']) && $request['course_price'] != 0) {
             \Stripe\Stripe::setApiKey(config('payment.key'));
 
             $token = $request['token'];
