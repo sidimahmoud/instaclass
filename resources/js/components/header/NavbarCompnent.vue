@@ -2,7 +2,10 @@
     <div>
         <div class="image-banner">
             <div class="image-banner-image">
-                <span class="image-banner-image-content"><strong>{{$t('banne_txt')}}</strong></span>
+                <span class="image-banner-image-content">
+                    <strong>{{$t('banne_txt')}}</strong><br/>
+                    <span>{{$t('banne_txt_1')}}</span>
+                </span>
             </div>
         </div>
         <nav id= "nav-main" class="navbar navbar-expand-lg navbar-light bg-light py-0"><!-- fixed-top -->
@@ -275,6 +278,7 @@
                 padding-top: 20px;
                 padding-right: 50px;
                 width: 50%;
+                color: #fff;
             }
         }
     }
