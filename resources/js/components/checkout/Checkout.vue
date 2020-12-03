@@ -148,7 +148,7 @@
                 sections_count: '',
                 paymentMethod: 'card',
                 loading: false,
-                publishableKey: 'pk_test_51HK26oKzha99bEEwW8zlncEHA6FPsPh7N3R84cJyMN6af5fPs9WMmZwae2CodeHWfPiyAlA6ScX0hbWFb8v1dfWn00oLMytNRI',
+                publishableKey: 'pk_live_51HB0HpHDyIu0bdYbv47CLk1imRIm5l8JwxVpg3uWGClstvnaVKQ8hPa4gnkqOIMZvOWTL7JOKIiNn2muThX3O9YA00EYiEVmHx',
                 items: [
                     {
                         sku: 'sku_FdQKocNoVzznpJ',
