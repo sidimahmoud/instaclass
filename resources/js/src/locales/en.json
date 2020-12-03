@@ -321,5 +321,7 @@
     "already_subscriped": "Already subscribed",
     "carachtar": "carachtar",
     "banne_txt": "WELCOME TO INSTRUCTORS AND STUDENTS",
-    "banne_txt_1": "Create a course as an instructor or enroll as a student, it is quick and easy."
+    "banne_txt_1": "Create a course as an instructor or enroll as a student, it is quick and easy.",
+    "banne_student": "Enroll to a course today, start learning from January 4, 2021.",
+    "banne_teacher": "Publish your course today, start teaching from January 4, 2021."
 }

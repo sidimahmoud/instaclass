@@ -363,6 +363,19 @@
             display: none;
         }
 
+        .jumbotron1 {
+            background-image: url('../assets/images/home/bg1.jpg');
+            /*border-radius: 0 0 300px 0;*/
+            border-bottom: 10px solid #0b40c6;
+            background-size: cover;
+            height: 45vh;
+            font-family: 'Poppins', sans-serif;
+
+            h2 {
+                line-height: 2 !important;
+            }
+        }
+
     }
 
 </style>

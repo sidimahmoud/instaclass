@@ -324,5 +324,7 @@
     "already_subscriped": "Déjà abonné",
     "carachtar": "caractère",
     "banne_txt": "BIENVENUE AUX INSTRUCTEURS ET ÉTUDIANTS",
-    "banne_txt_1": "Créez un cours en tant qu'enseignant(e) ou inscrivez-vous comme étudiant(e), c'est simple et rapide."
+    "banne_txt_1": "Créez un cours en tant qu'enseignant(e) ou inscrivez-vous comme étudiant(e), c'est simple et rapide.",
+    "banne_student": "Inscrivez-vous à un cours dès aujourd'hui, commencez à apprendre à partir du 4 janvier 2021.",
+    "banne_teacher": "Publiez votre cours dès aujourd'hui, commencez à enseigner à partir du 4 janvier 2021."
 }

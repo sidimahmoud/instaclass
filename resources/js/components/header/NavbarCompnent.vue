@@ -286,27 +286,27 @@
 
     @media only screen and (max-width: 700px) {
         .image-banner {
-       // margin-top: 50px;
-        background-color: #fff;
-        height: 100px;
-
-        &-image {
-            width: 100%;
+            // margin-top: 50px;
+            background-color: #fff;
             height: 100px;
-            background-repeat: no-repeat;
-            background-image: url('../../assets/images/modele1.png');
-            background-size: cover;
 
-            &-content {
-                float: right;
-                width: 60%;
-                padding-top: 2px;
-                font-size: 12px;
-                padding-right: 2px;
-                color: #fff;
+            &-image {
+                width: 100%;
+                height: 100px;
+                background-repeat: no-repeat;
+                background-image: url('../../assets/images/modele1.png');
+                background-size: cover;
+
+                &-content {
+                    float: right;
+                    width: 75%;
+                    padding-top: 5px;
+                    font-size: 11px;
+                    padding-right: 1px;
+                    color: #fff;
+                }
             }
         }
-    }
     }
 
 </style>

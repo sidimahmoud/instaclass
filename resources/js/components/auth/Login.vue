@@ -19,6 +19,7 @@
         <div class="container ">
             <div class="row">
                 <div class="col-sm-9 col-md-10 col-lg-7 mx-auto">
+                    <div class="text-center"><strong>{{$t('banne_student')}}</strong></div>
                     <div class="signup-form bg-white">
                         <div class="row text-dark font-weight-bold d-none d-md-block">
                             <div class="col-md-12 mx-auto d-flex align-items-center">
