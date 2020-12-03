@@ -101,13 +101,16 @@ class EnrollmentController extends Controller
 
     public function EnrollInAllSections(Request $request)
     {
+        info(config('payment.key'));
         \Stripe\Stripe::setApiKey(config('payment.key'));
 
         $token = $request['token'];
+        info($token);
+        info($request['course_price']);
         $charge = \Stripe\Charge::create([
             'amount' => $request['course_price'] * 100,
             'currency' => 'cad',
-            'description' => 'Payment instaclass',
+            'description' => 'Payment instantaclasse.ca',
             'source' => $token,
         ]);
 
