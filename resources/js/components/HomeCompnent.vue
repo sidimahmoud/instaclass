@@ -9,13 +9,13 @@
                 </iframe> -->
                 <a 
                     target="_blank"
-                    :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmondemenagement.ca'"
+                    :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finstantaclasse.ca'"
                     class="button-web fb-xfbml-parse-ignore">
                     <img src="../assets/images/fbShare.png" width="120px" height="40px" alt="">
                 </a>
                 <a 
                     target="_blank"
-                    :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmondemenagement.ca'"
+                    :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finstantaclasse.ca'"
                     class="button-mobile fb-xfbml-parse-ignore">
                     <i class="fa fa-facebook-f"> {{$t('share')}}</i>
                 </a>

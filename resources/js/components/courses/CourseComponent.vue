@@ -35,7 +35,7 @@
                             <div class="fb-share-button" :data-href="'https://mondemenagement.ca/courses/'+course.id"
                                  data-layout="button" data-size="large">
                                 <a target="_blank"
-                                   :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmondemenagement.ca%2Fcourses%2F'+course.id+'&amp;src=sdkpreparse'"
+                                   :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finstantaclasse.ca%2Fcourses%2F'+course.id+'&amp;src=sdkpreparse'"
                                    class="fb-xfbml-parse-ignore">
                                     <img src="../../assets/images/fbShare.png" width="70px" alt="">
                                     <!--<img src="../../assets/images/share.png" width="40px" alt="">-->
