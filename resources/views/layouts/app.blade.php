@@ -17,6 +17,14 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <script src="https://apis.google.com/js/api:client.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M594Y7HD67"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-M594Y7HD67');
+    </script>
 </head>
 
 <body>
