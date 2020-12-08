@@ -13,11 +13,10 @@
 
     <!-- Scripts -->
     <script src="/js/app.js" defer></script>
-
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5fcf4d8bca27930018f6ea5b&product=inline-share-buttons" async="async"></script>
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <script src="https://apis.google.com/js/api:client.js"></script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0" nonce="xVi0RuHS"></script>
 </head>
 
 <body>

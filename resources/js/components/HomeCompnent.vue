@@ -1,27 +1,30 @@
 <template>
     <div class="bg-light">
         <div class="hero">
-            <span class="shareBar">
-                <!-- <iframe
-                    src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&appId=223985172274465&width=150&height=150"
-                    width="150" height="150" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-                    allowTransparency="true" allow="encrypted-media">
-                </iframe> -->
-                <a 
+            <span class="shareBar ">
+                <a target="_blank"
+                   href="https://www.facebook.com/share.php?u=instantaclasse.ca&quote=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes. INSTANTACLASSE is a new platform that allows instructors to create, set their own course costs and teach by video live. Students benefit of a wide variety of free and paying courses, in several areas of knowledge and learn at their own pace."
+                >
+            <el-button type="primary" plain small>  <i class="fa fa-facebook fa-2x "></i></el-button>
+                    <!--<img src="../assets/images/fbShare.png" width="120px" height="40px" alt="">-->
+                </a> <br>
+                <a target="_blank"
+                   href="https://twitter.com/intent/tweet?text=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours&url=https://instantaclasse.ca/&"
+                >
+
+                    <el-button type="primary" plain small>  <i class="fa fa-twitter fa-2x "></i></el-button>
+
+                </a> <br>
+                <a
                     target="_blank"
-                    :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finstantaclasse.ca'"
-                    class="button-web fb-xfbml-parse-ignore">
-                    <img src="../assets/images/fbShare.png" width="120px" height="40px" alt="">
-                </a>
-                <a 
-                    target="_blank"
-                    :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finstantaclasse.ca'"
-                    class="button-mobile fb-xfbml-parse-ignore">
-                    <i class="fa fa-facebook-f"> {{$t('share')}}</i>
-                </a>
+                    href="mailto:?subject=hello&body=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes. INSTANTACLASSE is a new platform that allows instructors to create, set their own course costs and teach by video live. Students benefit of a wide variety of free and paying courses, in several areas of knowledge and learn at their own pace.&url=https://instantaclasse.ca/&"
+                >
+            <el-button type="primary" plain small>  <i class="fa fa-envelope fa-2x "></i></el-button>
+                </a> <br>
+
             </span>
             <div class="jumbotron jumbotron1 mb-0">
-                
+
                 <div class="container  align-items-center mt-md-2 h-100">
                     <div class="row justify-content-around align-items-center h-100">
                         <div class="col-md-2 d-none d-md-block"></div>
@@ -288,6 +291,8 @@
         height: 150px;
         position: absolute;
         border-radius: 30px;
+        width: 20px;
+
         @media only screen and (max-width: 600px) {
             top: 250px;
             width: 80px;
@@ -297,6 +302,16 @@
     .categories {
         /*margin-bottom: 250px;*/
         /*position: relative;*/
+    }
+
+    .el-button--primary.is-plain {
+        color: #409EFF;
+        background: transparent !important;
+        border: none !important;
+    }
+    .el-button--primary.is-plain:hover {
+        color: #409EFF !important;
+
     }
 
     .classes {
@@ -338,9 +353,10 @@
         }
     }
 
-    .button-mobile  {
+    .button-mobile {
         display: none;
     }
+
     .button-web {
         display: block;
     }
@@ -350,7 +366,7 @@
             display: none;
         }
 
-        .button-mobile { 
+        .button-mobile {
             display: block;
             color: #fff;
             background-color: blue;
