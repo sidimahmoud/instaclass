@@ -329,5 +329,6 @@
         "est": "Eastern Time EST",
         "pst": "Pacific Time PST",
         "ast": "Atlantic Time AST"
-    }
+    },
+    "share_on": "Share"
 }

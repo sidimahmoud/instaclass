@@ -1,26 +1,33 @@
 <template>
     <div class="bg-light">
         <div class="hero">
-            <span class="shareBar ">
-                <a target="_blank"
-                   href="https://www.facebook.com/share.php?u=instantaclasse.ca&quote=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes. INSTANTACLASSE is a new platform that allows instructors to create, set their own course costs and teach by video live. Students benefit of a wide variety of free and paying courses, in several areas of knowledge and learn at their own pace."
-                >
-            <el-button type="primary" plain small>  <i class="fa fa-facebook fa-2x "></i></el-button>
-                    <!--<img src="../assets/images/fbShare.png" width="120px" height="40px" alt="">-->
-                </a> <br>
-                <a target="_blank"
-                   href="https://twitter.com/intent/tweet?text=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours&url=https://instantaclasse.ca/&"
-                >
+            <span class="shareBar">
+                <span>{{$t('share_on')}}</span><br/>
+                <div class="share-facebook" @click="handleShareFacebook">
+                    <a  target="_blank"
+                        href="https://www.facebook.com/share.php?u=instantaclasse.ca&quote=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes."
+                    >
+                        <!-- <el-button type="primary" plain small>   --><i class="fa fa-facebook fa-2x"></i><!-- </el-button> -->
+                        <!--<img src="../assets/images/fbShare.png" width="120px" height="40px" alt="">-->
+                    </a>
+                </div>
+                
+                <div class="share-twitter" @click="handleShareTwitter">
+                    <a target="_blank"
+                    href="https://twitter.com/intent/tweet?text=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours&url=https://instantaclasse.ca/&"
+                    >
 
-                    <el-button type="primary" plain small>  <i class="fa fa-twitter fa-2x "></i></el-button>
+                        <!-- <el-button type="primary" plain small> --><i class="fa fa-twitter fa-2x"></i><!-- </el-button> -->
 
-                </a> <br>
-                <a
-                    target="_blank"
-                    href="mailto:?subject=hello&body=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes. INSTANTACLASSE is a new platform that allows instructors to create, set their own course costs and teach by video live. Students benefit of a wide variety of free and paying courses, in several areas of knowledge and learn at their own pace.&url=https://instantaclasse.ca/&"
-                >
-            <el-button type="primary" plain small>  <i class="fa fa-envelope fa-2x "></i></el-button>
-                </a> <br>
+                    </a> <br/>
+                </div>
+                <div class="share-email" @click="handleShareEmail">
+                    <a target="_blank"
+                       href="mailto:?subject=INSTANTACLASSE&amp;body=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes. https://instantaclasse.ca/"
+                    >
+                        <!-- <el-button type="primary" plain small>   --><i class="fa fa-envelope fa-2x"></i><!-- </el-button> -->
+                    </a> <br/>
+                </div>
 
             </span>
             <div class="jumbotron jumbotron1 mb-0">
@@ -211,7 +218,16 @@
             MailBox
         },
         methods: {
-            ...mapActions(["fetchCategories"])
+            ...mapActions(["fetchCategories"]),
+            handleShareFacebook () {
+                window.open("https://www.facebook.com/share.php?u=instantaclasse.ca&quote=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes.")
+            },
+            handleShareTwitter () {
+                window.open("https://twitter.com/intent/tweet?text=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours&url=https://instantaclasse.ca/&")
+            },
+            handleShareEmail () {
+                window.open("mailto:?subject=hello&body=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes.&url=https://instantaclasse.ca/&")
+            },
         },
         computed: {
             ...mapGetters(["allCategories", "loadingCategories"]),
@@ -226,6 +242,7 @@
     .card:not(:first-child) {
         margin-left: 15px !important;
     }
+
 
     /* latest courses border bottom*/
     .latest_courses_border {
@@ -283,19 +300,6 @@
         background-size: cover;
         @media only screen and (max-width: 600px) {
             border-radius: 0;
-        }
-    }
-
-    .shareBar {
-        top: 300px;
-        height: 150px;
-        position: absolute;
-        border-radius: 30px;
-        width: 20px;
-
-        @media only screen and (max-width: 600px) {
-            top: 250px;
-            width: 80px;
         }
     }
 
@@ -392,6 +396,60 @@
             }
         }
 
+    }
+
+    .shareBar {
+        background-color: #fff;
+        top: 300px;
+        height: 150px;
+        position: absolute;
+        border-radius: 5px;
+        width: auto;
+        
+        span {
+            padding: 5px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            top: 180px;
+            width: auto;
+        }
+    }
+
+    .share {
+        &-facebook {
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            color:#fff;
+            background-color: #3b5998;
+            a {
+                color:#fff;
+                width: 100%;
+            }
+        }
+        &-twitter {
+            text-align: center;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            background-color: #00aced;
+            a {
+                color:#fff;
+                width: 100%;
+            }
+        }
+        &-email {
+            text-align: center;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            background-color: #aaaaaa;
+            a {
+                color:#fff;
+                width: 100%;
+            }
+        }
     }
 
 </style>

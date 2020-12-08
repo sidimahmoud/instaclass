@@ -332,5 +332,6 @@
         "est": "Heure de l'Est EST",
         "pst": "Heure du Pacifique PST",
         "ast": "Heure de l'atlantique AST"
-    }
+    },
+    "share_on": "Partager"
 }
