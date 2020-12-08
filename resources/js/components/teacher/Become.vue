@@ -2,14 +2,14 @@
     <div >
         <section class="hero pt-5 mb-3">
             <div class="container h-100">
-                <div class="row h-100 align-items-center">
+                <!-- <div class="row h-100 align-items-center">
                     <div class="col-md-12 text-center">
                         <h1 >{{$t('auth.become.become')}}</h1>
                     </div>
                     <div class="col-md-12 text-center">
                         <h1 >{{$t('auth.become.join')}}</h1>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
         <div class="container">
@@ -335,11 +335,22 @@
     .hero {
         /*background-image: url('../../assets/images/demand/online.jpg');*/
         background: linear-gradient(rgba(19, 19, 19, 0.5), rgba(19, 19, 19, 0.5)), url('../../assets/images/auth/Become1.jpg') no-repeat center center;
-        height: 70vh;
+        height: 60vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
         font-family: 'Poppins', sans-serif;
 
+    }
+    @media (max-width: 600px) {
+        .hero {
+            /*background-image: url('../../assets/images/demand/online.jpg');*/
+            background: linear-gradient(rgba(19, 19, 19, 0.5), rgba(19, 19, 19, 0.5)), url('../../assets/images/auth/Become1.jpg') no-repeat center center;
+            height: 30vh;
+            background-size: cover;
+            border-bottom: 15px solid #3081FB;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
     }
 </style>

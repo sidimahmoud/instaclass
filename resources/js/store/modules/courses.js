@@ -46,12 +46,9 @@ const actions = {
         commit('setLoading', false);
     },
     async getCourse({commit}, slug) {
-
         commit('setLoading', true);
         const response = await axios.get(`/courses/${slug}`,);
         commit('setCourse', response.data);
-        console.log('response.data')
-        console.log(response.data)
 
         const me = JSON.parse(localStorage.getItem('user')) || null;
         commit('setEnrolled', false);
@@ -63,7 +60,6 @@ const actions = {
         //         }
         //     })
         // }
-
         commit('setLoading', false);
         return response.data[0];
     },
@@ -221,6 +217,20 @@ const actions = {
         console.log(response.data)
         commit('setLoading', false);
     },
+    /* async getCourse({commit}, payload) {
+        let params= {
+            'include': 'subCategory.category,ratings.user,sections.enrollments,user',
+        }
+
+        commit('setLoading', true);
+        //const response = await axios.get(`/all-courses/?filter[price_less_than]=${payload.price}&filter[language]=${payload.lang}`);
+        const response = await axios.get(`/courses/${payload.id}`,{
+            params: params
+        });
+
+        commit('setCourse', response.data);
+        return response;
+    }, */
 };
 const mutations = {
     setCourses: (state, courses) => (state.courses = courses),

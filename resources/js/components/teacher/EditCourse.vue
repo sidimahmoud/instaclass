@@ -141,7 +141,7 @@
                                 <el-date-picker
                                     v-model="section.startDate"
                                     type="datetime"
-                                    placeholder="Select date and time">
+                                    :placeholder="$t('newCourse.select_time')">
                                 </el-date-picker>
                                 <!-- <input type="datetime-local" class="form-control" v-model="section.startDate" required> -->
                             </div>

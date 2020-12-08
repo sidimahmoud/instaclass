@@ -32,7 +32,7 @@
                 <div class="col-12">
                     <div class="row align-items-center text-center">
                         <div class="col-md-6 order-2 order-md-1" v-if="course.sharable">
-                            <div class="fb-share-button" :data-href="'https://mondemenagement.ca/courses/'+course.id"
+                            <div class="fb-share-button" :data-href="'https://instantaclasse.ca/courses/'+course.id"
                                  data-layout="button" data-size="large">
                                 <a target="_blank"
                                    :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finstantaclasse.ca%2Fcourses%2F'+course.id+'&amp;src=sdkpreparse'"

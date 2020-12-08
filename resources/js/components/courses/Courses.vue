@@ -242,7 +242,7 @@
 <style scoped lang="scss">
     .hero {
         background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/all2.jpg') no-repeat center center;
-        height: 70vh;
+        height: 50vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
@@ -261,7 +261,7 @@
     @media (max-width: 600px) {
         .hero {
             background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/all1.jpg') no-repeat center center;
-            height: 65vh;
+            height: 30vh;
             background-size: cover;
             border-bottom: 15px solid #3081FB;
             color: white;

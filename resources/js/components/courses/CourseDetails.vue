@@ -141,7 +141,7 @@
 
     .hero {
         background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details/bg1.png') no-repeat center center;
-        height: 80vh;
+        height: 50vh;
         background-size: contain;
         border-bottom: 15px solid #3081FB;
         color: white;
@@ -188,7 +188,7 @@
     @media (max-width: 600px) {
         .hero {
             background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details1.jpg') no-repeat center center;
-            height: 80vh;
+            height: 40vh;
             background-size: contain;
             border-bottom: 15px solid #3081FB;
             color: white;

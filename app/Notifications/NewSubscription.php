@@ -42,7 +42,7 @@ class NewSubscription extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->from('noreply@instantaclass.ca', 'Instantaclass')
+            ->from('noreply@instantaclass.ca', 'Instantaclasse')
             ->line('There is a new subscription in your course ' . $this->section)
             ->action('My dashboard', url('/teacher/profile'))
             ->line('Thank you for using Instantaclasse!');

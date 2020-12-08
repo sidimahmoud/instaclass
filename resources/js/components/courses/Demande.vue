@@ -112,7 +112,7 @@
     .hero {
         /*background-image: url('../../assets/images/demand/online.jpg');*/
         background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/Request1.jpg') no-repeat center center;
-        height: 70vh;
+        height: 55vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
@@ -122,7 +122,7 @@
         .hero {
             /*background-image: url('../../assets/images/demand/online.jpg');*/
             background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/Request.jpg') no-repeat center center;
-            height: 60vh;
+            height: 30vh;
             width: 100%;
             background-size: cover;
             border-bottom: 15px solid #3081FB;

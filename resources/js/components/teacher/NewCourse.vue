@@ -194,10 +194,9 @@
                             <div class="col-md-3">
                                 <label>{{$t('newCourse.timezone')}}</label>
                                 <select class="form-control" v-model="sections[index].timezone" required>
-                                    <option value="GMT">Greenwich Mean Time</option>
-                                    <option value="ET">Eastern Time ET</option>
-                                    <option value="PT">Pacific Time PT</option>
-                                    <option value="AT">Atlantic Time ET</option>
+                                    <option value="EST">{{$t('times.est')}}</option>
+                                    <option value="PST">{{$t('times.pst')}}</option>
+                                    <option value="AST">{{$t('times.ast')}}</option>
                                 </select>
                             </div>
                             <div class="col-md-3">

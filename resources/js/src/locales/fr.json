@@ -4,7 +4,7 @@
         "about": "A propos",
         "courses": "Tous les cours",
         "become": "Devenir instructeur",
-        "demande": "Demande de cours",
+        "demande": "Suggérer un cours",
         "account": "Compte"
     },
     "title": {
@@ -31,7 +31,7 @@
         "about": "A propos",
         "courses": "Tous les cours",
         "become": "Devenir instructeur",
-        "demande": "Demande de cours",
+        "demande": "Suggérer un cours",
         "account": "Compte",
         "quickLinks": "Liens rapides",
         "termsAndConditions": "Termes et conditions",
@@ -171,7 +171,7 @@
         "thank_msg": "Votre cours a été publié avec succès",
         "update_msg": "Votre cours a été mis à jour avec succès",
         "description": "Déscription",
-        "select_time": "Sélectionnez la date et l'heure"
+        "select_time": "Sélectionnez une date"
     },
     "auth": {
         "signIn": "Connexion",
@@ -209,8 +209,8 @@
         }
     },
     "demande": {
-        "title": "Demande de cours",
-        "desc": "Dites nous le cours que vous aimeriez suivre en direct sur la plateforme",
+        "title": "Suggérer un cours",
+        "desc": "Suggérez un cours dont vous trouveriez intéressant d'enseigner sur cette plateforme:",
         "lang": "Langue d'enseignement du cours proposé",
         "languages": {
             "fr": "Français",
@@ -327,5 +327,10 @@
     "banne_txt": "BIENVENUE AUX INSTRUCTEURS ET ÉTUDIANTS",
     "banne_txt_1": "Créez un cours en tant qu'enseignant(e) ou inscrivez-vous comme étudiant(e), c'est simple et rapide.",
     "banne_student": "Inscrivez-vous à un cours dès aujourd'hui, commencez à apprendre à partir du 4 janvier 2021.",
-    "banne_teacher": "Publiez votre cours dès aujourd'hui, commencez à enseigner à partir du 4 janvier 2021."
+    "banne_teacher": "Publiez votre cours dès aujourd'hui, commencez à enseigner à partir du 4 janvier 2021.",
+    "times" : {
+        "est": "Heure de l'Est EST",
+        "pst": "Heure du Pacifique PST",
+        "ast": "Heure de l'atlantique AST"
+    }
 }

@@ -4,7 +4,7 @@
         "about": "About",
         "courses": "All Courses",
         "become": "Become Instructor",
-        "demande": "Request a course",
+        "demande": "Suggest a course",
         "account": "Account"
     },
     "title": {
@@ -170,7 +170,7 @@
         "thank_msg": "Your course was published successfully",
         "update_msg": "Your course was updated successfully",
         "description": "Description",
-        "select_time": "Select date and time"
+        "select_time": "Select a date"
     },
     "auth": {
         "signIn": "Sign in",
@@ -208,8 +208,8 @@
         }
     },
     "demande": {
-        "title": "Course request",
-        "desc": "Tell us about the course you would like to follow live on the platform",
+        "title": "Suggest a course",
+        "desc": "Suggest a course that you would find interesting to teach on this platform:",
         "lang": "Teaching language of the suggested course",
         "languages": {
             "fr": "French",
@@ -324,5 +324,10 @@
     "banne_txt": "WELCOME TO INSTRUCTORS AND STUDENTS",
     "banne_txt_1": "Create a course as an instructor or enroll as a student, it is quick and easy.",
     "banne_student": "Enroll to a course today, start learning from January 4, 2021.",
-    "banne_teacher": "Publish your course today, start teaching from January 4, 2021."
+    "banne_teacher": "Publish your course today, start teaching from January 4, 2021.",
+    "times" : {
+        "est": "Eastern Time EST",
+        "pst": "Pacific Time PST",
+        "ast": "Atlantic Time AST"
+    }
 }

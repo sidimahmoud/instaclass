@@ -1,6 +1,8 @@
 import axios from "axios";
+import moment from 'moment';
 
 window._ = require('lodash');
+window.moment = moment;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -50,6 +52,6 @@ let sd = (v, d) => {
     return v === undefined || v === null ? d : v;
 };
 
-window.app_api = sd(process.env.MIX_API_URL, "https://mondemenagement.ca/api");
-window.axios.defaults.baseURL = sd(process.env.MIX_API_URL, "https://mondemenagement.ca/api");
+window.app_api = sd(process.env.MIX_API_URL, "https://instantaclasse.ca/api");
+window.axios.defaults.baseURL = sd(process.env.MIX_API_URL, "https://instantaclasse.ca/api");
 

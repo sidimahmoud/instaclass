@@ -379,9 +379,19 @@
     .hero {
         /*background-image: url('../../assets/images/demand/online.jpg');*/
         background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
-        height: 50vh;
+        height: 55vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
+    }
+    @media (max-width: 600px) {
+        .hero {
+            /*background-image: url('../../assets/images/demand/online.jpg');*/
+            background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
+            height: 30vh;
+            background-size: cover;
+            border-bottom: 15px solid #3081FB;
+            color: white;
+        }
     }
 </style>

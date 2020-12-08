@@ -43,7 +43,7 @@ class VerifyEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->from('noreply@instantaclass.ca', 'Instantaclass')
+            ->from('noreply@instantaclass.ca', 'Instantaclasse')
             ->subject('Confirm your email')
             ->line('Please take a second to make sure we\'ve got your email right.')
             ->action('Confirm your email', url('api/email/verify/' . $this->user_id))

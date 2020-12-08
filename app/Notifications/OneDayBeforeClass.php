@@ -42,7 +42,7 @@ class OneDayBeforeClass extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->from('noreply@instantaclass.ca', 'Instantaclass')
+            ->from('noreply@instantaclass.ca', 'Instantaclasse')
             ->subject('Your class is scheduled tomorrow at ' . substr($this->data, 10, 6))
             ->line('This is a quick reminder to let you know that your class is scheduled for tomorrow ' . $this->data)
 //                    ->action('Notification Action', url('/'))
