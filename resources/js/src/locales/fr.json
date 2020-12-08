@@ -275,7 +275,7 @@
         "instructor": "Instructeur",
         "reviews": "Commentaires",
         "my_recits": "Mes reçus",
-        "user_course_count": "Vous avez un cours pour commencer après"
+        "user_course_count": "VOUS AVEZ UN COURS QUI COMMENCERA APRÈS"
     },
     "contact": {
         "title": "Contact",
@@ -317,7 +317,7 @@
     "payment" :{
         "note": "Note: Chaque paiement est effectué 1 semaine après l'enseignement d'une session.",
         "void_recived": "Merci! Nous avons reçu votre spécimen de chèque. Vous pouvez le changer à tout moment.",
-        "no_payment_msg":"Vos reçus apparaîtront ici."
+        "no_payment_msg":"Aucune information de paiement disponible pour l’instant."
     },
     "select_sessions": "Veiller sélectionnez les sessions",
     "subscribed_successfully": "Abonné avec succès",
@@ -333,5 +333,9 @@
         "pst": "Heure du Pacifique PST",
         "ast": "Heure de l'atlantique AST"
     },
-    "share_on": "Partager"
+    "share_on": "Partager",
+    "share_body": {
+        "facebook": "https://www.facebook.com/share.php?u=instantaclasse.ca&quote=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes.",
+        "twitter": "https://twitter.com/intent/tweet?text=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours.&url=https://instantaclasse.ca/&",
+        "email": "mailto:?subject=hello&body=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes.\n\n&url=https://instantaclasse.ca/&"    }
 }

@@ -27,7 +27,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <h2 class="text-center">{{$t('demande.title')}}</h2>
+                        <!-- <h2 class="text-center">{{$t('demande.title')}}</h2> -->
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1"> {{$t('demande.desc')}}</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" required v-model="details">

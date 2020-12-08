@@ -13,10 +13,11 @@
             <div class="row my-4 student-area">
                 <div class="col-md-12 bg-white shadow">
                     <div class="tab-content my-1">
-                        <h4>{{$t('profile.payments')}}</h4>
+                        <!--  -->
                         <div id="receipts">
-                            <h3 class="text-center" v-if="studentPayments.length===0">{{$t('payment.no_payment_msg')}}</h3>
-                            <div class="accordion" id="accordionExample">
+                            <h5 class="text-center" v-if="isEmpty(studentPayments)">{{$t('payment.no_payment_msg')}}</h5>
+                            <div class="accordion" id="accordionExample" v-else>
+                                <h3>{{$t('profile.payments')}}</h3>
                                 <div class="card my-2" v-for="p in studentPayments" :key="p.id">
                                     <!-- <div class="card-header" :id="'payment'+p.id">
                                         <h2 class="mb-0">
@@ -154,7 +155,7 @@
     .hero {
         /*background-image: url('../../assets/images/demand/online.jpg');*/
         background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
-        height: 70vh;
+        height: 50vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;

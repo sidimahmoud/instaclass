@@ -34,7 +34,7 @@
                         <!--                            &lt;!&ndash;<img :src="userProfile.image" alt="Avatar" class="w-100">&ndash;&gt;-->
                         <!--                        </div>-->
                         <div class="col-md-4 text-center">
-                            <img :src="userProfile.image" alt="" style="max-height: 100px"><br/>
+                            <img :src="userProfile.image" alt="" style="max-height: 80px"><br/>
                             <span>{{userProfile.first_name}}</span><br/><br/>
                             <div>
                                 <router-link :to="{name: 'EditStudentProfile'}" tag="a"
@@ -321,7 +321,7 @@
     .hero {
         /*background-image: url('../../assets/images/demand/online.jpg');*/
         background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
-        height: 70vh;
+        height: 60vh;
         background-size: cover;
         border-bottom: 15px solid #3081FB;
         color: white;
@@ -406,7 +406,7 @@
     @media (max-width: 600px) {
         .hero {
             background: linear-gradient(rgba(19, 19, 19, 0), rgba(19, 19, 19, 0)), url('../../assets/images/auth/hero.jpg') no-repeat center center;
-            height: 70vh;
+            height: 40vh;
             background-size: cover;
             border-bottom: 15px solid #3081FB;
             color: white;

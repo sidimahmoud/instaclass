@@ -272,7 +272,7 @@
         "instructor": "Instructor",
         "reviews": "Reviews",
         "my_recits": "My receipts",
-        "user_course_count": "You have one course to start after"
+        "user_course_count": "YOUR COURSE WILL START AFTER"
     },
     "contact": {
         "title": "Contact Us",
@@ -314,7 +314,7 @@
     "payment" :{
         "note": "Note: Each payment is made 1 week after the teaching of a session.",
         "void_recived": "Thank you! We received your void. You can change it anytime.",
-        "no_payment_msg":"Your receipts will appear here."
+        "no_payment_msg":"No payment informations available yet."
     },
     "select_sessions": "Please select Sessions",
     "subscribed_successfully": "Subscribed successfully",
@@ -330,5 +330,10 @@
         "pst": "Pacific Time PST",
         "ast": "Atlantic Time AST"
     },
-    "share_on": "Share"
+    "share_on": "Share",
+    "share_body": {
+        "facebook": "https://www.facebook.com/share.php?u=instantaclasse.ca&quote=INSTANTACLASSE is a new platform that allows instructors to create, set their own course costs and teach by video live. Students benefit of a wide variety of free and paying courses, in several areas of knowledge and learn at their own pace.",
+        "twitter": "https://twitter.com/intent/tweet?text=INSTANTACLASSE is a new platform that allows instructors to create, set their own course costs and teach by video live. Students benefit of a wide variety of free and paying courses, in several areas of knowledge and learn at their own pace.&url=https://instantaclasse.ca/&",
+        "email": "mailto:?subject=hello&body=INSTANTACLASSE is a new platform that allows instructors to create, set their own course costs and teach by video live. Students benefit of a wide variety of free and paying courses, in several areas of knowledge and learn at their own pace.\n\n&url=https://instantaclasse.ca/&"
+    }
 }

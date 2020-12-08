@@ -5,7 +5,7 @@
                 <span>{{$t('share_on')}}</span><br/>
                 <div class="share-facebook" @click="handleShareFacebook">
                     <a  target="_blank"
-                        href="https://www.facebook.com/share.php?u=instantaclasse.ca&quote=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes."
+                        :href="$t('share_body.facebook')"
                     >
                         <!-- <el-button type="primary" plain small>   --><i class="fa fa-facebook fa-2x"></i><!-- </el-button> -->
                         <!--<img src="../assets/images/fbShare.png" width="120px" height="40px" alt="">-->
@@ -13,8 +13,9 @@
                 </div>
                 
                 <div class="share-twitter" @click="handleShareTwitter">
-                    <a target="_blank"
-                    href="https://twitter.com/intent/tweet?text=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours&url=https://instantaclasse.ca/&"
+                    <a 
+                        target="_blank"
+                        :href="$t('share_body.twitter')"
                     >
 
                         <!-- <el-button type="primary" plain small> --><i class="fa fa-twitter fa-2x"></i><!-- </el-button> -->
@@ -23,7 +24,7 @@
                 </div>
                 <div class="share-email" @click="handleShareEmail">
                     <a target="_blank"
-                       href="mailto:?subject=INSTANTACLASSE&amp;body=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes. https://instantaclasse.ca/"
+                       :href="$t('share_body.email')"
                     >
                         <!-- <el-button type="primary" plain small>   --><i class="fa fa-envelope fa-2x"></i><!-- </el-button> -->
                     </a> <br/>
@@ -220,13 +221,13 @@
         methods: {
             ...mapActions(["fetchCategories"]),
             handleShareFacebook () {
-                window.open("https://www.facebook.com/share.php?u=instantaclasse.ca&quote=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes.")
+                window.open(this.$t('share_body.facebook'))
             },
             handleShareTwitter () {
-                window.open("https://twitter.com/intent/tweet?text=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours&url=https://instantaclasse.ca/&")
+                window.open(this.$t('share_body.twitter'))
             },
             handleShareEmail () {
-                window.open("mailto:?subject=hello&body=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes.&url=https://instantaclasse.ca/&")
+                window.open(this.$t('share_body.email'))
             },
         },
         computed: {

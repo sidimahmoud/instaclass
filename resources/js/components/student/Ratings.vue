@@ -7,9 +7,9 @@
         <div class="container-fluid">
             <div class="row my-4 student-area">
                 <div class="col-md-12 bg-white shadow">
-                    <div class="tab-content my-1">
-                        <h4>{{$t('profile.ratings')}}</h4>
+                    <div class="tab-content my-1">  
                         <div  v-if="!isEmpty(userProfile.ratings)">
+                            <h4>{{$t('profile.ratings')}}</h4>
                             <table class="table">
                                 <thead>
                                 <tr>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="text-center no-content" v-else>
                             <!-- <h3>{{$t('profile.noRatings')}}</h3> -->
-                            <h3>{{$t('profile.empty_ratings')}}</h3>
+                            <h5>{{$t('profile.empty_ratings')}}</h5>
                         </div>
                      
                     </div>

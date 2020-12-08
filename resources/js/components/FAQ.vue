@@ -2,6 +2,9 @@
     <div class="container mt-5">
         <div class="text-center border-top border-primary pt-5 mb-3">
             <h3>Réponses aux questions les plus fréquemment posées</h3>
+            
+        </div>
+        <div>
             <p>Note: Dans ce document, le genre masculin est utilisé comme générique, dans le seul but de ne pas alourdir le texte.</p>
         </div>
         <div>
