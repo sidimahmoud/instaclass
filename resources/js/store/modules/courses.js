@@ -10,7 +10,8 @@ const state = {
     enrolled: false,
     statistics: '',
     enrolledStudents: '',
-    upComing: ''
+    upComing: '',
+    courseEnrollement: []
 };
 const getters = {
     allCourses: (state) => state.courses,
@@ -22,7 +23,7 @@ const getters = {
     enrolled: (state) => state.enrolled,
     getEnrolledStudents: (state) => state.enrolledStudents,
     upComingSections: (state) => state.upComing,
-
+    courseEnrollement: (state) => state.courseEnrollement,
 };
 
 
@@ -217,20 +218,14 @@ const actions = {
         console.log(response.data)
         commit('setLoading', false);
     },
-    /* async getCourse({commit}, payload) {
-        let params= {
-            'include': 'subCategory.category,ratings.user,sections.enrollments,user',
-        }
-
+    async getCourseEnrollement({commit}, payload) {
         commit('setLoading', true);
         //const response = await axios.get(`/all-courses/?filter[price_less_than]=${payload.price}&filter[language]=${payload.lang}`);
-        const response = await axios.get(`/courses/${payload.id}`,{
-            params: params
-        });
+        const response = await axios.get(`/courses-enrollements/${payload}`);
 
-        commit('setCourse', response.data);
+        commit('setCourseEnrollement', response.data);
         return response;
-    }, */
+    },
 };
 const mutations = {
     setCourses: (state, courses) => (state.courses = courses),
@@ -242,6 +237,7 @@ const mutations = {
     setUpcoming: (state, payload) => (state.upComing = payload),
     setLoading: (state, val) => (state.loading = val),
     setEnrolled: (state, val) => (state.enrolled = val),
+    setCourseEnrollement: (state, val) => (state.courseEnrollement = val),
     /**
      * Method to fill course from the payload
      *

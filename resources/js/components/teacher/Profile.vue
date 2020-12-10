@@ -173,6 +173,7 @@
                                                             {{ course.short_description }}
                                                         </h5>
                                                     </router-link>
+                                                    <span class="view-enrolled" @click="handleEnrolled(course.id)">{{$t('view_subscriped_list')}}</span>
                                                 </div>
                                                 <div class="col-md-3 text-right">
                                                     <button @click="handleLive(course.id)"
@@ -328,6 +329,33 @@
                 </div>
             </div>
         </div>
+        <el-dialog
+            title="Enrollements"
+            :visible.sync="dialogVisible"
+            width="30%">
+            <div v-if="isEmpty(courseEnrollement)">
+                {{$t('no_enrollement')}}
+            </div>
+            <table class="table" v-else>
+                <thead>
+                <tr>
+                    <th scope="col">{{$t('no_enrollement')}}</th>
+                    <th scope="col">Section</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="t in courseEnrollement" v-bind:key="t.id">
+                    <td>{{t.user.first_name}}</td>
+                    <td>S{{t.course_file.number}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">Ok</el-button>
+            </span>
+        </el-dialog>
+
     </div>
 </template>
 
@@ -369,6 +397,7 @@
                 collapsedReceipts: true,
                 collapsedRatings: true,
                 collapsedPersonal: true,
+                dialogVisible: false
             }
         },
         /*
@@ -444,6 +473,11 @@
             isEmpty(v) {
                 return isEmpty(v);
             },
+            handleEnrolled(v) {
+                console.log(v)
+                this.$store.dispatch("getCourseEnrollement", v);
+                this.dialogVisible = true;
+            }
         },
         /*
         |--------------------------------------------------------------------------
@@ -457,6 +491,7 @@
                 "userCourses",
                 "allTeacherDetails",
                 "upComingSections",
+                "courseEnrollement"
             ]),
         },
         /*
@@ -553,6 +588,10 @@
             color: #000 !important;
             font-weight: 800;
         }
+    }
+    .view-enrolled {
+        cursor: pointer;
+        text-decoration: underline;
     }
 
     @media (max-width: 600px) {

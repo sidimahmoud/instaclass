@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <label class="form-check-label">
                                     <input type="checkbox" required="required">
-                                    {{$t('auth.accept')}} <a href="#"> {{$t('footer.termsAndConditions')}}</a> &amp; <a href="#">{{$t('footer.privacy')}}</a>
+                                    {{$t('auth.accept')}} <a href="/terms"> {{$t('footer.termsAndConditions')}}</a> <!-- &amp; <a href="#">{{$t('footer.privacy')}}</a> -->
                                 </label>
                             </div>
                             <div class="form-group">

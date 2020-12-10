@@ -63,10 +63,10 @@
                             <div class="form-group">
                                 <label class="form-check-label">
                                     <input type="checkbox" required="required">
-                                    {{$t('auth.accept')}} <a href="#" data-toggle="modal"
+                                    {{$t('auth.accept')}} <a href="/terms" data-toggle="modal"
                                                              data-target="#exampleModalLong">
-                                    {{$t('footer.termsAndConditions')}} </a> &amp; <a
-                                    href="#">{{$t('footer.privacy')}}</a>
+                                    {{$t('footer.termsAndConditions')}} </a> <!-- &amp; <a
+                                    href="#">{{$t('footer.privacy')}}</a> -->
                                 </label>
                             </div>
                             <div class="form-group">

@@ -75,9 +75,9 @@
                                     {{$t('footer.faq')}}
                                 </router-link>
                             </p>
-                            <p>
+                            <!-- <p>
                                 <a href="#" class="text-uppercase"> {{$t('footer.privacy')}}</a>
-                            </p>
+                            </p> -->
 
                         </div><!-- Grid column -->
                         <!-- Grid column -->

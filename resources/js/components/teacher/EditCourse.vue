@@ -146,12 +146,12 @@
                                 <!-- <input type="datetime-local" class="form-control" v-model="section.startDate" required> -->
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{$t('video')}}:</label>
                                 <input type="file" class="form-control-file">
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <button class="btn btn-primary btn-block" type="submit">{{$t('course.edit_course')}}</button>
                 </form>

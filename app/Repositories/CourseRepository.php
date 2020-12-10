@@ -54,4 +54,27 @@ class CourseRepository extends BaseRepository
     {
         return parent::newQuery()->withCount('sections');
     }
+
+    /**
+     * Override new query
+     *
+     * @return Builder
+     */
+    public function getEnrollements($id)
+    {
+        $enrollments = [];
+        $mod = $this->findById($id);
+ 
+        $this->setModel($mod);
+
+        foreach($this->model->sections as $val) {
+            foreach($val->enrollments as $v) {
+                array_push($enrollments , $v->with('user', 'CourseFile')->first());
+            }
+        }
+
+        return $enrollments;
+    }
+
+
 }

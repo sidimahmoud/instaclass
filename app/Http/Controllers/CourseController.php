@@ -84,4 +84,16 @@ class CourseController extends Controller
             ->get();
         return response()->json($courses);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getEnrollements(int $id)
+    {
+        $courses = $this->courseRepository->getEnrollements($id);
+    
+        return response()->json($courses, 201);
+    }
 }
