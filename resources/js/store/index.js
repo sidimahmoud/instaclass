@@ -11,6 +11,7 @@ import contacts from "./modules/contacts";
 import liveCourses from "./modules/liveCourses";
 import i18n from "../src/i18n";
 import newsletter from "./modules/newsletter";
+import language from "./modules/language";
 
 Vue.use(Vuex);
 
@@ -31,7 +32,8 @@ export default new Vuex.Store({
         enrollment,
         contacts,
         liveCourses,
-        newsletter
+        newsletter,
+        language
     }
 })
 

@@ -31,7 +31,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import locale from 'element-ui/lib/locale/lang/en'
 import { Button, Select } from 'element-ui';
 
-Vue.use(ElementUI, { locale })
+Vue.use(ElementUI, locale)
 Vue.component(Button.name, Button);
 Vue.component(Select.name, Select);
 import DropdownMenu from 'v-dropdown-menu'
@@ -54,6 +54,9 @@ var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
+store.dispatch('initLanguage');
+import wysiwyg from "vue-wysiwyg";
+Vue.use(wysiwyg, {}); // config is optional. more below
 
 const app = new Vue({
     el: '#app',

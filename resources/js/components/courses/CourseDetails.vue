@@ -74,7 +74,7 @@
                         </div>
                         <div class="col-md-8">
                             <h3><strong>{{section.title}}</strong></h3>
-                            <p>{{section.description}}</p>
+                            <p v-html="section.description"></p>
                             <p>{{$t('course.duration')}}: {{section.duration}} h</p>
                             <p>
                                 {{$t('course.scheduledAt')}} : {{section.startDate.slice(0,10)}} Hour: {{section.startDate.slice(11,16)}} {{section.timezone}}

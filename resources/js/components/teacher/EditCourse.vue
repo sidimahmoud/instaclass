@@ -131,8 +131,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="short_desc">Description</label>
-                                <input type="text" class="form-control" id="short_desc"
-                                       placeholder="Short description" v-model="section.description" required>
+                                <wysiwyg type="text" class="form-control" id="short_desc"
+                                    placeholder="Short description" v-model="section.description" required/>
                             </div>
                         </div>
                         <div class="col-md-6">

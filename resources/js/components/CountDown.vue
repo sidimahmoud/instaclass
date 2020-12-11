@@ -4,13 +4,13 @@
             <span>
                 <div class="btn btn-primary ">
                     {{displayDays}} <br>
-                    Day
+                    {{$t('day')}}
                 </div>
             </span>
             <span>
                 <div class="btn btn-primary ">
                     {{displayHours}} <br>
-                    Hour
+                    {{$t('hour')}}
                 </div>
             </span>
             <span>

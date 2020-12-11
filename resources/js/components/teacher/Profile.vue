@@ -330,9 +330,9 @@
             </div>
         </div>
         <el-dialog
-            title="Enrollements"
+            :title="$t('enrollements_title')"
             :visible.sync="dialogVisible"
-            width="30%">
+            custom-class="enrollement-modal">
             <div v-if="isEmpty(courseEnrollement)">
                 {{$t('no_enrollement')}}
             </div>

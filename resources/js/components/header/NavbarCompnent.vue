@@ -151,7 +151,7 @@
 
 </template>
 <script>
-    import {mapGetters, mapActions} from 'vuex'
+    import {mapGetters, mapActions, mapMutations} from 'vuex'
     import i18n from "../../src/i18n";
     import $ from 'jquery';
 
@@ -165,19 +165,20 @@
         data() {
             return {
                 q: '',
-                locale: 'en',
+                locale: i18n.locale,
                 show: false
             }
         },
         methods: {
+            ...mapMutations(['saveLanguage']),
             en() {
-                i18n.locale = "en";
+                //i18n.locale = "en";
+                this.saveLanguage("en");
                 this.locale = "en";
             },
             fr() {
-                i18n.locale = "fr";
+                this.saveLanguage("fr");
                 this.locale = "fr";
-
             },
             logout() {
                 this.$store.dispatch('logout')

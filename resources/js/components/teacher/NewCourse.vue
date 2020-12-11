@@ -172,9 +172,10 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="short_desc">{{$t('newCourse.desc')}}:</label>
-                                    <textarea type="text" class="form-control" id="short_desc"
+                                    <wysiwyg type="text" class="form-control" id="short_desc"
                                             :placeholder="$t('newCourse.description')" name="desc[]" required
-                                            v-model="sections[index].description"></textarea>
+                                            v-model="sections[index].description"/>
+                                    <!-- <textarea ></textarea> -->
                                 </div>
                             </div>
                             <div class="col-md-3">
