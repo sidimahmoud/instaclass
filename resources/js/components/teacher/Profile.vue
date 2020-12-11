@@ -329,11 +329,12 @@
                 </div>
             </div>
         </div>
+        
         <el-dialog
             :title="$t('enrollements_title')"
             :visible.sync="dialogVisible"
             custom-class="enrollement-modal"
-            before-close="handleClose">
+            :before-close="handleClose">
             <div v-if="isEmpty(courseEnrollement)">
                 {{$t('no_enrollement')}}
             </div>

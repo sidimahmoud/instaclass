@@ -48,11 +48,7 @@
                     <hr class="bg-dark mx-3">
                     <div class="col-md-12 course-info" v-if="course.course.sub_category">
                         <div>
-                            {{$t('course.category')}} :
-                            <router-link :to="{ name: 'CategCourses', params: { id: course.course.sub_category.category.id}}"
-                                         tag="span" class="mr-2">
-                                {{course.course.sub_category.category.name_en}}
-                            </router-link>
+                            {{$t('course.category')}} : {{ lang == "en" ? course.course.sub_category.category.name_en : course.course.sub_category.category.name_fr}}
                         </div>
                         <div>{{$t('course.subCat')}} : {{ lang == "en" ? course.course.sub_category.name_en : course.course.sub_category.name_fr}}</div>
                         <div>{{$t('course.sessions')}}: {{course.course.sections.length}}</div>
@@ -77,7 +73,7 @@
                             <p v-html="section.description"></p>
                             <p>{{$t('course.duration')}}: {{section.duration}} h</p>
                             <p>
-                                {{$t('course.scheduledAt')}} : {{section.startDate.slice(0,10)}} Hour: {{section.startDate.slice(11,16)}} {{section.timezone}}
+                                {{$t('course.scheduledAt')}} : {{section.startDate.slice(0,10)}} {{$t('hour')}}: {{section.startDate.slice(11,16)}} {{section.timezone}}
                             </p>
                         </div>
                         <div :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '', 'col-md-3']">

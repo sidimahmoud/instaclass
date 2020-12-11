@@ -337,12 +337,15 @@
     "share_body": {
         "facebook": "https://www.facebook.com/share.php?u=instantaclasse.ca&quote=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes.",
         "twitter": "https://twitter.com/intent/tweet?text=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours.&url=https://instantaclasse.ca/&",
-        "email": "mailto:?subject=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer des cours&body=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes.%0d%0a %0d%0ahttps://instantaclasse.ca/ %0d%0a"
+        "email": "mailto:?subject=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer des cours&body=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes.%0d%0a %0d%0ahttps://instantaclasse.ca/ %0d%0a %0d%0a"
     },
     "view_subscriped_list" : "Liste des étudiants inscrits à ce cours",
     "student_name": "Nom d'étudiant",
     "no_enrollement": "Il y'a pas d'inscriptions dans votre cours.",
     "enrollements_title": "Inscriptions",
     "day": "Jour",
-    "free": "Gratuit"
+    "free": "Gratuit",
+    "French": "Français",
+    "English": "Anglais",
+    "Spanish": ""
 }
