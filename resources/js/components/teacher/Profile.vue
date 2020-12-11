@@ -332,7 +332,8 @@
         <el-dialog
             :title="$t('enrollements_title')"
             :visible.sync="dialogVisible"
-            custom-class="enrollement-modal">
+            custom-class="enrollement-modal"
+            before-close="handleClose">
             <div v-if="isEmpty(courseEnrollement)">
                 {{$t('no_enrollement')}}
             </div>
@@ -352,7 +353,7 @@
                 </tbody>
             </table>
             <span slot="footer" class="dialog-footer">
-                <el-button @click="dialogVisible = false">Ok</el-button>
+                <el-button @click="handleClose">Ok</el-button>
             </span>
         </el-dialog>
 
@@ -477,6 +478,9 @@
                 console.log(v)
                 this.$store.dispatch("getCourseEnrollement", v);
                 this.dialogVisible = true;
+            },
+            handleClose() {
+                this.dialogVisible = false
             }
         },
         /*

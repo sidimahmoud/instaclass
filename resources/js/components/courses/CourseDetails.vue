@@ -54,10 +54,10 @@
                                 {{course.course.sub_category.category.name_en}}
                             </router-link>
                         </div>
-                        <div>{{$t('course.subCat')}} : {{course.course.sub_category.name_en}}</div>
+                        <div>{{$t('course.subCat')}} : {{ lang == "en" ? course.course.sub_category.name_en : course.course.sub_category.name_fr}}</div>
                         <div>{{$t('course.sessions')}}: {{course.course.sections.length}}</div>
-                        <div>{{$t('course.lang')}} : {{course.course.language}}</div>
-                        <div>{{$t('course.price')}}: <span v-if="course.course.price===0">Free</span> <span
+                        <div>{{$t('course.lang')}} : {{$t(course.course.language)}}</div>
+                        <div>{{$t('course.price')}}: <span v-if="course.course.price===0">{{$t('free')}}</span> <span
                             v-if="course.course.price!=0">{{course.course.price}}$</span></div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                 return isEmpty(v);
             }
         },
-        computed: mapGetters(["course", "loading", "enrolled", 'isLoggedIn', 'loggedInUser']),
+        computed: mapGetters(["course", "loading", "enrolled", 'isLoggedIn', 'loggedInUser', "lang"]),
         created() {
             this.findCourse();
         },

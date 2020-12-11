@@ -14,12 +14,12 @@
                 <div class="col-md-6">
                     <strong>{{$t('courses.categorie')}}: </strong> {{lang == "en" ? course.sub_category.category.name_en : course.sub_category.category.name_fr}} <br>
                     <strong>{{$t('course.sessions')}}: </strong> {{course.sections.length}} <br>
-                    <strong>{{$t('course.lang')}}: </strong> {{course.language}} <br>
+                    <strong>{{$t('course.lang')}}: </strong> {{$t(course.language)}} <br>
                     <strong>{{$t('course.description')}}: </strong> {{course.short_description}} <br>
                 </div>
                 <div class="col-md-4 text-right">
                     <strong>{{$t('course.price')}}: </strong>
-                    <span class="text-green" v-if="course.price==0">Free</span>
+                    <span class="text-green" v-if="course.price==0">{{$t('free')}}</span>
                     <span class="text-green" v-else>{{course.price}}$</span> <br/>
                     <div v-if="!isLoggedIn || isLoggedIn && loggedInUser.t==='student'">
                         <router-link
