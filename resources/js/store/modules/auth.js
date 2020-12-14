@@ -24,9 +24,11 @@ const actions = {
                     const user = {
                         'u': resp.data.user.id,
                         't': resp.data.user.roles[0].name, //name of user role
+                        'edited': resp.data.user.is_edited, //name of user role
                         'first_name': resp.data.user.first_name,
                         'speciment': resp.data.user.speciment
                     };
+                    console.log(user)
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
                     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
@@ -80,6 +82,7 @@ const actions = {
                     const user = {
                         'u': resp.data.user.id,
                         't': resp.data.user.roles[0].name,
+                        'edited': resp.data.user.is_edited, //name of user role
                         'first_name': resp.data.user.first_name,
                         'speciment': resp.data.user.speciment
                     };
@@ -106,6 +109,7 @@ const actions = {
                     const user = {
                         'u': resp.data.user.id,
                         't': resp.data.user.roles[0].name,
+                        'edited': resp.data.user.is_edited, //name of user role
                         'first_name': resp.data.user.first_name,
                         'speciment': resp.data.user.speciment
                     };
@@ -169,6 +173,7 @@ const actions = {
                     const user = {
                         'u': resp.data.user.id,
                         't': resp.data.user.roles[0].name,
+                        'edited': resp.data.user.is_edited, //name of user role
                         'first_name': resp.data.user.first_name,
                         'speciment': resp.data.user.speciment
                     };

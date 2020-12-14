@@ -226,7 +226,8 @@ const routes = [
         component: TeacherProfile,
         beforeEnter: (to, from, next) => {
             let user = JSON.parse(localStorage.getItem('user')) || null;
-            if (user.t === "teacher") next();
+            if (user.edited == 0) next({name: 'TeacherInfo'});
+            else if (user.t === "teacher") next();
             else if (user.t === "admin") next({name: 'Admin'});
             else if (user.t === "student") next({name: 'StudentProfile'});
             else next({name: 'Home'});
@@ -303,7 +304,8 @@ const routes = [
         },
         beforeEnter: (to, from, next) => {
             let user = JSON.parse(localStorage.getItem('user')) || null;
-            if (user.t === "student") next();
+            if (user.edited == 0) next({name: 'TeacherInfo'});
+            else if (user.t === "student") next();
             else if (user.t === "admin") next({name: 'Admin'});
             else if (user.t === "teacher") next({name: 'TeacherProfile'});
             else next({name: 'Home'});

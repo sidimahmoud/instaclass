@@ -24,7 +24,7 @@
                         <div class="col-md-4 ">
                             <div class="font-weight-bolder">
                                 <h3>{{course.course.user.first_name}} {{course.course.user.last_name}}</h3>
-                                <h4>{{course.course.user.languages}}</h4>
+                                <div>{{course.course.user.languages}}</div>
                                 <div>
                                     {{course.course.user.about}}
                                 </div>

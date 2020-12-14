@@ -204,6 +204,7 @@ class UsersController extends Controller
         $user->country = $request["country"];
         $user->city = $request["city"];
         $user->email = $request["email"];
+        $user->is_edited = $request["is_edited"];
 //        $user->password = $request["password"];
         /* if ($request->hasFile('image')) {
             $file = $request['image'];

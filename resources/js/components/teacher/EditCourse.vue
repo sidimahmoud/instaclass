@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="jumbotron text-right" style="height: 200px"></div>
+        <beat-loader :loading="pageLoader" color="#004d4d" class="center-screen"></beat-loader>
         <div class="container-fluid ">
             <div class="font-weight-bold rounded bg p-3" v-if="!loading">
                 <h3 class="text-center font-weight-bolder">{{$t('course.edit_course')}}</h3>
@@ -66,6 +67,13 @@
                                         Canadiens users have to select CAD.
                                     </small> -->
                                 </div>
+                                <div class="col-md-3">
+                                    <div class="form-group text-center">
+                                        <br/>
+                                        <label>{{$t('newCourse.is_free')}}</label>
+                                        <input class="form-control" type="checkbox" v-model="course.is_free">
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <p class=" font-weight-light">
                                         {{$t('newCourse.priceHelp')}}
@@ -121,14 +129,15 @@
                     <h3>{{$t('sessions')}}: </h3>
                     <div class="row border m-3" v-for="(section, index) in course.course.sections" :key="index">
                         <div class="col-12"><strong>{{$t('session')}} {{index+1}}:</strong></div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="section1Title">{{$t('title_name')}}</label>
                                 <input type="text" class="form-control" id="section1Title"
                                        placeholder="Title" v-model="section.title" required>
                             </div>
-                        </div>
-                        <div class="col-md-6">
+                        </div><br/>
+                        <div class="col-md-12">
+                            <br/>
                             <div class="form-group">
                                 <label for="short_desc">Description</label>
                                 <wysiwyg type="text" class="form-control" id="short_desc"
@@ -141,7 +150,8 @@
                                 <el-date-picker
                                     v-model="section.startDate"
                                     type="datetime"
-                                    :placeholder="$t('newCourse.select_time')">
+                                    :placeholder="$t('newCourse.select_time')"
+                                    :picker-options="datePickerOptions1">
                                 </el-date-picker>
                                 <!-- <input type="datetime-local" class="form-control" v-model="section.startDate" required> -->
                             </div>
@@ -256,9 +266,13 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
+    import BeatLoader from 'vue-spinner/src/BeatLoader.vue';
 
     export default {
         name: "NewCourse",
+        components: {
+            BeatLoader
+        },
         data() {
             return {
                 newCateg: {
@@ -269,7 +283,13 @@
                     catId: '',
                     name: '',
                     nom: '',
-                }
+                },
+                datePickerOptions1: {
+                    disabledDate (date) {
+                        return date < new Date('2021-1-11');
+                    }
+                },
+                pageLoader: false
             }
         },
         methods: {
@@ -324,6 +344,7 @@
                 this.$store.dispatch('fetchSubCategories', id)
             },
             updateCourse() {
+                this.pageLoader = true;
                 const formData = new FormData();
                 formData.append("sub_category_id", this.course.course.sub_category_id);
                 formData.append("language", this.course.course.language);
@@ -335,11 +356,13 @@
                 formData.append("name", this.course.course.name);
                 formData.append("short_description", this.course.course.short_description);
                 formData.append("_method", "put");
-                formData.append("sections", JSON.stringify(this.sections));
+                console.log(this.course.course.sections);
+                formData.append("sections", this.course.course.sections);
                 formData.append("allow_share_records", this.course.course.allow_share_records? 1 : 0);
+                formData.append("is_free", this.course.is_free ? '1' : '0');
 
                 console.log(formData)
-                axios.post('/course/'+this.course.course.id, formData, {
+                axios.put('/course/'+this.course.course.id, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     }
@@ -354,10 +377,14 @@
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'ok'
                     }).then((result) => {
+                        this.pageLoader = false;
                         this.$router.push({name: 'Courses'})
                     })
                     //this.$alert('Your course was updated successfully','Course updated', 'success')
-                }).catch(err => console.log(err.response));
+                }).catch((err) => {
+                    this.pageLoader = false;
+                    console.log(err.response)
+                });
             },
         },
         computed: {
@@ -380,5 +407,16 @@
     .jumbotron {
         background-image: url('../../assets/images/teaprofile/bg.jpg');
         border-radius: 0;
+    }
+
+    .center-screen {
+        position:fixed; /* change this to fixed */
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+        width: 100px;
+        height: 100px;
+        z-index: 2000px;
     }
 </style>

@@ -188,7 +188,8 @@
                     "phone" : this.form.phone,
                     "email" : this.form.email,
                     "about" : this.form.about,
-                    "languages" : this.form.languages
+                    "languages" : this.form.languages,
+                    "is_edited": 1
                 }
 
                 axios.put('/user/' + this.userProfile.id, payload).then(res => {

@@ -135,8 +135,8 @@
                     <!--Summary-->
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="desc">{{$t('newCourse.summaryHelp')}} (maximum: 150 {{$t('carachtar')}})</label>
-                            <textarea class="form-control" v-model="course.short_description" maxlength="150" required></textarea>
+                            <label for="desc">{{$t('newCourse.summaryHelp')}} (maximum: 100 {{$t('carachtar')}})</label>
+                            <textarea class="form-control" v-model="course.short_description" maxlength="100" required></textarea>
                         </div>
                     </div>
                 </div>
@@ -414,7 +414,7 @@
                 savingCourse: false,
                 datePickerOptions1: {
                     disabledDate (date) {
-                        return date < new Date('2021-1-4');
+                        return date < new Date('2021-1-11');
                     }
                 },
                 pageLoader: false
@@ -576,6 +576,6 @@
         margin-left: -50px;
         width: 100px;
         height: 100px;
-        z-index: 1000px;
+        z-index: 2000px;
     }
 </style>

@@ -332,6 +332,7 @@
         
         <el-dialog
             :title="$t('enrollements_title')"
+            ref="classes-modal"
             :visible.sync="dialogVisible"
             custom-class="enrollement-modal"
             :before-close="handleClose">
@@ -481,6 +482,7 @@
                 this.dialogVisible = true;
             },
             handleClose() {
+                this.$refs['classes-modal'].close();
                 this.dialogVisible = false
             }
         },

@@ -31,7 +31,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import locale from 'element-ui/lib/locale/lang/en'
 import { Button, Select } from 'element-ui';
 
-Vue.use(ElementUI, locale)
+Vue.use(ElementUI, {locale})
 Vue.component(Button.name, Button);
 Vue.component(Select.name, Select);
 import DropdownMenu from 'v-dropdown-menu'

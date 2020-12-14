@@ -168,10 +168,26 @@ class CoursesController extends Controller
             $course->image = 'uploads/courses/thumbnails' . $file_name;
         } else
             $course->image = $request['image'];
+
+        $number = 1;
+        info($request['sharable']);
+        /* foreach ($request["sections"] as $key => $section) {
+            info($section);
+            $courseSection = new CourseFile::find($id);
+            $courseSection->course_id = $course->id;
+            $courseSection->number = $number;
+            $courseSection->title = $section->title;
+            $courseSection->description = $section->description;
+            $courseSection->startDate = $section->stratDate;
+            $courseSection->timezone = $section->timezone;
+            $courseSection->duration = $section->duration;
+            $courseSection->save();
+            $number++; 
+        } */
         $course->save();
 
         if ($course)
-            return response()->json("course created successfully");
+            return response()->json("course updated successfully");
         return response()->json("error");
     }
 
