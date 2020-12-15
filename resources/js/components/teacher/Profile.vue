@@ -484,6 +484,7 @@
             handleClose() {
                 this.$refs['classes-modal'].close();
                 this.dialogVisible = false
+                window.location.reload()
             }
         },
         /*
