@@ -136,9 +136,30 @@ class CoursesController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        info($request);
         $course = Course::find($id);
-        $course->user_id = $request->user()->id;
+        $course->update($request->all());
+        foreach ($request["sections"] as $section) {
+
+            $ip = $section['id'];
+            $user = CourseFile::whereId($ip);
+
+            $user->update([
+                'number' => $section['number'],
+                'title' => $section['title'],
+                'description' => $section['description'],
+                'startDate' => $section['startDate'],
+                'duration' => $section['duration'],
+                'file' => $section['file'],
+                'timezone' => $section['timezone'],
+                'video_link' => $section['video_link'],
+            ]);
+        }
+
+        if ($course)
+            return response()->json("course updated successfully");
+        return response()->json("error");
+        /* $course->user_id = $request->user()->id;
         $course->sub_category_id = $request["sub_category_id"];
 //        $course->name = $request["name"];
         $course->short_description = $request["short_description"];
@@ -170,7 +191,7 @@ class CoursesController extends Controller
             $course->image = $request['image'];
 
         $number = 1;
-        info($request['sharable']);
+        info($request['sharable']);  */
         /* foreach ($request["sections"] as $key => $section) {
             info($section);
             $courseSection = new CourseFile::find($id);
@@ -184,11 +205,11 @@ class CoursesController extends Controller
             $courseSection->save();
             $number++; 
         } */
-        $course->save();
+        /* $course->save();
 
         if ($course)
             return response()->json("course updated successfully");
-        return response()->json("error");
+        return response()->json("error"); */
     }
 
     /**

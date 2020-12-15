@@ -101,6 +101,7 @@
     import firebase from "firebase";
     import {isEmpty} from "../../helpers/common";
     import BeatLoader from 'vue-spinner/src/BeatLoader.vue';
+    import {Notification} from "element-ui";
 
     export default {
         name: "EditProfile",
@@ -164,13 +165,18 @@
                                 }
 
                                 axios.put('/user/' + this.userProfile.id, payload).then(res => {
-                                    this.$swal.fire(
+                                    /* this.$swal.fire(
                                         'Ok!',
                                         this.$t('profile.updated'),
                                         'success'
-                                    )
+                                    ) */
+                                    Notification.success({
+                                        message: this.$t('profile.updated'),
+                                    });
                                     this.pageLoader = false
                                     this.$store.dispatch("fetchProfile")
+                                    this.$store.dispatch("resetUserData")
+                                    this.$router.push({name: "TeacherProfile"})
                                 })
                                 .catch(err => console.log(err.response));
                             });
@@ -193,13 +199,18 @@
                 }
 
                 axios.put('/user/' + this.userProfile.id, payload).then(res => {
-                    this.$swal.fire(
+                    /* this.$swal.fire(
                         'Ok!',
                         this.$t('profile.updated'),
                         'success'
-                    )
+                    ) */
+                    Notification.success({
+                        message: this.$t('profile.updated'),
+                    });
                     this.pageLoader = false
                     this.$store.dispatch("fetchProfile")
+                    this.$store.dispatch("resetUserData")
+                    this.$router.push({name: "TeacherProfile"})
                 })
                 .catch(err => console.log(err.response));
             },

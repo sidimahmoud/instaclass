@@ -18,7 +18,8 @@ class Course extends Model
         'sub_category_id',
         'name',
         'language',
-        'is_free'
+        'is_free',
+        'short_description'
     ];
 
     protected $casts = [

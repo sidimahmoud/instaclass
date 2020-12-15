@@ -188,6 +188,19 @@ const actions = {
                 })
         })
     },
+
+    resetUserData({commit}, payload) {
+        const oldUser = JSON.parse(localStorage.getItem('user'));
+        const user = {
+            'u': oldUser.u,
+            't': oldUser.t,
+            'edited': 1,
+            'first_name': oldUser.first_name,
+            'speciment': oldUser.speciment
+        };
+
+        localStorage.setItem('user', JSON.stringify(user));
+    },
 };
 
 const mutations = {

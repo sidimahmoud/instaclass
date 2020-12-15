@@ -71,15 +71,15 @@
                                     <div class="form-group text-center">
                                         <br/>
                                         <label>{{$t('newCourse.is_free')}}</label>
-                                        <input class="form-control" type="checkbox" v-model="course.is_free">
+                                        <input class="form-control" type="checkbox" v-model="course.course.is_free">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <p class=" font-weight-light">
                                         {{$t('newCourse.priceHelp')}}
                                     </p>
                                     
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <!-- <div class="col-md-4">
@@ -111,8 +111,8 @@
                                 <!--Summary-->
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="desc">{{$t('newCourse.summaryHelp')}} (maximum: 150 {{$t('carachtar')}})</label>
-                                        <textarea class="form-control" v-model="course.course.short_description" maxlength="150" required></textarea>
+                                        <label for="desc">{{$t('newCourse.summaryHelp')}} (maximum: 100 {{$t('carachtar')}})</label>
+                                        <textarea class="form-control" v-model="course.course.short_description" maxlength="100" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -345,7 +345,7 @@
             },
             updateCourse() {
                 this.pageLoader = true;
-                const formData = new FormData();
+                /* const formData = new FormData();
                 formData.append("sub_category_id", this.course.course.sub_category_id);
                 formData.append("language", this.course.course.language);
                 formData.append("price", this.course.course.price);
@@ -359,14 +359,25 @@
                 console.log(this.course.course.sections);
                 formData.append("sections", this.course.course.sections);
                 formData.append("allow_share_records", this.course.course.allow_share_records? 1 : 0);
-                formData.append("is_free", this.course.is_free ? '1' : '0');
+                formData.append("is_free", this.course.is_free ? '1' : '0'); */
 
-                console.log(formData)
-                axios.put('/course/'+this.course.course.id, formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    }
-                }).then(res => {
+                let payload = {
+                    "sub_category_id": this.course.course.sub_category_id,
+                    "language": this.course.course.language,
+                    "price": this.course.course.price,
+                    "currency": this.course.course.currency,
+                    "estimated_duration": this.course.course.estimated_duration,
+                    "authorized_students": this.course.course.authorized_students,
+                    "sharable": this.course.course.sharable,
+                    "name": this.course.course.name,
+                    "short_description": this.course.course.short_description,
+                    "sections": this.course.course.sections,
+                    "allow_share_records": this.course.course.allow_share_records? 1 : 0,
+                    "is_free": this.course.is_free ? '1' : '0'
+                }
+
+                axios.put('/course/'+this.course.course.id, payload)
+                .then(res => {
                     console.log(res);
                     this.$swal.fire({
                         title: '',
@@ -378,7 +389,7 @@
                         confirmButtonText: 'ok'
                     }).then((result) => {
                         this.pageLoader = false;
-                        this.$router.push({name: 'Courses'})
+                        this.$router.push({name: 'TeacherProfile'})
                     })
                     //this.$alert('Your course was updated successfully','Course updated', 'success')
                 }).catch((err) => {

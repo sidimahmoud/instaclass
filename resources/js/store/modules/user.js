@@ -94,6 +94,7 @@ const actions = {
                     const user = {
                         'u': temps.u,
                         't': temps.t,
+                        'edited': 1,
                         'first_name': temps.first_name,
                         'speciment': payload.speciment
                     };
