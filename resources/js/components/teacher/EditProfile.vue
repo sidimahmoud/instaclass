@@ -161,7 +161,8 @@
                                     "email" : this.form.email,
                                     "about" : this.form.about,
                                     "languages" : this.form.languages,
-                                    "image" : url
+                                    "image" : url,
+                                    "is_edited": 1
                                 }
 
                                 axios.put('/user/' + this.userProfile.id, payload).then(res => {
