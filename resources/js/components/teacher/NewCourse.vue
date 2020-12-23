@@ -246,6 +246,9 @@
                 </div>
             </form>
             <div>
+                <button class="btn btn-dark" @click="openDialog" v-if="step===1">
+                   {{$t('newCourse.cannot_find_Categroie')}}
+                </button>
                 <button class="btn btn-dark" @click="step--" :disabled="step===1">
                     {{$t('newCourse.prev')}}
                 </button>
@@ -354,6 +357,28 @@
             </div>
         </div>
 
+        <el-dialog
+            :title="$t('enrollements_title')"
+            ref="classes-modal"
+            :visible.sync="dialogVisible"
+            custom-class="enrollement-modal"
+            :before-close="handleClose">
+
+            <input type="text" class="form-control" placeholder="" required>
+
+            <label for="exampleFormControlSelect1">{{$t('newCourse.lang')}}</label>
+            <select class="form-control" id="exampleFormControlSelect1" required
+                    v-model="course.language">
+                <option value="French">{{$t('demande.languages.fr')}}</option>
+                <option value="English">{{$t('demande.languages.en')}}</option>
+                <option value="Spanish">{{$t('demande.languages.es')}}</option>
+                <option value="">{{$t('demande.languages.other')}}</option>
+            </select>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="handleNextDialog">Next</el-button>
+            </span>
+        </el-dialog>
+
     </div>
 
 </template>
@@ -365,9 +390,19 @@
 
     export default {
         name: "NewCourse",
+        /*
+        |--------------------------------------------------------------------------
+        | component > components
+        |--------------------------------------------------------------------------
+        */
         components: {
             BeatLoader
         },
+        /*
+        |--------------------------------------------------------------------------
+        | component > data
+        |--------------------------------------------------------------------------
+        */
         data() {
             return {
                 step: 1,
@@ -417,11 +452,17 @@
                         return date < new Date('2021-1-11');
                     }
                 },
-                pageLoader: false
+                pageLoader: false,
+                dialogVisible: false
             }
         },
+        /*
+        |--------------------------------------------------------------------------
+        | component > methods
+        |--------------------------------------------------------------------------
+        */
         methods: {
-            ...mapActions(['fetchCategories']),
+            ...mapActions(['fetchCategories', 'fetchNoCategorie']),
             saveCategory() {
                 const formData = new FormData();
                 const imagefile = document.querySelector('#image');
@@ -488,7 +529,6 @@
                 formData.append("short_description", this.course.short_description);
                 formData.append("allow_share_records", this.course.allow_share_records);
                 formData.append("is_free", this.course.is_free ? '1' : '0');
-                //this.sections.map(item=>)
 
                 formData.append("sections", JSON.stringify(this.sections));
                 console.log(formData)
@@ -535,8 +575,6 @@
                         frequency: '',
                     })
                 }
-
-
             },
             next() {
                 if (this.step ==3) {
@@ -544,11 +582,35 @@
                         return
                     } else this.step++
                 }else this.step++
+            },
+            openDialog() {
+                this.dialogVisible = !this.dialogVisible;
+            },
+            handleClose() {
+                this.$refs['classes-modal'].close();
+                this.dialogVisible = !this.dialogVisible;
+               // window.location.reload()
+            },
+            handleNextDialog() {
+                this.dialogVisible = !this.dialogVisible;
+                this.course.sub_category_id = this.nonCategories.id
+                this.next();
             }
         },
-        computed: mapGetters(["allCategories", "subCategories", "lang"]),
-        created() {
+        /*
+        |--------------------------------------------------------------------------
+        | component > computed
+        |--------------------------------------------------------------------------
+        */
+        computed: mapGetters(["allCategories", "nonCategories", "subCategories", "lang"]),
+        /*
+        |--------------------------------------------------------------------------
+        | component > mounted
+        |--------------------------------------------------------------------------
+        */
+        mounted() {
             this.fetchCategories();
+            this.fetchNoCategorie();
             this.$store.dispatch('fetchSubCategories', 1)
         }
     }

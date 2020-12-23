@@ -171,7 +171,8 @@
         "thank_msg": "Votre cours a été publié avec succès",
         "update_msg": "Votre cours a été mis à jour avec succès",
         "description": "Déscription",
-        "select_time": "Sélectionnez une date"
+        "select_time": "Sélectionnez une date",
+        "cannot_find_Categroie": "Je ne trouve pas la catégorie"
     },
     "auth": {
         "signIn": "Connexion",

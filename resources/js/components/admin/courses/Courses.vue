@@ -18,7 +18,7 @@
                 <th scope="col">Status (paying or free)</th>
                 <th scope="col">Date of sessions</th>
                 <th scope="col">Date of creation</th>
-
+                <th scope="col">Students list</th>
             </tr>
             </thead>
             <tbody>
@@ -31,6 +31,7 @@
                 <td>{{t.price == 0 ? 'Free' : 'Paying'}}</td>
                 <td><el-button @click="handleShowSection(t.id)">View</el-button></td>
                 <td>{{t.created_at}}</td>
+                <td><el-button @click="handleEnrollment(t.id)">Open</el-button></td>
             </tr>
             </tbody>
         </table>
@@ -84,6 +85,35 @@
                 </tbody>
             </table>
         </el-dialog>
+
+        <el-dialog
+            :title="$t('enrollements_title')"
+            ref="classes-modal"
+            :visible.sync="dialogVisible"
+            custom-class="enrollement-modal"
+            :before-close="handleClose">
+            <div v-if="isEmpty(courseEnrollement)">
+                {{$t('no_enrollement')}}
+            </div>
+            <table class="table" v-else>
+                <thead>
+                <tr>
+                    <th scope="col">{{$t('no_enrollement')}}</th>
+                    <th scope="col">Section</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="t in courseEnrollement" v-bind:key="t.id">
+                    <td>{{t.user.first_name}}</td>
+                    <td>S{{t.course_file.number}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="handleClose">Ok</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
@@ -103,7 +133,18 @@
             return {
                 showModal: false,
                 showModal2: false,
+                dialogVisible: false
             }
+        },
+        /*
+        |--------------------------------------------------------------------------
+        | Component > computed
+        |--------------------------------------------------------------------------
+        */
+        computed: {
+            ...mapGetters([
+                "courseEnrollement"
+            ]),
         },
         /*
         |--------------------------------------------------------------------------
@@ -126,6 +167,16 @@
             },
             formatDate(d) {
                 return moment(d).format("LLL");
+            },
+            handleEnrollment(v) {
+                console.log(v)
+                this.$store.dispatch("getCourseEnrollement", v);
+                this.dialogVisible = true;
+            },
+            handleClose() {
+                this.$refs['classes-modal'].close();
+                this.dialogVisible = false
+               // window.location.reload()
             }
         },
         /*

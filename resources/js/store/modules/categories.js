@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const state = {
     categories: [],
+    nonCategories: {},
     subCategories: [],
     course: '',
     loadingCategories: false,
@@ -9,6 +10,7 @@ const state = {
 };
 const getters = {
     allCategories: (state) => state.categories,
+    nonCategories: (state) => state.nonCategories,
     subCategories: (state) => state.subCategories,
     loadingCategories: (state) => state.loadingCategories,
 };
@@ -18,6 +20,12 @@ const actions = {
         commit('loadingCategories', true);
         const response = await axios.get('/categories');
         commit('setCategories', response.data);
+        commit('loadingCategories', false);
+    },
+    async fetchNoCategorie({commit}) {
+        commit('loadingCategories', true);
+        const response = await axios.get('/non-categories');
+        commit('setNonCategories', response.data);
         commit('loadingCategories', false);
     },
     async fetchSubCategories({commit}, id) {
@@ -42,6 +50,7 @@ const actions = {
 };
 const mutations = {
     setCategories: (state, categories) => (state.categories = categories),
+    setNonCategories: (state, nonCategories) => (state.nonCategories = nonCategories),
     setSubCategories: (state, categories) => (state.subCategories = categories),
     loadingCategories: (state, val) => (state.loadingCategories = val),
 };

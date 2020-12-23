@@ -6,6 +6,7 @@ use App\Category;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use App\SubCategory;
 
 class CategoryController extends Controller
 {
@@ -16,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $cats = Category::with("subCategories")->get();
+        $cats = Category::where('name_fr', '!=', 'no_categorie')->with("subCategories")->get();
         return response()->json($cats);
     }
 
@@ -119,6 +120,15 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
         return response()->json(["response" => "category deleted"]);
+    }
 
+    /**
+     * Remove the specified resource from storage.
+     * @return JsonResponse
+     */
+    public function getNoCategorie()
+    {
+        $cat = SubCategory::where('name_fr', '=', 'no_sub_categorie')->first();
+        return response()->json($cat);
     }
 }

@@ -6,6 +6,7 @@ Route::get('email/verify/{id}', 'VerificationController@verify');
 Route::post('/login', 'AuthController@login');
 Route::post('/register', 'AuthController@register');
 Route::resource('/categories', 'CategoryController');
+Route::get('/non-categories', 'CategoryController@getNoCategorie');
 Route::get('/subcats/{id}', 'SubCategoryController@subCategories');
 Route::resource('/sub-categories', 'SubCategoryController');
 Route::get('/courses', 'CourseController@index');

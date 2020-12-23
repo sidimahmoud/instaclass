@@ -170,7 +170,8 @@
         "thank_msg": "Your course was published successfully",
         "update_msg": "Your course was updated successfully",
         "description": "Description",
-        "select_time": "Select a date"
+        "select_time": "Select a date",
+        "cannot_find_Categroie": "Cannot find categroie"
     },
     "auth": {
         "signIn": "Sign in",
