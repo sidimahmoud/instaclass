@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $cats = Category::with("subCategories")->get();
+        $cats = Category::where('name_fr', '!=', 'no_categorie')->with("subCategories")->get();
         return response()->json($cats);
     }
 
