@@ -151,6 +151,8 @@
                                     v-model="section.startDate"
                                     type="datetime"
                                     :placeholder="$t('newCourse.select_time')"
+                                    format="yyyy-MM-dd HH:mm:ss" 
+                                    value-format="yyyy-MM-dd HH:mm:ss"
                                     :picker-options="datePickerOptions1">
                                 </el-date-picker>
                                 <!-- <input type="datetime-local" class="form-control" v-model="section.startDate" required> -->
@@ -286,7 +288,7 @@
                 },
                 datePickerOptions1: {
                     disabledDate (date) {
-                        return date < new Date('2021-1-11');
+                        return date < new Date('2021-2-1');
                     }
                 },
                 pageLoader: false

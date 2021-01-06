@@ -187,6 +187,8 @@
                                         v-model="sections[index].stratDate"
                                         type="datetime"
                                         :placeholder="$t('newCourse.select_time')"
+                                        format="yyyy-MM-dd HH:mm:ss" 
+                                        value-format="yyyy-MM-dd HH:mm:ss"
                                         :picker-options="datePickerOptions1">
                                     </el-date-picker>
                                     <small>{{$t('newCourse.teaching_note')}}</small>
@@ -249,7 +251,7 @@
                 <button class="btn btn-dark" @click="openDialog" v-if="step===1">
                    {{$t('newCourse.cannot_find_Categroie')}}
                 </button>
-                <button class="btn btn-dark" @click="step--" :disabled="step===1">
+                <button class="btn btn-dark" @click="step--" v-if="step!=1">
                     {{$t('newCourse.prev')}}
                 </button>
                 <button class="btn btn-primary float-right" @click="next" :disabled="step===4" v-if="step!==4">
@@ -358,12 +360,13 @@
         </div>
 
         <el-dialog
-            :title="$t('enrollements_title')"
+            :title="$t('new_course_title')"
             ref="classes-modal"
             :visible.sync="dialogVisible"
             custom-class="enrollement-modal"
             :before-close="handleClose">
 
+            <label for="exampleFormControlSelect1">{{$t('new_course_title_span')}}</label>
             <input type="text" class="form-control" placeholder="" required>
 
             <label for="exampleFormControlSelect1">{{$t('newCourse.lang')}}</label>
@@ -449,7 +452,7 @@
                 savingCourse: false,
                 datePickerOptions1: {
                     disabledDate (date) {
-                        return date < new Date('2021-1-11');
+                        return date < new Date('2021-2-1');
                     }
                 },
                 pageLoader: false,

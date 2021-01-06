@@ -73,7 +73,7 @@
                             <p v-html="section.description"></p>
                             <p>{{$t('course.duration')}}: {{section.duration}} h</p>
                             <p>
-                                {{$t('course.scheduledAt')}} : {{section.startDate.slice(0,10)}} {{$t('hour')}}: {{section.startDate.slice(11,16)}} {{section.timezone}}
+                                {{$t('course.scheduledAt')}} : {{section.startDate}} {{section.timezone}}
                             </p>
                         </div>
                         <div :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '', 'col-md-3']">
@@ -122,9 +122,14 @@
             },
             isEmpty(v) {
                 return isEmpty(v);
+            },
+            dateFormat(date) {
+                return moment(date).format('');
             }
         },
-        computed: mapGetters(["course", "loading", "enrolled", 'isLoggedIn', 'loggedInUser', "lang"]),
+        computed: {
+            ...mapGetters(["course", "loading", "enrolled", 'isLoggedIn', 'loggedInUser', "lang"]),
+        },
         created() {
             this.findCourse();
         },

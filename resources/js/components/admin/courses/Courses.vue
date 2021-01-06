@@ -36,6 +36,17 @@
             </tbody>
         </table>
 
+        <div class="text-center list-pagination" v-if="!isEmpty(allCourses.data)">
+            <el-pagination
+                :page-size="5"
+                :page-count="allCourses.total_pages"
+                layout="prev, pager, next"
+                :total="allCourses.total"
+                :current-page="allCourses.current_page"
+                @current-change="reloadList">
+            </el-pagination>
+        </div>
+
         <el-dialog
             title="Course sessions"
             :visible.sync="showModal"
@@ -177,7 +188,17 @@
                 this.$refs['classes-modal'].close();
                 this.dialogVisible = false
                // window.location.reload()
-            }
+            },
+            reloadList(n){
+                this.pageLoading = true
+                let payload = {
+                    'page': n
+                }
+                this.fetchCourses(payload);
+                setTimeout(() => {
+                    this.pageLoading = false
+                },500)  
+            },
         },
         /*
         |--------------------------------------------------------------------------

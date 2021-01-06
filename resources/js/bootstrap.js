@@ -1,9 +1,9 @@
 import axios from "axios";
-import moment from 'moment';
 
 window._ = require('lodash');
-window.moment = moment;
-
+import moment from 'moment';
+import 'moment-timezone';
+import { extendMoment } from 'moment-range';
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -48,6 +48,7 @@ if (token) axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 //     forceTLS: true
 // });
 // Create a helper for setting default values if variable is undefined or null.
+
 let sd = (v, d) => {
     return v === undefined || v === null ? d : v;
 };
@@ -55,3 +56,5 @@ let sd = (v, d) => {
 window.app_api = sd(process.env.MIX_API_URL, "https://instantaclasse.ca/api");
 window.axios.defaults.baseURL = sd(process.env.MIX_API_URL, "https://instantaclasse.ca/api");
 
+window.moment = extendMoment(moment);
+window.moment.tz.setDefault("America/Toronto");

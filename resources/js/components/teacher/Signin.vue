@@ -136,7 +136,12 @@
                             let r = this.$router.resolve({name: 'StudentProfile'});
                             window.location.assign(r.href)
                         }else {
-                            this.errorMessage = "No teacher account with this email please verify.";
+                            this.$alert(this.$t('no_teacher_account_msg'), '', {
+                                confirmButtonText: 'OK',
+                            }).then(() => {
+                                this.$store.dispatch('logout')
+                            });
+                            //this.errorMessage = "No teacher account with this email please verify.";
                         }
                             /* this.$router.push({name: 'TeacherProfile'}) :
                             (res.data.user.roles[0].name === "student") ?

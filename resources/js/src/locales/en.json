@@ -166,12 +166,12 @@
         "prev": "Previous step",
         "next": "Next step",
         "is_free": "Free course",
-        "teaching_note": "Teaching sessions start on Monday January 11, 2021.",
+        "teaching_note": "Teaching sessions start on February 1, 2021.",
         "thank_msg": "Your course was published successfully",
         "update_msg": "Your course was updated successfully",
         "description": "Description",
         "select_time": "Select a date",
-        "cannot_find_Categroie": "Cannot find categroie"
+        "cannot_find_Categroie": "I can't find my categorie"
     },
     "auth": {
         "signIn": "Sign in",
@@ -324,8 +324,8 @@
     "share": "Share",
     "banne_txt": "WELCOME TO INSTRUCTORS AND STUDENTS",
     "banne_txt_1": "Create a course as an instructor or enroll as a student, it is quick and easy.",
-    "banne_student": "Enroll to a course today, start learning from January 11, 2021.",
-    "banne_teacher": "Publish your course today, start teaching from January 11, 2021.",
+    "banne_student": "Enroll to a course today, start learning from February 1, 2021.",
+    "banne_teacher": "Publish your course today, start teaching from February 1, 2021.",
     "times" : {
         "est": "Eastern Time EST",
         "pst": "Pacific Time PST",
@@ -345,5 +345,8 @@
     "free": "Free",
     "French": "French",
     "English": "English",
-    "Spanish": "Espagnol"
+    "Spanish": "Spanish",
+    "new_course_title": "Course Creation",
+    "new_course_title_span": "Type the name of the course that you want to teach :",
+    "no_teacher_account_msg": "The email entered is already used in your student account. It can’t be used to log in the teacher’s account. Please create a teacher account."
 }

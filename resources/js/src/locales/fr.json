@@ -167,12 +167,12 @@
         "prev": "Précédent",
         "next": "Suivant",
         "is_free": "Cours gratuit",
-        "teaching_note": "Les séances d'enseignements débutent Lundi le 11 janvier 2021.",
+        "teaching_note": "Les séances d'enseignements débutent le 1er février 2021.",
         "thank_msg": "Votre cours a été publié avec succès",
         "update_msg": "Votre cours a été mis à jour avec succès",
         "description": "Déscription",
         "select_time": "Sélectionnez une date",
-        "cannot_find_Categroie": "Je ne trouve pas la catégorie"
+        "cannot_find_Categroie": "Je ne trouve pas ma catégorie"
     },
     "auth": {
         "signIn": "Connexion",
@@ -327,8 +327,8 @@
     "share": "Partager",
     "banne_txt": "BIENVENUE AUX INSTRUCTEURS ET ÉTUDIANTS",
     "banne_txt_1": "Créez un cours en tant qu'enseignant(e) ou inscrivez-vous comme étudiant(e), c'est simple et rapide.",
-    "banne_student": "Inscrivez-vous à un cours dès aujourd'hui, commencez à apprendre à partir du 11 janvier 2021.",
-    "banne_teacher": "Publiez votre cours dès aujourd'hui, commencez à enseigner à partir du 11 janvier 2021.",
+    "banne_student": "Inscrivez-vous à un cours dès aujourd'hui, commencez à apprendre à partir du 1er février 2021.",
+    "banne_teacher": "Publiez votre cours dès aujourd'hui, commencez à enseigner à partir du 1er février 2021.",
     "times" : {
         "est": "Heure de l'Est EST",
         "pst": "Heure du Pacifique PST",
@@ -348,5 +348,8 @@
     "free": "Gratuit",
     "French": "Français",
     "English": "Anglais",
-    "Spanish": ""
+    "Spanish": "Espagnol",
+    "new_course_title": "Creation du cours",
+    "new_course_title_span": "Saisir le nom du cours dont vous souhaitez enseigner :",
+    "no_teacher_account_msg": "L'email saisi est déjà utilisé dans votre compte d’étudiant. Il ne peut pas être utilisé pour se connecter au compte d’instructeur. Veuillez créer un compte instructeur."
 }
