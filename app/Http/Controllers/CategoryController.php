@@ -129,6 +129,7 @@ class CategoryController extends Controller
     public function getNoCategorie()
     {
         $cat = SubCategory::where('name_fr', '=', 'no_sub_categorie')->first();
+        info($cat);
         return response()->json($cat);
     }
 }
