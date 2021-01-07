@@ -24,7 +24,7 @@ const actions = {
     },
     async fetchNoCategorie({commit}) {
         commit('loadingCategories', true);
-        const response = await axios.get('/non-categories');
+        const response = await axios.get('/noncategorie');
         commit('setNonCategories', response.data);
         commit('loadingCategories', false);
     },
