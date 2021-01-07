@@ -247,6 +247,8 @@ class AuthController extends Controller
                 'token' => $token,
                 'created_at' => Carbon::now()
             ]);
+            info('token create');
+            info($token);
             $user->notify(new MailResetPasswordNotification($token));
             return Response()->json(["message" => "Password reset email sent."]);
         }
@@ -259,12 +261,15 @@ class AuthController extends Controller
      */
     protected function resetPassword(Request $request)
     {
-        $tokenData = DB::table('password_resets')
-            ->where('token', $request->token)->first();
+        info($request->all());
+        info($request->token);
+        $tokenData = DB::table('password_resets')->where('token', $request->token)->first();
         $user = User::where('email', $tokenData->email)->first();
         if ($user) {
-            $user->password = Hash::make($request->password);
-            $user->save();
+            $user->update([
+                "password" => Hash::make($request->password)
+            ]);
+
             DB::table('password_resets')->where('token', $request->token)->delete();
             return Response()->json(["message" => "Password reset succeeded"]);
         }

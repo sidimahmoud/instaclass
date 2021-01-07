@@ -56,7 +56,9 @@
                         return
                     }
                 }
-
+                console.log('this.$route.params')
+                console.log(this.$route.params.token)
+                console.log(this.$route.params)
                 axios.post("/reset/password/", {
                     token: this.$route.params.token,
                     email: this.email,

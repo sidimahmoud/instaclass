@@ -595,8 +595,11 @@
                // window.location.reload()
             },
             handleNextDialog() {
+                console.log('handleNextDialog');
+                console.log(this.nonCategories);
                 this.dialogVisible = !this.dialogVisible;
                 this.course.sub_category_id = this.nonCategories.id
+                console.log(this.course)
                 this.next();
             }
         },
