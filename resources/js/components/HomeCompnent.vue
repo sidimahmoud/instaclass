@@ -244,7 +244,6 @@
         margin-left: 15px !important;
     }
 
-
     /* latest courses border bottom*/
     .latest_courses_border {
         border-bottom: 5px solid red;
@@ -316,7 +315,6 @@
     }
     .el-button--primary.is-plain:hover {
         color: #409EFF !important;
-
     }
 
     .classes {
@@ -324,7 +322,6 @@
         background: linear-gradient(#f8f9fa, rgba(255, 255, 255, 0.61)), url('../assets/images/home/bg3.png') no-repeat center center;
         background-size: cover;
     }
-
 
     .whyChoose {
         background: linear-gradient(rgba(19, 19, 19, 0.67), rgba(19, 19, 19, 0.67)), url('../assets/images/home/why.jpg') no-repeat center center;
@@ -352,7 +349,6 @@
         padding-top: 100px;
         clip-path: polygon(0 0, 180% 50%, 0 180%, 0 50%) !important;
         border-radius: 0 0 20px 20px;
-
         .carte-icon {
             margin-top: -60px;
         }
@@ -391,7 +387,6 @@
             background-size: cover;
             height: 45vh;
             font-family: 'Poppins', sans-serif;
-
             h2 {
                 line-height: 2 !important;
             }
@@ -401,19 +396,19 @@
 
     .shareBar {
         background-color: #fff;
-        top: 300px;
-        height: 150px;
+        top: 200px;
+        height: 120px;
         position: absolute;
         border-radius: 5px;
         width: auto;
         
         span {
-            padding: 5px;
+            padding: 3px;
         }
 
         @media only screen and (max-width: 600px) {
-            top: 180px;
-            width: auto;
+            top: 70px;
+            width: 60px;
         }
     }
 
@@ -452,5 +447,4 @@
             }
         }
     }
-
 </style>

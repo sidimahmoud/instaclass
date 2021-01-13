@@ -288,7 +288,7 @@
                 },
                 datePickerOptions1: {
                     disabledDate (date) {
-                        return date < new Date('2021-2-1');
+                        return date < new Date('2021-2-11');
                     }
                 },
                 pageLoader: false
