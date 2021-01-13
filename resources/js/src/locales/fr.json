@@ -330,9 +330,12 @@
     "banne_student": "Inscrivez-vous à un cours dès aujourd'hui, commencez à apprendre à partir du 11 février 2021.",
     "banne_teacher": "Publiez votre cours dès aujourd'hui, commencez à enseigner à partir du 11 février 2021.",
     "times" : {
-        "est": "Heure de l'Est EST",
-        "pst": "Heure du Pacifique PST",
-        "ast": "Heure de l'atlantique AST"
+        "rse": "UTC-7:00 Heure des Rocheuses-Edmonton",
+        "est": "UTC-5:00 Heure de l’Est-Toronto",
+        "pst": "UTC-8:00 Heure du Pacifique-Vancouver",
+        "ast": "UTC-4:00 Heure de l’Atlantique-Halifax",
+        "dst" : "UTC-3:30 Heure de Terre-Neuve-St. John’s",
+        "hct" : "UTC-6:00 Heure du Centre-Winnipeg"
     },
     "share_on": "Partager",
     "share_body": {

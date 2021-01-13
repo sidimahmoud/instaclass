@@ -40,6 +40,9 @@ import 'v-dropdown-menu/dist/v-dropdown-menu.css' // Base style, required.
 Vue.use(DropdownMenu)  
 
 import firebase from "firebase";
+import VueCtkDateTimePicker from 'vue-ctk-date-time-picker'; 
+import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';  
+Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
 
 // Your web app's Firebase configuration
 var firebaseConfig = {

@@ -147,15 +147,20 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{$t('avai')}}:</label><br/>
-                                <el-date-picker
+                                <!-- <el-date-picker
                                     v-model="section.startDate"
                                     type="datetime"
                                     :placeholder="$t('newCourse.select_time')"
                                     format="yyyy-MM-dd HH:mm:ss" 
                                     value-format="yyyy-MM-dd HH:mm:ss"
                                     :picker-options="datePickerOptions1">
-                                </el-date-picker>
-                                <!-- <input type="datetime-local" class="form-control" v-model="section.startDate" required> -->
+                                </el-date-picker> -->
+                                <VueCtkDateTimePicker 
+                                    :label="$t('newCourse.select_time')"
+                                    v-model="section.startDate"
+                                    min-date="2021-02-11 00:00:00"
+                                    output-format="YYYY-MM-DD HH:mm:ss"
+                                    max-date="2021-12-31 00:00:00"/>
                             </div>
                         </div>
                         <!-- <div class="col-md-6">

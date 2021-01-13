@@ -327,9 +327,12 @@
     "banne_student": "Enroll to a course today, start learning from February 11, 2021.",
     "banne_teacher": "Publish your course today, start teaching from February 11, 2021.",
     "times" : {
-        "est": "Eastern Time EST",
-        "pst": "Pacific Time PST",
-        "ast": "Atlantic Time AST"
+        "rse": "UTC-7:00 Mountain Time-Edmonton",
+        "est": "UTC-5:00 Eastern Time-Toronto",
+        "pst": "UTC-8:00 Pacific Time-Vancouver",
+        "ast": "UTC-4:00 Atlantic Time-Halifax",
+        "dst" : "UTC-3:30 Newfoundland Time-St. John’s",
+        "hct" : "UTC-6:00 Central Time-Winnipeg"
     },
     "share_on": "Share",
     "share_body": {

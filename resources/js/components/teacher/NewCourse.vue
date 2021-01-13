@@ -183,23 +183,33 @@
                                     <label>{{$t('newCourse.available')}}:</label>
                                     <!-- <input type="datetime-local" name="date[]" class="form-control" required
                                         v-model="sections[index].stratDate"> -->
-                                    <el-date-picker
+                                    <!-- <el-date-picker
                                         v-model="sections[index].stratDate"
                                         type="datetime"
                                         :placeholder="$t('newCourse.select_time')"
                                         format="yyyy-MM-dd HH:mm:ss" 
                                         value-format="yyyy-MM-dd HH:mm:ss"
+                                        default-time="12:00:00"
                                         :picker-options="datePickerOptions1">
-                                    </el-date-picker>
+                                    </el-date-picker> -->
+                                    <VueCtkDateTimePicker 
+                                        label=""
+                                        v-model="sections[index].stratDate"
+                                        min-date="2021-02-11 00:00:00"
+                                        output-format="YYYY-MM-DD HH:mm:ss"
+                                        max-date="2021-12-31 00:00:00"/>
                                     <small>{{$t('newCourse.teaching_note')}}</small>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <label>{{$t('newCourse.timezone')}}</label>
                                 <select class="form-control" v-model="sections[index].timezone" required>
-                                    <option value="EST">{{$t('times.est')}}</option>
-                                    <option value="PST">{{$t('times.pst')}}</option>
-                                    <option value="AST">{{$t('times.ast')}}</option>
+                                    <option value="UTC-3:30 DST">{{$t('times.dst')}}</option>
+                                    <option value="UTC-4:00 AST">{{$t('times.ast')}}</option>
+                                    <option value="UTC-5:00 EST">{{$t('times.est')}}</option>
+                                    <option value="UTC-6:00 HCT">{{$t('times.hct')}}</option>
+                                    <option value="UTC-7:00">{{$t('times.rse')}}</option>
+                                    <option value="UTC-8:00 PST">{{$t('times.pst')}}</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
