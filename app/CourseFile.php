@@ -8,6 +8,7 @@ class CourseFile extends Model
 {
     protected $fillable = [
         'startDate',
+        'timezone'
     ];
     public function enrollments()
     {
