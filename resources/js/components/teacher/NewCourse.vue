@@ -204,12 +204,12 @@
                             <div class="col-md-3">
                                 <label>{{$t('newCourse.timezone')}}</label>
                                 <select class="form-control" v-model="sections[index].timezone" required>
-                                    <option value="UTC-3:30 DST">{{$t('times.dst')}}</option>
-                                    <option value="UTC-4:00 AST">{{$t('times.ast')}}</option>
-                                    <option value="UTC-5:00 EST">{{$t('times.est')}}</option>
-                                    <option value="UTC-6:00 HCT">{{$t('times.hct')}}</option>
-                                    <option value="UTC-7:00">{{$t('times.rse')}}</option>
                                     <option value="UTC-8:00 PST">{{$t('times.pst')}}</option>
+                                    <option value="UTC-7:00">{{$t('times.rse')}}</option>
+                                    <option value="UTC-6:00 HCT">{{$t('times.hct')}}</option>
+                                    <option value="UTC-5:00 EST">{{$t('times.est')}}</option>
+                                    <option value="UTC-4:00 AST">{{$t('times.ast')}}</option>
+                                    <option value="UTC-3:30 DST">{{$t('times.dst')}}</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
