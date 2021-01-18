@@ -30,7 +30,7 @@
                                         @change="handleCategorie" v-model="filter.categ">
                                     <option value="">{{$t('courses.all')}}</option>
                                     <option v-for="c in allCategories" :value="c.id" v-bind:key="c.id">
-                                        {{lang == "en" ? c.name_en : c.name_fr}}
+                                        {{lang == "en" ? c.name_fr : c.name_en}}
                                     </option>
                                 </select>
                             </div>

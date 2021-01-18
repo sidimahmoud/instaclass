@@ -352,7 +352,7 @@
     "French": "Français",
     "English": "Anglais",
     "Spanish": "Espagnol",
-    "new_course_title": "Creation du cours",
+    "new_course_title": "Création d'un nouveau cours",
     "new_course_title_span": "Saisir le nom du cours dont vous souhaitez enseigner :",
     "no_teacher_account_msg": "L'email saisi est déjà utilisé dans votre compte d’étudiant. Il ne peut pas être utilisé pour se connecter au compte d’instructeur. Veuillez créer un compte instructeur."
 }
