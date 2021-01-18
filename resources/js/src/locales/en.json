@@ -45,9 +45,9 @@
     },
     "whyChoose": {
         "title": "Why choosing Instantaclasse?",
-        "1": "Teachers fix their hourly rate and content for their courses.",
+        "1": "Teachers fix their hourly rate and content of their courses.",
         "2": "Students benefit of a large variety of courses.",
-        "3": "Students can access recordings of class sessions for further reviews.",
+        "3": "Students have access to recordings of class sessions for further reviews.",
         "4": "Instructors and students benefit from a multilingual platform."
     },
     "howItWorks": {
@@ -66,7 +66,7 @@
             "2": "Step 2: Purchase courses from a large variety of categories.",
             "3": "Step 3: Receive alerts before enrolled sessions.",
             "4": "Step 4: Learn courses live at Instantaclasse's platform.",
-            "5": "Step 5: Rate the session."
+            "5": "Step 5: Rate their courses."
         }
     },
     "about": {
@@ -171,7 +171,7 @@
         "update_msg": "Your course was updated successfully",
         "description": "Description",
         "select_time": "Select a date",
-        "cannot_find_Categroie": "I can't find my categorie"
+        "cannot_find_Categroie": "I can't find the category or sub-category"
     },
     "auth": {
         "signIn": "Sign in",

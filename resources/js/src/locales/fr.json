@@ -9,7 +9,7 @@
     },
     "title": {
         "1": "La plateforme par excellence pour enseigner",
-        "2": "ou apprendre pour les cours en ligne"
+        "2": "ou apprendre les cours en ligne"
     },
     "title2": {
         "teachers": {
@@ -34,7 +34,7 @@
         "demande": "Suggérer un cours",
         "account": "Compte",
         "quickLinks": "Liens rapides",
-        "termsAndConditions": "Termes et conditions",
+        "termsAndConditions": "Les Termes et conditions",
         "faq": "FAQ",
         "privacy": "politique de confidentialité",
         "contact": "Nous contacter"
@@ -46,10 +46,10 @@
     "noCourses": "Il n'y a pas de cours dans cette catégorie pour l’instant.",
     "whyChoose": {
         "title": "Pourquoi choisir Instantaclasse?",
-        "1": "Les enseignants fixent leur taux horaire et le contenu de leurs cours.",
-        "2": "Les étudiants bénéficient d'une large variété des cours.",
-        "3": "Les étudiants peuvent accéder aux enregistrements des leurs cours pour des révisions ultérieures.",
-        "4": "Les instructeurs et etudiants profitent d'une plateforme multilingue."
+        "1": "Les enseignants fixent leurs taux horaires et le contenu de leurs cours.",
+        "2": "Les étudiants bénéficient d'une large variété de cours.",
+        "3": "Les étudiants peuvent accéder aux enregistrements de leurs cours pour des révisions ultérieures.",
+        "4": "Les enseignants et étudiants profitent d'une plateforme multilingue."
     },
     "howItWorks": {
         "title": "Comment ça fonctionne?",
@@ -67,7 +67,7 @@
             "2": "Étape 2: Achètent des cours parmi une grande variété de catégories.",
             "3": "Étape 3: Recoivent des alertes avant les sessions inscrites.",
             "4": "Étape 4: Apprenent les cours en direct sur la plateforme Instantaclasse.",
-            "5": "Étape 5: Évaluent les sessions."
+            "5": "Étape 5: Évaluent les cours suivis."
         }
     },
     "about": {
@@ -172,11 +172,11 @@
         "update_msg": "Votre cours a été mis à jour avec succès",
         "description": "Déscription",
         "select_time": "Sélectionnez une date",
-        "cannot_find_Categroie": "Je ne trouve pas ma catégorie"
+        "cannot_find_Categroie": "Je ne trouve pas la catégorie ou sous-catégorie adéquates"
     },
     "auth": {
         "signIn": "Connexion",
-        "signup": "S'nscrire",
+        "signup": "S'inscrire",
         "or": "Ou",
         "forget": "Mot de passe oublié?",
         "resetPass": "réinitialisation du mot de passe",

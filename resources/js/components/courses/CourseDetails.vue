@@ -188,11 +188,12 @@
 
     @media (max-width: 600px) {
         .hero {
-            background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details1.jpg') no-repeat center center;
+            display: none;
+            /* background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/details1.jpg') no-repeat center center;
             height: 40vh;
             background-size: contain;
             border-bottom: 15px solid #3081FB;
-            color: white;
+            color: white; */
         }
         .course-details-mobile {
             width: 100%;

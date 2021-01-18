@@ -29,7 +29,8 @@
                                 <select multiple class="form-control" id="exampleFormControlSelect2"
                                         @change="handleCategorie" v-model="filter.categ">
                                     <option value="">{{$t('courses.all')}}</option>
-                                    <option v-for="c in allCategories" :value="c.id" v-bind:key="c.id">{{c.name_en}}
+                                    <option v-for="c in allCategories" :value="c.id" v-bind:key="c.id">
+                                        {{lang == "en" ? c.name_en : c.name_fr}}
                                     </option>
                                 </select>
                             </div>
@@ -149,7 +150,7 @@
         |--------------------------------------------------------------------------
         */
         computed: {
-            ...mapGetters(["allCourses", "loading", "allCategories"]),
+            ...mapGetters(["allCourses", "loading", "allCategories", "lang"]),
         },// End of Component > computed
         /*
         |--------------------------------------------------------------------------
@@ -184,7 +185,7 @@
                     'page': n,
                     'filter[section_count]': this.filter.section,
                     'filter[price_less_than]': this.filter.price,
-                    'filter[sub_category_id]': this.filter.categ,
+                    'filter[in_category]': this.filter.categ,
                     'filter[language]': this.filter.lang
                 }
                 this.fetchCourses(payload);
@@ -196,7 +197,7 @@
             // filter methods
             handleCategorie(event) {
                 let payload = {
-                    'filter[sub_category_id]': event.target.value
+                    'filter[in_category]': event.target.value
                 }
                 this.fetchCourses(payload)
             },

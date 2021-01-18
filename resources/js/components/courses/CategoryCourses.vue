@@ -16,7 +16,7 @@
             </div>
             <div v-if="!loading">
                 <div class="no-course" v-if="allcategCourses.length===0">
-                    <h3>
+                    <h3 class="empty-label">
                         {{$t('noCourses')}}
                     </h3>
                 </div>
@@ -65,11 +65,12 @@
 
     @media (max-width: 600px) {
         .hero {
-            background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/all1.jpg') no-repeat center center;
+            display: none;
+            /* background: linear-gradient(rgba(19, 19, 19, 0.3), rgba(19, 19, 19, 0.3)), url('../../assets/images/all1.jpg') no-repeat center center;
             height: 40vh;
             background-size: cover;
             border-bottom: 15px solid #3081FB;
-            color: white;
+            color: white; */
         }
 
         .no-course {
@@ -77,6 +78,11 @@
             margin-bottom: 70px;
             text-align: left;
             font-size: 12px;
+        }
+
+        .empty-label {
+            margin-top: 40%;
+            text-align: center;
         }
     }
 </style>
