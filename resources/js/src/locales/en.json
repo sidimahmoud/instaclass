@@ -14,23 +14,23 @@
     "title2": {
         "teachers": {
             "title": "Teachers",
-            "1": "Create and structure paying or free courses.",
-            "2": "Set their own costs for courses.",
+            "1": "Create and structure paying or free courses",
+            "2": "Set their own costs for courses",
             "3": "Teach live on INSTANTACLASSE platform."
         },
         "students": {
             "title": "Students",
-            "1": "Take advantage of a wide variation of paying or free courses.",
-            "2": "Study courses live on INSTANTACLASSE platform.",
-            "3": "Get a free lesson when a course is scheduled for 6 sessions or more.",
+            "1": "Take advantage of a wide variation of paying or free courses",
+            "2": "Study courses live on INSTANTACLASSE platform",
+            "3": "Get a free lesson when a course is scheduled for 6 sessions or more",
             "4": "Receive the recordings at the end courses."
         }
     },
     "coursesByCateg": "Courses by category",
-    "veiwDet": "View Details",
+    "veiwDet": "View Courses",
     "search": "Search for courses",
     "searchBtn": "Search",
-    "noCourses": "There is no courses in this category yet.",
+    "noCourses": "There are no courses in this category yet.",
     "footer": {
         "quickLinks": "Quick Links",
         "home": "Home",
@@ -63,7 +63,7 @@
         "students": {
             "title": "Students",
             "1": "Step 1: Create an account for free.",
-            "2": "Step 2: Purchase courses from a large variety.",
+            "2": "Step 2: Purchase courses from a large variety of categories.",
             "3": "Step 3: Receive alerts before enrolled sessions.",
             "4": "Step 4: Learn courses live at Instantaclasse's platform.",
             "5": "Step 5: Rate the session."
@@ -76,15 +76,15 @@
         },
         "about": {
             "title": "About",
-            "body": "Instantaclasse is a platform that allows people with knowledge in various fields to share their knowledge by teaching by live video and get paid. Students benefit from a large choice of available courses and follow live video sessions according to their schedules."
+            "body": "Instantaclasse is a platform that allows people with knowledge in various fields to share their expertise by teaching with live video and thus be paid at the end of the sessions, when the courses are paying. Students benefit from a variety of available courses and follow by live video sessions according to their schedules."
         },
         "difference": {
             "title": "Our difference",
-            "body": "On instantaclasse, the teachers create and structure their courses and set the associated costs (Instantaclasse receives a 10% commission on each registration for each session). Instantaclasse allows instructors to share knowledge from multiple courses associated with different areas of life. See the courses not accepted below."
+            "body": "Instantaclasse allows teachers to share knowledge from several courses associated with various areas of knowledge. On Instantaclasse, teachers create their courses and set the number of sessions. Courses can be created as free or paying (Instantaclasse collects a 10% commission from paying courses)."
         },
         "prohibited": {
             "title": "Prohibited",
-            "body": "Classes that encourage directly or indirectly to hatred, weapons, drugs pornographic content and illegal activities are strictly prohibited on this platform. Instantaclasse administrators will remove and banish members and inappropriate courses. It is also prohibited make monetary transactions related to the Instantaclasse courses, outside of its secure platform."
+            "body": "The creation of courses that encourage or relate to hatred, weapons, drugs, pornography, and illegal activities are strictly prohibited on this platform. Instantaclasse administrators will ban members and remove inappropriate courses. It is also prohibited make monetary transactions related to the Instantaclasse courses, outside of its secure platform."
         },
         "newsletter": {
             "stay": "Stay informed",
@@ -97,7 +97,7 @@
         "title": "SUBSCRIBE TO A NEW COURSE TODAY",
         "category": "Category",
         "price": "Price",
-        "courseLang": "Course language",
+        "courseLang": "Languages",
         "sessionsPer": "Sessions per course",
         "all": "All",
         "slug": "Visit the details of available courses.",
@@ -182,7 +182,7 @@
         "sendLink": "Send password reset link",
         "emailSent": "A reset link has been sent to your email address.",
         "newPass": "New Password",
-        "continueWith": "Continue with",
+        "continueWith": "CONNECTION WITH",
         "new": "Don't have an account?",
         "user": "Already have an account?",
         "createYourAccount": "Create your account. It takes only a few seconds.",
@@ -221,7 +221,7 @@
         "msg": "Thank you, the message has been sent.",
         "email": "Email address (optional)",
         "emailPlaceholder": "Enter your email",
-        "emailHelp": "If you choose to leave your email address, you will be notified when the suggested course will become available.",
+        "emailHelp": "If you choose to leave your email address, you will be notified when the suggested course will be available.",
         "btn": "Send"
     },
     "profile": {
@@ -324,8 +324,8 @@
     "share": "Share",
     "banne_txt": "WELCOME TO INSTRUCTORS AND STUDENTS",
     "banne_txt_1": "Create a course as an instructor or enroll as a student, it is quick and easy.",
-    "banne_student": "Enroll to a course today, start learning at February 11, 2021.",
-    "banne_teacher": "Publish your course today, start teaching at February 11, 2021.",
+    "banne_student": "Enroll to a course today, and start learning at February 11, 2021.",
+    "banne_teacher": "Publish your course today, and start teaching at February 11, 2021.",
     "times" : {
         "rse": "UTC-7:00 Mountain Time-Edmonton",
         "est": "UTC-5:00 Eastern Time-Toronto",

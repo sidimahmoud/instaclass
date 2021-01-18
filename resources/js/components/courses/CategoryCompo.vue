@@ -7,19 +7,17 @@
                      :alt="categ.name_en">
             </router-link>
             <div class="card-body cateDetails">
-                <h5 class="card-title  font-weight-bolder text-uppercase"><strong>{{(lang==="en")? categ.name_en:
-                    categ.name_fr}}</strong></h5>
+                <h5 class="card-title  font-weight-bolder text-uppercase">
+                    <strong>{{(lang==="en")? categ.name_en : categ.name_fr}}</strong>    
+                </h5>
                 <p class="card-text">
                     <span v-for="(sub, index) in categ.sub_categories.slice(0,3)" :key="sub.id">
-                        {{index>0? ", ":""}} {{(lang==="en")? sub.name_en:sub.name_fr}}
+                        {{(lang==="en")? sub.name_en:sub.name_fr}}{{ index != 2? ",":"" }}
                     </span>...
-
                 </p>
                 <div>
-                    <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="button"
-                                 class="btn btn-primary btn-sm mb-2">
+                    <router-link :to="{ name: 'CategCourses', params: { id: categ.id}}" tag="button" class="btn btn-primary btn-sm mb-2">
                         {{$t('veiwDet')}}
-
                     </router-link>
                 </div>
             </div>

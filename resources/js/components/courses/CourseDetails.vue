@@ -48,11 +48,11 @@
                     <hr class="bg-dark mx-3">
                     <div class="col-md-12 course-info" v-if="course.course.sub_category">
                         <div>
-                            {{$t('course.category')}} : {{ lang == "en" ? course.course.sub_category.category.name_en : course.course.sub_category.category.name_fr}}
+                            {{$t('course.category')}}: {{ lang == "en" ? course.course.sub_category.category.name_en : course.course.sub_category.category.name_fr}}
                         </div>
-                        <div>{{$t('course.subCat')}} : {{ lang == "en" ? course.course.sub_category.name_en : course.course.sub_category.name_fr}}</div>
+                        <div>{{$t('course.subCat')}}: {{ lang == "en" ? course.course.sub_category.name_en : course.course.sub_category.name_fr}}</div>
                         <div>{{$t('course.sessions')}}: {{course.course.sections.length}}</div>
-                        <div>{{$t('course.lang')}} : {{$t(course.course.language)}}</div>
+                        <div>{{$t('course.lang')}}: {{$t(course.course.language)}}</div>
                         <div>{{$t('course.price')}}: <span v-if="course.course.price===0">{{$t('free')}}</span> <span
                             v-if="course.course.price!=0">{{course.course.price}}$</span></div>
                     </div>
@@ -73,7 +73,7 @@
                             <p v-html="section.description"></p>
                             <p>{{$t('course.duration')}}: {{section.duration}} h</p>
                             <p>
-                                {{$t('course.scheduledAt')}} : {{section.startDate}} {{section.timezone}}
+                                {{$t('course.scheduledAt')}}: {{section.startDate}} {{section.timezone}}
                             </p>
                         </div>
                         <div :class="[isLoggedIn && loggedInUser.t==='teacher' || isLoggedIn && loggedInUser.t==='admin' ? 'd-none' : '', 'col-md-3']">

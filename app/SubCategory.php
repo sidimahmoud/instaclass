@@ -8,6 +8,11 @@ use App\Course;
 
 class SubCategory extends Model
 {
+    protected $fillable = [
+        'name_fr',
+        'name_en',
+    ];
+    
     public function category(){
         return $this->belongsTo(Category::class);
     }

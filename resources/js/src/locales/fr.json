@@ -14,15 +14,15 @@
     "title2": {
         "teachers": {
             "title": "Enseignants",
-            "1": "Créer et structurer des cours payants ou gratuits",
-            "2": " Fixent eux même les coûts.",
+            "1": "Créent et structurent des cours payants ou gratuits",
+            "2": " Fixent eux même les coûts",
             "3": "Enseignent des cours en direct sur la plateforme INSTANTACLASSE."
         },
         "students": {
             "title": "Étudiants",
-            "1": "Profitez d'une large gamme de cours payants ou gratuits.",
-            "2": "Bénéficient d’une leçon gratuite lorsqu'un cours est cédulé sur 6 sessions ou plus.",
-            "3": "Étudient les cours en direct sur la plateforme INSTANTACLASSE.",
+            "1": "Profitent d'une large gamme de cours payants ou gratuits",
+            "2": "Bénéficient d’une leçon gratuite lorsqu'un cours est cédulé sur 6 sessions ou plus",
+            "3": "Étudient les cours en direct sur la plateforme INSTANTACLASSE",
             "4": "Reçoivent les enregistrements à la fin des cours."
         }
     },
@@ -39,8 +39,8 @@
         "privacy": "politique de confidentialité",
         "contact": "Nous contacter"
     },
-    "coursesByCateg": "Les cours par categorie",
-    "veiwDet": "Voir détails",
+    "coursesByCateg": "Les cours par catégories",
+    "veiwDet": "Voir les cours",
     "search": "Chercher des cours",
     "searchBtn": "Chercher",
     "noCourses": "Il n'y a pas de cours dans cette catégorie pour l’instant.",
@@ -54,7 +54,7 @@
     "howItWorks": {
         "title": "Comment ça fonctionne?",
         "teachers": {
-            "title": "Instructeurs",
+            "title": "Enseignants",
             "1": "Étape 1: Créent un compte gratuitement.",
             "2": "Étape 2: Créent et structurent les sessions de cours, définissent les coûts et l'horaire.",
             "3": "Étape 3: Recoivent des alertes lorsque les étudiants s'inscrivent.",
@@ -62,9 +62,9 @@
             "5": "Étape 5: Reçoivent les rémunérations."
         },
         "students": {
-            "title": "Élèves",
+            "title": "Étudiants",
             "1": "Étape 1: Créez un compte gratuitement.",
-            "2": "Étape 2: Achetent des cours parmi une grande variété.",
+            "2": "Étape 2: Achètent des cours parmi une grande variété de catégories.",
             "3": "Étape 3: Recoivent des alertes avant les sessions inscrites.",
             "4": "Étape 4: Apprenent les cours en direct sur la plateforme Instantaclasse.",
             "5": "Étape 5: Évaluent les sessions."
@@ -77,15 +77,15 @@
         },
         "about": {
             "title": "A propos",
-            "body": "Instantaclasse est une plaforme qui permet aux personnes disposants de connaissances dans divers domaines, de pouvoir partager leurs savoirs et ceux en enseignant par vidéo en directe et être rémunéré. Les étudiant(e)s bénéficient d’un grand choix des cours disponibles et suivent les séances vidéo en directe selon leurs horaires."
+            "body": "Instantaclasse est une plateforme qui permet aux personnes disposants de connaissances dans divers domaines, de pouvoir partager leurs savoirs et ce en enseignant par vidéo en direct et ainsi être rémunéré à la fin des séances, lorsque les cours sont payants. Les étudiant(e)s bénéficient d’un grand choix de cours disponibles et suivent les séances vidéo en direct selon leurs horaires."
         },
         "difference": {
             "title": "Notre particularité",
-            "body": "Sur instantaclasse les instructeurs créent et structurent leurs cours et fixent les prix  associés (Instantaclasse perçoit une commission de 10% sur chaque inscription à chaque séance).  Instantaclasse permet aux instructeurs de partager les connaissances de plusieurs cours associés à différentes domaines de la vie. Voir ci-dessous les cours non acceptés."
+            "body": "Instantaclasse permet aux enseignant(e)s de partager les connaissances de plusieurs cours associés à divers domaines de connaissances. Sur Instantaclasse les enseignant(e)s créent leurs cours et fixent les nombres de séances. Les cours peuvent être crées comme gratuits ou payants (Instantaclasse perçoit une commission de 10% aux cours payants)."
         },
         "prohibited": {
             "title": "Interdit",
-            "body": "La création des cours encouragent ou liés de près ou de loin à la haine, aux armes, aux drogues, à caractères pornographiques, et à des activités illégales sont strictement interdits sur cette plateforme. Les administrateur(e)s d'Instantaclasse pourront supprimer et bannir des membres ainsi que les cours inappropriés. Il est également interdit de conclure des transactions monétaires en lien avec les cours d’instantaclasse, en dehors de sa plateforme sécurisée."
+            "body": "La création de cours encourageant ou se relatant à la haine, aux armes, aux drogues, à la pornographiques, et à des activités illégales sont strictement interdits sur cette plateforme. Les administrateur(e)s d'Instantaclasse pourront bannir les membres ainsi que supprimer les cours inappropriés. Il est également interdit de conclure des transactions monétaires en lien avec les cours d’Instantaclasse, en dehors de sa plateforme sécurisée."
         },
         "newsletter": {
             "stay": "Restez informé",
@@ -96,9 +96,9 @@
     "courses": {
         "hero": "TOUS LES COURS QUE NOUS OFFRONS",
         "title": "INSCRIVEZ-VOUS À UN NOUVEAU COURS AUJOURD'HUI",
-        "category": "Category",
+        "category": "Catégorie",
         "price": "Prix",
-        "courseLang": "Language du cours",
+        "courseLang": "Langues",
         "sessionsPer": "Sessions par cours",
         "all": "Tous",
         "slug": "Visitez les détails des cours disponibles.",
@@ -183,7 +183,7 @@
         "sendLink": "Envoyer le lien de réinitialisation",
         "emailSent": "Un lien de réinitialisation a été envoyé à votre adresse e-mail.",
         "newPass": "Nouveau mot de passe",
-        "continueWith": "Continuer avec",
+        "continueWith": "CONNEXION AVEC",
         "new": "Vous n'avez pas de compte?",
         "user": "Vous avez déjà un compte?",
         "createYourAccount": "Créez votre compte. Cela ne prend que quelques secondes.",
@@ -222,7 +222,7 @@
         "msg": "Merci, votre message de suggestion de cours a été envoyé",
         "email": "Adresse email (optionnel)",
         "emailPlaceholder": "Saisir votre email",
-        "emailHelp": "Si vous laissez votre email, vous serez informé quand lorsque le cours suggéré sera disponible.",
+        "emailHelp": "Si vous laissez votre email, vous serez informé lorsque le cours suggéré sera disponible.",
         "btn": "Envoyer"
     },
     "profile": {
@@ -327,8 +327,8 @@
     "share": "Partager",
     "banne_txt": "BIENVENUE AUX INSTRUCTEURS ET ÉTUDIANTS",
     "banne_txt_1": "Créez un cours en tant qu'enseignant(e) ou inscrivez-vous comme étudiant(e), c'est simple et rapide.",
-    "banne_student": "Inscrivez-vous à un cours dès aujourd'hui, commencez à apprendre à partir du 11 février 2021.",
-    "banne_teacher": "Publiez votre cours dès aujourd'hui, commencez à enseigner à partir du 11 février 2021.",
+    "banne_student": "Inscrivez-vous à un cours dès aujourd'hui, puis commencez à apprendre à partir du 11 février 2021.",
+    "banne_teacher": "Publiez votre cours dès aujourd'hui, puis commencez à enseigner à partir du 11 février 2021.",
     "times" : {
         "rse": "UTC-7:00 Heure des Rocheuses-Edmonton",
         "est": "UTC-5:00 Heure de l’Est-Toronto",
