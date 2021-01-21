@@ -54,7 +54,7 @@
                                     <option value="French">{{$t('demande.languages.fr')}}</option>
                                     <option value="English">{{$t('demande.languages.en')}}</option>
                                     <option value="Spanish">{{$t('demande.languages.es')}}</option>
-                                    <option value="">OTHER</option>
+                                    <option value="">{{$t('other')}}</option>
                                 </select>
                             </div>
                         </div>

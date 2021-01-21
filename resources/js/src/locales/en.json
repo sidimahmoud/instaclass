@@ -338,7 +338,7 @@
     "share_body": {
         "facebook": "https://www.facebook.com/share.php?u=instantaclasse.ca&quote=INSTANTACLASSE is a new platform that allows instructors to create, set their own course costs and teach by video live. Students benefit of a wide variety of free and paying courses, in several areas of knowledge and learn at their own pace.",
         "twitter": "https://twitter.com/intent/tweet?text=INSTANTACLASSE is a new platform that allows instructors to create, set their own course costs and teach by video live. Students benefit of a wide variety of free and paying courses, in several areas of knowledge and learn at their own pace.&url=https://instantaclasse.ca/&",
-        "email": "mailto:?subject=INSTANTACLASSE is a new platform that allows instructors to create, set their own course costs and teach by video live&body=INSTANTACLASSE is a new platform that allows instructors to create, set their own course costs and teach by video live. Students benefit of a wide variety of free and paying courses, in several areas of knowledge and learn at their own pace.%0d%0a %0d%0a %22%3A%22https://instantaclasse.ca/%22%2C%22 %0d%0a %0d%0a"
+        "email": "mailto:?subject=INSTANTACLASSE is a new online learning platform.&body=Hello, INSTANTACLASSE is a platform that allows instructors to create, set the cost of their courses and teach by video live. Students benefit of a wide variety of free and paying courses, in several areas of knowledge and learn at their own pace.%0d%0a %0d%0a Visit the website: %22%3A%22https://instantaclasse.ca/%22%2C%22 %0d%0a %0d%0a"
     },
     "view_subscriped_list" : "List of students enrolled in this course",
     "student_name": "Student Name",
@@ -349,6 +349,7 @@
     "French": "French",
     "English": "English",
     "Spanish": "Spanish",
+    "other": "Other",
     "new_course_title": "New course creation",
     "new_course_title_span": "Type the name of the course that you want to teach :",
     "no_teacher_account_msg": "The email entered is already used in your student account. It can’t be used to log in the teacher’s account. Please create a teacher account."

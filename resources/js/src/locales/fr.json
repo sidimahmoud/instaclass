@@ -56,7 +56,7 @@
         "teachers": {
             "title": "Enseignants",
             "1": "Étape 1: Créent un compte gratuitement.",
-            "2": "Étape 2: Créent et structurent les sessions de cours, définissent les coûts et l'horaire.",
+            "2": "Étape 2: Créent et structurent les sessions de cours, définissent les coûts et les horaires.",
             "3": "Étape 3: Recoivent des alertes lorsque les étudiants s'inscrivent.",
             "4": "Étape 4: Enseignent les cours en direct sur la plateforme Instantaclasse.",
             "5": "Étape 5: Reçoivent les rémunérations."
@@ -104,7 +104,7 @@
         "slug": "Visitez les détails des cours disponibles.",
         "empty_course": "Vous n'avez pas encore de cours",
         "categorie": "Catégorie",
-        "no_courses": "Il n’y a aucun cours pour crée pour l’instant."
+        "no_courses": "Il n’y a aucun cours crée pour l’instant."
     },
     "course": {
         "session": "Séance",
@@ -341,7 +341,7 @@
     "share_body": {
         "facebook": "https://www.facebook.com/share.php?u=instantaclasse.ca&quote=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes.",
         "twitter": "https://twitter.com/intent/tweet?text=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours.&url=https://instantaclasse.ca/&",
-        "email": "mailto:?subject=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer des cours&body=INSTANTACLASSE est une nouvelle plateforme permettant aux instructeurs(trices) des créer, de fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants(es) bénéficient, d’une grande variété des cours gratuits et payants concernant plusieurs domaines de connaissance et apprennent à leurs rythmes.%0d%0a %0d%0a %0A%0A %22%3A%22https://instantaclasse.ca/%22%2C%22 %0d%0a %0d%0a"
+        "email": "mailto:?subject=INSTANTACLASSE est une nouvelle plateforme d’apprentissage en ligne.&body=Bonjour, INSTANTACLASSE est une plateforme permettant aux instructeurs de créer, fixer eux-mêmes les coûts de leurs cours et enseigner en direct sous forme de vidéo. Les étudiants bénéficient, d’une grande variété de cours gratuits et payants se relatant à plusieurs domaines de connaissance et apprennent à leurs rythmes..%0d%0a %0d%0a %0A%0A visitez le site web: %22%3A%22https://instantaclasse.ca/%22%2C%22 %0d%0a %0d%0a "
     },
     "view_subscriped_list" : "Liste des étudiants inscrits à ce cours",
     "student_name": "Nom d'étudiant",
@@ -352,6 +352,7 @@
     "French": "Français",
     "English": "Anglais",
     "Spanish": "Espagnol",
+    "other": "Autre",
     "new_course_title": "Création d'un nouveau cours",
     "new_course_title_span": "Saisir le nom du cours dont vous souhaitez enseigner :",
     "no_teacher_account_msg": "L'email saisi est déjà utilisé dans votre compte d’étudiant. Il ne peut pas être utilisé pour se connecter au compte d’instructeur. Veuillez créer un compte instructeur."
