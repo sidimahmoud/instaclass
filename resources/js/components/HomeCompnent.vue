@@ -32,18 +32,14 @@
 
             </span>
             <div class="jumbotron jumbotron1 mb-0">
-
+                <div class="text-home-slogan">
+                    <h4>{{$t('title.1')}}</h4>
+                    <p>{{$t('title.2')}}</p>
+                </div>
                 <div class="container  align-items-center mt-md-2 h-100">
                     <div class="row justify-content-around align-items-center h-100">
                         <div class="col-md-2 d-none d-md-block"></div>
-                        <div
-                            class="col-md-10 col-sm-12 text-center px-md-5 justify-content-center align-items-center text-uppercase text-header">
-                            <h2 class="text-center">
-                                {{$t('title.1')}} <br>
-                                {{$t('title.2')}}
-                            </h2>
-
-                        </div>
+                        
                         <!--                    <div class="col-md-6 d-none d-md-block">-->
                         <!--                        <img src="../assets/images/home/home.png" width="450px" class=" float-right"-->
                         <!--                             alt="logo">-->
@@ -51,8 +47,8 @@
                     </div>
                 </div>
             </div>
-            <div class="mb-0 p-4">
-                <div class="container">
+            <div class="mb-0 p-5">
+                <div>
                     <div class="row">
                         <div class="col-md-6 text-white">
                             <h3>
@@ -63,8 +59,6 @@
                                 <li>{{$t('title2.teachers.2')}}</li>
                                 <li>{{$t('title2.teachers.3')}}</li>
                             </ul>
-                        </div>
-                        <div class="col-md-6 text-white">
                             <h3>
                                 {{$t('title2.students.title')}}:
                             </h3>
@@ -74,6 +68,9 @@
                                 <li>{{$t('title2.students.3')}}</li>
                                 <li>{{$t('title2.students.4')}}</li>
                             </ul>
+                        </div>
+                        <div class="col-md-6 text-white">
+                            <my-video :sources="video.sources" :options="video.options"></my-video>
                         </div>
                     </div>
                 </div>
@@ -210,13 +207,30 @@
     import {mapGetters, mapActions} from "vuex";
     import CategoryCompo from "./courses/CategoryCompo";
     import MailBox from "./MailBox";
+    import myVideo from 'vue-video'
 
     export default {
         name: 'Home',
 
         components: {
             CategoryCompo,
-            MailBox
+            MailBox,
+            myVideo
+        },
+        data() {
+            return {
+                video: {
+                    sources: [{
+                        src: 'https://firebasestorage.googleapis.com/v0/b/instaclass-9f27f.appspot.com/o/instaclass%2FInstantaclasse%20Video%20promo%20Francais.mp4?alt=media&token=a30759f0-a10c-4185-9ae0-3a72b0d07126',
+                        type: 'video/mp4'
+                    }],
+                    options: {
+                        autoplay: false,
+                        volume: 0.6,
+                        poster: 'https://firebasestorage.googleapis.com/v0/b/instaclass-9f27f.appspot.com/o/instaclass%2Fonline.jpg?alt=media&token=5f31b6be-063f-456e-842e-2e14aa855142'
+                    }
+                }
+            }
         },
         methods: {
             ...mapActions(["fetchCategories"]),
@@ -445,6 +459,19 @@
                 color:#fff;
                 width: 100%;
             }
+        }
+    }
+
+    .text-home-slogan {
+        display: none;
+    }
+
+    @media only screen and (min-width: 600px) {
+        .text-home-slogan {
+            display: block;
+            float: right;
+            margin-top: 130px;
+            margin-left: 30px;
         }
     }
 </style>

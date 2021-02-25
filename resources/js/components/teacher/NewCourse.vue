@@ -4,7 +4,7 @@
         <beat-loader :loading="pageLoader" color="#004d4d" class="center-screen"></beat-loader>
         <div class="container py-3 mb-5 bg font-weight-bold">
             <h3 class="text-center font-weight-bolder">{{$t('newCourse.title')}}</h3>
-            <form class="my-3" @submit.prevent="saveCourse">
+            <form class="needs-validation my-3" @submit.prevent="saveCourse">
                 <div class="row" v-if="step===1">
                     <!--categ-->
                     <div class="col-md-4">
@@ -105,7 +105,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="persons">{{$t('newCourse.students')}}</label>
-                            <el-input-number placeholder="authorized students" v-model="course.authorized_students" controls-position="right" :min="1" :max="50" style="width:100%">
+                            <el-input-number placeholder="authorized students" v-model="course.authorized_students" controls-position="right" :min="5" :max="50" style="width:100%">
                             </el-input-number>
                             <!-- <input type="number" min="1" max="50" class="form-control" id="persons"
                                    placeholder="authorized students" v-model="course.authorized_students" required> -->
@@ -194,10 +194,12 @@
                                     </el-date-picker> -->
                                     <VueCtkDateTimePicker 
                                         label=""
+                                        :error="showError"
                                         v-model="sections[index].stratDate"
                                         min-date="2021-02-11 00:00:00"
                                         output-format="YYYY-MM-DD HH:mm:ss"
                                         max-date="2021-12-31 00:00:00"/>
+                                    <small v-if="showError" style="color:red">{{ $t('please_fill_all_date') }}</small><br/>
                                     <small>{{$t('newCourse.teaching_note')}}</small>
                                 </div>
                             </div>
@@ -422,7 +424,7 @@
                 course: {
                     sub_category_id: 1,
                     language: 'English',
-                    price: '0',
+                    price: '',
                     currency: 'cad',
                     estimated_duration: '',
                     authorized_students: '',
@@ -466,7 +468,8 @@
                     }
                 },
                 pageLoader: false,
-                dialogVisible: false
+                dialogVisible: false,
+                showError: false
             }
         },
         /*
@@ -523,57 +526,73 @@
                     $('#exampleModalCenter').modal('show')
                 this.$store.dispatch('fetchSubCategories', id)
             },
-            saveCourse() {
-                this.pageLoader = true
-                console.log('this.course.is_free')
-                console.log(this.course)
-                console.log(this.course.is_free ? '1' : '0')
-                this.savingCourse = true;
-                const formData = new FormData();
-                const imagefile = document.querySelector('#thumbnail');
-                formData.append("sub_category_id", this.course.sub_category_id);
-                formData.append("language", this.course.language);
-                formData.append("price", this.course.price);
-                formData.append("currency", this.course.currency);
-                formData.append("estimated_duration", 10);
-                formData.append("authorized_students", this.course.authorized_students);
-                formData.append("sharable", this.course.sharable);
-                formData.append("name", this.course.name);
-                formData.append("short_description", this.course.short_description);
-                formData.append("allow_share_records", this.course.allow_share_records);
-                formData.append("is_free", this.course.is_free ? '1' : '0');
-
-                formData.append("sections", JSON.stringify(this.sections));
-                console.log(formData)
-                axios.post('/course', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
+            async validateCourse() {
+                await this.sections.forEach(el => {
+                    if(isEmpty(el.stratDate)){
+                        this.showError = true
+                        return false
                     }
-                }).then(res => {
-                    // console.log(res);
-                    this.savingCourse = false;
-                   /*  this.$alert('', 'New Course', 'success').then(
-                        () => this.$router.push({name: 'Courses'})
-                    ) */
-                    this.pageLoader = false
-                    this.$swal.fire({
-                        title: '',
-                        text: this.$t('newCourse.thank_msg'),
-                        icon: 'success',
-                        showCancelButton: false,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'ok'
-                    }).then((result) => {
-                        this.$router.push({name: 'Courses'})
-                    })
-
-                })
-                .catch(err => {
-                    console.log(err)
-                    this.pageLoader = false
-                    this.savingCourse = false
                 });
+                console.log('return all')
+                
+            },
+            async saveCourse() {
+                let result = true
+                await this.sections.forEach(el => {
+                    if(isEmpty(el.stratDate)){
+                        this.showError = true
+                        result = false
+                    }
+                });
+
+                if(result) {
+                    this.pageLoader = true
+                    
+                    this.savingCourse = true;
+                    const formData = new FormData();
+                    const imagefile = document.querySelector('#thumbnail');
+                    formData.append("sub_category_id", this.course.sub_category_id);
+                    formData.append("language", this.course.language);
+                    formData.append("price", this.course.price);
+                    formData.append("currency", this.course.currency);
+                    formData.append("estimated_duration", 10);
+                    formData.append("authorized_students", this.course.authorized_students);
+                    formData.append("sharable", this.course.sharable);
+                    formData.append("name", this.course.name);
+                    formData.append("short_description", this.course.short_description);
+                    formData.append("allow_share_records", this.course.allow_share_records);
+                    formData.append("is_free", this.course.is_free ? '1' : '0');
+
+                    formData.append("sections", JSON.stringify(this.sections));
+                    console.log(formData)
+                    axios.post('/course', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        }
+                    }).then(res => {
+                        // console.log(res);
+                        this.savingCourse = false;
+
+                        this.pageLoader = false
+                        this.$swal.fire({
+                            title: '',
+                            text: this.$t('newCourse.thank_msg'),
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'ok'
+                        }).then((result) => {
+                            this.$router.push({name: 'Courses'})
+                        })
+
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        this.pageLoader = false
+                        this.savingCourse = false
+                    });
+                }
             },
             addSection(event) {
                 const sections = event.target.value;
@@ -590,6 +609,22 @@
                 }
             },
             next() {
+                switch(this.step) {
+                    case 1: 
+                        break;
+                    case 2: 
+                        if (isEmpty(this.course.price) || isEmpty(this.course.is_free) || isEmpty(this.course.currency) || isEmpty(this.course.authorized_students)) {
+                            return
+                        }
+                        break;
+                    case 3:
+                        if (isEmpty(this.course.short_description)) {
+                            return
+                        }
+                        break; 
+                    default:
+                        break;
+                }
                 if (this.step ==3) {
                     if (isEmpty(this.course.short_description)) {
                         return

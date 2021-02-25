@@ -43,7 +43,10 @@ import firebase from "firebase";
 import VueCtkDateTimePicker from 'vue-ctk-date-time-picker'; 
 import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';  
 Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
+import Embed from 'v-video-embed'
 
+// global register
+Vue.use(Embed);
 // Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyDQKWF5BYza7riL0uOf3ZZc4sGNu585r5k",

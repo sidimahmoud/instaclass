@@ -1,10 +1,59 @@
 <template>
     <div>
-        <section class="hero pt-5 mb-3"></section>
-        <div class="container ">
+        <section class="hero pt-5 mb-3">
+            <div class="text-home-slogan">
+                <h3>{{$t('become_title.1')}}</h3>
+                <p>{{$t('become_title.2')}}</p>
+            </div>
+        </section>
+
+        <section class="why-us-section">
+            <h2 class="weight-bold text-center text-primary">{{ $t('why_us') }} ?</h2>
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <h4>{{$t('sign_why.1.title')}}</h4>
+                    <p>{{$t('sign_why.1.body')}}</p>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h4>{{$t('sign_why.2.title')}}</h4>
+                    <p>{{$t('sign_why.2.body')}}</p>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h4>{{$t('sign_why.3.title')}}</h4>
+                    <p>{{$t('sign_why.3.body')}}</p>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h4>{{$t('sign_why.3.title')}}</h4>
+                    <ul>
+                        <li>{{ $t('sign_why.4.body.1') }}</li>
+                        <li>{{ $t('sign_why.4.body.2') }}</li>
+                        <li>{{ $t('sign_why.4.body.3') }}</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-us-section">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <h2>{{$t('video_section.title')}}</h2>
+                    <p>{{$t('video_section.body')}}</p>
+                    <p>{{$t('video_section.body1')}}</p>
+                    <p>{{$t('video_section.body2')}}</p>
+                    <p>{{$t('video_section.body3')}}</p>
+                    <p>{{$t('video_section.body4')}}</p>
+                    <p>{{$t('video_section.body5')}}</p>
+                    <p>{{$t('video_section.body6')}}</p>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                   <my-video :sources="video.sources" :options="video.options"></my-video>
+                </div>
+            </div>
+        </section>
+        <div class="container">
             <div class="row">
                 <div class="col-sm-9 col-md-10 col-lg-7 mx-auto">
-                    <div class="text-center"><strong>{{$t('banne_teacher')}}</strong></div>
+                    <!-- <div class="text-center"><strong>{{$t('banne_teacher')}}</strong></div> -->
                     <div class="signup-form bg-white">
                         <div class="row text-dark font-weight-bold d-none d-md-block">
                             <div class="col-md-12 mx-auto d-flex align-items-center">
@@ -103,11 +152,14 @@
 
 <script>
     import {mapGetters} from 'vuex'
+    import myVideo from 'vue-video'
 
     export default {
 
         name: "Login",
-
+        components: {
+            myVideo
+        },
         data() {
             return {
                 email: '',
@@ -120,6 +172,17 @@
                     scope: 'email',
                     return_scopes: true
                 },
+                video: {
+                    sources: [{
+                        src: 'https://firebasestorage.googleapis.com/v0/b/instaclass-9f27f.appspot.com/o/instaclass%2FInstantaclasse%20Video%20promo%20Francais.mp4?alt=media&token=a30759f0-a10c-4185-9ae0-3a72b0d07126',
+                        type: 'video/mp4'
+                    }],
+                    options: {
+                        autoplay: false,
+                        volume: 0.6,
+                        poster: 'https://firebasestorage.googleapis.com/v0/b/instaclass-9f27f.appspot.com/o/instaclass%2Fonline.jpg?alt=media&token=5f31b6be-063f-456e-842e-2e14aa855142'
+                    }
+                }
             }
         },
         methods: {
@@ -215,7 +278,16 @@
                     }
                 })
                 .catch(err => console.log(err))
-            }
+            },
+            handlePIP(e) {
+                this.isPip = e;
+            },
+            handlePipOpenFailure(err) {
+                console.log('Video failed to enter Picture-in-Picture mode.', err);
+            },
+            handlePipExitFailure(err) {
+                console.log('Video failed to leave Picture-in-Picture mode.', err);
+            },
         },
         computed: mapGetters(["authLoading"])
     }
@@ -362,5 +434,26 @@
             border-bottom: 15px solid #3081FB;
             color: white;
         }
+    }
+
+    .text-home-slogan {
+        display: none;
+    }
+
+    @media only screen and (min-width: 600px) {
+        .text-home-slogan {
+            display: block;
+            float: right;
+            margin-top: 100px;
+            margin-left: 30px;
+            font-weight: 600;
+        }
+    }
+
+    .why-us-section {
+        background-color: #eee;
+        padding: 20px;
+        width: 100%;
+        margin-bottom: 10px;
     }
 </style>

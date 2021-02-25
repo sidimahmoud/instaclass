@@ -8,8 +8,8 @@
         "account": "Account"
     },
     "title": {
-        "1": "The perfect platform for teaching",
-        "2": "or learning by online video live courses"
+        "1": "Learn online and develop new skills",
+        "2": "By interacting live with your teacher"
     },
     "title2": {
         "teachers": {
@@ -352,5 +352,59 @@
     "other": "Other",
     "new_course_title": "New course creation",
     "new_course_title_span": "Type the name of the course that you want to teach :",
-    "no_teacher_account_msg": "The email entered is already used in your student account. It can’t be used to log in the teacher’s account. Please create a teacher account."
+    "no_teacher_account_msg": "The email entered is already used in your student account. It can’t be used to log in the teacher’s account. Please create a teacher account.",
+    "account_title": {
+        "1": "A wide choice of Free and Paid courses, accessible in a few clicks"
+    },
+    "become_title": {
+        "1": "Share your passion from home",
+        "2": "And generate income with your knowledge"
+    },
+    "all_title": {
+        "1": "Enroll into a course in a few clicks"
+    },
+    "why_us": "Pourquoi nous",
+    "sign_why": {
+        "1": {
+            "title": "Pourquoi?",
+            "body": "Avec le climat actuel, il est de plus en plus dur d’enseigner physiquement. Les technologies nous permettent maintenant de faire évoluer les façons d’instruire."
+        },
+        "2": {
+            "title": "C’est pour qui?",
+            "body": "Vous êtes déjà enseignant dans le milieu professionnel ou vous disposez de connaissances dans un domaine  spécifique ? Cette plateforme est parfaite pour vous !"
+        },
+        "3": {
+            "title": "Solution / Bénéfices",
+            "body": "Vous souhaitez partager vos connaissances tout en gagnant un revenu à chaque cours. Avec instantaclasse, vous pouvez dès maintenant créer vos cours en quelques minutes et commencer à enseigner en ligne depuis le confort de votre foyer."
+        },
+        "4": {
+            "title": "Comment ça fonctionne",
+            "body": {
+                "1": "Gagnez de l’argent en partageant vos connaissances tout en gagnant un revenu à chaque cours.",
+                "2": "Vous pouvez dès maintenant créer vos cours en quelques minutes et commencer à enseigner en ligne depuis chez vous.",
+                "3": "Fixer tous les détails, comme le prix, les dates des séances... depuis notre plateforme en quelques clics."
+            }
+        }
+    },
+    "video_section": {
+        "title": "Créer un compte en quelques instants.",
+        "body": "Ajouter votre premier cours sur la plateforme en donnant vos informations, votre prix, ce que vous allez apprendre à vos élèves, la date et le nombre de séances.",
+        "body1":"Recevez toutes les informations concernant votre cours via email.",
+        "body2":"Connectez-vous le jour J et lancer votre cours sur la plateforme !",
+        "body3":"Recevez votre paiement seulement 1 semaine après votre cours.",
+        "body4":"Continuez à enseigner avec de nouveaux cours.",
+        "body5":"L’équipe Instantaclasse sera là pour vous assister ainsi que pour répondre à vos questions",
+        "body6":"Créer votre compte dès maintenant !"
+    },
+    "login_video": {
+        "1": {
+            "title": "Gagnez du temps",
+            "body": "Difficile de vous rendre à vos cours présentiels quand votre planning est chargé, qu’il faut s’occuper de la maison et gérer divers problèmes. Gagnez un temps précieux grâce à Instantaclasse et devenez un expert dans un domaine tout en restant chez vous."
+        },
+        "2": {
+            "title": "Devenir meilleur dans une discipline",
+            "body": "Vous souhaitez augmenter vos compétences dans un domaine ? Passer une certification ou devenir quelqu’un de plus épanoui ? Instantaclasse vous propose cela à un prix compétitif tout en restant chez vous."
+        }
+    },
+    "please_fill_all_date": "please enter sections dates"
 }

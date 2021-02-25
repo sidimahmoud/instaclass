@@ -2,6 +2,9 @@
     <div>
         <section class="hero pt-5 mb-3">
             <div class="container h-100">
+                <div class="text-home-slogan">
+                    <h3>{{$t('account_title.1')}}</h3>
+                </div>
                 <!--                <div class="row h-100">-->
                 <!--                    <div class="col-md-4"></div>-->
                 <!--                    <div class="col-md-8 text-center pt-md-5">-->
@@ -16,10 +19,25 @@
                 <!--                </div>-->
             </div>
         </section>
-        <div class="container ">
+        <section class="why-us-section">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <h2>{{$t('login_video.1.title')}}</h2>
+                    <p>{{$t('login_video.1.body')}}</p>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <h2>{{$t('login_video.2.title')}}</h2>
+                    <p>{{$t('login_video.2.body')}}</p>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                   <my-video :sources="video.sources" :options="video.options"></my-video>
+                </div>
+            </div>
+        </section>
+        <div class="container sign-login">
             <div class="row">
                 <div class="col-sm-9 col-md-10 col-lg-7 mx-auto">
-                    <div class="text-center"><strong>{{$t('banne_student')}}</strong></div>
+                    <!-- <div class="text-center"><strong>{{$t('banne_student')}}</strong></div> -->
                     <div class="signup-form bg-white">
                         <div class="row text-dark font-weight-bold d-none d-md-block">
                             <div class="col-md-12 mx-auto d-flex align-items-center">
@@ -133,6 +151,7 @@
 
 <script>
     import {mapGetters} from 'vuex'
+    import myVideo from 'vue-video'
 
     export default {
 
@@ -150,7 +169,21 @@
                     scope: 'email',
                     return_scopes: true
                 },
+                video: {
+                    sources: [{
+                        src: 'https://firebasestorage.googleapis.com/v0/b/instaclass-9f27f.appspot.com/o/instaclass%2FInstantaclasse%20Video%20promo%20Francais.mp4?alt=media&token=a30759f0-a10c-4185-9ae0-3a72b0d07126',
+                        type: 'video/mp4'
+                    }],
+                    options: {
+                        autoplay: false,
+                        volume: 0.6,
+                        poster: 'https://firebasestorage.googleapis.com/v0/b/instaclass-9f27f.appspot.com/o/instaclass%2Fonline.jpg?alt=media&token=5f31b6be-063f-456e-842e-2e14aa855142'
+                    }
+                }
             }
+        },
+        components: {
+            myVideo
         },
         methods: {
             login() {
@@ -395,4 +428,29 @@
             color: white;
         }
     }
+
+    .text-home-slogan {
+        display: none;
+    }
+
+    @media only screen and (min-width: 600px) {
+        .text-home-slogan {
+            display: block;
+            float: right;
+            margin-top: 100px;
+            margin-left: 30px;
+            font-weight: 600;
+        }
+    }
+
+    .why-us-section {
+        background-color: #eee;
+        padding: 20px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* .sign-login {
+        background-color: #3081FB;
+    } */
 </style>
