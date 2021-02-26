@@ -129,7 +129,8 @@
         "edit_course": "Modifier le cours",
         "select_cat": "Choisir une catégorie",
         "course_details": "Détails du cours",
-        "section_three_free": "3eme section gratuit"
+        "section_three_free": "3eme section gratuit",
+        "num_of_sessions": "séances"
     },
     "courseDetails": {
         "hero": "COURS DISPONIBLES",

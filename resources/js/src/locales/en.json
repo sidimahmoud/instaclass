@@ -128,7 +128,8 @@
         "edit_course": "Edit Course",
         "select_cat": "Select category",
         "course_details": "Course Details",
-        "section_three_free": "3rd section free"
+        "section_three_free": "3rd section free",
+        "num_of_sessions": "sessions"
     },
     "courseDetails": {
         "hero": "AVAILABLE COURSES",

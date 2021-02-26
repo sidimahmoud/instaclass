@@ -29,13 +29,10 @@
                                 <strong>{{$t('courses.category')}}</strong>
                             </p>
                             <div class="form-group">
-                                <select multiple class="form-control" id="exampleFormControlSelect2"
-                                        @change="handleCategorie" v-model="filter.categ">
-                                    <option value="">{{$t('courses.all')}}</option>
-                                    <option v-for="c in allCategories" :value="c.id" v-bind:key="c.id">
-                                        {{lang == "en" ? c.name_fr : c.name_en}}
-                                    </option>
-                                </select>
+                                <el-radio-group v-model="filter.categ" @change="handleCategorie">
+                                    <el-radio label="" value="">{{$t('courses.all')}}</el-radio>
+                                    <el-radio v-for="c in allCategories" :label="c.id" :value="c.id" v-bind:key="c.id">{{lang == "en" ? c.name_fr : c.name_en}}</el-radio>
+                                </el-radio-group>
                             </div>
                         </div>
                         <div class="border-bottom border-dark ">
@@ -52,13 +49,13 @@
                                 <strong>{{$t('courses.courseLang')}}</strong>
                             </p>
                             <div class="form-group">
-                                <select multiple class="form-control" v-model="filter.lang" id="lang" @change="handleLang">
-                                    <option value="">{{$t('courses.all')}}</option>
-                                    <option value="French">{{$t('demande.languages.fr')}}</option>
-                                    <option value="English">{{$t('demande.languages.en')}}</option>
-                                    <option value="Spanish">{{$t('demande.languages.es')}}</option>
-                                    <option value="">{{$t('other')}}</option>
-                                </select>
+                                <el-radio-group multiple v-model="filter.lang" id="lang" @change="handleLang">
+                                    <el-radio label="" value="">{{$t('courses.all')}}</el-radio>
+                                    <el-radio label="French" value="French">{{$t('demande.languages.fr')}}</el-radio>
+                                    <el-radio label="English" value="English">{{$t('demande.languages.en')}}</el-radio>
+                                    <el-radio label="Spanish" value="Spanish">{{$t('demande.languages.es')}}</el-radio>
+                                    <el-radio label="" value="">{{$t('other')}}</el-radio>
+                                </el-radio-group>
                             </div>
                         </div>
                         <div>
@@ -66,15 +63,15 @@
                                 <strong>{{$t('courses.sessionsPer')}}</strong>
                             </p>
                             <div class="form-group">
-                                <select multiple class="form-control" v-model="filter.section" id="sessions" @change="handleSectionCount">
-                                    <option value="">{{$t('courses.all')}}</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                </select>
+                                <el-radio-group v-model="filter.section" id="section" @change="handleSectionCount">
+                                    <el-radio label="" value="">{{$t('courses.all')}}</el-radio>
+                                    <el-radio label="1" value="1">1</el-radio>
+                                    <el-radio label="2" value="2">2</el-radio>
+                                    <el-radio label="3" value="3">3</el-radio>
+                                    <el-radio label="4" value="4">4</el-radio>
+                                    <el-radio label="5" value="5">5</el-radio>
+                                    <el-radio label="6" value="6">6</el-radio>
+                                </el-radio-group>
                             </div>
                         </div>
 
@@ -200,14 +197,11 @@
             // filter methods
             handleCategorie(event) {
                 let payload = {
-                    'filter[in_category]': event.target.value
+                    'filter[in_category]': event
                 }
                 this.fetchCourses(payload)
             },
             price(event) {
-                /* console.log(event.target.value)
-                this.filter.price = event.target.value;
-                this.fetchCourses() */
                 this.filter.price = event.target.value;
                 let payload = {
                     'filter[price_less_than]': event.target.value
@@ -215,8 +209,9 @@
                 this.fetchCourses(payload)
             },
             handleLang(event) {
+                console.log(event)
                 let payload = {
-                    'filter[language]': event.target.value
+                    'filter[language]': event
                 }
                 this.fetchCourses(payload)
             },
@@ -225,7 +220,7 @@
             },
             handleSectionCount(event) {
                 let payload = {
-                    'filter[section_count]': event.target.value
+                    'filter[section_count]': event//this.filter.section.join(',')
                 }
                 this.fetchCourses(payload)
             },
@@ -254,8 +249,20 @@
 
     .filter {
         border-radius: 0 5px 10px 0;
-        background: #eee;
+        background: #fff;
         font-weight: 800 !important;
+    }
+
+    .el-checkbox {
+        width: 100%;
+        display: block;
+    }
+
+    .el-radio {
+        width: 100%;
+        display: block;
+        font-size: 26px;
+        font-weight: 600;
     }
 
     .courses {
