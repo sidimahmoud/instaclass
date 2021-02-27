@@ -424,7 +424,7 @@
                 course: {
                     sub_category_id: 1,
                     language: 'English',
-                    price: '',
+                    price: 0.00,
                     currency: 'cad',
                     estimated_duration: '',
                     authorized_students: '',
@@ -613,8 +613,11 @@
                     case 1: 
                         break;
                     case 2: 
-                        if (isEmpty(this.course.price) || isEmpty(this.course.is_free) || isEmpty(this.course.currency) || isEmpty(this.course.authorized_students)) {
-                            return
+                        if (isEmpty(this.course.currency) || isEmpty(this.course.authorized_students)) {
+                            return;
+                        }
+                        if(isEmpty(this.course.price) && this.course.is_free == false){
+                            return;
                         }
                         break;
                     case 3:

@@ -145,7 +145,7 @@
                                     <span>{{$t('teacher_course')}}:<strong class="blue-text">{{ e.course_file.course.user.first_name }}</strong></span>
                                     <span><strong
                                         class="blue-text">{{ e.course_file.course.user.last_name }}</strong></span><br/>
-                                    <button v-if="!isEmpty(e.course_file.video_link)" class="btn btn-danger"
+                                    <button v-if="isEmpty(e.course_file.video_link)" class="btn btn-danger"
                                             @click="handleGoLive(e.course_file.video_link)"><i class="fa fa-play"></i>
                                         {{$t('profile.go_live')}}
                                     </button>

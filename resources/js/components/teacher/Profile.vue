@@ -465,13 +465,13 @@
                 }
             },
             handleLive(id) {
-                this.$swal.fire(this.$t('profile.notify_video'));
-                /* this.$router.push({
+                //this.$swal.fire(this.$t('profile.notify_video'));
+                this.$router.push({
                     name: "StartLive",
                     params: {
                         course_id: this.upComingSections[0].id
                     }
-                }); */
+                });
             },
             isEmpty(v) {
                 return isEmpty(v);
